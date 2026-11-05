@@ -691,3 +691,7 @@ Run status: complete; generated tokens: 1030. Group counts: `{"diagnosis_probe":
 ### 2026-11-05T12:58:53.211475+00:00 — p2-e5probes-fable_diagnosis_ffn_sign_permuted-s17
 
 Run status: complete; generated tokens: 1030. Group counts: `{"diagnosis_probe": {"attempted": 12, "cutoff": 8, "payload_correct": 0, "responses": 12, "success": 0}}`. Full immutable requests, raw responses, and settings are in `runs/p2-e5probes-fable_diagnosis_ffn_sign_permuted-s17`. These counts are observations; interpretation is deferred to the study report.
+
+### 2026-11-05T13:06:26.757418+00:00 — p2-e5editor-local_editor-s17
+
+Run status: failed; generated tokens: 67. Group counts: `{"behavior": {"attempted": 3, "cutoff": 0, "payload_correct": 1, "responses": 2, "success": 1}, "weights": {"attempted": 1, "cutoff": 0, "payload_correct": 1, "responses": 1, "success": 1}}`. Full immutable requests, raw responses, and settings are in `runs/p2-e5editor-local_editor-s17`. These counts are observations; interpretation is deferred to the study report.
