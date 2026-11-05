@@ -9,9 +9,10 @@ The deployment utility reconstructs a **byte-identical target GGUF** from a matc
 | Qwen diagnostic A | Original official Q8 | 639,446,688 | 610,730,163 | 19,270 | 1 |
 | LFM3 QAD diagnostic A | Original QAD Q4 | 1,049,615,680 | 995,496,702 | 19,315 | 1 |
 | Original Fable | Public F16 parent | 461,883,712 | 356,510,251 | 167,671,933 | 132 |
+| Original Fable | Same F16 parent after deterministic BF16 rounding | 461,883,712 | 356,510,251 | 44,653,069 | 92 |
 | Original Fable | Precision-aligned BF16-value parent in F16 layout | 461,883,712 | 356,510,251 | 20,308,656 | 27 |
 
-All four reconstructions matched their complete target-file hashes. The two Fable patches reconstruct the **same** original Fable checkpoint, SHA-256 `1e1624de4d7ebe413d82dbe2b5f48fcf83e6c46b1b5414c8aef0596009380cc6`.
+All five reconstructions matched their complete target-file hashes. The two Fable patches reconstruct the **same** original Fable checkpoint, SHA-256 `1e1624de4d7ebe413d82dbe2b5f48fcf83e6c46b1b5414c8aef0596009380cc6`.
 
 The aligned-base patch is approximately **20.3 MB instead of 167.7 MB**, a factor of **8.26** smaller. This connects the earlier numerical precision audit to a measurable storage cost. After alignment, 105 tensors can be copied exactly; the substantial differences are concentrated in the 18 Q/K/V projections, with tiny residual differences in nine other tensors.
 
@@ -19,7 +20,7 @@ Patch sizes exclude the base. A patch requires the exact matching base hash; the
 
 ## A source-provenance control
 
-The F16 and BF16 source files are separately published artifacts; their exact historical conversion lineage is not independently established. The size comparison alone must not be attributed exclusively to rounding. A separately declared post-hoc follow-up uses **the same original F16 parent with deterministic BF16 value rounding**. It tests how much of the cost reduction is obtained without switching source checkpoints. Its results will be recorded separately in `exact-patch-rounding-control.json`; the first four results above remain unchanged.
+The F16 and BF16 source files are separately published artifacts; their exact historical conversion lineage is not independently established. The size comparison alone must not be attributed exclusively to rounding. A separately declared post-hoc follow-up uses **the same original F16 parent with deterministic BF16 value rounding**. It tests how much of the cost reduction is obtained without switching source checkpoints. The measured patch is **44,653,069 bytes** and restored the exact same Fable hash. Rounding this one source reduces patch cost by **3.75×**; changing to the separately published aligned BF16 source reduces it further. The control is recorded separately in [exact-patch-rounding-control.json](exact-patch-rounding-control.json); the original four results remain unchanged. The remaining difference cannot be attributed exclusively to precision rather than conversion provenance or double rounding.
 
 ## Using the utility
 
