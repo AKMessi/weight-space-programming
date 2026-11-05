@@ -931,3 +931,7 @@ Status `complete`, 1396 generated tokens. Immutable raw inputs/responses/config/
 ### 2026-11-05T18:23:26.065959+00:00 — p3-repair-switch-dev-strong-fable_float-s17
 
 Status `complete`, 1472 generated tokens. Immutable raw inputs/responses/config/runtime and resource samples are in `runs/p3-repair-switch-dev-strong-fable_float-s17`. Interpretation is deferred to the study report; this run alone does not establish a repair.
+
+### 2026-11-05T18:23:45.259614+00:00 — p3-repair-switch-dev-grammar-fable_float-s17
+
+Status `complete`, 1344 generated tokens. Immutable raw inputs/responses/config/runtime and resource samples are in `runs/p3-repair-switch-dev-grammar-fable_float-s17`. Interpretation is deferred to the study report; this run alone does not establish a repair.
