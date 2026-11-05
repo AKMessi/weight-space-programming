@@ -16,7 +16,9 @@ if key:
  if out.exists() or manifest.exists():raise FileExistsError(out)
  shutil.copyfile(base['path'],out);result=GGUFReader(out,mode='r+');dest={t.name:t for t in result.tensors};norm2=0.;changed=0
  for name,(cols,noise) in noises.items():
-  new=(ts[name].data[:,cols].astype(float)+noise*scale).astype(np.float16);dest[name].data[:,cols]=new;delta=new.astype(float)-ts[name].data[:,cols].astype(float);norm2+=float(np.sum(delta*delta));changed+=int(np.count_nonzero(delta))
+  new=(ts[name].data[:,cols].astype(float)+noise*scale).astype(np.float16);
+  if not np.isfinite(new).all():raise ValueError('Nonfinite random control')
+  dest[name].data[:,cols]=new;delta=new.astype(float)-ts[name].data[:,cols].astype(float);norm2+=float(np.sum(delta*delta));changed+=int(np.count_nonzero(delta))
  result.data.flush()
  for name,t in ts.items():
   if name not in noises and tensor_hash(t.data)!=tensor_hash(dest[name].data):raise ValueError('Unexpected tensor')
