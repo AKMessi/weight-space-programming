@@ -595,3 +595,7 @@ Run status: complete; generated tokens: 1154. Group counts: `{"functional_code":
 ### 2026-11-05T12:36:27.010618+00:00 — p2-e3precision-fable_float_A-s17
 
 Run status: complete; generated tokens: 1058. Group counts: `{"functional_code": {"attempted": 6, "cutoff": 0, "payload_correct": 4, "responses": 6, "success": 0}, "literal_copy": {"attempted": 6, "cutoff": 0, "payload_correct": 6, "responses": 6, "success": 0}, "structured": {"attempted": 6, "cutoff": 6, "payload_correct": 0, "responses": 6, "success": 0}}`. Full immutable requests, raw responses, and settings are in `runs/p2-e3precision-fable_float_A-s17`. These counts are observations; interpretation is deferred to the study report.
+
+### 2026-11-05T12:38:00.180921+00:00 — p2-e3precision-fable_Q8_0-s17
+
+Run status: complete; generated tokens: 1141. Group counts: `{"functional_code": {"attempted": 6, "cutoff": 0, "payload_correct": 4, "responses": 6, "success": 0}, "literal_copy": {"attempted": 6, "cutoff": 0, "payload_correct": 6, "responses": 6, "success": 0}, "structured": {"attempted": 6, "cutoff": 6, "payload_correct": 1, "responses": 6, "success": 0}}`. Full immutable requests, raw responses, and settings are in `runs/p2-e3precision-fable_Q8_0-s17`. These counts are observations; interpretation is deferred to the study report.
