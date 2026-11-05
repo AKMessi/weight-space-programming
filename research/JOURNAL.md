@@ -699,3 +699,7 @@ Run status: failed; generated tokens: 67. Group counts: `{"behavior": {"attempte
 ### 2026-11-05T13:12:02.834570+00:00 — p2-e5editor-retry1-local_editor-s17
 
 Run status: complete; generated tokens: 532. Group counts: `{"behavior": {"attempted": 12, "cutoff": 0, "payload_correct": 8, "responses": 12, "success": 8}, "weights": {"attempted": 12, "cutoff": 0, "payload_correct": 7, "responses": 12, "success": 7}}`. Full immutable requests, raw responses, and settings are in `runs/p2-e5editor-retry1-local_editor-s17`. These counts are observations; interpretation is deferred to the study report.
+
+### 2026-11-05T13:31:35.514922+00:00 — p2-speed-followup-fable_float-s17
+
+Run status: complete; generated tokens: 256. Group counts: `{"decode_measurement": {"attempted": 3, "cutoff": 3, "payload_correct": 0, "responses": 3, "success": 0}, "warmup": {"attempted": 1, "cutoff": 1, "payload_correct": 0, "responses": 1, "success": 0}}`. Full immutable requests, raw responses, and settings are in `runs/p2-speed-followup-fable_float-s17`. These counts are observations; interpretation is deferred to the study report.
