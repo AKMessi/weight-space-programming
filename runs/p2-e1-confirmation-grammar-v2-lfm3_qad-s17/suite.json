@@ -1,0 +1,1136 @@
+{
+  "name": "portfolio-e1-confirmation-v1-grammar-schema-v2",
+  "status": "frozen synthetic confirmation; no broad benchmark claim; corrected schema wrapper; original v1 preserved",
+  "cases": [
+    {
+      "id": "e1-confirmation-difference-code",
+      "split": "confirmation",
+      "family": "functional_code",
+      "group": "functional_code",
+      "grader": "functional_code",
+      "expected": {
+        "parameters": [
+          "a",
+          "b"
+        ],
+        "tests": [
+          {
+            "args": [
+              0,
+              2
+            ],
+            "result": -2
+          },
+          {
+            "args": [
+              -3,
+              -7
+            ],
+            "result": 4
+          },
+          {
+            "args": [
+              10,
+              4
+            ],
+            "result": 6
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools. For copying, exclude the opening/closing delimiter markers themselves. For code-only requests output Python directly, without backticks. For JSON output just one JSON object and stop. When an explanation is explicitly requested include it."
+        },
+        {
+          "role": "user",
+          "content": "Return one complete Python function only, without Markdown or commentary.\nRequired signature: def difference(a, b):\nSpecification: Return a minus b."
+        }
+      ],
+      "response_mode": "code",
+      "control": "grammar"
+    },
+    {
+      "id": "e1-confirmation-difference-explain",
+      "split": "confirmation",
+      "family": "functional_explain",
+      "group": "functional_explain",
+      "grader": "functional_code",
+      "expected": {
+        "parameters": [
+          "a",
+          "b"
+        ],
+        "tests": [
+          {
+            "args": [
+              0,
+              2
+            ],
+            "result": -2
+          },
+          {
+            "args": [
+              -3,
+              -7
+            ],
+            "result": 4
+          },
+          {
+            "args": [
+              10,
+              4
+            ],
+            "result": 6
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools. For copying, exclude the opening/closing delimiter markers themselves. For code-only requests output Python directly, without backticks. For JSON output just one JSON object and stop. When an explanation is explicitly requested include it."
+        },
+        {
+          "role": "user",
+          "content": "Return a complete Python function in a Python code fence and explain its behavior in at least eight words.\nRequired signature: def difference(a, b):\nSpecification: Return a minus b."
+        }
+      ],
+      "response_mode": "explain",
+      "control": "grammar"
+    },
+    {
+      "id": "e1-confirmation-count_positive-code",
+      "split": "confirmation",
+      "family": "functional_code",
+      "group": "functional_code",
+      "grader": "functional_code",
+      "expected": {
+        "parameters": [
+          "xs"
+        ],
+        "tests": [
+          {
+            "args": [
+              []
+            ],
+            "result": 0
+          },
+          {
+            "args": [
+              [
+                2,
+                -1,
+                0,
+                9
+              ]
+            ],
+            "result": 2
+          },
+          {
+            "args": [
+              [
+                -3
+              ]
+            ],
+            "result": 0
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools. For copying, exclude the opening/closing delimiter markers themselves. For code-only requests output Python directly, without backticks. For JSON output just one JSON object and stop. When an explanation is explicitly requested include it."
+        },
+        {
+          "role": "user",
+          "content": "Return one complete Python function only, without Markdown or commentary.\nRequired signature: def count_positive(xs):\nSpecification: Return the number of strictly positive entries in xs."
+        }
+      ],
+      "response_mode": "code",
+      "control": "grammar"
+    },
+    {
+      "id": "e1-confirmation-count_positive-explain",
+      "split": "confirmation",
+      "family": "functional_explain",
+      "group": "functional_explain",
+      "grader": "functional_code",
+      "expected": {
+        "parameters": [
+          "xs"
+        ],
+        "tests": [
+          {
+            "args": [
+              []
+            ],
+            "result": 0
+          },
+          {
+            "args": [
+              [
+                2,
+                -1,
+                0,
+                9
+              ]
+            ],
+            "result": 2
+          },
+          {
+            "args": [
+              [
+                -3
+              ]
+            ],
+            "result": 0
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools. For copying, exclude the opening/closing delimiter markers themselves. For code-only requests output Python directly, without backticks. For JSON output just one JSON object and stop. When an explanation is explicitly requested include it."
+        },
+        {
+          "role": "user",
+          "content": "Return a complete Python function in a Python code fence and explain its behavior in at least eight words.\nRequired signature: def count_positive(xs):\nSpecification: Return the number of strictly positive entries in xs."
+        }
+      ],
+      "response_mode": "explain",
+      "control": "grammar"
+    },
+    {
+      "id": "e1-confirmation-first_or_zero-code",
+      "split": "confirmation",
+      "family": "functional_code",
+      "group": "functional_code",
+      "grader": "functional_code",
+      "expected": {
+        "parameters": [
+          "xs"
+        ],
+        "tests": [
+          {
+            "args": [
+              []
+            ],
+            "result": 0
+          },
+          {
+            "args": [
+              [
+                4,
+                8
+              ]
+            ],
+            "result": 4
+          },
+          {
+            "args": [
+              [
+                -2
+              ]
+            ],
+            "result": -2
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools. For copying, exclude the opening/closing delimiter markers themselves. For code-only requests output Python directly, without backticks. For JSON output just one JSON object and stop. When an explanation is explicitly requested include it."
+        },
+        {
+          "role": "user",
+          "content": "Return one complete Python function only, without Markdown or commentary.\nRequired signature: def first_or_zero(xs):\nSpecification: Return the first entry of xs, or integer zero when empty."
+        }
+      ],
+      "response_mode": "code",
+      "control": "grammar"
+    },
+    {
+      "id": "e1-confirmation-first_or_zero-explain",
+      "split": "confirmation",
+      "family": "functional_explain",
+      "group": "functional_explain",
+      "grader": "functional_code",
+      "expected": {
+        "parameters": [
+          "xs"
+        ],
+        "tests": [
+          {
+            "args": [
+              []
+            ],
+            "result": 0
+          },
+          {
+            "args": [
+              [
+                4,
+                8
+              ]
+            ],
+            "result": 4
+          },
+          {
+            "args": [
+              [
+                -2
+              ]
+            ],
+            "result": -2
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools. For copying, exclude the opening/closing delimiter markers themselves. For code-only requests output Python directly, without backticks. For JSON output just one JSON object and stop. When an explanation is explicitly requested include it."
+        },
+        {
+          "role": "user",
+          "content": "Return a complete Python function in a Python code fence and explain its behavior in at least eight words.\nRequired signature: def first_or_zero(xs):\nSpecification: Return the first entry of xs, or integer zero when empty."
+        }
+      ],
+      "response_mode": "explain",
+      "control": "grammar"
+    },
+    {
+      "id": "e1-confirmation-reverse_list-code",
+      "split": "confirmation",
+      "family": "functional_code",
+      "group": "functional_code",
+      "grader": "functional_code",
+      "expected": {
+        "parameters": [
+          "xs"
+        ],
+        "tests": [
+          {
+            "args": [
+              []
+            ],
+            "result": []
+          },
+          {
+            "args": [
+              [
+                1,
+                4,
+                2
+              ]
+            ],
+            "result": [
+              2,
+              4,
+              1
+            ]
+          },
+          {
+            "args": [
+              [
+                9
+              ]
+            ],
+            "result": [
+              9
+            ]
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools. For copying, exclude the opening/closing delimiter markers themselves. For code-only requests output Python directly, without backticks. For JSON output just one JSON object and stop. When an explanation is explicitly requested include it."
+        },
+        {
+          "role": "user",
+          "content": "Return one complete Python function only, without Markdown or commentary.\nRequired signature: def reverse_list(xs):\nSpecification: Return a new list with xs in reverse order."
+        }
+      ],
+      "response_mode": "code",
+      "control": "grammar"
+    },
+    {
+      "id": "e1-confirmation-reverse_list-explain",
+      "split": "confirmation",
+      "family": "functional_explain",
+      "group": "functional_explain",
+      "grader": "functional_code",
+      "expected": {
+        "parameters": [
+          "xs"
+        ],
+        "tests": [
+          {
+            "args": [
+              []
+            ],
+            "result": []
+          },
+          {
+            "args": [
+              [
+                1,
+                4,
+                2
+              ]
+            ],
+            "result": [
+              2,
+              4,
+              1
+            ]
+          },
+          {
+            "args": [
+              [
+                9
+              ]
+            ],
+            "result": [
+              9
+            ]
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools. For copying, exclude the opening/closing delimiter markers themselves. For code-only requests output Python directly, without backticks. For JSON output just one JSON object and stop. When an explanation is explicitly requested include it."
+        },
+        {
+          "role": "user",
+          "content": "Return a complete Python function in a Python code fence and explain its behavior in at least eight words.\nRequired signature: def reverse_list(xs):\nSpecification: Return a new list with xs in reverse order."
+        }
+      ],
+      "response_mode": "explain",
+      "control": "grammar"
+    },
+    {
+      "id": "e1-confirmation-absolute-code",
+      "split": "confirmation",
+      "family": "functional_code",
+      "group": "functional_code",
+      "grader": "functional_code",
+      "expected": {
+        "parameters": [
+          "value"
+        ],
+        "tests": [
+          {
+            "args": [
+              -4
+            ],
+            "result": 4
+          },
+          {
+            "args": [
+              0
+            ],
+            "result": 0
+          },
+          {
+            "args": [
+              7
+            ],
+            "result": 7
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools. For copying, exclude the opening/closing delimiter markers themselves. For code-only requests output Python directly, without backticks. For JSON output just one JSON object and stop. When an explanation is explicitly requested include it."
+        },
+        {
+          "role": "user",
+          "content": "Return one complete Python function only, without Markdown or commentary.\nRequired signature: def absolute(value):\nSpecification: Return the absolute value of value."
+        }
+      ],
+      "response_mode": "code",
+      "control": "grammar"
+    },
+    {
+      "id": "e1-confirmation-absolute-explain",
+      "split": "confirmation",
+      "family": "functional_explain",
+      "group": "functional_explain",
+      "grader": "functional_code",
+      "expected": {
+        "parameters": [
+          "value"
+        ],
+        "tests": [
+          {
+            "args": [
+              -4
+            ],
+            "result": 4
+          },
+          {
+            "args": [
+              0
+            ],
+            "result": 0
+          },
+          {
+            "args": [
+              7
+            ],
+            "result": 7
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools. For copying, exclude the opening/closing delimiter markers themselves. For code-only requests output Python directly, without backticks. For JSON output just one JSON object and stop. When an explanation is explicitly requested include it."
+        },
+        {
+          "role": "user",
+          "content": "Return a complete Python function in a Python code fence and explain its behavior in at least eight words.\nRequired signature: def absolute(value):\nSpecification: Return the absolute value of value."
+        }
+      ],
+      "response_mode": "explain",
+      "control": "grammar"
+    },
+    {
+      "id": "e1-confirmation-maximum-code",
+      "split": "confirmation",
+      "family": "functional_code",
+      "group": "functional_code",
+      "grader": "functional_code",
+      "expected": {
+        "parameters": [
+          "xs"
+        ],
+        "tests": [
+          {
+            "args": [
+              [
+                1,
+                5,
+                2
+              ]
+            ],
+            "result": 5
+          },
+          {
+            "args": [
+              [
+                -7,
+                -2
+              ]
+            ],
+            "result": -2
+          },
+          {
+            "args": [
+              [
+                0
+              ]
+            ],
+            "result": 0
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools. For copying, exclude the opening/closing delimiter markers themselves. For code-only requests output Python directly, without backticks. For JSON output just one JSON object and stop. When an explanation is explicitly requested include it."
+        },
+        {
+          "role": "user",
+          "content": "Return one complete Python function only, without Markdown or commentary.\nRequired signature: def maximum(xs):\nSpecification: Return the maximum value in the nonempty list xs."
+        }
+      ],
+      "response_mode": "code",
+      "control": "grammar"
+    },
+    {
+      "id": "e1-confirmation-maximum-explain",
+      "split": "confirmation",
+      "family": "functional_explain",
+      "group": "functional_explain",
+      "grader": "functional_code",
+      "expected": {
+        "parameters": [
+          "xs"
+        ],
+        "tests": [
+          {
+            "args": [
+              [
+                1,
+                5,
+                2
+              ]
+            ],
+            "result": 5
+          },
+          {
+            "args": [
+              [
+                -7,
+                -2
+              ]
+            ],
+            "result": -2
+          },
+          {
+            "args": [
+              [
+                0
+              ]
+            ],
+            "result": 0
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools. For copying, exclude the opening/closing delimiter markers themselves. For code-only requests output Python directly, without backticks. For JSON output just one JSON object and stop. When an explanation is explicitly requested include it."
+        },
+        {
+          "role": "user",
+          "content": "Return a complete Python function in a Python code fence and explain its behavior in at least eight words.\nRequired signature: def maximum(xs):\nSpecification: Return the maximum value in the nonempty list xs."
+        }
+      ],
+      "response_mode": "explain",
+      "control": "grammar"
+    },
+    {
+      "id": "e1-confirmation-json-0",
+      "split": "confirmation",
+      "family": "structured",
+      "group": "structured",
+      "grader": "json",
+      "expected": {
+        "tag": "CF-130",
+        "count": 3
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools. For copying, exclude the opening/closing delimiter markers themselves. For code-only requests output Python directly, without backticks. For JSON output just one JSON object and stop. When an explanation is explicitly requested include it."
+        },
+        {
+          "role": "user",
+          "content": "From this note extract count as an integer and tag as text: [3 items / tag CF-130]. Your entire reply must be JSON."
+        }
+      ],
+      "control": "grammar",
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "contract",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "tag": {
+                  "type": "string"
+                },
+                "count": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "tag",
+                "count"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "e1-confirmation-copy-0",
+      "split": "confirmation",
+      "family": "literal_copy",
+      "group": "literal_copy",
+      "grader": "copy",
+      "expected": "CF-130\n    [3]  cf-130!",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools. For copying, exclude the opening/closing delimiter markers themselves. For code-only requests output Python directly, without backticks. For JSON output just one JSON object and stop. When an explanation is explicitly requested include it."
+        },
+        {
+          "role": "user",
+          "content": "Reproduce the following payload verbatim, including its spaces and newline. Output the payload alone.\nBEGIN\nCF-130\n    [3]  cf-130!\nEND"
+        }
+      ],
+      "control": "grammar"
+    },
+    {
+      "id": "e1-confirmation-json-1",
+      "split": "confirmation",
+      "family": "structured",
+      "group": "structured",
+      "grader": "json",
+      "expected": {
+        "tag": "CF-149",
+        "count": 4
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools. For copying, exclude the opening/closing delimiter markers themselves. For code-only requests output Python directly, without backticks. For JSON output just one JSON object and stop. When an explanation is explicitly requested include it."
+        },
+        {
+          "role": "user",
+          "content": "From this note extract count as an integer and tag as text: [4 items / tag CF-149]. Your entire reply must be JSON."
+        }
+      ],
+      "control": "grammar",
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "contract",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "tag": {
+                  "type": "string"
+                },
+                "count": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "tag",
+                "count"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "e1-confirmation-copy-1",
+      "split": "confirmation",
+      "family": "literal_copy",
+      "group": "literal_copy",
+      "grader": "copy",
+      "expected": "CF-149\n    [4]  cf-149!",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools. For copying, exclude the opening/closing delimiter markers themselves. For code-only requests output Python directly, without backticks. For JSON output just one JSON object and stop. When an explanation is explicitly requested include it."
+        },
+        {
+          "role": "user",
+          "content": "Reproduce the following payload verbatim, including its spaces and newline. Output the payload alone.\nBEGIN\nCF-149\n    [4]  cf-149!\nEND"
+        }
+      ],
+      "control": "grammar"
+    },
+    {
+      "id": "e1-confirmation-json-2",
+      "split": "confirmation",
+      "family": "structured",
+      "group": "structured",
+      "grader": "json",
+      "expected": {
+        "tag": "CF-168",
+        "count": 5
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools. For copying, exclude the opening/closing delimiter markers themselves. For code-only requests output Python directly, without backticks. For JSON output just one JSON object and stop. When an explanation is explicitly requested include it."
+        },
+        {
+          "role": "user",
+          "content": "From this note extract count as an integer and tag as text: [5 items / tag CF-168]. Your entire reply must be JSON."
+        }
+      ],
+      "control": "grammar",
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "contract",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "tag": {
+                  "type": "string"
+                },
+                "count": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "tag",
+                "count"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "e1-confirmation-copy-2",
+      "split": "confirmation",
+      "family": "literal_copy",
+      "group": "literal_copy",
+      "grader": "copy",
+      "expected": "CF-168\n    [5]  cf-168!",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools. For copying, exclude the opening/closing delimiter markers themselves. For code-only requests output Python directly, without backticks. For JSON output just one JSON object and stop. When an explanation is explicitly requested include it."
+        },
+        {
+          "role": "user",
+          "content": "Reproduce the following payload verbatim, including its spaces and newline. Output the payload alone.\nBEGIN\nCF-168\n    [5]  cf-168!\nEND"
+        }
+      ],
+      "control": "grammar"
+    },
+    {
+      "id": "e1-confirmation-json-3",
+      "split": "confirmation",
+      "family": "structured",
+      "group": "structured",
+      "grader": "json",
+      "expected": {
+        "tag": "CF-187",
+        "count": 6
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools. For copying, exclude the opening/closing delimiter markers themselves. For code-only requests output Python directly, without backticks. For JSON output just one JSON object and stop. When an explanation is explicitly requested include it."
+        },
+        {
+          "role": "user",
+          "content": "From this note extract count as an integer and tag as text: [6 items / tag CF-187]. Your entire reply must be JSON."
+        }
+      ],
+      "control": "grammar",
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "contract",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "tag": {
+                  "type": "string"
+                },
+                "count": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "tag",
+                "count"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "e1-confirmation-copy-3",
+      "split": "confirmation",
+      "family": "literal_copy",
+      "group": "literal_copy",
+      "grader": "copy",
+      "expected": "CF-187\n    [6]  cf-187!",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools. For copying, exclude the opening/closing delimiter markers themselves. For code-only requests output Python directly, without backticks. For JSON output just one JSON object and stop. When an explanation is explicitly requested include it."
+        },
+        {
+          "role": "user",
+          "content": "Reproduce the following payload verbatim, including its spaces and newline. Output the payload alone.\nBEGIN\nCF-187\n    [6]  cf-187!\nEND"
+        }
+      ],
+      "control": "grammar"
+    },
+    {
+      "id": "e1-confirmation-json-4",
+      "split": "confirmation",
+      "family": "structured",
+      "group": "structured",
+      "grader": "json",
+      "expected": {
+        "tag": "CF-206",
+        "count": 7
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools. For copying, exclude the opening/closing delimiter markers themselves. For code-only requests output Python directly, without backticks. For JSON output just one JSON object and stop. When an explanation is explicitly requested include it."
+        },
+        {
+          "role": "user",
+          "content": "From this note extract count as an integer and tag as text: [7 items / tag CF-206]. Your entire reply must be JSON."
+        }
+      ],
+      "control": "grammar",
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "contract",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "tag": {
+                  "type": "string"
+                },
+                "count": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "tag",
+                "count"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "e1-confirmation-copy-4",
+      "split": "confirmation",
+      "family": "literal_copy",
+      "group": "literal_copy",
+      "grader": "copy",
+      "expected": "CF-206\n    [7]  cf-206!",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools. For copying, exclude the opening/closing delimiter markers themselves. For code-only requests output Python directly, without backticks. For JSON output just one JSON object and stop. When an explanation is explicitly requested include it."
+        },
+        {
+          "role": "user",
+          "content": "Reproduce the following payload verbatim, including its spaces and newline. Output the payload alone.\nBEGIN\nCF-206\n    [7]  cf-206!\nEND"
+        }
+      ],
+      "control": "grammar"
+    },
+    {
+      "id": "e1-confirmation-json-5",
+      "split": "confirmation",
+      "family": "structured",
+      "group": "structured",
+      "grader": "json",
+      "expected": {
+        "tag": "CF-225",
+        "count": 8
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools. For copying, exclude the opening/closing delimiter markers themselves. For code-only requests output Python directly, without backticks. For JSON output just one JSON object and stop. When an explanation is explicitly requested include it."
+        },
+        {
+          "role": "user",
+          "content": "From this note extract count as an integer and tag as text: [8 items / tag CF-225]. Your entire reply must be JSON."
+        }
+      ],
+      "control": "grammar",
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "contract",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "tag": {
+                  "type": "string"
+                },
+                "count": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "tag",
+                "count"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "e1-confirmation-copy-5",
+      "split": "confirmation",
+      "family": "literal_copy",
+      "group": "literal_copy",
+      "grader": "copy",
+      "expected": "CF-225\n    [8]  cf-225!",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools. For copying, exclude the opening/closing delimiter markers themselves. For code-only requests output Python directly, without backticks. For JSON output just one JSON object and stop. When an explanation is explicitly requested include it."
+        },
+        {
+          "role": "user",
+          "content": "Reproduce the following payload verbatim, including its spaces and newline. Output the payload alone.\nBEGIN\nCF-225\n    [8]  cf-225!\nEND"
+        }
+      ],
+      "control": "grammar"
+    },
+    {
+      "id": "e1-confirmation-json-6",
+      "split": "confirmation",
+      "family": "structured",
+      "group": "structured",
+      "grader": "json",
+      "expected": {
+        "tag": "CF-244",
+        "count": 9
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools. For copying, exclude the opening/closing delimiter markers themselves. For code-only requests output Python directly, without backticks. For JSON output just one JSON object and stop. When an explanation is explicitly requested include it."
+        },
+        {
+          "role": "user",
+          "content": "From this note extract count as an integer and tag as text: [9 items / tag CF-244]. Your entire reply must be JSON."
+        }
+      ],
+      "control": "grammar",
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "contract",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "tag": {
+                  "type": "string"
+                },
+                "count": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "tag",
+                "count"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "e1-confirmation-copy-6",
+      "split": "confirmation",
+      "family": "literal_copy",
+      "group": "literal_copy",
+      "grader": "copy",
+      "expected": "CF-244\n    [9]  cf-244!",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools. For copying, exclude the opening/closing delimiter markers themselves. For code-only requests output Python directly, without backticks. For JSON output just one JSON object and stop. When an explanation is explicitly requested include it."
+        },
+        {
+          "role": "user",
+          "content": "Reproduce the following payload verbatim, including its spaces and newline. Output the payload alone.\nBEGIN\nCF-244\n    [9]  cf-244!\nEND"
+        }
+      ],
+      "control": "grammar"
+    },
+    {
+      "id": "e1-confirmation-json-7",
+      "split": "confirmation",
+      "family": "structured",
+      "group": "structured",
+      "grader": "json",
+      "expected": {
+        "tag": "CF-263",
+        "count": 10
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools. For copying, exclude the opening/closing delimiter markers themselves. For code-only requests output Python directly, without backticks. For JSON output just one JSON object and stop. When an explanation is explicitly requested include it."
+        },
+        {
+          "role": "user",
+          "content": "From this note extract count as an integer and tag as text: [10 items / tag CF-263]. Your entire reply must be JSON."
+        }
+      ],
+      "control": "grammar",
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "contract",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "tag": {
+                  "type": "string"
+                },
+                "count": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "tag",
+                "count"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "e1-confirmation-copy-7",
+      "split": "confirmation",
+      "family": "literal_copy",
+      "group": "literal_copy",
+      "grader": "copy",
+      "expected": "CF-263\n    [10]  cf-263!",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools. For copying, exclude the opening/closing delimiter markers themselves. For code-only requests output Python directly, without backticks. For JSON output just one JSON object and stop. When an explanation is explicitly requested include it."
+        },
+        {
+          "role": "user",
+          "content": "Reproduce the following payload verbatim, including its spaces and newline. Output the payload alone.\nBEGIN\nCF-263\n    [10]  cf-263!\nEND"
+        }
+      ],
+      "control": "grammar"
+    }
+  ]
+}
