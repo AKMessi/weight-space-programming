@@ -11,6 +11,7 @@ import shutil
 import numpy as np
 
 from .evidence import digest, file_sha256, git_state, utc_now, write_json
+from .precision import round_bf16_values
 
 
 def blend_tensor(original, parent, alpha):
@@ -36,7 +37,8 @@ def tensor_hash(tensor):
     return hashlib.sha256(memoryview(np.ascontiguousarray(tensor)).cast('B')).hexdigest()
 
 
-def create_rollback(config, base_key, parent_key, output, manifest_path, alpha, layers=None):
+def create_rollback(config, base_key, parent_key, output, manifest_path, alpha, layers=None,
+                    pattern=r'blk\.(\d+)\.ffn_down\.weight', parent_round_bf16=False):
     from gguf import GGUFReader
     output = Path(output)
     manifest_path = Path(manifest_path)
@@ -64,14 +66,15 @@ def create_rollback(config, base_key, parent_key, output, manifest_path, alpha, 
         raise ValueError("Source tensor sets differ")
     selected = []
     for name, t in source_tensors.items():
-        match = re.fullmatch(r'blk\.(\d+)\.ffn_down\.weight', name)
-        if match and (layers is None or int(match[1]) in layers):
+        match = re.fullmatch(pattern, name)
+        layer_match = re.match(r'blk\.(\d+)\.', name)
+        if match and (layers is None or (layer_match and int(layer_match[1]) in layers)):
             p = parent_tensors[name]
-            if t.data.shape != p.data.shape or t.data.dtype != p.data.dtype or t.data.dtype != np.float16:
-                raise ValueError(f"Selected tensor must be aligned F16: {name}")
+            if t.data.shape != p.data.shape or t.data.dtype != p.data.dtype or t.data.dtype.kind != 'f':
+                raise ValueError(f"Selected tensor must be aligned floating values: {name}")
             selected.append(name)
     if not selected:
-        raise ValueError("No matching FFN output tensors")
+        raise ValueError("No matching floating tensors")
     if layers is not None and {int(n.split('.')[1]) for n in selected} != set(layers):
         raise ValueError("Some requested layers were not found")
     output.parent.mkdir(parents=True, exist_ok=True)
@@ -79,9 +82,11 @@ def create_rollback(config, base_key, parent_key, output, manifest_path, alpha, 
     if partial.exists():
         raise FileExistsError(partial)
     report = {'schema_version': 1, 'started_utc': utc_now(), 'git': state,
-              'operation': 'partial_parent_rollback_of_FFN_output_matrices',
+              'operation': 'partial_parent_rollback_of_selected_floating_tensors',
               'status': 'started', 'base': base_spec, 'parent': parent_spec,
               'alpha': alpha, 'selected': selected, 'output': str(output),
+              'selection_pattern': pattern,
+              'parent_transformation': 'round_bf16_values_then_cast_back' if parent_round_bf16 else 'none',
               'notes': ['No gradients or training. Not a sparse/rank-one edit.',
                         'F16 casting is part of the evaluated operation.'], 'tensors': []}
     write_json(manifest_path, report)
@@ -91,7 +96,8 @@ def create_rollback(config, base_key, parent_key, output, manifest_path, alpha, 
         edited_tensors = {t.name: t for t in edited.tensors}
         for name in selected:
             o = source_tensors[name].data
-            b = parent_tensors[name].data
+            raw_parent = parent_tensors[name].data
+            b = round_bf16_values(raw_parent) if parent_round_bf16 else raw_parent
             new = blend_tensor(o, b, alpha)
             delta = new.astype(np.float32) - o.astype(np.float32)
             norm = float(np.sqrt(np.square(o.astype(np.float32)).sum(dtype=np.float64)))
@@ -99,7 +105,8 @@ def create_rollback(config, base_key, parent_key, output, manifest_path, alpha, 
             changed = int(np.count_nonzero(new != o))
             edited_tensors[name].data[:] = new
             report['tensors'].append({'name': name, 'shape': list(o.shape), 'dtype': str(o.dtype),
-                                      'base_sha256': tensor_hash(o), 'parent_sha256': tensor_hash(b),
+                                      'base_sha256': tensor_hash(o), 'parent_sha256': tensor_hash(raw_parent),
+                                      'effective_parent_sha256': tensor_hash(b),
                                       'edited_sha256': tensor_hash(new), 'changed_values': changed,
                                       'relative_frobenius_change': delta_norm / norm if norm else None})
             write_json(manifest_path, report)
@@ -135,12 +142,15 @@ def main():
     p.add_argument('--parent', default='parent_f16')
     p.add_argument('--alpha', type=float, required=True)
     p.add_argument('--layers', help='Comma-separated layer indices; default all FFN output matrices')
+    p.add_argument('--pattern', default=r'blk\.(\d+)\.ffn_down\.weight', help='Full-match tensor selector')
+    p.add_argument('--parent-round-bf16', action='store_true', help='Explicit precision-alignment/control transform')
     p.add_argument('--output', required=True)
     p.add_argument('--manifest', required=True)
     a = p.parse_args()
     config = json.loads(Path(a.config).read_text())
     layers = None if a.layers is None else [int(x) for x in a.layers.split(',')]
-    print(json.dumps(create_rollback(config, a.base, a.parent, a.output, a.manifest, a.alpha, layers), indent=2))
+    report = create_rollback(config, a.base, a.parent, a.output, a.manifest, a.alpha, layers, a.pattern, a.parent_round_bf16)
+    print(json.dumps({k:report[k] for k in ['status','changed_values','edited_file_sha256','output']}, indent=2))
 
 
 if __name__ == '__main__':

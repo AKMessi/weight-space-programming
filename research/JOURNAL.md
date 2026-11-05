@@ -107,3 +107,13 @@ Record observations, hypotheses, decisions, failed attempts, confounds, and foll
 **Decision:** audit all corresponding floating tensors, including how often rounding Fable values to BF16 reproduces the public parent's values. This diagnoses precision/provenance confounds before expanding the edit search. It does not establish the exact original training checkpoint.
 
 **Implementation:** added paired-run comparison and streaming tensor-delta audit scripts. The existing report generator produces a readable per-group baseline table with strong-prompt and grammar conditions separated.
+
+## 2026-11-05 — First weight intervention negative; attention/provenance lead
+
+**Identity result:** run 011 reproduced the original Fable content exactly on all 10 checked cases, with identical completion-token counts. Source file and identity artifact hashes match.
+
+**Rollback result:** run 012's 25% FFN-output rollback rescued 0 exact contracts and lost 0 across 40 discovery cases; 34/40 outputs were byte-identical. JSON payload proxy improved 1/8 to 2/8, which is not an established useful repair. Preserve it as a negative baseline rather than expanding doses blindly.
+
+**Audit observation:** Q/K/V attention matrices differ by roughly 3.6–4.9% in relative norm between these published checkpoints, while most FFN/convolution/embedding tensors differ by roughly 0.17%. The first one-way BF16 diagnostic does not identify which export is coarser. Add the reverse rounding comparison and on-grid fractions before interpreting these differences as training updates.
+
+**Next predeclared candidates:** (a) a parent with BF16-rounded values stored in the same floating GGUF layout, to isolate value precision from runtime format; (b) a 25% rollback of only attention V matrices at layers 10 and 12 toward precision-aligned parent values. These sites are selected by the weight-delta audit, not by hidden test outcomes. They are discovery baselines, not a claimed new method or identified behavior circuit.

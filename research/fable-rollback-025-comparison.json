@@ -1,0 +1,576 @@
+{
+  "utc": "2026-11-05T10:40:12.436923+00:00",
+  "git": {
+    "commit": "2f9b28806399989069fcb7ab45146a758779cbfa",
+    "status": "M research/budget.jsonl\n?? research/fable-identity-behavior.json\n?? research/fable-parent-tensor-audit.json\n?? runs/20261105-011-fable-identity-check/\n?? runs/20261105-012-fable-rollback-025-discovery/"
+  },
+  "grader_version": "2",
+  "sources": [
+    {
+      "path": "runs/20261105-005-fable-f16-discovery/responses.jsonl",
+      "sha256": "41a522fea0255632380db2a2faddf7940e23190940d1533840aee3bc6c78d3a9"
+    },
+    {
+      "path": "runs/20261105-012-fable-rollback-025-discovery/responses.jsonl",
+      "sha256": "95468fd7af48451754c11e163e7cf296a19297f52b2337c0a0aa7e3bd26c11f5"
+    }
+  ],
+  "paired_cases": 40,
+  "identical_contents": 34,
+  "rescues": 0,
+  "losses": 0,
+  "rows": [
+    {
+      "case_id": "discovery-v1-json_extract-00",
+      "original_grade": {
+        "success": false,
+        "format_valid": false,
+        "payload_correct": false
+      },
+      "comparison_grade": {
+        "success": false,
+        "format_valid": false,
+        "payload_correct": true
+      },
+      "content_identical": false,
+      "tokens_identical": false
+    },
+    {
+      "case_id": "discovery-v1-json_reordered-00",
+      "original_grade": {
+        "success": false,
+        "format_valid": false,
+        "payload_correct": false
+      },
+      "comparison_grade": {
+        "success": false,
+        "format_valid": false,
+        "payload_correct": false
+      },
+      "content_identical": true,
+      "tokens_identical": true
+    },
+    {
+      "case_id": "discovery-v1-code_only-00",
+      "original_grade": {
+        "success": false,
+        "payload_correct": true
+      },
+      "comparison_grade": {
+        "success": false,
+        "payload_correct": true
+      },
+      "content_identical": true,
+      "tokens_identical": true
+    },
+    {
+      "case_id": "discovery-v1-code_explain-00",
+      "original_grade": {
+        "success": true,
+        "payload_correct": true,
+        "note": "contract proxy only; not a reasoning-quality judgment"
+      },
+      "comparison_grade": {
+        "success": true,
+        "payload_correct": true,
+        "note": "contract proxy only; not a reasoning-quality judgment"
+      },
+      "content_identical": false,
+      "tokens_identical": true
+    },
+    {
+      "case_id": "discovery-v1-exact_copy-00",
+      "original_grade": {
+        "success": false,
+        "payload_correct": true
+      },
+      "comparison_grade": {
+        "success": false,
+        "payload_correct": true
+      },
+      "content_identical": true,
+      "tokens_identical": true
+    },
+    {
+      "case_id": "discovery-v1-requested_repeat-00",
+      "original_grade": {
+        "success": false,
+        "payload_correct": false
+      },
+      "comparison_grade": {
+        "success": false,
+        "payload_correct": false
+      },
+      "content_identical": true,
+      "tokens_identical": true
+    },
+    {
+      "case_id": "discovery-v1-tool_complete-00",
+      "original_grade": {
+        "success": false,
+        "format_valid": false,
+        "payload_correct": false
+      },
+      "comparison_grade": {
+        "success": false,
+        "format_valid": false,
+        "payload_correct": false
+      },
+      "content_identical": true,
+      "tokens_identical": true
+    },
+    {
+      "case_id": "discovery-v1-evidence_complete-00",
+      "original_grade": {
+        "success": false,
+        "payload_correct": false
+      },
+      "comparison_grade": {
+        "success": false,
+        "payload_correct": false
+      },
+      "content_identical": true,
+      "tokens_identical": true
+    },
+    {
+      "case_id": "discovery-v1-evidence_missing-00",
+      "original_grade": {
+        "success": false,
+        "payload_correct": false
+      },
+      "comparison_grade": {
+        "success": false,
+        "payload_correct": false
+      },
+      "content_identical": true,
+      "tokens_identical": true
+    },
+    {
+      "case_id": "discovery-v1-evidence_conflict-00",
+      "original_grade": {
+        "success": false,
+        "payload_correct": false
+      },
+      "comparison_grade": {
+        "success": false,
+        "payload_correct": false
+      },
+      "content_identical": true,
+      "tokens_identical": true
+    },
+    {
+      "case_id": "discovery-v1-json_extract-01",
+      "original_grade": {
+        "success": false,
+        "format_valid": false,
+        "payload_correct": true
+      },
+      "comparison_grade": {
+        "success": false,
+        "format_valid": false,
+        "payload_correct": true
+      },
+      "content_identical": true,
+      "tokens_identical": true
+    },
+    {
+      "case_id": "discovery-v1-json_reordered-01",
+      "original_grade": {
+        "success": false,
+        "format_valid": false,
+        "payload_correct": false
+      },
+      "comparison_grade": {
+        "success": false,
+        "format_valid": false,
+        "payload_correct": false
+      },
+      "content_identical": true,
+      "tokens_identical": true
+    },
+    {
+      "case_id": "discovery-v1-code_only-01",
+      "original_grade": {
+        "success": false,
+        "payload_correct": true
+      },
+      "comparison_grade": {
+        "success": false,
+        "payload_correct": true
+      },
+      "content_identical": true,
+      "tokens_identical": true
+    },
+    {
+      "case_id": "discovery-v1-code_explain-01",
+      "original_grade": {
+        "success": true,
+        "payload_correct": true,
+        "note": "contract proxy only; not a reasoning-quality judgment"
+      },
+      "comparison_grade": {
+        "success": true,
+        "payload_correct": true,
+        "note": "contract proxy only; not a reasoning-quality judgment"
+      },
+      "content_identical": false,
+      "tokens_identical": true
+    },
+    {
+      "case_id": "discovery-v1-exact_copy-01",
+      "original_grade": {
+        "success": false,
+        "payload_correct": true
+      },
+      "comparison_grade": {
+        "success": false,
+        "payload_correct": true
+      },
+      "content_identical": true,
+      "tokens_identical": true
+    },
+    {
+      "case_id": "discovery-v1-requested_repeat-01",
+      "original_grade": {
+        "success": false,
+        "payload_correct": false
+      },
+      "comparison_grade": {
+        "success": false,
+        "payload_correct": false
+      },
+      "content_identical": false,
+      "tokens_identical": true
+    },
+    {
+      "case_id": "discovery-v1-tool_complete-01",
+      "original_grade": {
+        "success": false,
+        "format_valid": false,
+        "payload_correct": false
+      },
+      "comparison_grade": {
+        "success": false,
+        "format_valid": false,
+        "payload_correct": false
+      },
+      "content_identical": true,
+      "tokens_identical": true
+    },
+    {
+      "case_id": "discovery-v1-evidence_complete-01",
+      "original_grade": {
+        "success": false,
+        "payload_correct": false
+      },
+      "comparison_grade": {
+        "success": false,
+        "payload_correct": false
+      },
+      "content_identical": true,
+      "tokens_identical": true
+    },
+    {
+      "case_id": "discovery-v1-evidence_missing-01",
+      "original_grade": {
+        "success": false,
+        "payload_correct": false
+      },
+      "comparison_grade": {
+        "success": false,
+        "payload_correct": false
+      },
+      "content_identical": true,
+      "tokens_identical": true
+    },
+    {
+      "case_id": "discovery-v1-evidence_conflict-01",
+      "original_grade": {
+        "success": false,
+        "payload_correct": false
+      },
+      "comparison_grade": {
+        "success": false,
+        "payload_correct": false
+      },
+      "content_identical": true,
+      "tokens_identical": true
+    },
+    {
+      "case_id": "discovery-v1-json_extract-02",
+      "original_grade": {
+        "success": false,
+        "format_valid": false,
+        "payload_correct": false
+      },
+      "comparison_grade": {
+        "success": false,
+        "format_valid": false,
+        "payload_correct": false
+      },
+      "content_identical": true,
+      "tokens_identical": true
+    },
+    {
+      "case_id": "discovery-v1-json_reordered-02",
+      "original_grade": {
+        "success": false,
+        "format_valid": false,
+        "payload_correct": false
+      },
+      "comparison_grade": {
+        "success": false,
+        "format_valid": false,
+        "payload_correct": false
+      },
+      "content_identical": true,
+      "tokens_identical": true
+    },
+    {
+      "case_id": "discovery-v1-code_only-02",
+      "original_grade": {
+        "success": false,
+        "payload_correct": true
+      },
+      "comparison_grade": {
+        "success": false,
+        "payload_correct": true
+      },
+      "content_identical": true,
+      "tokens_identical": true
+    },
+    {
+      "case_id": "discovery-v1-code_explain-02",
+      "original_grade": {
+        "success": true,
+        "payload_correct": true,
+        "note": "contract proxy only; not a reasoning-quality judgment"
+      },
+      "comparison_grade": {
+        "success": true,
+        "payload_correct": true,
+        "note": "contract proxy only; not a reasoning-quality judgment"
+      },
+      "content_identical": false,
+      "tokens_identical": true
+    },
+    {
+      "case_id": "discovery-v1-exact_copy-02",
+      "original_grade": {
+        "success": false,
+        "payload_correct": true
+      },
+      "comparison_grade": {
+        "success": false,
+        "payload_correct": true
+      },
+      "content_identical": true,
+      "tokens_identical": true
+    },
+    {
+      "case_id": "discovery-v1-requested_repeat-02",
+      "original_grade": {
+        "success": false,
+        "payload_correct": false
+      },
+      "comparison_grade": {
+        "success": false,
+        "payload_correct": false
+      },
+      "content_identical": true,
+      "tokens_identical": true
+    },
+    {
+      "case_id": "discovery-v1-tool_complete-02",
+      "original_grade": {
+        "success": false,
+        "format_valid": false,
+        "payload_correct": false
+      },
+      "comparison_grade": {
+        "success": false,
+        "format_valid": false,
+        "payload_correct": false
+      },
+      "content_identical": true,
+      "tokens_identical": true
+    },
+    {
+      "case_id": "discovery-v1-evidence_complete-02",
+      "original_grade": {
+        "success": false,
+        "payload_correct": false
+      },
+      "comparison_grade": {
+        "success": false,
+        "payload_correct": false
+      },
+      "content_identical": true,
+      "tokens_identical": true
+    },
+    {
+      "case_id": "discovery-v1-evidence_missing-02",
+      "original_grade": {
+        "success": false,
+        "payload_correct": false
+      },
+      "comparison_grade": {
+        "success": false,
+        "payload_correct": false
+      },
+      "content_identical": true,
+      "tokens_identical": true
+    },
+    {
+      "case_id": "discovery-v1-evidence_conflict-02",
+      "original_grade": {
+        "success": false,
+        "payload_correct": false
+      },
+      "comparison_grade": {
+        "success": false,
+        "payload_correct": false
+      },
+      "content_identical": true,
+      "tokens_identical": true
+    },
+    {
+      "case_id": "discovery-v1-json_extract-03",
+      "original_grade": {
+        "success": false,
+        "format_valid": false,
+        "payload_correct": false
+      },
+      "comparison_grade": {
+        "success": false,
+        "format_valid": false,
+        "payload_correct": false
+      },
+      "content_identical": true,
+      "tokens_identical": true
+    },
+    {
+      "case_id": "discovery-v1-json_reordered-03",
+      "original_grade": {
+        "success": false,
+        "format_valid": false,
+        "payload_correct": false
+      },
+      "comparison_grade": {
+        "success": false,
+        "format_valid": false,
+        "payload_correct": false
+      },
+      "content_identical": true,
+      "tokens_identical": true
+    },
+    {
+      "case_id": "discovery-v1-code_only-03",
+      "original_grade": {
+        "success": false,
+        "payload_correct": true
+      },
+      "comparison_grade": {
+        "success": false,
+        "payload_correct": true
+      },
+      "content_identical": true,
+      "tokens_identical": true
+    },
+    {
+      "case_id": "discovery-v1-code_explain-03",
+      "original_grade": {
+        "success": true,
+        "payload_correct": true,
+        "note": "contract proxy only; not a reasoning-quality judgment"
+      },
+      "comparison_grade": {
+        "success": true,
+        "payload_correct": true,
+        "note": "contract proxy only; not a reasoning-quality judgment"
+      },
+      "content_identical": true,
+      "tokens_identical": true
+    },
+    {
+      "case_id": "discovery-v1-exact_copy-03",
+      "original_grade": {
+        "success": false,
+        "payload_correct": true
+      },
+      "comparison_grade": {
+        "success": false,
+        "payload_correct": true
+      },
+      "content_identical": true,
+      "tokens_identical": true
+    },
+    {
+      "case_id": "discovery-v1-requested_repeat-03",
+      "original_grade": {
+        "success": false,
+        "payload_correct": false
+      },
+      "comparison_grade": {
+        "success": false,
+        "payload_correct": false
+      },
+      "content_identical": false,
+      "tokens_identical": true
+    },
+    {
+      "case_id": "discovery-v1-tool_complete-03",
+      "original_grade": {
+        "success": false,
+        "format_valid": false,
+        "payload_correct": false
+      },
+      "comparison_grade": {
+        "success": false,
+        "format_valid": false,
+        "payload_correct": false
+      },
+      "content_identical": true,
+      "tokens_identical": true
+    },
+    {
+      "case_id": "discovery-v1-evidence_complete-03",
+      "original_grade": {
+        "success": false,
+        "payload_correct": false
+      },
+      "comparison_grade": {
+        "success": false,
+        "payload_correct": false
+      },
+      "content_identical": true,
+      "tokens_identical": true
+    },
+    {
+      "case_id": "discovery-v1-evidence_missing-03",
+      "original_grade": {
+        "success": false,
+        "payload_correct": false
+      },
+      "comparison_grade": {
+        "success": false,
+        "payload_correct": false
+      },
+      "content_identical": true,
+      "tokens_identical": true
+    },
+    {
+      "case_id": "discovery-v1-evidence_conflict-03",
+      "original_grade": {
+        "success": false,
+        "payload_correct": false
+      },
+      "comparison_grade": {
+        "success": false,
+        "payload_correct": false
+      },
+      "content_identical": true,
+      "tokens_identical": true
+    }
+  ]
+}
