@@ -1,0 +1,182 @@
+{
+  "utc": "2026-11-05T11:40:06.207007+00:00",
+  "git": {
+    "commit": "2837f33be80497b190555db9aadb1e7e1794844b",
+    "status": ""
+  },
+  "study": "e1",
+  "models": {
+    "qwen3_q8": {
+      "original_successes": 0,
+      "n": 16,
+      "candidates": [
+        {
+          "key": "qwen3_q8_A",
+          "successes": 0,
+          "n": 16,
+          "losses": [
+            "e1-development-add-explain",
+            "e1-development-lower_text-explain",
+            "e1-development-lookup-explain"
+          ],
+          "explanation_losses": [],
+          "changed_values": 1024,
+          "order": 0,
+          "eligible": false
+        },
+        {
+          "key": "qwen3_q8_B",
+          "successes": 0,
+          "n": 16,
+          "losses": [],
+          "explanation_losses": [],
+          "changed_values": 1024,
+          "order": 1,
+          "eligible": false
+        },
+        {
+          "key": "qwen3_q8_R",
+          "successes": 0,
+          "n": 16,
+          "losses": [],
+          "explanation_losses": [],
+          "changed_values": 1024,
+          "order": 2,
+          "eligible": false
+        }
+      ],
+      "eligible_repair_on_development": false,
+      "diagnostic_or_selected": "qwen3_q8_A",
+      "selection_status": "no eligible improvement; A retained only as negative diagnostic"
+    },
+    "lfm3_qad": {
+      "original_successes": 8,
+      "n": 16,
+      "candidates": [
+        {
+          "key": "lfm3_qad_A",
+          "successes": 8,
+          "n": 16,
+          "losses": [],
+          "explanation_losses": [
+            "e1-development-lower_text-explain"
+          ],
+          "changed_values": 2048,
+          "order": 0,
+          "eligible": false
+        },
+        {
+          "key": "lfm3_qad_B",
+          "successes": 8,
+          "n": 16,
+          "losses": [
+            "e1-development-lower_text-code"
+          ],
+          "explanation_losses": [],
+          "changed_values": 2048,
+          "order": 1,
+          "eligible": false
+        },
+        {
+          "key": "lfm3_qad_R",
+          "successes": 8,
+          "n": 16,
+          "losses": [],
+          "explanation_losses": [],
+          "changed_values": 2048,
+          "order": 2,
+          "eligible": false
+        }
+      ],
+      "eligible_repair_on_development": false,
+      "diagnostic_or_selected": "lfm3_qad_A",
+      "selection_status": "no eligible improvement; A retained only as negative diagnostic"
+    },
+    "fable_f16": {
+      "original_successes": 0,
+      "n": 16,
+      "candidates": [
+        {
+          "key": "fable_f16_A",
+          "successes": 0,
+          "n": 16,
+          "losses": [
+            "e1-development-positive_sum-code"
+          ],
+          "explanation_losses": [],
+          "changed_values": 1024,
+          "order": 0,
+          "eligible": false
+        },
+        {
+          "key": "fable_f16_B",
+          "successes": 0,
+          "n": 16,
+          "losses": [
+            "e1-development-positive_sum-code",
+            "e1-development-double-explain"
+          ],
+          "explanation_losses": [
+            "e1-development-double-explain"
+          ],
+          "changed_values": 1024,
+          "order": 1,
+          "eligible": false
+        },
+        {
+          "key": "fable_f16_R",
+          "successes": 0,
+          "n": 16,
+          "losses": [
+            "e1-development-double-explain"
+          ],
+          "explanation_losses": [
+            "e1-development-double-explain"
+          ],
+          "changed_values": 1024,
+          "order": 2,
+          "eligible": false
+        },
+        {
+          "key": "fable_v_only",
+          "successes": 0,
+          "n": 16,
+          "losses": [],
+          "explanation_losses": [],
+          "changed_values": 3126499,
+          "order": 3,
+          "eligible": false
+        },
+        {
+          "key": "fable_all_qkv_parent",
+          "successes": 0,
+          "n": 16,
+          "losses": [],
+          "explanation_losses": [],
+          "changed_values": 12509741,
+          "order": 4,
+          "eligible": false
+        }
+      ],
+      "eligible_repair_on_development": false,
+      "diagnostic_or_selected": "fable_f16_A",
+      "selection_status": "no eligible improvement; A retained only as negative diagnostic"
+    }
+  },
+  "sources": {
+    "runs/p2-e1dev-qwen3_q8-s17/responses.jsonl": "69eeeca3a9c0afbc21d9bb26b468577042e5012ad719fce18cc421d96c2dc83a",
+    "runs/p2-e1dev-qwen3_q8_A-s17/responses.jsonl": "16f66c794ae25feb69c9f685b26f75ba778df8029467848ac4d9fee9ff9b60fc",
+    "runs/p2-e1dev-qwen3_q8_B-s17/responses.jsonl": "47e931cb6a1607d32bead24307b6fc04cb97c71d3be9489be73f9e8fe16536d6",
+    "runs/p2-e1dev-qwen3_q8_R-s17/responses.jsonl": "3f15ad6d85e17cb13728faac9f340312b75103532fe6b97e28800bdba87ac627",
+    "runs/p2-e1dev-lfm3_qad-s17/responses.jsonl": "ff5fc716dad7ca7f49104d1890b7fbdbf6b00be2b9ced6fa0538c712e9164cb5",
+    "runs/p2-e1dev-lfm3_qad_A-s17/responses.jsonl": "d254e88b6cfd065519dd16915347314b4c7b87393df32c02f960eebfa11ef13f",
+    "runs/p2-e1dev-lfm3_qad_B-s17/responses.jsonl": "bf3ab745da7f373eafb8fa99a0d41b7f81477e7ada46022785fed3a13e8094b0",
+    "runs/p2-e1dev-lfm3_qad_R-s17/responses.jsonl": "717016d531112b4ab48ef26e82141a121590fd748ae345f1a83f1f60320e440a",
+    "runs/p2-e1dev-fable_f16-s17/responses.jsonl": "a0878aa62c7e9cadb12e0c3f8cabde6ad695aa0b5c74b2657287d2392713e8af",
+    "runs/p2-e1dev-fable_f16_A-s17/responses.jsonl": "f70cda6c74b071385475a761ea58cc101d7d58b875fe611a59567dffe80b3a38",
+    "runs/p2-e1dev-fable_f16_B-s17/responses.jsonl": "63d268b40066e89b03d2861de16a3254dff04fb7e235ed8565e919aeed7bd2eb",
+    "runs/p2-e1dev-fable_f16_R-s17/responses.jsonl": "c9a7d8b6cfd840d7f2c40bdb47d26c7195ac214e1e7b29f4fbc86b2287647023",
+    "runs/p2-e1dev-fable_v_only-s17/responses.jsonl": "f136801b8716c7bed3d3372c33a152b197cb4640614e095e29cc2ddfef3c8d12",
+    "runs/p2-e1dev-fable_all_qkv_parent-s17/responses.jsonl": "c9d4979b808c7a1c690f1efd984873489a5d38a2ed1a4139db71fd9cb1cb929a"
+  }
+}
