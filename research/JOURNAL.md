@@ -357,3 +357,17 @@ Run status: complete; generated tokens: 1301. Group counts: `{"functional_code":
 ### 2026-11-05T11:52:04.183648+00:00 — p2-e1confirm-lfm3_qad_A-s17
 
 Run status: complete; generated tokens: 1304. Group counts: `{"functional_code": {"attempted": 6, "cutoff": 0, "payload_correct": 5, "responses": 6, "success": 4}, "functional_explain": {"attempted": 6, "cutoff": 0, "payload_correct": 5, "responses": 6, "success": 3}, "literal_copy": {"attempted": 8, "cutoff": 0, "payload_correct": 8, "responses": 8, "success": 0}, "structured": {"attempted": 8, "cutoff": 0, "payload_correct": 8, "responses": 8, "success": 8}}`. Full immutable requests, raw responses, and settings are in `runs/p2-e1confirm-lfm3_qad_A-s17`. These counts are observations; interpretation is deferred to the study report.
+
+### 2026-11-05T11:52:31.807354+00:00 — p2-e1confirm-lfm3_qad_A-s29
+
+Run status: complete; generated tokens: 1364. Group counts: `{"functional_code": {"attempted": 6, "cutoff": 0, "payload_correct": 5, "responses": 6, "success": 4}, "functional_explain": {"attempted": 6, "cutoff": 1, "payload_correct": 4, "responses": 6, "success": 2}, "literal_copy": {"attempted": 8, "cutoff": 0, "payload_correct": 8, "responses": 8, "success": 0}, "structured": {"attempted": 8, "cutoff": 0, "payload_correct": 8, "responses": 8, "success": 8}}`. Full immutable requests, raw responses, and settings are in `runs/p2-e1confirm-lfm3_qad_A-s29`. These counts are observations; interpretation is deferred to the study report.
+
+## 2026-11-05 — Schema transport correction and completed development selection
+
+**Observed bug:** new v1 type=json_schema fixtures put schema at the top level, which this runtime ignores in favor of response_format.json_schema.schema. Outputs such as action=address despite an enum exposed the problem. Earlier non-weight controls used supported type=json_object with schema and are unaffected. All three malformed study-2 controls remain in Git as generic-JSON evidence; original frozen fixture files were preserved. Corrected v2 files and actual reruns are separate.
+
+**Verified correction:** the adversarial diagnostic passed 3/3 cases (string, integer, boolean enums), even when the user requested a forbidden output. Those diagnostic gold values deliberately appear in the schema and are excluded from capability/improvement scores. Grader v5 adds only diagnosis/confidence scoring; existing functional/conversation semantics remain unchanged. Response-format validation now rejects the malformed wrapper before inference. Thirty tests pass.
+
+**Development decisions frozen:** neither study 1 nor study 2 yielded an eligible new weight repair for any target under the declared criteria. A is retained only as a negative diagnostic in confirmation. Selection files were committed before those runs. No confirmation outcome is being used to choose another candidate.
+
+**Deployment preparation:** pinned Qwen BF16 community export and official ordinary LFM3 F16 both passed their source hashes. Qwen conversion explicitly updates file-type metadata to F16 and records scalar conversion errors; it is not claimed identical to the official Q8 deployment. LFM3 floating/quantized comparison uses the same 18-layer GPU offload to leave VRAM headroom. Host high-water and device-wide sampled VRAM are recorded per run. Preparation/publication is serialized at clean boundaries.
