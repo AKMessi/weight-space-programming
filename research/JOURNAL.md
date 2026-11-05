@@ -959,3 +959,7 @@ Implementation preflight: the first v5 edit command used unavailable `python` in
 ### Causal feasibility observed; fixed permanent search opens
 
 On the predeclared first8development pairs, CPU-derived layer6 direction at0.5 and1.0 rescues all4baseline plain-format failures, with16/16payload and8/8fenced correctness each. Dose2.0 damages content/format (2/16payload). These are reused development cases, not confirmation. The12fixed analytic candidates now proceed. Per-step native evidence and generated/scored charges are retained. The test invocation initially tried unavailable pytest; the actual existing unittest suite passes40tests. Two analytic ridge invariants are now added before exporting candidates. No gradients/training.
+
+### 2026-11-05T18:44:27.534436+00:00 — p3-repair-candidate-screen-component_0.005-s17
+
+Status `complete`, 524 generated tokens. Immutable raw inputs/responses/config/runtime and resource samples are in `runs/p3-repair-candidate-screen-component_0.005-s17`. Interpretation is deferred to the study report; this run alone does not establish a repair.
