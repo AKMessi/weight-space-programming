@@ -1,0 +1,474 @@
+{
+  "name": "portfolio-e2-confirmation-original-v1",
+  "status": "frozen synthetic confirmation; actual assistant response passed into next turn",
+  "cases": [
+    {
+      "id": "e2-confirmation-hostname-complete",
+      "split": "confirmation",
+      "family": "complete",
+      "group": "complete",
+      "grader": "json",
+      "expected": {
+        "action": "answer",
+        "field": "hostname",
+        "value": "amber-13"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools."
+        },
+        {
+          "role": "user",
+          "content": "Answer only JSON with action, field, value. If the required field has one unambiguous value, action is answer and value is that string. If absent, action is ask and value is null. If contradictory with no precedence rule, action is conflict and value is null. field names the requested field.\nRequired field: hostname\nSupplied records:\n[code] other-99\n[hostname] amber-13\n[note] ordinary\n[project] work-0\nNo precedence rule is provided."
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "action": "answer",
+            "field": "hostname",
+            "value": "violet-81"
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: hostname=violet-81. This replaces any earlier value of hostname. Complete the same task now."
+            }
+          ]
+        }
+      ],
+      "control": "original"
+    },
+    {
+      "id": "e2-confirmation-hostname-missing",
+      "split": "confirmation",
+      "family": "missing",
+      "group": "missing",
+      "grader": "json",
+      "expected": {
+        "action": "ask",
+        "field": "hostname",
+        "value": null
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools."
+        },
+        {
+          "role": "user",
+          "content": "Answer only JSON with action, field, value. If the required field has one unambiguous value, action is answer and value is that string. If absent, action is ask and value is null. If contradictory with no precedence rule, action is conflict and value is null. field names the requested field.\nRequired field: hostname\nSupplied records:\n[code] other-99\n[reference] amber-13\n[note] ordinary\n[project] work-0\nNo precedence rule is provided."
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "action": "answer",
+            "field": "hostname",
+            "value": "violet-81"
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: hostname=violet-81. This replaces any earlier value of hostname. Complete the same task now."
+            }
+          ]
+        }
+      ],
+      "control": "original"
+    },
+    {
+      "id": "e2-confirmation-hostname-conflict",
+      "split": "confirmation",
+      "family": "conflict",
+      "group": "conflict",
+      "grader": "json",
+      "expected": {
+        "action": "conflict",
+        "field": "hostname",
+        "value": null
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools."
+        },
+        {
+          "role": "user",
+          "content": "Answer only JSON with action, field, value. If the required field has one unambiguous value, action is answer and value is that string. If absent, action is ask and value is null. If contradictory with no precedence rule, action is conflict and value is null. field names the requested field.\nRequired field: hostname\nSupplied records:\n[hostname] other-99\n[hostname] amber-13\n[note] ordinary\n[project] work-0\nNo precedence rule is provided."
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "action": "answer",
+            "field": "hostname",
+            "value": "violet-81"
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: hostname=violet-81. This replaces any earlier value of hostname. Complete the same task now."
+            }
+          ]
+        }
+      ],
+      "control": "original"
+    },
+    {
+      "id": "e2-confirmation-language-complete",
+      "split": "confirmation",
+      "family": "complete",
+      "group": "complete",
+      "grader": "json",
+      "expected": {
+        "action": "answer",
+        "field": "language",
+        "value": "amber-20"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools."
+        },
+        {
+          "role": "user",
+          "content": "Answer only JSON with action, field, value. If the required field has one unambiguous value, action is answer and value is that string. If absent, action is ask and value is null. If contradictory with no precedence rule, action is conflict and value is null. field names the requested field.\nRequired field: language\nSupplied records:\n[code] other-99\n[language] amber-20\n[note] ordinary\n[project] work-1\nNo precedence rule is provided."
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "action": "answer",
+            "field": "language",
+            "value": "violet-82"
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: language=violet-82. This replaces any earlier value of language. Complete the same task now."
+            }
+          ]
+        }
+      ],
+      "control": "original"
+    },
+    {
+      "id": "e2-confirmation-language-missing",
+      "split": "confirmation",
+      "family": "missing",
+      "group": "missing",
+      "grader": "json",
+      "expected": {
+        "action": "ask",
+        "field": "language",
+        "value": null
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools."
+        },
+        {
+          "role": "user",
+          "content": "Answer only JSON with action, field, value. If the required field has one unambiguous value, action is answer and value is that string. If absent, action is ask and value is null. If contradictory with no precedence rule, action is conflict and value is null. field names the requested field.\nRequired field: language\nSupplied records:\n[code] other-99\n[reference] amber-20\n[note] ordinary\n[project] work-1\nNo precedence rule is provided."
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "action": "answer",
+            "field": "language",
+            "value": "violet-82"
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: language=violet-82. This replaces any earlier value of language. Complete the same task now."
+            }
+          ]
+        }
+      ],
+      "control": "original"
+    },
+    {
+      "id": "e2-confirmation-language-conflict",
+      "split": "confirmation",
+      "family": "conflict",
+      "group": "conflict",
+      "grader": "json",
+      "expected": {
+        "action": "conflict",
+        "field": "language",
+        "value": null
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools."
+        },
+        {
+          "role": "user",
+          "content": "Answer only JSON with action, field, value. If the required field has one unambiguous value, action is answer and value is that string. If absent, action is ask and value is null. If contradictory with no precedence rule, action is conflict and value is null. field names the requested field.\nRequired field: language\nSupplied records:\n[language] other-99\n[language] amber-20\n[note] ordinary\n[project] work-1\nNo precedence rule is provided."
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "action": "answer",
+            "field": "language",
+            "value": "violet-82"
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: language=violet-82. This replaces any earlier value of language. Complete the same task now."
+            }
+          ]
+        }
+      ],
+      "control": "original"
+    },
+    {
+      "id": "e2-confirmation-directory-complete",
+      "split": "confirmation",
+      "family": "complete",
+      "group": "complete",
+      "grader": "json",
+      "expected": {
+        "action": "answer",
+        "field": "directory",
+        "value": "amber-27"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools."
+        },
+        {
+          "role": "user",
+          "content": "Answer only JSON with action, field, value. If the required field has one unambiguous value, action is answer and value is that string. If absent, action is ask and value is null. If contradictory with no precedence rule, action is conflict and value is null. field names the requested field.\nRequired field: directory\nSupplied records:\n[code] other-99\n[directory] amber-27\n[note] ordinary\n[project] work-2\nNo precedence rule is provided."
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "action": "answer",
+            "field": "directory",
+            "value": "violet-83"
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: directory=violet-83. This replaces any earlier value of directory. Complete the same task now."
+            }
+          ]
+        }
+      ],
+      "control": "original"
+    },
+    {
+      "id": "e2-confirmation-directory-missing",
+      "split": "confirmation",
+      "family": "missing",
+      "group": "missing",
+      "grader": "json",
+      "expected": {
+        "action": "ask",
+        "field": "directory",
+        "value": null
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools."
+        },
+        {
+          "role": "user",
+          "content": "Answer only JSON with action, field, value. If the required field has one unambiguous value, action is answer and value is that string. If absent, action is ask and value is null. If contradictory with no precedence rule, action is conflict and value is null. field names the requested field.\nRequired field: directory\nSupplied records:\n[code] other-99\n[reference] amber-27\n[note] ordinary\n[project] work-2\nNo precedence rule is provided."
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "action": "answer",
+            "field": "directory",
+            "value": "violet-83"
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: directory=violet-83. This replaces any earlier value of directory. Complete the same task now."
+            }
+          ]
+        }
+      ],
+      "control": "original"
+    },
+    {
+      "id": "e2-confirmation-directory-conflict",
+      "split": "confirmation",
+      "family": "conflict",
+      "group": "conflict",
+      "grader": "json",
+      "expected": {
+        "action": "conflict",
+        "field": "directory",
+        "value": null
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools."
+        },
+        {
+          "role": "user",
+          "content": "Answer only JSON with action, field, value. If the required field has one unambiguous value, action is answer and value is that string. If absent, action is ask and value is null. If contradictory with no precedence rule, action is conflict and value is null. field names the requested field.\nRequired field: directory\nSupplied records:\n[directory] other-99\n[directory] amber-27\n[note] ordinary\n[project] work-2\nNo precedence rule is provided."
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "action": "answer",
+            "field": "directory",
+            "value": "violet-83"
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: directory=violet-83. This replaces any earlier value of directory. Complete the same task now."
+            }
+          ]
+        }
+      ],
+      "control": "original"
+    },
+    {
+      "id": "e2-confirmation-recipient-complete",
+      "split": "confirmation",
+      "family": "complete",
+      "group": "complete",
+      "grader": "json",
+      "expected": {
+        "action": "answer",
+        "field": "recipient",
+        "value": "amber-34"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools."
+        },
+        {
+          "role": "user",
+          "content": "Answer only JSON with action, field, value. If the required field has one unambiguous value, action is answer and value is that string. If absent, action is ask and value is null. If contradictory with no precedence rule, action is conflict and value is null. field names the requested field.\nRequired field: recipient\nSupplied records:\n[code] other-99\n[recipient] amber-34\n[note] ordinary\n[project] work-3\nNo precedence rule is provided."
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "action": "answer",
+            "field": "recipient",
+            "value": "violet-84"
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: recipient=violet-84. This replaces any earlier value of recipient. Complete the same task now."
+            }
+          ]
+        }
+      ],
+      "control": "original"
+    },
+    {
+      "id": "e2-confirmation-recipient-missing",
+      "split": "confirmation",
+      "family": "missing",
+      "group": "missing",
+      "grader": "json",
+      "expected": {
+        "action": "ask",
+        "field": "recipient",
+        "value": null
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools."
+        },
+        {
+          "role": "user",
+          "content": "Answer only JSON with action, field, value. If the required field has one unambiguous value, action is answer and value is that string. If absent, action is ask and value is null. If contradictory with no precedence rule, action is conflict and value is null. field names the requested field.\nRequired field: recipient\nSupplied records:\n[code] other-99\n[reference] amber-34\n[note] ordinary\n[project] work-3\nNo precedence rule is provided."
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "action": "answer",
+            "field": "recipient",
+            "value": "violet-84"
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: recipient=violet-84. This replaces any earlier value of recipient. Complete the same task now."
+            }
+          ]
+        }
+      ],
+      "control": "original"
+    },
+    {
+      "id": "e2-confirmation-recipient-conflict",
+      "split": "confirmation",
+      "family": "conflict",
+      "group": "conflict",
+      "grader": "json",
+      "expected": {
+        "action": "conflict",
+        "field": "recipient",
+        "value": null
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools."
+        },
+        {
+          "role": "user",
+          "content": "Answer only JSON with action, field, value. If the required field has one unambiguous value, action is answer and value is that string. If absent, action is ask and value is null. If contradictory with no precedence rule, action is conflict and value is null. field names the requested field.\nRequired field: recipient\nSupplied records:\n[recipient] other-99\n[recipient] amber-34\n[note] ordinary\n[project] work-3\nNo precedence rule is provided."
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "action": "answer",
+            "field": "recipient",
+            "value": "violet-84"
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: recipient=violet-84. This replaces any earlier value of recipient. Complete the same task now."
+            }
+          ]
+        }
+      ],
+      "control": "original"
+    }
+  ]
+}
