@@ -98,7 +98,7 @@ def causal(key):
  parity_checks=[{'id':r['case']['id'],'exact':r['case']['expected_server_content']==r['raw_response']['completion']} for r in parity]
  if not all(r['exact'] for r in parity_checks):
   write_json(root/'causal-gate.json',{'status':'closed','reason':'Native/server greedy parity failed','parity':parity_checks,'eligible_for_permanent':False});publish([root/'causal-gate.json'],'Preserve failed '+key+' native semantic parity');return
- layer=direction['selected']['layer'];v=np.load('artifacts/p3/clarify/'+key+'-direction.npz')['v'];rng=np.random.default_rng(811);random=rng.standard_normal(len(v));random*=float(np.linalg.norm(v)/np.linalg.norm(random));requests=json.loads((root/'trace-requests.json').read_text());panel=[r for r in requests if r['record_id'] in selection['record_ids'][:3] and r['role'] in ['key','update']];cases=[]
+ layer=direction['selected']['layer'];v=np.load('artifacts/p3/clarify/'+key+'-direction.npz')['v'];rng=np.random.default_rng(811);random=rng.standard_normal(len(v));random*=float(np.linalg.norm(v)/np.linalg.norm(random));requests=json.loads((root/'trace-requests.json').read_text());panel=[r for r in requests if r['record_id'] in selection['record_ids'][:json.loads((ROOT/'budget-plan.json').read_text())['selected']['panel_records']] and r['role'] in ['key','update']];cases=[]
  for name,scale,vec in [('zero',0.,v),('half',.5,v),('one',1.,v),('two',2.,v),('random',1.,random)]:
   for q in panel:cases.append({**q,'id':q['id']+'-'+name,'max_tokens':48,'arm':name,'intervention':{'tensor':f'component_down-{layer}','scale':scale,'vector':vec.tolist()}})
  results=run(C['models'][key],cases,key+'-semantic-causal','clarify',{**SET,'capture':False});grades=[]
