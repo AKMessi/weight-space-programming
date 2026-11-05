@@ -29,8 +29,8 @@ def freeze():
             cases.append({'id':f'gate-{i}-{j}','prompt':prefix+p+suffix,'diagnostic_only':True})
     write_json(path,{'status':'visible compatibility calibration, never quality confirmation','cases':cases})
 
-def run(backend):
-    out=ROOT/backend
+def run(backend,attempt=None):
+    out=ROOT/(attempt or backend)
     if out.exists():raise FileExistsError(out)
     out.mkdir(parents=True)
     suite=json.loads(Path('datasets/p3/native-gate-v1.json').read_text());model=CONFIG['models']['qwen_float']
@@ -58,9 +58,9 @@ def run(backend):
                             if not ready:raise RuntimeError('Native startup failed; inspect log')
                             write_json(out/(mode+'-ready.json'),json.loads(ready))
                             for case in cases:
-                                req={**case,'trace_dir':str((Path('local/p3-traces')/backend/mode/case['id']).resolve())}
+                                req={**case,'trace_dir':str((Path('local/p3-traces')/out.name/mode/case['id']).resolve())}
                                 if mode=='causal':req['intervention']={'tensor':'result_norm','scale':1.,'vector':(.01*np.sin(np.arange(head.shape[1]))).astype(np.float32).tolist()}
-                                rid=f'p3/native-v1/{backend}/{mode}/{case["id"]}'
+                                rid=f'p3/native-v1/{out.name}/{mode}/{case["id"]}'
                                 reserve(rid,512,1000000,'research/scored-budget.jsonl')
                                 append_jsonl(out/'events.jsonl',{'event':'request','utc':utc_now(),'request_id':rid,'request':req})
                                 proc.stdin.write(json.dumps(req)+'\n');proc.stdin.flush()
@@ -118,5 +118,5 @@ def run(backend):
     if error:raise error
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('action',choices=['freeze','cpu','vulkan']);a=p.parse_args()
-    freeze() if a.action=='freeze' else run(a.action)
+    p=argparse.ArgumentParser();p.add_argument('action',choices=['freeze','cpu','vulkan']);p.add_argument('--attempt');a=p.parse_args()
+    freeze() if a.action=='freeze' else run(a.action,a.attempt)
