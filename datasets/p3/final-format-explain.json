@@ -1,0 +1,739 @@
+{
+  "name": "p3-final-format-explain",
+  "status": "fresh final deployment function families; not used for format selection",
+  "cases": [
+    {
+      "id": "p3-final-format-reciprocal-explain",
+      "family": "reciprocal",
+      "group": "functional_explain",
+      "split": "fresh_deployment_confirmation",
+      "grader": "functional_code",
+      "response_mode": "explain",
+      "expected": {
+        "parameters": [
+          "x"
+        ],
+        "tests": [
+          {
+            "args": [
+              2
+            ],
+            "result": 0.5
+          },
+          {
+            "args": [
+              -2
+            ],
+            "result": -0.5
+          },
+          {
+            "args": [
+              4
+            ],
+            "result": 0.25
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response format. Use only built-in Python operations; do not import libraries or call tools."
+        },
+        {
+          "role": "user",
+          "content": "Return a complete Python function in a Python code fence and explain it in at least eight words.\nRequired signature: def reciprocal(x):\nSpecification: Return one divided by the nonzero number x."
+        }
+      ]
+    },
+    {
+      "id": "p3-final-format-ceil_thirds-explain",
+      "family": "ceil_thirds",
+      "group": "functional_explain",
+      "split": "fresh_deployment_confirmation",
+      "grader": "functional_code",
+      "response_mode": "explain",
+      "expected": {
+        "parameters": [
+          "x"
+        ],
+        "tests": [
+          {
+            "args": [
+              -4
+            ],
+            "result": -1
+          },
+          {
+            "args": [
+              0
+            ],
+            "result": 0
+          },
+          {
+            "args": [
+              7
+            ],
+            "result": 3
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response format. Use only built-in Python operations; do not import libraries or call tools."
+        },
+        {
+          "role": "user",
+          "content": "Return a complete Python function in a Python code fence and explain it in at least eight words.\nRequired signature: def ceil_thirds(x):\nSpecification: Return the smallest integer greater than or equal to x divided by three."
+        }
+      ]
+    },
+    {
+      "id": "p3-final-format-product_values-explain",
+      "family": "product_values",
+      "group": "functional_explain",
+      "split": "fresh_deployment_confirmation",
+      "grader": "functional_code",
+      "response_mode": "explain",
+      "expected": {
+        "parameters": [
+          "xs"
+        ],
+        "tests": [
+          {
+            "args": [
+              []
+            ],
+            "result": 1
+          },
+          {
+            "args": [
+              [
+                2,
+                -3,
+                4
+              ]
+            ],
+            "result": -24
+          },
+          {
+            "args": [
+              [
+                0,
+                3
+              ]
+            ],
+            "result": 0
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response format. Use only built-in Python operations; do not import libraries or call tools."
+        },
+        {
+          "role": "user",
+          "content": "Return a complete Python function in a Python code fence and explain it in at least eight words.\nRequired signature: def product_values(xs):\nSpecification: Return the product of all numbers in xs; the empty product is one."
+        }
+      ]
+    },
+    {
+      "id": "p3-final-format-running_totals-explain",
+      "family": "running_totals",
+      "group": "functional_explain",
+      "split": "fresh_deployment_confirmation",
+      "grader": "functional_code",
+      "response_mode": "explain",
+      "expected": {
+        "parameters": [
+          "xs"
+        ],
+        "tests": [
+          {
+            "args": [
+              []
+            ],
+            "result": []
+          },
+          {
+            "args": [
+              [
+                1,
+                2,
+                -1
+              ]
+            ],
+            "result": [
+              1,
+              3,
+              2
+            ]
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response format. Use only built-in Python operations; do not import libraries or call tools."
+        },
+        {
+          "role": "user",
+          "content": "Return a complete Python function in a Python code fence and explain it in at least eight words.\nRequired signature: def running_totals(xs):\nSpecification: Return a list of cumulative sums of the input numbers, preserving input order."
+        }
+      ]
+    },
+    {
+      "id": "p3-final-format-count_positive-explain",
+      "family": "count_positive",
+      "group": "functional_explain",
+      "split": "fresh_deployment_confirmation",
+      "grader": "functional_code",
+      "response_mode": "explain",
+      "expected": {
+        "parameters": [
+          "xs"
+        ],
+        "tests": [
+          {
+            "args": [
+              []
+            ],
+            "result": 0
+          },
+          {
+            "args": [
+              [
+                -1,
+                0,
+                3,
+                2
+              ]
+            ],
+            "result": 2
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response format. Use only built-in Python operations; do not import libraries or call tools."
+        },
+        {
+          "role": "user",
+          "content": "Return a complete Python function in a Python code fence and explain it in at least eight words.\nRequired signature: def count_positive(xs):\nSpecification: Return the number of input numbers strictly greater than zero."
+        }
+      ]
+    },
+    {
+      "id": "p3-final-format-sum_of_squares-explain",
+      "family": "sum_of_squares",
+      "group": "functional_explain",
+      "split": "fresh_deployment_confirmation",
+      "grader": "functional_code",
+      "response_mode": "explain",
+      "expected": {
+        "parameters": [
+          "xs"
+        ],
+        "tests": [
+          {
+            "args": [
+              []
+            ],
+            "result": 0
+          },
+          {
+            "args": [
+              [
+                -2,
+                3
+              ]
+            ],
+            "result": 13
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response format. Use only built-in Python operations; do not import libraries or call tools."
+        },
+        {
+          "role": "user",
+          "content": "Return a complete Python function in a Python code fence and explain it in at least eight words.\nRequired signature: def sum_of_squares(xs):\nSpecification: Return the sum of squares of the input numbers."
+        }
+      ]
+    },
+    {
+      "id": "p3-final-format-second_largest-explain",
+      "family": "second_largest",
+      "group": "functional_explain",
+      "split": "fresh_deployment_confirmation",
+      "grader": "functional_code",
+      "response_mode": "explain",
+      "expected": {
+        "parameters": [
+          "xs"
+        ],
+        "tests": [
+          {
+            "args": [
+              [
+                1,
+                3,
+                2
+              ]
+            ],
+            "result": 2
+          },
+          {
+            "args": [
+              [
+                5,
+                5
+              ]
+            ],
+            "result": 5
+          },
+          {
+            "args": [
+              [
+                -1,
+                -3
+              ]
+            ],
+            "result": -3
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response format. Use only built-in Python operations; do not import libraries or call tools."
+        },
+        {
+          "role": "user",
+          "content": "Return a complete Python function in a Python code fence and explain it in at least eight words.\nRequired signature: def second_largest(xs):\nSpecification: For a list of at least two numbers, return the second largest item, counting duplicates separately."
+        }
+      ]
+    },
+    {
+      "id": "p3-final-format-drop_first-explain",
+      "family": "drop_first",
+      "group": "functional_explain",
+      "split": "fresh_deployment_confirmation",
+      "grader": "functional_code",
+      "response_mode": "explain",
+      "expected": {
+        "parameters": [
+          "xs"
+        ],
+        "tests": [
+          {
+            "args": [
+              []
+            ],
+            "result": []
+          },
+          {
+            "args": [
+              [
+                2,
+                5,
+                1
+              ]
+            ],
+            "result": [
+              5,
+              1
+            ]
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response format. Use only built-in Python operations; do not import libraries or call tools."
+        },
+        {
+          "role": "user",
+          "content": "Return a complete Python function in a Python code fence and explain it in at least eight words.\nRequired signature: def drop_first(xs):\nSpecification: Return a new list containing every input item except the first; return empty list for empty input."
+        }
+      ]
+    },
+    {
+      "id": "p3-final-format-inside_letters-explain",
+      "family": "inside_letters",
+      "group": "functional_explain",
+      "split": "fresh_deployment_confirmation",
+      "grader": "functional_code",
+      "response_mode": "explain",
+      "expected": {
+        "parameters": [
+          "s"
+        ],
+        "tests": [
+          {
+            "args": [
+              "abcd"
+            ],
+            "result": "bc"
+          },
+          {
+            "args": [
+              "ab"
+            ],
+            "result": ""
+          },
+          {
+            "args": [
+              "a"
+            ],
+            "result": ""
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response format. Use only built-in Python operations; do not import libraries or call tools."
+        },
+        {
+          "role": "user",
+          "content": "Return a complete Python function in a Python code fence and explain it in at least eight words.\nRequired signature: def inside_letters(s):\nSpecification: Return the string with its first and last characters removed. For length less than two return empty string."
+        }
+      ]
+    },
+    {
+      "id": "p3-final-format-rotate_left-explain",
+      "family": "rotate_left",
+      "group": "functional_explain",
+      "split": "fresh_deployment_confirmation",
+      "grader": "functional_code",
+      "response_mode": "explain",
+      "expected": {
+        "parameters": [
+          "xs"
+        ],
+        "tests": [
+          {
+            "args": [
+              []
+            ],
+            "result": []
+          },
+          {
+            "args": [
+              [
+                1,
+                2,
+                3
+              ]
+            ],
+            "result": [
+              2,
+              3,
+              1
+            ]
+          },
+          {
+            "args": [
+              [
+                9
+              ]
+            ],
+            "result": [
+              9
+            ]
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response format. Use only built-in Python operations; do not import libraries or call tools."
+        },
+        {
+          "role": "user",
+          "content": "Return a complete Python function in a Python code fence and explain it in at least eight words.\nRequired signature: def rotate_left(xs):\nSpecification: Return a new list with the first item moved to the end; empty input remains empty."
+        }
+      ]
+    },
+    {
+      "id": "p3-final-format-divisible_three-explain",
+      "family": "divisible_three",
+      "group": "functional_explain",
+      "split": "fresh_deployment_confirmation",
+      "grader": "functional_code",
+      "response_mode": "explain",
+      "expected": {
+        "parameters": [
+          "x"
+        ],
+        "tests": [
+          {
+            "args": [
+              -3
+            ],
+            "result": true
+          },
+          {
+            "args": [
+              4
+            ],
+            "result": false
+          },
+          {
+            "args": [
+              0
+            ],
+            "result": true
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response format. Use only built-in Python operations; do not import libraries or call tools."
+        },
+        {
+          "role": "user",
+          "content": "Return a complete Python function in a Python code fence and explain it in at least eight words.\nRequired signature: def divisible_three(x):\nSpecification: Return a boolean true exactly when integer x is divisible by three."
+        }
+      ]
+    },
+    {
+      "id": "p3-final-format-clamp_between-explain",
+      "family": "clamp_between",
+      "group": "functional_explain",
+      "split": "fresh_deployment_confirmation",
+      "grader": "functional_code",
+      "response_mode": "explain",
+      "expected": {
+        "parameters": [
+          "x",
+          "low",
+          "high"
+        ],
+        "tests": [
+          {
+            "args": [
+              5,
+              1,
+              4
+            ],
+            "result": 4
+          },
+          {
+            "args": [
+              -1,
+              0,
+              9
+            ],
+            "result": 0
+          },
+          {
+            "args": [
+              3,
+              0,
+              9
+            ],
+            "result": 3
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response format. Use only built-in Python operations; do not import libraries or call tools."
+        },
+        {
+          "role": "user",
+          "content": "Return a complete Python function in a Python code fence and explain it in at least eight words.\nRequired signature: def clamp_between(x, low, high):\nSpecification: Given low <= high, clamp x into the inclusive interval from low to high."
+        }
+      ]
+    },
+    {
+      "id": "p3-final-format-prefix_chars-explain",
+      "family": "prefix_chars",
+      "group": "functional_explain",
+      "split": "fresh_deployment_confirmation",
+      "grader": "functional_code",
+      "response_mode": "explain",
+      "expected": {
+        "parameters": [
+          "s",
+          "n"
+        ],
+        "tests": [
+          {
+            "args": [
+              "abc",
+              2
+            ],
+            "result": "ab"
+          },
+          {
+            "args": [
+              "abc",
+              0
+            ],
+            "result": ""
+          },
+          {
+            "args": [
+              "",
+              4
+            ],
+            "result": ""
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response format. Use only built-in Python operations; do not import libraries or call tools."
+        },
+        {
+          "role": "user",
+          "content": "Return a complete Python function in a Python code fence and explain it in at least eight words.\nRequired signature: def prefix_chars(s, n):\nSpecification: Return the first n characters of s, where n is nonnegative."
+        }
+      ]
+    },
+    {
+      "id": "p3-final-format-name_or_default-explain",
+      "family": "name_or_default",
+      "group": "functional_explain",
+      "split": "fresh_deployment_confirmation",
+      "grader": "functional_code",
+      "response_mode": "explain",
+      "expected": {
+        "parameters": [
+          "d",
+          "fallback"
+        ],
+        "tests": [
+          {
+            "args": [
+              {},
+              "X"
+            ],
+            "result": "X"
+          },
+          {
+            "args": [
+              {
+                "name": "A"
+              },
+              "X"
+            ],
+            "result": "A"
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response format. Use only built-in Python operations; do not import libraries or call tools."
+        },
+        {
+          "role": "user",
+          "content": "Return a complete Python function in a Python code fence and explain it in at least eight words.\nRequired signature: def name_or_default(d, fallback):\nSpecification: Return the dictionary value for string key name, or fallback if that key is absent."
+        }
+      ]
+    },
+    {
+      "id": "p3-final-format-reverse_words-explain",
+      "family": "reverse_words",
+      "group": "functional_explain",
+      "split": "fresh_deployment_confirmation",
+      "grader": "functional_code",
+      "response_mode": "explain",
+      "expected": {
+        "parameters": [
+          "s"
+        ],
+        "tests": [
+          {
+            "args": [
+              "one two three"
+            ],
+            "result": "three two one"
+          },
+          {
+            "args": [
+              ""
+            ],
+            "result": ""
+          },
+          {
+            "args": [
+              "  a  b "
+            ],
+            "result": "b a"
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response format. Use only built-in Python operations; do not import libraries or call tools."
+        },
+        {
+          "role": "user",
+          "content": "Return a complete Python function in a Python code fence and explain it in at least eight words.\nRequired signature: def reverse_words(s):\nSpecification: Split the string on whitespace and return the words in reversed order joined with single spaces."
+        }
+      ]
+    },
+    {
+      "id": "p3-final-format-lengths_of_words-explain",
+      "family": "lengths_of_words",
+      "group": "functional_explain",
+      "split": "fresh_deployment_confirmation",
+      "grader": "functional_code",
+      "response_mode": "explain",
+      "expected": {
+        "parameters": [
+          "s"
+        ],
+        "tests": [
+          {
+            "args": [
+              "one a"
+            ],
+            "result": [
+              3,
+              1
+            ]
+          },
+          {
+            "args": [
+              ""
+            ],
+            "result": []
+          },
+          {
+            "args": [
+              "ab cd"
+            ],
+            "result": [
+              2,
+              2
+            ]
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response format. Use only built-in Python operations; do not import libraries or call tools."
+        },
+        {
+          "role": "user",
+          "content": "Return a complete Python function in a Python code fence and explain it in at least eight words.\nRequired signature: def lengths_of_words(s):\nSpecification: Split the string on whitespace and return the length of each word as a list, in order."
+        }
+      ]
+    }
+  ]
+}
