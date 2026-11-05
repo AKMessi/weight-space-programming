@@ -1,5 +1,5 @@
 """Build all five reports from recorded evidence; missing required runs are errors."""
-import json,statistics,random
+import argparse,json,statistics,random
 from pathlib import Path
 from weightlab.evidence import file_sha256,git_state,utc_now,write_json
 from weightlab.grading import first_json,typed_equal,grade_turns,grade,GRADER_VERSION
@@ -268,7 +268,9 @@ def e5(out):
 
 
 def main():
-    output=Path('research/portfolio-v1')
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--output',default='research/portfolio-v2')
+    output=Path(parser.parse_args().output)
     # Build only after every required study has evidence; a partial output is not completion.
     if output.exists():raise FileExistsError('version reports rather than overwrite')
     output.mkdir()
@@ -287,10 +289,11 @@ def main():
             new=grade_turns(record['case'],record['steps']) if record.get('steps') else grade(record['case'],record['content'])
             if old!=new:changes.append({'case_id':record['case']['id'],'recorded':old,'derived':new})
             record['grading']=new
-        sidecar={'source':str(raw),'source_sha256':file_sha256(raw),'recorded_grader_version':manifest['grader_version'],
+        recorded_version=manifest.get('grader_version','unversioned; identify implementation by source commit')
+        sidecar={'source':str(raw),'source_sha256':file_sha256(raw),'recorded_grader_version':recorded_version,
                  'analysis_grader_version':GRADER_VERSION,'changes':changes,'derived_summary':summarize(records)}
         write_json(regrades/(raw.parent.name+'.json'),sidecar)
-        grading_index.append({'run':str(raw.parent),'changes':len(changes),'recorded_grader_version':manifest['grader_version']})
+        grading_index.append({'run':str(raw.parent),'changes':len(changes),'recorded_grader_version':recorded_version})
     write_json(regrades/'index.json',grading_index)
     for report in output.glob('experiment-*.md'):
         with report.open('a') as f:
