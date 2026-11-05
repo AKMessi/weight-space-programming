@@ -1,0 +1,5 @@
+# Repair diagnostic controls and decoding check
+
+Frozen while development screening is in progress and before confirmation. Equal-size random control uses exactly the selected patch's64column sites, seed811Gaussian entries, normalized to the same requested global FFN-down L2 dose. Cast toF16, report actual norm/changed values, verify every untouched column/tensor and originals. Run fixed24development screen only; it cannot replace the selected patch. Historical attenuation arm fable_float_A is a separately labeled diagnostic (not matched parameter geometry), on that same screen.
+
+Decoder stability panel: fixed first24confirmation cases, original and frozen selected patch, temp0.1/topk50/topp1/minp0/penalty1, seeds17and29, cap96. This is a subset of main confirmation, not independent additional cases; report it separately and do not reselect on it. Four runs max9216tokens; total repair stage still below200000 with actual ledger checks. If no candidate is selected, no decoder stability run. Strong prompt and schema controls remain fixed by the original protocol.
