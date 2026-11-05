@@ -29,6 +29,13 @@ class GradingTests(unittest.TestCase):
         self.assertFalse(grade(c, 'AB AB')['success'])
         self.assertFalse(grade(c, 'AB  AB AB')['success'])
 
+    def test_inline_function_has_payload_but_fails_next_line_contract(self):
+        c = {"grader": "code_line", "expected": "    return value + 4"}
+        g = grade(c, 'def add_4(value): return value + 4')
+        self.assertFalse(g['success'])
+        self.assertTrue(g['payload_correct'])
+        self.assertFalse(grade(c, 'def add_4(value): return value + 5')['payload_correct'])
+
     def test_evidence_payload_not_generic_abstention(self):
         c = {"grader": "evidence_action", "expected": "ASK: address"}
         self.assertTrue(grade(c, 'ASK: address')['success'])

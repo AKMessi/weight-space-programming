@@ -1,5 +1,6 @@
 """Exact contract graders with separately labeled semantic/proxy scores."""
 
+import ast
 import json
 import re
 
@@ -18,6 +19,24 @@ def _constant(value):
 
 
 DECODER = json.JSONDecoder(object_pairs_hook=_pairs, parse_constant=_constant)
+GRADER_VERSION = "2"
+
+
+def code_payload_present(text, expected):
+    """Static return-expression match; never execute generated code."""
+    try:
+        wanted = ast.parse(expected.strip()).body[0]
+    except SyntaxError:
+        return False
+    snippets = re.findall(r"```(?:python)?\s*\n(.*?)```", text, re.DOTALL) or [text]
+    for snippet in snippets:
+        try:
+            tree = ast.parse(snippet.strip())
+            if any(isinstance(n, ast.Return) and ast.dump(n) == ast.dump(wanted) for n in ast.walk(tree)):
+                return True
+        except SyntaxError:
+            pass
+    return expected.strip() in [line.strip() for line in text.splitlines()]
 
 
 def typed_equal(left, right):
@@ -57,7 +76,7 @@ def grade(case, text):
         strict = text.rstrip("\r\n") == expected
         if kind == "code_line":
             strict = text.strip() == expected.strip()
-        payload = expected in text if kind == "copy" else expected.strip() in [l.strip() for l in text.splitlines()]
+        payload = expected in text if kind == "copy" else code_payload_present(text, expected)
         return {"success": strict, "payload_correct": payload}
     if kind == "explanation_proxy":
         payload = expected.strip() in text

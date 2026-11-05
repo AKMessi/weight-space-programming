@@ -10,7 +10,7 @@ import time
 
 from .evidence import append_jsonl, digest, file_sha256, git_state, utc_now, write_json
 from .budget import reserve, settle
-from .grading import grade
+from .grading import GRADER_VERSION, grade
 from .runtime import request_json, server
 
 
@@ -55,7 +55,7 @@ def _execute(config, model_key, suite, output, max_tokens, seed, limit):
     manifest = {"schema_version": 1, "started_utc": utc_now(), "purpose": "exploratory discovery",
                 "git": state, "python": platform.python_version(), "model_key": model_key,
                 "model": spec, "verified_model_sha256": actual, "suite_sha256": digest(suite),
-                "max_tokens": max_tokens, "seed": seed, "limit": limit,
+                "max_tokens": max_tokens, "seed": seed, "limit": limit, "grader_version": GRADER_VERSION,
                 "runtime": config["runtime"], "binary_sha256": file_sha256(binary),
                 "runtime_version": subprocess.check_output([binary, "--version"], stderr=subprocess.STDOUT, text=True)}
     write_json(out / "manifest.json", manifest)
@@ -73,7 +73,17 @@ def _execute(config, model_key, suite, output, max_tokens, seed, limit):
                 payload = {"model": "local", "messages": case["messages"], "seed": seed,
                            "max_tokens": max_tokens, "stream": False, "cache_prompt": False,
                            "chat_template_kwargs": {"enable_thinking": False}, **sampling}
+                overrides = case.get("request_overrides", {})
+                allowed = {"reasoning_format", "reasoning_effort", "chat_template_kwargs", "response_format",
+                           "temperature", "top_p", "top_k", "min_p", "repeat_penalty", "presence_penalty"}
+                if set(overrides) - allowed:
+                    raise ValueError(f"Unsupported request overrides: {set(overrides) - allowed}")
+                payload.update(overrides)
                 row = {"case": case, "request": payload, "started_utc": utc_now()}
+                try:
+                    row["rendered_prompt"] = request_json(url + "/apply-template", payload)
+                except Exception as exc:
+                    row["rendered_prompt_error"] = repr(exc)
                 request_id = f"{out}/{case['id']}/seed-{seed}"
                 reserve(request_id, max_tokens, config.get("budgets", {}).get("overall_generated_tokens", 1800000))
                 append_jsonl(out / "events.jsonl", {"event": "request", **row})

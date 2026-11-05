@@ -29,7 +29,8 @@ def server(binary, model, run_dir, config):
            "--port", str(port), "--ctx-size", str(config.get("context", 2048)),
            "--parallel", "1", "--threads", str(config.get("threads", 4)),
            "--n-gpu-layers", str(config.get("gpu_layers", 99)), "--jinja",
-           "--reasoning", "off", "--chat-template-kwargs", '{"enable_thinking":false}']
+           "--reasoning", config.get("reasoning", "off"), "--chat-template-kwargs",
+           json.dumps(config.get("chat_template_kwargs", {"enable_thinking": False}))]
     url = f"http://127.0.0.1:{port}"
     with open(Path(run_dir) / "server.log", "w") as log:
         proc = subprocess.Popen(cmd, stdout=log, stderr=subprocess.STDOUT)
