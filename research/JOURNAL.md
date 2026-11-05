@@ -903,3 +903,13 @@ Status `complete`, 1679 generated tokens. Immutable raw inputs/responses/config/
 ### 2026-11-05T18:12:54.899732+00:00 — p3-repair-switch-dev-original-qwen_float-s17
 
 Status `complete`, 1266 generated tokens. Immutable raw inputs/responses/config/runtime and resource samples are in `runs/p3-repair-switch-dev-original-qwen_float-s17`. Interpretation is deferred to the study report; this run alone does not establish a repair.
+
+### 2026-11-05T18:14:21.932367+00:00 — p3-repair-switch-dev-strong-qwen_float-s17
+
+Status `complete`, 1270 generated tokens. Immutable raw inputs/responses/config/runtime and resource samples are in `runs/p3-repair-switch-dev-strong-qwen_float-s17`. Interpretation is deferred to the study report; this run alone does not establish a repair.
+
+### Component trace mapping and separate fidelity diagnostics frozen
+
+Source inspection found that the LFM2 callback named ffn_out is attached to the normalized FFN input pointer. A debug name alone cannot establish an activation boundary. Native v4 instead selects the real MUL_MAT by its named FFN-down weight operand and saves the corresponding input/output, with algebra and no-op checks required before editing. This is a tracing adaptation; installed runtime/originals remain unchanged. LFM3's optional post-normalization remains a separate architectural issue.
+
+Added exact supplied token IDs to the client so Fable's add-BOS policy is not guessed. Frozen the fixed16 Fable fidelity prefixes (first8 and last8 protection cases) and tokenization provenance before their forwards. Native diagnostic/generated token costs now have explicit stage counters and a generation evidence index for the final audit. The same development switching gate is declared for Fable if Qwen has no natural failure; no Qwen settings will be changed to create one.

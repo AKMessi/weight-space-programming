@@ -1,0 +1,27 @@
+{
+  "utc": "2026-11-05T18:04:11.363909+00:00",
+  "git": {
+    "commit": "d7496d20d7cb07013ff3f8a799b408a2cf81cd8a",
+    "status": ""
+  },
+  "command": [
+    "c++",
+    "-O2",
+    "-std=c++17",
+    "native/trace_v3.cpp",
+    "-Ilocal/runtime-source/include",
+    "-Ilocal/runtime-source/ggml/include",
+    "-Ilocal/runtime-source/vendor/nlohmann",
+    "-L/home/akmessi/llama-vulkan-build/bin",
+    "-Wl,-rpath,/home/akmessi/llama-vulkan-build/bin",
+    "-lllama",
+    "-lggml",
+    "-lggml-base",
+    "-o",
+    "local/weightlab-native-v3"
+  ],
+  "source_revision": "338fce6511c744893cc0d3d958b275f40552c7a4",
+  "source_sha256": "ecd59a2d27ee65075cac9490e9546997ba5f3e74d7bea746025a18ca203c47c2",
+  "status": "complete",
+  "binary_sha256": "0bb6b36ca8e73901e1b5f849c35bd836b1f9ab322ba0c2b0e96c5bb88cb6731e"
+}

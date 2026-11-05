@@ -11,7 +11,7 @@ def stage_used(stage):
     prefix=f'runs/p3-{stage}-';charges={}
     for line in Path('research/budget.jsonl').read_text().splitlines():
         row=json.loads(line)
-        if row['request_id'].startswith(prefix):charges[row['request_id']]=row['tokens']
+        if row['request_id'].startswith(prefix) or row['request_id'].startswith(f'p3-native/{stage}/'):charges[row['request_id']]=row['tokens']
     return sum(charges.values())
 
 def run_one(config,key,suite_path,label,stage,max_tokens=128,seed=17,limit=None):
