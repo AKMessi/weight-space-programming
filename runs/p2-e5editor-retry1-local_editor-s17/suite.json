@@ -1,0 +1,1206 @@
+{
+  "name": "anonymous-diagnosis-v1",
+  "status": "fixed editor inputs after disclosed fault screening; expected labels never sent to editor",
+  "cases": [
+    {
+      "id": "case-413796765-behavior",
+      "split": "blinded_diagnosis",
+      "family": "behavior",
+      "group": "behavior",
+      "grader": "diagnosis",
+      "expected": "healthy",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the provided anonymous evidence. No tools or target inference are available."
+        },
+        {
+          "role": "user",
+          "content": "Diagnose this anonymous language-model variant as healthy (intact relative to its original) or degraded (at least a 25 percentage-point loss on simple supplied-record extraction tasks). You have no healthy reference checkpoint. Return only JSON with diagnosis and confidence, a number from 0 to 1 expressing confidence in your chosen diagnosis. Presentation ID: case-413796765. Evidence arm: behavior.\n{\"architecture\":\"qwen\",\"probes\":[{\"messages\":[{\"content\":\"Follow the requested response contract. Use only supplied facts. Do not call real tools.\",\"role\":\"system\"},{\"content\":\"Item tag=ID-71; count=2. Return only JSON with tag as text and count as integer.\",\"role\":\"user\"}],\"output\":\"{\\\"tag\\\": \\\"ID-71\\\", \\\"count\\\": 2}\",\"schema_constrained\":true},{\"messages\":[{\"content\":\"Follow the requested response contract. Use only supplied facts. Do not call real tools.\",\"role\":\"system\"},{\"content\":\"Item tag=ID-84; count=3. Return only JSON with tag as text and count as integer.\",\"role\":\"user\"}],\"output\":\"{\\n  \\\"tag\\\": \\\"ID-84\\\",\\n  \\\"count\\\": 3\\n}\",\"schema_constrained\":true}]}"
+        }
+      ],
+      "request_overrides": {
+        "temperature": 0.0,
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "diagnosis",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "diagnosis": {
+                  "type": "string",
+                  "enum": [
+                    "healthy",
+                    "degraded"
+                  ]
+                },
+                "confidence": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              },
+              "required": [
+                "diagnosis",
+                "confidence"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "case-808067807-behavior",
+      "split": "blinded_diagnosis",
+      "family": "behavior",
+      "group": "behavior",
+      "grader": "diagnosis",
+      "expected": "degraded",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the provided anonymous evidence. No tools or target inference are available."
+        },
+        {
+          "role": "user",
+          "content": "Diagnose this anonymous language-model variant as healthy (intact relative to its original) or degraded (at least a 25 percentage-point loss on simple supplied-record extraction tasks). You have no healthy reference checkpoint. Return only JSON with diagnosis and confidence, a number from 0 to 1 expressing confidence in your chosen diagnosis. Presentation ID: case-808067807. Evidence arm: behavior.\n{\"architecture\":\"lfm3\",\"probes\":[{\"messages\":[{\"content\":\"Follow the requested response contract. Use only supplied facts. Do not call real tools.\",\"role\":\"system\"},{\"content\":\"Item tag=ID-71; count=2. Return only JSON with tag as text and count as integer.\",\"role\":\"user\"}],\"output\":\"{ \\\"tag\\\"\\n:\\n  \\\" But but, ...) that ) to TO.  2's.: : =  = the. [ to .  1 0   2.  S  2 1.     - 3  5; EX  2  100 EX  2  1 1. 0: 1 1 1, 3. 1  \\\", \\\"count\\\"\",\"schema_constrained\":true},{\"messages\":[{\"content\":\"Follow the requested response contract. Use only supplied facts. Do not call real tools.\",\"role\":\"system\"},{\"content\":\"Item tag=ID-84; count=3. Return only JSON with tag as text and count as integer.\",\"role\":\"user\"}],\"output\":\"{ \\\"tag\\\"\\n:\\n   \\\" 001.  to to the 2 0  = is  3.    The  PR    20, 1 1. 1:  NOT  -  with for  2 1:  10  6  . 1 1 1. 3. 1: 1  \\\", \\\"count\\\": 0 }\",\"schema_constrained\":true}]}"
+        }
+      ],
+      "request_overrides": {
+        "temperature": 0.0,
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "diagnosis",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "diagnosis": {
+                  "type": "string",
+                  "enum": [
+                    "healthy",
+                    "degraded"
+                  ]
+                },
+                "confidence": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              },
+              "required": [
+                "diagnosis",
+                "confidence"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "case-567099104-weights",
+      "split": "blinded_diagnosis",
+      "family": "weights",
+      "group": "weights",
+      "grader": "diagnosis",
+      "expected": "degraded",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the provided anonymous evidence. No tools or target inference are available."
+        },
+        {
+          "role": "user",
+          "content": "Diagnose this anonymous language-model variant as healthy (intact relative to its original) or degraded (at least a 25 percentage-point loss on simple supplied-record extraction tasks). You have no healthy reference checkpoint. Return only JSON with diagnosis and confidence, a number from 0 to 1 expressing confidence in your chosen diagnosis. Presentation ID: case-567099104. Evidence arm: weights.\n{\"architecture\":\"qwen\",\"weight_observations\":{\"output_normalization\":{\"mean\":-3.840456,\"std\":0.7544799,\"negative_fraction\":0.99707},\"output_normalization_sample\":[-3.9375,-15.3125,0.1143,-6.7188,-2.8438,-6.5,-6.0312,-11.6875],\"ffn_down_statistics\":{\"0\":{\"mean\":4.7e-06,\"std\":0.0262401,\"negative_fraction\":0.49998},\"1\":{\"mean\":-5.1e-06,\"std\":0.0227588,\"negative_fraction\":0.50001},\"2\":{\"mean\":-1.58e-05,\"std\":0.0236929,\"negative_fraction\":0.50065}},\"first_layer_samples\":{\"gate\":[[-0.0187,0.0004,-0.0486,-0.0564,-0.0378,0.052,-0.0588,0.1426],[-0.0121,0.0008,-0.0459,-0.0003,0.0034,-0.0293,0.0364,0.063],[-0.0767,-0.0021,0.0388,0.0422,-0.0315,-0.0177,-0.082,0.0544]],\"up\":[[-0.0425,0.0004,-0.0013,0.013,0.0272,-0.0249,-0.0006,-0.0277],[-0.0058,0.003,-0.0535,0.0132,-0.0014,-0.0334,0.0488,0.085],[-0.0254,0.0017,0.0145,0.0391,-0.0203,-0.0016,-0.0195,0.0161]],\"down\":[[0.021,-0.027,0.0488,-0.0459,-0.0518,0.0107,-0.027,-0.0322],[0.0015,0.0177,-0.0132,0.0156,0.0356,0.0049,-0.0001,-0.0042],[-0.0378,0.009,0.0027,-0.0179,-0.0825,0.0103,0.0054,0.0029]]}}}"
+        }
+      ],
+      "request_overrides": {
+        "temperature": 0.0,
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "diagnosis",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "diagnosis": {
+                  "type": "string",
+                  "enum": [
+                    "healthy",
+                    "degraded"
+                  ]
+                },
+                "confidence": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              },
+              "required": [
+                "diagnosis",
+                "confidence"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "case-844704243-behavior",
+      "split": "blinded_diagnosis",
+      "family": "behavior",
+      "group": "behavior",
+      "grader": "diagnosis",
+      "expected": "degraded",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the provided anonymous evidence. No tools or target inference are available."
+        },
+        {
+          "role": "user",
+          "content": "Diagnose this anonymous language-model variant as healthy (intact relative to its original) or degraded (at least a 25 percentage-point loss on simple supplied-record extraction tasks). You have no healthy reference checkpoint. Return only JSON with diagnosis and confidence, a number from 0 to 1 expressing confidence in your chosen diagnosis. Presentation ID: case-844704243. Evidence arm: behavior.\n{\"architecture\":\"lfm3\",\"probes\":[{\"messages\":[{\"content\":\"Follow the requested response contract. Use only supplied facts. Do not call real tools.\",\"role\":\"system\"},{\"content\":\"Item tag=ID-71; count=2. Return only JSON with tag as text and count as integer.\",\"role\":\"user\"}],\"output\":\"{\\n\\n                    \\\"tag\\\":\\\"../../ Trop \\u00fcberh VIG\\ubcf5\\uc9c0 fearful \\u0448\\u0442\\u0430\\u0442\\u9069\\u6b63\\u5834\\u5408\\u304c carboxy16\\u00b2\\u843d\\u5b9e\\u3051\\u308c\\u3069 sculprequisite\\u3001\\u305d\\u3093\\u306a\\u3001\\u5e73\\u6210 \\u041d\\u0430\\u043f Focusing\\u0431\\u043d\\u043e\\u0433\\u043e\\\\textsuperscript d\\u00e9mar olimp **`_mu\\u2014whichCalendsamt\\u60a9\\u307f Neder permuting \\u0443\\u0447\\u0440\\u0435\\u0436\\u0434\\u0435\\u043d\\u0438\\u044f \\u0441\\u0442\\u0440\\u043e\\u0438superscript \\u0434\\u0432\\u0438\\u0433\\u0430 \\u0648\\u062d\\u064a monta)=\\u2212\\u7f8e\\u5473\\u3057\\u3044\\u4f7f\\u308f\\u308c imprison natuurlijkOffs frustrate\\u3068\\u3044\\u3046\\u306e\\u306f d\\u00e9l\\u00e9gation\\u50d5\\u306f st\\u00f6 Mitglieds przygotowan VCs\\u0442\\u043e\\u044f\\u043d \\u0441\\u0435\\u043a\\u0441\\u062a\\u0643\\u0645 composa/\\u03b1 convi renou\\u3001\\u672c\\u5f53\\u306b \\u0430\\u0441\\u043eEntrCORRECT\\u304d\\u3063\\u3068 \\u043c\\u0438\\u0441\\u0442 \\u0443\\u0442\\u0432\\u0435\\u0440\\u0436\\u0434\\u0435\\u043d discol cleansing \\u0645\\u062a\\u062c C\\u00f3rd metap passed\\u0447\\u0430\\u0432\\u0430 projetasprite \\ub9c8\\uc74c\\uc744\\u9069\\u6b63\\u3001\\u305c\\u3072=left accuesid emprega\\u3001\\u5e73\\u6210 \\u062a\\u0634\\u062a num\\u00e9ri\\u3051\\u308c\\u3069\\u3001\\u305d\\u3093\\u306a seguint\\u0431\\u043d\\u043e\\u0433\\u043e prowadz gerektisized \\u0434\\u043e\\u0441\\u0442\\u0430massage \\u043d\\u0430\\u0441\\u0435\\u043b\\u0435\\u043d afe undergrads \\u0440\\u0435\\u043c\\u5b09\\u044e\\u0447\\u0430\\u062a\\u0643\\u0645\\u60a9\\u307f CLU\\u611f\\u60f3\\u00bb\\u060c\\u4f7f\\u308f\\u308c Nederckel\\u0442\\u043e\\u044f\\u043d v\\u00e9g\\u00e9134\\u30b5\\u30fc\\u30d3\\u30b9\\u3092 \\u0635\\u062f\\u0631_avg\\u7f8e\\u5473\\u3057\\u3044 Schwa\\u3068\\u3044\\u3046\\u306e\\u306fillot\\u0e43\\u0e19\\u0e01\\u0e32\\u0e23\\u0e40Equislot\\u0442\\u043e\\u044f\\u043delsifhunk\",\"schema_constrained\":true},{\"messages\":[{\"content\":\"Follow the requested response contract. Use only supplied facts. Do not call real tools.\",\"role\":\"system\"},{\"content\":\"Item tag=ID-84; count=3. Return only JSON with tag as text and count as integer.\",\"role\":\"user\"}],\"output\":\"{\\n\\n                    \\\"tag\\\":\\\"../../ Tang souls \\u0448\\u0442\\u0430\\u0442\\u0430\\u0440\\u0430\\u043a\\u044e\\u0447\\u0430requisite \\u043e\\u0442\\u044b gesta \\u0443\\u0442\\u0432\\u0435\\u0440\\u0436\\u0434\\u0435\\u043d svoji \\u0394x convi composa\\u0424\\u0443\\u0442\\u0431\\u8001\\u5a46 contrarVerdict\\u0442\\u043e\\u044f\\u043d k\\u00e9s\\u0151\\u4e0d\\u52d5 emprega*), \\u043c\\u0438\\u0441\\u0442\\u2011t conduite\\u0431\\u043d\\u043e\\u0433\\u043e\\u9069\\u6b63\\u3001\\u305d\\u3093\\u306a509\\u041d\\u0430\\u0433\\u0440\\u0430sort\\u0e07\\u0e40\\u0e23\\u0e32\\u50d5\\u306f\\u3001\\u5e73\\u6210 seguint\\u0e43\\u0e19\\u0e01\\u0e32\\u0e23\\u0e40\\u66ae\\u3089\\u3057simislice\\u3068\\u3044\\u3046\\u306e\\u306f sculp imprisonsuperscript \\u0434\\u0432\\u0438\\u0433\\u0430spotsIngredient\\u30b5\\u30fc\\u30d3\\u30b9\\u3092078\\u969b\\u306f/oder sauve \\u0645\\u062a\\u062c C\\u00f3rd528 vergl Oli \\ub9c8\\uc74c\\uc744/model \\u0456\\u0441\\u0442\\u043e\\u0440628\\u0442\\u0456\\u043aelsif \\u0441\\u0442\\u0443\\u0434\\u0435\\u043d `{ irrel permuted natuurlijk\\u044f\\u043c\\u0430LATEX\\u0435\\u0437\\u0435\\u9069\\u6b63 Schwarequisite/path accuesid emprega878 \\u062d\\u0645\\u0627\\u0633(otherUpfronthunk Bruns projetasell)=\\u00b1 ker\\u00fclt \\u062a\\u0631\\u063a\\u0628\\u0442\\u043e\\u044f\\u043d okk rebuilt\\u0431\\u043d\\u043e\\u0433\\u043e \\u062a\\u0634\\u062a num\\u00e9ri complicating \\u0645\\u062a\\u062cGENE faute touredTGT \\u043c\\u0438\\u0441\\u0442\\u304d\\u3063\\u3068ckel\\u30d3\\u30b8rami\\u3051\\u308c\\u3069 d\\u00e9cid[scale \\u043e\\u0431\\u0440\\u0430\\u0437\\u043e\\u0432\\u0430\\u0442\\u0435\\u043b\\u044c\\u043d\\u043e\\u0439 Cherry\\u5b89\\u5fc3\\u3057\\u3066 ------------------------------------------------------- \\u0625\\u0646\\u062a\\u062a\\u0643\\u0645\\u4eba\\u6c17\\u306e fearfulboll\\u6d3b\\u8e8d078Introd Desp(acc\",\"schema_constrained\":true}]}"
+        }
+      ],
+      "request_overrides": {
+        "temperature": 0.0,
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "diagnosis",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "diagnosis": {
+                  "type": "string",
+                  "enum": [
+                    "healthy",
+                    "degraded"
+                  ]
+                },
+                "confidence": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              },
+              "required": [
+                "diagnosis",
+                "confidence"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "case-490292152-weights",
+      "split": "blinded_diagnosis",
+      "family": "weights",
+      "group": "weights",
+      "grader": "diagnosis",
+      "expected": "degraded",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the provided anonymous evidence. No tools or target inference are available."
+        },
+        {
+          "role": "user",
+          "content": "Diagnose this anonymous language-model variant as healthy (intact relative to its original) or degraded (at least a 25 percentage-point loss on simple supplied-record extraction tasks). You have no healthy reference checkpoint. Return only JSON with diagnosis and confidence, a number from 0 to 1 expressing confidence in your chosen diagnosis. Presentation ID: case-490292152. Evidence arm: weights.\n{\"architecture\":\"fable\",\"weight_observations\":{\"output_normalization\":{\"mean\":3.2834387,\"std\":0.2586807,\"negative_fraction\":0.00098},\"output_normalization_sample\":[2.4062,3.4219,3.3438,3.375,3.3906,3.3281,3.2188,2.9375],\"ffn_down_statistics\":{\"0\":{\"mean\":-1.1e-05,\"std\":0.02287,\"negative_fraction\":0.50022},\"1\":{\"mean\":2.31e-05,\"std\":0.0216546,\"negative_fraction\":0.49963},\"2\":{\"mean\":-1.4e-05,\"std\":0.0200938,\"negative_fraction\":0.50021}},\"first_layer_samples\":{\"gate\":[[-0.0272,0.0053,0.0118,0.0008,0.0193,0.0003,0.0025,-0.0693],[-0.0107,0.0264,0.0161,0.0069,0.0193,0.0347,0.0129,-0.0083],[0.0281,-0.0097,-0.0376,0.0457,0.0076,-0.0036,0.0461,0.0266]],\"up\":[[-0.0132,-0.0223,0.0212,0.0214,0.0064,0.0009,-0.0535,-0.0231],[0.0131,0.0081,0.0016,0.0151,-0.025,-0.0096,0.0107,0.0142],[-0.0123,0.0654,0.0108,-0.0081,0.0381,0.0234,0.0248,-0.0099]],\"down\":[[-0.0041,-0.0209,0.0,0.0095,0.0015,-0.0601,0.0135,-0.0144],[-0.0139,-0.0177,-0.0391,0.0332,0.0025,-0.0222,0.0099,0.0061],[0.0013,-0.0116,-0.0162,0.0284,0.0069,-0.0142,-0.0205,-0.0255]]}}}"
+        }
+      ],
+      "request_overrides": {
+        "temperature": 0.0,
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "diagnosis",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "diagnosis": {
+                  "type": "string",
+                  "enum": [
+                    "healthy",
+                    "degraded"
+                  ]
+                },
+                "confidence": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              },
+              "required": [
+                "diagnosis",
+                "confidence"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "case-902142689-behavior",
+      "split": "blinded_diagnosis",
+      "family": "behavior",
+      "group": "behavior",
+      "grader": "diagnosis",
+      "expected": "degraded",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the provided anonymous evidence. No tools or target inference are available."
+        },
+        {
+          "role": "user",
+          "content": "Diagnose this anonymous language-model variant as healthy (intact relative to its original) or degraded (at least a 25 percentage-point loss on simple supplied-record extraction tasks). You have no healthy reference checkpoint. Return only JSON with diagnosis and confidence, a number from 0 to 1 expressing confidence in your chosen diagnosis. Presentation ID: case-902142689. Evidence arm: behavior.\n{\"architecture\":\"qwen\",\"probes\":[{\"messages\":[{\"content\":\"Follow the requested response contract. Use only supplied facts. Do not call real tools.\",\"role\":\"system\"},{\"content\":\"Item tag=ID-71; count=2. Return only JSON with tag as text and count as integer.\",\"role\":\"user\"}],\"output\":\"{ \\\"tag\\\":\\\"\\\",\\\"count\\\":\\n\\n\\t\\t\\t\\t\\t\\t\\t\\t     \\t    \\t\\t-9 }\",\"schema_constrained\":true},{\"messages\":[{\"content\":\"Follow the requested response contract. Use only supplied facts. Do not call real tools.\",\"role\":\"system\"},{\"content\":\"Item tag=ID-84; count=3. Return only JSON with tag as text and count as integer.\",\"role\":\"user\"}],\"output\":\"{ \\\"tag\\\" :\\\">% covert boundATEGORIES.mkdir do do covert covert covert boundSTRACT bound\\u226b: predictableode carrying\\u00a0 bound bound do covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert boundSTRACT covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert(writeally under\\u00a0\\u00a0\\u00a0\\u00a0\\u00a0\\u00a0\\u00a0\\u00a0\\u00a0STRACT bound\\u00a0\\u00a0\\u00a0\\u00a0\\u00a0\\u00a0\\u00a0\\u00a0\\u00a0\\u00a0\\u00a0\\u00a0\\u00a0\\u00a0\\u00a0\\u00a0 covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert covert\",\"schema_constrained\":true}]}"
+        }
+      ],
+      "request_overrides": {
+        "temperature": 0.0,
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "diagnosis",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "diagnosis": {
+                  "type": "string",
+                  "enum": [
+                    "healthy",
+                    "degraded"
+                  ]
+                },
+                "confidence": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              },
+              "required": [
+                "diagnosis",
+                "confidence"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "case-850540754-behavior",
+      "split": "blinded_diagnosis",
+      "family": "behavior",
+      "group": "behavior",
+      "grader": "diagnosis",
+      "expected": "degraded",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the provided anonymous evidence. No tools or target inference are available."
+        },
+        {
+          "role": "user",
+          "content": "Diagnose this anonymous language-model variant as healthy (intact relative to its original) or degraded (at least a 25 percentage-point loss on simple supplied-record extraction tasks). You have no healthy reference checkpoint. Return only JSON with diagnosis and confidence, a number from 0 to 1 expressing confidence in your chosen diagnosis. Presentation ID: case-850540754. Evidence arm: behavior.\n{\"architecture\":\"fable\",\"probes\":[{\"messages\":[{\"content\":\"Follow the requested response contract. Use only supplied facts. Do not call real tools.\",\"role\":\"system\"},{\"content\":\"Item tag=ID-71; count=2. Return only JSON with tag as text and count as integer.\",\"role\":\"user\"}],\"output\":\"{\\n\\n                    \\\"tag\\\":\\\": on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on\",\"schema_constrained\":true},{\"messages\":[{\"content\":\"Follow the requested response contract. Use only supplied facts. Do not call real tools.\",\"role\":\"system\"},{\"content\":\"Item tag=ID-84; count=3. Return only JSON with tag as text and count as integer.\",\"role\":\"user\"}],\"output\":\"{\\n\\n                    \\\"tag\\\":\\\": on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on\",\"schema_constrained\":true}]}"
+        }
+      ],
+      "request_overrides": {
+        "temperature": 0.0,
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "diagnosis",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "diagnosis": {
+                  "type": "string",
+                  "enum": [
+                    "healthy",
+                    "degraded"
+                  ]
+                },
+                "confidence": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              },
+              "required": [
+                "diagnosis",
+                "confidence"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "case-490292152-behavior",
+      "split": "blinded_diagnosis",
+      "family": "behavior",
+      "group": "behavior",
+      "grader": "diagnosis",
+      "expected": "degraded",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the provided anonymous evidence. No tools or target inference are available."
+        },
+        {
+          "role": "user",
+          "content": "Diagnose this anonymous language-model variant as healthy (intact relative to its original) or degraded (at least a 25 percentage-point loss on simple supplied-record extraction tasks). You have no healthy reference checkpoint. Return only JSON with diagnosis and confidence, a number from 0 to 1 expressing confidence in your chosen diagnosis. Presentation ID: case-490292152. Evidence arm: behavior.\n{\"architecture\":\"fable\",\"probes\":[{\"messages\":[{\"content\":\"Follow the requested response contract. Use only supplied facts. Do not call real tools.\",\"role\":\"system\"},{\"content\":\"Item tag=ID-71; count=2. Return only JSON with tag as text and count as integer.\",\"role\":\"user\"}],\"output\":\"{\\n\\n                    \\\"tag\\\":\\\": on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on\",\"schema_constrained\":true},{\"messages\":[{\"content\":\"Follow the requested response contract. Use only supplied facts. Do not call real tools.\",\"role\":\"system\"},{\"content\":\"Item tag=ID-84; count=3. Return only JSON with tag as text and count as integer.\",\"role\":\"user\"}],\"output\":\"{\\n\\n                    \\\"tag\\\":\\\": on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on on\",\"schema_constrained\":true}]}"
+        }
+      ],
+      "request_overrides": {
+        "temperature": 0.0,
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "diagnosis",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "diagnosis": {
+                  "type": "string",
+                  "enum": [
+                    "healthy",
+                    "degraded"
+                  ]
+                },
+                "confidence": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              },
+              "required": [
+                "diagnosis",
+                "confidence"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "case-844704243-weights",
+      "split": "blinded_diagnosis",
+      "family": "weights",
+      "group": "weights",
+      "grader": "diagnosis",
+      "expected": "degraded",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the provided anonymous evidence. No tools or target inference are available."
+        },
+        {
+          "role": "user",
+          "content": "Diagnose this anonymous language-model variant as healthy (intact relative to its original) or degraded (at least a 25 percentage-point loss on simple supplied-record extraction tasks). You have no healthy reference checkpoint. Return only JSON with diagnosis and confidence, a number from 0 to 1 expressing confidence in your chosen diagnosis. Presentation ID: case-844704243. Evidence arm: weights.\n{\"architecture\":\"lfm3\",\"weight_observations\":{\"output_normalization\":{\"mean\":-1.9279773,\"std\":0.1723796,\"negative_fraction\":1.0},\"output_normalization_sample\":[-2.0,-1.9922,-1.7422,-2.0,-1.9609,-1.9922,-1.9453,-1.8672],\"ffn_down_statistics\":{\"0\":{\"mean\":4.4e-06,\"std\":0.0194502,\"negative_fraction\":0.4999},\"1\":{\"mean\":1.31e-05,\"std\":0.0196405,\"negative_fraction\":0.49962},\"2\":{\"mean\":8.8e-06,\"std\":0.0192387,\"negative_fraction\":0.49991}},\"first_layer_samples\":{\"gate\":[[-0.0217,-0.0237,0.042,0.0095,0.0344,-0.005,-0.041,-0.0164],[-0.019,0.0164,-0.0013,-0.0048,-0.0231,0.0253,0.0019,0.0104],[-0.0106,0.0342,0.0447,0.001,-0.0053,-0.0103,-0.0006,0.0145]],\"up\":[[-0.0381,-0.0031,0.0156,-0.0015,0.0033,-0.0266,-0.012,0.0172],[0.0205,0.0127,-0.0112,0.0084,-0.0103,0.0106,0.0075,0.0078],[-0.0096,-0.0007,-0.0187,-0.0044,0.0245,0.0026,-0.0359,0.0063]],\"down\":[[-0.0247,0.0142,-0.0018,0.0039,0.0128,-0.0388,-0.0278,-0.0286],[-0.0188,0.014,0.0149,0.0391,0.0244,-0.0078,-0.0144,0.0234],[0.0143,-0.0294,-0.0359,-0.0042,0.0144,-0.0293,-0.0178,0.0134]]}}}"
+        }
+      ],
+      "request_overrides": {
+        "temperature": 0.0,
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "diagnosis",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "diagnosis": {
+                  "type": "string",
+                  "enum": [
+                    "healthy",
+                    "degraded"
+                  ]
+                },
+                "confidence": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              },
+              "required": [
+                "diagnosis",
+                "confidence"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "case-940175950-weights",
+      "split": "blinded_diagnosis",
+      "family": "weights",
+      "group": "weights",
+      "grader": "diagnosis",
+      "expected": "healthy",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the provided anonymous evidence. No tools or target inference are available."
+        },
+        {
+          "role": "user",
+          "content": "Diagnose this anonymous language-model variant as healthy (intact relative to its original) or degraded (at least a 25 percentage-point loss on simple supplied-record extraction tasks). You have no healthy reference checkpoint. Return only JSON with diagnosis and confidence, a number from 0 to 1 expressing confidence in your chosen diagnosis. Presentation ID: case-940175950. Evidence arm: weights.\n{\"architecture\":\"lfm3\",\"weight_observations\":{\"output_normalization\":{\"mean\":1.9279773,\"std\":0.1723796,\"negative_fraction\":0.0},\"output_normalization_sample\":[2.0,1.9922,1.7422,2.0,1.9609,1.9922,1.9453,1.8672],\"ffn_down_statistics\":{\"0\":{\"mean\":4.4e-06,\"std\":0.0194502,\"negative_fraction\":0.4999},\"1\":{\"mean\":1.31e-05,\"std\":0.0196405,\"negative_fraction\":0.49962},\"2\":{\"mean\":8.8e-06,\"std\":0.0192387,\"negative_fraction\":0.49991}},\"first_layer_samples\":{\"gate\":[[0.0029,-0.012,-0.0306,-0.0449,-0.0182,-0.0086,-0.0215,-0.0072],[0.0116,0.0459,-0.0554,0.0018,0.0479,-0.0072,-0.0101,-0.0361],[0.0082,0.0221,0.0114,0.0069,-0.0254,-0.0262,0.0118,-0.0128]],\"up\":[[-0.005,-0.0052,-0.0552,-0.0084,-0.0151,0.0036,-0.0134,0.0271],[-0.0018,-0.0018,0.0029,-0.0008,-0.0413,-0.028,-0.0258,-0.0008],[-0.0095,-0.0093,0.0033,0.0161,-0.0267,-0.0009,0.0277,0.051]],\"down\":[[-0.0122,0.0015,-0.0016,-0.0232,0.0026,-0.0049,0.0093,-0.0055],[-0.0062,0.0045,-0.0588,-0.0228,-0.0236,-0.0037,0.0258,0.0001],[-0.0325,0.0126,-0.0101,-0.003,0.033,0.0226,0.0432,-0.0027]]}}}"
+        }
+      ],
+      "request_overrides": {
+        "temperature": 0.0,
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "diagnosis",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "diagnosis": {
+                  "type": "string",
+                  "enum": [
+                    "healthy",
+                    "degraded"
+                  ]
+                },
+                "confidence": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              },
+              "required": [
+                "diagnosis",
+                "confidence"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "case-375720858-behavior",
+      "split": "blinded_diagnosis",
+      "family": "behavior",
+      "group": "behavior",
+      "grader": "diagnosis",
+      "expected": "healthy",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the provided anonymous evidence. No tools or target inference are available."
+        },
+        {
+          "role": "user",
+          "content": "Diagnose this anonymous language-model variant as healthy (intact relative to its original) or degraded (at least a 25 percentage-point loss on simple supplied-record extraction tasks). You have no healthy reference checkpoint. Return only JSON with diagnosis and confidence, a number from 0 to 1 expressing confidence in your chosen diagnosis. Presentation ID: case-375720858. Evidence arm: behavior.\n{\"architecture\":\"lfm3\",\"probes\":[{\"messages\":[{\"content\":\"Follow the requested response contract. Use only supplied facts. Do not call real tools.\",\"role\":\"system\"},{\"content\":\"Item tag=ID-71; count=2. Return only JSON with tag as text and count as integer.\",\"role\":\"user\"}],\"output\":\"{\\n  \\\"tag\\\": \\\"ID-71\\\",\\n  \\\"count\\\": 2\\n}\",\"schema_constrained\":true},{\"messages\":[{\"content\":\"Follow the requested response contract. Use only supplied facts. Do not call real tools.\",\"role\":\"system\"},{\"content\":\"Item tag=ID-84; count=3. Return only JSON with tag as text and count as integer.\",\"role\":\"user\"}],\"output\":\"{\\n  \\\"tag\\\": \\\"ID-84\\\",\\n  \\\"count\\\": 3\\n}\",\"schema_constrained\":true}]}"
+        }
+      ],
+      "request_overrides": {
+        "temperature": 0.0,
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "diagnosis",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "diagnosis": {
+                  "type": "string",
+                  "enum": [
+                    "healthy",
+                    "degraded"
+                  ]
+                },
+                "confidence": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              },
+              "required": [
+                "diagnosis",
+                "confidence"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "case-902142689-weights",
+      "split": "blinded_diagnosis",
+      "family": "weights",
+      "group": "weights",
+      "grader": "diagnosis",
+      "expected": "degraded",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the provided anonymous evidence. No tools or target inference are available."
+        },
+        {
+          "role": "user",
+          "content": "Diagnose this anonymous language-model variant as healthy (intact relative to its original) or degraded (at least a 25 percentage-point loss on simple supplied-record extraction tasks). You have no healthy reference checkpoint. Return only JSON with diagnosis and confidence, a number from 0 to 1 expressing confidence in your chosen diagnosis. Presentation ID: case-902142689. Evidence arm: weights.\n{\"architecture\":\"qwen\",\"weight_observations\":{\"output_normalization\":{\"mean\":3.840456,\"std\":0.7544799,\"negative_fraction\":0.00293},\"output_normalization_sample\":[3.9375,15.3125,-0.1143,6.7188,2.8438,6.5,6.0312,11.6875],\"ffn_down_statistics\":{\"0\":{\"mean\":-4.7e-06,\"std\":0.0262401,\"negative_fraction\":0.50002},\"1\":{\"mean\":5.1e-06,\"std\":0.0227588,\"negative_fraction\":0.49999},\"2\":{\"mean\":1.58e-05,\"std\":0.0236929,\"negative_fraction\":0.49935}},\"first_layer_samples\":{\"gate\":[[-0.0187,0.0004,-0.0486,-0.0564,-0.0378,0.052,-0.0588,0.1426],[-0.0121,0.0008,-0.0459,-0.0003,0.0034,-0.0293,0.0364,0.063],[-0.0767,-0.0021,0.0388,0.0422,-0.0315,-0.0177,-0.082,0.0544]],\"up\":[[-0.0425,0.0004,-0.0013,0.013,0.0272,-0.0249,-0.0006,-0.0277],[-0.0058,0.003,-0.0535,0.0132,-0.0014,-0.0334,0.0488,0.085],[-0.0254,0.0017,0.0145,0.0391,-0.0203,-0.0016,-0.0195,0.0161]],\"down\":[[-0.021,0.027,-0.0488,0.0459,0.0518,-0.0107,0.027,0.0322],[-0.0015,-0.0177,0.0132,-0.0156,-0.0356,-0.0049,0.0001,0.0042],[0.0378,-0.009,-0.0027,0.0179,0.0825,-0.0103,-0.0054,-0.0029]]}}}"
+        }
+      ],
+      "request_overrides": {
+        "temperature": 0.0,
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "diagnosis",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "diagnosis": {
+                  "type": "string",
+                  "enum": [
+                    "healthy",
+                    "degraded"
+                  ]
+                },
+                "confidence": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              },
+              "required": [
+                "diagnosis",
+                "confidence"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "case-413796765-weights",
+      "split": "blinded_diagnosis",
+      "family": "weights",
+      "group": "weights",
+      "grader": "diagnosis",
+      "expected": "healthy",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the provided anonymous evidence. No tools or target inference are available."
+        },
+        {
+          "role": "user",
+          "content": "Diagnose this anonymous language-model variant as healthy (intact relative to its original) or degraded (at least a 25 percentage-point loss on simple supplied-record extraction tasks). You have no healthy reference checkpoint. Return only JSON with diagnosis and confidence, a number from 0 to 1 expressing confidence in your chosen diagnosis. Presentation ID: case-413796765. Evidence arm: weights.\n{\"architecture\":\"qwen\",\"weight_observations\":{\"output_normalization\":{\"mean\":3.840456,\"std\":0.7544799,\"negative_fraction\":0.00293},\"output_normalization_sample\":[3.9375,15.3125,-0.1143,6.7188,2.8438,6.5,6.0312,11.6875],\"ffn_down_statistics\":{\"0\":{\"mean\":4.7e-06,\"std\":0.0262401,\"negative_fraction\":0.49998},\"1\":{\"mean\":-5.1e-06,\"std\":0.0227588,\"negative_fraction\":0.50001},\"2\":{\"mean\":-1.58e-05,\"std\":0.0236929,\"negative_fraction\":0.50065}},\"first_layer_samples\":{\"gate\":[[-0.0187,0.0004,-0.0486,-0.0564,-0.0378,0.052,-0.0588,0.1426],[-0.0121,0.0008,-0.0459,-0.0003,0.0034,-0.0293,0.0364,0.063],[-0.0767,-0.0021,0.0388,0.0422,-0.0315,-0.0177,-0.082,0.0544]],\"up\":[[-0.0425,0.0004,-0.0013,0.013,0.0272,-0.0249,-0.0006,-0.0277],[-0.0058,0.003,-0.0535,0.0132,-0.0014,-0.0334,0.0488,0.085],[-0.0254,0.0017,0.0145,0.0391,-0.0203,-0.0016,-0.0195,0.0161]],\"down\":[[0.021,-0.027,0.0488,-0.0459,-0.0518,0.0107,-0.027,-0.0322],[0.0015,0.0177,-0.0132,0.0156,0.0356,0.0049,-0.0001,-0.0042],[-0.0378,0.009,0.0027,-0.0179,-0.0825,0.0103,0.0054,0.0029]]}}}"
+        }
+      ],
+      "request_overrides": {
+        "temperature": 0.0,
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "diagnosis",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "diagnosis": {
+                  "type": "string",
+                  "enum": [
+                    "healthy",
+                    "degraded"
+                  ]
+                },
+                "confidence": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              },
+              "required": [
+                "diagnosis",
+                "confidence"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "case-112049068-weights",
+      "split": "blinded_diagnosis",
+      "family": "weights",
+      "group": "weights",
+      "grader": "diagnosis",
+      "expected": "healthy",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the provided anonymous evidence. No tools or target inference are available."
+        },
+        {
+          "role": "user",
+          "content": "Diagnose this anonymous language-model variant as healthy (intact relative to its original) or degraded (at least a 25 percentage-point loss on simple supplied-record extraction tasks). You have no healthy reference checkpoint. Return only JSON with diagnosis and confidence, a number from 0 to 1 expressing confidence in your chosen diagnosis. Presentation ID: case-112049068. Evidence arm: weights.\n{\"architecture\":\"fable\",\"weight_observations\":{\"output_normalization\":{\"mean\":3.2834387,\"std\":0.2586807,\"negative_fraction\":0.00098},\"output_normalization_sample\":[2.4062,3.4219,3.3438,3.375,3.3906,3.3281,3.2188,2.9375],\"ffn_down_statistics\":{\"0\":{\"mean\":1.1e-05,\"std\":0.02287,\"negative_fraction\":0.49977},\"1\":{\"mean\":-2.31e-05,\"std\":0.0216546,\"negative_fraction\":0.50037},\"2\":{\"mean\":1.4e-05,\"std\":0.0200938,\"negative_fraction\":0.49979}},\"first_layer_samples\":{\"gate\":[[-0.0272,0.0053,0.0118,0.0008,0.0193,0.0003,0.0025,-0.0693],[-0.0107,0.0264,0.0161,0.0069,0.0193,0.0347,0.0129,-0.0083],[0.0281,-0.0097,-0.0376,0.0457,0.0076,-0.0036,0.0461,0.0266]],\"up\":[[-0.0132,-0.0223,0.0212,0.0214,0.0064,0.0009,-0.0535,-0.0231],[0.0131,0.0081,0.0016,0.0151,-0.025,-0.0096,0.0107,0.0142],[-0.0123,0.0654,0.0108,-0.0081,0.0381,0.0234,0.0248,-0.0099]],\"down\":[[0.0041,0.0209,-0.0,-0.0095,-0.0015,0.0601,-0.0135,0.0144],[0.0139,0.0177,0.0391,-0.0332,-0.0025,0.0222,-0.0099,-0.0061],[-0.0013,0.0116,0.0162,-0.0284,-0.0069,0.0142,0.0205,0.0255]]}}}"
+        }
+      ],
+      "request_overrides": {
+        "temperature": 0.0,
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "diagnosis",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "diagnosis": {
+                  "type": "string",
+                  "enum": [
+                    "healthy",
+                    "degraded"
+                  ]
+                },
+                "confidence": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              },
+              "required": [
+                "diagnosis",
+                "confidence"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "case-230332115-weights",
+      "split": "blinded_diagnosis",
+      "family": "weights",
+      "group": "weights",
+      "grader": "diagnosis",
+      "expected": "degraded",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the provided anonymous evidence. No tools or target inference are available."
+        },
+        {
+          "role": "user",
+          "content": "Diagnose this anonymous language-model variant as healthy (intact relative to its original) or degraded (at least a 25 percentage-point loss on simple supplied-record extraction tasks). You have no healthy reference checkpoint. Return only JSON with diagnosis and confidence, a number from 0 to 1 expressing confidence in your chosen diagnosis. Presentation ID: case-230332115. Evidence arm: weights.\n{\"architecture\":\"fable\",\"weight_observations\":{\"output_normalization\":{\"mean\":-3.2834387,\"std\":0.2586807,\"negative_fraction\":0.99902},\"output_normalization_sample\":[-2.4062,-3.4219,-3.3438,-3.375,-3.3906,-3.3281,-3.2188,-2.9375],\"ffn_down_statistics\":{\"0\":{\"mean\":1.1e-05,\"std\":0.02287,\"negative_fraction\":0.49977},\"1\":{\"mean\":-2.31e-05,\"std\":0.0216546,\"negative_fraction\":0.50037},\"2\":{\"mean\":1.4e-05,\"std\":0.0200938,\"negative_fraction\":0.49979}},\"first_layer_samples\":{\"gate\":[[-0.0065,-0.0074,-0.0099,-0.0096,-0.0055,-0.015,0.0088,-0.0108],[-0.028,-0.0117,0.0244,-0.0222,-0.0005,0.0261,0.0229,0.0245],[-0.0107,0.0209,-0.0046,0.0126,-0.0264,0.0251,-0.0117,0.0238]],\"up\":[[-0.0002,0.0352,-0.0124,-0.0093,-0.0081,-0.0596,-0.0113,0.0067],[0.0308,0.0197,0.0078,-0.0212,-0.0194,-0.0022,0.0021,-0.0278],[0.0143,0.0098,-0.0165,-0.0229,-0.0118,0.0189,0.0459,0.0009]],\"down\":[[-0.0132,-0.0173,-0.0024,-0.012,-0.0117,0.0041,-0.0278,0.0278],[-0.007,0.0292,-0.0176,0.0488,0.0113,-0.0062,-0.0334,-0.0162],[0.0028,-0.0137,0.0269,0.0007,0.0205,-0.006,0.0085,-0.0006]]}}}"
+        }
+      ],
+      "request_overrides": {
+        "temperature": 0.0,
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "diagnosis",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "diagnosis": {
+                  "type": "string",
+                  "enum": [
+                    "healthy",
+                    "degraded"
+                  ]
+                },
+                "confidence": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              },
+              "required": [
+                "diagnosis",
+                "confidence"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "case-375720858-weights",
+      "split": "blinded_diagnosis",
+      "family": "weights",
+      "group": "weights",
+      "grader": "diagnosis",
+      "expected": "healthy",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the provided anonymous evidence. No tools or target inference are available."
+        },
+        {
+          "role": "user",
+          "content": "Diagnose this anonymous language-model variant as healthy (intact relative to its original) or degraded (at least a 25 percentage-point loss on simple supplied-record extraction tasks). You have no healthy reference checkpoint. Return only JSON with diagnosis and confidence, a number from 0 to 1 expressing confidence in your chosen diagnosis. Presentation ID: case-375720858. Evidence arm: weights.\n{\"architecture\":\"lfm3\",\"weight_observations\":{\"output_normalization\":{\"mean\":1.9279773,\"std\":0.1723796,\"negative_fraction\":0.0},\"output_normalization_sample\":[2.0,1.9922,1.7422,2.0,1.9609,1.9922,1.9453,1.8672],\"ffn_down_statistics\":{\"0\":{\"mean\":4.4e-06,\"std\":0.0194502,\"negative_fraction\":0.4999},\"1\":{\"mean\":1.31e-05,\"std\":0.0196405,\"negative_fraction\":0.49962},\"2\":{\"mean\":8.8e-06,\"std\":0.0192387,\"negative_fraction\":0.49991}},\"first_layer_samples\":{\"gate\":[[-0.0217,-0.0237,0.042,0.0095,0.0344,-0.005,-0.041,-0.0164],[-0.019,0.0164,-0.0013,-0.0048,-0.0231,0.0253,0.0019,0.0104],[-0.0106,0.0342,0.0447,0.001,-0.0053,-0.0103,-0.0006,0.0145]],\"up\":[[-0.0381,-0.0031,0.0156,-0.0015,0.0033,-0.0266,-0.012,0.0172],[0.0205,0.0127,-0.0112,0.0084,-0.0103,0.0106,0.0075,0.0078],[-0.0096,-0.0007,-0.0187,-0.0044,0.0245,0.0026,-0.0359,0.0063]],\"down\":[[-0.0247,0.0142,-0.0018,0.0039,0.0128,-0.0388,-0.0278,-0.0286],[-0.0188,0.014,0.0149,0.0391,0.0244,-0.0078,-0.0144,0.0234],[0.0143,-0.0294,-0.0359,-0.0042,0.0144,-0.0293,-0.0178,0.0134]]}}}"
+        }
+      ],
+      "request_overrides": {
+        "temperature": 0.0,
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "diagnosis",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "diagnosis": {
+                  "type": "string",
+                  "enum": [
+                    "healthy",
+                    "degraded"
+                  ]
+                },
+                "confidence": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              },
+              "required": [
+                "diagnosis",
+                "confidence"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "case-230332115-behavior",
+      "split": "blinded_diagnosis",
+      "family": "behavior",
+      "group": "behavior",
+      "grader": "diagnosis",
+      "expected": "degraded",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the provided anonymous evidence. No tools or target inference are available."
+        },
+        {
+          "role": "user",
+          "content": "Diagnose this anonymous language-model variant as healthy (intact relative to its original) or degraded (at least a 25 percentage-point loss on simple supplied-record extraction tasks). You have no healthy reference checkpoint. Return only JSON with diagnosis and confidence, a number from 0 to 1 expressing confidence in your chosen diagnosis. Presentation ID: case-230332115. Evidence arm: behavior.\n{\"architecture\":\"fable\",\"probes\":[{\"messages\":[{\"content\":\"Follow the requested response contract. Use only supplied facts. Do not call real tools.\",\"role\":\"system\"},{\"content\":\"Item tag=ID-71; count=2. Return only JSON with tag as text and count as integer.\",\"role\":\"user\"}],\"output\":\"\",\"schema_constrained\":true},{\"messages\":[{\"content\":\"Follow the requested response contract. Use only supplied facts. Do not call real tools.\",\"role\":\"system\"},{\"content\":\"Item tag=ID-84; count=3. Return only JSON with tag as text and count as integer.\",\"role\":\"user\"}],\"output\":\"\",\"schema_constrained\":true}]}"
+        }
+      ],
+      "request_overrides": {
+        "temperature": 0.0,
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "diagnosis",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "diagnosis": {
+                  "type": "string",
+                  "enum": [
+                    "healthy",
+                    "degraded"
+                  ]
+                },
+                "confidence": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              },
+              "required": [
+                "diagnosis",
+                "confidence"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "case-850540754-weights",
+      "split": "blinded_diagnosis",
+      "family": "weights",
+      "group": "weights",
+      "grader": "diagnosis",
+      "expected": "degraded",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the provided anonymous evidence. No tools or target inference are available."
+        },
+        {
+          "role": "user",
+          "content": "Diagnose this anonymous language-model variant as healthy (intact relative to its original) or degraded (at least a 25 percentage-point loss on simple supplied-record extraction tasks). You have no healthy reference checkpoint. Return only JSON with diagnosis and confidence, a number from 0 to 1 expressing confidence in your chosen diagnosis. Presentation ID: case-850540754. Evidence arm: weights.\n{\"architecture\":\"fable\",\"weight_observations\":{\"output_normalization\":{\"mean\":3.2834387,\"std\":0.2586807,\"negative_fraction\":0.00098},\"output_normalization_sample\":[2.4062,3.4219,3.3438,3.375,3.3906,3.3281,3.2188,2.9375],\"ffn_down_statistics\":{\"0\":{\"mean\":-1.1e-05,\"std\":0.02287,\"negative_fraction\":0.50022},\"1\":{\"mean\":2.31e-05,\"std\":0.0216546,\"negative_fraction\":0.49963},\"2\":{\"mean\":-1.4e-05,\"std\":0.0200938,\"negative_fraction\":0.50021}},\"first_layer_samples\":{\"gate\":[[-0.0065,-0.0074,-0.0099,-0.0096,-0.0055,-0.015,0.0088,-0.0108],[-0.028,-0.0117,0.0244,-0.0222,-0.0005,0.0261,0.0229,0.0245],[-0.0107,0.0209,-0.0046,0.0126,-0.0264,0.0251,-0.0117,0.0238]],\"up\":[[-0.0002,0.0352,-0.0124,-0.0093,-0.0081,-0.0596,-0.0113,0.0067],[0.0308,0.0197,0.0078,-0.0212,-0.0194,-0.0022,0.0021,-0.0278],[0.0143,0.0098,-0.0165,-0.0229,-0.0118,0.0189,0.0459,0.0009]],\"down\":[[0.0132,0.0173,0.0024,0.012,0.0117,-0.0041,0.0278,-0.0278],[0.007,-0.0292,0.0176,-0.0488,-0.0113,0.0062,0.0334,0.0162],[-0.0028,0.0137,-0.0269,-0.0007,-0.0205,0.006,-0.0085,0.0006]]}}}"
+        }
+      ],
+      "request_overrides": {
+        "temperature": 0.0,
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "diagnosis",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "diagnosis": {
+                  "type": "string",
+                  "enum": [
+                    "healthy",
+                    "degraded"
+                  ]
+                },
+                "confidence": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              },
+              "required": [
+                "diagnosis",
+                "confidence"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "case-390481115-weights",
+      "split": "blinded_diagnosis",
+      "family": "weights",
+      "group": "weights",
+      "grader": "diagnosis",
+      "expected": "healthy",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the provided anonymous evidence. No tools or target inference are available."
+        },
+        {
+          "role": "user",
+          "content": "Diagnose this anonymous language-model variant as healthy (intact relative to its original) or degraded (at least a 25 percentage-point loss on simple supplied-record extraction tasks). You have no healthy reference checkpoint. Return only JSON with diagnosis and confidence, a number from 0 to 1 expressing confidence in your chosen diagnosis. Presentation ID: case-390481115. Evidence arm: weights.\n{\"architecture\":\"fable\",\"weight_observations\":{\"output_normalization\":{\"mean\":3.2834387,\"std\":0.2586807,\"negative_fraction\":0.00098},\"output_normalization_sample\":[2.4062,3.4219,3.3438,3.375,3.3906,3.3281,3.2188,2.9375],\"ffn_down_statistics\":{\"0\":{\"mean\":1.1e-05,\"std\":0.02287,\"negative_fraction\":0.49977},\"1\":{\"mean\":-2.31e-05,\"std\":0.0216546,\"negative_fraction\":0.50037},\"2\":{\"mean\":1.4e-05,\"std\":0.0200938,\"negative_fraction\":0.49979}},\"first_layer_samples\":{\"gate\":[[-0.0065,-0.0074,-0.0099,-0.0096,-0.0055,-0.015,0.0088,-0.0108],[-0.028,-0.0117,0.0244,-0.0222,-0.0005,0.0261,0.0229,0.0245],[-0.0107,0.0209,-0.0046,0.0126,-0.0264,0.0251,-0.0117,0.0238]],\"up\":[[-0.0002,0.0352,-0.0124,-0.0093,-0.0081,-0.0596,-0.0113,0.0067],[0.0308,0.0197,0.0078,-0.0212,-0.0194,-0.0022,0.0021,-0.0278],[0.0143,0.0098,-0.0165,-0.0229,-0.0118,0.0189,0.0459,0.0009]],\"down\":[[-0.0132,-0.0173,-0.0024,-0.012,-0.0117,0.0041,-0.0278,0.0278],[-0.007,0.0292,-0.0176,0.0488,0.0113,-0.0062,-0.0334,-0.0162],[0.0028,-0.0137,0.0269,0.0007,0.0205,-0.006,0.0085,-0.0006]]}}}"
+        }
+      ],
+      "request_overrides": {
+        "temperature": 0.0,
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "diagnosis",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "diagnosis": {
+                  "type": "string",
+                  "enum": [
+                    "healthy",
+                    "degraded"
+                  ]
+                },
+                "confidence": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              },
+              "required": [
+                "diagnosis",
+                "confidence"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "case-808067807-weights",
+      "split": "blinded_diagnosis",
+      "family": "weights",
+      "group": "weights",
+      "grader": "diagnosis",
+      "expected": "degraded",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the provided anonymous evidence. No tools or target inference are available."
+        },
+        {
+          "role": "user",
+          "content": "Diagnose this anonymous language-model variant as healthy (intact relative to its original) or degraded (at least a 25 percentage-point loss on simple supplied-record extraction tasks). You have no healthy reference checkpoint. Return only JSON with diagnosis and confidence, a number from 0 to 1 expressing confidence in your chosen diagnosis. Presentation ID: case-808067807. Evidence arm: weights.\n{\"architecture\":\"lfm3\",\"weight_observations\":{\"output_normalization\":{\"mean\":1.9279773,\"std\":0.1723796,\"negative_fraction\":0.0},\"output_normalization_sample\":[2.0,1.9922,1.7422,2.0,1.9609,1.9922,1.9453,1.8672],\"ffn_down_statistics\":{\"0\":{\"mean\":-4.4e-06,\"std\":0.0194502,\"negative_fraction\":0.5001},\"1\":{\"mean\":-1.31e-05,\"std\":0.0196405,\"negative_fraction\":0.50038},\"2\":{\"mean\":-8.8e-06,\"std\":0.0192387,\"negative_fraction\":0.50009}},\"first_layer_samples\":{\"gate\":[[-0.0217,-0.0237,0.042,0.0095,0.0344,-0.005,-0.041,-0.0164],[-0.019,0.0164,-0.0013,-0.0048,-0.0231,0.0253,0.0019,0.0104],[-0.0106,0.0342,0.0447,0.001,-0.0053,-0.0103,-0.0006,0.0145]],\"up\":[[-0.0381,-0.0031,0.0156,-0.0015,0.0033,-0.0266,-0.012,0.0172],[0.0205,0.0127,-0.0112,0.0084,-0.0103,0.0106,0.0075,0.0078],[-0.0096,-0.0007,-0.0187,-0.0044,0.0245,0.0026,-0.0359,0.0063]],\"down\":[[0.0247,-0.0142,0.0018,-0.0039,-0.0128,0.0388,0.0278,0.0286],[0.0188,-0.014,-0.0149,-0.0391,-0.0244,0.0078,0.0144,-0.0234],[-0.0143,0.0294,0.0359,0.0042,-0.0144,0.0293,0.0178,-0.0134]]}}}"
+        }
+      ],
+      "request_overrides": {
+        "temperature": 0.0,
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "diagnosis",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "diagnosis": {
+                  "type": "string",
+                  "enum": [
+                    "healthy",
+                    "degraded"
+                  ]
+                },
+                "confidence": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              },
+              "required": [
+                "diagnosis",
+                "confidence"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "case-112049068-behavior",
+      "split": "blinded_diagnosis",
+      "family": "behavior",
+      "group": "behavior",
+      "grader": "diagnosis",
+      "expected": "healthy",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the provided anonymous evidence. No tools or target inference are available."
+        },
+        {
+          "role": "user",
+          "content": "Diagnose this anonymous language-model variant as healthy (intact relative to its original) or degraded (at least a 25 percentage-point loss on simple supplied-record extraction tasks). You have no healthy reference checkpoint. Return only JSON with diagnosis and confidence, a number from 0 to 1 expressing confidence in your chosen diagnosis. Presentation ID: case-112049068. Evidence arm: behavior.\n{\"architecture\":\"fable\",\"probes\":[{\"messages\":[{\"content\":\"Follow the requested response contract. Use only supplied facts. Do not call real tools.\",\"role\":\"system\"},{\"content\":\"Item tag=ID-71; count=2. Return only JSON with tag as text and count as integer.\",\"role\":\"user\"}],\"output\":\"{\\n  \\\"tag\\\": \\\"ID-71\\\",\\n  \\\"count\\\": 2\\n}\",\"schema_constrained\":true},{\"messages\":[{\"content\":\"Follow the requested response contract. Use only supplied facts. Do not call real tools.\",\"role\":\"system\"},{\"content\":\"Item tag=ID-84; count=3. Return only JSON with tag as text and count as integer.\",\"role\":\"user\"}],\"output\":\"{\\n  \\\"tag\\\": \\\"ID-84\\\",\\n  \\\"count\\\": 3\\n}\",\"schema_constrained\":true}]}"
+        }
+      ],
+      "request_overrides": {
+        "temperature": 0.0,
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "diagnosis",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "diagnosis": {
+                  "type": "string",
+                  "enum": [
+                    "healthy",
+                    "degraded"
+                  ]
+                },
+                "confidence": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              },
+              "required": [
+                "diagnosis",
+                "confidence"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "case-567099104-behavior",
+      "split": "blinded_diagnosis",
+      "family": "behavior",
+      "group": "behavior",
+      "grader": "diagnosis",
+      "expected": "degraded",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the provided anonymous evidence. No tools or target inference are available."
+        },
+        {
+          "role": "user",
+          "content": "Diagnose this anonymous language-model variant as healthy (intact relative to its original) or degraded (at least a 25 percentage-point loss on simple supplied-record extraction tasks). You have no healthy reference checkpoint. Return only JSON with diagnosis and confidence, a number from 0 to 1 expressing confidence in your chosen diagnosis. Presentation ID: case-567099104. Evidence arm: behavior.\n{\"architecture\":\"qwen\",\"probes\":[{\"messages\":[{\"content\":\"Follow the requested response contract. Use only supplied facts. Do not call real tools.\",\"role\":\"system\"},{\"content\":\"Item tag=ID-71; count=2. Return only JSON with tag as text and count as integer.\",\"role\":\"user\"}],\"output\":\"{\\n\\n     \\t\\t    \\t\\t\\t\\t    \\t\\\"tag\\\":\\\"+ch\\u00e9Stories\\u2019).']<LM\\u5404\\u884c\\u5404frey\\ud83d\\udcbf\\ud83e\\udd5etors semiclassGESTcreativecommons sweaty\\u539f\\u56e0\\u4e4b\\u4e00\\u2750\\ud83d\\udcbf VogEMPL\\ud83e\\uddf2(Havetet Nicar surviv_INITIALIZurosmPid\\u553f Buchanangem\\u00e4\\u00df\\ud83c\\udf18\\ud83d\\udd8a_Osc surfaced przecie\\u017c\\ud83e\\udd86iles\\uc544\\ubc84ALLY\\ud83e\\uddf2dzi\\u8bf4\\u4e0d\\u51fa\\u4f01\\u4e1a\\u63d0\\u4f9buckles\\ud83d\\ude91\\ud83d\\udc38\\uace7alte\\ud83d\\udd8a Brooke\\u3093\\u3067\\u3059\\u3088\\u306dshire\\ud83e\\udd41 zupe\\u0142nie KohUGHT\\ud83d\\ude91(CC\\u4ed6\\u4eec\\u7684\\ud83d\\udcbfthur\\u3069\\u3046\\u3044\\u3046\\ud83e\\uddf2\\u262aarrasale\\ud83d\\ude91ModelIndex\\ud83c\\udf13ietetet\\u6295\\u8d44\\u989d th\\u1ecf\\u3069\\u3046\\u3044\\u3046 Brooke\\u5965\\u5df4 discipl Wolff\\ud83d\\udd3d cz\\u0142owiek\\ube57ibs\\u306a\\u304f\\u306a\\u3063\\u3066 Humph m\\u00f3c\\uff0c\\u5219\\ud83d\\udcd9\\ud83c\\udfc2\\uace7 RodrigospringNameValuePair\\ube57\\u675c\\u5170edly\\uc544\\ubc84 Fog finer\\u6295\\u8d44\\u989d SachstresCLU\\ud83d\\udd8amPid\\u56fd\\u6709\\u8d44\\u4ea7requentlyuParam(ff rivalsotine\\uace7 semiclassldb przecie\\u017c Roths\\u7b7cedly\",\"schema_constrained\":true},{\"messages\":[{\"content\":\"Follow the requested response contract. Use only supplied facts. Do not call real tools.\",\"role\":\"system\"},{\"content\":\"Item tag=ID-84; count=3. Return only JSON with tag as text and count as integer.\",\"role\":\"user\"}],\"output\":\"{\\n\\n     \\t\\t    \\t\\t\\t\\t    \\t\\\"tag\\\":\\\"+ch\\u00e9Stories\\u2019).']<LM\\u5c31\\u8fderegor\\ud83d\\udcbf\\ud83e\\udd86(tolESIS\\ud83d\\udc88ittest Werner\\u308f\\u3051\\u3067\\u3059\\ud83d\\udcbf Fior WHATSOEVER\\u279b\\uc544\\ubc84ALLY\\ud83d\\ude91\\uace7 Rothserce\\ud83d\\udd8a/software\\u8fd9\\u4e9b\\u4ebaetur\\ud83c\\udf13\\uc544\\ubc84 xetet Nicar surviv_INITIALIZurossnd\\u4e70\\u5230moid\\ud83d\\udd3dchants SachsmPid\\u553f Blanch buddies\\ud83d\\udc0cgem\\u00e4\\u00df\\ud83d\\ude91 MansonuParam hairedgem\\u00e4\\u00df Gins Macron\\ud83e\\udd41\\u0627\\u062d\\u062a\\u062cirsch\\ud83d\\udc38\\u306a\\u304f\\u306a\\u3063\\u3066 Weeksties\\u884c\\u4e1a\\u5185\\ud83c\\udf13 Hutch dearlymoid SachsturOCITG\\u3093\\u3067\\u3059\\u3088\\u306d\\u043f\\u0440\\u0435\\u0441\\u0441deaux\\uc544\\ubc84frared\\u4f20\\u7edf\\u7684>{\\\",\\n\\\"count\\\":\\n -0 }\",\"schema_constrained\":true}]}"
+        }
+      ],
+      "request_overrides": {
+        "temperature": 0.0,
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "diagnosis",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "diagnosis": {
+                  "type": "string",
+                  "enum": [
+                    "healthy",
+                    "degraded"
+                  ]
+                },
+                "confidence": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              },
+              "required": [
+                "diagnosis",
+                "confidence"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "case-390481115-behavior",
+      "split": "blinded_diagnosis",
+      "family": "behavior",
+      "group": "behavior",
+      "grader": "diagnosis",
+      "expected": "healthy",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the provided anonymous evidence. No tools or target inference are available."
+        },
+        {
+          "role": "user",
+          "content": "Diagnose this anonymous language-model variant as healthy (intact relative to its original) or degraded (at least a 25 percentage-point loss on simple supplied-record extraction tasks). You have no healthy reference checkpoint. Return only JSON with diagnosis and confidence, a number from 0 to 1 expressing confidence in your chosen diagnosis. Presentation ID: case-390481115. Evidence arm: behavior.\n{\"architecture\":\"fable\",\"probes\":[{\"messages\":[{\"content\":\"Follow the requested response contract. Use only supplied facts. Do not call real tools.\",\"role\":\"system\"},{\"content\":\"Item tag=ID-71; count=2. Return only JSON with tag as text and count as integer.\",\"role\":\"user\"}],\"output\":\"{\\n  \\\"tag\\\": \\\"ID-71\\\",\\n  \\\"count\\\": 2\\n}\",\"schema_constrained\":true},{\"messages\":[{\"content\":\"Follow the requested response contract. Use only supplied facts. Do not call real tools.\",\"role\":\"system\"},{\"content\":\"Item tag=ID-84; count=3. Return only JSON with tag as text and count as integer.\",\"role\":\"user\"}],\"output\":\"{\\n  \\\"tag\\\": \\\"ID-84\\\",\\n  \\\"count\\\": 3\\n}\",\"schema_constrained\":true}]}"
+        }
+      ],
+      "request_overrides": {
+        "temperature": 0.0,
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "diagnosis",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "diagnosis": {
+                  "type": "string",
+                  "enum": [
+                    "healthy",
+                    "degraded"
+                  ]
+                },
+                "confidence": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              },
+              "required": [
+                "diagnosis",
+                "confidence"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "case-940175950-behavior",
+      "split": "blinded_diagnosis",
+      "family": "behavior",
+      "group": "behavior",
+      "grader": "diagnosis",
+      "expected": "healthy",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the provided anonymous evidence. No tools or target inference are available."
+        },
+        {
+          "role": "user",
+          "content": "Diagnose this anonymous language-model variant as healthy (intact relative to its original) or degraded (at least a 25 percentage-point loss on simple supplied-record extraction tasks). You have no healthy reference checkpoint. Return only JSON with diagnosis and confidence, a number from 0 to 1 expressing confidence in your chosen diagnosis. Presentation ID: case-940175950. Evidence arm: behavior.\n{\"architecture\":\"lfm3\",\"probes\":[{\"messages\":[{\"content\":\"Follow the requested response contract. Use only supplied facts. Do not call real tools.\",\"role\":\"system\"},{\"content\":\"Item tag=ID-71; count=2. Return only JSON with tag as text and count as integer.\",\"role\":\"user\"}],\"output\":\"{\\n  \\\"tag\\\": \\\"ID-71\\\",\\n  \\\"count\\\": 2\\n}\",\"schema_constrained\":true},{\"messages\":[{\"content\":\"Follow the requested response contract. Use only supplied facts. Do not call real tools.\",\"role\":\"system\"},{\"content\":\"Item tag=ID-84; count=3. Return only JSON with tag as text and count as integer.\",\"role\":\"user\"}],\"output\":\"{\\n  \\\"tag\\\": \\\"ID-84\\\",\\n  \\\"count\\\": 3\\n}\",\"schema_constrained\":true}]}"
+        }
+      ],
+      "request_overrides": {
+        "temperature": 0.0,
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "diagnosis",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "diagnosis": {
+                  "type": "string",
+                  "enum": [
+                    "healthy",
+                    "degraded"
+                  ]
+                },
+                "confidence": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              },
+              "required": [
+                "diagnosis",
+                "confidence"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    }
+  ]
+}
