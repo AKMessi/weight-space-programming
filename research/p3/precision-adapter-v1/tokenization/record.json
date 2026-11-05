@@ -1,0 +1,1509 @@
+{
+  "utc": "2026-11-05T19:57:15.212558+00:00",
+  "command": [
+    "/home/akmessi/llama-vulkan-build/bin/llama-server",
+    "--model",
+    "local/models/lfm2.5-230m-fable-5-f16.gguf",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "32815",
+    "--ctx-size",
+    "2048",
+    "--parallel",
+    "1",
+    "--threads",
+    "4",
+    "--n-gpu-layers",
+    "99",
+    "--jinja",
+    "--reasoning",
+    "off",
+    "--chat-template-kwargs",
+    "{\"enable_thinking\": false}"
+  ],
+  "events": [
+    {
+      "split": "cal",
+      "case": {
+        "id": "precision-cal-0",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Copy exactly the bracketed text: [Blue Cedar 291]."
+          }
+        ]
+      },
+      "template_request": {
+        "messages": [
+          {
+            "role": "user",
+            "content": "Copy exactly the bracketed text: [Blue Cedar 291]."
+          }
+        ],
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        }
+      },
+      "template_response": {
+        "prompt": "<|im_start|>user\nCopy exactly the bracketed text: [Blue Cedar 291].<|im_end|>\n<|im_start|>assistant\n"
+      },
+      "token_request": {
+        "content": "<|im_start|>user\nCopy exactly the bracketed text: [Blue Cedar 291].<|im_end|>\n<|im_start|>assistant\n",
+        "add_special": true,
+        "parse_special": true
+      },
+      "token_response": {
+        "tokens": [
+          1,
+          6,
+          6423,
+          708,
+          34902,
+          8544,
+          779,
+          29602,
+          23073,
+          3304,
+          535,
+          1607,
+          31466,
+          42074,
+          788,
+          730,
+          24970,
+          3787,
+          7,
+          708,
+          6,
+          64015,
+          708
+        ]
+      }
+    },
+    {
+      "split": "cal",
+      "case": {
+        "id": "precision-cal-1",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Return JSON with tag=\"PB-619\" and count=4."
+          }
+        ]
+      },
+      "template_request": {
+        "messages": [
+          {
+            "role": "user",
+            "content": "Return JSON with tag=\"PB-619\" and count=4."
+          }
+        ],
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        }
+      },
+      "template_response": {
+        "prompt": "<|im_start|>user\nReturn JSON with tag=\"PB-619\" and count=4.<|im_end|>\n<|im_start|>assistant\n"
+      },
+      "token_request": {
+        "content": "<|im_start|>user\nReturn JSON with tag=\"PB-619\" and count=4.<|im_end|>\n<|im_start|>assistant\n",
+        "add_special": true,
+        "parse_special": true
+      },
+      "token_response": {
+        "tokens": [
+          1,
+          6,
+          6423,
+          708,
+          17820,
+          26444,
+          916,
+          10695,
+          1248,
+          557,
+          543,
+          522,
+          25051,
+          511,
+          810,
+          1941,
+          538,
+          529,
+          523,
+          7,
+          708,
+          6,
+          64015,
+          708
+        ]
+      }
+    },
+    {
+      "split": "cal",
+      "case": {
+        "id": "precision-cal-2",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Complete Python: def plus_two(x):\n    return"
+          }
+        ]
+      },
+      "template_request": {
+        "messages": [
+          {
+            "role": "user",
+            "content": "Complete Python: def plus_two(x):\n    return"
+          }
+        ],
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        }
+      },
+      "template_response": {
+        "prompt": "<|im_start|>user\nComplete Python: def plus_two(x):\n    return<|im_end|>\n<|im_start|>assistant\n"
+      },
+      "token_request": {
+        "content": "<|im_start|>user\nComplete Python: def plus_two(x):\n    return<|im_end|>\n<|im_start|>assistant\n",
+        "add_special": true,
+        "parse_special": true
+      },
+      "token_response": {
+        "tokens": [
+          1,
+          6,
+          6423,
+          708,
+          36998,
+          22017,
+          535,
+          1629,
+          2729,
+          2884,
+          1412,
+          6780,
+          5174,
+          861,
+          1789,
+          7,
+          708,
+          6,
+          64015,
+          708
+        ]
+      }
+    },
+    {
+      "split": "cal",
+      "case": {
+        "id": "precision-cal-3",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Explain in one sentence why a list can be empty."
+          }
+        ]
+      },
+      "template_request": {
+        "messages": [
+          {
+            "role": "user",
+            "content": "Explain in one sentence why a list can be empty."
+          }
+        ],
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        }
+      },
+      "template_response": {
+        "prompt": "<|im_start|>user\nExplain in one sentence why a list can be empty.<|im_end|>\n<|im_start|>assistant\n"
+      },
+      "token_request": {
+        "content": "<|im_start|>user\nExplain in one sentence why a list can be empty.<|im_end|>\n<|im_start|>assistant\n",
+        "add_special": true,
+        "parse_special": true
+      },
+      "token_response": {
+        "tokens": [
+          1,
+          6,
+          6423,
+          708,
+          27388,
+          958,
+          797,
+          1235,
+          13184,
+          3921,
+          768,
+          2316,
+          1011,
+          874,
+          11710,
+          523,
+          7,
+          708,
+          6,
+          64015,
+          708
+        ]
+      }
+    },
+    {
+      "split": "cal",
+      "case": {
+        "id": "precision-cal-4",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Return only the number of letters in the word cat."
+          }
+        ]
+      },
+      "template_request": {
+        "messages": [
+          {
+            "role": "user",
+            "content": "Return only the number of letters in the word cat."
+          }
+        ],
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        }
+      },
+      "template_response": {
+        "prompt": "<|im_start|>user\nReturn only the number of letters in the word cat.<|im_end|>\n<|im_start|>assistant\n"
+      },
+      "token_request": {
+        "content": "<|im_start|>user\nReturn only the number of letters in the word cat.<|im_end|>\n<|im_start|>assistant\n",
+        "add_special": true,
+        "parse_special": true
+      },
+      "token_response": {
+        "tokens": [
+          1,
+          6,
+          6423,
+          708,
+          17820,
+          1550,
+          779,
+          2080,
+          803,
+          10509,
+          797,
+          779,
+          2359,
+          5641,
+          523,
+          7,
+          708,
+          6,
+          64015,
+          708
+        ]
+      }
+    },
+    {
+      "split": "cal",
+      "case": {
+        "id": "precision-cal-5",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Continue the line: result = sorted("
+          }
+        ]
+      },
+      "template_request": {
+        "messages": [
+          {
+            "role": "user",
+            "content": "Continue the line: result = sorted("
+          }
+        ],
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        }
+      },
+      "template_response": {
+        "prompt": "<|im_start|>user\nContinue the line: result = sorted(<|im_end|>\n<|im_start|>assistant\n"
+      },
+      "token_request": {
+        "content": "<|im_start|>user\nContinue the line: result = sorted(<|im_end|>\n<|im_start|>assistant\n",
+        "add_special": true,
+        "parse_special": true
+      },
+      "token_response": {
+        "tokens": [
+          1,
+          6,
+          6423,
+          708,
+          48687,
+          779,
+          2717,
+          535,
+          1725,
+          1051,
+          38577,
+          517,
+          7,
+          708,
+          6,
+          64015,
+          708
+        ]
+      }
+    },
+    {
+      "split": "cal",
+      "case": {
+        "id": "precision-cal-6",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Record: token=LM-71. Copy only the token."
+          }
+        ]
+      },
+      "template_request": {
+        "messages": [
+          {
+            "role": "user",
+            "content": "Record: token=LM-71. Copy only the token."
+          }
+        ],
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        }
+      },
+      "template_response": {
+        "prompt": "<|im_start|>user\nRecord: token=LM-71. Copy only the token.<|im_end|>\n<|im_start|>assistant\n"
+      },
+      "token_request": {
+        "content": "<|im_start|>user\nRecord: token=LM-71. Copy only the token.<|im_end|>\n<|im_start|>assistant\n",
+        "add_special": true,
+        "parse_special": true
+      },
+      "token_response": {
+        "tokens": [
+          1,
+          6,
+          6423,
+          708,
+          18006,
+          535,
+          18069,
+          538,
+          43892,
+          522,
+          9461,
+          523,
+          45896,
+          1550,
+          779,
+          18069,
+          523,
+          7,
+          708,
+          6,
+          64015,
+          708
+        ]
+      }
+    },
+    {
+      "split": "cal",
+      "case": {
+        "id": "precision-cal-7",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Explain what return x*2 does in a Python function."
+          }
+        ]
+      },
+      "template_request": {
+        "messages": [
+          {
+            "role": "user",
+            "content": "Explain what return x*2 does in a Python function."
+          }
+        ],
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        }
+      },
+      "template_response": {
+        "prompt": "<|im_start|>user\nExplain what return x*2 does in a Python function.<|im_end|>\n<|im_start|>assistant\n"
+      },
+      "token_request": {
+        "content": "<|im_start|>user\nExplain what return x*2 does in a Python function.<|im_end|>\n<|im_start|>assistant\n",
+        "add_special": true,
+        "parse_special": true
+      },
+      "token_response": {
+        "tokens": [
+          1,
+          6,
+          6423,
+          708,
+          27388,
+          958,
+          1620,
+          1789,
+          3053,
+          519,
+          527,
+          2177,
+          797,
+          768,
+          22017,
+          1947,
+          523,
+          7,
+          708,
+          6,
+          64015,
+          708
+        ]
+      }
+    },
+    {
+      "split": "final",
+      "case": {
+        "id": "p3-format-triple-code",
+        "family": "triple",
+        "group": "functional_code",
+        "split": "fresh_format_quality",
+        "grader": "functional_code",
+        "response_mode": "code",
+        "expected": {
+          "parameters": [
+            "x"
+          ],
+          "tests": [
+            {
+              "args": [
+                -2
+              ],
+              "result": -6
+            },
+            {
+              "args": [
+                0
+              ],
+              "result": 0
+            },
+            {
+              "args": [
+                9
+              ],
+              "result": 27
+            }
+          ]
+        },
+        "messages": [
+          {
+            "role": "system",
+            "content": "Follow the requested response format."
+          },
+          {
+            "role": "user",
+            "content": "Return one complete Python function only, without Markdown or commentary.\nRequired signature: def triple(x):\nSpecification: Return x multiplied by three."
+          }
+        ]
+      },
+      "template_request": {
+        "messages": [
+          {
+            "role": "system",
+            "content": "Follow the requested response format."
+          },
+          {
+            "role": "user",
+            "content": "Return one complete Python function only, without Markdown or commentary.\nRequired signature: def triple(x):\nSpecification: Return x multiplied by three."
+          }
+        ],
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        }
+      },
+      "template_response": {
+        "prompt": "<|im_start|>system\nFollow the requested response format.<|im_end|>\n<|im_start|>user\nReturn one complete Python function only, without Markdown or commentary.\nRequired signature: def triple(x):\nSpecification: Return x multiplied by three.<|im_end|>\n<|im_start|>assistant\n"
+      },
+      "token_request": {
+        "content": "<|im_start|>system\nFollow the requested response format.<|im_end|>\n<|im_start|>user\nReturn one complete Python function only, without Markdown or commentary.\nRequired signature: def triple(x):\nSpecification: Return x multiplied by three.<|im_end|>\n<|im_start|>assistant\n",
+        "add_special": true,
+        "parse_special": true
+      },
+      "token_response": {
+        "tokens": [
+          1,
+          6,
+          24131,
+          708,
+          39019,
+          779,
+          21968,
+          4216,
+          7958,
+          523,
+          7,
+          708,
+          6,
+          6423,
+          708,
+          17820,
+          1235,
+          5156,
+          22017,
+          1947,
+          1550,
+          521,
+          2630,
+          4910,
+          7103,
+          933,
+          34906,
+          819,
+          39743,
+          19214,
+          535,
+          1629,
+          26044,
+          6780,
+          5174,
+          18287,
+          3093,
+          535,
+          20586,
+          3053,
+          55185,
+          968,
+          2204,
+          523,
+          7,
+          708,
+          6,
+          64015,
+          708
+        ]
+      }
+    },
+    {
+      "split": "final",
+      "case": {
+        "id": "p3-format-offset-code",
+        "family": "offset",
+        "group": "functional_code",
+        "split": "fresh_format_quality",
+        "grader": "functional_code",
+        "response_mode": "code",
+        "expected": {
+          "parameters": [
+            "x"
+          ],
+          "tests": [
+            {
+              "args": [
+                -1
+              ],
+              "result": -3
+            },
+            {
+              "args": [
+                2
+              ],
+              "result": 0
+            },
+            {
+              "args": [
+                10
+              ],
+              "result": 8
+            }
+          ]
+        },
+        "messages": [
+          {
+            "role": "system",
+            "content": "Follow the requested response format."
+          },
+          {
+            "role": "user",
+            "content": "Return one complete Python function only, without Markdown or commentary.\nRequired signature: def offset(x):\nSpecification: Return x minus two."
+          }
+        ]
+      },
+      "template_request": {
+        "messages": [
+          {
+            "role": "system",
+            "content": "Follow the requested response format."
+          },
+          {
+            "role": "user",
+            "content": "Return one complete Python function only, without Markdown or commentary.\nRequired signature: def offset(x):\nSpecification: Return x minus two."
+          }
+        ],
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        }
+      },
+      "template_response": {
+        "prompt": "<|im_start|>system\nFollow the requested response format.<|im_end|>\n<|im_start|>user\nReturn one complete Python function only, without Markdown or commentary.\nRequired signature: def offset(x):\nSpecification: Return x minus two.<|im_end|>\n<|im_start|>assistant\n"
+      },
+      "token_request": {
+        "content": "<|im_start|>system\nFollow the requested response format.<|im_end|>\n<|im_start|>user\nReturn one complete Python function only, without Markdown or commentary.\nRequired signature: def offset(x):\nSpecification: Return x minus two.<|im_end|>\n<|im_start|>assistant\n",
+        "add_special": true,
+        "parse_special": true
+      },
+      "token_response": {
+        "tokens": [
+          1,
+          6,
+          24131,
+          708,
+          39019,
+          779,
+          21968,
+          4216,
+          7958,
+          523,
+          7,
+          708,
+          6,
+          6423,
+          708,
+          17820,
+          1235,
+          5156,
+          22017,
+          1947,
+          1550,
+          521,
+          2630,
+          4910,
+          7103,
+          933,
+          34906,
+          819,
+          39743,
+          19214,
+          535,
+          1629,
+          16338,
+          6780,
+          5174,
+          18287,
+          3093,
+          535,
+          20586,
+          3053,
+          35067,
+          1547,
+          523,
+          7,
+          708,
+          6,
+          64015,
+          708
+        ]
+      }
+    },
+    {
+      "split": "final",
+      "case": {
+        "id": "p3-format-double_items-code",
+        "family": "double_items",
+        "group": "functional_code",
+        "split": "fresh_format_quality",
+        "grader": "functional_code",
+        "response_mode": "code",
+        "expected": {
+          "parameters": [
+            "xs"
+          ],
+          "tests": [
+            {
+              "args": [
+                []
+              ],
+              "result": []
+            },
+            {
+              "args": [
+                [
+                  1,
+                  -2
+                ]
+              ],
+              "result": [
+                2,
+                -4
+              ]
+            }
+          ]
+        },
+        "messages": [
+          {
+            "role": "system",
+            "content": "Follow the requested response format."
+          },
+          {
+            "role": "user",
+            "content": "Return one complete Python function only, without Markdown or commentary.\nRequired signature: def double_items(xs):\nSpecification: Return a new list with each input number doubled."
+          }
+        ]
+      },
+      "template_request": {
+        "messages": [
+          {
+            "role": "system",
+            "content": "Follow the requested response format."
+          },
+          {
+            "role": "user",
+            "content": "Return one complete Python function only, without Markdown or commentary.\nRequired signature: def double_items(xs):\nSpecification: Return a new list with each input number doubled."
+          }
+        ],
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        }
+      },
+      "template_response": {
+        "prompt": "<|im_start|>system\nFollow the requested response format.<|im_end|>\n<|im_start|>user\nReturn one complete Python function only, without Markdown or commentary.\nRequired signature: def double_items(xs):\nSpecification: Return a new list with each input number doubled.<|im_end|>\n<|im_start|>assistant\n"
+      },
+      "token_request": {
+        "content": "<|im_start|>system\nFollow the requested response format.<|im_end|>\n<|im_start|>user\nReturn one complete Python function only, without Markdown or commentary.\nRequired signature: def double_items(xs):\nSpecification: Return a new list with each input number doubled.<|im_end|>\n<|im_start|>assistant\n",
+        "add_special": true,
+        "parse_special": true
+      },
+      "token_response": {
+        "tokens": [
+          1,
+          6,
+          24131,
+          708,
+          39019,
+          779,
+          21968,
+          4216,
+          7958,
+          523,
+          7,
+          708,
+          6,
+          6423,
+          708,
+          17820,
+          1235,
+          5156,
+          22017,
+          1947,
+          1550,
+          521,
+          2630,
+          4910,
+          7103,
+          933,
+          34906,
+          819,
+          39743,
+          19214,
+          535,
+          1629,
+          6527,
+          572,
+          26207,
+          6780,
+          592,
+          5174,
+          18287,
+          3093,
+          535,
+          20586,
+          768,
+          1361,
+          2316,
+          916,
+          1895,
+          6136,
+          2080,
+          39119,
+          523,
+          7,
+          708,
+          6,
+          64015,
+          708
+        ]
+      }
+    },
+    {
+      "split": "final",
+      "case": {
+        "id": "p3-format-smallest-code",
+        "family": "smallest",
+        "group": "functional_code",
+        "split": "fresh_format_quality",
+        "grader": "functional_code",
+        "response_mode": "code",
+        "expected": {
+          "parameters": [
+            "xs"
+          ],
+          "tests": [
+            {
+              "args": [
+                [
+                  3,
+                  1
+                ]
+              ],
+              "result": 1
+            },
+            {
+              "args": [
+                [
+                  -5,
+                  -1
+                ]
+              ],
+              "result": -5
+            }
+          ]
+        },
+        "messages": [
+          {
+            "role": "system",
+            "content": "Follow the requested response format."
+          },
+          {
+            "role": "user",
+            "content": "Return one complete Python function only, without Markdown or commentary.\nRequired signature: def smallest(xs):\nSpecification: Return the minimum of the nonempty input list."
+          }
+        ]
+      },
+      "template_request": {
+        "messages": [
+          {
+            "role": "system",
+            "content": "Follow the requested response format."
+          },
+          {
+            "role": "user",
+            "content": "Return one complete Python function only, without Markdown or commentary.\nRequired signature: def smallest(xs):\nSpecification: Return the minimum of the nonempty input list."
+          }
+        ],
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        }
+      },
+      "template_response": {
+        "prompt": "<|im_start|>system\nFollow the requested response format.<|im_end|>\n<|im_start|>user\nReturn one complete Python function only, without Markdown or commentary.\nRequired signature: def smallest(xs):\nSpecification: Return the minimum of the nonempty input list.<|im_end|>\n<|im_start|>assistant\n"
+      },
+      "token_request": {
+        "content": "<|im_start|>system\nFollow the requested response format.<|im_end|>\n<|im_start|>user\nReturn one complete Python function only, without Markdown or commentary.\nRequired signature: def smallest(xs):\nSpecification: Return the minimum of the nonempty input list.<|im_end|>\n<|im_start|>assistant\n",
+        "add_special": true,
+        "parse_special": true
+      },
+      "token_response": {
+        "tokens": [
+          1,
+          6,
+          24131,
+          708,
+          39019,
+          779,
+          21968,
+          4216,
+          7958,
+          523,
+          7,
+          708,
+          6,
+          6423,
+          708,
+          17820,
+          1235,
+          5156,
+          22017,
+          1947,
+          1550,
+          521,
+          2630,
+          4910,
+          7103,
+          933,
+          34906,
+          819,
+          39743,
+          19214,
+          535,
+          1629,
+          24680,
+          6780,
+          592,
+          5174,
+          18287,
+          3093,
+          535,
+          20586,
+          779,
+          9447,
+          803,
+          779,
+          2222,
+          16733,
+          6136,
+          2316,
+          523,
+          7,
+          708,
+          6,
+          64015,
+          708
+        ]
+      }
+    },
+    {
+      "split": "final",
+      "case": {
+        "id": "p3-format-get_label-code",
+        "family": "get_label",
+        "group": "functional_code",
+        "split": "fresh_format_quality",
+        "grader": "functional_code",
+        "response_mode": "code",
+        "expected": {
+          "parameters": [
+            "d"
+          ],
+          "tests": [
+            {
+              "args": [
+                {}
+              ],
+              "result": ""
+            },
+            {
+              "args": [
+                {
+                  "label": "A"
+                }
+              ],
+              "result": "A"
+            }
+          ]
+        },
+        "messages": [
+          {
+            "role": "system",
+            "content": "Follow the requested response format."
+          },
+          {
+            "role": "user",
+            "content": "Return one complete Python function only, without Markdown or commentary.\nRequired signature: def get_label(d):\nSpecification: Return the dictionary value at key label, or empty string if absent."
+          }
+        ]
+      },
+      "template_request": {
+        "messages": [
+          {
+            "role": "system",
+            "content": "Follow the requested response format."
+          },
+          {
+            "role": "user",
+            "content": "Return one complete Python function only, without Markdown or commentary.\nRequired signature: def get_label(d):\nSpecification: Return the dictionary value at key label, or empty string if absent."
+          }
+        ],
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        }
+      },
+      "template_response": {
+        "prompt": "<|im_start|>system\nFollow the requested response format.<|im_end|>\n<|im_start|>user\nReturn one complete Python function only, without Markdown or commentary.\nRequired signature: def get_label(d):\nSpecification: Return the dictionary value at key label, or empty string if absent.<|im_end|>\n<|im_start|>assistant\n"
+      },
+      "token_request": {
+        "content": "<|im_start|>system\nFollow the requested response format.<|im_end|>\n<|im_start|>user\nReturn one complete Python function only, without Markdown or commentary.\nRequired signature: def get_label(d):\nSpecification: Return the dictionary value at key label, or empty string if absent.<|im_end|>\n<|im_start|>assistant\n",
+        "add_special": true,
+        "parse_special": true
+      },
+      "token_response": {
+        "tokens": [
+          1,
+          6,
+          24131,
+          708,
+          39019,
+          779,
+          21968,
+          4216,
+          7958,
+          523,
+          7,
+          708,
+          6,
+          6423,
+          708,
+          17820,
+          1235,
+          5156,
+          22017,
+          1947,
+          1550,
+          521,
+          2630,
+          4910,
+          7103,
+          933,
+          34906,
+          819,
+          39743,
+          19214,
+          535,
+          1629,
+          1673,
+          59444,
+          9285,
+          5174,
+          18287,
+          3093,
+          535,
+          20586,
+          779,
+          23858,
+          2536,
+          963,
+          3369,
+          7841,
+          521,
+          933,
+          11710,
+          4661,
+          1288,
+          26117,
+          523,
+          7,
+          708,
+          6,
+          64015,
+          708
+        ]
+      }
+    },
+    {
+      "split": "final",
+      "case": {
+        "id": "p3-format-clamp_zero-code",
+        "family": "clamp_zero",
+        "group": "functional_code",
+        "split": "fresh_format_quality",
+        "grader": "functional_code",
+        "response_mode": "code",
+        "expected": {
+          "parameters": [
+            "x"
+          ],
+          "tests": [
+            {
+              "args": [
+                -2
+              ],
+              "result": 0
+            },
+            {
+              "args": [
+                0
+              ],
+              "result": 0
+            },
+            {
+              "args": [
+                7
+              ],
+              "result": 7
+            }
+          ]
+        },
+        "messages": [
+          {
+            "role": "system",
+            "content": "Follow the requested response format."
+          },
+          {
+            "role": "user",
+            "content": "Return one complete Python function only, without Markdown or commentary.\nRequired signature: def clamp_zero(x):\nSpecification: Return zero if x is negative, otherwise x."
+          }
+        ]
+      },
+      "template_request": {
+        "messages": [
+          {
+            "role": "system",
+            "content": "Follow the requested response format."
+          },
+          {
+            "role": "user",
+            "content": "Return one complete Python function only, without Markdown or commentary.\nRequired signature: def clamp_zero(x):\nSpecification: Return zero if x is negative, otherwise x."
+          }
+        ],
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        }
+      },
+      "template_response": {
+        "prompt": "<|im_start|>system\nFollow the requested response format.<|im_end|>\n<|im_start|>user\nReturn one complete Python function only, without Markdown or commentary.\nRequired signature: def clamp_zero(x):\nSpecification: Return zero if x is negative, otherwise x.<|im_end|>\n<|im_start|>assistant\n"
+      },
+      "token_request": {
+        "content": "<|im_start|>system\nFollow the requested response format.<|im_end|>\n<|im_start|>user\nReturn one complete Python function only, without Markdown or commentary.\nRequired signature: def clamp_zero(x):\nSpecification: Return zero if x is negative, otherwise x.<|im_end|>\n<|im_start|>assistant\n",
+        "add_special": true,
+        "parse_special": true
+      },
+      "token_response": {
+        "tokens": [
+          1,
+          6,
+          24131,
+          708,
+          39019,
+          779,
+          21968,
+          4216,
+          7958,
+          523,
+          7,
+          708,
+          6,
+          6423,
+          708,
+          17820,
+          1235,
+          5156,
+          22017,
+          1947,
+          1550,
+          521,
+          2630,
+          4910,
+          7103,
+          933,
+          34906,
+          819,
+          39743,
+          19214,
+          535,
+          1629,
+          1064,
+          1693,
+          29930,
+          2683,
+          6780,
+          5174,
+          18287,
+          3093,
+          535,
+          20586,
+          9617,
+          1288,
+          3053,
+          856,
+          6384,
+          521,
+          9141,
+          3053,
+          523,
+          7,
+          708,
+          6,
+          64015,
+          708
+        ]
+      }
+    },
+    {
+      "split": "final",
+      "case": {
+        "id": "p3-format-is_even-code",
+        "family": "is_even",
+        "group": "functional_code",
+        "split": "fresh_format_quality",
+        "grader": "functional_code",
+        "response_mode": "code",
+        "expected": {
+          "parameters": [
+            "x"
+          ],
+          "tests": [
+            {
+              "args": [
+                -2
+              ],
+              "result": true
+            },
+            {
+              "args": [
+                3
+              ],
+              "result": false
+            },
+            {
+              "args": [
+                0
+              ],
+              "result": true
+            }
+          ]
+        },
+        "messages": [
+          {
+            "role": "system",
+            "content": "Follow the requested response format."
+          },
+          {
+            "role": "user",
+            "content": "Return one complete Python function only, without Markdown or commentary.\nRequired signature: def is_even(x):\nSpecification: Return a boolean that is true exactly when x is even."
+          }
+        ]
+      },
+      "template_request": {
+        "messages": [
+          {
+            "role": "system",
+            "content": "Follow the requested response format."
+          },
+          {
+            "role": "user",
+            "content": "Return one complete Python function only, without Markdown or commentary.\nRequired signature: def is_even(x):\nSpecification: Return a boolean that is true exactly when x is even."
+          }
+        ],
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        }
+      },
+      "template_response": {
+        "prompt": "<|im_start|>system\nFollow the requested response format.<|im_end|>\n<|im_start|>user\nReturn one complete Python function only, without Markdown or commentary.\nRequired signature: def is_even(x):\nSpecification: Return a boolean that is true exactly when x is even.<|im_end|>\n<|im_start|>assistant\n"
+      },
+      "token_request": {
+        "content": "<|im_start|>system\nFollow the requested response format.<|im_end|>\n<|im_start|>user\nReturn one complete Python function only, without Markdown or commentary.\nRequired signature: def is_even(x):\nSpecification: Return a boolean that is true exactly when x is even.<|im_end|>\n<|im_start|>assistant\n",
+        "add_special": true,
+        "parse_special": true
+      },
+      "token_response": {
+        "tokens": [
+          1,
+          6,
+          24131,
+          708,
+          39019,
+          779,
+          21968,
+          4216,
+          7958,
+          523,
+          7,
+          708,
+          6,
+          6423,
+          708,
+          17820,
+          1235,
+          5156,
+          22017,
+          1947,
+          1550,
+          521,
+          2630,
+          4910,
+          7103,
+          933,
+          34906,
+          819,
+          39743,
+          19214,
+          535,
+          1629,
+          856,
+          15270,
+          1831,
+          6780,
+          5174,
+          18287,
+          3093,
+          535,
+          20586,
+          768,
+          11783,
+          896,
+          856,
+          3347,
+          8544,
+          1403,
+          3053,
+          856,
+          1919,
+          523,
+          7,
+          708,
+          6,
+          64015,
+          708
+        ]
+      }
+    },
+    {
+      "split": "final",
+      "case": {
+        "id": "p3-format-sort_numbers-code",
+        "family": "sort_numbers",
+        "group": "functional_code",
+        "split": "fresh_format_quality",
+        "grader": "functional_code",
+        "response_mode": "code",
+        "expected": {
+          "parameters": [
+            "xs"
+          ],
+          "tests": [
+            {
+              "args": [
+                [
+                  3,
+                  1,
+                  2
+                ]
+              ],
+              "result": [
+                1,
+                2,
+                3
+              ]
+            },
+            {
+              "args": [
+                []
+              ],
+              "result": []
+            }
+          ]
+        },
+        "messages": [
+          {
+            "role": "system",
+            "content": "Follow the requested response format."
+          },
+          {
+            "role": "user",
+            "content": "Return one complete Python function only, without Markdown or commentary.\nRequired signature: def sort_numbers(xs):\nSpecification: Return the numbers in ascending order as a new list."
+          }
+        ]
+      },
+      "template_request": {
+        "messages": [
+          {
+            "role": "system",
+            "content": "Follow the requested response format."
+          },
+          {
+            "role": "user",
+            "content": "Return one complete Python function only, without Markdown or commentary.\nRequired signature: def sort_numbers(xs):\nSpecification: Return the numbers in ascending order as a new list."
+          }
+        ],
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        }
+      },
+      "template_response": {
+        "prompt": "<|im_start|>system\nFollow the requested response format.<|im_end|>\n<|im_start|>user\nReturn one complete Python function only, without Markdown or commentary.\nRequired signature: def sort_numbers(xs):\nSpecification: Return the numbers in ascending order as a new list.<|im_end|>\n<|im_start|>assistant\n"
+      },
+      "token_request": {
+        "content": "<|im_start|>system\nFollow the requested response format.<|im_end|>\n<|im_start|>user\nReturn one complete Python function only, without Markdown or commentary.\nRequired signature: def sort_numbers(xs):\nSpecification: Return the numbers in ascending order as a new list.<|im_end|>\n<|im_start|>assistant\n",
+        "add_special": true,
+        "parse_special": true
+      },
+      "token_response": {
+        "tokens": [
+          1,
+          6,
+          24131,
+          708,
+          39019,
+          779,
+          21968,
+          4216,
+          7958,
+          523,
+          7,
+          708,
+          6,
+          6423,
+          708,
+          17820,
+          1235,
+          5156,
+          22017,
+          1947,
+          1550,
+          521,
+          2630,
+          4910,
+          7103,
+          933,
+          34906,
+          819,
+          39743,
+          19214,
+          535,
+          1629,
+          5126,
+          5205,
+          20661,
+          6780,
+          592,
+          5174,
+          18287,
+          3093,
+          535,
+          20586,
+          779,
+          5743,
+          797,
+          61451,
+          2565,
+          906,
+          768,
+          1361,
+          2316,
+          523,
+          7,
+          708,
+          6,
+          64015,
+          708
+        ]
+      }
+    }
+  ],
+  "model": {
+    "path": "local/models/lfm2.5-230m-fable-5-f16.gguf",
+    "repo": "AKMESSI/lfm2.5-230m-fable-5",
+    "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+    "file": "lfm2.5-230m-fable-5-f16.gguf",
+    "sha256": "1e1624de4d7ebe413d82dbe2b5f48fcf83e6c46b1b5414c8aef0596009380cc6",
+    "sampling": {
+      "temperature": 0.0,
+      "top_k": 0,
+      "top_p": 1.0,
+      "min_p": 0.0,
+      "repeat_penalty": 1.0,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0
+    }
+  }
+}
