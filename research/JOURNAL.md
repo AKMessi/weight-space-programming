@@ -1015,3 +1015,7 @@ Status `complete`, 1352 generated tokens. Immutable raw inputs/responses/config/
 ### 2026-11-05T18:47:19.365908+00:00 — p3-repair-candidate-dev-protected_0.025-s17
 
 Status `complete`, 1344 generated tokens. Immutable raw inputs/responses/config/runtime and resource samples are in `runs/p3-repair-candidate-dev-protected_0.025-s17`. Interpretation is deferred to the study report; this run alone does not establish a repair.
+
+### 2026-11-05T18:47:37.088181+00:00 — p3-repair-candidate-dev-protected_0.05-s17
+
+Status `complete`, 1344 generated tokens. Immutable raw inputs/responses/config/runtime and resource samples are in `runs/p3-repair-candidate-dev-protected_0.05-s17`. Interpretation is deferred to the study report; this run alone does not establish a repair.
