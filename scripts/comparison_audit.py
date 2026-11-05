@@ -1,5 +1,5 @@
 """Audit matched request/runtime settings and individual composition interactions."""
-import json
+import argparse,json
 from pathlib import Path
 from weightlab.evidence import file_sha256,git_state,utc_now,write_json
 from weightlab.grading import grade_turns
@@ -29,7 +29,9 @@ def match(a,b,ids=None):
 
 
 def main():
-    out=Path('research/portfolio-v3/comparison-audit.json')
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--output',default='research/portfolio-v3/comparison-audit.json')
+    out=Path(parser.parse_args().output)
     if out.exists():raise FileExistsError(out)
     checks=[];interactions=[]
     engineering={c['id'] for c in json.loads(Path('datasets/portfolio/engineering.json').read_text())['cases']}

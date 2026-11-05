@@ -110,7 +110,8 @@ def figures(out,data):
     ax.invert_yaxis();ax.set_xlim(0,13.5);ax.set_xticks(range(0,13,2));ax.set_xlabel('Correct diagnoses / 12 retained presentations')
     ax.bar_label(bars,labels=[f'{x}/12' for x in correct],padding=4)
     ax.set_title('Blinded diagnosis pilot: limited evidence, injected faults')
-    fig.text(.01,.01,'Correlated layouts; 9 model-state combinations. Baselines are task-specific. No frontier-editor claim.',fontsize=9)
+    fig.text(.5,.035,'9 correlated model-state combinations; injected faults.\nTask-specific baselines; no frontier-editor claim.',
+             ha='center',va='bottom',fontsize=9)
     for extension in ['png','svg']:fig.savefig(out/f'diagnosis.{extension}',dpi=170)
     plt.close(fig)
 

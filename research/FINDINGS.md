@@ -56,7 +56,7 @@ We also executed same-source floating/Q8/Q4 comparisons for each model and verif
 
 The two fixed changes touch disjoint tensors. AB and BA were byte-identical in all three models and produced identical content/token counts on their six matched order probes. This validates the implementation of this composition, not compatibility of two useful repairs: those independent repairs were never established.
 
-The initial engineering comparison mixed 128- and 192-token output caps. The audit caught this, preserved the runs, declared the correction and repeated every affected AB/BA panel at 192 before final interpretation. Joint-evidence arms already matched at 128. The primary report uses the corrected engineering runs. Aggregate equality can hide per-case changes and floor effects; a zero interaction estimate is not evidence that all behaviors are independent.
+The initial engineering comparison mixed 128- and 192-token output caps. The audit caught this, preserved the runs, declared the correction and repeated every affected AB/BA panel at 192 before final interpretation. Joint-evidence arms already matched at 128. The primary report uses the corrected engineering runs. Aggregate equality can hide per-case changes and floor effects. The matched audit found three Fable payload interactions despite a strict-score floor: one A-only functional success is lost when B is combined, one JSON payload appears only under AB, and one positive interaction merely reflects two edits losing the same original success. A positive interaction is not automatically an improvement. [Per-case values](portfolio-v3/comparison-audit.md) are retained.
 
 [Study 4](portfolio-v3/experiment-4.md) reports the matched comparisons and the failed useful-repair prerequisite.
 

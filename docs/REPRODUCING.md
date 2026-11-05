@@ -46,6 +46,7 @@ The append-only budget ledger includes committed historical costs; new runs add 
 
 ```bash
 PYTHONPATH=src:scripts /path/to/inspection-venv/bin/python scripts/portfolio_report.py --output local/reproduced-report
+PYTHONPATH=src:scripts python3 scripts/comparison_audit.py --output local/reproduced-report/comparison-audit.json
 PYTHONPATH=src /path/to/inspection-venv/bin/python scripts/portfolio_supplements.py --output local/reproduced-report/supplement
 ```
 

@@ -15,3 +15,5 @@ Code tables use current versioned sensitivity grading: v6 separates a leading fu
 - [Experiment 5](experiment-5.md)
 
 Useful-repair and composition prerequisites must be read separately from completed stress measurements. Unsupported activation methods, a precision allocator, a large independently useful patch library, interactive frontier diagnosis, and paper-scale independent confirmation have not been performed. See machine-readable results for every source hash, actual run and decision.
+
+**Historical analysis snapshot:** the engineering composition table here mixed 128- and 192-token caps. All affected comparisons were repeated at 192. Use [portfolio-v3](../portfolio-v3/README.md) for the corrected final analysis; the original runs and this snapshot remain preserved.
