@@ -745,3 +745,7 @@ The first final-report build stopped while exporting legacy regrades: the earlie
 ### Composition-cap audit and declared correction
 
 Final comparison audit found that initial AB/BA engineering calls allowed 128 output tokens, whereas the reused original/A/B/R study-1 calls allowed 192. This is a nuisance-variable mismatch even where aggregate successes agree. The original runs and first complete analysis snapshot (`portfolio-v2`) stay available. Six explicitly versioned AB/BA runs will match 192 tokens before final composition interpretation. The joint-evidence calls already all use 128. No candidate or dataset changes are allowed. Final reports move to `portfolio-v3`; v2 is a prior analysis snapshot with this disclosed limitation.
+
+### 2026-11-05T13:51:42.218412+00:00 — p2-e4engineering-v2-qwen3_q8_AB-s17
+
+Run status: complete; generated tokens: 357. Group counts: `{"functional_code": {"attempted": 6, "cutoff": 0, "payload_correct": 6, "responses": 6, "success": 6}, "literal_copy": {"attempted": 6, "cutoff": 0, "payload_correct": 6, "responses": 6, "success": 0}, "structured": {"attempted": 6, "cutoff": 0, "payload_correct": 6, "responses": 6, "success": 0}}`. Full immutable requests, raw responses, and settings are in `runs/p2-e4engineering-v2-qwen3_q8_AB-s17`. These counts are observations; interpretation is deferred to the study report.
