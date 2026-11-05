@@ -1,0 +1,57 @@
+{
+  "utc": "2026-11-05T18:22:58.185335+00:00",
+  "git": {
+    "commit": "eb35e2325cfb915fcf62eb84d9380a3d89d77aae",
+    "status": " M research/budget.jsonl\n?? research/p3/lossless-capsules-v1/\n?? runs/p3-repair-switch-dev-original-fable_float-s17/"
+  },
+  "base": {
+    "path": "artifacts/p3/capsules/rank16-predictor.gguf",
+    "sha256": "d0b3ea424592e1df1055037fe15bba9b35eb75ffd787d5235707ada53c5275ea"
+  },
+  "target": {
+    "path": "local/models/lfm2.5-230m-fable-5-f16.gguf",
+    "repo": "AKMESSI/lfm2.5-230m-fable-5",
+    "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+    "file": "lfm2.5-230m-fable-5-f16.gguf",
+    "sha256": "1e1624de4d7ebe413d82dbe2b5f48fcf83e6c46b1b5414c8aef0596009380cc6",
+    "sampling": {
+      "temperature": 0.0,
+      "top_k": 0,
+      "top_p": 1.0,
+      "min_p": 0.0,
+      "repeat_penalty": 1.0,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0
+    }
+  },
+  "output": "artifacts/p3/capsules/rank16-residual.wpatch",
+  "format": "weightlab-gguf-xor-v1",
+  "status": "verified",
+  "zlib_version": "1.3.1",
+  "changed_tensors": [
+    "blk.10.attn_k.weight",
+    "blk.10.attn_q.weight",
+    "blk.10.attn_v.weight",
+    "blk.12.attn_k.weight",
+    "blk.12.attn_q.weight",
+    "blk.12.attn_v.weight",
+    "blk.2.attn_k.weight",
+    "blk.2.attn_q.weight",
+    "blk.2.attn_v.weight",
+    "blk.4.attn_k.weight",
+    "blk.4.attn_q.weight",
+    "blk.4.attn_v.weight",
+    "blk.6.attn_k.weight",
+    "blk.6.attn_q.weight",
+    "blk.6.attn_v.weight",
+    "blk.8.attn_k.weight",
+    "blk.8.attn_q.weight",
+    "blk.8.attn_v.weight"
+  ],
+  "unchanged_tensors": 114,
+  "patch_sha256": "232ae9dda72bc8a6696ca542c939a426bfa89bdc46ed3ffb174591ef65f2d3cf",
+  "patch_bytes": 17195497,
+  "target_bytes": 461883712,
+  "seconds": 9.795054261000587,
+  "note": "Exact delta encoding, not a learned repair or new compression algorithm."
+}
