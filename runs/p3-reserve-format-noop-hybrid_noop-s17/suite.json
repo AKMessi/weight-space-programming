@@ -1,0 +1,685 @@
+{
+  "name": "p3-format-noop-v1",
+  "cases": [
+    {
+      "id": "p3-format-triple-code",
+      "family": "triple",
+      "group": "functional_code",
+      "split": "fresh_format_quality",
+      "grader": "functional_code",
+      "response_mode": "code",
+      "expected": {
+        "parameters": [
+          "x"
+        ],
+        "tests": [
+          {
+            "args": [
+              -2
+            ],
+            "result": -6
+          },
+          {
+            "args": [
+              0
+            ],
+            "result": 0
+          },
+          {
+            "args": [
+              9
+            ],
+            "result": 27
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response format."
+        },
+        {
+          "role": "user",
+          "content": "Return one complete Python function only, without Markdown or commentary.\nRequired signature: def triple(x):\nSpecification: Return x multiplied by three."
+        }
+      ]
+    },
+    {
+      "id": "p3-format-offset-code",
+      "family": "offset",
+      "group": "functional_code",
+      "split": "fresh_format_quality",
+      "grader": "functional_code",
+      "response_mode": "code",
+      "expected": {
+        "parameters": [
+          "x"
+        ],
+        "tests": [
+          {
+            "args": [
+              -1
+            ],
+            "result": -3
+          },
+          {
+            "args": [
+              2
+            ],
+            "result": 0
+          },
+          {
+            "args": [
+              10
+            ],
+            "result": 8
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response format."
+        },
+        {
+          "role": "user",
+          "content": "Return one complete Python function only, without Markdown or commentary.\nRequired signature: def offset(x):\nSpecification: Return x minus two."
+        }
+      ]
+    },
+    {
+      "id": "p3-format-double_items-code",
+      "family": "double_items",
+      "group": "functional_code",
+      "split": "fresh_format_quality",
+      "grader": "functional_code",
+      "response_mode": "code",
+      "expected": {
+        "parameters": [
+          "xs"
+        ],
+        "tests": [
+          {
+            "args": [
+              []
+            ],
+            "result": []
+          },
+          {
+            "args": [
+              [
+                1,
+                -2
+              ]
+            ],
+            "result": [
+              2,
+              -4
+            ]
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response format."
+        },
+        {
+          "role": "user",
+          "content": "Return one complete Python function only, without Markdown or commentary.\nRequired signature: def double_items(xs):\nSpecification: Return a new list with each input number doubled."
+        }
+      ]
+    },
+    {
+      "id": "p3-format-smallest-code",
+      "family": "smallest",
+      "group": "functional_code",
+      "split": "fresh_format_quality",
+      "grader": "functional_code",
+      "response_mode": "code",
+      "expected": {
+        "parameters": [
+          "xs"
+        ],
+        "tests": [
+          {
+            "args": [
+              [
+                3,
+                1
+              ]
+            ],
+            "result": 1
+          },
+          {
+            "args": [
+              [
+                -5,
+                -1
+              ]
+            ],
+            "result": -5
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response format."
+        },
+        {
+          "role": "user",
+          "content": "Return one complete Python function only, without Markdown or commentary.\nRequired signature: def smallest(xs):\nSpecification: Return the minimum of the nonempty input list."
+        }
+      ]
+    },
+    {
+      "id": "p3-format-largest-code",
+      "family": "largest",
+      "group": "functional_code",
+      "split": "fresh_format_quality",
+      "grader": "functional_code",
+      "response_mode": "code",
+      "expected": {
+        "parameters": [
+          "xs"
+        ],
+        "tests": [
+          {
+            "args": [
+              [
+                3,
+                1
+              ]
+            ],
+            "result": 3
+          },
+          {
+            "args": [
+              [
+                -5,
+                -1
+              ]
+            ],
+            "result": -1
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response format."
+        },
+        {
+          "role": "user",
+          "content": "Return one complete Python function only, without Markdown or commentary.\nRequired signature: def largest(xs):\nSpecification: Return the maximum of the nonempty input list."
+        }
+      ]
+    },
+    {
+      "id": "p3-format-mirror-code",
+      "family": "mirror",
+      "group": "functional_code",
+      "split": "fresh_format_quality",
+      "grader": "functional_code",
+      "response_mode": "code",
+      "expected": {
+        "parameters": [
+          "s"
+        ],
+        "tests": [
+          {
+            "args": [
+              "ab"
+            ],
+            "result": "ba"
+          },
+          {
+            "args": [
+              ""
+            ],
+            "result": ""
+          },
+          {
+            "args": [
+              "AbC"
+            ],
+            "result": "CbA"
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response format."
+        },
+        {
+          "role": "user",
+          "content": "Return one complete Python function only, without Markdown or commentary.\nRequired signature: def mirror(s):\nSpecification: Return the string in reversed order."
+        }
+      ]
+    },
+    {
+      "id": "p3-format-total-code",
+      "family": "total",
+      "group": "functional_code",
+      "split": "fresh_format_quality",
+      "grader": "functional_code",
+      "response_mode": "code",
+      "expected": {
+        "parameters": [
+          "xs"
+        ],
+        "tests": [
+          {
+            "args": [
+              []
+            ],
+            "result": 0
+          },
+          {
+            "args": [
+              [
+                2,
+                -3,
+                5
+              ]
+            ],
+            "result": 4
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response format."
+        },
+        {
+          "role": "user",
+          "content": "Return one complete Python function only, without Markdown or commentary.\nRequired signature: def total(xs):\nSpecification: Return the sum of the numbers in the list."
+        }
+      ]
+    },
+    {
+      "id": "p3-format-head_or_zero-code",
+      "family": "head_or_zero",
+      "group": "functional_code",
+      "split": "fresh_format_quality",
+      "grader": "functional_code",
+      "response_mode": "code",
+      "expected": {
+        "parameters": [
+          "xs"
+        ],
+        "tests": [
+          {
+            "args": [
+              []
+            ],
+            "result": 0
+          },
+          {
+            "args": [
+              [
+                3,
+                9
+              ]
+            ],
+            "result": 3
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response format."
+        },
+        {
+          "role": "user",
+          "content": "Return one complete Python function only, without Markdown or commentary.\nRequired signature: def head_or_zero(xs):\nSpecification: Return first list item, or zero if empty."
+        }
+      ]
+    },
+    {
+      "id": "p3-format-negatives-code",
+      "family": "negatives",
+      "group": "functional_code",
+      "split": "fresh_format_quality",
+      "grader": "functional_code",
+      "response_mode": "code",
+      "expected": {
+        "parameters": [
+          "xs"
+        ],
+        "tests": [
+          {
+            "args": [
+              [
+                0,
+                -2,
+                4,
+                -1
+              ]
+            ],
+            "result": [
+              -2,
+              -1
+            ]
+          },
+          {
+            "args": [
+              []
+            ],
+            "result": []
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response format."
+        },
+        {
+          "role": "user",
+          "content": "Return one complete Python function only, without Markdown or commentary.\nRequired signature: def negatives(xs):\nSpecification: Return a list of only the negative input numbers, preserving order."
+        }
+      ]
+    },
+    {
+      "id": "p3-format-absolute-code",
+      "family": "absolute",
+      "group": "functional_code",
+      "split": "fresh_format_quality",
+      "grader": "functional_code",
+      "response_mode": "code",
+      "expected": {
+        "parameters": [
+          "x"
+        ],
+        "tests": [
+          {
+            "args": [
+              -7
+            ],
+            "result": 7
+          },
+          {
+            "args": [
+              0
+            ],
+            "result": 0
+          },
+          {
+            "args": [
+              3
+            ],
+            "result": 3
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response format."
+        },
+        {
+          "role": "user",
+          "content": "Return one complete Python function only, without Markdown or commentary.\nRequired signature: def absolute(x):\nSpecification: Return the absolute value of x."
+        }
+      ]
+    },
+    {
+      "id": "p3-format-lower_label-code",
+      "family": "lower_label",
+      "group": "functional_code",
+      "split": "fresh_format_quality",
+      "grader": "functional_code",
+      "response_mode": "code",
+      "expected": {
+        "parameters": [
+          "s"
+        ],
+        "tests": [
+          {
+            "args": [
+              "AbC"
+            ],
+            "result": "abc"
+          },
+          {
+            "args": [
+              ""
+            ],
+            "result": ""
+          },
+          {
+            "args": [
+              "X-7"
+            ],
+            "result": "x-7"
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response format."
+        },
+        {
+          "role": "user",
+          "content": "Return one complete Python function only, without Markdown or commentary.\nRequired signature: def lower_label(s):\nSpecification: Return s converted to lowercase."
+        }
+      ]
+    },
+    {
+      "id": "p3-format-join_dash-code",
+      "family": "join_dash",
+      "group": "functional_code",
+      "split": "fresh_format_quality",
+      "grader": "functional_code",
+      "response_mode": "code",
+      "expected": {
+        "parameters": [
+          "xs"
+        ],
+        "tests": [
+          {
+            "args": [
+              []
+            ],
+            "result": ""
+          },
+          {
+            "args": [
+              [
+                "a",
+                "b"
+              ]
+            ],
+            "result": "a-b"
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response format."
+        },
+        {
+          "role": "user",
+          "content": "Return one complete Python function only, without Markdown or commentary.\nRequired signature: def join_dash(xs):\nSpecification: Return the list of strings joined using a dash between items."
+        }
+      ]
+    },
+    {
+      "id": "p3-format-get_label-code",
+      "family": "get_label",
+      "group": "functional_code",
+      "split": "fresh_format_quality",
+      "grader": "functional_code",
+      "response_mode": "code",
+      "expected": {
+        "parameters": [
+          "d"
+        ],
+        "tests": [
+          {
+            "args": [
+              {}
+            ],
+            "result": ""
+          },
+          {
+            "args": [
+              {
+                "label": "A"
+              }
+            ],
+            "result": "A"
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response format."
+        },
+        {
+          "role": "user",
+          "content": "Return one complete Python function only, without Markdown or commentary.\nRequired signature: def get_label(d):\nSpecification: Return the dictionary value at key label, or empty string if absent."
+        }
+      ]
+    },
+    {
+      "id": "p3-format-clamp_zero-code",
+      "family": "clamp_zero",
+      "group": "functional_code",
+      "split": "fresh_format_quality",
+      "grader": "functional_code",
+      "response_mode": "code",
+      "expected": {
+        "parameters": [
+          "x"
+        ],
+        "tests": [
+          {
+            "args": [
+              -2
+            ],
+            "result": 0
+          },
+          {
+            "args": [
+              0
+            ],
+            "result": 0
+          },
+          {
+            "args": [
+              7
+            ],
+            "result": 7
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response format."
+        },
+        {
+          "role": "user",
+          "content": "Return one complete Python function only, without Markdown or commentary.\nRequired signature: def clamp_zero(x):\nSpecification: Return zero if x is negative, otherwise x."
+        }
+      ]
+    },
+    {
+      "id": "p3-format-is_even-code",
+      "family": "is_even",
+      "group": "functional_code",
+      "split": "fresh_format_quality",
+      "grader": "functional_code",
+      "response_mode": "code",
+      "expected": {
+        "parameters": [
+          "x"
+        ],
+        "tests": [
+          {
+            "args": [
+              -2
+            ],
+            "result": true
+          },
+          {
+            "args": [
+              3
+            ],
+            "result": false
+          },
+          {
+            "args": [
+              0
+            ],
+            "result": true
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response format."
+        },
+        {
+          "role": "user",
+          "content": "Return one complete Python function only, without Markdown or commentary.\nRequired signature: def is_even(x):\nSpecification: Return a boolean that is true exactly when x is even."
+        }
+      ]
+    },
+    {
+      "id": "p3-format-sort_numbers-code",
+      "family": "sort_numbers",
+      "group": "functional_code",
+      "split": "fresh_format_quality",
+      "grader": "functional_code",
+      "response_mode": "code",
+      "expected": {
+        "parameters": [
+          "xs"
+        ],
+        "tests": [
+          {
+            "args": [
+              [
+                3,
+                1,
+                2
+              ]
+            ],
+            "result": [
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "args": [
+              []
+            ],
+            "result": []
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response format."
+        },
+        {
+          "role": "user",
+          "content": "Return one complete Python function only, without Markdown or commentary.\nRequired signature: def sort_numbers(xs):\nSpecification: Return the numbers in ascending order as a new list."
+        }
+      ]
+    }
+  ]
+}
