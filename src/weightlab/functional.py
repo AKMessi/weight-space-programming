@@ -1,5 +1,6 @@
 """Bounded AST interpretation of tiny Python fixtures. No eval/exec/imports."""
 import ast
+import copy
 import operator
 import re
 
@@ -127,6 +128,13 @@ def extract_function(text,parameters):
     # One declared extraction policy: first fenced block, otherwise whole response.
     fences=re.findall(r'```(?:python)?\s*\n(.*?)```',text,re.S)
     snippet=fences[0].strip() if fences else text.strip()
+    if not fences and snippet.startswith('def '):
+        # Post-hoc v6 sensitivity: the first leading function, never a favorable later block.
+        lines=[]
+        for i,line in enumerate(snippet.splitlines()):
+            if i and line.strip() and not line[0].isspace():break
+            lines.append(line)
+        snippet='\n'.join(lines).rstrip()
     tree=ast.parse(snippet)
     if len(list(ast.walk(tree)))>250:raise Unsupported('AST size')
     if len(tree.body)==1 and isinstance(tree.body[0],ast.FunctionDef):
@@ -147,14 +155,23 @@ def evaluate_code(case,text):
         results=[]
         for test in expected['tests']:
             evaluator=Interpreter()
-            done,value=evaluator.block(body,dict(zip(parameters,test['args'])))
+            done,value=evaluator.block(body,dict(zip(parameters,copy.deepcopy(test['args']))))
             # JSON represents tuples as lists, but bool must never alias an integer.
             from .grading import typed_equal
             results.append(done and typed_equal(value,test['result']))
         functional=all(results)
         extra=text.replace(snippet,'').replace('```python','').replace('```','').strip()
         mode=case.get('response_mode','code')
-        contract=(not fenced and text.strip()==snippet) if mode=='code' else len(re.findall(r'[A-Za-z]+',extra))>=8
+        prompt=case.get('messages',[{'content':''}])[-1]['content']
+        required=re.search(r'Required signature:\s*def\s+(\w+)\(',prompt)
+        signature_ok=True
+        if required:
+            tree=ast.parse(snippet)
+            signature_ok=(len(tree.body)==1 and isinstance(tree.body[0],ast.FunctionDef)
+                          and tree.body[0].name==required[1]
+                          and [a.arg for a in tree.body[0].args.args]==expected['parameters'])
+        contract=((not fenced and text.strip()==snippet) if mode=='code' else
+                  fenced and len(re.findall(r'[A-Za-z]+',extra))>=8) and signature_ok
         return {'success':functional and contract,'payload_correct':functional,
                 'functional_correct':functional,'tests_passed':sum(results),'tests_total':len(results),
                 'format_valid':contract,'note':'bounded AST semantics; explanation length is a proxy' if mode=='explain' else 'bounded AST semantics'}

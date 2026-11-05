@@ -26,3 +26,17 @@ class FunctionalTests(unittest.TestCase):
     def test_bounded_list_building_is_not_misclassified(self):
         case={'expected':{'parameters':['xs'],'tests':[{'args':[[1,-2]],'result':[2,-4]},{'args':[[]],'result':[]}]}}
         self.assertTrue(evaluate_code(case,'def double(xs):\n    result=[]\n    for x in xs:\n        result.append(x*2)\n    return result')['success'])
+
+    def test_function_prefix_and_signature_are_separate_from_semantics(self):
+        case={'expected':{'parameters':['a','b'],'tests':[{'args':[2,3],'result':5}]},
+              'messages':[{'content':'Required signature: def add(a, b):'}],'response_mode':'explain'}
+        result=evaluate_code(case,'def add(a, b):\n    return a+b\n\nBehavior: This returns the arithmetic sum of the two provided numbers.')
+        self.assertTrue(result['payload_correct']);self.assertFalse(result['success'])
+        case['response_mode']='code'
+        self.assertFalse(evaluate_code(case,'def wrong(a,b):\n    return a+b')['success'])
+        self.assertFalse(evaluate_code(case,'return a+b')['success'])
+
+    def test_program_cannot_mutate_frozen_test_arguments(self):
+        case={'expected':{'parameters':['xs'],'tests':[{'args':[[1]],'result':[1,2]}]}}
+        self.assertTrue(evaluate_code(case,'def append(xs):\n    xs.append(2)\n    return xs')['payload_correct'])
+        self.assertEqual(case['expected']['tests'][0]['args'],[[1]])

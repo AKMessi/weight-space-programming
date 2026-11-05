@@ -19,7 +19,7 @@ def _constant(value):
 
 
 DECODER = json.JSONDecoder(object_pairs_hook=_pairs, parse_constant=_constant)
-GRADER_VERSION = "5"
+GRADER_VERSION = "6"
 
 
 def code_payload_present(text, expected):

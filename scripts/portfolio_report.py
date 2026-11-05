@@ -1,8 +1,9 @@
 """Build all five reports from recorded evidence; missing required runs are errors."""
-import json,statistics
+import json,statistics,random
 from pathlib import Path
 from weightlab.evidence import file_sha256,git_state,utc_now,write_json
-from weightlab.grading import first_json,typed_equal
+from weightlab.grading import first_json,typed_equal,grade_turns,GRADER_VERSION
+from validation_report import upper_event_probability
 from portfolio_batch import ROOTS
 import re
 
@@ -17,7 +18,8 @@ def rows(label,key,seeds=(17,)):
         if summary['status']!='complete':raise ValueError(f'incomplete {root}')
         source=root/'responses.jsonl';SOURCES[str(source)]=file_sha256(source)
         for row in map(json.loads,source.read_text().splitlines()):
-            result.append({**row,'analysis_seed':seed})
+            result.append({**row,'recorded_grading':row['grading'],
+                           'grading':grade_turns(row['case'],row['steps']), 'analysis_seed':seed})
     return result
 
 
@@ -44,8 +46,24 @@ def pairing(original,changed,ids=None):
     b={(r['case']['id'],r['analysis_seed']):r for r in changed}
     if a.keys()!=b.keys():raise ValueError('pair mismatch')
     selected=[k for k in a if ids is None or k[0] in ids]
+    clusters={}
+    for key in selected:
+        case=a[key]['case'];identifier=key[0]
+        if case.get('followups'):
+            cluster=re.search(r'Required field:\s*(\w+)',case['messages'][-1]['content'])[1]
+        elif identifier.endswith(('-code','-explain')):cluster=identifier.rsplit('-',1)[0]
+        else:cluster=identifier.rsplit('-',1)[-1]
+        clusters.setdefault(cluster,[]).append((a[key]['grading']['success'],b[key]['grading']['success']))
+    effects=[statistics.mean(int(y)-int(x) for x,y in group) for group in clusters.values()]
+    loss_events=sum(any(x and not y for x,y in group) for group in clusters.values())
+    rng=random.Random(20261105)
+    bootstrap=sorted(statistics.mean(rng.choices(effects,k=len(effects))) for _ in range(10000))
     return {'n':len(selected),'rescues':sum(not a[k]['grading']['success'] and b[k]['grading']['success'] for k in selected),
-            'losses':sum(a[k]['grading']['success'] and not b[k]['grading']['success'] for k in selected)}
+            'losses':sum(a[k]['grading']['success'] and not b[k]['grading']['success'] for k in selected),
+            'clusters':len(clusters),'mean_cluster_gain':statistics.mean(effects),
+            'conditional_cluster_bootstrap_95':[bootstrap[249],bootstrap[9749]],
+            'one_sided_95_upper_cluster_loss_event_probability':upper_event_probability(loss_events,len(clusters)),
+            'assumptions':'Seeds, code/explanation pairs and evidence triples stay grouped. Conditional authored-item resampling only; not population certainty or independent domain sampling.'}
 
 
 def e1(out):
@@ -246,6 +264,7 @@ def main():
     if output.exists():raise FileExistsError('version reports rather than overwrite')
     output.mkdir()
     result={'utc':utc_now(),'git':git_state(),'completion_scope':'five bounded pilots with negative prerequisite closures; not five paper-ready studies',
+            'analysis_grader_version':GRADER_VERSION,'grading_note':'Post-hoc v6 functional extraction/signature sensitivity; original recorded v4/v5 and frozen selections preserved. Primary copying/JSON/evidence/diagnosis semantics unchanged.',
             'experiment_1':e1(output),'experiment_2':e2(output),'experiment_3':e3(output),'experiment_4':e4(output),'experiment_5':e5(output)}
     runs=[]
     for p in sorted(Path('runs').glob('p2-*/summary.json')):

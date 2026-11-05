@@ -162,3 +162,21 @@ def compressed_stream_size(path):
     with open(path,'rb') as source:
         while data:=source.read(CHUNK):size+=len(compressor.compress(data))
     return size+len(compressor.flush())
+
+
+def main():
+    import argparse
+    parser=argparse.ArgumentParser(description=__doc__)
+    sub=parser.add_subparsers(dest='action',required=True)
+    for kind in ['pack','apply']:
+        p=sub.add_parser(kind);p.add_argument('base');p.add_argument('other');p.add_argument('output');p.add_argument('--manifest',required=True)
+    args=parser.parse_args()
+    if args.action=='pack':
+        base={'path':str(Path(args.base).expanduser()),'sha256':file_sha256(Path(args.base).expanduser())}
+        target={'path':str(Path(args.other).expanduser()),'sha256':file_sha256(Path(args.other).expanduser())}
+        result=create_patch(base,target,args.output,args.manifest)
+    else:result=apply_patch_file(Path(args.base).expanduser(),Path(args.other).expanduser(),args.output,args.manifest)
+    print(json.dumps(result,indent=2))
+
+
+if __name__=='__main__':main()
