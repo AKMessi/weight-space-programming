@@ -1,0 +1,228 @@
+{
+  "runtime": {
+    "binary": "/home/akmessi/llama-vulkan-build/bin/llama-server",
+    "context": 2048,
+    "threads": 4,
+    "gpu_layers": 99
+  },
+  "budgets": {
+    "overall_generated_tokens": 1800000,
+    "per_run_generated_tokens": 20000
+  },
+  "models": {
+    "fable_f16": {
+      "path": "local/models/lfm2.5-230m-fable-5-f16.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "1e1624de4d7ebe413d82dbe2b5f48fcf83e6c46b1b5414c8aef0596009380cc6",
+      "sampling": {
+        "temperature": 0.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      }
+    },
+    "parent_uniform_bf16": {
+      "path": "artifacts/parent-uniform-bf16-f16.gguf",
+      "repo": "LiquidAI/LFM2.5-230M-GGUF",
+      "revision": "03502067c64ce32ac4fe87b0cec0310a1a13d3e9",
+      "file": "LFM2.5-230M-F16.gguf",
+      "sha256": "256feee13466c9a5101f2b553e58f61f284e552a4b6e8847754d9e3096f7ceed",
+      "sampling": {
+        "temperature": 0.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "local_patch_manifest": "research/patches/parent-uniform-bf16-f16.json",
+      "local_patch_manifest_sha256": "1074e5d560c48e478e54bc236dc21d896286e21278fe941cfefdcc047980c108"
+    },
+    "fable_svd4": {
+      "path": "artifacts/p3/adapters/fable_svd4.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "965e3e25aa16db88aad8b14b798c8bc3206e0e9076bae1227ae3fa7719ced3d6",
+      "sampling": {
+        "temperature": 0.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "package_path": "artifacts/p3/adapters/fable_svd4.npz",
+      "package_sha256": "e0f70adc448c0ba0a1a18ade7264885a6aa022c3635d268219dca79067ea5ce2",
+      "package_bytes": 240475,
+      "base_sha256": "256feee13466c9a5101f2b553e58f61f284e552a4b6e8847754d9e3096f7ceed"
+    },
+    "fable_svd8": {
+      "path": "artifacts/p3/adapters/fable_svd8.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "23c3c860fb0e7b39aff5aaf2a9f0c6daacfefb8e963c76940a1d7f07125e6927",
+      "sampling": {
+        "temperature": 0.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "package_path": "artifacts/p3/adapters/fable_svd8.npz",
+      "package_sha256": "43d02e625add748034adae7962093fa93f29585c832d8252f416b37f6a7da449",
+      "package_bytes": 467210,
+      "base_sha256": "256feee13466c9a5101f2b553e58f61f284e552a4b6e8847754d9e3096f7ceed"
+    },
+    "fable_svd16": {
+      "path": "artifacts/p3/adapters/fable_svd16.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "2fb3d466db8a05e9c841cd45fe76c74ae117da89da6fe6a688a5701bce49f86f",
+      "sampling": {
+        "temperature": 0.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "package_path": "artifacts/p3/adapters/fable_svd16.npz",
+      "package_sha256": "0b1f84b3d33bf65d4d3f30ed0d885f751dc4bdb34f40079e60d757c6eef50f45",
+      "package_bytes": 921223,
+      "base_sha256": "256feee13466c9a5101f2b553e58f61f284e552a4b6e8847754d9e3096f7ceed"
+    },
+    "fable_svd32": {
+      "path": "artifacts/p3/adapters/fable_svd32.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "6c6a59e41b03f68b37a107e39bb6ae8dba371589890d44a895510e5d836370a3",
+      "sampling": {
+        "temperature": 0.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "package_path": "artifacts/p3/adapters/fable_svd32.npz",
+      "package_sha256": "b3675e32d312568055ddee163951cd8c4b9e258eaf8fa3209c210e1b838ca00d",
+      "package_bytes": 1830620,
+      "base_sha256": "256feee13466c9a5101f2b553e58f61f284e552a4b6e8847754d9e3096f7ceed"
+    },
+    "fable_svd64": {
+      "path": "artifacts/p3/adapters/fable_svd64.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "4dc5e2bedb46cf62995a8ffa857122f92f90131497c0eeaeead1f1cea5d0093c",
+      "sampling": {
+        "temperature": 0.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "package_path": "artifacts/p3/adapters/fable_svd64.npz",
+      "package_sha256": "2548575eb416da66eb0f7976f650e5c97088c937f87ad92929dc95a2819bc8a8",
+      "package_bytes": 3688287,
+      "base_sha256": "256feee13466c9a5101f2b553e58f61f284e552a4b6e8847754d9e3096f7ceed"
+    },
+    "fable_svd32_bf16": {
+      "path": "artifacts/p3/adapters/fable_svd32_bf16.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "ef91088c945202b369a768f1d1b41cee3f0a067ceded1ca2ef91acabc8482a99",
+      "sampling": {
+        "temperature": 0.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "package_path": "artifacts/p3/adapters/fable_svd32_bf16.npz",
+      "package_sha256": "e71ed44cd256e358ef5d7eec9f513a7a535256087356cbb4fa83a1dbc439e419",
+      "package_bytes": 1830616,
+      "base_sha256": "256feee13466c9a5101f2b553e58f61f284e552a4b6e8847754d9e3096f7ceed"
+    },
+    "fable_int8": {
+      "path": "artifacts/p3/adapters/fable_int8.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "00bf4267315d064b03b936029379bd151a705808761f2eb4d2b07114c2ac0a82",
+      "sampling": {
+        "temperature": 0.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "package_path": "artifacts/p3/adapters/fable_int8.npz",
+      "package_sha256": "cd87d9186958f98f0884ef8f6af4b17d570c36ae72b8ccd4bb44bb0e67a0bd03",
+      "package_bytes": 11633461,
+      "base_sha256": "256feee13466c9a5101f2b553e58f61f284e552a4b6e8847754d9e3096f7ceed"
+    },
+    "fable_int4": {
+      "path": "artifacts/p3/adapters/fable_int4.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "e4967addc93bf676ba5ad16ad2b450bb853b9bf01e55323953775950cdf332e4",
+      "sampling": {
+        "temperature": 0.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "package_path": "artifacts/p3/adapters/fable_int4.npz",
+      "package_sha256": "58bba6a76b17c3fc513a85186e67a809cb877a6cb4d998e3184b53c5066d4361",
+      "package_bytes": 5082816,
+      "base_sha256": "256feee13466c9a5101f2b553e58f61f284e552a4b6e8847754d9e3096f7ceed"
+    },
+    "fable_sign": {
+      "path": "artifacts/p3/adapters/fable_sign.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "d18f16c56d5dd99a87be071aec7eb98602e9a6ae4b31483900bf2c862ead6a9e",
+      "sampling": {
+        "temperature": 0.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "package_path": "artifacts/p3/adapters/fable_sign.npz",
+      "package_sha256": "aeae078b61ed815fa0ca6d700460ba6180694f9b826e95d1b228528ac3c19425",
+      "package_bytes": 1575225,
+      "base_sha256": "256feee13466c9a5101f2b553e58f61f284e552a4b6e8847754d9e3096f7ceed"
+    }
+  }
+}
