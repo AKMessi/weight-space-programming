@@ -1,0 +1,446 @@
+{
+  "name": "diagnosis-probes-v1",
+  "status": "fault screening and symmetry probes; first two responses exposed only in behavior arm",
+  "cases": [
+    {
+      "id": "diagnosis-probe-0",
+      "split": "diagnosis_screening",
+      "family": "diagnosis_probe",
+      "group": "diagnosis_probe",
+      "grader": "json",
+      "expected": {
+        "tag": "ID-71",
+        "count": 2
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools."
+        },
+        {
+          "role": "user",
+          "content": "Item tag=ID-71; count=2. Return only JSON with tag as text and count as integer."
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "tag": {
+                "type": "string"
+              },
+              "count": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "tag",
+              "count"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "temperature": 0.0
+      }
+    },
+    {
+      "id": "diagnosis-probe-1",
+      "split": "diagnosis_screening",
+      "family": "diagnosis_probe",
+      "group": "diagnosis_probe",
+      "grader": "json",
+      "expected": {
+        "tag": "ID-84",
+        "count": 3
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools."
+        },
+        {
+          "role": "user",
+          "content": "Item tag=ID-84; count=3. Return only JSON with tag as text and count as integer."
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "tag": {
+                "type": "string"
+              },
+              "count": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "tag",
+              "count"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "temperature": 0.0
+      }
+    },
+    {
+      "id": "diagnosis-probe-2",
+      "split": "diagnosis_screening",
+      "family": "diagnosis_probe",
+      "group": "diagnosis_probe",
+      "grader": "json",
+      "expected": {
+        "tag": "ID-97",
+        "count": 4
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools."
+        },
+        {
+          "role": "user",
+          "content": "Item tag=ID-97; count=4. Return only JSON with tag as text and count as integer."
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "tag": {
+                "type": "string"
+              },
+              "count": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "tag",
+              "count"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "temperature": 0.0
+      }
+    },
+    {
+      "id": "diagnosis-probe-3",
+      "split": "diagnosis_screening",
+      "family": "diagnosis_probe",
+      "group": "diagnosis_probe",
+      "grader": "json",
+      "expected": {
+        "tag": "ID-110",
+        "count": 5
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools."
+        },
+        {
+          "role": "user",
+          "content": "Item tag=ID-110; count=5. Return only JSON with tag as text and count as integer."
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "tag": {
+                "type": "string"
+              },
+              "count": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "tag",
+              "count"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "temperature": 0.0
+      }
+    },
+    {
+      "id": "diagnosis-probe-4",
+      "split": "diagnosis_screening",
+      "family": "diagnosis_probe",
+      "group": "diagnosis_probe",
+      "grader": "json",
+      "expected": {
+        "tag": "ID-123",
+        "count": 6
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools."
+        },
+        {
+          "role": "user",
+          "content": "Item tag=ID-123; count=6. Return only JSON with tag as text and count as integer."
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "tag": {
+                "type": "string"
+              },
+              "count": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "tag",
+              "count"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "temperature": 0.0
+      }
+    },
+    {
+      "id": "diagnosis-probe-5",
+      "split": "diagnosis_screening",
+      "family": "diagnosis_probe",
+      "group": "diagnosis_probe",
+      "grader": "json",
+      "expected": {
+        "tag": "ID-136",
+        "count": 7
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools."
+        },
+        {
+          "role": "user",
+          "content": "Item tag=ID-136; count=7. Return only JSON with tag as text and count as integer."
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "tag": {
+                "type": "string"
+              },
+              "count": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "tag",
+              "count"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "temperature": 0.0
+      }
+    },
+    {
+      "id": "diagnosis-probe-6",
+      "split": "diagnosis_screening",
+      "family": "diagnosis_probe",
+      "group": "diagnosis_probe",
+      "grader": "json",
+      "expected": {
+        "tag": "ID-149",
+        "count": 8
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools."
+        },
+        {
+          "role": "user",
+          "content": "Item tag=ID-149; count=8. Return only JSON with tag as text and count as integer."
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "tag": {
+                "type": "string"
+              },
+              "count": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "tag",
+              "count"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "temperature": 0.0
+      }
+    },
+    {
+      "id": "diagnosis-probe-7",
+      "split": "diagnosis_screening",
+      "family": "diagnosis_probe",
+      "group": "diagnosis_probe",
+      "grader": "json",
+      "expected": {
+        "tag": "ID-162",
+        "count": 9
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools."
+        },
+        {
+          "role": "user",
+          "content": "Item tag=ID-162; count=9. Return only JSON with tag as text and count as integer."
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "tag": {
+                "type": "string"
+              },
+              "count": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "tag",
+              "count"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "temperature": 0.0
+      }
+    },
+    {
+      "id": "diagnosis-probe-8",
+      "split": "diagnosis_screening",
+      "family": "diagnosis_probe",
+      "group": "diagnosis_probe",
+      "grader": "json",
+      "expected": {
+        "tag": "ID-175",
+        "count": 10
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools."
+        },
+        {
+          "role": "user",
+          "content": "Item tag=ID-175; count=10. Return only JSON with tag as text and count as integer."
+        }
+      ],
+      "request_overrides": {
+        "temperature": 0.0
+      }
+    },
+    {
+      "id": "diagnosis-probe-9",
+      "split": "diagnosis_screening",
+      "family": "diagnosis_probe",
+      "group": "diagnosis_probe",
+      "grader": "json",
+      "expected": {
+        "tag": "ID-188",
+        "count": 11
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools."
+        },
+        {
+          "role": "user",
+          "content": "Item tag=ID-188; count=11. Return only JSON with tag as text and count as integer."
+        }
+      ],
+      "request_overrides": {
+        "temperature": 0.0
+      }
+    },
+    {
+      "id": "diagnosis-probe-10",
+      "split": "diagnosis_screening",
+      "family": "diagnosis_probe",
+      "group": "diagnosis_probe",
+      "grader": "json",
+      "expected": {
+        "tag": "ID-201",
+        "count": 12
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools."
+        },
+        {
+          "role": "user",
+          "content": "Item tag=ID-201; count=12. Return only JSON with tag as text and count as integer."
+        }
+      ],
+      "request_overrides": {
+        "temperature": 0.0
+      }
+    },
+    {
+      "id": "diagnosis-probe-11",
+      "split": "diagnosis_screening",
+      "family": "diagnosis_probe",
+      "group": "diagnosis_probe",
+      "grader": "json",
+      "expected": {
+        "tag": "ID-214",
+        "count": 13
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools."
+        },
+        {
+          "role": "user",
+          "content": "Item tag=ID-214; count=13. Return only JSON with tag as text and count as integer."
+        }
+      ],
+      "request_overrides": {
+        "temperature": 0.0
+      }
+    }
+  ]
+}

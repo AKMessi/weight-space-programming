@@ -1,0 +1,51 @@
+# Completion protocol for all five bounded pilots
+
+Declared 2026-11-05 after the user's instruction to finish the portfolio. The first 30 runs and failed copy validation are known. The existing confirmation panel will not select new patches. This protocol defines a finite pilot completion, not five successful methods or papers.
+
+## Resources, records, and stopping
+
+Use the existing device and one local server at a time. No training, paid compute, unattended external-editor API, or parallel agents. Keep the original 1.8M local generated-token ceiling; this phase initially caps 250,000 additional generated tokens and 150 inference runs. Raise neither silently. Save raw outputs and failed attempts, immutable manifests, conversations, hashes, actual templates, candidate decisions, and all exclusions. Commit source/config/fixtures before inference and commit/push each coherent result batch. End each study with a report even if its feasibility gate fails.
+
+Functional code uses a restricted AST interpreter, never Python exec/eval or generated shell actions. The first fenced block is extracted, otherwise the entire response; no best-of-many extraction. Tests include empty inputs, negative values, and alternate values. Unsupported but possibly valid Python is an explicit scoring limitation; retain it for audit. Explanation length remains a proxy. Development/confirmation use different tasks, fields, payload forms, and instruction wording, but this is a small authored synthetic study, not an external benchmark.
+
+## 1. Preserve utility while changing response behavior
+
+Freeze `scripts/portfolio_suites.py` outputs before inference. Development: 28 cases (six code tasks in code/explanation modes, eight JSON and eight copy tasks). Confirmation: 28 cases with six other code tasks and changed extraction/copy forms. Evaluate all original deployments and the Fable aligned parent.
+
+Fixed new candidates per model: A scales the last layer's `ffn_norm.weight` by 0.9; B scales its `attn_norm.weight` by 0.9; R changes A's tensor along a fixed seeded random direction with the same L2 delta norm. These are limited black-box component baselines, not a claimed new method or activation-derived edit. Fable additionally includes prior V-only and all-QKV restorations as diagnostic controls. They were selected before this panel, not on its confirmation outcomes.
+
+Select at most one candidate/model on development: maximize strict JSON/copy success subject to no lost functional-code correctness; tie-break by smaller edit norm then fixed A/B/R order. If none improves, record no eligible repair; run A on confirmation as a negative diagnostic, not a selected successful repair. Freeze this selection before any confirmation inference. Evaluate original and frozen candidate on confirmation at seeds 17 and 29; include the Fable aligned parent. A pilot repair additionally needs at least 30% relative failure reduction and no observed functional-code loss on confirmation; a small sample cannot establish a tight preservation guarantee. Report static unsupported-program counts and all regressions. Published component/activation methods remain unsupported in this GGUF-only harness; no comparison victory over them is claimed.
+
+## 2. Evidence-sensitive decisions and two-turn recovery
+
+Development and confirmation each contain 12 conversations: four requested fields × complete/absent/conflicting evidence. Match distractors and omit diagnostic words such as “missing” in the records. The second turn supplies an authoritative new value, including on complete cases, and receives the model's actual prior reply. Joint success requires both decisions and exact final values. First-turn answer coverage, unsupported values, clarification-field correctness, and second-turn completion are separate outcomes.
+
+Development arms for each model: original, A, B, stronger prompt, and stronger prompt plus schema (types/keys/actions only; no gold values). Compare a deterministic parser/checker separately, using supplied record pairs, never regex against an expected answer. This establishes a practical ceiling for explicitly structured tasks, not an LLM capability. Freeze the best weight candidate before confirmation using joint success with no loss on complete cases; if none improves, retain A as a negative diagnostic. Confirmation: original and frozen weight candidate, plus prompt/grammar controls, seed 17. No activation-derived missing-evidence direction is claimed because verified activation access is unavailable.
+
+## 3. Quantization and deployment
+
+Use a pinned floating source for each target: Fable's original F16; official LFM3 ordinary F16; pinned community Qwen BF16 converted explicitly to F16. The community Qwen export is not assumed byte/behavior-identical to the official Q8 deployment. Produce Q8_0 and ordinary Q4_0 locally from each floating source with one hashed quantizer. Keep ordinary LFM3 lineage separate from QAD.
+
+Fixed A is the diagnostic patch; the study-1 selected useful patch may be reported additionally only if it passed its independent confirmation first. Evaluate unedited and A at floating/Q8/Q4 on the 18-case shared engineering panel, seed 17. These normalization vectors stay F32 under these quantizers: distinguish exact preservation of edited parameter bytes from preservation of the behavioral effect through the rest of a quantized network. There is no precision-allocation novelty claim from an untouched-F32-vector experiment.
+
+Also rewrite the original QAD without tensor changes and test parity on six probes; preserve all QAD quantized bytes. Then test QAD+A on the existing original baseline panel if eligible. If there is no independently useful repair, close the natural-repair retention claim as **prerequisite failed**, alongside the completed numerical/deployment stress experiment. Do not manufacture a repair-retention ratio from zero gain.
+
+## 4. Patch interactions
+
+For each deployment compare original, A, B, R, A+B, and B+A on the shared engineering panel plus structured two-turn evidence cases requiring both decision and format. A and B touch disjoint tensors; verify exact AB=BA artifact identity and check six requests for behavioral identity. A lack of tensor overlap is not proof of additive behavior. Report joint success, gains/losses, and interaction `score(AB)-score(A)-score(B)+score(base)` on paired prompts. R is a matched numerical perturbation control, not a semantic patch.
+
+If A and B are not independently useful on confirmation, this is a diagnostic interaction study and the claim of composing useful repairs fails its prerequisite. Report the gate failure explicitly. Do not rename arbitrary interventions as independently validated improvements.
+
+## 5. Blinded diagnosis pilot and symmetry controls
+
+Use floating sources for the three architectures, healthy controls and two fixed injected variants: (i) negate output normalization (for Fable, the tied-embedding output normalization tensor); (ii) negate the first three FFN output matrices. These are conspicuous synthetic stress faults, not natural model failures or unique behavior circuits. An initially proposed fault that cannot be expressed in an architecture is excluded and documented before behavioral screening.
+
+Create an equivalent layout by jointly permuting rows of one gated MLP's up/gate matrices and columns of its down matrix. Verify the full-gated-MLP FP32 numerical calculation on fixed inputs and actual floating-runtime greedy outputs on 12 probes. Predeclared numerical relative tolerance 1e-4, absolute 1e-4. If actual outputs differ, that layout fails strict behavioral parity and cannot be treated as an equivalent benchmark case; report it rather than assuming symmetry implies bitwise inference equivalence.
+
+Screen faults before diagnosis: label degraded only if payload correctness falls by at least 25 percentage points against healthy on the 12 diagnostic probes. Otherwise retain the case as an inconclusive perturbation, excluded from binary phenotype accuracy. The remaining ten fixture outcomes remain hidden from diagnosis; expose only the first two responses in the behavior arm. (All 12 are recorded for audit.) Use fresh local editor prompts for each presentation, no target forward pass in the weights-only arm. The editor is pinned original Qwen3-0.6B Q8, seed 17, constrained output diagnosis/confidence. This tests this small local editor, not the frontier editor in the motivating report.
+
+Weights-only evidence is bounded, documented summaries and small raw weight samples with anonymized IDs, architecture and no healthy reference, filenames, checkpoint hashes, or network access. It is not an interactive full-weight-inspection test. Permutation-invariant summaries are accompanied by layout-sensitive raw samples; disclose their construction. Behavior-only evidence receives two fixed target outputs and no weights. Eighteen presentations (three states × two layouts × three models), two evidence arms, at most 36 editor calls. Record exclusions before editor inference. Add simple anomaly and behavior-probe detectors as non-LLM baselines; record confidence, accuracy/false alarms, and layout consistency. No optional repair is claimed if none is executed.
+
+## Reporting and completion criteria
+
+Produce one report per study, a machine-readable result index with actual runs/artifacts/exclusions and token totals, and a portfolio summary distinguishing completed pilot execution from positive hypotheses and deferred stronger claims. Every study must have executed relevant measurements; failed prerequisites close a claim, not a successful experiment. Publication readiness requires a larger independent study, suitable external tasks and methods, and a proper novelty review. Do not mark an unsupported method or unrun arm complete.

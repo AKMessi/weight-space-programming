@@ -10,7 +10,7 @@ import time
 
 from .evidence import append_jsonl, digest, file_sha256, git_state, utc_now, write_json
 from .budget import reserve, settle
-from .grading import GRADER_VERSION, grade
+from .grading import GRADER_VERSION, grade_turns
 from .runtime import request_json, runtime_libraries, server
 
 
@@ -26,6 +26,7 @@ def summarize(rows):
                          "payload_correct": sum(r["grading"]["payload_correct"] for r in ok),
                          "cutoff": sum(r.get("finish_reason") == "length" for r in ok)}
     return {"groups": result, "generated_tokens": sum(r.get("usage", {}).get("completion_tokens", 0) for r in rows),
+            "inference_requests":sum(len(r.get('steps',[])) or 1 for r in rows),
             "response_count": sum("grading" in r for r in rows), "attempt_count": len(rows)}
 
 
@@ -52,11 +53,11 @@ def _execute(config, model_key, suite, output, max_tokens, seed, limit):
     if actual != spec["sha256"]:
         raise ValueError(f"Artifact checksum mismatch: {model_key}")
     binary = config["runtime"]["binary"]
-    manifest = {"schema_version": 1, "started_utc": utc_now(), "purpose": "exploratory discovery",
+    manifest = {"schema_version": 2, "started_utc": utc_now(), "purpose": suite.get('status','exploratory discovery'),
                 "git": state, "python": platform.python_version(), "model_key": model_key,
                 "model": spec, "verified_model_sha256": actual, "suite_sha256": digest(suite),
                 "max_tokens": max_tokens, "seed": seed, "limit": limit, "grader_version": GRADER_VERSION,
-                "runtime": config["runtime"], "binary_sha256": file_sha256(binary),
+                "runtime": config["runtime"], "config_sha256":digest(config), "binary_sha256": file_sha256(binary),
                 "colocated_runtime_libraries": runtime_libraries(binary),
                 "runtime_version": subprocess.check_output([binary, "--version"], stderr=subprocess.STDOUT, text=True)}
     write_json(out / "manifest.json", manifest)
@@ -68,7 +69,8 @@ def _execute(config, model_key, suite, output, max_tokens, seed, limit):
             write_json(out / "runtime.json", {"command": cmd, "props": request_json(url + "/props")})
             for case in cases:
                 consumed = sum(r.get("usage", {}).get("completion_tokens", 0) for r in rows)
-                if consumed + max_tokens > max_run_tokens:
+                reservation=max_tokens*(1+len(case.get('followups',[])))
+                if consumed + reservation > max_run_tokens:
                     raise RuntimeError("Per-run budget would be exceeded")
                 sampling = spec["sampling"]
                 payload = {"model": "local", "messages": case["messages"], "seed": seed,
@@ -86,18 +88,34 @@ def _execute(config, model_key, suite, output, max_tokens, seed, limit):
                 except Exception as exc:
                     row["rendered_prompt_error"] = repr(exc)
                 request_id = f"{out}/{case['id']}/seed-{seed}"
-                reserve(request_id, max_tokens, config.get("budgets", {}).get("overall_generated_tokens", 1800000))
+                reserve(request_id, reservation, config.get("budgets", {}).get("overall_generated_tokens", 1800000))
                 append_jsonl(out / "events.jsonl", {"event": "request", **row})
                 start = time.monotonic()
                 try:
-                    response = request_json(url + "/v1/chat/completions", payload)
-                    row["raw_response"] = response
+                    steps=[]
+                    messages=list(payload['messages'])
+                    for turn,specification in enumerate([case]+case.get('followups',[])):
+                        if turn:
+                            messages += [{'role':'assistant','content':steps[-1]['content']}]+specification['messages']
+                        turn_payload={**payload,'messages':list(messages)}
+                        prompt=request_json(url+'/apply-template',turn_payload)
+                        append_jsonl(out/'events.jsonl',{'event':'turn_request','case_id':case['id'],'turn':turn+1,
+                                                        'request':turn_payload,'rendered_prompt':prompt,'utc':utc_now()})
+                        response = request_json(url + "/v1/chat/completions", turn_payload)
+                        choice=response['choices'][0]
+                        step={'request':turn_payload,'rendered_prompt':prompt,'raw_response':response,
+                              'content':choice['message'].get('content') or '', 'finish_reason':choice.get('finish_reason'),
+                              'usage':response.get('usage',{}),'timings':response.get('timings',{})}
+                        steps.append(step)
+                        append_jsonl(out/'events.jsonl',{'event':'turn_response','case_id':case['id'],'turn':turn+1,**step})
+                    row['steps']=steps
+                    row["raw_response"] = steps[-1]['raw_response']
                     row["elapsed_seconds"] = time.monotonic() - start
-                    choice = response["choices"][0]
-                    content = choice["message"].get("content") or ""
-                    row.update(content=content, finish_reason=choice.get("finish_reason"),
-                               usage=response.get("usage", {}), timings=response.get("timings", {}),
-                               grading=grade(case, content))
+                    usage={key:sum(step['usage'].get(key,0) for step in steps)
+                           for key in ('prompt_tokens','completion_tokens','total_tokens')}
+                    row.update(content=steps[-1]['content'],
+                               finish_reason='length' if any(s['finish_reason']=='length' for s in steps) else steps[-1]['finish_reason'],
+                               usage=usage,timings=steps[-1]['timings'], grading=grade_turns(case,steps))
                 except Exception as exc:
                     row.update(error=repr(exc), elapsed_seconds=time.monotonic() - start)
                     rows.append(row)

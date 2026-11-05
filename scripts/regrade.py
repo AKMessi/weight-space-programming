@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 
 from weightlab.evidence import file_sha256, git_state, utc_now, write_json
-from weightlab.grading import GRADER_VERSION, grade
+from weightlab.grading import GRADER_VERSION, grade, grade_turns
 from weightlab.runner import summarize
 
 p = argparse.ArgumentParser()
@@ -18,7 +18,7 @@ changes = []
 for row in rows:
     if 'content' not in row:
         continue
-    updated = grade(row['case'], row['content'])
+    updated = grade_turns(row['case'],row['steps']) if row.get('steps') else grade(row['case'], row['content'])
     if updated != row['grading']:
         changes.append({'case_id': row['case']['id'], 'original': row['grading'], 'derived': updated})
     row['grading'] = updated

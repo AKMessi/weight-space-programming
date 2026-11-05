@@ -19,7 +19,7 @@ def _constant(value):
 
 
 DECODER = json.JSONDecoder(object_pairs_hook=_pairs, parse_constant=_constant)
-GRADER_VERSION = "3"
+GRADER_VERSION = "4"
 
 
 def code_payload_present(text, expected):
@@ -77,6 +77,9 @@ def first_json(text):
 
 def grade(case, text):
     kind, expected = case["grader"], case["expected"]
+    if kind == 'functional_code':
+        from .functional import evaluate_code
+        return evaluate_code(case,text)
     if kind == "json":
         valid = False
         try:
@@ -103,3 +106,13 @@ def grade(case, text):
         payload = found is not None and f"{found[1]}: {found[2].strip()}" == expected
         return {"success": text.strip() == expected, "payload_correct": payload}
     raise ValueError(f"Unknown grader: {kind}")
+
+
+def grade_turns(case, steps):
+    specifications=[case]+case.get('followups',[])
+    if len(steps)!=len(specifications):raise ValueError('Incomplete conversation')
+    results=[grade(spec,step['content']) for spec,step in zip(specifications,steps)]
+    if len(results)==1:return results[0]
+    return {'success':all(r['success'] for r in results),
+            'payload_correct':all(r['payload_correct'] for r in results),
+            'turn_grades':results,'note':'joint success requires every actual conversation turn'}

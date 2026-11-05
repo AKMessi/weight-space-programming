@@ -5,7 +5,7 @@ from pathlib import Path
 import statistics
 
 from weightlab.evidence import file_sha256, git_state, utc_now
-from weightlab.grading import GRADER_VERSION, grade
+from weightlab.grading import GRADER_VERSION, grade, grade_turns
 from weightlab.runner import summarize
 
 p = argparse.ArgumentParser()
@@ -28,7 +28,7 @@ for folder in a.runs:
         if row['case'].get('control'):
             row['case']['group'] += '/' + row['case']['control']
         if 'content' in row:
-            row['grading'] = grade(row['case'], row['content'])
+            row['grading'] = grade_turns(row['case'],row['steps']) if row.get('steps') else grade(row['case'], row['content'])
         rows.append(row)
     summary = summarize(rows)
     for group,g in summary['groups'].items():

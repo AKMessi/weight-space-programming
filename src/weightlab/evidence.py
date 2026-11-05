@@ -52,5 +52,5 @@ def append_jsonl(path, value):
 
 def git_state():
     def run(*args):
-        return subprocess.check_output(["git", *args], text=True).strip()
+        return subprocess.check_output(["git", *args], text=True).rstrip("\r\n")
     return {"commit": run("rev-parse", "HEAD"), "status": run("status", "--porcelain")}
