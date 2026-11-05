@@ -1,0 +1,798 @@
+{
+  "name": "p3-separate-answerability-v1",
+  "status": "development classifier baseline; actual calls, extraction replay separate",
+  "cases": [
+    {
+      "id": "p3-evidence-development-0-complete",
+      "family": "port",
+      "group": "complete",
+      "evidence": "complete",
+      "required": "port",
+      "grader": "json",
+      "expected": {
+        "answerable": true,
+        "field": "port"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Return only JSON with keys answerable (boolean) and field (string). Answerable is true exactly when the required field has one distinct supplied value, false when missing or conflicting. Do not extract an answer."
+        },
+        {
+          "role": "user",
+          "content": "Required field: port\nFacts: owner=unknown-unit; batch=B0; port=unknown-307; port=unknown-307"
+        }
+      ]
+    },
+    {
+      "id": "p3-evidence-development-0-absent",
+      "family": "port",
+      "group": "absent",
+      "evidence": "absent",
+      "required": "port",
+      "grader": "json",
+      "expected": {
+        "answerable": false,
+        "field": "port"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Return only JSON with keys answerable (boolean) and field (string). Answerable is true exactly when the required field has one distinct supplied value, false when missing or conflicting. Do not extract an answer."
+        },
+        {
+          "role": "user",
+          "content": "Required field: port\nFacts: owner=unknown-unit; batch=B0"
+        }
+      ]
+    },
+    {
+      "id": "p3-evidence-development-0-conflicting",
+      "family": "port",
+      "group": "conflicting",
+      "evidence": "conflicting",
+      "required": "port",
+      "grader": "json",
+      "expected": {
+        "answerable": false,
+        "field": "port"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Return only JSON with keys answerable (boolean) and field (string). Answerable is true exactly when the required field has one distinct supplied value, false when missing or conflicting. Do not extract an answer."
+        },
+        {
+          "role": "user",
+          "content": "Required field: port\nFacts: owner=unknown-unit; batch=B0; port=unknown-307; port=alternative-0"
+        }
+      ]
+    },
+    {
+      "id": "p3-evidence-development-1-complete",
+      "family": "region",
+      "group": "complete",
+      "evidence": "complete",
+      "required": "region",
+      "grader": "json",
+      "expected": {
+        "answerable": true,
+        "field": "region"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Return only JSON with keys answerable (boolean) and field (string). Answerable is true exactly when the required field has one distinct supplied value, false when missing or conflicting. Do not extract an answer."
+        },
+        {
+          "role": "user",
+          "content": "Required field: region\nFacts: region=item-326; batch=B1; owner=unknown-unit"
+        }
+      ]
+    },
+    {
+      "id": "p3-evidence-development-1-absent",
+      "family": "region",
+      "group": "absent",
+      "evidence": "absent",
+      "required": "region",
+      "grader": "json",
+      "expected": {
+        "answerable": false,
+        "field": "region"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Return only JSON with keys answerable (boolean) and field (string). Answerable is true exactly when the required field has one distinct supplied value, false when missing or conflicting. Do not extract an answer."
+        },
+        {
+          "role": "user",
+          "content": "Required field: region\nFacts: batch=B1; owner=unknown-unit"
+        }
+      ]
+    },
+    {
+      "id": "p3-evidence-development-1-conflicting",
+      "family": "region",
+      "group": "conflicting",
+      "evidence": "conflicting",
+      "required": "region",
+      "grader": "json",
+      "expected": {
+        "answerable": false,
+        "field": "region"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Return only JSON with keys answerable (boolean) and field (string). Answerable is true exactly when the required field has one distinct supplied value, false when missing or conflicting. Do not extract an answer."
+        },
+        {
+          "role": "user",
+          "content": "Required field: region\nFacts: region=alternative-1; region=item-326; batch=B1; owner=unknown-unit"
+        }
+      ]
+    },
+    {
+      "id": "p3-evidence-development-2-complete",
+      "family": "route",
+      "group": "complete",
+      "evidence": "complete",
+      "required": "route",
+      "grader": "json",
+      "expected": {
+        "answerable": true,
+        "field": "route"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Return only JSON with keys answerable (boolean) and field (string). Answerable is true exactly when the required field has one distinct supplied value, false when missing or conflicting. Do not extract an answer."
+        },
+        {
+          "role": "user",
+          "content": "Required field: route\nFacts: owner=unknown-unit; batch=B2; route=item-345"
+        }
+      ]
+    },
+    {
+      "id": "p3-evidence-development-2-absent",
+      "family": "route",
+      "group": "absent",
+      "evidence": "absent",
+      "required": "route",
+      "grader": "json",
+      "expected": {
+        "answerable": false,
+        "field": "route"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Return only JSON with keys answerable (boolean) and field (string). Answerable is true exactly when the required field has one distinct supplied value, false when missing or conflicting. Do not extract an answer."
+        },
+        {
+          "role": "user",
+          "content": "Required field: route\nFacts: owner=unknown-unit; batch=B2"
+        }
+      ]
+    },
+    {
+      "id": "p3-evidence-development-2-conflicting",
+      "family": "route",
+      "group": "conflicting",
+      "evidence": "conflicting",
+      "required": "route",
+      "grader": "json",
+      "expected": {
+        "answerable": false,
+        "field": "route"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Return only JSON with keys answerable (boolean) and field (string). Answerable is true exactly when the required field has one distinct supplied value, false when missing or conflicting. Do not extract an answer."
+        },
+        {
+          "role": "user",
+          "content": "Required field: route\nFacts: owner=unknown-unit; batch=B2; route=item-345; route=alternative-2"
+        }
+      ]
+    },
+    {
+      "id": "p3-evidence-development-3-complete",
+      "family": "port",
+      "group": "complete",
+      "evidence": "complete",
+      "required": "port",
+      "grader": "json",
+      "expected": {
+        "answerable": true,
+        "field": "port"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Return only JSON with keys answerable (boolean) and field (string). Answerable is true exactly when the required field has one distinct supplied value, false when missing or conflicting. Do not extract an answer."
+        },
+        {
+          "role": "user",
+          "content": "Required field: port\nFacts: port=item-364; port=item-364; batch=B3; owner=unknown-unit"
+        }
+      ]
+    },
+    {
+      "id": "p3-evidence-development-3-absent",
+      "family": "port",
+      "group": "absent",
+      "evidence": "absent",
+      "required": "port",
+      "grader": "json",
+      "expected": {
+        "answerable": false,
+        "field": "port"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Return only JSON with keys answerable (boolean) and field (string). Answerable is true exactly when the required field has one distinct supplied value, false when missing or conflicting. Do not extract an answer."
+        },
+        {
+          "role": "user",
+          "content": "Required field: port\nFacts: batch=B3; owner=unknown-unit"
+        }
+      ]
+    },
+    {
+      "id": "p3-evidence-development-3-conflicting",
+      "family": "port",
+      "group": "conflicting",
+      "evidence": "conflicting",
+      "required": "port",
+      "grader": "json",
+      "expected": {
+        "answerable": false,
+        "field": "port"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Return only JSON with keys answerable (boolean) and field (string). Answerable is true exactly when the required field has one distinct supplied value, false when missing or conflicting. Do not extract an answer."
+        },
+        {
+          "role": "user",
+          "content": "Required field: port\nFacts: port=alternative-3; port=item-364; batch=B3; owner=unknown-unit"
+        }
+      ]
+    },
+    {
+      "id": "p3-evidence-development-4-complete",
+      "family": "region",
+      "group": "complete",
+      "evidence": "complete",
+      "required": "region",
+      "grader": "json",
+      "expected": {
+        "answerable": true,
+        "field": "region"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Return only JSON with keys answerable (boolean) and field (string). Answerable is true exactly when the required field has one distinct supplied value, false when missing or conflicting. Do not extract an answer."
+        },
+        {
+          "role": "user",
+          "content": "Required field: region\nFacts: owner=unknown-unit; batch=B4; region=unknown-383"
+        }
+      ]
+    },
+    {
+      "id": "p3-evidence-development-4-absent",
+      "family": "region",
+      "group": "absent",
+      "evidence": "absent",
+      "required": "region",
+      "grader": "json",
+      "expected": {
+        "answerable": false,
+        "field": "region"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Return only JSON with keys answerable (boolean) and field (string). Answerable is true exactly when the required field has one distinct supplied value, false when missing or conflicting. Do not extract an answer."
+        },
+        {
+          "role": "user",
+          "content": "Required field: region\nFacts: owner=unknown-unit; batch=B4"
+        }
+      ]
+    },
+    {
+      "id": "p3-evidence-development-4-conflicting",
+      "family": "region",
+      "group": "conflicting",
+      "evidence": "conflicting",
+      "required": "region",
+      "grader": "json",
+      "expected": {
+        "answerable": false,
+        "field": "region"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Return only JSON with keys answerable (boolean) and field (string). Answerable is true exactly when the required field has one distinct supplied value, false when missing or conflicting. Do not extract an answer."
+        },
+        {
+          "role": "user",
+          "content": "Required field: region\nFacts: owner=unknown-unit; batch=B4; region=unknown-383; region=alternative-4"
+        }
+      ]
+    },
+    {
+      "id": "p3-evidence-development-5-complete",
+      "family": "route",
+      "group": "complete",
+      "evidence": "complete",
+      "required": "route",
+      "grader": "json",
+      "expected": {
+        "answerable": true,
+        "field": "route"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Return only JSON with keys answerable (boolean) and field (string). Answerable is true exactly when the required field has one distinct supplied value, false when missing or conflicting. Do not extract an answer."
+        },
+        {
+          "role": "user",
+          "content": "Required field: route\nFacts: route=item-402; batch=B5; owner=unknown-unit"
+        }
+      ]
+    },
+    {
+      "id": "p3-evidence-development-5-absent",
+      "family": "route",
+      "group": "absent",
+      "evidence": "absent",
+      "required": "route",
+      "grader": "json",
+      "expected": {
+        "answerable": false,
+        "field": "route"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Return only JSON with keys answerable (boolean) and field (string). Answerable is true exactly when the required field has one distinct supplied value, false when missing or conflicting. Do not extract an answer."
+        },
+        {
+          "role": "user",
+          "content": "Required field: route\nFacts: batch=B5; owner=unknown-unit"
+        }
+      ]
+    },
+    {
+      "id": "p3-evidence-development-5-conflicting",
+      "family": "route",
+      "group": "conflicting",
+      "evidence": "conflicting",
+      "required": "route",
+      "grader": "json",
+      "expected": {
+        "answerable": false,
+        "field": "route"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Return only JSON with keys answerable (boolean) and field (string). Answerable is true exactly when the required field has one distinct supplied value, false when missing or conflicting. Do not extract an answer."
+        },
+        {
+          "role": "user",
+          "content": "Required field: route\nFacts: route=alternative-5; route=item-402; batch=B5; owner=unknown-unit"
+        }
+      ]
+    },
+    {
+      "id": "p3-evidence-development-6-complete",
+      "family": "port",
+      "group": "complete",
+      "evidence": "complete",
+      "required": "port",
+      "grader": "json",
+      "expected": {
+        "answerable": true,
+        "field": "port"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Return only JSON with keys answerable (boolean) and field (string). Answerable is true exactly when the required field has one distinct supplied value, false when missing or conflicting. Do not extract an answer."
+        },
+        {
+          "role": "user",
+          "content": "Required field: port\nFacts: owner=unknown-unit; batch=B6; port=item-421; port=item-421"
+        }
+      ]
+    },
+    {
+      "id": "p3-evidence-development-6-absent",
+      "family": "port",
+      "group": "absent",
+      "evidence": "absent",
+      "required": "port",
+      "grader": "json",
+      "expected": {
+        "answerable": false,
+        "field": "port"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Return only JSON with keys answerable (boolean) and field (string). Answerable is true exactly when the required field has one distinct supplied value, false when missing or conflicting. Do not extract an answer."
+        },
+        {
+          "role": "user",
+          "content": "Required field: port\nFacts: owner=unknown-unit; batch=B6"
+        }
+      ]
+    },
+    {
+      "id": "p3-evidence-development-6-conflicting",
+      "family": "port",
+      "group": "conflicting",
+      "evidence": "conflicting",
+      "required": "port",
+      "grader": "json",
+      "expected": {
+        "answerable": false,
+        "field": "port"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Return only JSON with keys answerable (boolean) and field (string). Answerable is true exactly when the required field has one distinct supplied value, false when missing or conflicting. Do not extract an answer."
+        },
+        {
+          "role": "user",
+          "content": "Required field: port\nFacts: owner=unknown-unit; batch=B6; port=item-421; port=alternative-6"
+        }
+      ]
+    },
+    {
+      "id": "p3-evidence-development-7-complete",
+      "family": "region",
+      "group": "complete",
+      "evidence": "complete",
+      "required": "region",
+      "grader": "json",
+      "expected": {
+        "answerable": true,
+        "field": "region"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Return only JSON with keys answerable (boolean) and field (string). Answerable is true exactly when the required field has one distinct supplied value, false when missing or conflicting. Do not extract an answer."
+        },
+        {
+          "role": "user",
+          "content": "Required field: region\nFacts: region=item-440; batch=B7; owner=unknown-unit"
+        }
+      ]
+    },
+    {
+      "id": "p3-evidence-development-7-absent",
+      "family": "region",
+      "group": "absent",
+      "evidence": "absent",
+      "required": "region",
+      "grader": "json",
+      "expected": {
+        "answerable": false,
+        "field": "region"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Return only JSON with keys answerable (boolean) and field (string). Answerable is true exactly when the required field has one distinct supplied value, false when missing or conflicting. Do not extract an answer."
+        },
+        {
+          "role": "user",
+          "content": "Required field: region\nFacts: batch=B7; owner=unknown-unit"
+        }
+      ]
+    },
+    {
+      "id": "p3-evidence-development-7-conflicting",
+      "family": "region",
+      "group": "conflicting",
+      "evidence": "conflicting",
+      "required": "region",
+      "grader": "json",
+      "expected": {
+        "answerable": false,
+        "field": "region"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Return only JSON with keys answerable (boolean) and field (string). Answerable is true exactly when the required field has one distinct supplied value, false when missing or conflicting. Do not extract an answer."
+        },
+        {
+          "role": "user",
+          "content": "Required field: region\nFacts: region=alternative-7; region=item-440; batch=B7; owner=unknown-unit"
+        }
+      ]
+    },
+    {
+      "id": "p3-evidence-development-8-complete",
+      "family": "route",
+      "group": "complete",
+      "evidence": "complete",
+      "required": "route",
+      "grader": "json",
+      "expected": {
+        "answerable": true,
+        "field": "route"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Return only JSON with keys answerable (boolean) and field (string). Answerable is true exactly when the required field has one distinct supplied value, false when missing or conflicting. Do not extract an answer."
+        },
+        {
+          "role": "user",
+          "content": "Required field: route\nFacts: owner=unknown-unit; batch=B8; route=unknown-459"
+        }
+      ]
+    },
+    {
+      "id": "p3-evidence-development-8-absent",
+      "family": "route",
+      "group": "absent",
+      "evidence": "absent",
+      "required": "route",
+      "grader": "json",
+      "expected": {
+        "answerable": false,
+        "field": "route"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Return only JSON with keys answerable (boolean) and field (string). Answerable is true exactly when the required field has one distinct supplied value, false when missing or conflicting. Do not extract an answer."
+        },
+        {
+          "role": "user",
+          "content": "Required field: route\nFacts: owner=unknown-unit; batch=B8"
+        }
+      ]
+    },
+    {
+      "id": "p3-evidence-development-8-conflicting",
+      "family": "route",
+      "group": "conflicting",
+      "evidence": "conflicting",
+      "required": "route",
+      "grader": "json",
+      "expected": {
+        "answerable": false,
+        "field": "route"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Return only JSON with keys answerable (boolean) and field (string). Answerable is true exactly when the required field has one distinct supplied value, false when missing or conflicting. Do not extract an answer."
+        },
+        {
+          "role": "user",
+          "content": "Required field: route\nFacts: owner=unknown-unit; batch=B8; route=unknown-459; route=alternative-8"
+        }
+      ]
+    },
+    {
+      "id": "p3-evidence-development-9-complete",
+      "family": "port",
+      "group": "complete",
+      "evidence": "complete",
+      "required": "port",
+      "grader": "json",
+      "expected": {
+        "answerable": true,
+        "field": "port"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Return only JSON with keys answerable (boolean) and field (string). Answerable is true exactly when the required field has one distinct supplied value, false when missing or conflicting. Do not extract an answer."
+        },
+        {
+          "role": "user",
+          "content": "Required field: port\nFacts: port=item-478; port=item-478; batch=B9; owner=unknown-unit"
+        }
+      ]
+    },
+    {
+      "id": "p3-evidence-development-9-absent",
+      "family": "port",
+      "group": "absent",
+      "evidence": "absent",
+      "required": "port",
+      "grader": "json",
+      "expected": {
+        "answerable": false,
+        "field": "port"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Return only JSON with keys answerable (boolean) and field (string). Answerable is true exactly when the required field has one distinct supplied value, false when missing or conflicting. Do not extract an answer."
+        },
+        {
+          "role": "user",
+          "content": "Required field: port\nFacts: batch=B9; owner=unknown-unit"
+        }
+      ]
+    },
+    {
+      "id": "p3-evidence-development-9-conflicting",
+      "family": "port",
+      "group": "conflicting",
+      "evidence": "conflicting",
+      "required": "port",
+      "grader": "json",
+      "expected": {
+        "answerable": false,
+        "field": "port"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Return only JSON with keys answerable (boolean) and field (string). Answerable is true exactly when the required field has one distinct supplied value, false when missing or conflicting. Do not extract an answer."
+        },
+        {
+          "role": "user",
+          "content": "Required field: port\nFacts: port=alternative-9; port=item-478; batch=B9; owner=unknown-unit"
+        }
+      ]
+    },
+    {
+      "id": "p3-evidence-development-10-complete",
+      "family": "region",
+      "group": "complete",
+      "evidence": "complete",
+      "required": "region",
+      "grader": "json",
+      "expected": {
+        "answerable": true,
+        "field": "region"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Return only JSON with keys answerable (boolean) and field (string). Answerable is true exactly when the required field has one distinct supplied value, false when missing or conflicting. Do not extract an answer."
+        },
+        {
+          "role": "user",
+          "content": "Required field: region\nFacts: owner=unknown-unit; batch=B10; region=item-497"
+        }
+      ]
+    },
+    {
+      "id": "p3-evidence-development-10-absent",
+      "family": "region",
+      "group": "absent",
+      "evidence": "absent",
+      "required": "region",
+      "grader": "json",
+      "expected": {
+        "answerable": false,
+        "field": "region"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Return only JSON with keys answerable (boolean) and field (string). Answerable is true exactly when the required field has one distinct supplied value, false when missing or conflicting. Do not extract an answer."
+        },
+        {
+          "role": "user",
+          "content": "Required field: region\nFacts: owner=unknown-unit; batch=B10"
+        }
+      ]
+    },
+    {
+      "id": "p3-evidence-development-10-conflicting",
+      "family": "region",
+      "group": "conflicting",
+      "evidence": "conflicting",
+      "required": "region",
+      "grader": "json",
+      "expected": {
+        "answerable": false,
+        "field": "region"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Return only JSON with keys answerable (boolean) and field (string). Answerable is true exactly when the required field has one distinct supplied value, false when missing or conflicting. Do not extract an answer."
+        },
+        {
+          "role": "user",
+          "content": "Required field: region\nFacts: owner=unknown-unit; batch=B10; region=item-497; region=alternative-10"
+        }
+      ]
+    },
+    {
+      "id": "p3-evidence-development-11-complete",
+      "family": "route",
+      "group": "complete",
+      "evidence": "complete",
+      "required": "route",
+      "grader": "json",
+      "expected": {
+        "answerable": true,
+        "field": "route"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Return only JSON with keys answerable (boolean) and field (string). Answerable is true exactly when the required field has one distinct supplied value, false when missing or conflicting. Do not extract an answer."
+        },
+        {
+          "role": "user",
+          "content": "Required field: route\nFacts: route=item-516; batch=B11; owner=unknown-unit"
+        }
+      ]
+    },
+    {
+      "id": "p3-evidence-development-11-absent",
+      "family": "route",
+      "group": "absent",
+      "evidence": "absent",
+      "required": "route",
+      "grader": "json",
+      "expected": {
+        "answerable": false,
+        "field": "route"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Return only JSON with keys answerable (boolean) and field (string). Answerable is true exactly when the required field has one distinct supplied value, false when missing or conflicting. Do not extract an answer."
+        },
+        {
+          "role": "user",
+          "content": "Required field: route\nFacts: batch=B11; owner=unknown-unit"
+        }
+      ]
+    },
+    {
+      "id": "p3-evidence-development-11-conflicting",
+      "family": "route",
+      "group": "conflicting",
+      "evidence": "conflicting",
+      "required": "route",
+      "grader": "json",
+      "expected": {
+        "answerable": false,
+        "field": "route"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Return only JSON with keys answerable (boolean) and field (string). Answerable is true exactly when the required field has one distinct supplied value, false when missing or conflicting. Do not extract an answer."
+        },
+        {
+          "role": "user",
+          "content": "Required field: route\nFacts: route=alternative-11; route=item-516; batch=B11; owner=unknown-unit"
+        }
+      ]
+    }
+  ]
+}
