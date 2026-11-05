@@ -1,0 +1,64 @@
+{
+  "runtime": {
+    "binary": "/home/akmessi/llama-vulkan-build/bin/llama-server",
+    "context": 2048,
+    "threads": 4,
+    "gpu_layers": 99
+  },
+  "budgets": {
+    "overall_generated_tokens": 1800000,
+    "per_run_generated_tokens": 20000
+  },
+  "models": {
+    "qwen_float": {
+      "path": "artifacts/portfolio/qwen-float.gguf",
+      "repo": "unsloth/Qwen3-0.6B-GGUF",
+      "revision": "50968a4468ef4233ed78cd7c3de230dd1d61a56b",
+      "file": "Qwen3-0.6B-BF16.gguf",
+      "sha256": "e179a7ce5e9d1c9e897181a1f1183d6790ee33128b37e049432c70b6bf6f1c11",
+      "sampling": {
+        "temperature": 0.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "local_patch_manifest": "research/patches/portfolio-qwen-float.json",
+      "local_patch_manifest_sha256": "20d1b95d8db330d6aaabf2650d4d7a56597118ced2c02d7a6352a05b7afe119e"
+    },
+    "fable_float": {
+      "path": "local/models/lfm2.5-230m-fable-5-f16.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "1e1624de4d7ebe413d82dbe2b5f48fcf83e6c46b1b5414c8aef0596009380cc6",
+      "sampling": {
+        "temperature": 0.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      }
+    },
+    "lfm3_float": {
+      "path": "local/models/LFM3-1.7B-F16.gguf",
+      "repo": "LiquidAI/LFM3-1.7B-GGUF",
+      "revision": "cd0c74c575b5c416f3011b5b4c298077f26ca8c2",
+      "file": "LFM3-1.7B-F16.gguf",
+      "sha256": "b7ab8b69a85e4dfbf62cdfd0e02d7d051ed09f2c5b84c701771dddb073b85970",
+      "sampling": {
+        "temperature": 0.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      }
+    }
+  }
+}

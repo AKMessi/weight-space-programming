@@ -863,3 +863,11 @@ Status `complete`, 1005 generated tokens. Immutable raw inputs/responses/config/
 ### 2026-11-05T18:01:58.986999+00:00 — p3-adapter-repo-cal-fable_sign-s17
 
 Status `complete`, 908 generated tokens. Immutable raw inputs/responses/config/runtime and resource samples are in `runs/p3-adapter-repo-cal-fable_sign-s17`. Interpretation is deferred to the study report; this run alone does not establish a repair.
+
+### Adapter selected before confirmation; fidelity limitation and companion declared
+
+Calibration selected rank16 at921223 bytes:0/24 exact next lines, matching original Fable's0/24, and22/24 extracted first-line matches (91.7%). This follows the frozen rule but cannot prove preserved coding utility at this floor. Both Fable and parent were0/80 on the shortened repository development panel. No repository advantage is established; later reports must retain that limitation.
+
+Before opening confirmation, declared a fixed rank32 numerical-fidelity companion (1.83MB), separate from the selected rank16. It will compare full output/first-line agreement and protected skills, plus held-out native distribution fidelity, using the predeclared reserve rather than silently increasing the adapter stage budget. The original rank16 selection remains primary and cannot be replaced using confirmation feedback.
+
+Frozen the Qwen conditional JSON-switching development/confirmation families, fixed controls and hypothesis gates before its first P3 quality inference. Grader9 adds only the explicit plain/fenced JSON contract; prior semantics are unchanged. Added a separately versioned native client supporting bounded greedy causal generation; the original gate client/source remain preserved. A checked, separate build and untouched-server parity controls precede activation interventions. Thirty-eight tests pass.

@@ -75,3 +75,14 @@ class NextLineTests(unittest.TestCase):
         self.assertTrue(grade(c,'```python\n    return value\n```')['payload_correct'])
         self.assertFalse(grade(c,'Here is the code:\n    return value')['payload_correct'])
         self.assertFalse(grade(c,'return value')['payload_correct'])
+
+class JsonSwitchTests(unittest.TestCase):
+    def test_format_switch_does_not_change_payload(self):
+        c={'grader':'json_switch','response_mode':'fenced','expected':{'code':'V-1','units':7}}
+        bare='{"code":"V-1","units":7}'
+        self.assertFalse(grade(c,bare)['success'])
+        self.assertTrue(grade(c,bare)['payload_correct'])
+        self.assertTrue(grade(c,'```json\n'+bare+'\n```')['success'])
+        c['response_mode']='plain'
+        self.assertTrue(grade(c,bare)['success'])
+        self.assertFalse(grade(c,'```json\n'+bare+'\n```')['success'])

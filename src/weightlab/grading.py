@@ -19,7 +19,7 @@ def _constant(value):
 
 
 DECODER = json.JSONDecoder(object_pairs_hook=_pairs, parse_constant=_constant)
-GRADER_VERSION = "8"
+GRADER_VERSION = "9"
 
 
 def code_payload_present(text, expected):
@@ -77,6 +77,13 @@ def first_json(text):
 
 def grade(case, text):
     kind, expected = case["grader"], case["expected"]
+    if kind=='json_switch':
+        payload=typed_equal(first_json(text),expected)
+        if case.get('response_mode')=='fenced':
+            match=re.fullmatch(r'```json[ \t]*\n(.*?)\n```\s*',text,re.DOTALL)
+            valid=bool(match and grade({'grader':'json','expected':expected},match[1])['success'])
+            return {'success':payload and valid,'payload_correct':payload,'format_valid':valid}
+        return grade({'grader':'json','expected':expected},text)
     if kind=='next_line':
         lines=text.splitlines()
         if lines and lines[0].startswith('```'):lines=lines[1:]
