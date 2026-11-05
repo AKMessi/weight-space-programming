@@ -1,0 +1,2086 @@
+{
+  "name": "p3-fable-repo-development",
+  "status": "development; repository-disjoint short-context adaptation, not full official RepoBench",
+  "cases": [
+    {
+      "id": "repobench-first-1168",
+      "split": "development",
+      "family": "hahnyuan/ASVD4LLM",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "            ppl = evaluate_perplexity(model, input_ids, args.n_calib_samples)",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 1168,
+        "repo_name": "hahnyuan/ASVD4LLM",
+        "file_path": "binary_search.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: hahnyuan/ASVD4LLM\nReference snippets:\n# evaluate.py\n@torch.no_grad()\ndef evaluate_model(\n    model,\n    tokenizer,\n    model_name,\n    tasks,\n    eval_ppl=\"\",\n    num_fewshot=0,\n    limit=-1,\n    batch_size=1,\n):\n    \"\"\"\n    model: model name\n    limit: number of test samples for debug, set to -1 is no limit\n    tasks: str tasks are split by ,\n    num_fewshot: Number of examples in few-shot context\n    eval_ppl: str datasets are split by , such as 'wikitext2,ptb,c4'\n    \"\"\"\n    lm = EvalLM(model, tokenizer, batch_size=batch_size)\n    results = {}\n    if eval_ppl:\n        for dataset in eval_ppl.split(\",\"):\n            cache_testloader = (\n                f\"/tmp/{dataset}_testloader_{model_name.replace('/', '_')}_all.cache\"\n            )\n            if os.path.exists(cache_testloader):\n                testloader = torch.load(cache_testloader)\n                # print(f\"load cal\nCurrent file prefix:\n if args.ppl_target > 0:\n            for layername, ratio in layers_min_ratio.items():\n                raw_linear = module_dict[layername]\n                info = linear_info[raw_linear]\n                svd_linear = SVDLinear.from_linear(\n                    raw_linear,\n                    param_ratio=ratio,\n                    alpha=args.alpha,\n                    act_aware=args.act_aware,\n                    sigma_fuse=args.sigma_fuse,\n                )\n                setattr(info[\"father\"], info[\"name\"], svd_linear)\n                tot_params += raw_linear.weight.numel()\n                compress_params += raw_linear.weight.numel() * ratio\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-2289",
+      "split": "development",
+      "family": "liuqidong07/MOELoRA-peft",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "    main(parser)",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 2289,
+        "repo_name": "liuqidong07/MOELoRA-peft",
+        "file_path": "run_mlora.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: liuqidong07/MOELoRA-peft\nReference snippets:\n# src/MLoRA/main.py\ndef main(parser):\n\n    if len(sys.argv) == 2 and sys.argv[1].endswith(\".json\"):\n        # If we pass only one argument to the script and it's the path to a json file,\n        # let's parse it to get our arguments.\n        model_args, data_args, training_args = parser.parse_json_file(json_file=os.path.abspath(sys.argv[1]))\n    else:\n        model_args, data_args, training_args = parser.parse_args_into_dataclasses()\n\n    training_args.batched_training = data_args.batched_training # for batched training\n    # if model_args.department:   # for the department\n    #     model_args.task_num = model_args.depart_num\n\n    # Setup logging\n    logging.basicConfig(\n        format=\"%(asctime)s - %(levelname)s - %(name)s - %(message)s\",\n        datefmt=\"%m/%d/%Y %H:%M:%S\",\n        handlers=[logging.StreamHandler(sys.stdout)],\n    )\n\n\nCurrent file prefix:\n# -*- encoding: utf-8 -*-\n# here put the import lib\nos.environ[\"CUDA_VISIBLE_DEVICES\"] = \"0,1,2,3\"\n\n\n\nif __name__ == \"__main__\":\n\n    parser = HfArgumentParser((ModelArguments, DataTrainingArguments, Seq2SeqTrainingArguments))\n\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-486",
+      "split": "development",
+      "family": "BrianPugh/cyclopts",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "    converter: Callable = field(default=None, converter=attrs.converters.default_if_none(convert))",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 486,
+        "repo_name": "BrianPugh/cyclopts",
+        "file_path": "cyclopts/parameter.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: BrianPugh/cyclopts\nReference snippets:\n# cyclopts/_convert.py\ndef _bool(s: str) -> bool:\ndef _int(s: str) -> int:\ndef _bytes(s: str) -> bytes:\ndef _bytearray(s: str) -> bytearray:\ndef _convert(type_, element, converter=None):\ndef get_origin_and_validate(type_: Type):\ndef resolve(type_: Type) -> Type:\ndef resolve_optional(type_: Type) -> Type:\ndef resolve_annotated(type_: Type) -> Type:\ndef convert(type_: Type, *args: str, converter: Optional[Callable] = None):\ndef token_count(type_: Union[Type, inspect.Parameter]) -> Tuple[int, bool]:\ndef to_tuple_converter(value: Union[None, Any, Iterable[Any]]) -> Tuple[Any, ...]:\ndef to_list_converter(value: Union[None, Any, Iterable[Any]]) -> List[Any]:\ndef optional_to_tuple_converter(value: Union[None, Any, Iterable[Any]]) -> Optional[Tuple[Any, ...]]:\n# cyclopts/group.py\nclass Group:\n    name: str = \"\"\n\n    help: str = \"\"\n\n    # All belo\nCurrent file prefix:\nalueError(f'{attribute.alias} value must start with \"--\".')\n\n\ndef _negative_converter(default: Tuple[str, ...]):\n    def converter(value) -> Tuple[str, ...]:\n        if value is None:\n            return default\n        else:\n            return to_tuple_converter(value)\n\n    return converter\n\n\n@record_init(\"_provided_args\")\n@frozen\nclass Parameter:\n    \"\"\"Cyclopts configuration for individual function parameters.\"\"\"\n\n    # All documentation has been moved to ``docs/api.rst`` for greater control with attrs.\n\n    name: Tuple[str, ...] = field(\n        default=None,\n        converter=lambda x: cast(Tuple[str, ...], to_tuple_converter(x)),\n    )\n\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-1810",
+      "split": "development",
+      "family": "DongqiShen/qwen-fast",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "        logits = model_forward(self._model, x, input_pos)",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 1810,
+        "repo_name": "DongqiShen/qwen-fast",
+        "file_path": "eval.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: DongqiShen/qwen-fast\nReference snippets:\n# model.py\ndef find_multiple(n: int, k: int) -> int:\n    def __post_init__(self):\n    def from_name(cls, name: str):\n    def __init__(self, max_batch_size, max_seq_length, n_heads, head_dim, dtype=torch.bfloat16):\n    def update(self, input_pos, k_val, v_val):\n    def __init__(self, config: ModelArgs) -> None:\n    def setup_caches(self, max_batch_size, max_seq_length):\n    def forward(self, idx: Tensor, input_pos: Optional[Tensor] = None) -> Tensor:\n    def from_name(cls, name: str):\n    def __init__(self, config: ModelArgs) -> None:\n    def forward(self, x: Tensor, input_pos: Tensor, freqs_cis: Tensor, mask: Tensor) -> Tensor:\n    def __init__(self, config: ModelArgs):\n    def load_hook(self, state_dict, prefix, *args):\n    def forward(self, x: Tensor, freqs_cis: Tensor, mask: Tensor, input_pos: Optional[Tensor] = None) -> Tensor:\n    de\nCurrent file prefix:\ntead\n        # TODO: verify this for multi-batch as well\n        encoded = encoded.tolist()\n        return encoded\n\n    def tok_decode(self, tokens):\n        decoded = self._tokenizer.decode(tokens)\n        return decoded\n\n    def _model_call(self, inps):\n        # TODO: make batches work\n        inps = inps.squeeze(0)\n\n        max_new_tokens = 1\n        seq, input_pos, max_seq_length = \\\n            setup_cache_padded_seq_input_pos_max_seq_length_for_prefill(\n                self._model,\n                inps,\n                max_new_tokens,\n                self.max_length,\n            )\n        x = seq.index_select(0, input_pos).view(1, -1)\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-3209",
+      "split": "development",
+      "family": "gchada/ROAM",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "    def robot(self) -> BaseWalker:",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 3209,
+        "repo_name": "gchada/ROAM",
+        "file_path": "real/rail_walker_interface/environment/joystick_real.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: gchada/ROAM\nReference snippets:\n# real/rail_walker_interface/environment/env.py\nclass WalkerEnvironment:\n    @property\n    def robot(self) -> BaseWalker:\n        pass\n# real/rail_walker_interface/environment/env.py\nclass JoystickEnvironment:\n    @property\n    def joystick_policy(self) -> JoystickPolicy:\n        pass\n\n    def set_joystick_policy(self, joystick_policy: JoystickPolicy):\n        pass\n\n    @property\n    def is_resetter_policy(self) -> bool:\n        return False\nCurrent file prefix:\nicy.enable_target_custom_obs and target_custom_data_spec is not None:\n            real_obs_space[\"target_custom\"] = target_custom_data_spec\n        \n        # Enforce order\n        real_obs_space = OrderedDict(sorted(real_obs_space.items(), key=lambda t: t[0]))\n        obs_space = gym.spaces.Dict(real_obs_space)\n        return obs_space\n\n    @property\n    def joystick_policy(self) -> JoystickPolicy:\n        return self._joystick_policy\n\n    def set_joystick_policy(self, joystick_policy: JoystickPolicy):\n        self._joystick_policy = joystick_policy\n\n    @property\n    def is_resetter_policy(self) -> bool:\n        return False\n\n    @property\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-2132",
+      "split": "development",
+      "family": "TCLResearchEurope/torch-dag",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "        cell1: DagModule,",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 2132,
+        "repo_name": "TCLResearchEurope/torch-dag",
+        "file_path": "torch_dag/patterns_v2/transform.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: TCLResearchEurope/torch-dag\nReference snippets:\n# torch_dag/core/dag_module.py\nclass DagModule(torch.nn.Module):\n    MAX_LEN_REPR = None\n\n    def __init__(\n            self,\n            name: str,\n            vertices: Optional[List[Vertex]] = None,\n            output_vertex: Optional[InnerVertex] = None,\n    ):\n        super().__init__()\n        self.name = name\n        self.vertices = vertices if vertices is not None else []\n        self.output_vertex = output_vertex\n        self.forward_dict = None\n        self.inputs_dict = None\n        self.cache_forward_dict = False\n        self._inner_modules = None\n        self.forward_scaffold = {}\n        self.output_index = None\n        self.compiled = False\n        self.update_inner_modules()\n\n    def compile(self, inputs: Optional[Union[torch.Tensor, List[torch.Tensor]]] = None):\n        \"\"\"\n        In general `forward` method of DagModule\nCurrent file prefix:\n\n\n\nlogger = logging.getLogger(__name__)\n\n\nclass SelectionType(enum.Enum):\n    FIRST = 'first'\n    LAST = 'last'\n    ALL = 'all'\n    ALL_BUT_FIRST = 'all_but_first'\n    ALL_BUT_LAST = 'all_but_last'\n\n\nclass Transform:\n    \"\"\"\n    For more information on patterns please refer to https://gitlab.com/tcl-research/auto-ml/blog/-/blob/main/2022-06-16-patterns/README.md or https://gitlab.com/tcl-research/auto-ml/node-api/-/blob/master/tutorials/advanced/pattens.ipynb\n    \"\"\"\n    PRESERVE_PARAMS_FROM = 'preserve_old_params_from'\n\n    @staticmethod\n    def _assert_forward_pass_equal(\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-2950",
+      "split": "development",
+      "family": "mikeshardmind/wakfu-utils",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "    stats: Stats,",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 2950,
+        "repo_name": "mikeshardmind/wakfu-utils",
+        "file_path": "wakautosolver/versioned_entrypoints.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: mikeshardmind/wakfu-utils\nReference snippets:\n# wakautosolver/b2048/encoder.py\ndef encode(bys: bytes, /) -> str:\n    ret = StringIO()\n    stage = 0\n    remaining = 0\n\n    for byte in bys:\n        need = 11 - remaining\n        if need < 8:\n            remaining = 8 - need\n            index = (stage << need) | (byte >> remaining)\n            ret.write(ENC_TABLE[index])\n            stage = byte & ((1 << remaining) - 1)\n        else:\n            stage = (stage << 8) | byte\n            remaining += 8\n\n    if remaining > 0:\n        ret.write(TAIL[stage] if remaining <= 3 else ENC_TABLE[stage])\n\n    ret.seek(0)\n    return ret.read()\n# wakautosolver/object_parsing.py\n@lru_cache\ndef load_item_source_data() -> SourceData:\n    data_file_path = pathlib.Path(__file__).with_name(\"data\") / \"source_info.bz2\"\n    with bz2.open(data_file_path, mode=\"rb\", compresslevel=9) as fp:\n        return msgpack.\nCurrent file prefix:\nX\n    dodge: int = DUMMY_MAX\n    armor_given: int = DUMMY_MAX\n\n    def to_real(self) -> RealSetMaxs:\n        data = asdict(self)\n        for new, old in (\n            (\"critical_hit\", \"crit\"),\n            (\"critical_mastery\", \"crit_mastery\"),\n            (\"mastery_3_elements\", \"three_element_mastery\"),\n            (\"mastery_2_elements\", \"two_element_mastery\"),\n            (\"mastery_1_element\", \"one_element_mastery\"),\n            (\"healing_mastery\", \"heal_mastery\"),\n            (\"berserk_mastery\", \"beserk_mastery\"),\n        ):\n            data[new] = data.pop(old)\n\n        return RealSetMaxs(**data)\n\n\ndef partial_solve_v1(\n    *,\n    lv: int,\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-3880",
+      "split": "development",
+      "family": "TencentARC/MotionCtrl",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "        noise = default(noise, lambda: torch.randn_like(x_start))",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 3880,
+        "repo_name": "TencentARC/MotionCtrl",
+        "file_path": "lvdm/models/ddpm3d.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: TencentARC/MotionCtrl\nReference snippets:\n# lvdm/basics.py\ndef disabled_train(self, mode=True):\n    \"\"\"Overwrite model.train with this function to make sure train/eval mode\n    does not change anymore.\"\"\"\n    return self\n# lvdm/common.py\ndef default(val, d):\n    if exists(val):\n        return val\n    return d() if isfunction(d) else d\nCurrent file prefix:\n=torch.long),\n                                clip_denoised=self.clip_denoised)\n            if i % self.log_every_t == 0 or i == self.num_timesteps - 1:\n                intermediates.append(img)\n        if return_intermediates:\n            return img, intermediates\n        return img\n\n    @torch.no_grad()\n    def sample(self, batch_size=16, return_intermediates=False):\n        image_size = self.image_size\n        channels = self.channels\n        return self.p_sample_loop((batch_size, channels, image_size, image_size),\n                                  return_intermediates=return_intermediates)\n\n    def q_sample(self, x_start, t, noise=None):\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-2918",
+      "split": "development",
+      "family": "MTgeophysics/mtpy-v2",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "            self.cbax, self.cbpt, = plot_pt_lateral(",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 2918,
+        "repo_name": "MTgeophysics/mtpy-v2",
+        "file_path": "mtpy/imaging/plot_mt_responses.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: MTgeophysics/mtpy-v2\nReference snippets:\n# mtpy/imaging/mtplot_tools/utils.py\ndef get_log_tick_labels(ax, spacing=1):\n    \"\"\"\n\n    :param ax: DESCRIPTION\n    :type ax: TYPE\n    :return: DESCRIPTION\n    :rtype: TYPE\n\n    \"\"\"\n\n    tklabels = []\n    xticks = []\n    for tk in ax.get_xticks():\n        try:\n            tklabels.append(period_label_dict[tk / spacing])\n            xticks.append(tk)\n        except KeyError:\n            pass\n    return tklabels, xticks\n# mtpy/imaging/mtplot_tools/plotters.py\ndef plot_resistivity(ax, period, resistivity, error, **properties):\n    \"\"\"\n    plot apparent resistivity to the given axis with given properties\n\n    :param ax: DESCRIPTION\n    :type ax: TYPE\n    :param resistivity: DESCRIPTION\n    :type resistivity: TYPE\n    :param period: DESCRIPTION\n    :type period: TYPE\n    :param **properties: DESCRIPTION\n    :type **properties: TYPE\n    :retur\nCurrent file prefix:\n     axt.set_ylabel(\"Tipper\", fontdict=self.font_dict)\n        # set th xaxis tick labels to invisible\n        if self.plot_pt:\n            plt.setp(axt.xaxis.get_ticklabels(), visible=False)\n            axt.set_xlabel(\"\")\n        return tip_list, tip_label\n\n    def _plot_pt(\n        self, axpt, period, pt_obj, index=0, y_shift=0, edge_color=None\n    ):\n        # ----plot phase tensor ellipse---------------------------------------\n        if self.plot_pt:\n\n            color_array = self.get_pt_color_array(pt_obj)\n            x_limits = self.set_period_limits(period)\n\n            # -------------plot ellipses-----------------------------------\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-281",
+      "split": "development",
+      "family": "rgrizzell/CircuitPython_LILYGO_T-Deck",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "t = TDeck(keyboard=k)",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 281,
+        "repo_name": "rgrizzell/CircuitPython_LILYGO_T-Deck",
+        "file_path": "examples/lilygo_tdeck_custom_keyboard.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: rgrizzell/CircuitPython_LILYGO_T-Deck\nReference snippets:\n# lilygo_tdeck.py\nclass Keyboard:\n    \"\"\"Controls the keyboard peripheral. This class can be extended to support additional\n    functionality if the keyboard is utilizing custom firmware.\n\n    :param i2c: Object representing the I2C interface used to communicate with the keyboard.\n    :type i2c: I2C\n    :param int device_address: The I2C address of the keyboard device. Default is 0x55 (85).\n    \"\"\"\n\n    def __init__(self, i2c: I2C, device_address: int = None) -> None:\n        self._i2c = i2c\n        self._i2c_addr = device_address or _KEYBOARD_I2C_ADDR\n\n    def get_keypress(self) -> str | None:\n        \"\"\"Get the last keypress.\n\n        :return: character representing the key that was pressed\n        \"\"\"\n        buf = bytearray(1)\n        self._i2c.try_lock()\n        self._i2c.readfrom_into(self._i2c_addr, buffer=buf)\n        self._i2c.un\nCurrent file prefix:\nCustomKeyboard(Keyboard):\n    def __init__(self, backlight: bool = True):\n        super().__init__(board.I2C())\n        self.backlight(backlight)\n\n    def backlight(self, state: bool = None, register: int = 0x1):\n        \"\"\"Send an I2C command to control the keyboard backlight.\n        Custom keyboard firmware is required for this to work.\n        \"\"\"\n        if state is None:\n            buf = bytearray(1)\n        else:\n            buf = bytearray(2)\n            buf[1] = int(state)\n        buf[0] = register\n\n        self._i2c.try_lock()\n        self._i2c.writeto(self._i2c_addr, buffer=buf)\n        self._i2c.unlock()\n\n\nk = MyCustomKeyboard()\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-39",
+      "split": "development",
+      "family": "gardenifi/server",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "        response = await resource_not_found(obj, exc)",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 39,
+        "repo_name": "gardenifi/server",
+        "file_path": "tests/api/resource_not_found_test.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: gardenifi/server\nReference snippets:\n# app/main_app.py\nINVALID_DATA = \"Invalid data: Unable to process the provided data\"\nclass GlobalVars:\nclass WifiData(BaseModel):\nclass ValveData(BaseModel):\nclass BleData(BaseModel):\n    def __init__(self):\n    def refresh_set(self):\n    def refresh_set(self, value):\nasync def index():\nasync def resource_not_found(request: Request, exc: HTTPException):\nasync def read_ble_data(page: int = None):\nasync def write_ble_data(data: BleData):\nasync def discover_wifi(chunked: int = None, page: int = None):\nasync def save_wifi(data: WifiData):\nasync def turn(data: ValveData):\nasync def check_mqtt():\ndef web_server():\ndef setup_gpio():\ndef parse_arguments():\ndef main():\n# app/main_app.py\n@app.exception_handler(404)\nasync def resource_not_found(request: Request, exc: HTTPException):\n    \"\"\"Not found error.\"\"\"\n    logger.error(f\"Request: {request}\")\n\nCurrent file prefix:\np_version\": \"1.1\", \"method\": \"GET\", \"path\": \"/\"}\n\n\n@pytest.fixture(scope=\"function\")\nasync def request_obj():\n    \"\"\"Request object creation fixture\"\"\"\n    return Request(scope)\n\n\nclass TestResourceNotFound:\n    \"\"\"\n    Test class for the 'resource_not_found' error handler function.\n    \"\"\"\n\n    @pytest.mark.asyncio\n    async def test_returns_json_response_with_status_code_404_and_detail_of_httpexception(self, obj=request_obj):\n        \"\"\"\n        Test for returning a JSONResponse object with status code 404 and the detail of the HTTPException passed as an argument.\n        \"\"\"\n        exc = HTTPException(status_code=404, detail=\"Not found\")\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-571",
+      "split": "development",
+      "family": "dvruette/pygba",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "        game_wrapper: GameWrapper | None = None,",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 571,
+        "repo_name": "dvruette/pygba",
+        "file_path": "src/pygba/gym_env.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: dvruette/pygba\nReference snippets:\n# src/pygba/utils.py\nKEY_MAP = {\n    \"up\": GBA.KEY_UP,\n    \"down\": GBA.KEY_DOWN,\n    \"left\": GBA.KEY_LEFT,\n    \"right\": GBA.KEY_RIGHT,\n    \"A\": GBA.KEY_A,\n    \"B\": GBA.KEY_B,\n    \"L\": GBA.KEY_L,\n    \"R\": GBA.KEY_R,\n    \"start\": GBA.KEY_START,\n    \"select\": GBA.KEY_SELECT,\n}\n# src/pygba/pygba.py\nclass PyGBA:\n    @staticmethod\n    def load(gba_file: str, save_file: str | None = None) -> \"PyGBA\":\n        # create a temporary directory and copy the gba file into it\n        # this is necessary to prevent mgba from overwriting the save file (and to prevent crashes)\n        tmp_dir = Path(tempfile.mkdtemp())\n        tmp_gba = tmp_dir / \"rom.gba\"\n        tmp_gba.write_bytes(Path(gba_file).read_bytes())\n        gba_file = str(tmp_gba)\n        if save_file is not None:\n            tmp_save = tmp_dir / \"rom.sav\"\n            tmp_save.write_bytes(Path\nCurrent file prefix:\n\n\n\n\ntry:\nexcept ImportError as e:\n    pass\n\ndef _pil_image_to_pygame(img):\n    return pygame.image.fromstring(img.tobytes(), img.size, img.mode).convert()\n\nclass PyGBAEnv(gym.Env):\n\n    metadata = {\n        \"render_modes\": [\"human\", \"rgb_array\"],\n        \"render_fps\": 60,\n    }\n    \n    def __init__(\n        self,\n        gba: PyGBA,\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-627",
+      "split": "development",
+      "family": "aymenfurter/microagents",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "    def format_agent_info(self, agent: MicroAgent) -> dict:",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 627,
+        "repo_name": "aymenfurter/microagents",
+        "file_path": "gradio_ui/agent_manager.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: aymenfurter/microagents\nReference snippets:\n# agents/microagent_manager.py\nclass MicroAgentManager:\n    \"\"\"\n    Manages the creation and retrieval of micro agents.\n    \"\"\"\n\n    def __init__(self, api_key: str, max_agents: int = 20, db_filename=\"agents.db\"):\n        self.api_key = api_key\n        self.max_agents = max_agents\n        self.openai_wrapper = OpenAIAPIWrapper(api_key)\n        self.agent_persistence = AgentPersistenceManager(db_filename)\n        self.agent_lifecycle = AgentLifecycle(self.openai_wrapper, self.agent_persistence, max_agents)\n        self.load_agents()\n\n    def cleanup_agents(self):\n        \"\"\"Remove all agents with status stopped = True\"\"\"\n        self.agent_lifecycle.cleanup_agents()\n    \n    def load_agents(self):\n        \"\"\"Loads agents from the database.\"\"\"\n        loaded_agents = self.agent_persistence.load_all_agents(self.agent_lifecycle, self.openai_w\nCurrent file prefix:\n\n\nlogger = logging.getLogger(__name__)\n\nclass GradioAgentManager:\n    \"\"\"\n    A wrapper class for interacting with MicroAgentManager in a Gradio interface.\n    \"\"\"\n\n    def __init__(self, api_key: str):\n        self.manager = MicroAgentManager(api_key)\n        self.manager.create_agents()\n\n    def get_agents_info(self) -> List[dict]:\n        \"\"\"\n        Retrieve information about all agents for display in Gradio.\n        \"\"\"\n        agents = self.manager.get_agents()\n        return [self.format_agent_info(agent) for agent in agents]\n\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-974",
+      "split": "development",
+      "family": "stanleylsx/text_embedding",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "        self.model = Model().to(device)",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 974,
+        "repo_name": "stanleylsx/text_embedding",
+        "file_path": "engines/predict.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: stanleylsx/text_embedding\nReference snippets:\n# config.py\n\n# engines/model.py\nclass Model(torch.nn.Module):\n    def __init__(self):\n        super(Model, self).__init__()\n        self.model_type = configure['model_type']\n        self.emb_type = configure['emb_type']\n        max_sequence_length = configure['max_sequence_length']\n        config_kwargs = {\n            'max_position_embeddings': max_sequence_length,\n            'ignore_mismatched_sizes': True\n        }\n        if self.model_type == 'XLMRoberta':\n            self.model = XLMRobertaModel.from_pretrained(configure['hf_tag'], **config_kwargs)\n        elif self.model_type == 'RoFormer':\n            self.tokenizer = RoFormerModel.from_pretrained(configure['hf_tag'], **config_kwargs)\n        elif self.model_type == 'Bert':\n            self.model = BertModel.from_pretrained(configure['hf_tag'], **config_kwargs)\n        else:\n    \nCurrent file prefix:\n# -*- coding: utf-8 -*-\n# @Time : 2023/10/27 22:05\n# @Author : lishouxian\n# @Email : gzlishouxian@gmail.com\n# @File : predict.py\n# @Software: VSCode\n\n\nclass Predictor:\n    def __init__(self, data_manage, device, logger):\n        self.logger = logger\n        self.data_manage = data_manage\n        self.device = device\n        self.checkpoints_dir = configure['checkpoints_dir']\n        self.model_name = configure['model_name']\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-718",
+      "split": "development",
+      "family": "shinkungoo/SymbolicCDM",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "        f1 = f1_score(y_pred, y_true)",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 718,
+        "repo_name": "shinkungoo/SymbolicCDM",
+        "file_path": "SCDM/parameter.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: shinkungoo/SymbolicCDM\nReference snippets:\n# SCDM/eval.py\ndef accuracy(y_pred, y_true, threshold=0.5, weights=None):\n    pred = np.array(y_pred)\n    true = np.array(y_true)\n    result = np.where(pred > threshold, 1, 0)\n    if weights is not None:\n        correct = np.sum((true == result) * weights)\n        total = np.sum(weights)\n        return correct / total\n    else:\n        return metrics.accuracy_score(true, result)\n# SCDM/eval.py\ndef area_under_curve(y_pred, y_true):\n    pred = np.array(y_pred)\n    true = np.array(y_true)\n    fpr, tpr, thresholds = metrics.roc_curve(true, pred)\n    return metrics.auc(fpr, tpr)\nCurrent file prefix:\n         student_id, question, q_matrix_line, y = batch_data\n            student_id: torch.Tensor = student_id.to(device)\n            question: torch.Tensor = question.to(device)\n            q_matrix_line: torch.Tensor = q_matrix_line.to(device)\n            pred: torch.Tensor = self.net(student_id,\n                                          question,\n                                          q_matrix_line,\n                                          interaction_func)\n            y_pred.extend(pred.detach().cpu().tolist())\n            y_true.extend(y.tolist())\n\n        acc = accuracy(y_pred, y_true)\n        auc = area_under_curve(y_pred, y_true)\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-1925",
+      "split": "development",
+      "family": "mjavadpur/Sadtalker_LongVideos",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "            down_blocks.append(DownBlock2d(in_features, out_features, kernel_size=(3, 3), padding=(1, 1)))",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 1925,
+        "repo_name": "mjavadpur/Sadtalker_LongVideos",
+        "file_path": "src/facerender/modules/generator.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: mjavadpur/Sadtalker_LongVideos\nReference snippets:\n# src/facerender/modules/util.py\nclass ResBlock2d(nn.Module):\n    \"\"\"\n    Res block, preserve spatial resolution.\n    \"\"\"\n\n    def __init__(self, in_features, kernel_size, padding):\n        super(ResBlock2d, self).__init__()\n        self.conv1 = nn.Conv2d(in_channels=in_features, out_channels=in_features, kernel_size=kernel_size,\n                               padding=padding)\n        self.conv2 = nn.Conv2d(in_channels=in_features, out_channels=in_features, kernel_size=kernel_size,\n                               padding=padding)\n        self.norm1 = BatchNorm2d(in_features, affine=True)\n        self.norm2 = BatchNorm2d(in_features, affine=True)\n\n    def forward(self, x):\n        out = self.norm1(x)\n        out = F.relu(out)\n        out = self.conv1(out)\n        out = self.norm2(out)\n        out = F.relu(out)\n        out = self.conv2(out)\n\nCurrent file prefix:\notion_network = DenseMotionNetwork(num_kp=num_kp, feature_channel=feature_channel,\n                                                           estimate_occlusion_map=estimate_occlusion_map,\n                                                           **dense_motion_params)\n        else:\n            self.dense_motion_network = None\n\n        self.first = SameBlock2d(image_channel, block_expansion, kernel_size=(7, 7), padding=(3, 3))\n\n        down_blocks = []\n        for i in range(num_down_blocks):\n            in_features = min(max_features, block_expansion * (2 ** i))\n            out_features = min(max_features, block_expansion * (2 ** (i + 1)))\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-2844",
+      "split": "development",
+      "family": "patrickrchao/JailbreakingLLMs",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "            \"path\":VICUNA_PATH,",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 2844,
+        "repo_name": "patrickrchao/JailbreakingLLMs",
+        "file_path": "conversers.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: patrickrchao/JailbreakingLLMs\nReference snippets:\n# language_models.py\nclass GPT(LanguageModel):\n    API_RETRY_SLEEP = 10\n    API_ERROR_OUTPUT = \"$ERROR$\"\n    API_QUERY_SLEEP = 0.5\n    API_MAX_RETRY = 5\n    API_TIMEOUT = 20\n    openai.api_key = os.getenv(\"OPENAI_API_KEY\")\n\n    def generate(self, conv: List[Dict], \n                max_n_tokens: int, \n                temperature: float,\n                top_p: float):\n        '''\n        Args:\n            conv: List of dictionaries, OpenAI API format\n            max_n_tokens: int, max number of tokens to generate\n            temperature: float, temperature for sampling\n            top_p: float, top p for sampling\n        Returns:\n            str: generated response\n        '''\n        output = self.API_ERROR_OUTPUT\n        for _ in range(self.API_MAX_RETRY):\n            try:\n                response = openai.ChatCompletion.create(\n         \nCurrent file prefix:\nn\n            tokenizer.padding_side = 'left'\n        if 'vicuna' in model_path.lower():\n            tokenizer.pad_token = tokenizer.eos_token\n            tokenizer.padding_side = 'left'\n        if not tokenizer.pad_token:\n            tokenizer.pad_token = tokenizer.eos_token\n\n        lm = HuggingFace(model_name, model, tokenizer)\n    \n    return lm, template\n\ndef get_model_path_and_template(model_name):\n    full_model_dict={\n        \"gpt-4\":{\n            \"path\":\"gpt-4\",\n            \"template\":\"gpt-4\"\n        },\n        \"gpt-3.5-turbo\": {\n            \"path\":\"gpt-3.5-turbo\",\n            \"template\":\"gpt-3.5-turbo\"\n        },\n        \"vicuna\":{\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-1863",
+      "split": "development",
+      "family": "worm128/AI-YinMei",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "@app.get(\"/v1/internal/model/list\", response_model=ModelListResponse, dependencies=check_admin_key)",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 1863,
+        "repo_name": "worm128/AI-YinMei",
+        "file_path": "text-generation-webui/extensions/openai/script.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: worm128/AI-YinMei\nReference snippets:\n# text-generation-webui/extensions/openai/typing.py\nclass ChatCompletionRequest(GenerationOptions, ChatCompletionRequestParams):\n    pass\n# text-generation-webui/extensions/openai/typing.py\nclass ChatCompletionResponse(BaseModel):\n    id: str\n    choices: List[dict]\n    created: int = int(time.time())\n    model: str\n    object: str = \"chat.completion\"\n    usage: dict\nCurrent file prefix:\n'\n    Given a prompt, returns the top 50 most likely logits as a dict.\n    The keys are the tokens, and the values are the probabilities.\n    '''\n    response = OAIlogits._get_next_logits(to_dict(request_data))\n    return JSONResponse(response)\n\n\n@app.post(\"/v1/internal/stop-generation\", dependencies=check_key)\nasync def handle_stop_generation(request: Request):\n    stop_everything_event()\n    return JSONResponse(content=\"OK\")\n\n\n@app.get(\"/v1/internal/model/info\", response_model=ModelInfoResponse, dependencies=check_key)\nasync def handle_model_info():\n    payload = OAImodels.get_current_model_info()\n    return JSONResponse(content=payload)\n\n\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-2356",
+      "split": "development",
+      "family": "TUM-ITR/koopcore",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "    def fit(self, X: trajectory, y: trajectory):",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 2356,
+        "repo_name": "TUM-ITR/koopcore",
+        "file_path": "koopcore/model/kkr_estimator.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: TUM-ITR/koopcore\nReference snippets:\n# koopcore/jax/invariant_kernels.py\ndef make_koopman_kernel(base_kernel, eigenvalues_dt, H, einsum_kwargs={\"optimize\": True}, normalize=_normalize_by_h):\n\n    D = eigenvalues_dt.shape[0]\n\n    # backwards in time **(-h)\n    pullback_mu_DH = normalize(jnp.power(eigenvalues_dt[:, None], - jnp.arange(H)[None, :]))\n    # forward in time\n    rollout_mu_DH = jnp.power(eigenvalues_dt[:, None], jnp.arange(H)[None, :])\n\n    def first_argument_invariant_f(x_H, y, pullback_mu_H):\n        vf = jax.vmap(base_kernel, in_axes=[1, None], out_axes=0)\n        return jnp.sum(\n            pullback_mu_H[:, None, None]\n            *\n            vf(x_H, y), axis=0\n        )\n\n    def second_argument_invariant_f(x, y_H, pullback_mu_H):\n        vf = jax.vmap(base_kernel, in_axes=[None, 1], out_axes=1)\n        return jnp.sum(\n            pullback_mu_H.conj()[None, N\nCurrent file prefix:\ne = kernel_name\n        self.kernel_params = kernel_params\n        self.regularizer_invariant = regularizer_invariant\n        self.regularizer_isometric = regularizer_isometric\n        self.preprocessor = preprocessor\n        self.normalize_eigenfunctions = normalize_eigenfunctions\n        self.device = jax.device_get(device)\n        self.timestep = timestep\n        self.einsum_kwargs = einsum_kwargs\n        self.eigenvalues = eigenvalues\n        self.predictor_timestamps = predictor_timestamps\n        self.inducing_points = inducing_points\n        self.invariant_weights = invariant_weights\n        self.isometric_weights = isometric_weights\n\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-2805",
+      "split": "development",
+      "family": "hsma-programme/Teaching_DES_Concepts_Streamlit",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "    exp_dist = Exponential(mean=5)",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 2805,
+        "repo_name": "hsma-programme/Teaching_DES_Concepts_Streamlit",
+        "file_path": "pages/1_🚶‍♂️_Simulating_Arrivals.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: hsma-programme/Teaching_DES_Concepts_Streamlit\nReference snippets:\n# helper_functions.py\ndef add_logo():\n    '''\n    Add a logo at the top of the page navigation sidebar\n\n    Approach written by blackary on\n    https://discuss.streamlit.io/t/put-logo-and-title-above-on-top-of-page-navigation-in-sidebar-of-multipage-app/28213/5\n    \n    '''\n    st.markdown(\n        \"\"\"\n        <style>\n            [data-testid=\"stSidebarNav\"] {\n                background-image: url(https://raw.githubusercontent.com/hsma-programme/Teaching_DES_Concepts_Streamlit/main/resources/hsma_logo_transparent_background_small.png);\n                background-repeat: no-repeat;\n                padding-top: 175px;\n                background-position: 40px 30px;\n            }\n            [data-testid=\"stSidebarNav\"]::before {\n                content: \"The DES Playground\";\n                padding-left: 20px;\n                margin-top: 50\nCurrent file prefix:\n V -.-> I\n\n            classDef highlight fill:#02CD55,stroke:#E8AD02,stroke-width:4px,color:#0C0D11,font-size:12pt,font-family:lexend;\n            classDef unlight fill:#b4b4b4,stroke:#787878,stroke-width:2px,color:#787878,font-size:6pt,font-family:lexend;\n\n            class A highlight;\n            class B,B1,B2,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z unlight;\n        \"\"\"\n            )\n    \n    st.markdown(\n    \"\"\"\n    To start with, we need to create some simulated patients who will turn up to our centre. \n\n    To simulate patient arrivals, we will use the exponential distribution, which looks a bit like this. \n\n    \"\"\"\n    )\n    \n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-2107",
+      "split": "development",
+      "family": "wurenkai/MHA-UNet",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "    model = MHA_UNet()",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 2107,
+        "repo_name": "wurenkai/MHA-UNet",
+        "file_path": "train_cou.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: wurenkai/MHA-UNet\nReference snippets:\n# models/model.py\nclass MHA_UNet(nn.Module):\n\n    def __init__(self, num_classes=1, input_channels=3, pretrained=None,use_checkpoint=False, c_list=[16, 32, 64, 128, 256],\n                 split_att='fc', bridge=True):\n        super().__init__()\n        self.pretrained = pretrained\n        self.use_checkpoint = use_checkpoint\n        self.bridge = bridge\n\n        self.encoder1 = nn.Sequential(\n            nn.Conv2d(input_channels, c_list[0], 3, stride=1, padding=1),\n        )\n\n        self.encoder2 = nn.Sequential(\n            nn.Conv2d(c_list[0], c_list[1], 3, stride=1, padding=1),\n            nn.Dropout2d(0.1),\n        )\n\n        self.encoder3 = nn.Sequential(\n            nn.Conv2d(c_list[1], c_list[2], 3, stride=1, padding=1),\n            MHAblock(c_list[2]))\n        self.encoder3_1 = nn.Dropout2d(0.1)\n\n        self.encoder4 = nn.Sequen\nCurrent file prefix:\n                shuffle=False,\r\n                            pin_memory=True,\r\n                            num_workers=config.num_workers,\r\n                            drop_last=True)\r\n    test_dataset = isic_loader(path_Data=config.data_path, train=False, Test=True)\r\n    test_loader = DataLoader(test_dataset,\r\n                             batch_size=1,\r\n                             shuffle=False,\r\n                             pin_memory=True,\r\n                             num_workers=config.num_workers,\r\n                             drop_last=True)\r\n\r\n    print('#----------Prepareing Models----------#')\r\n    #model_cfg = config.model_config\r\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-3134",
+      "split": "development",
+      "family": "vorausrobotik/voraus-ad-dataset",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "    train_dataset, _, train_dl, test_dl = load_torch_dataloaders(",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 3134,
+        "repo_name": "vorausrobotik/voraus-ad-dataset",
+        "file_path": "train.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: vorausrobotik/voraus-ad-dataset\nReference snippets:\n# configuration.py\nclass Configuration(BaseModel):\n    \"\"\"Describes the configuration parameters.\"\"\"\n\n    seed: int\n    epochs: int\n    batchsize: int\n    n_hidden_layers: int = Field(alias=\"nHiddenLayers\")\n    n_coupling_blocks: int = Field(alias=\"nCouplingBlocks\")\n    scale: int\n    columns: Literal[\"machine\", \"mechanical\", \"electrical\", \"computed\", \"measured\"]\n    clamp: float\n    pad: bool\n    frequency_divider: int = Field(alias=\"frequencyDivider\")\n    train_gain: float = Field(alias=\"trainGain\")\n    normalize: bool\n    kernel_size_1: int = Field(alias=\"kernelSize1\")\n    dilation_1: int = Field(alias=\"dilation1\")\n    kernel_size_2: int = Field(alias=\"kernelSize2\")\n    dilation_2: int = Field(alias=\"dilation2\")\n    kernel_size_3: int = Field(alias=\"kernelSize3\")\n    dilation_3: int = Field(alias=\"dilation3\")\n    milestones: list[int]\n\nCurrent file prefix:\ng reproducible.\ntorch.manual_seed(configuration.seed)\ntorch.cuda.manual_seed_all(configuration.seed)\nnumpy.random.seed(configuration.seed)\nrandom.seed(configuration.seed)\nif DETERMINISTIC_CUDA:\n    torch.backends.cudnn.deterministic = True\n    torch.backends.cudnn.benchmark = False\n\n\n# Disable pylint too-many-variables here for readability.\n# The whole training should run in a single function call.\ndef train() -> List[Dict]:  # pylint: disable=too-many-locals\n    \"\"\"Trains the model with the paper-given parameters.\n\n    Returns:\n        The auroc (mean over categories) and loss per epoch.\n    \"\"\"\n    # Load the dataset as torch data loaders.\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-169",
+      "split": "development",
+      "family": "robocorp/llmstatemachine",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "        self._func_defs: Dict[TransitionFunction, FunctionDefinition] = dict()",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 169,
+        "repo_name": "robocorp/llmstatemachine",
+        "file_path": "src/llmstatemachine/workflow_agent.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: robocorp/llmstatemachine\nReference snippets:\n# src/llmstatemachine/function.py\ndef create_definition(func: Callable, goal: str) -> FunctionDefinition:\n    source = inspect.getsource(func)\n    client = OpenAI()\n    response = client.chat.completions.create(\n        model=\"gpt-4-1106-preview\",\n        messages=[\n            {\n                \"role\": \"system\",\n                \"content\": f\"\"\"Extract function metadata from the following function definition:\n```\n{source}\n```\n\nFocus on details that are meaningful for the following assignment:\n```\n{goal}\n```\n\nExtract the function metadata.\n\"\"\",\n            }\n        ],\n        functions=[\n            {\n                \"description\": \"FunctionDefinition is a tool for metadata extraction\",\n                \"name\": \"FunctionDefinition\",\n                \"parameters\": {\n                    \"type\": \"object\",\n                    \"properties\": {\n   \nCurrent file prefix:\n[...], str]\nFUNCTION_NAME = \"ActionSelector\"\nMODEL = \"gpt-4-1106-preview\"  # \"gpt-4\"\n_CURRENT_STEPPING_AGENT = None\n\n\nclass WorkflowAgent:\n    def __init__(\n            self, goal: str, transitions: Dict[str, Dict[str, TransitionFunction]]\n    ):\n        if \"INIT\" not in transitions:\n            raise Exception(\"Must define INIT state\")\n        self._transitions: Dict[str, Dict[str, TransitionFunction]] = transitions\n        self._current_state = \"INIT\"\n        self.next_state = None\n        self._messages: List[ChatCompletionMessageParam] = []\n        self._messages.append({\"role\": \"system\", \"content\": goal})\n        self._client = OpenAI()\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-1811",
+      "split": "development",
+      "family": "Yanyutin753/CowAndPandoraNext",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "        self.sessions = SessionManager(ChatGPTSession, model=conf().get(\"model\") or \"gpt-3.5-turbo\")",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 1811,
+        "repo_name": "Yanyutin753/CowAndPandoraNext",
+        "file_path": "bot/linkai/link_ai_bot.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: Yanyutin753/CowAndPandoraNext\nReference snippets:\n# bot/bot.py\nclass Bot(object):\n    def reply(self, query, context: Context = None) -> Reply:\n        \"\"\"\n        bot auto-reply content\n        :param req: received message\n        :return: reply content\n        \"\"\"\n        raise NotImplementedError\n# bot/chatgpt/chat_gpt_session.py\nclass ChatGPTSession(Session):\n    def __init__(self, session_id, system_prompt=None, model=\"gpt-3.5-turbo\"):\n        super().__init__(session_id, system_prompt)\n        self.model = model\n        self.reset()\n\n    def discard_exceeding(self, max_tokens, cur_tokens=None):\n        precise = True\n        try:\n            cur_tokens = self.calc_tokens()\n        except Exception as e:\n            precise = False\n            if cur_tokens is None:\n                raise e\n            logger.debug(\"Exception when counting tokens precisely for query: {}\".format(e))\n \nCurrent file prefix:\n# access LinkAI knowledge base platform\n# docs: https://link-ai.tech/platform/link-app/wechat\n\n\n\n\n\nclass LinkAIBot(Bot, OpenAIImage):\n    # authentication failed\n    AUTH_FAILED_CODE = 401\n    NO_QUOTA_CODE = 406\n\n    def __init__(self):\n        super().__init__()\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-1037",
+      "split": "development",
+      "family": "RaceCrewAI/gt-telem",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "        return format_time(self.best_lap_time_ms)",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 1037,
+        "repo_name": "RaceCrewAI/gt-telem",
+        "file_path": "gt_telem/models/telemetry.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: RaceCrewAI/gt-telem\nReference snippets:\n# gt_telem/models/helpers.py\ndef format_time(milliseconds):\n    \"\"\"\n    Format milliseconds into a time string (MM:SS.sss).\n\n    Parameters:\n        - milliseconds (int): Time in milliseconds.\n\n    Returns:\n        str: Formatted time string.\n    \"\"\"\n    milliseconds = max(0, int(milliseconds))\n    minutes, milliseconds = divmod(milliseconds, 60000)\n    seconds, milliseconds = divmod(milliseconds, 1000)\n    return f\"{minutes:02}:{seconds:02}.{milliseconds:03}\"\n# gt_telem/models/helpers.py\ndef format_time_of_day(milliseconds, use_24hr=False):\n    \"\"\"\n    Format milliseconds into a time of day string.\n\n    Parameters:\n        - milliseconds (int): Time in milliseconds.\n        - use_24hr (bool): Flag indicating whether to use 24-hour format. Default is False.\n\n    Returns:\n        str: Formatted time of day string.\n    \"\"\"\n    milliseconds \nCurrent file prefix:\noperty\n    def unknown_bool_2(self) -> bool:\n        \"\"\"\n        Not sure\n        \"\"\"\n        return bool(1<<13 & self.flags)\n\n    @property\n    def unknown_bool_3(self) -> bool:\n        \"\"\"\n        Get the value of another unknown boolean flag.\n        \"\"\"\n        return bool(1<<14 & self.flags)\n\n    @property\n    def unknown_bool_4(self) -> bool:\n        \"\"\"\n        Get the value of another unknown boolean flag.\n        \"\"\"\n        return bool(1<<15 & self.flags)\n\n    @property\n    def best_lap_time(self) -> str:\n        \"\"\"\n        Get the formatted best lap time.\n        \"\"\"\n        if self.best_lap_time_ms == -1:\n            return None\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-111",
+      "split": "development",
+      "family": "BobaZooba/xllm",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "    assert isinstance(dataset, SodaDataset)",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 111,
+        "repo_name": "BobaZooba/xllm",
+        "file_path": "tests/unit/datasets/test_registry.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: BobaZooba/xllm\nReference snippets:\n# src/xllm/enums.py\nclass General:\nclass Transformers:\nclass Registry:\nclass Datasets:\nclass Collators:\nclass Trainers:\nclass Experiments:\nclass EnvironmentVariables:\nclass LogLevel:\n# src/xllm/datasets/registry.py\n\nCurrent file prefix:\n Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\n\n\ndef test_get_soda_dataset() -> None:\n    dataset_cls = datasets_registry.get(key=enums.Datasets.soda)\n    dataset = dataset_cls(data=DATA)\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-3206",
+      "split": "development",
+      "family": "ApolloAuto/apollo-model-centerpoint",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "                logger.error(\"Point cloud shape: {}\".format(points.shape))",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 3206,
+        "repo_name": "ApolloAuto/apollo-model-centerpoint",
+        "file_path": "paddle3d/transforms/reader.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: ApolloAuto/apollo-model-centerpoint\nReference snippets:\n# paddle3d/apis/manager.py\nclass ComponentManager:\n    def __init__(self, *, name: str, description: str = ''):\n    def __len__(self):\n    def __repr__(self):\n    def __getitem__(self, item: str):\n    def components_dict(self) -> dict:\n    def name(self) -> str:\n    def description(self) -> str:\n    def _add_single_component(self, component: Callable):\n    def add_component(self, components: Union[Callable, Iterable[Callable]]\n                      ) -> Union[Callable, Iterable[Callable]]:\nVOXEL_ENCODERS = ComponentManager(name=\"voxel_encoders\")\nMIDDLE_ENCODERS = ComponentManager(name=\"middle_encoders\")\nBACKBONES = ComponentManager(name=\"backbones\")\nMODELS = ComponentManager(name=\"models\")\nNECKS = ComponentManager(name=\"necks\")\nHEADS = ComponentManager(name=\"heads\")\nLOSSES = ComponentManager(name=\"losses\")\nDATASETS = ComponentManager(name\nCurrent file prefix:\nmeta[\"proj_mask\"] = proj_mask.astype(np.float32)\n        sample.meta[\"proj_x\"] = proj_x_copy\n        sample.meta[\"proj_y\"] = proj_y_copy\n\n        if sample.labels is not None:\n            # load labels\n            raw_label = np.fromfile(\n                sample.labels, dtype=np.uint32).reshape((-1))\n            # only fill in attribute if the right size\n            if raw_label.shape[0] == points.shape[0]:\n                sem_label = raw_label & 0xFFFF  # semantic label in lower half\n                sem_label = self._remap_semantic_labels(sem_label)\n                # inst_label = raw_label >> 16  # instance id in upper half\n            else:\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-37",
+      "split": "development",
+      "family": "giaminhgist/3D-DAM",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "            residual_block(channel_size=16),",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 37,
+        "repo_name": "giaminhgist/3D-DAM",
+        "file_path": "lib/model/DuoAttention.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: giaminhgist/3D-DAM\nReference snippets:\n# lib/model/attention_block.py\nclass SpatialAttention3D(nn.Module):\n    def __init__(self, out_channel=64, kernel_size=3, stride=1, padding=1):\n        super(SpatialAttention3D, self).__init__()\n\n        self.conv = nn.Conv3d(2, out_channel,\n                              kernel_size=kernel_size, stride=stride, padding=padding, bias=False)\n        self.sigmoid = nn.Sigmoid()\n\n    def forward(self, x):\n        residual = x\n        avg_out = torch.mean(x, dim=1, keepdim=True)\n        max_out, _ = torch.max(x, dim=1, keepdim=True)\n        x = torch.cat([avg_out, max_out], dim=1)\n        x = self.conv(x)\n        x = self.sigmoid(x)\n        out = x * residual\n        return out\n# lib/model/attention_block.py\nclass ChannelAttention3D(nn.Module):\n    def __init__(self, in_planes=64, ratio=8):\n        super(ChannelAttention3D, self).__init__()\n   \nCurrent file prefix:\n     self.ca = ChannelAttention3D(in_planes=channels)\n\n    def forward(self, x):\n        residual = x\n        out = self.ca(x)\n        out = self.sa(out)\n        out = out + residual\n        return out\n\n\nclass Duo_Attention(nn.Module):\n    def __init__(\n            self, input_size=(1, 169, 208, 179), num_classes=3, dropout=0\n    ):\n        super().__init__()\n        self.conv = nn.Sequential(\n            nn.Conv3d(input_size[0], 8, 3, padding=1),\n            nn.BatchNorm3d(8),\n            nn.ReLU(),\n            # nn.MaxPool3d(2, 2),\n\n            nn.Conv3d(8, 16, 3, padding=1, stride=2),\n            nn.BatchNorm3d(16),\n            nn.ReLU(),\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-340",
+      "split": "development",
+      "family": "myshell-ai/AIlice",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "        prompt, n = ConstructOptPrompt(self.ParameterizedBuildPrompt, low=1, high=len(self.conversations), maxLen=int(self.processor.llm.contextWindow * config.contextWindowRatio))",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 340,
+        "repo_name": "myshell-ai/AIlice",
+        "file_path": "ailice/prompts/APromptSearchEngine.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: myshell-ai/AIlice\nReference snippets:\n# ailice/common/AConfig.py\nclass AConfig():\n    def __init__(self):\n    def Initialize(self, needOpenaiGPTKey = False):\n    def Load(self, configFile: str) -> dict:\n    def Store(self, configFile: str):\n# ailice/prompts/ARegex.py\ndef GenerateRE4FunctionCalling(signature: str, faultTolerance: bool = False) -> str:\n    #signature: \"FUNC<!|ARG1: ARG1_TYPE, ARG2: ARG2_TYPE...|!> -> RETURN_TYPE\"\n    pattern = r\"(\\w+)<!\\|((?:\\w+[ ]*:[ ]*[\\w, ]+)*)\\|!>(?:[ ]*->[ ]*)(\\w+)\"\n    matches = re.search(pattern, signature)\n    if matches is None:\n        print(\"signature invalid. exit. \", signature)\n        exit()\n    funcName, args, retType = matches[1], matches[2], matches[3]\n    \n    pattern = r\"(\\w+)[ ]*:[ ]*(\\w+)\"\n    typePairs = re.findall(pattern, args)\n    \n    reMap = {k: v for k,v in ARegexMap.items()}\n    reMap[\"str\"] = r\"(?:.*(?=\\|!>))\" if f\nCurrent file prefix:\nateRE4FunctionCalling(\"RESPOND<!|message: str|!> -> None\", faultTolerance = True), \"isEntry\": True}]}\n        self.ACTIONS= {}\n        return\n    \n    def Reset(self):\n        return\n    \n    def GetPatterns(self):\n        return self.PATTERNS\n    \n    def GetActions(self):\n        return self.ACTIONS\n    \n    def ParameterizedBuildPrompt(self, n: int):\n        prompt = f\"\"\"\n{self.prompt0}\n\nEnd of general instructions.\n\n\"\"\"\n        #prompt += \"Conversations:\"\n        ret = self.formatter(prompt0 = prompt, conversations = self.conversations.GetConversations(frm = -n))\n        return ret, self.formatter.Len(ret)\n    \n    def BuildPrompt(self):\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-1367",
+      "split": "development",
+      "family": "colour-science/colour-visuals",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "                    append_channel(colour_sl, self._opacity)",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 1367,
+        "repo_name": "colour-science/colour-visuals",
+        "file_path": "colour_visuals/planckian_locus.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: colour-science/colour-visuals\nReference snippets:\n# colour_visuals/common.py\nDEFAULT_FLOAT_DTYPE_WGPU = np.float32\n# colour_visuals/common.py\ndef append_channel(a: ArrayLike, value: float = 1) -> NDArray:\n    \"\"\"\n    Append a channel to given variable :math:`a`.\n\n    Parameters\n    ----------\n    a\n        Variable :math:`a` to append a channel to.\n    value\n        Channel value.\n\n    Returns\n    -------\n    :class:`numpy.ndarray`\n        Variable :math:`a` with appended channel.\n    \"\"\"\n\n    a = np.copy(a)\n\n    return np.hstack(  # pyright: ignore\n        [\n            a,\n            full(\n                (*list(a.shape[:-1]), 1),\n                value,\n                dtype=a.dtype,  # pyright: ignore\n            ),\n        ]\n    )\nCurrent file prefix:\n:]], axis=1\n        ).reshape([-1, 2])\n\n        positions = np.hstack(\n            [\n                positions,\n                np.full((positions.shape[0], 1), 0, DEFAULT_FLOAT_DTYPE_WGPU),\n            ]\n        )\n\n        if self._colour is None:\n            colour_sl = np.concatenate(\n                [lines_pl[\"colour\"][:-1], lines_pl[\"colour\"][1:]], axis=1\n            ).reshape([-1, 3])\n        else:\n            colour_sl = np.tile(self._colour, (positions.shape[0], 1))\n\n        self._planckian_locus = gfx.Line(\n            gfx.Geometry(\n                positions=as_contiguous_array(positions),\n                colors=as_contiguous_array(\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-1302",
+      "split": "development",
+      "family": "codefuse-ai/Test-Agent",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "        flagged = violates_moderation(text)",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 1302,
+        "repo_name": "codefuse-ai/Test-Agent",
+        "file_path": "chat/server/gradio_web_server.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: codefuse-ai/Test-Agent\nReference snippets:\n# chat/conversation.py\nclass SeparatorStyle(IntEnum):\n    \"\"\"Separator styles.\"\"\"\n\n    ADD_COLON_SINGLE = auto()\n    ADD_COLON_TWO = auto()\n    ADD_COLON_SPACE_SINGLE = auto()\n    NO_COLON_SINGLE = auto()\n    NO_COLON_TWO = auto()\n    ADD_NEW_LINE_SINGLE = auto()\n    LLAMA2 = auto()\n    LLAMA2_TESTGPT = auto()\n    CHATGLM = auto()\n    CHATML = auto()\n    CHATINTERN = auto()\n    DOLLY = auto()\n    RWKV = auto()\n    PHOENIX = auto()\n    ROBIN = auto()\n# chat/constants.py\nLOGDIR = os.getenv(\"LOGDIR\", \".\")\nCurrent file prefix:\nrn (state, [], \"\") + (disable_btn,) * 5\n\n\ndef add_text(state, model_selector, text, request: gr.Request):\n    ip = request.client.host\n    logger.info(f\"add_text. ip: {ip}. len: {len(text)}\")\n\n    if state is None:\n        state = State(model_selector)\n\n    if len(text) <= 0:\n        state.skip_next = True\n        return (state, state.to_gradio_chatbot(), \"\") + (no_change_btn,) * 5\n\n    if ip_expiration_dict[ip] < time.time():\n        logger.info(f\"inactive. ip: {request.client.host}. text: {text}\")\n        state.skip_next = True\n        return (state, state.to_gradio_chatbot(), INACTIVE_MSG) + (no_change_btn,) * 5\n\n    if enable_moderation:\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-2226",
+      "split": "development",
+      "family": "SunOner/yolov8_aimbot",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "    mouse_worker = MouseThread()",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 2226,
+        "repo_name": "SunOner/yolov8_aimbot",
+        "file_path": "run.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: SunOner/yolov8_aimbot\nReference snippets:\n# logic/config_watcher.py\nclass Config():\n    def __init__(self):\n        self.config = configparser.ConfigParser()\n        self.Read(verbose=False)\n    \n    def Read(self, verbose=False):\n        self.config.read('./config.ini')\n        self.config_Detection_window = self.config['Detection window']\n        self.detection_window_width = int(self.config_Detection_window['detection_window_width'])\n        self.detection_window_height = int(self.config_Detection_window['detection_window_height'])\n        \n        self.config_Bettercam_Capture = self.config['Capture Methods']\n        self.Bettercam_capture = self.config_Bettercam_Capture.getboolean('Bettercam_capture')\n        self.bettercam_capture_fps = int(self.config_Bettercam_Capture['bettercam_capture_fps'])\n        self.bettercam_monitor_id = int(self.config_Bettercam_Capture['betterca\nCurrent file prefix:\n.debug_window_scale_percent / 100)\n                    width = int(cfg.detection_window_width * cfg.debug_window_scale_percent / 100)\n                    dim = (width, height)\n                    cv2.resizeWindow(cfg.debug_window_name, dim)\n                    resised = cv2.resize(annotated_frame, dim, cv2.INTER_NEAREST)\n                    cv2.imshow(cfg.debug_window_name, resised)\n                else:\n                    cv2.imshow(cfg.debug_window_name, annotated_frame)\n            except: exit(0)\n            if cfg.show_window and cv2.waitKey(1) & 0xFF == ord('q'):\n                break\n\nif __name__ == \"__main__\":\n    frames = Capture()\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-2485",
+      "split": "development",
+      "family": "SafeAILab/EAGLE",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "    model = EaModel.from_pretrained(",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 2485,
+        "repo_name": "SafeAILab/EAGLE",
+        "file_path": "evaluation/gen_ea_answer_vicuna.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: SafeAILab/EAGLE\nReference snippets:\n# model/ea_model.py\nclass EaModel(nn.Module):\n\n    def __init__(\n            self,\n            base_model,\n            base_model_name_or_path,\n            ea_model_path,\n    ):\n\n        super().__init__()\n        self.base_model = base_model\n        self.config = base_model.config\n        self.hidden_size = base_model.lm_head.weight.shape[-1]\n        self.vocab_size = base_model.lm_head.weight.shape[0]\n        self.base_model_name_or_path = base_model_name_or_path\n        self.tokenizer = AutoTokenizer.from_pretrained(self.base_model_name_or_path)\n        config = EConfig.from_pretrained(ea_model_path)\n        self.ea_layer = Model(config)\n\n        low_memory=False\n\n        device = base_model.model.layers[-1].self_attn.q_proj.weight.device\n        if device!=base_model.lm_head.weight.device:\n            self.ea_layer.diff_device = True\n\nCurrent file prefix:\n            questions[i: i + chunk_size],\n                answer_file,\n                max_new_token,\n                num_choices,\n                num_gpus_per_model,\n                max_gpu_memory,\n                temperature,\n                tree_choices,\n            )\n        )\n\n    if use_ray:\n        ray.get(ans_handles)\n\n\n@torch.inference_mode()\ndef get_model_answers(\n        base_model_path,\n        ea_model_path,\n        model_id,\n        questions,\n        answer_file,\n        max_new_token,\n        num_choices,\n        num_gpus_per_model,\n        max_gpu_memory,\n        temperature,\n        tree_choices,\n):\n    # temperature = 0.0\n\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-3763",
+      "split": "development",
+      "family": "Qualcomm-AI-research/geometric-algebra-transformer",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "        self.supports_variable_items = isinstance(net, GCAGNN)",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 3763,
+        "repo_name": "Qualcomm-AI-research/geometric-algebra-transformer",
+        "file_path": "gatr/experiments/nbody/wrappers.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: Qualcomm-AI-research/geometric-algebra-transformer\nReference snippets:\n# gatr/baselines/gcan.py\nclass GCAGNN(nn.Module):\n    \"\"\"GCA-GNN model as described in D. Ruhe et al.\n\n    The model was described in \"Geometric Clifford Algebra Networks\" by D.Ruhe et al.,\n    and in private communication from D. Ruhe.\n\n    Combines multiple GCAGNNLayers.\n\n    This network uses the same projective geometric algebra representations as GATr, but is not\n    E(3)-equivariant.\n\n    References\n    ----------\n    D. Ruhe et al, \"Geometric Clifford Algebra Networks\", arXiv:2302.06594\n\n    Parameters\n    ----------\n    in_channels : int\n        Number of input channels.\n    out_channels : int\n        Number of output channels.\n    node_channels : int\n        Number of channels in the hidden representation for each node.\n    message_channels : int\n        Number of channels in the messages.\n    mlp_hidden_channels : int\n        Nu\nCurrent file prefix:\n           for j in range(num_atoms):\n                if i != j:\n                    src.append(i)\n                    dst.append(j)\n        return np.array(src), np.array(dst)\n\n\nclass NBodyGCANWrapper(nn.Module):\n    \"\"\"Wraps around GCA-MLP and GCA-GNN baselines for the n-body experiment.\n\n    Parameters\n    ----------\n    net : torch.nn.Module\n        GCAN model that accepts inputs with multivector inputs with 1 channel and\n        returns multivector outputs with 1 channel.\n    \"\"\"\n\n    def __init__(self, net, geometric_batching=False):\n        super().__init__()\n        self.net = net\n        self._geometric_batching = geometric_batching\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-2267",
+      "split": "development",
+      "family": "colour-science/colour-visuals",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "    MixinPropertyWireframe,",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 2267,
+        "repo_name": "colour-science/colour-visuals",
+        "file_path": "colour_visuals/diagrams.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: colour-science/colour-visuals\nReference snippets:\n# colour_visuals/common.py\nDEFAULT_FLOAT_DTYPE_WGPU = np.float32\n# colour_visuals/common.py\nDEFAULT_INT_DTYPE_WGPU = np.uint32\nCurrent file prefix:\ncolour, (positions.shape[0], 1))\n\n        self._spectral_locus = gfx.Line(\n            gfx.Geometry(\n                positions=as_contiguous_array(positions),\n                colors=as_contiguous_array(\n                    append_channel(colour, self._opacity)\n                ),\n            ),\n            gfx.LineSegmentMaterial(\n                thickness=self._thickness, color_mode=\"vertex\"\n            ),\n        )\n        self.add(self._spectral_locus)\n\n\nclass VisualChromaticityDiagram(\n    MixinPropertyCMFS,\n    MixinPropertyColour,\n    MixinPropertyTypeMaterial,\n    MixinPropertyMethod,\n    MixinPropertyOpacity,\n    MixinPropertySamples,\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-1869",
+      "split": "development",
+      "family": "CosmicLaca/ComfyUI_Primere_Nodes",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "        embeddings_final_pos, pooled_pos = advanced_encode(clip, final_positive, token_normalization, weight_interpretation, w_max=1.0, apply_to_pooled=True)",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 1869,
+        "repo_name": "CosmicLaca/ComfyUI_Primere_Nodes",
+        "file_path": "Nodes/Inputs.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: CosmicLaca/ComfyUI_Primere_Nodes\nReference snippets:\n# Nodes/modules/image_meta_reader.py\nclass ImageExifReader:\n    def __init__(self, file):\n        self._raw = \"\"\n        self._parser = {}\n        self._parameter = {}\n        self._tool = \"\"\n        self.read_data(file)\n\n    def read_data(self, file):\n        def is_json(jsoninput):\n            try:\n                json.loads(jsoninput)\n            except ValueError as e:\n                return False\n            return True\n\n        with Image.open(file) as f:\n            p2metadata = pyexiv2.Image(file)\n            is_primere = p2metadata.read_exif()\n            if 'Exif.Image.ImageDescription' in is_primere:\n                primere_exif_string = is_primere.get('Exif.Image.ImageDescription').strip()\n                if is_json(primere_exif_string) == True:\n                    json_object = json.loads(primere_exif_string)\n                \nCurrent file prefix:\ninal_strength:.2f})'\n            else:\n                final_positive = f'{final_positive} {positive_original}'\n\n        if negative_original is not None and negative_original != \"\" and negative_original_strength != 0:\n            if negative_original_strength != 1:\n                final_negative = f'{final_negative} ({negative_original}:{negative_original_strength:.2f})'\n            else:\n                final_negative = f'{final_negative} {negative_original}'\n\n        final_positive = utility.DynPromptDecoder(self, final_positive.strip(' ,;'), seed)\n        final_negative = utility.DynPromptDecoder(self, final_negative.strip(' ,;'), seed)\n\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-3460",
+      "split": "development",
+      "family": "flow-diffusion/AVDC",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "        self.transformer_in = TransformerTemporalModel(",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 3460,
+        "repo_name": "flow-diffusion/AVDC",
+        "file_path": "flowdiffusion/model/unet_3d_condition.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: flow-diffusion/AVDC\nReference snippets:\n# flowdiffusion/model/attention_processor.py\nclass Attention(nn.Module):\nclass AttnProcessor:\nclass LoRALinearLayer(nn.Module):\nclass LoRAAttnProcessor(nn.Module):\nclass AttnAddedKVProcessor:\nclass XFormersAttnProcessor:\nclass AttnProcessor2_0:\nclass LoRAXFormersAttnProcessor(nn.Module):\nclass SlicedAttnProcessor:\nclass SlicedAttnAddedKVProcessor:\n    def __init__(\n        self,\n        query_dim: int,\n        cross_attention_dim: Optional[int] = None,\n        heads: int = 8,\n        dim_head: int = 64,\n        dropout: float = 0.0,\n        bias=False,\n        upcast_attention: bool = False,\n        upcast_softmax: bool = False,\n        cross_attention_norm: bool = False,\n        added_kv_proj_dim: Optional[int] = None,\n        norm_num_groups: Optional[int] = None,\n        out_bias: bool = True,\n        scale_qk: bool = True,\n        pro\nCurrent file prefix:\nblock_types`: {down_block_types}.\"\n            )\n\n        # input\n        conv_in_kernel = 3\n        conv_out_kernel = 3\n        conv_in_padding = (conv_in_kernel - 1) // 2\n        self.conv_in = nn.Conv2d(\n            in_channels, block_out_channels[0], kernel_size=conv_in_kernel, padding=conv_in_padding\n        )\n\n        # time\n        time_embed_dim = block_out_channels[0] * 4\n        self.time_proj = Timesteps(block_out_channels[0], True, 0)\n        timestep_input_dim = block_out_channels[0]\n\n        self.time_embedding = TimestepEmbedding(\n            timestep_input_dim,\n            time_embed_dim,\n            act_fn=act_fn,\n        )\n\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-3254",
+      "split": "development",
+      "family": "u2seg/U2Seg",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "    register_all_cityscapes_panoptic(_root)",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 3254,
+        "repo_name": "u2seg/U2Seg",
+        "file_path": "detectron2/data/datasets/builtin.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: u2seg/U2Seg\nReference snippets:\n# detectron2/data/catalog.py\nclass _DatasetCatalog(UserDict):\nclass Metadata(types.SimpleNamespace):\nclass _MetadataCatalog(UserDict):\n    def register(self, name, func):\n    def get(self, name):\n    def list(self) -> List[str]:\n    def remove(self, name):\n    def __str__(self):\n    def __getattr__(self, key):\n    def __setattr__(self, key, val):\n    def as_dict(self):\n    def set(self, **kwargs):\n    def get(self, key, default=None):\n    def get(self, name):\n    def list(self):\n    def remove(self, name):\n    def __str__(self):\n    _RENAMED = {\n        \"class_names\": \"thing_classes\",\n        \"dataset_id_to_contiguous_id\": \"thing_dataset_id_to_contiguous_id\",\n        \"stuff_class_names\": \"stuff_classes\",\n    }\n# detectron2/data/datasets/builtin_meta.py\nADE20K_SEM_SEG_CATEGORIES = [\n    \"wall\", \"building\", \"sky\", \"floor\", \"tree\", \"ceiling\"\nCurrent file prefix:\n_seg(y, x, gt_ext=\"png\", image_ext=\"jpg\")\n        )\n        MetadataCatalog.get(name).set(\n            stuff_classes=ADE20K_SEM_SEG_CATEGORIES[:],\n            image_root=image_dir,\n            sem_seg_root=gt_dir,\n            evaluator_type=\"sem_seg\",\n            ignore_label=255,\n        )\n\n\n# True for open source;\n# Internally at fb, we register them elsewhere\nif __name__.endswith(\".builtin\"):\n    # Assume pre-defined datasets live in `./datasets`.\n    _root = \"datasets\"\n    # _root = os.path.expanduser(os.getenv(\"DETECTRON2_DATASETS\", \"datasets\"))\n    register_all_coco(_root)\n    register_all_lvis(_root)\n    register_all_cityscapes(_root)\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-2556",
+      "split": "development",
+      "family": "DavidBellamy/labrador",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "                json_record = json.dumps(patient_jsonl, cls=NpEncoder)",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 2556,
+        "repo_name": "DavidBellamy/labrador",
+        "file_path": "scripts/preprocessing/pretraining_raw_data_to_labrador_jsonl.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: DavidBellamy/labrador\nReference snippets:\n# lab_transformers/data/tokenize_tabular_data.py\nclass mimic4_eCDFer:\n    def __init__(self, ecdf_data: np.lib.npyio.NpzFile) -> None:\n        \"\"\"\n        Maps an iterable of lab codes and and an iterable of corresponding lab values to their probabilities on the corresponding eCDF.\n\n        Parameters:\n        ecdf_data: a NumPy .npz data archive containing named arrays: {itemid}_x and {itemid}_y for all itemid's in MIMIC-IV.\n            {itemid}_x contains the *unique* values of the random variable (e.g. lab values).\n            {itemid}_y contains the probabilities corresponding to P(X <= x) for that itemid.\n\n        Note: {itemid}_x, {itemid}_y are index-aligned such that:\n            ecdf_data[f\"{itemid}_y\"][i] = P(X <= ecdf_data[f\"{itemid}_x\"][i]) for all i.\n        \"\"\"\n\n        self.ecdf_data = ecdf_data\n        self.itemids = list(\nCurrent file prefix:\ntient\n\n            # Create individual patient JSON line\n            patient_jsonl = {\n                \"subject_id\": patient,\n                \"lab_codes\": [\n                    self.frequency_ranks[code] for code in temp.itemid.values\n                ],\n                \"lab_values\": temp.probs.fillna(\"<NULL>\").values.tolist(),\n                \"time_deltas\": temp.time_delta.values.tolist(),\n                \"hadm_id\": temp.hadm_id.values.tolist(),\n                \"charttime\": np.datetime_as_string(temp.charttime, unit=\"m\").tolist(),\n            }\n\n            # Write it to file\n            with open(filepath, mode=mode, encoding=\"utf-8\") as f:\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-3432",
+      "split": "development",
+      "family": "yaroslav318/chatGPT-discord-bot",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "        personas.current_persona = \"standard\"",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 3432,
+        "repo_name": "yaroslav318/chatGPT-discord-bot",
+        "file_path": "src/bot.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: yaroslav318/chatGPT-discord-bot\nReference snippets:\n# src/log.py\nclass CustomFormatter(logging.Formatter):\n    LEVEL_COLORS = [\n        (logging.DEBUG, '\\x1b[40;1m'),\n        (logging.INFO, '\\x1b[34;1m'),\n        (logging.WARNING, '\\x1b[33;1m'),\n        (logging.ERROR, '\\x1b[31m'),\n        (logging.CRITICAL, '\\x1b[41m'),\n    ]\n    FORMATS = {\n        level: logging.Formatter(\n            f'\\x1b[30;1m%(asctime)s\\x1b[0m {color}%(levelname)-8s\\x1b[0m \\x1b[35m%(name)s\\x1b[0m -> %(message)s',\n            '%Y-%m-%d %H:%M:%S'\n        )\n        for level, color in LEVEL_COLORS\n    }\n    def format(self, record):\ndef setup_logger(module_name:str) -> logging.Logger:\n# src/aclient.py\nclass aclient(discord.Client):\n    def __init__(self) -> None:\n    def get_chatbot_model(self, prompt = None) -> Union[AsyncChatbot, Chatbot]:\n    async def process_messages(self):\n    async def enqueue_message(self, mes\nCurrent file prefix:\nync def reset(interaction: discord.Interaction):\n        await interaction.response.defer(ephemeral=False)\n        if client.chat_model == \"OFFICIAL\":\n            client.chatbot = client.get_chatbot_model()\n        elif client.chat_model == \"UNOFFICIAL\":\n            client.chatbot.reset_chat()\n            await client.send_start_prompt()\n        elif client.chat_model == \"Bard\":\n            client.chatbot = client.get_chatbot_model()\n            await client.send_start_prompt()\n        elif client.chat_model == \"Bing\":\n            await client.chatbot.reset()\n        await interaction.followup.send(\"> **INFO: I have forgotten everything.**\")\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-2702",
+      "split": "development",
+      "family": "mohame54/Speech-Transcriber-App",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "    )-> Union[Hypothesis, List[Hypothesis]]:",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 2702,
+        "repo_name": "mohame54/Speech-Transcriber-App",
+        "file_path": "whisper/whisper.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: mohame54/Speech-Transcriber-App\nReference snippets:\n# whisper/decoding.py\nclass Inference:\n    \"\"\"\n    Class for handling sequence generation inference.\n\n    Attributes:\n        encoder: ONNX runtime inference session for the encoder.\n        decoder: ONNX runtime inference session for the decoder.\n        _mode: Language mode (\"English\" or \"Arabic\").\n    \"\"\"\n    def __init__(\n        self,\n        encoder_path: str,\n        decoder_path: str,\n        mode: Optional[str] = \"English\"\n    ):\n        \"\"\"\n        Initializes the Inference instance.\n\n        Parameters:\n            encoder_path: Path to the encoder model.\n            decoder_path: Path to the decoder model.\n            mode: Language mode (\"English\" or \"Arabic\").\n        \"\"\"\n        options = onnxruntime.SessionOptions()\n        providers = [\"CPUExecutionProvider\"]\n        options.graph_optimization_level = onnxruntime.GraphOpt\nCurrent file prefix:\nfig.top_p,\n                self.config.temperature,\n            )    \n\n    def _extract_feats(self, audio)-> np.ndarray:\n        \"\"\"\n        Extracts features from the input audio using the feature extractor.\n\n        Args:\n        - audio: Input audio as a numpy array.\n\n        Returns:\n        - feats: Extracted log mel spectrogram.\n        \"\"\"\n        feats = self.processor(audio, sampling_rate=16_000)['input_features']\n        return feats\n\n    def __call__(\n        self,\n        audio: Union[np.ndarray, str],\n        max_len: int = 50,\n        return_multiple: bool = False,\n        return_hyps: bool = False,\n        **generation_kwargs,\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-2835",
+      "split": "development",
+      "family": "fishaudio/fish-speech",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "            image_mels = plot_mel(",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 2835,
+        "repo_name": "fishaudio/fish-speech",
+        "file_path": "fish_speech/models/vqgan/lit_module.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: fishaudio/fish-speech\nReference snippets:\n# fish_speech/models/vqgan/losses.py\ndef discriminator_loss(\n    disc_real_outputs: List[torch.Tensor], disc_generated_outputs: List[torch.Tensor]\n):\n    loss = 0\n    r_losses = []\n    g_losses = []\n    for dr, dg in zip(disc_real_outputs, disc_generated_outputs):\n        dr = dr.float()\n        dg = dg.float()\n        r_loss = torch.mean((1 - dr) ** 2)\n        g_loss = torch.mean(dg**2)\n        loss += r_loss + g_loss\n        r_losses.append(r_loss.item())\n        g_losses.append(g_loss.item())\n\n    return loss, r_losses, g_losses\n# fish_speech/models/vqgan/losses.py\ndef feature_loss(fmap_r: List[torch.Tensor], fmap_g: List[torch.Tensor]):\n    loss = 0\n    for dr, dg in zip(fmap_r, fmap_g):\n        for rl, gl in zip(dr, dg):\n            rl = rl.float().detach()\n            gl = gl.float()\n            loss += torch.mean(torch.abs(rl - gl)\nCurrent file prefix:\n   \"val/mel_loss\",\n            mel_loss,\n            on_step=False,\n            on_epoch=True,\n            prog_bar=True,\n            logger=True,\n            sync_dist=True,\n        )\n\n        for idx, (\n            mel,\n            gen_mel,\n            decode_mel,\n            audio,\n            gen_audio,\n            audio_len,\n        ) in enumerate(\n            zip(\n                gt_mels,\n                fake_mels,\n                decoded_mels,\n                audios.detach().float(),\n                fake_audios.detach().float(),\n                audio_lengths,\n            )\n        ):\n            mel_len = audio_len // self.hop_length\n\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-1214",
+      "split": "development",
+      "family": "svetlovtech/gptize",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "        builder = OutputBuilder()",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 1214,
+        "repo_name": "svetlovtech/gptize",
+        "file_path": "gptize/gptizer.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: svetlovtech/gptize\nReference snippets:\n# gptize/models.py\nclass File:\n    \"\"\"Class representing a file in the project.\"\"\"\n    def __init__(self, file_name: str, directory: str):\n        self.file_name = file_name\n        self.directory = directory\n        self.content = \"\"\n        self.content_size = 0\n        self.is_binary = False\n\n    def __str__(self):\n        return f\"File(name={self.file_name}, size={self.content_size} bytes)\"\n\n    def __repr__(self):\n        return f\"<File '{self.file_name}' at {self.directory}>\"\n# gptize/models.py\nclass Project:\n    \"\"\"Class representing the project.\"\"\"\n\n    def __init__(self, name: str, root_path: str):\n        self.name: str = name\n        self.files: List[File] = []\n        self.root_path: str = root_path\n\n    def __str__(self):\n        file_list = ', '.join(file.file_name for file in self.files)\n        return f\"Project '{self.name\nCurrent file prefix:\n:\n                logging.error(\n                    f\"An unexpected error occurred while reading {file.file_name}: {e}\")\n                break\n        else:\n            logging.error(\n                f\"Failed to read {file.file_name} in any known encoding\")\n\n    def calculate_content_size(self, file: File) -> None:\n        \"\"\"Calculate the size of the content of a file in bytes.\"\"\"\n        file.content_size = len(file.content.encode('utf-8'))\n\n    def combine_files(self) -> str:\n        \"\"\"\n        Combine the content of all files into a single string using OutputBuilder,\n        while respecting the size and token count limits.\n        \"\"\"\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-1957",
+      "split": "development",
+      "family": "aurelio-labs/semantic-router",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "                    logger.warning(",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 1957,
+        "repo_name": "aurelio-labs/semantic-router",
+        "file_path": "semantic_router/layer.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: aurelio-labs/semantic-router\nReference snippets:\n# semantic_router/encoders/base.py\nclass BaseEncoder(BaseModel):\n    name: str\n    score_threshold: float\n    type: str = Field(default=\"base\")\n\n    class Config:\n        arbitrary_types_allowed = True\n\n    def __call__(self, docs: List[str]) -> List[List[float]]:\n        raise NotImplementedError(\"Subclasses must implement this method\")\n# semantic_router/encoders/openai.py\nclass OpenAIEncoder(BaseEncoder):\n    client: Optional[openai.Client]\n    type: str = \"openai\"\n\n    def __init__(\n        self,\n        name: Optional[str] = None,\n        openai_api_key: Optional[str] = None,\n        score_threshold: float = 0.82,\n    ):\n        if name is None:\n            name = os.getenv(\"OPENAI_MODEL_NAME\", \"text-embedding-ada-002\")\n        super().__init__(name=name, score_threshold=score_threshold)\n        api_key = openai_api_key or os.getenv(\"\nCurrent file prefix:\n\n\n\n\ndef is_valid(layer_config: str) -> bool:\n    \"\"\"Make sure the given string is json format and contains the 3 keys: [\"encoder_name\", \"encoder_type\", \"routes\"]\"\"\"\n    try:\n        output_json = json.loads(layer_config)\n        required_keys = [\"encoder_name\", \"encoder_type\", \"routes\"]\n\n        if isinstance(output_json, list):\n            for item in output_json:\n                missing_keys = [key for key in required_keys if key not in item]\n                if missing_keys:\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-3536",
+      "split": "development",
+      "family": "xmu-xiaoma666/X-Dreamer",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "        self.set_attn_processor(AttnProcessor())",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 3536,
+        "repo_name": "xmu-xiaoma666/X-Dreamer",
+        "file_path": "unet_2d_condition_multiatt.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: xmu-xiaoma666/X-Dreamer\nReference snippets:\n# attention_processor.py\nclass Attention(nn.Module):\nclass AttnProcessor:\nclass LoRAAttnProcessor(nn.Module):\nclass CustomDiffusionAttnProcessor(nn.Module):\nclass AttnAddedKVProcessor:\nclass AttnAddedKVProcessor2_0:\nclass LoRAAttnAddedKVProcessor(nn.Module):\nclass XFormersAttnAddedKVProcessor:\nclass XFormersAttnProcessor:\nclass AttnProcessor2_0:\nclass LoRAXFormersAttnProcessor(nn.Module):\nclass LoRAAttnProcessor2_0(nn.Module):\nclass CustomDiffusionXFormersAttnProcessor(nn.Module):\nclass SlicedAttnProcessor:\nclass SlicedAttnAddedKVProcessor:\nclass SpatialNorm(nn.Module):\n    def __init__(\n        self,\n        query_dim: int,\n        cross_attention_dim: Optional[int] = None,\n        heads: int = 8,\n        dim_head: int = 64,\n        dropout: float = 0.0,\n        bias=False,\n        upcast_attention: bool = False,\n        upcast_softmax: \nCurrent file prefix:\nmodule, \"set_processor\"):\n                if not isinstance(processor, dict):\n                    module.set_processor(processor)\n                else:\n                    module.set_processor(processor.pop(f\"{name}.processor\"))\n\n            for sub_name, child in module.named_children():\n                fn_recursive_attn_processor(f\"{name}.{sub_name}\", child, processor)\n\n        for name, module in self.named_children():\n            fn_recursive_attn_processor(name, module, processor)\n\n    def set_default_attn_processor(self):\n        \"\"\"\n        Disables custom attention processors and sets the default attention implementation.\n        \"\"\"\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-3138",
+      "split": "development",
+      "family": "SLDGroup/G-CASCADE",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "            x = checkpoint_seq(self.blocks, x)",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 3138,
+        "repo_name": "SLDGroup/G-CASCADE",
+        "file_path": "lib/maxxvit_4out.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: SLDGroup/G-CASCADE\nReference snippets:\n# lib/models_timm/helpers.py\ndef build_model_with_cfg(\n        model_cls: Callable,\n        variant: str,\n        pretrained: bool,\n        pretrained_cfg: Optional[Dict] = None,\n        model_cfg: Optional[Any] = None,\n        feature_cfg: Optional[Dict] = None,\n        pretrained_strict: bool = True,\n        pretrained_filter_fn: Optional[Callable] = None,\n        pretrained_custom_load: bool = False,\n        kwargs_filter: Optional[Tuple[str]] = None,\n        **kwargs):\n    \"\"\" Build model with specified default_cfg and optional model_cfg\n\n    This helper fn aids in the construction of a model including:\n      * handling default_cfg and associated pretrained weight loading\n      * passing through optional model_cfg for models with config based arch spec\n      * features_only model adaptation\n      * pruning config / model adaptation\n\n \nCurrent file prefix:\n               conv_cfg=conv_cfg,\n                    transformer_cfg=transformer_cfg,\n                    drop_path=drop_path[i],\n                )]\n            elif t == 'PM':\n                blocks += [ParallelMaxxVitBlock(\n                    in_chs,\n                    out_chs,\n                    stride=block_stride,\n                    conv_cfg=conv_cfg,\n                    transformer_cfg=transformer_cfg,\n                    drop_path=drop_path[i],\n                )]\n            in_chs = out_chs\n        self.blocks = nn.Sequential(*blocks)\n\n    def forward(self, x):\n        if self.grad_checkpointing and not torch.jit.is_scripting():\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-443",
+      "split": "development",
+      "family": "camenduru/MiniGPT-v2-hf",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "        return get_abs_path(cls.PRETRAINED_MODEL_CONFIG_DICT[model_type])",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 443,
+        "repo_name": "camenduru/MiniGPT-v2-hf",
+        "file_path": "minigpt4/models/base_model.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: camenduru/MiniGPT-v2-hf\nReference snippets:\n# minigpt4/common/dist_utils.py\ndef download_cached_file(url, check_hash=True, progress=False):\n    \"\"\"\n    Download a file from a URL and cache it locally. If the file already exists, it is not downloaded again.\n    If distributed, only the main process downloads the file, and the other processes wait for the file to be downloaded.\n    \"\"\"\n\n    def get_cached_file_path():\n        # a hack to sync the file path across processes\n        parts = torch.hub.urlparse(url)\n        filename = os.path.basename(parts.path)\n        cached_file = os.path.join(timm_hub.get_cache_dir(), filename)\n\n        return cached_file\n\n    if is_main_process():\n        timm_hub.download_cached_file(url, check_hash, progress)\n\n    if is_dist_avail_and_initialized():\n        dist.barrier()\n\n    return get_cached_file_path()\n# minigpt4/common/dist_utils.py\ndef is_d\nCurrent file prefix:\n    Build a pretrained model from default configuration file, specified by model_type.\n\n        Args:\n            - model_type (str): model type, specifying architecture and checkpoints.\n\n        Returns:\n            - model (nn.Module): pretrained or finetuned model, depending on the configuration.\n        \"\"\"\n        model_cfg = OmegaConf.load(cls.default_config_path(model_type)).model\n        model = cls.from_config(model_cfg)\n\n        return model\n\n    @classmethod\n    def default_config_path(cls, model_type):\n        assert (\n            model_type in cls.PRETRAINED_MODEL_CONFIG_DICT\n        ), \"Unknown model type {}\".format(model_type)\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-1421",
+      "split": "development",
+      "family": "chenxn2020/GOSE",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "                        bbox.append(normalize_bbox(merge_bbox(tmp_box), size))",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 1421,
+        "repo_name": "chenxn2020/GOSE",
+        "file_path": "GOSEfinetune/data/datasets/xfun.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: chenxn2020/GOSE\nReference snippets:\n# GOSEfinetune/data/utils.py\ndef load_image(image_path):\n    image = read_image(image_path, format=\"BGR\")\n    h = image.shape[0]\n    w = image.shape[1]\n    img_trans = TransformList([ResizeTransform(h=h, w=w, new_h=224, new_w=224)])\n    image = torch.tensor(img_trans.apply_image(image).copy()).permute(2, 0, 1)  # copy to make it writeable\n    return image, (w, h)\n# GOSEfinetune/data/utils.py\ndef merge_bbox(bbox_list):\n    x0, y0, x1, y1 = list(zip(*bbox_list))\n    return [min(x0), min(y0), max(x1), max(y1)]\nCurrent file prefix:\n6:\n                            bbox.append(None)\n                            continue\n                        text_length += offset[1] - offset[0]\n                        tmp_box = []\n                        while ocr_length < text_length:\n                            ocr_word = line[\"words\"].pop(0)\n                            ocr_length += len(\n                                self.tokenizer._tokenizer.normalizer.normalize_str(ocr_word[\"text\"].strip())\n                            )\n                            tmp_box.append(simplify_bbox(line[\"box\"]))\n                        if len(tmp_box) == 0:\n                            tmp_box = last_box\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-1634",
+      "split": "development",
+      "family": "WMD-group/CrystalSpace",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "                                            figure=blank_fig(),",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 1634,
+        "repo_name": "WMD-group/CrystalSpace",
+        "file_path": "app.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: WMD-group/CrystalSpace\nReference snippets:\n# visualize_app/visualize_embedding.py\ndef get_plotly_embedding(\n    df: pd.DataFrame = None,\n    opacity: float = 0.2,\n    **kwargs,\n) -> go.Figure:\n    \"\"\"\n    Plot the embedding of a dataframe with plotly.\n\n    Args:\n        df: dataframe with columns x, y, z, smact_allowed, mp_data.\n        opacity: opacity of the markers. Default is 0.8.\n        kwargs: additional keyword arguments.\n    Returns:\n        fig: plotly figure object.\n    \"\"\"\n    # check if the dataframe is empty\n    if df is None:\n        return go.Figure()\n\n    fig = px.scatter_3d(\n        df,\n        x=\"x\",\n        y=\"y\",\n        z=\"z\",\n        template=\"plotly_white\",\n        color=\"label\",\n        color_discrete_map={\n            \"0\": \"#D9D9D9\",\n            \"1\": \"rgba(34, 224, 0, 0.8)\",\n            \"2\": \"rgba(255, 18, 1, 0.8)\",\n            \"3\": \"rgba(0, 47, 255, 0.8)\nCurrent file prefix:\n               [\n                                        dcc.Markdown(\n                                            id=\"method-name\",\n                                            children=\"\",\n                                            style={\n                                                \"textAlign\": \"center\",\n                                                \"color\": \"black\",\n                                                \"fontSize\": 20,\n                                            },\n                                        ),\n                                        dcc.Graph(\n                                            id=\"3d-scatter-plot\",\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-791",
+      "split": "development",
+      "family": "galatolofederico/microchain",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "            return FunctionResult.ERROR, f\"Error: syntax error in command {command}. Please try again.\"",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 791,
+        "repo_name": "galatolofederico/microchain",
+        "file_path": "microchain/engine/engine.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: galatolofederico/microchain\nReference snippets:\n# microchain/engine/function.py\nclass Function:\n    def __init__(self):\n        self.call_signature = inspect.signature(self.__call__)        \n        self.call_parameters = []\n        for name, parameter in self.call_signature.parameters.items():\n            if parameter.annotation == inspect._empty:\n                raise ValueError(f\"Parameter {name} must have an annotation\")\n            \n            self.call_parameters.append(dict(\n                name=name,\n                annotation=parameter.annotation\n            ))\n        self.state = None\n        self.engine = None\n    \n    def bind(self, *, state, engine):\n        self.state = state\n        self.engine = engine\n\n    @property\n    def name(self):\n        return type(self).__name__\n\n    @property\n    def example(self):\n        if not isinstance(self.example_args, list):\n        \nCurrent file prefix:\ntate, engine=self)\n\n    def bind(self, agent):\n        self.agent = agent\n\n    def stop(self):\n        if self.agent is None:\n            raise ValueError(\"You must bind the engine to an agent before stopping\")\n        self.agent.stop()\n\n    def execute(self, command):\n        if self.agent is None:\n            raise ValueError(\"You must bind the engine to an agent before executing commands\")\n        if not self.help_called:\n            raise ValueError(\"You never accessed the help property. Building a prompt without including the help string is a very bad idea.\")\n        try:\n            tree = ast.parse(command)\n        except SyntaxError:\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-2379",
+      "split": "development",
+      "family": "BrianPugh/cyclopts",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "    validate_command(command.command)",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 2379,
+        "repo_name": "BrianPugh/cyclopts",
+        "file_path": "cyclopts/bind.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: BrianPugh/cyclopts\nReference snippets:\n# cyclopts/_convert.py\ndef token_count(type_: Union[Type, inspect.Parameter]) -> Tuple[int, bool]:\n    \"\"\"The number of tokens after a keyword the parameter should consume.\n\n    Parameters\n    ----------\n    type_: Type\n        A type hint/annotation to infer token_count from if not explicitly specified.\n\n    Returns\n    -------\n    int\n        Number of tokens to consume.\n    bool\n        If this is ``True`` and positional, consume all remaining tokens.\n        The returned number of tokens constitutes a single element of the iterable-to-be-parsed.\n    \"\"\"\n    from cyclopts.parameter import get_hint_parameter\n\n    annotation = get_hint_parameter(type_)[0]\n\n    annotation = resolve(annotation)\n    origin_type = get_origin_and_validate(annotation)\n\n    if (origin_type or annotation) is tuple:\n        args = get_args(annotation)\n        if \nCurrent file prefix:\ne[inspect.BoundArguments, List[str]]:\n    \"\"\"Parse and coerce CLI tokens to match a function's signature.\n\n    Parameters\n    ----------\n    command: ResolvedCommand\n    tokens: List[str]\n        CLI tokens to parse and coerce to match ``f``'s signature.\n\n    Returns\n    -------\n    bound: inspect.BoundArguments\n        The converted and bound positional and keyword arguments for ``f``.\n\n    unused_tokens: List[str]\n        Remaining tokens that couldn't be matched to ``f``'s signature.\n    \"\"\"\n    # Note: mapping is updated inplace\n    mapping = ParameterDict()  # Each value should be a list\n    c2p, p2c = None, None\n    unused_tokens = []\n\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-3343",
+      "split": "development",
+      "family": "modelscope/scepter",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "class TrainValSolver(BaseSolver):",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 3343,
+        "repo_name": "modelscope/scepter",
+        "file_path": "scepter/modules/solver/train_val_solver.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: modelscope/scepter\nReference snippets:\n# scepter/modules/solver/base_solver.py\nclass BaseSolver(object, metaclass=ABCMeta):\n    \"\"\" Base Solver.\n        To initialize the solver.\n        We have to initialize the data, model, optimizer and schedule.\n        To process the common processing we also have to initialize the hooks.\n        How to support Pytorch_lightning framework? Take a simple task as an examples.\n    \"\"\"\n    para_dict = {\n        'TRAIN_PRECISION': {\n            'value': 32,\n            'description': 'The precision for train process.'\n        },\n        'FILE_SYSTEM': {},\n        'ACCU_STEP': {\n            'value':\n            1,\n            'description':\n            'When use ddp, the grad accumulate steps for each process.'\n        },\n        'RESUME_FROM': {\n            'value': '',\n            'description': 'Resume from some state of training!'\n        }\nCurrent file prefix:\n# -*- coding: utf-8 -*-\n# Copyright (c) Alibaba, Inc. and its affiliates.\n\n\n\n\ndef _get_value(data: dict, key: str):\n    \"\"\" Recursively get value from data by a multi-level key.\n\n    Args:\n        data (dict):\n        key (str): 'data', 'meta.path', 'a.b.c'\n\n    Returns:\n        Value.\n\n    \"\"\"\n    if not isinstance(data, dict):\n        return None\n    if key in data:\n        return data[key]\n    elif '.' in key:\n        par_key = key.split('.')[0]\n        sub_key = '.'.join(key.split('.')[1:])\n        if par_key in data:\n            return _get_value(data[par_key], sub_key)\n    return None\n\n\n@SOLVERS.register_class()\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-3992",
+      "split": "development",
+      "family": "XLearning-SCU/2023-TPAMI-SMILE",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "                plot_heat_map(inds_map, show=True, fig_path='/xlearning/pengxin/Temp/MissingRecIM.svg')",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 3992,
+        "repo_name": "XLearning-SCU/2023-TPAMI-SMILE",
+        "file_path": "Net.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: XLearning-SCU/2023-TPAMI-SMILE\nReference snippets:\n# DistComput.py\ndef get_dist_release(loader, dist_path):\r\n    if not os.path.exists(dist_path):\r\n        # loader = test_loader\r\n        num_data = [10]\r\n        with torch.no_grad():\r\n            dist_list = [[] for i in range(len(num_data))]\r\n            for j, data_t in enumerate(loader, 0):\r\n                # get all inputs\r\n                fea0, fea1, class_labels0, class_labels1, mask, is_pair, idx = data_t\r\n                inputs_t = fea0.cuda()\r\n                # inputs_t = torch.cat([fea0,fea1]).cuda()\r\n                # labels_t = torch.cat([class_labels0,class_labels1]).cuda()\r\n                # inputs_t, _, labels_t, _ = data_t\r\n                # inputs_t, labels_t = inputs_t.cuda(), labels_t.cuda()\r\n                for i in range(len(inputs_t)):\r\n                    if i % 1000 == 0:\r\n                        print(i)\r\n       \nCurrent file prefix:\n      col = pack\r\n                        if len(inds_map_col):\r\n                            inds_map_col = np.concatenate([inds_map_col, inds.reshape([1, -1])], axis=0)\r\n                        else:\r\n                            inds_map_col = inds.reshape([1, -1])\r\n                    if len(show_img):\r\n                        show_img = np.concatenate([show_img, col], axis=1)\r\n                    else:\r\n                        show_img = col\r\n                    if len(inds_map):\r\n                        inds_map = np.concatenate([inds_map, inds_map_col], axis=1)\r\n                    else:\r\n                        inds_map = inds_map_col\r\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-905",
+      "split": "development",
+      "family": "baaivision/JudgeLM",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "    model, tokenizer = load_model(",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 905,
+        "repo_name": "baaivision/JudgeLM",
+        "file_path": "judgelm/llm_judge/gen_model_judgement_mmvet.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: baaivision/JudgeLM\nReference snippets:\n# judgelm/llm_judge/common.py\ndef parse_score(review):\ndef translate_score_to_win_list(score_list, T=0.0):\ndef generate_question_template(domain, question1, question2):\ndef reorg_answer_file(answer_file):\n    def __init__(self, keywords, tokenizer, input_ids):\n    def __call__(self, output_ids: torch.LongTensor, scores: torch.FloatTensor, **kwargs) -> bool:\n    def get_prompt(self):\n    def append_message(self, role, message):\n    def to_gradio_chatbot(self):\n    def copy(self, answer_num):\n    def dict(self):\ndef load_questions(question_file: str, begin: Optional[int], end: Optional[int]):\n    Q = (\"Human\", \"Provide a question in [\" + domain + \"] domain just like {\" + question1 + \"}, your provided question must be different from the questions that we have mentioned in this conversation.\")\n    A = (\"Assistant\", \"Certainly! Here's another \nCurrent file prefix:\nstions), chunk_size):\n        ans_handles.append(\n            get_answers_func(\n                model_path,\n                model_id,\n                questions[i : i + chunk_size],\n                answer_file,\n                max_new_token,\n                num_gpus_per_model,\n                max_gpu_memory,\n                temperature,\n                if_fast_eval,\n            )\n        )\n\n    if use_ray:\n        ray.get(ans_handles)\n\n\n@torch.inference_mode()\ndef get_model_answers(\n    model_path,\n    model_id,\n    questions,\n    answer_file,\n    max_new_token,\n    num_gpus_per_model,\n    max_gpu_memory,\n    temperature,\n    if_fast_eval,\n):\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-3462",
+      "split": "development",
+      "family": "visitworld123/FedFed",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "            self.c_model_local = create_model(self.args,",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 3462,
+        "repo_name": "visitworld123/FedFed",
+        "file_path": "algorithms_standalone/fedavg/client.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: visitworld123/FedFed\nReference snippets:\n# algorithms_standalone/basePS/client.py\nclass Client(PSTrainer):\n\n    def __init__(self, client_index, train_ori_data, train_ori_targets, test_dataloader, train_data_num,\n                 test_data_num, train_cls_counts_dict, device, args, model_trainer, vae_model, dataset_num):\n        super().__init__(client_index, train_ori_data, train_ori_targets, test_dataloader, train_data_num,\n                         test_data_num, device, args, model_trainer)\n        if args.VAE == True and vae_model is not None:\n            logging.info(f\"client {self.client_index} VAE Moel set up\")\n            self.vae_model = vae_model\n\n        self.test_dataloader = test_dataloader\n        self.train_ori_data = train_ori_data  \n        self.train_ori_targets = train_ori_targets\n        self.train_cls_counts_dict = train_cls_counts_dict\n        self.dataset_n\nCurrent file prefix:\n super().__init__(client_index, train_ori_data, train_ori_targets, test_dataloader, train_data_num,\n                test_data_num,  train_cls_counts_dict, device, args, model_trainer, vae_model, dataset_num)\n        local_num_iterations_dict = {}\n        local_num_iterations_dict[self.client_index] = self.local_num_iterations\n\n        self.global_epochs_per_round = self.args.global_epochs_per_round\n        local_num_epochs_per_comm_round_dict = {}\n        local_num_epochs_per_comm_round_dict[self.client_index] = self.args.global_epochs_per_round\n\n\n\n        #========================SCAFFOLD=====================#\n        if self.args.scaffold:\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-1224",
+      "split": "development",
+      "family": "fleet-ai/code-pilot",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "        chunks = chunk_nltk(issue[\"body\"])",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 1224,
+        "repo_name": "fleet-ai/code-pilot",
+        "file_path": "responder.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: fleet-ai/code-pilot\nReference snippets:\n# auth.py\ndef get_token(installation_id):\n    private_key = Path(PRIVATE_KEY_PATH).read_text(encoding=\"utf8\")\n\n    # Generate the JWT\n    payload = {\n        \"iat\": int(time.time()),\n        \"exp\": int(time.time()) + (10 * 60),\n        \"iss\": APP_ID,\n    }\n    jwt_token = pyjwt.encode(payload, private_key, algorithm=\"RS256\")\n\n    headers = {\n        \"Authorization\": f\"Bearer {jwt_token}\",\n        \"Accept\": \"application/vnd.github.v3+json\",\n    }\n    access_token_url = (\n        f\"https://api.github.com/app/installations/{installation_id}/access_tokens\"\n    )\n    response = requests.post(access_token_url, headers=headers, timeout=120)\n    return response.json()[\"token\"]\n# utils/utils.py\ndef batch(iterable, n=1):\n    l = len(iterable)\n    for ndx in range(0, l, n):\n        yield iterable[ndx : min(ndx + n, l)]\nCurrent file prefix:\n# pylint: disable=unused-argument\n\n\n\nload_dotenv()\n\nrouter = APIRouter()\nclient = OpenAI(api_key=os.getenv(\"OPENAI_API_KEY\"))\n\nPINECONE_API_KEY = os.getenv(\"PINECONE_API_KEY\")\npinecone.init(api_key=PINECONE_API_KEY, environment=INDEX_ENVIRONMENT)\nindex = pinecone.Index(INDEX_NAME)\n\n\nasync def embed_issues(issues):\n    vectors = []\n    for issue in issues:\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-148",
+      "split": "development",
+      "family": "buptlihang/CVLM",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "        qs = DEFAULT_IMAGE_TOKEN + '\\n' + qs",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 148,
+        "repo_name": "buptlihang/CVLM",
+        "file_path": "evaluation/MME/evaluate.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: buptlihang/CVLM\nReference snippets:\n# model/utils.py\nIMAGE_TOKEN_INDEX = -200\n# model/utils.py\nDEFAULT_IMAGE_TOKEN = \"<image>\"\nCurrent file prefix:\nh.join(qa_path, file)):\n                question, answer = line.strip().split('\\t')\n                GT[(category, file, question)] = answer\n    return GT\n\n\n# Custom dataset class\nclass CustomDataset(Dataset):\n\n    def __init__(self, questions, image_folder, tokenizer, image_processor,\n                 model_config):\n        self.questions = questions\n        self.image_folder = image_folder\n        self.tokenizer = tokenizer\n        self.image_processor = image_processor\n        self.model_config = model_config\n\n    def __getitem__(self, index):\n        line = self.questions[index]\n        image_file = line[\"image\"]\n        qs = line[\"text\"]\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-236",
+      "split": "development",
+      "family": "gerlaxrex/parrot",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "    audio = AudioSegment.from_file(video_filename, format=get_extension(video_filename))",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 236,
+        "repo_name": "gerlaxrex/parrot",
+        "file_path": "parrot1/audio/extraction/audio_extraction.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: gerlaxrex/parrot\nReference snippets:\n# parrot1/utils/file_utils.py\ndef get_extension(filename: Union[str, os.PathLike]) -> str:\n    return os.path.basename(filename).rsplit(\".\", 1)[1]\n# parrot1/audio/utils/silence.py\ndef split_on_silence(\n    segment: pydub.AudioSegment,\n    min_silence_len: int = 1000,\n    silence_thresh: int = -16,\n    padding: int | bool = 100,\n    seek_step: int = 1,\n) -> tuple[list[pydub.AudioSegment], list[tuple[float, float]]]:\n    \"\"\"It splits an audio segment on silent sections\n\n    Parameters\n    ----------\n    segment\n        The original audio segment\n    min_silence_len\n        The minimum length of silence in millis for a split\n    silence_thresh\n        The silence threshold in dBFS\n    padding\n        The amount of silence chunks should be padded with\n\n        It keeps the audio segment from sounding like it is abruptly cut off\n    seek_step\n\nCurrent file prefix:\n\n\n\n\n__logger = logging.getLogger(__name__)\n\n\ndef get_audio_from_video(video_filename: Union[str, os.PathLike]) -> AudioSegment:\n    \"\"\"\n    Takes the audio from the video file\n    :param video_filename: (Union[str, os.PathLike]) path to the video\n    :return: (io.BytesIO) Audio bytes\n    \"\"\"\n    if not os.path.exists(video_filename):\n        raise FileNotFoundError(f\"File at {video_filename} does not exists.\")\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-1850",
+      "split": "development",
+      "family": "DeepWok/mase",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "    if has_multi_keys(config, entries[\"bias_entries\"]):",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 1850,
+        "repo_name": "DeepWok/mase",
+        "file_path": "machop/chop/passes/graph/transforms/quantize/quant_parsers/parse_quant_config.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: DeepWok/mase\nReference snippets:\n# machop/chop/passes/graph/transforms/quantize/quant_parsers/utils.py\ndef cp_multi_values(\n    src: dict, dst: dict, src_keys: tuple, dst_keys: tuple = None, strict: bool = True\n):\n    \"\"\"Copy multiple values from src dict to dst dict.\"\"\"\n    if dst_keys is None:\n        for key in src_keys:\n            if not strict and key not in src:\n                continue\n            dst[key] = deepcopy(src[key])\n    else:\n        for src_key, dst_key in zip(src_keys, dst_keys):\n            if not strict and src_key not in src:\n                continue\n            dst[dst_key] = deepcopy(src[src_key])\n# machop/chop/passes/graph/transforms/quantize/quant_parsers/utils.py\ndef has_multi_keys(src: dict, keys: tuple):\n    \"\"\"Check if src dict has multiple keys.\"\"\"\n    for key in keys:\n        if key not in src:\n            return False\n    return True\nCurrent file prefix:\nconfig, p_config, entries[\"weight_entries\"], strict=strict)\n\n\ndef cp_data_in_entries(\n    config: dict, p_config: dict, entries: dict, strict: bool = True\n):\n    cp_multi_values(config, p_config, entries[\"data_in_entries\"], strict=strict)\n\n\ndef cp_data_out_entries(config: dict, p_config: dict, entries: dict):\n    cp_multi_values(config, p_config, entries[\"data_out_entries\"])\n\n\ndef cp_bias_entries(config: dict, p_config: dict, entries: dict, strict: bool = True):\n    cp_multi_values(config, p_config, entries[\"bias_entries\"], strict=strict)\n\n\ndef cp_weight_entries_to_bias(\n    config: dict, p_config: dict, entries: dict, strict: bool = True\n):\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-4008",
+      "split": "development",
+      "family": "chinhsuanwu/ifusion-threestudio",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "            betas = make_beta_schedule(",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 4008,
+        "repo_name": "chinhsuanwu/ifusion-threestudio",
+        "file_path": "extern/ldm_zero123/models/diffusion/ddpm.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: chinhsuanwu/ifusion-threestudio\nReference snippets:\n# extern/ldm_zero123/models/autoencoder.py\nclass AutoencoderKL(pl.LightningModule):\n    def __init__(\n        self,\n        ddconfig,\n        lossconfig,\n        embed_dim,\n        ckpt_path=None,\n        ignore_keys=[],\n        image_key=\"image\",\n        colorize_nlabels=None,\n        monitor=None,\n    ):\n        super().__init__()\n        self.image_key = image_key\n        self.encoder = Encoder(**ddconfig)\n        self.decoder = Decoder(**ddconfig)\n        self.loss = instantiate_from_config(lossconfig)\n        assert ddconfig[\"double_z\"]\n        self.quant_conv = torch.nn.Conv2d(2 * ddconfig[\"z_channels\"], 2 * embed_dim, 1)\n        self.post_quant_conv = torch.nn.Conv2d(embed_dim, ddconfig[\"z_channels\"], 1)\n        self.embed_dim = embed_dim\n        if colorize_nlabels is not None:\n            assert type(colorize_nlabels) == int\n    \nCurrent file prefix:\npe\n\n        self.learn_logvar = learn_logvar\n        self.logvar = torch.full(fill_value=logvar_init, size=(self.num_timesteps,))\n        if self.learn_logvar:\n            self.logvar = nn.Parameter(self.logvar, requires_grad=True)\n\n        self.ucg_training = ucg_training or dict()\n        if self.ucg_training:\n            self.ucg_prng = np.random.RandomState()\n\n    def register_schedule(\n        self,\n        given_betas=None,\n        beta_schedule=\"linear\",\n        timesteps=1000,\n        linear_start=1e-4,\n        linear_end=2e-2,\n        cosine_s=8e-3,\n    ):\n        if exists(given_betas):\n            betas = given_betas\n        else:\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-3541",
+      "split": "development",
+      "family": "raven38/EfficientDynamic3DGaussian",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "        camera = HyperNeRFCamera.from_json(f'{path}/camera/{im}.json')",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 3541,
+        "repo_name": "raven38/EfficientDynamic3DGaussian",
+        "file_path": "scene/dataset_readers.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: raven38/EfficientDynamic3DGaussian\nReference snippets:\n# scene/colmap_loader.py\ndef read_extrinsics_text(path):\n    \"\"\"\n    Taken from https://github.com/colmap/colmap/blob/dev/scripts/python/read_write_model.py\n    \"\"\"\n    images = {}\n    with open(path, \"r\") as fid:\n        while True:\n            line = fid.readline()\n            if not line:\n                break\n            line = line.strip()\n            if len(line) > 0 and line[0] != \"#\":\n                elems = line.split()\n                image_id = int(elems[0])\n                qvec = np.array(tuple(map(float, elems[1:5])))\n                tvec = np.array(tuple(map(float, elems[5:8])))\n                camera_id = int(elems[8])\n                image_name = elems[9]\n                elems = fid.readline().split()\n                xys = np.column_stack([tuple(map(float, elems[0::3])),\n                                       tuple(map(flo\nCurrent file prefix:\nin_ids = dataset_json['train_ids']\n        i_test = []\n        i_train = []\n        for i in range(len(all_imgs)):\n            id = all_imgs[i]\n            if id in val_ids:\n                i_test.append(i)\n            if id in train_ids:\n                i_train.append(i)\n\n    print('i_train',i_train)\n    print('i_test',i_test)\n    all_cams = [meta_json[i]['camera_id'] for i in all_imgs]\n    all_times = [meta_json[i]['time_id'] for i in all_imgs]\n    max_time = max(all_times)\n    all_times = [meta_json[i]['time_id']/max_time for i in all_imgs]\n    selected_time = set(all_times)\n    ratio = 0.5\n\n    all_cam_params = []\n    for im in all_imgs:\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-1296",
+      "split": "development",
+      "family": "PKU-YuanGroup/Video-LLaVA",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "    tokenizer, model, processor, context_len = load_pretrained_model(args.model_path, args.model_base, model_name)",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 1296,
+        "repo_name": "PKU-YuanGroup/Video-LLaVA",
+        "file_path": "llava/eval/video/run_inference_benchmark_general.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: PKU-YuanGroup/Video-LLaVA\nReference snippets:\n# llava/eval/video/run_inference_video_qa.py\ndef get_model_output(model, video_processor, tokenizer, video, qs, args):\n    if model.config.mm_use_x_start_end:\n        qs = DEFAULT_X_START_TOKEN['VIDEO'] + DEFAULT_X_TOKEN['VIDEO'] + DEFAULT_X_END_TOKEN['VIDEO'] + '\\n' + qs\n    else:\n        qs = DEFAULT_X_TOKEN['VIDEO'] + '\\n' + qs\n\n    conv_mode = \"llava_v1\"\n    args.conv_mode = conv_mode\n\n    conv = conv_templates[args.conv_mode].copy()\n    conv.append_message(conv.roles[0], qs)\n    conv.append_message(conv.roles[1], None)\n    prompt = conv.get_prompt()\n\n\n    video_tensor = video_processor.preprocess(video, return_tensors='pt')['pixel_values'][0].half().to(args.device)\n    # print(video_tensor.shape)\n    input_ids = tokenizer_X_token(prompt, tokenizer, X_TOKEN_INDEX['VIDEO'], return_tensors='pt').unsqueeze(0).to(args.device)\n\n    stop_st\nCurrent file prefix:\n required=False, default='cuda:0')\n    parser.add_argument('--model_base', help='', default=None, type=str, required=False)\n    parser.add_argument(\"--model_max_length\", type=int, required=False, default=2048)\n    # parser.add_argument(\"--conv-mode\", type=str, required=False, default='video-chatgpt_v1')\n    # parser.add_argument(\"--projection_path\", type=str, required=True)\n\n    return parser.parse_args()\n\n\ndef run_inference(args):\n    \"\"\"\n    Run inference on a set of video files using the provided model.\n\n    Args:\n        args: Command-line arguments.\n    \"\"\"# Initialize the model\n    model_name = get_model_name_from_path(args.model_path)\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-2150",
+      "split": "development",
+      "family": "airalcorn2/paved2paradise",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "    train_dataset = KITTIDataset(**dataset_args)",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 2150,
+        "repo_name": "airalcorn2/paved2paradise",
+        "file_path": "train.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: airalcorn2/paved2paradise\nReference snippets:\n# config.py\n(C, S) = (64, 1)\n# kitti_dataset.py\nclass KITTIDataset(Dataset):\n    def __init__(\n        self,\n        dataset,\n        jsons_path,\n        npys_path,\n        labels_path,\n        idxs_path,\n        backgrounds_path,\n        json_fs,\n        prepare_pillars,\n        augment,\n        max_drop_p,\n    ):\n        super().__init__()\n        self.dataset = dataset\n        self.jsons_path = jsons_path\n        self.npys_path = npys_path\n        self.labels_path = labels_path\n        self.idxs_path = idxs_path\n        self.backgrounds_path = backgrounds_path\n        self.json_fs = json_fs\n        self.prepare_pillars = prepare_pillars\n        self.augment = augment\n        self.max_drop_p = max_drop_p\n        self.scans_name = \"kitti\"\n\n    def __len__(self):\n        return len(self.json_fs)\n\n    def load_points(self, idx):\n        js\nCurrent file prefix:\nf}\")\n\n    device = torch.device(\"cuda:0\")\n    model = PointPillars(**config[\"model_args\"]).to(device)\n    print(model)\n    n_params = sum(p.numel() for p in model.parameters() if p.requires_grad)\n    print(f\"Parameters: {n_params}\")\n    print(repr(model))\n\n    dataset_args = {\n        \"dataset\": dataset,\n        \"jsons_path\": jsons_path,\n        \"npys_path\": npys_path,\n        \"labels_path\": labels_path,\n        \"idxs_path\": idxs_path,\n        \"backgrounds_path\": backgrounds_path,\n        \"json_fs\": data_dict[\"train\"],\n        \"prepare_pillars\": model.prepare_pillars,\n        \"augment\": True,\n        \"max_drop_p\": config[\"max_drop_p\"],\n    }\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-3360",
+      "split": "development",
+      "family": "quocanh34/magic-animate-modified",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "        if isinstance(module, (CrossAttnDownBlock3D, DownBlock3D, CrossAttnUpBlock3D, UpBlock3D)):",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 3360,
+        "repo_name": "quocanh34/magic-animate-modified",
+        "file_path": "magicanimate/models/unet_controlnet.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: quocanh34/magic-animate-modified\nReference snippets:\n# magicanimate/models/unet_3d_blocks.py\nclass CrossAttnDownBlock3D(nn.Module):\n    def __init__(\n        self,\n        in_channels: int,\n        out_channels: int,\n        temb_channels: int,\n        dropout: float = 0.0,\n        num_layers: int = 1,\n        resnet_eps: float = 1e-6,\n        resnet_time_scale_shift: str = \"default\",\n        resnet_act_fn: str = \"swish\",\n        resnet_groups: int = 32,\n        resnet_pre_norm: bool = True,\n        attn_num_head_channels=1,\n        cross_attention_dim=1280,\n        output_scale_factor=1.0,\n        downsample_padding=1,\n        add_downsample=True,\n        dual_cross_attention=False,\n        use_linear_projection=False,\n        only_cross_attention=False,\n        upcast_attention=False,\n\n        unet_use_cross_frame_attention=None,\n        unet_use_temporal_attention=None,\n        \n        \nCurrent file prefix:\n    # Any children which exposes the set_attention_slice method\n        # gets the message\n        def fn_recursive_set_attention_slice(module: torch.nn.Module, slice_size: List[int]):\n            if hasattr(module, \"set_attention_slice\"):\n                module.set_attention_slice(slice_size.pop())\n\n            for child in module.children():\n                fn_recursive_set_attention_slice(child, slice_size)\n\n        reversed_slice_size = list(reversed(slice_size))\n        for module in self.children():\n            fn_recursive_set_attention_slice(module, reversed_slice_size)\n\n    def _set_gradient_checkpointing(self, module, value=False):\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-3090",
+      "split": "development",
+      "family": "dazhangyu123/OCL",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "        images_inv = inv_preprocess(x.clone().cpu(), self.args.show_num_images, numpy_transform=self.args.numpy_transform)",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 3090,
+        "repo_name": "dazhangyu123/OCL",
+        "file_path": "train_source.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: dazhangyu123/OCL\nReference snippets:\n# utils/eval.py\nclass Eval():\n    def __init__(self, num_class):\n        self.num_class = num_class\n        self.confusion_matrix = np.zeros((self.num_class,)*2)\n        self.ignore_index = None\n        self.synthia = True if num_class == 16 else False\n\n\n    def Pixel_Accuracy(self):\n        if np.sum(self.confusion_matrix) == 0:\n            print(\"Attention: pixel_total is zero!!!\")\n            PA = 0\n        else:\n            PA = np.diag(self.confusion_matrix).sum() / self.confusion_matrix.sum()\n\n        return PA\n\n    def Mean_Pixel_Accuracy(self, out_16_13=False):\n        MPA = np.diag(self.confusion_matrix) / self.confusion_matrix.sum(axis=1)\n        if self.synthia:\n            MPA_16 = np.nanmean(MPA[:self.ignore_index])\n            MPA_13 = np.nanmean(MPA[synthia_set_16_to_13])\n            return MPA_16, MPA_13\n        if out_16_\nCurrent file prefix:\n      \n            batch_idx += 1\n\n            self.current_iter += 1\n\n            if np.isnan(float(cur_loss.item())):\n                raise ValueError('Loss is nan during training...')\n\n            pred = pred.data.cpu().numpy()\n            label = y.cpu().numpy()\n            argpred = np.argmax(pred, axis=1)\n            self.Eval.add_batch(label, argpred)\n\n            if batch_idx==self.dataloader.num_iterations:\n                break\n        \n        self.log_one_train_epoch(x, label, argpred, train_loss)\n        tqdm_epoch.close()\n\n    def log_one_train_epoch(self, x, label, argpred, train_loss):\n        #show train image on tensorboard\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-3472",
+      "split": "development",
+      "family": "zhijie-group/LOVECon",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "            (CrossAttnDownBlockPseudo3D, DownBlockPseudo3D, CrossAttnUpBlockPseudo3D, UpBlockPseudo3D),",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 3472,
+        "repo_name": "zhijie-group/LOVECon",
+        "file_path": "video_diffusion/models/unet_3d_condition.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: zhijie-group/LOVECon\nReference snippets:\n# video_diffusion/models/unet_3d_blocks.py\nclass CrossAttnDownBlockPseudo3D(nn.Module):\n    def __init__(\n        self,\n        in_channels: int,\n        out_channels: int,\n        temb_channels: int,\n        dropout: float = 0.0,\n        num_layers: int = 1,\n        resnet_eps: float = 1e-6,\n        resnet_time_scale_shift: str = \"default\",\n        resnet_act_fn: str = \"swish\",\n        resnet_groups: int = 32,\n        resnet_pre_norm: bool = True,\n        attn_num_head_channels=1,\n        cross_attention_dim=1280,\n        output_scale_factor=1.0,\n        downsample_padding=1,\n        add_downsample=True,\n        dual_cross_attention=False,\n        use_linear_projection=False,\n        only_cross_attention=False,\n        upcast_attention=False,\n        model_config: dict={}\n    ):\n        super().__init__()\n        resnets = []\n        att\nCurrent file prefix:\ntention_slice method\n        # gets the message\n        def fn_recursive_set_attention_slice(module: torch.nn.Module, slice_size: List[int]):\n            if hasattr(module, \"set_attention_slice\"):\n                module.set_attention_slice(slice_size.pop())\n\n            for child in module.children():\n                fn_recursive_set_attention_slice(child, slice_size)\n\n        reversed_slice_size = list(reversed(slice_size))\n        for module in self.children():\n            fn_recursive_set_attention_slice(module, reversed_slice_size)\n\n    def _set_gradient_checkpointing(self, module, value=False):\n        if isinstance(\n            module,\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-1125",
+      "split": "development",
+      "family": "zorazrw/filco",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "    write_dataset(args.output_path, procset)",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 1125,
+        "repo_name": "zorazrw/filco",
+        "file_path": "get_inputs.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: zorazrw/filco\nReference snippets:\n# eval.py\ndef has_answer(text: str, answers: list[str]) -> float:\n    \"\"\"Check if text contains any of the answers.\"\"\"\n    return float(any([(ans.lower() in text.lower()) for ans in answers]))\n# utils.py\ndef load_dataset(path: str) -> list[dict]:\n    \"\"\"Load dataset from JSON or JSONL file.\"\"\"\n    if path.endswith(\".json\"):\n        return json.load(open(path, \"r\"))\n    elif path.endswith(\".jsonl\"):\n        return [json.loads(line.strip()) for line in open(path, \"r\")]\n    else:\n        extension = path.split(\".\")[-1]\n        raise ValueError(f\"File extension [{extension}] not valid.\")\nCurrent file prefix:\n:\n        input_text, output_text = get_ict_io(\n            example=ex,\n            in_context_examples=get_examples(idx, args.n_examples),\n            input_list=args.input_list,\n            output_list=args.output_list,\n            no_prefix=args.no_prefix,\n            filter_criteria=args.filter_criteria,\n            n_contexts=args.n_contexts,\n            num_sents=args.num_sents,\n            threshold=args.threshold,\n            question_prefix=args.question_prefix,\n            answer_prefix=args.answer_prefix,\n            context_prefix=args.context_prefix,\n        )\n        procset.append({\"input\": input_text, \"output\": output_text})\n\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-3372",
+      "split": "development",
+      "family": "KoeAI/LLVC",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "        self.net_g.eval().to(device)",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 3372,
+        "repo_name": "KoeAI/LLVC",
+        "file_path": "minimal_rvc/model.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: KoeAI/LLVC\nReference snippets:\n# minimal_rvc/models.py\nclass SynthesizerTrnMs256NSFSid(nn.Module):\n    def __init__(\n        self,\n        spec_channels,\n        segment_size,\n        inter_channels,\n        hidden_channels,\n        filter_channels,\n        n_heads,\n        n_layers,\n        kernel_size,\n        p_dropout,\n        resblock,\n        resblock_kernel_sizes,\n        resblock_dilation_sizes,\n        upsample_rates,\n        upsample_initial_channel,\n        upsample_kernel_sizes,\n        spk_embed_dim,\n        gin_channels,\n        emb_channels,\n        sr,\n        **kwargs\n    ):\n        super().__init__()\n        if type(sr) == type(\"strr\"):\n            sr = sr2sr[sr]\n        self.spec_channels = spec_channels\n        self.inter_channels = inter_channels\n        self.hidden_channels = hidden_channels\n        self.filter_channels = filter_channels\n        s\nCurrent file prefix:\nate_dict[\"params\"][\"sr\"]\n        f0 = state_dict.get(\"f0\", 1)\n        state_dict[\"params\"][\"spk_embed_dim\"] = state_dict[\"weight\"][\n            \"emb_g.weight\"\n        ].shape[0]\n        if not \"emb_channels\" in state_dict[\"params\"]:\n            state_dict[\"params\"][\"emb_channels\"] = 768  # for backward compat.\n\n        if f0 == 1:\n            self.net_g = SynthesizerTrnMs256NSFSid(\n                **state_dict[\"params\"], is_half=is_half\n            )\n        else:\n            self.net_g = SynthesizerTrnMs256NSFSidNono(**state_dict[\"params\"])\n\n        del self.net_g.enc_q\n\n        self.net_g.load_state_dict(state_dict[\"weight\"], strict=False)\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-2986",
+      "split": "development",
+      "family": "csuhan/OneLLM",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "                    if conv.sep_style == SeparatorStyle.SINGLE",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 2986,
+        "repo_name": "csuhan/OneLLM",
+        "file_path": "demos/multi_turn_mm.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: csuhan/OneLLM\nReference snippets:\n# util/misc.py\ndef setup_for_distributed(is_master):\n    \"\"\"\n    This function disables printing when not in master process\n    \"\"\"\n    builtin_print = builtins.print\n\n    def print(*args, **kwargs):\n        force = kwargs.pop('force', False)\n#        force = force or (get_world_size() > 8)\n        if is_master or force:\n            now = datetime.datetime.now().time()\n            builtin_print('[{}] '.format(now), end='')  # print with time stamp\n            builtin_print(*args, **kwargs)\n\n    builtins.print = print\n# util/misc.py\nclass default_tensor_type:\n    _tensor_type_stack = [(torch.float, \"cpu\")]\n    \n    def __init__(\n        self,\n        dtype: Optional[torch.dtype] = None,\n        device: Optional[str] = None,\n    ) -> None:\n        # Only limited combinations are supported.\n        assert device is None or device in [\"cpu\", \nCurrent file prefix:\nif inputs is not None:\n            inputs = inputs[None].cuda().to(target_dtype)\n    \n        conv = conv_templates[\"v1\"].copy()\n        for user, bot in chatbot:\n            conv.append_message(conv.roles[0], user)\n            conv.append_message(conv.roles[1], bot)\n\n        with torch.cuda.amp.autocast(dtype=target_dtype):\n            print(conv.get_prompt())\n            for stream_response in model.stream_generate(\n                conv.get_prompt(), inputs,\n                max_gen_len=max_gen_len, temperature=temperature, top_p=top_p,\n                modal = modality\n            ):\n                conv_sep = (\n                    conv.sep\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-2251",
+      "split": "development",
+      "family": "aikunyi/FreTS",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "    'covid': Dataset_Covid,",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 2251,
+        "repo_name": "aikunyi/FreTS",
+        "file_path": "data_provider/data_factory.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: aikunyi/FreTS\nReference snippets:\n# data_provider/data_loader.py\nclass Dataset_Covid(Dataset):\n    def __init__(self, root_path, flag='train', size=None,\n                 features='S', data_path='ETTh1.csv',\n                 target='OT', scale=True, timeenc=0, freq='h', train_only=False):\n        # size [seq_len, label_len, pred_len]\n        # info\n        if size == None:\n            self.seq_len = 24 * 4 * 4\n            self.label_len = 24 * 4\n            self.pred_len = 24 * 4\n        else:\n            self.seq_len = size[0]\n            self.label_len = size[1]\n            self.pred_len = size[2]\n        # init\n        assert flag in ['train', 'test', 'val']\n        type_map = {'train': 0, 'val': 1, 'test': 2}\n        self.set_type = type_map[flag]\n\n        self.features = features\n        self.target = target\n        self.scale = scale\n        self.timeenc = timeenc\n \nCurrent file prefix:\n\ndata_dict = {\n    'ETTh1': Dataset_Custom_,#Dataset_ETT_hour,\n    'ETTm1': Dataset_Custom_,\n    'traffic': Dataset_Custom,\n    'electricity': Dataset_Custom_,\n    'exchange': Dataset_Custom_,\n    'weather': Dataset_Custom_,\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-1447",
+      "split": "development",
+      "family": "kyegomez/gradient-ascent",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "optimizer = GradientAscent(",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 1447,
+        "repo_name": "kyegomez/gradient-ascent",
+        "file_path": "visualization.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: kyegomez/gradient-ascent\nReference snippets:\n# gradient_ascent/main.py\nclass GradientAscent:\n    \"\"\"\n    Gradient Ascent Optimizer\n\n    Optimizer that performs gradient ascent on the parameters of the model.\n\n    Args:\n        parameters (iterable): iterable of parameters to optimize or dicts defining parameter groups\n        lr (float, optional): learning rate (default: 0.01)\n        momentum (float, optional): momentum factor (default: 0.9)\n        beta (float, optional): beta factor (default: 0.999)\n        eps (float, optional): epsilon (default: 1e-8)\n        nesterov (bool, optional): enables Nesterov accelerated gradient (default: False)\n        clip_value (float, optional): gradient clipping value (default: None)\n        lr_decay (float, optional): learning rate decay (default: None)\n        warmup_steps (int, optional): warmup steps (default: 0)\n        logging_interval (in\nCurrent file prefix:\nt):\n        y_data_output = y_data_output.tolist()\n    if not isinstance(x_data_target, list):\n        x_data_target = x_data_target.tolist()\n    if not isinstance(y_data_target, list):\n        y_data_target = y_data_target.tolist()\n\n    # Append new data\n    x_data_output.append(epoch)\n    y_data_output.append(model_output_value)\n    x_data_target.append(epoch)\n    y_data_target.append(target.item())\n\n    line_output.set_data(x_data_output, y_data_output)\n    line_target.set_data(x_data_target, y_data_target)\n    fig.canvas.flush_events()\n    return line_output, line_target\n\n\n# Test the optimizer\nmodel = SimpleModel()\n# Define the optimizer\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-844",
+      "split": "development",
+      "family": "edsu/marctable",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "    with raises(SchemaFieldError, match=\"abc is not a defined field tag in Avram\"):",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 844,
+        "repo_name": "edsu/marctable",
+        "file_path": "test_marctable.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: edsu/marctable\nReference snippets:\n# marctable/marc.py\nclass MARC:\n    def __init__(self) -> None:\n        self.fields: List[Field] = []\n\n    @cache\n    def get_field(self, tag: str) -> Field:\n        for field in self.fields:\n            if field.tag == tag:\n                return field\n        raise SchemaFieldError(f\"{tag} is not a defined field tag in Avram schema\")\n\n    @cache\n    def get_subfield(self, tag: str, code: str) -> Subfield:\n        field = self.get_field(tag)\n        return field.get_subfield(code)\n\n    @property\n    def avram_file(self) -> pathlib.Path:\n        return pathlib.Path(__file__).parent / \"marc.json\"\n\n    @classmethod\n    @cache\n    def from_avram(cls: Type[\"MARC\"], avram_file: Optional[IO] = None) -> \"MARC\":\n        marc = MARC()\n\n        if avram_file is None:\n            avram_file = marc.avram_file.open(\"r\")\n\n        for d in json.load(avr\nCurrent file prefix:\nhat the Avram JSON for a field looks ok\n    assert schema[\"fields\"][\"015\"]\n    f015 = schema[\"fields\"][\"015\"]\n    assert f015[\"label\"] == \"National Bibliography Number\"\n    assert f015[\"url\"] == \"https://www.loc.gov/marc/bibliographic/bd015.html\"\n    assert len(f015[\"subfields\"]) == 6\n\n    # ensure that the Avram JSON for a subfield looks ok\n    assert f015[\"subfields\"][\"2\"]\n    f0152 = f015[\"subfields\"][\"2\"]\n    assert f0152[\"label\"] == \"Source\"\n    assert f0152[\"code\"] == \"2\"\n    assert f0152[\"repeatable\"] is False\n\n\ndef test_marc() -> None:\n    assert len(marc.fields) == 215\n\n\ndef test_get_field() -> None:\n    assert marc.get_field(\"245\")\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-1287",
+      "split": "development",
+      "family": "dataaug/open-interpreter-free",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "                        active_block = CodeBlock()",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 1287,
+        "repo_name": "dataaug/open-interpreter-free",
+        "file_path": "interpreter/terminal_interface/terminal_interface.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: dataaug/open-interpreter-free\nReference snippets:\n# interpreter/utils/check_for_package.py\ndef check_for_package(package):\n    if package in sys.modules:\n        return True\n    elif (spec := importlib.util.find_spec(package)) is not None:\n        try:\n            module = importlib.util.module_from_spec(spec)\n\n            sys.modules[package] = module\n            spec.loader.exec_module(module)\n\n            return True\n        except ImportError:\n            return False\n    else:\n        return False\n# interpreter/utils/display_markdown_message.py\ndef display_markdown_message(message):\n    \"\"\"\n    Display markdown message. Works with multiline strings with lots of indentation.\n    Will automatically make single line > tags beautiful.\n    \"\"\"\n\n    for line in message.split(\"\\n\"):\n        line = line.strip()\n        if line == \"\":\n            print(\"\")\n        elif line == \"---\":\n       \nCurrent file prefix:\n         if interpreter.debug_mode:\n                    print(\"Chunk in `terminal_interface`:\", chunk)\n\n                # Message\n                if \"message\" in chunk:\n                    if active_block is None:\n                        active_block = MessageBlock()\n                    if active_block.type != \"message\":\n                        active_block.end()\n                        active_block = MessageBlock()\n                    active_block.message += chunk[\"message\"]\n                    render_cursor = True\n\n                # Code\n                if \"code\" in chunk or \"language\" in chunk:\n                    if active_block is None:\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-1510",
+      "split": "development",
+      "family": "liuzhao1225/YouDub",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "        wav_adjusted, adjusted_length = adjust_audio_length(wav, os.path.join(folder, 'temp', f'zh_{str(i).zfill(3)}.wav'), os.path.join(",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 1510,
+        "repo_name": "liuzhao1225/YouDub",
+        "file_path": "youdub/tts_xttsv2.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: liuzhao1225/YouDub\nReference snippets:\n# youdub/utils.py\ndef save_wav(wav: np.ndarray, path: str, sample_rate: int = 24000) -> None:\n    \"\"\"Save float waveform to a file using Scipy.\n\n    Args:\n        wav (np.ndarray): Waveform with float values in range [-1, 1] to save.\n        path (str): Path to a output file.\n        sample_rate (int, optional): Sampling rate used for saving to the file. Defaults to 24000.\n    \"\"\"\n    # wav_norm = wav * (32767 / max(0.01, np.max(np.abs(wav))))\n    wav_norm = wav * 32767\n    wavfile.write(path, sample_rate, wav_norm.astype(np.int16))\n# youdub/utils.py\ndef adjust_audio_length(wav, src_path, dst_path,  desired_length: float, sample_rate: int = 24000) -> np.ndarray:\n    \"\"\"Adjust the length of the audio.\n\n    Args:\n        wav (np.ndarray): Original waveform.\n        sample_rate (int): Sampling rate of the audio.\n        desired_length (float\nCurrent file prefix:\n)))\n        start = len(full_wav)/24000\n        line['start'] = start\n        end = line['end']\n        if os.path.exists(os.path.join(folder, 'temp', f'zh_{str(i).zfill(3)}.wav')):\n            wav = librosa.load(os.path.join(\n                folder, 'temp', f'zh_{str(i).zfill(3)}.wav'), sr=24000)[0]\n        else:\n            speaker = line.get('speaker', 'SPEAKER_00')\n            speaker_wav = os.path.join(folder, 'SPEAKER', f'{speaker}.wav')\n            wav = tts.inference(tts_preprocess_text(text), os.path.join(\n                folder, 'temp', f'zh_{str(i).zfill(3)}.wav'), speaker_wav)\n            time.sleep(0.1)\n        # save_wav(wav, )\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-1463",
+      "split": "development",
+      "family": "avilliai/Bert_Vits2_Sever",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "        self.convs1.apply(init_weights)",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 1463,
+        "repo_name": "avilliai/Bert_Vits2_Sever",
+        "file_path": "modules.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: avilliai/Bert_Vits2_Sever\nReference snippets:\n# commons.py\ndef init_weights(m, mean=0.0, std=0.01):\n  classname = m.__class__.__name__\n  if classname.find(\"Conv\") != -1:\n    m.weight.data.normal_(mean, std)\n# commons.py\ndef get_padding(kernel_size, dilation=1):\n  return int((kernel_size*dilation - dilation)/2)\nCurrent file prefix:\n(self, channels, kernel_size=3, dilation=(1, 3, 5)):\n        super(ResBlock1, self).__init__()\n        self.convs1 = nn.ModuleList([\n            weight_norm(Conv1d(channels, channels, kernel_size, 1, dilation=dilation[0],\n                               padding=get_padding(kernel_size, dilation[0]))),\n            weight_norm(Conv1d(channels, channels, kernel_size, 1, dilation=dilation[1],\n                               padding=get_padding(kernel_size, dilation[1]))),\n            weight_norm(Conv1d(channels, channels, kernel_size, 1, dilation=dilation[2],\n                               padding=get_padding(kernel_size, dilation[2])))\n        ])\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-1911",
+      "split": "development",
+      "family": "Dank-del/stats-bot",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "app.add_handler(CommandHandler(\"attachmentstats\", attachment_stats, filters=filters.ChatType.GROUPS))",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 1911,
+        "repo_name": "Dank-del/stats-bot",
+        "file_path": "stats_bot/__main__.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: Dank-del/stats-bot\nReference snippets:\n# stats_bot/handlers/start.py\nasync def start(update: Update, _: ContextTypes.DEFAULT_TYPE) -> None:\n    \"\"\"\n    Sends a welcome message to the user.\n\n    Args:\n        update (Update): The update object containing information about the incoming message.\n        context (ContextTypes.DEFAULT_TYPE): The context object containing bot-related information.\n\n    Returns:\n        None\n\n    \"\"\"\n    await update.effective_message.reply_text(\n        \"Hi! I'm a bot that can generate statistics about your group chat. \"\n        \"To get started, add me to your group and send /textstats to see the top 10 users by number of messages and average message length.\"\n    )\n# stats_bot/handlers/group.py\nasync def handle_update(update: Update, _: ContextTypes.DEFAULT_TYPE) -> None:\n    with Session(engine) as session:\n        group = Group(\n            id=upda\nCurrent file prefix:\n\nlogging.basicConfig(\n    format=\"%(asctime)s - %(name)s - %(levelname)s - %(message)s\", level=logging.INFO\n)\nlogging.getLogger(__name__)\n\nconfigparser = configparser.ConfigParser()\nconfigparser.read(\"config.ini\")\n\n\napp = (\n    ApplicationBuilder().token(configparser.get(\"stats_bot\", \"token\")).build()\n)\napp.add_handler(CommandHandler(\"start\", start, filters=filters.ChatType.PRIVATE))\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-3451",
+      "split": "development",
+      "family": "AMAAI-Lab/Video2Music",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "    eval_metric_dict = eval_model(model, test_loader, ",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 3451,
+        "repo_name": "AMAAI-Lab/Video2Music",
+        "file_path": "evaluate.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: AMAAI-Lab/Video2Music\nReference snippets:\n# dataset/vevo_dataset.py\ndef create_vevo_datasets(dataset_root = \"./dataset\", max_seq_chord=300, max_seq_video=300, vis_models=\"2d/clip_l14p\", emo_model=\"6c_l14p\", split_ver=\"v1\", random_seq=True, is_video=True):\n\n    train_dataset = VevoDataset(\n        dataset_root = dataset_root, split=\"train\", split_ver=split_ver, \n        vis_models=vis_models, emo_model =emo_model, max_seq_chord=max_seq_chord, max_seq_video=max_seq_video, \n        random_seq=random_seq, is_video = is_video )\n    \n    val_dataset = VevoDataset(\n        dataset_root = dataset_root, split=\"val\", split_ver=split_ver, \n        vis_models=vis_models, emo_model =emo_model, max_seq_chord=max_seq_chord, max_seq_video=max_seq_video, \n        random_seq=random_seq, is_video = is_video )\n    \n    test_dataset = VevoDataset(\n        dataset_root = dataset_root, split=\"test\", sp\nCurrent file prefix:\nget_device())\n    else:\n        model = MusicTransformer(n_layers=args.n_layers, num_heads=args.num_heads,\n                    d_model=args.d_model, dim_feedforward=args.dim_feedforward,\n                    max_sequence_midi=args.max_sequence_midi, max_sequence_chord=args.max_sequence_chord, rpr=args.rpr).to(get_device())\n\n    model.load_state_dict(torch.load(args.model_weights))\n\n    ##### Not smoothing evaluation loss #####\n    eval_loss_func = nn.CrossEntropyLoss(ignore_index=CHORD_PAD)\n    eval_loss_emotion_func = nn.BCEWithLogitsLoss()\n\n    logging.info( f\"VIS MODEL: {args.vis_models}\" )\n    logging.info(\"Evaluating:\")\n    model.eval()\n\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-2611",
+      "split": "development",
+      "family": "kramerlab/PeerLearning",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "    add_default_values_to_train_parser(training)",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 2611,
+        "repo_name": "kramerlab/PeerLearning",
+        "file_path": "run_peer.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: kramerlab/PeerLearning\nReference snippets:\n# dqn_peer.py\nclass DQNPeer(make_peer_class(DQN)):\n    \"\"\"\n    A DQN version to be used with peer learning. Therefore, it features\n    a critic function\n    \"\"\"\n    def critic(self, observations, actions):\n        q_values = self.q_net(observations).reshape(len(actions), -1, 1)\n        tmp = q_values[range(len(actions)), actions, :]\n        return tmp, tmp  # SAC critic outputs multiple values, so this need\n        # to do the same\n\n    def get_action(self, *args, **kwargs):\n        action, _ = super().get_action(*args, **kwargs)\n        return action.reshape(-1), _\n# peer.py\nclass PeerGroup:\n    \"\"\" A group of peers who train together. \"\"\"\n    def __init__(self, peers, use_agent_values=False, init_agent_values=200.,\n                 lr=0.95, switch_ratio=0, use_advantage=False,\n                 max_peer_epochs=1_000_000_000):\n        \"\"\"\nCurrent file prefix:\n\n\n\n\n\n\n\n\n\ndef add_args():\n    # create arg parser\n    parser = argparse.ArgumentParser(description=\"Peer learning.\")\n    # General\n    parser.add_argument(\"--save-name\", type=str, default=\"delete_me\")\n    parser = add_default_values_to_parser(parser)\n\n    # Training\n    training = parser.add_argument_group(\"Training\")\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-28",
+      "split": "development",
+      "family": "leopedroso45/Stable-Diffusion-ImageGen",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "        process_task(fake_job, fake_pipeline, fake_executor, fake_path, parallel_exec=True)",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 28,
+        "repo_name": "leopedroso45/Stable-Diffusion-ImageGen",
+        "file_path": "tests/test_process_task.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: leopedroso45/Stable-Diffusion-ImageGen\nReference snippets:\n# sevsd/process_task.py\ndef check_cuda_and_clear_cache():\n    r\"\"\"\n    Clears the CUDA cache if available, otherwise performs garbage collection.\n    This function is called to manage memory usage, particularly when working with large models or multiple image generations.\n    \"\"\"\n    if torch.cuda.is_available():\n        torch.cuda.empty_cache()\n    else:\n        gc.collect()\n# sevsd/process_task.py\ndef process_task(job, pipeline, executor, path, parallel_exec=True):\n    r\"\"\"\n    Processes a single image generation job using the specified pipeline and execution parameters.\n\n    This function handles the generation of one or more images based on a given job description. It supports both parallel and sequential execution modes. Generated images are saved to the specified path.\n\n    Parameters:\n        job (dict): A dictionary containing det\nCurrent file prefix:\nsys.path.append('../')\n\nclass TestProcessTask(unittest.TestCase):\n\n    @patch('sevsd.process_task.generate_image')\n    def test_process_task(self, mock_generate_image):\n        mock_image = MagicMock()\n        mock_image.save = MagicMock()\n        mock_generate_image.return_value = [mock_image]\n\n        fake_job = {\"prompt\": \"prompt\", \"details\": (None, 50, 1, 7.5)}\n        fake_pipeline = MagicMock()\n        fake_executor = {\"num_of_exec\": 1, \"cfg_scale\": 7}\n        fake_path = \"test_path\"\n\n\nReturn the next code line only."
+        }
+      ]
+    },
+    {
+      "id": "repobench-first-1206",
+      "split": "development",
+      "family": "nttcom/WASB-SBDT",
+      "group": "repo_next_line",
+      "grader": "next_line",
+      "expected": "            self._loss = BCELoss()",
+      "source": {
+        "dataset": "tianyang/repobench_python_v1.1",
+        "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+        "file": "data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+        "row_index": 1206,
+        "repo_name": "nttcom/WASB-SBDT",
+        "file_path": "src/losses/heatmap.py"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Continue the supplied Python file. Return only the next code line, preserving indentation. Do not run tools."
+        },
+        {
+          "role": "user",
+          "content": "Repository: nttcom/WASB-SBDT\nReference snippets:\n# src/losses/bce.py\nclass BCELoss(nn.Module):\n    '''\n    weighted binary cross-entropy loss proposed in https://ieeexplore.ieee.org/document/9302757\n    (probably) this is exactly the same with focal loss cf. https://arxiv.org/abs/1708.02002 with gamma=2.0\n    this could be merged to focal_loss.py (TODO)\n    '''\n    def __init__(self, auto_weight=False, scales=[0]):\n        super().__init__()\n        self._loss_func   = nn.BCELoss()\n        self._auto_weight = auto_weight\n        self._ws          = {}\n        for scale in scales:\n            if self._auto_weight:\n                self._ws['loss_w_s{}'.format(scale)] = nn.Parameter(0. * torch.ones(1))\n            else:\n                self._ws['loss_w_s{}'.format(scale)] = 1.0\n        if len(scales)==1 and self._auto_weight:\n            log.info('auto_weight=True even though len(scales)==\nCurrent file prefix:\n\n\nclass HeatmapLoss(nn.Module):\n\n    def __init__(self, cfg):\n        super().__init__()\n        loss_name = cfg['loss']['sub_name']\n        if loss_name=='mse':\n            self._loss = nn.MSELoss()\n        elif loss_name=='bce':\n            #self._loss = nn.BCELoss()\n\nReturn the next code line only."
+        }
+      ]
+    }
+  ]
+}

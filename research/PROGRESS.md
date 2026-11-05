@@ -1,4 +1,4 @@
-# Research completion status
+# Research progress: completed pilot and active P3 program
 
 Updated 2026-11-05. **All five bounded pilot tracks executed and reported; no accepted general behavioral repair.** The original paper-level method goals remain unproved and several stronger arms are explicitly unimplemented after failed prerequisites.
 
@@ -6,9 +6,13 @@ The full record now contains **166 complete inference runs and one failed attemp
 
 The separate native-readout diagnostic settled **582 prompt/embedding tokens**. Every generated-token reservation is settled. Twenty unattempted cases in the partial editor trial were subsequently included in the full unchanged 24-case retry; they were not silently discarded.
 
+## Active P3 execution
+
+The user authorized the next roadmap. Exact-version same-forward state/logit gates now pass CPU and Vulkan, including no-op and causal controls. Precision-controlled spectra and all nine recovered Fable packages are built; the rank32 package is about1.83MB, but behavioral fidelity is not yet established. A pinned repository-disjoint evaluation (80 development,24 calibration,240 confirmation cases) and48 protection cases are frozen before quality inference. See [P3 protocols](protocols/p3-native-gate-v2.md), [adapter protocol](protocols/p3-fable-quality-v1.md) and the journal. The historical completion totals below describe the previous portfolio, not the ongoing program.
+
 ## Next plan
 
-The [next-experiment roadmap](../NEXT_EXPERIMENTS.md) was written after this completed pilot. It prioritizes a verified causal repair, precision-aware Fable adapter recovery, and the measured speed anomaly, with quantized deployment and clarification as gated extensions. This is planning only; it does not change the completion record or start new experiments.
+The [next-experiment roadmap](../NEXT_EXPERIMENTS.md) was written after this completed pilot. It prioritizes a verified causal repair, precision-aware Fable adapter recovery, and the measured speed anomaly, with quantized deployment and clarification as gated extensions. The roadmap is now authorized for execution; the previous completion record remains historical evidence.
 
 ## What each study achieved
 

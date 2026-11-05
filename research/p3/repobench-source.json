@@ -1,0 +1,29 @@
+{
+  "utc": "2026-11-05T17:57:30.837528+00:00",
+  "git": {
+    "commit": "78218b224e4de5de1d7362bf09b66c7d07c0c6ea",
+    "status": "?? datasets/p3/fable-repo-calibration.json\n?? datasets/p3/fable-repo-confirmation.json\n?? datasets/p3/fable-repo-development.json"
+  },
+  "dataset": "tianyang/repobench_python_v1.1",
+  "revision": "8a7cf0c8942cc1aa066bf261839650ac55a2ff79",
+  "url": "https://huggingface.co/datasets/tianyang/repobench_python_v1.1/resolve/8a7cf0c8942cc1aa066bf261839650ac55a2ff79/data/cross_file_first-00000-of-00002-baebda7f3a6e980a.parquet",
+  "file_sha256": "b647180f86f0db47c825ef7016d612545dbbdeb61a4d053d9d1cbf2e1406eaff",
+  "rows_in_source": 4017,
+  "counts": {
+    "development": {
+      "cases": 80,
+      "repositories": 78
+    },
+    "calibration": {
+      "cases": 24,
+      "repositories": 24
+    },
+    "confirmation": {
+      "cases": 240,
+      "repositories": 208
+    }
+  },
+  "selection": "Repository hash partitions 0-2 development,3-4 calibration,5-9 confirmation; deterministic row ordering, max4/repo, ASCII and predeclared length filter before outcomes.",
+  "context_policy": "First two reference snippets truncated together to850chars, last650chars current prefix; no gold-snippet-index use; total user prompt <=1800ASCIIchars.",
+  "primary_metric": "first extracted line exact match with indentation; strict whole-response match separately; text metric, no generated code execution."
+}
