@@ -1,0 +1,72 @@
+{
+  "schema_version": 2,
+  "utc": "2026-11-05T12:05:04.714239+00:00",
+  "git": {
+    "commit": "96f766024373703c3d98a2ab27dbc965add8480a",
+    "status": " M research/JOURNAL.md\n M research/budget.jsonl\n M research/portfolio-events.jsonl\n?? research/patches/portfolio-qwen_diagnosis_healthy-permuted.json\n?? research/patches/portfolio-qwen_diagnosis_output_sign-permuted.json\n?? research/patches/portfolio-qwen_diagnosis_output_sign.json\n?? runs/p2-e2confirm-original-lfm3_qad-s17/"
+  },
+  "base": {
+    "path": "artifacts/portfolio/qwen-float.gguf",
+    "repo": "unsloth/Qwen3-0.6B-GGUF",
+    "revision": "50968a4468ef4233ed78cd7c3de230dd1d61a56b",
+    "file": "Qwen3-0.6B-BF16.gguf",
+    "sha256": "e179a7ce5e9d1c9e897181a1f1183d6790ee33128b37e049432c70b6bf6f1c11",
+    "sampling": {
+      "temperature": 0.7,
+      "top_k": 20,
+      "top_p": 0.8,
+      "min_p": 0.0,
+      "repeat_penalty": 1.0,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0
+    },
+    "local_patch_manifest": "research/patches/portfolio-qwen-float.json",
+    "local_patch_manifest_sha256": "20d1b95d8db330d6aaabf2650d4d7a56597118ced2c02d7a6352a05b7afe119e"
+  },
+  "operations": [
+    {
+      "tensor": "blk.0.ffn_down.weight",
+      "kind": "scale",
+      "factor": -1.0
+    },
+    {
+      "tensor": "blk.1.ffn_down.weight",
+      "kind": "scale",
+      "factor": -1.0
+    },
+    {
+      "tensor": "blk.2.ffn_down.weight",
+      "kind": "scale",
+      "factor": -1.0
+    }
+  ],
+  "output": "artifacts/portfolio/qwen_diagnosis_ffn_sign.gguf",
+  "status": "verified",
+  "tensors": [
+    {
+      "name": "blk.0.ffn_down.weight",
+      "base_sha256": "76d212f6e7e52e276ade547d132e1ee26a62ab88c5c83073fd9678d07bad2a03",
+      "edited_sha256": "f97d278ba72dcd1669867fec9e2a0b0af7dc1f754e924132a0e6112100f80cc5",
+      "changed_values": 3145726,
+      "relative_frobenius_change": 2.0
+    },
+    {
+      "name": "blk.1.ffn_down.weight",
+      "base_sha256": "4d4116a059f5a84e9ff12bd0df1cab30042cb6be6e5a59e0539da400bb5cd33d",
+      "edited_sha256": "127f64fd419a02f691d09d13799ec75634dff4dc5eca3235ddc97a977f03916d",
+      "changed_values": 3145727,
+      "relative_frobenius_change": 2.0
+    },
+    {
+      "name": "blk.2.ffn_down.weight",
+      "base_sha256": "fb43b88e5143fde9f28cdc6826e3408fed80500c5b1efb5efc280f95cd568162",
+      "edited_sha256": "07867fcd03d7f3595b75c619f85fc9eb6a76e477a16df3660ef246062848b37e",
+      "changed_values": 3145727,
+      "relative_frobenius_change": 2.0
+    }
+  ],
+  "untouched_tensors_verified": 307,
+  "edited_file_sha256": "e707fb7bc15c16e4c13166179ba8f7c1470c271def286d188094f01fab6fc890",
+  "changed_values": 9437180,
+  "bytes": 1198182848
+}

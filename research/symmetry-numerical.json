@@ -1,0 +1,91 @@
+{
+  "utc": "2026-11-05T12:11:55.806701+00:00",
+  "git": {
+    "commit": "96f766024373703c3d98a2ab27dbc965add8480a",
+    "status": " M research/JOURNAL.md\n M research/budget.jsonl\n M research/portfolio-events.jsonl\n M research/protocols/portfolio-completion-v1.md\n?? research/patches/portfolio-fable_diagnosis_ffn_sign-permuted.json\n?? research/patches/portfolio-fable_diagnosis_ffn_sign.json\n?? research/patches/portfolio-fable_diagnosis_healthy-permuted.json\n?? research/patches/portfolio-fable_diagnosis_output_sign-permuted.json\n?? research/patches/portfolio-fable_diagnosis_output_sign.json\n?? research/patches/portfolio-lfm3_diagnosis_ffn_sign-permuted.json\n?? research/patches/portfolio-lfm3_diagnosis_ffn_sign.json\n?? research/patches/portfolio-lfm3_diagnosis_healthy-permuted.json\n?? research/patches/portfolio-lfm3_diagnosis_output_sign-permuted.json\n?? research/patches/portfolio-lfm3_diagnosis_output_sign.json\n?? research/patches/portfolio-qwen_diagnosis_ffn_sign-permuted.json\n?? research/patches/portfolio-qwen_diagnosis_ffn_sign.json\n?? research/patches/portfolio-qwen_diagnosis_healthy-permuted.json\n?? research/patches/portfolio-qwen_diagnosis_output_sign-permuted.json\n?? research/patches/portfolio-qwen_diagnosis_output_sign.json\n?? runs/p2-e2confirm-original-lfm3_qad-s17/"
+  },
+  "checks": [
+    {
+      "model": "qwen",
+      "state": "healthy",
+      "synthetic_inputs": 4,
+      "seed": 919,
+      "max_abs_difference": 5.238689482212067e-10,
+      "relative_l2_difference": 4.2170998426627193e-07,
+      "within_tolerance": true
+    },
+    {
+      "model": "qwen",
+      "state": "output_sign",
+      "synthetic_inputs": 4,
+      "seed": 919,
+      "max_abs_difference": 5.238689482212067e-10,
+      "relative_l2_difference": 4.2170998426627193e-07,
+      "within_tolerance": true
+    },
+    {
+      "model": "qwen",
+      "state": "ffn_sign",
+      "synthetic_inputs": 4,
+      "seed": 919,
+      "max_abs_difference": 5.238689482212067e-10,
+      "relative_l2_difference": 4.2170998426627193e-07,
+      "within_tolerance": true
+    },
+    {
+      "model": "lfm3",
+      "state": "healthy",
+      "synthetic_inputs": 4,
+      "seed": 919,
+      "max_abs_difference": 9.313225746154785e-10,
+      "relative_l2_difference": 4.273109937003028e-07,
+      "within_tolerance": true
+    },
+    {
+      "model": "lfm3",
+      "state": "output_sign",
+      "synthetic_inputs": 4,
+      "seed": 919,
+      "max_abs_difference": 9.313225746154785e-10,
+      "relative_l2_difference": 4.273109937003028e-07,
+      "within_tolerance": true
+    },
+    {
+      "model": "lfm3",
+      "state": "ffn_sign",
+      "synthetic_inputs": 4,
+      "seed": 919,
+      "max_abs_difference": 9.313225746154785e-10,
+      "relative_l2_difference": 4.273109937003028e-07,
+      "within_tolerance": true
+    },
+    {
+      "model": "fable",
+      "state": "healthy",
+      "synthetic_inputs": 4,
+      "seed": 919,
+      "max_abs_difference": 2.3283064365386963e-10,
+      "relative_l2_difference": 4.4985370095673716e-07,
+      "within_tolerance": true
+    },
+    {
+      "model": "fable",
+      "state": "output_sign",
+      "synthetic_inputs": 4,
+      "seed": 919,
+      "max_abs_difference": 2.3283064365386963e-10,
+      "relative_l2_difference": 4.4985370095673716e-07,
+      "within_tolerance": true
+    },
+    {
+      "model": "fable",
+      "state": "ffn_sign",
+      "synthetic_inputs": 4,
+      "seed": 919,
+      "max_abs_difference": 2.3283064365386963e-10,
+      "relative_l2_difference": 4.4985370095673716e-07,
+      "within_tolerance": true
+    }
+  ],
+  "note": "Gated-MLP FP32 numerical checks; actual runtime output parity is tested separately. No editor received these forward calculations."
+}

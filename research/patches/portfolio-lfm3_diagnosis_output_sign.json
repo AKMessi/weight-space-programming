@@ -1,0 +1,46 @@
+{
+  "schema_version": 2,
+  "utc": "2026-11-05T12:07:31.921681+00:00",
+  "git": {
+    "commit": "96f766024373703c3d98a2ab27dbc965add8480a",
+    "status": " M research/JOURNAL.md\n M research/budget.jsonl\n M research/portfolio-events.jsonl\n?? research/patches/portfolio-lfm3_diagnosis_healthy-permuted.json\n?? research/patches/portfolio-qwen_diagnosis_ffn_sign-permuted.json\n?? research/patches/portfolio-qwen_diagnosis_ffn_sign.json\n?? research/patches/portfolio-qwen_diagnosis_healthy-permuted.json\n?? research/patches/portfolio-qwen_diagnosis_output_sign-permuted.json\n?? research/patches/portfolio-qwen_diagnosis_output_sign.json\n?? runs/p2-e2confirm-original-lfm3_qad-s17/"
+  },
+  "base": {
+    "path": "local/models/LFM3-1.7B-F16.gguf",
+    "repo": "LiquidAI/LFM3-1.7B-GGUF",
+    "revision": "cd0c74c575b5c416f3011b5b4c298077f26ca8c2",
+    "file": "LFM3-1.7B-F16.gguf",
+    "sha256": "b7ab8b69a85e4dfbf62cdfd0e02d7d051ed09f2c5b84c701771dddb073b85970",
+    "sampling": {
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "min_p": 0.0,
+      "repeat_penalty": 1.1,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0
+    }
+  },
+  "operations": [
+    {
+      "tensor": "output_norm.weight",
+      "kind": "scale",
+      "factor": -1.0
+    }
+  ],
+  "output": "artifacts/portfolio/lfm3_diagnosis_output_sign.gguf",
+  "status": "verified",
+  "tensors": [
+    {
+      "name": "output_norm.weight",
+      "base_sha256": "5fd4b8014b4cf98ef7e18931fff41e94a64e0ce5dbac4def1237feb5ae53c0bb",
+      "edited_sha256": "9216f1aef8639d944e95e26d353ba367a8aa790e4c5d3a0a8d31a15615ba8f16",
+      "changed_values": 2048,
+      "relative_frobenius_change": 2.0
+    }
+  ],
+  "untouched_tensors_verified": 286,
+  "edited_file_sha256": "be47f48bb3ef8c0b860d4c12d14db1caf4f0a8f5f35df9619808e354dfecf298",
+  "changed_values": 2048,
+  "bytes": 3466626336
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": 2,
+  "utc": "2026-11-05T12:11:14.415897+00:00",
+  "git": {
+    "commit": "96f766024373703c3d98a2ab27dbc965add8480a",
+    "status": " M research/JOURNAL.md\n M research/budget.jsonl\n M research/portfolio-events.jsonl\n?? research/patches/portfolio-fable_diagnosis_healthy-permuted.json\n?? research/patches/portfolio-lfm3_diagnosis_ffn_sign-permuted.json\n?? research/patches/portfolio-lfm3_diagnosis_ffn_sign.json\n?? research/patches/portfolio-lfm3_diagnosis_healthy-permuted.json\n?? research/patches/portfolio-lfm3_diagnosis_output_sign-permuted.json\n?? research/patches/portfolio-lfm3_diagnosis_output_sign.json\n?? research/patches/portfolio-qwen_diagnosis_ffn_sign-permuted.json\n?? research/patches/portfolio-qwen_diagnosis_ffn_sign.json\n?? research/patches/portfolio-qwen_diagnosis_healthy-permuted.json\n?? research/patches/portfolio-qwen_diagnosis_output_sign-permuted.json\n?? research/patches/portfolio-qwen_diagnosis_output_sign.json\n?? runs/p2-e2confirm-original-lfm3_qad-s17/"
+  },
+  "base": {
+    "path": "local/models/lfm2.5-230m-fable-5-f16.gguf",
+    "repo": "AKMESSI/lfm2.5-230m-fable-5",
+    "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+    "file": "lfm2.5-230m-fable-5-f16.gguf",
+    "sha256": "1e1624de4d7ebe413d82dbe2b5f48fcf83e6c46b1b5414c8aef0596009380cc6",
+    "sampling": {
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "min_p": 0.0,
+      "repeat_penalty": 1.05,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0
+    }
+  },
+  "operations": [
+    {
+      "tensor": "token_embd_norm.weight",
+      "kind": "scale",
+      "factor": -1.0
+    }
+  ],
+  "output": "artifacts/portfolio/fable_diagnosis_output_sign.gguf",
+  "status": "verified",
+  "tensors": [
+    {
+      "name": "token_embd_norm.weight",
+      "base_sha256": "04663c469a35a8fe277566aadf524db8dd497ca602fceccc348ea3783ac627fd",
+      "edited_sha256": "22e49e399140e41c60200a17d87749c573ac0adf97dc9b8eb7d269a9560e3f85",
+      "changed_values": 1024,
+      "relative_frobenius_change": 2.0
+    }
+  ],
+  "untouched_tensors_verified": 131,
+  "edited_file_sha256": "4d96d5fed4a7fd6dce3ab06f60e4a35ffe0d0a0f475516f37e48dfea0cb4a7de",
+  "changed_values": 1024,
+  "bytes": 461883712
+}

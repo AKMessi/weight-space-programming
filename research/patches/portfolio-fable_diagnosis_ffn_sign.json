@@ -1,0 +1,70 @@
+{
+  "schema_version": 2,
+  "utc": "2026-11-05T12:11:36.469161+00:00",
+  "git": {
+    "commit": "96f766024373703c3d98a2ab27dbc965add8480a",
+    "status": " M research/JOURNAL.md\n M research/budget.jsonl\n M research/portfolio-events.jsonl\n?? research/patches/portfolio-fable_diagnosis_healthy-permuted.json\n?? research/patches/portfolio-fable_diagnosis_output_sign-permuted.json\n?? research/patches/portfolio-fable_diagnosis_output_sign.json\n?? research/patches/portfolio-lfm3_diagnosis_ffn_sign-permuted.json\n?? research/patches/portfolio-lfm3_diagnosis_ffn_sign.json\n?? research/patches/portfolio-lfm3_diagnosis_healthy-permuted.json\n?? research/patches/portfolio-lfm3_diagnosis_output_sign-permuted.json\n?? research/patches/portfolio-lfm3_diagnosis_output_sign.json\n?? research/patches/portfolio-qwen_diagnosis_ffn_sign-permuted.json\n?? research/patches/portfolio-qwen_diagnosis_ffn_sign.json\n?? research/patches/portfolio-qwen_diagnosis_healthy-permuted.json\n?? research/patches/portfolio-qwen_diagnosis_output_sign-permuted.json\n?? research/patches/portfolio-qwen_diagnosis_output_sign.json\n?? runs/p2-e2confirm-original-lfm3_qad-s17/"
+  },
+  "base": {
+    "path": "local/models/lfm2.5-230m-fable-5-f16.gguf",
+    "repo": "AKMESSI/lfm2.5-230m-fable-5",
+    "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+    "file": "lfm2.5-230m-fable-5-f16.gguf",
+    "sha256": "1e1624de4d7ebe413d82dbe2b5f48fcf83e6c46b1b5414c8aef0596009380cc6",
+    "sampling": {
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "min_p": 0.0,
+      "repeat_penalty": 1.05,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0
+    }
+  },
+  "operations": [
+    {
+      "tensor": "blk.0.ffn_down.weight",
+      "kind": "scale",
+      "factor": -1.0
+    },
+    {
+      "tensor": "blk.1.ffn_down.weight",
+      "kind": "scale",
+      "factor": -1.0
+    },
+    {
+      "tensor": "blk.2.ffn_down.weight",
+      "kind": "scale",
+      "factor": -1.0
+    }
+  ],
+  "output": "artifacts/portfolio/fable_diagnosis_ffn_sign.gguf",
+  "status": "verified",
+  "tensors": [
+    {
+      "name": "blk.0.ffn_down.weight",
+      "base_sha256": "caa17b6c4f59083002b0edcf2cc167f5458516f8584a7b526770c771b538c7bb",
+      "edited_sha256": "60c722cc6bfba891ae68ac569b7e32cfc4c7ae634d9cd7e74901e8c44622c9f2",
+      "changed_values": 2621438,
+      "relative_frobenius_change": 2.0
+    },
+    {
+      "name": "blk.1.ffn_down.weight",
+      "base_sha256": "a34791dc42899a99336ff681ebddb84a1318648ad4bb780de1662ecb4a0a63b3",
+      "edited_sha256": "eabe5079b9f4d84a04067f2f1fb261af64ccb331a44569a37dfe1ba3047dd789",
+      "changed_values": 2621437,
+      "relative_frobenius_change": 2.0
+    },
+    {
+      "name": "blk.2.ffn_down.weight",
+      "base_sha256": "358ce5965d62a84dc1ebfabbcacc5053e512c7ac7d37b8a9ff59ff1a9a4a9da4",
+      "edited_sha256": "7b42c02c8e396ebcc8088bac1e3140806244953ea86e5320dbfbfcf13f8ca56e",
+      "changed_values": 2621439,
+      "relative_frobenius_change": 2.0
+    }
+  ],
+  "untouched_tensors_verified": 129,
+  "edited_file_sha256": "4baf2e8b23e694b57308f94eb9afc52c2230e0501cb2ca866637f90da4561244",
+  "changed_values": 7864314,
+  "bytes": 461883712
+}

@@ -1,0 +1,70 @@
+{
+  "schema_version": 2,
+  "utc": "2026-11-05T12:09:09.277526+00:00",
+  "git": {
+    "commit": "96f766024373703c3d98a2ab27dbc965add8480a",
+    "status": " M research/JOURNAL.md\n M research/budget.jsonl\n M research/portfolio-events.jsonl\n?? research/patches/portfolio-lfm3_diagnosis_healthy-permuted.json\n?? research/patches/portfolio-lfm3_diagnosis_output_sign-permuted.json\n?? research/patches/portfolio-lfm3_diagnosis_output_sign.json\n?? research/patches/portfolio-qwen_diagnosis_ffn_sign-permuted.json\n?? research/patches/portfolio-qwen_diagnosis_ffn_sign.json\n?? research/patches/portfolio-qwen_diagnosis_healthy-permuted.json\n?? research/patches/portfolio-qwen_diagnosis_output_sign-permuted.json\n?? research/patches/portfolio-qwen_diagnosis_output_sign.json\n?? runs/p2-e2confirm-original-lfm3_qad-s17/"
+  },
+  "base": {
+    "path": "local/models/LFM3-1.7B-F16.gguf",
+    "repo": "LiquidAI/LFM3-1.7B-GGUF",
+    "revision": "cd0c74c575b5c416f3011b5b4c298077f26ca8c2",
+    "file": "LFM3-1.7B-F16.gguf",
+    "sha256": "b7ab8b69a85e4dfbf62cdfd0e02d7d051ed09f2c5b84c701771dddb073b85970",
+    "sampling": {
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "min_p": 0.0,
+      "repeat_penalty": 1.1,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0
+    }
+  },
+  "operations": [
+    {
+      "tensor": "blk.0.ffn_down.weight",
+      "kind": "scale",
+      "factor": -1.0
+    },
+    {
+      "tensor": "blk.1.ffn_down.weight",
+      "kind": "scale",
+      "factor": -1.0
+    },
+    {
+      "tensor": "blk.2.ffn_down.weight",
+      "kind": "scale",
+      "factor": -1.0
+    }
+  ],
+  "output": "artifacts/portfolio/lfm3_diagnosis_ffn_sign.gguf",
+  "status": "verified",
+  "tensors": [
+    {
+      "name": "blk.0.ffn_down.weight",
+      "base_sha256": "aa24dc71c0d174c305c1ead140bf7e28dd370fab7a775fe87c27d5fc545565b2",
+      "edited_sha256": "c20fd6628c420726f9b6a4a9341fd05c56fae4ba2dacd0833f533bfe586aad2e",
+      "changed_values": 15728625,
+      "relative_frobenius_change": 2.0
+    },
+    {
+      "name": "blk.1.ffn_down.weight",
+      "base_sha256": "26a7e69fcba21fc7493dc9faf18ecd3d29d0ebecea8a377b9b2fbf8eb5a97d0f",
+      "edited_sha256": "838aa99640bc7c98fd01ae018262c284f79c3d1c5e0e333313edd44938cbe998",
+      "changed_values": 15728616,
+      "relative_frobenius_change": 2.0
+    },
+    {
+      "name": "blk.2.ffn_down.weight",
+      "base_sha256": "f4b63824086bb4ab6a34616181f1c8e63c7667281b181c38178cc07f743d5936",
+      "edited_sha256": "22df505bcc5469c02964bfdee8e81fc8d51ca1d8389cbe217f8282edbcec97cf",
+      "changed_values": 15728613,
+      "relative_frobenius_change": 2.0
+    }
+  ],
+  "untouched_tensors_verified": 284,
+  "edited_file_sha256": "ebf7d492eaaa0664fa61945a1554cc399346b3e90a5f0e3e0eeacebc5e3368fa",
+  "changed_values": 47185854,
+  "bytes": 3466626336
+}

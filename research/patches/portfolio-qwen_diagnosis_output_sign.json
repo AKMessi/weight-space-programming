@@ -1,0 +1,48 @@
+{
+  "schema_version": 2,
+  "utc": "2026-11-05T12:04:07.463134+00:00",
+  "git": {
+    "commit": "96f766024373703c3d98a2ab27dbc965add8480a",
+    "status": " M research/JOURNAL.md\n M research/budget.jsonl\n M research/portfolio-events.jsonl\n?? research/patches/portfolio-qwen_diagnosis_healthy-permuted.json\n?? runs/p2-e2confirm-original-lfm3_qad-s17/"
+  },
+  "base": {
+    "path": "artifacts/portfolio/qwen-float.gguf",
+    "repo": "unsloth/Qwen3-0.6B-GGUF",
+    "revision": "50968a4468ef4233ed78cd7c3de230dd1d61a56b",
+    "file": "Qwen3-0.6B-BF16.gguf",
+    "sha256": "e179a7ce5e9d1c9e897181a1f1183d6790ee33128b37e049432c70b6bf6f1c11",
+    "sampling": {
+      "temperature": 0.7,
+      "top_k": 20,
+      "top_p": 0.8,
+      "min_p": 0.0,
+      "repeat_penalty": 1.0,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0
+    },
+    "local_patch_manifest": "research/patches/portfolio-qwen-float.json",
+    "local_patch_manifest_sha256": "20d1b95d8db330d6aaabf2650d4d7a56597118ced2c02d7a6352a05b7afe119e"
+  },
+  "operations": [
+    {
+      "tensor": "output_norm.weight",
+      "kind": "scale",
+      "factor": -1.0
+    }
+  ],
+  "output": "artifacts/portfolio/qwen_diagnosis_output_sign.gguf",
+  "status": "verified",
+  "tensors": [
+    {
+      "name": "output_norm.weight",
+      "base_sha256": "2bb6f8c37a1a33a8f3ead0d4e1b23ce5c5265b71e22ad2c885bbbbaa751f9377",
+      "edited_sha256": "d92ca0d49b8cc2fcaee3bec3120e1b1ae0198dc7c89e837b0adb902122392a57",
+      "changed_values": 1024,
+      "relative_frobenius_change": 2.0
+    }
+  ],
+  "untouched_tensors_verified": 309,
+  "edited_file_sha256": "f061ad55da1862eb4880acbbe344cd113e483e6f82a9f1c5593624190e29be87",
+  "changed_values": 1024,
+  "bytes": 1198182848
+}
