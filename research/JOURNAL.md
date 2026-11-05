@@ -757,3 +757,7 @@ Run status: complete; generated tokens: 99. Group counts: `{"functional_code": {
 ### 2026-11-05T13:53:05.104159+00:00 — p2-e4engineering-v2-lfm3_qad_AB-s17
 
 Run status: complete; generated tokens: 335. Group counts: `{"functional_code": {"attempted": 6, "cutoff": 0, "payload_correct": 5, "responses": 6, "success": 5}, "literal_copy": {"attempted": 6, "cutoff": 0, "payload_correct": 6, "responses": 6, "success": 0}, "structured": {"attempted": 6, "cutoff": 0, "payload_correct": 6, "responses": 6, "success": 6}}`. Full immutable requests, raw responses, and settings are in `runs/p2-e4engineering-v2-lfm3_qad_AB-s17`. These counts are observations; interpretation is deferred to the study report.
+
+### 2026-11-05T13:53:23.366015+00:00 — p2-e4ordercheck-v2-lfm3_qad_BA-s17
+
+Run status: complete; generated tokens: 113. Group counts: `{"functional_code": {"attempted": 6, "cutoff": 0, "payload_correct": 5, "responses": 6, "success": 5}}`. Full immutable requests, raw responses, and settings are in `runs/p2-e4ordercheck-v2-lfm3_qad_BA-s17`. These counts are observations; interpretation is deferred to the study report.
