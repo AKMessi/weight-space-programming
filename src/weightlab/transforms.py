@@ -99,11 +99,15 @@ def rewrite(base,output,manifest,mode='identity',permutation_seed=811,layer=0,fa
         writer=GGUFWriter(str(partial),reader.get_field('general.architecture').contents())
         for key,field in reader.fields.items():
             if key.startswith('GGUF.') or key=='general.architecture':continue
-            writer.add_key_value(key,field.contents(),field.types[0],field.types[-1] if field.types[0]==GGUFValueType.ARRAY else None)
+            value=1 if mode=='f16' and key=='general.file_type' else field.contents()
+            writer.add_key_value(key,value,field.types[0],field.types[-1] if field.types[0]==GGUFValueType.ARRAY else None)
         # Stream one tensor at a time: never materialize a whole dequantized model.
         def data_for(t):
             if t.name in values:return values[t.name]
-            if mode=='f16' and t.tensor_type==GGMLQuantizationType.BF16:return floating_tensor_values(t,dtype=np.float16)
+            if mode=='f16' and t.tensor_type==GGMLQuantizationType.BF16:
+                result=floating_tensor_values(t,dtype=np.float16)
+                if not np.isfinite(result).all():raise ValueError('nonfinite F16 conversion')
+                return result
             return t.data
         for t in reader.tensors:
             data=data_for(t)
@@ -115,14 +119,19 @@ def rewrite(base,output,manifest,mode='identity',permutation_seed=811,layer=0,fa
         result=GGUFReader(partial)
         for key,field in reader.fields.items():
             if key.startswith('GGUF.'):continue
-            if result.get_field(key).contents()!=field.contents():raise ValueError(f'metadata drift: {key}')
+            expected=1 if mode=='f16' and key=='general.file_type' else field.contents()
+            if result.get_field(key).contents()!=expected:raise ValueError(f'metadata drift: {key}')
         for t in result.tensors:
             old=source[t.name]
             if not np.array_equal(t.shape,old.shape):raise ValueError('logical shape drift')
             expected=data_for(old)
             if tensor_hash(t.data)!=tensor_hash(expected):raise ValueError('tensor rewrite mismatch')
-            report['tensors'].append({'name':t.name,'encoding':str(t.tensor_type),
-                 'unchanged_bytes':tensor_hash(t.data)==tensor_hash(old.data),'sha256':tensor_hash(t.data)})
+            row={'name':t.name,'encoding':str(t.tensor_type),
+                 'unchanged_bytes':tensor_hash(t.data)==tensor_hash(old.data),'sha256':tensor_hash(t.data)}
+            if mode=='f16' and old.tensor_type==GGMLQuantizationType.BF16:
+                delta=t.data.astype(np.float32)-floating_tensor_values(old)
+                row.update(converted_changed_values=int(np.count_nonzero(delta)),max_abs_conversion_error=float(np.max(np.abs(delta))))
+            report['tensors'].append(row)
         if file_sha256(base['path'])!=base['sha256']:raise ValueError('original changed')
         report.update(status='verified',edited_file_sha256=file_sha256(partial),bytes=partial.stat().st_size,
                       metadata_digest=digest({k:v.contents() for k,v in reader.fields.items() if not k.startswith('GGUF.')}))

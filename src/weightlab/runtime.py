@@ -20,6 +20,18 @@ def runtime_libraries(binary):
     return [{'path': str(p), 'bytes': p.stat().st_size, 'sha256': file_sha256(p)} for p in sorted(paths)]
 
 
+def validate_response_format(form):
+    if form is None:return
+    kind=form.get('type')
+    if kind=='json_schema':
+        wrapper=form.get('json_schema',{})
+        if 'schema' in form or not isinstance(wrapper.get('schema'),dict) or not wrapper['schema']:
+            raise ValueError('json_schema requires a nonempty response_format.json_schema.schema; top-level schema is ignored by this runtime')
+    elif kind=='json_object':
+        if 'schema' in form and not isinstance(form['schema'],dict):raise ValueError('schema must be an object')
+    elif kind!='text':raise ValueError('unsupported response format')
+
+
 def request_json(url, payload=None, timeout=180):
     body = None if payload is None else json.dumps(payload).encode()
     req = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json"})

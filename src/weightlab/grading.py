@@ -19,7 +19,7 @@ def _constant(value):
 
 
 DECODER = json.JSONDecoder(object_pairs_hook=_pairs, parse_constant=_constant)
-GRADER_VERSION = "4"
+GRADER_VERSION = "5"
 
 
 def code_payload_present(text, expected):
@@ -80,6 +80,20 @@ def grade(case, text):
     if kind == 'functional_code':
         from .functional import evaluate_code
         return evaluate_code(case,text)
+    if kind=='diagnosis':
+        parsed=first_json(text)
+        confidence=parsed.get('confidence') if isinstance(parsed,dict) else None
+        valid=(isinstance(parsed,dict) and set(parsed)=={'diagnosis','confidence'}
+               and type(confidence) in (int,float) and 0<=confidence<=1
+               and parsed['diagnosis'] in ('healthy','degraded'))
+        payload=bool(valid and parsed['diagnosis']==expected)
+        try:
+            whole,end=DECODER.raw_decode(text.lstrip())
+            plain=not text.lstrip()[end:].strip() and typed_equal(whole,parsed)
+        except (ValueError,json.JSONDecodeError):plain=False
+        return {'success':payload and plain,'payload_correct':payload,'format_valid':bool(valid and plain),
+                'diagnosis':parsed.get('diagnosis') if isinstance(parsed,dict) else None,
+                'stated_confidence':confidence if valid else None}
     if kind == "json":
         valid = False
         try:

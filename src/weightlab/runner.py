@@ -11,7 +11,7 @@ import time
 from .evidence import append_jsonl, digest, file_sha256, git_state, utc_now, write_json
 from .budget import reserve, settle
 from .grading import GRADER_VERSION, grade_turns
-from .runtime import request_json, runtime_libraries, server
+from .runtime import request_json, runtime_libraries, server,validate_response_format
 
 
 def summarize(rows):
@@ -46,7 +46,7 @@ def _execute(config, model_key, suite, output, max_tokens, seed, limit):
     state = git_state()
     # A run may coexist with uncommitted evidence, but never uncommitted source/config changes.
     dirty_source = [l for l in state["status"].splitlines()
-                    if l[3:].startswith(("src/", "configs/", "tests/", "pyproject.toml"))]
+                    if l[3:].startswith(("src/", "scripts/", "configs/", "tests/", "pyproject.toml"))]
     if dirty_source:
         raise RuntimeError(f"Commit experimental source/config before running: {dirty_source}")
     actual = file_sha256(model)
@@ -82,6 +82,7 @@ def _execute(config, model_key, suite, output, max_tokens, seed, limit):
                 if set(overrides) - allowed:
                     raise ValueError(f"Unsupported request overrides: {set(overrides) - allowed}")
                 payload.update(overrides)
+                validate_response_format(payload.get('response_format'))
                 row = {"case": case, "request": payload, "started_utc": utc_now()}
                 try:
                     row["rendered_prompt"] = request_json(url + "/apply-template", payload)
