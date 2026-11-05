@@ -803,3 +803,9 @@ Frozen `p3-native-gate-v1` and 24 visible prefixes before target inference. The 
 ### Native client build correction (zero model calls)
 
 The initial compile failed because `ggml_backend_load_all_from_path` needs explicit `-lggml` linkage in addition to llama/ggml-base. The shell subsequently attempted the gate, which stopped before model loading because no client binary existed. No diagnostic reservation or model call was made. The first CPU attempt directory is preserved with a preflight-failure summary. Added a checked, manifested build step with the missing link dependency and a separately named CPU retry; source/runtime semantics are unchanged.
+
+### Same-forward CPU arithmetic identified; gate v2 declared
+
+V1 captured all 28 CPU requests with equal top-1, but most centered errors narrowly exceeded 0.001. The control-summary serializer then rejected a NumPy boolean; raw responses and reservations were already durable and were pushed with the failed summary. Offline inspection of six saved states plus the exact CPU kernel source identifies the reason: F16 weight vec-dot converts its activation input to F16 before multiplication. Reconstructing that arithmetic reduces observed error from ~0.001–0.0026 to ~3e-6–7e-6. This is not a relaxed threshold. Declared v2 uses the actual CPU operator, preserves v1's incorrect-equation result, accounts for rounding in the causal shift and fixes summary boolean serialization before a fresh gate repeat.
+
+The Fable adapter numerical stage and tests are also frozen. It packages declared Q/K/V deltas as fixed-rank factors or low-bit values, retains only tiny explicit residual corrections, verifies the matching base on merge, and never trains the target. Spectra and packages precede model-quality selection. Two meaningful numerical tests bring the suite to 36 passing tests.

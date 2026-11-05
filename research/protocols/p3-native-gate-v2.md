@@ -1,0 +1,7 @@
+# P3 native same-forward gate v2: match the actual CPU readout arithmetic
+
+Declared after v1 calibration inspection, before the v2 repeat or any repair search. V1's raw calls are complete, but its controls-summary serialization failed on a NumPy boolean. Preserve both the numeric failures and this analysis error. No requests were lost and every diagnostic reservation settled.
+
+Exact native source `ggml/src/ggml-cpu/ggml-cpu.c` assigns F16 weights an F16 vec-dot input type, converting the F32 activation before multiplication. Therefore the CPU native operator is **W_F16 × round_F16(h)**, not W_F16 × h_F32. Six saved calibration cases show errors falling from about 0.001–0.0026 to 3e-6–7e-6 when reconstructing that actual arithmetic. This is a source-based model correction, not a relaxed tolerance or a semantic repair. V1 stays failed under its original equation.
+
+V2 repeats all 24 visible prefixes and four controls on CPU using the correctly rounded readout, with unchanged thresholds (max 0.001, relative 0.001). The causal predicted shift uses W×(round(h+delta)-round(h)), while saved F32 state change still must match delta. Vulkan initially retains the direct FP32 activation multiplication and its existing 0.05/1% tolerance; any backend discrepancy remains separately visible. All other v1 recording/cost/one-model conditions apply. The total diagnostic budget across both gate versions is within the 50,000 token stage ceiling. Fix explicit Python-bool conversion in control summaries; no original data is rewritten.

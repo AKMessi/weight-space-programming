@@ -9,7 +9,7 @@ from weightlab.resources import monitor
 from weightlab.runtime import runtime_libraries
 from portfolio_batch import publish
 
-ROOT=Path('research/p3/native-gate-v1')
+ROOT=Path('research/p3/native-gate-v2')
 CONFIG=json.loads(Path('configs/portfolio_precision.json').read_text())
 
 def freeze():
@@ -60,7 +60,7 @@ def run(backend,attempt=None):
                             for case in cases:
                                 req={**case,'trace_dir':str((Path('local/p3-traces')/out.name/mode/case['id']).resolve())}
                                 if mode=='causal':req['intervention']={'tensor':'result_norm','scale':1.,'vector':(.01*np.sin(np.arange(head.shape[1]))).astype(np.float32).tolist()}
-                                rid=f'p3/native-v1/{out.name}/{mode}/{case["id"]}'
+                                rid=f'p3/native-v2/{out.name}/{mode}/{case["id"]}'
                                 reserve(rid,512,1000000,'research/scored-budget.jsonl')
                                 append_jsonl(out/'events.jsonl',{'event':'request','utc':utc_now(),'request_id':rid,'request':req})
                                 proc.stdin.write(json.dumps(req)+'\n');proc.stdin.flush()
@@ -76,7 +76,8 @@ def run(backend,attempt=None):
                                 row={'mode':mode,'case':case,'request':req,'raw_response':response}
                                 if mode!='no_callback':
                                     h=np.fromfile(response['captures']['result_norm']['path'],dtype=np.float32)
-                                    manual=head@h;ids=np.array([x['id'] for x in response['top64']]);ref=int(np.argmax(logits))
+                                    readout=h.astype(np.float16).astype(np.float32) if backend=='cpu' else h
+                                    manual=head@readout;ids=np.array([x['id'] for x in response['top64']]);ref=int(np.argmax(logits))
                                     a=logits[ids]-logits[ref];b=manual[ids]-manual[ref]
                                     maximum=float(np.max(np.abs(a-b)));relative=float(np.linalg.norm(a-b)/max(np.linalg.norm(a),1e-6))
                                     same=int(np.argmax(manual))==ref
@@ -99,15 +100,16 @@ def run(backend,attempt=None):
                 if r['mode']=='no_callback':
                     maximum=float(np.max(np.abs(a-b)));limit=.001 if backend=='cpu' else .05
                     controls.append({'mode':r['mode'],'id':r['case']['id'],'max_abs_logit_difference':maximum,
-                                     'exact_equal':bool(np.array_equal(a,b)),'passed':maximum<=limit and np.argmax(a)==np.argmax(b)})
+                                     'exact_equal':bool(np.array_equal(a,b)),'passed':bool(maximum<=limit and np.argmax(a)==np.argmax(b))})
                 else:
                     h0=np.fromfile(original['captures']['result_norm']['path'],dtype=np.float32)
                     h1=np.fromfile(new['captures']['result_norm']['path'],dtype=np.float32)
                     vector=np.array(r['request']['intervention']['vector'],dtype=np.float32)
-                    predicted=head@vector;ref=int(np.argmax(a));difference=(b-a)-(b-a)[ref];prediction=predicted-predicted[ref]
+                    effective=(h1.astype(np.float16).astype(np.float32)-h0.astype(np.float16).astype(np.float32)) if backend=='cpu' else vector
+                    predicted=head@effective;ref=int(np.argmax(a));difference=(b-a)-(b-a)[ref];prediction=predicted-predicted[ref]
                     maximum=float(np.max(np.abs(difference-prediction)));limit=.002 if backend=='cpu' else .1
                     controls.append({'mode':r['mode'],'id':r['case']['id'],'max_state_delta_error':float(np.max(np.abs(h1-h0-vector))),
-                         'max_centered_shift_error':maximum,'passed':maximum<=limit and np.max(np.abs(h1-h0-vector))<=1e-5})
+                         'max_centered_shift_error':maximum,'passed':bool(maximum<=limit and np.max(np.abs(h1-h0-vector))<=1e-5)})
             write_json(out/'controls.json',controls)
             checks=[r['comparison']['passed'] for r in results if 'comparison' in r]
             write_json(out/'summary.json',{'status':'complete','boundary_passes':sum(checks),'boundary_checks':len(checks),
