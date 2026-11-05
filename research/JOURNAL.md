@@ -1103,3 +1103,7 @@ Status `complete`, 665 generated tokens. Immutable raw inputs/responses/config/r
 ### 2026-11-05T19:34:20.776836+00:00 — p3-repair-sampling-stability-protected_0.025-s17
 
 Status `complete`, 656 generated tokens. Immutable raw inputs/responses/config/runtime and resource samples are in `runs/p3-repair-sampling-stability-protected_0.025-s17`. Interpretation is deferred to the study report; this run alone does not establish a repair.
+
+### 2026-11-05T19:34:31.364806+00:00 — p3-repair-sampling-stability-protected_0.025-s29
+
+Status `complete`, 673 generated tokens. Immutable raw inputs/responses/config/runtime and resource samples are in `runs/p3-repair-sampling-stability-protected_0.025-s29`. Interpretation is deferred to the study report; this run alone does not establish a repair.
