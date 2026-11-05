@@ -143,3 +143,13 @@ Record observations, hypotheses, decisions, failed attempts, confounds, and foll
 **Template control:** Fable and the parent use identical native template hashes, and all 40 rendered discovery prompts match exactly. This rules out a different prompt string as an explanation of their observed difference on these runs; it does not establish historical training provenance.
 
 **Next predeclared inference controls:** decode the published BF16 parent into the same F16 artifact layout; restore all 18 Q/K/V projection matrices in Fable to the published BF16 parent as an upper-bound rollback control; and restore 50% of Q/K/V deltas only at layers 10/12. The all-QKV control may remove specialization and must not be called a skill-preserving repair. Site/dose choices remain exploratory, selected before their inference outcomes.
+
+## 2026-11-05 — Precision alignment changes the interpretation of the deltas
+
+**Measured:** after decoding the official BF16 linear weights and rounding its remaining floating values to BF16, 105/132 tensors match Fable exactly. Of the other 27, 18 are the Q/K/V projection matrices; the remaining 9 contain only 1–3 differing scalar values each. Decoder values matched the installed GGUF library on three checked projection matrices. This is strong numerical evidence for concentrated QKV changes plus precision/export differences, without establishing the historical training revision.
+
+**Correction to interpretation:** the earlier FFN rollback largely perturbed effective precision rather than removing a clean learned FFN update. Its negative result does not identify or exclude FFN behavior circuits. Same-type files were an insufficient control; exact source-value alignment was necessary.
+
+**Runs 015–017:** the exact-source parent control retained the 4/4 copy and 4/4 complete-evidence successes, with different/truncated explanations. Full QKV restoration in Fable also recovered those 8 exact contracts and 8/8 JSON payloads, while retaining the correct four simple return expressions. The late-two-layer 50% QKV candidate did not recover those contracts. None establishes preservation of Fable's useful coding specialization; that needs a fresh, appropriate coding evaluation.
+
+**Next predeclared ablations:** restore Q only, K only, or V only across the six attention layers, each to the exact BF16 parent projection values. This separates projection families with a fixed three-candidate comparison, instead of selecting a flattering subset after test inspection. All outcomes remain discovery data.

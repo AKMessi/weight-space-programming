@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "started_utc": "2026-11-05T10:49:08.020172+00:00",
+  "purpose": "exploratory discovery",
+  "git": {
+    "commit": "4bf4bbfe462b85375cadcdde6af440c6bfd849f3",
+    "status": "M research/budget.jsonl\n?? runs/20261105-015-parent-exact-bf16-values/\n?? runs/20261105-016-fable-all-qkv-parent/"
+  },
+  "python": "3.14.4",
+  "model_key": "fable_late_qkv_050",
+  "model": {
+    "path": "artifacts/fable-late-qkv-050.gguf",
+    "repo": "AKMESSI/lfm2.5-230m-fable-5",
+    "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+    "file": "lfm2.5-230m-fable-5-f16.gguf",
+    "sha256": "f8067cc049c562a3c0693183b98c120aa48a4dd74174b5e4ce06181df927abeb",
+    "sampling": {
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "min_p": 0.0,
+      "repeat_penalty": 1.05,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0
+    },
+    "local_patch_manifest": "research/patches/fable-late-qkv-050.json",
+    "local_patch_manifest_sha256": "1052afb4f5a94d65ae1ea2cdb79cc8b9c3b4f535e47ae289496700452ef5145c"
+  },
+  "verified_model_sha256": "f8067cc049c562a3c0693183b98c120aa48a4dd74174b5e4ce06181df927abeb",
+  "suite_sha256": "8edad50351402d2a8543f8d0910ca3bf6009fc4c99e423d49f51037763eaa0d0",
+  "max_tokens": 128,
+  "seed": 17,
+  "limit": null,
+  "grader_version": "2",
+  "runtime": {
+    "binary": "/home/akmessi/llama-vulkan-build/bin/llama-server",
+    "context": 2048,
+    "threads": 4,
+    "gpu_layers": 99
+  },
+  "binary_sha256": "fdd736cf5fa5da5488982c63229b8596ab641ca2fc695e78743cfab5250ea32b",
+  "runtime_version": "version: 0.7.0-dev (build 11942, commit 338fce651)\nbuilt with GNU 15.2.0 for Linux x86_64\n"
+}
