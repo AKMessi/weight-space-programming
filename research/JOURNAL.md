@@ -719,3 +719,7 @@ Run status: complete; generated tokens: 256. Group counts: `{"decode_measurement
 ### 2026-11-05T13:40:35.170778+00:00 — p2-native-state-qwen_float-s17
 
 Run status: complete; generated tokens: 2. Group counts: `{"raw_state": {"attempted": 2, "cutoff": 2, "payload_correct": 0, "responses": 2, "success": 0}}`. Full immutable requests, raw responses, and settings are in `runs/p2-native-state-qwen_float-s17`. These counts are observations; interpretation is deferred to the study report.
+
+### 2026-11-05T13:41:10.841644+00:00 — p2-native-state-lfm3_float-s17
+
+Run status: complete; generated tokens: 2. Group counts: `{"raw_state": {"attempted": 2, "cutoff": 2, "payload_correct": 0, "responses": 2, "success": 0}}`. Full immutable requests, raw responses, and settings are in `runs/p2-native-state-lfm3_float-s17`. These counts are observations; interpretation is deferred to the study report.

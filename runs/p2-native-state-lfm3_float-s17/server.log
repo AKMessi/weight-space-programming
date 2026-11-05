@@ -1,0 +1,30 @@
+0.00.041.834 W Setting 'enable_thinking' via --chat-template-kwargs is deprecated. Use --reasoning on / --reasoning off instead.
+0.00.041.942 I srv  llama_server: initializing ...
+0.00.041.954 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.042.439 W srv  server_setup: security: no API key is set and CORS allows all origins (see https://github.com/ggml-org/llama.cpp/pull/25655)
+0.00.043.834 I srv    load_model: loading model 'local/models/LFM3-1.7B-F16.gguf'
+0.00.342.312 W common_fit_params: failed to fit params to free device memory: n_gpu_layers already set by user to 18, abort
+0.02.098.397 W resolve_fused_ops: layer 6 is assigned to device CPU but Flash Attention is assigned to device Vulkan0 (usually due to missing support)
+0.02.098.401 W resolve_fused_ops: Flash Attention not supported, set to disabled
+0.02.131.542 I cmn          init: llama threadpool init, n_threads = 4
+0.02.308.438 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 2048, kv_unified = 'false'
+0.02.315.838 W srv          init: chat template supports preserving reasoning, it is enabled by default (may use more tokens, disable via --no-reasoning-preserve)
+0.02.315.889 I srv  server_run_i: model loaded
+0.02.315.894 I srv  server_on_li: listening on http://127.0.0.1:49631
+0.02.547.342 I slot get_availabl: id  0 | task -1 | selected slot by LRU, n_tokens = 0, t_last = -1
+0.02.547.435 I slot launch_slot_: id  0 | task 0 | processing task, is_child = 0
+0.03.299.335 I slot print_timing: id  0 | task 0 | prompt eval time =     750.43 ms /    48 tokens (   15.63 ms per token,    63.96 tokens per second)
+0.03.299.340 I slot print_timing: id  0 | task 0 |        eval time =       0.00 ms /     1 tokens (    0.00 ms per token,     0.00 tokens per second)
+0.03.299.341 I slot print_timing: id  0 | task 0 |       total time =     750.43 ms /    49 tokens
+0.03.299.345 I slot print_timing: id  0 | task 0 |    graphs reused =          1
+0.03.299.345 I slot print_timing: id  0 | task 0 |   graph reallocs =          0    /     0        (same size) / (changed size)
+0.03.299.377 I slot      release: id  0 | task 0 | stop processing: n_tokens = 48, truncated = 0
+0.03.336.681 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.306 (> 0.100 thold), f_keep = 0.312
+0.03.340.600 I slot launch_slot_: id  0 | task 4 | processing task, is_child = 0
+0.04.104.075 I slot print_timing: id  0 | task 4 | prompt eval time =     761.98 ms /    49 tokens (   15.55 ms per token,    64.31 tokens per second)
+0.04.104.081 I slot print_timing: id  0 | task 4 |        eval time =       0.00 ms /     1 tokens (    0.00 ms per token,     0.00 tokens per second)
+0.04.104.082 I slot print_timing: id  0 | task 4 |       total time =     761.98 ms /    50 tokens
+0.04.104.083 I slot print_timing: id  0 | task 4 |    graphs reused =          1
+0.04.104.084 I slot print_timing: id  0 | task 4 |   graph reallocs =          0    /     0        (same size) / (changed size)
+0.04.104.104 I slot      release: id  0 | task 4 | stop processing: n_tokens = 49, truncated = 0
+0.04.111.255 I srv    operator(): operator(): cleaning up before exit...
