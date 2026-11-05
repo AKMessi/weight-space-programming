@@ -1,0 +1,72 @@
+"""Exact contract graders with separately labeled semantic/proxy scores."""
+
+import json
+import re
+
+
+def _pairs(pairs):
+    result = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValueError("duplicate JSON key")
+        result[key] = value
+    return result
+
+
+def _constant(value):
+    raise ValueError(f"non-JSON constant: {value}")
+
+
+DECODER = json.JSONDecoder(object_pairs_hook=_pairs, parse_constant=_constant)
+
+
+def typed_equal(left, right):
+    # Python normally equates True with 1; that would corrupt exact-value grading.
+    if type(left) is not type(right):
+        return False
+    if isinstance(left, dict):
+        return left.keys() == right.keys() and all(typed_equal(left[k], right[k]) for k in left)
+    if isinstance(left, list):
+        return len(left) == len(right) and all(typed_equal(a, b) for a, b in zip(left, right))
+    return left == right
+
+
+def first_json(text):
+    """Only the first decodable object/array, not the most favorable nested answer."""
+    match = re.search(r"[\[{]", text)
+    if match:
+        try:
+            return DECODER.raw_decode(text, match.start())[0]
+        except (ValueError, json.JSONDecodeError):
+            return None
+    return None
+
+
+def grade(case, text):
+    kind, expected = case["grader"], case["expected"]
+    if kind == "json":
+        valid = False
+        try:
+            parsed, end = DECODER.raw_decode(text.lstrip())
+            valid = not text.lstrip()[end:].strip()
+        except (ValueError, json.JSONDecodeError):
+            parsed = None
+        return {"success": valid and typed_equal(parsed, expected),
+                "format_valid": valid, "payload_correct": typed_equal(first_json(text), expected)}
+    if kind in {"copy", "code_line"}:
+        strict = text.rstrip("\r\n") == expected
+        if kind == "code_line":
+            strict = text.strip() == expected.strip()
+        payload = expected in text if kind == "copy" else expected.strip() in [l.strip() for l in text.splitlines()]
+        return {"success": strict, "payload_correct": payload}
+    if kind == "explanation_proxy":
+        payload = expected.strip() in text
+        rest = text.replace(expected.strip(), "")
+        enough_words = len(re.findall(r"[A-Za-z]+", rest)) >= 8
+        return {"success": payload and enough_words, "payload_correct": payload,
+                "note": "contract proxy only; not a reasoning-quality judgment"}
+    if kind == "evidence_action":
+        found = re.search(r"(?m)^\s*(ANSWER|ASK|CONFLICT):\s*([^\n]+)", text)
+        payload = found is not None and f"{found[1]}: {found[2].strip()}" == expected
+        return {"success": text.strip() == expected, "payload_correct": payload}
+    raise ValueError(f"Unknown grader: {kind}")

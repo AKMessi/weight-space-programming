@@ -1,6 +1,6 @@
 # Research progress
 
-Updated 2026-11-05. Implementation authorized; no experimental result yet.
+Updated 2026-11-05. Measurement pipeline implemented; no inference result yet.
 
 ## Active milestone
 
@@ -11,6 +11,9 @@ Build a reproducible local inference/evaluation pipeline and baseline report for
 - Five-study design and model metadata recorded.
 - Remote repository checked: accessible over SSH, with no advertised refs at initialization.
 - Git repository initialized locally; coherent changes will be committed and pushed.
+- Existing Vulkan runtime and LFM3 artifacts located without modifying the installation.
+- Raw-evidence inference runner, discovery suite, exact graders, and conservative budget ledger implemented.
+- Eight meaningful grader/budget tests passed.
 
 ## Next actions
 

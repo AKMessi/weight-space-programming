@@ -16,4 +16,4 @@ Evidence:
 
 Important artifact distinction: the Fable release is GGUF-only, including F16; LFM3 QAD-Q4_0 is a separately trained quantized checkpoint, not ordinary PTQ of the public BF16 model. The plan handles those lineages separately.
 
-**Status: planning complete; awaiting the user's instruction to start implementation.** No harness, environment installation, weight download, or experiment has been started. The first implementation deliverable will be a baseline and artifact-compatibility report.
+**Status: implementation authorized and underway.** The local inference/evidence pipeline and grader tests are implemented. See [running instructions](docs/RUNNING.md), [progress](research/PROGRESS.md), and the append-only [journal](research/JOURNAL.md). Model improvements are not yet established.
