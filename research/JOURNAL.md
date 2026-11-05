@@ -1071,3 +1071,7 @@ Status `complete`, 2380 generated tokens. Immutable raw inputs/responses/config/
 ### 2026-11-05T19:32:16.613782+00:00 — p3-reserve-format-quality-hybrid_head-s17
 
 Status `complete`, 2410 generated tokens. Immutable raw inputs/responses/config/runtime and resource samples are in `runs/p3-reserve-format-quality-hybrid_head-s17`. Interpretation is deferred to the study report; this run alone does not establish a repair.
+
+### 2026-11-05T19:32:33.899835+00:00 — p3-reserve-format-quality-hybrid_head_ffn-s17
+
+Status `complete`, 1979 generated tokens. Immutable raw inputs/responses/config/runtime and resource samples are in `runs/p3-reserve-format-quality-hybrid_head_ffn-s17`. Interpretation is deferred to the study report; this run alone does not establish a repair.
