@@ -1179,3 +1179,7 @@ Status `complete`, 2381 generated tokens. Immutable raw inputs/responses/config/
 ### 2026-11-05T20:04:48.661549+00:00 — p3-precision-adapter-precision-quality-base_Q8_0-s17
 
 Status `complete`, 1779 generated tokens. Immutable raw inputs/responses/config/runtime and resource samples are in `runs/p3-precision-adapter-precision-quality-base_Q8_0-s17`. Interpretation is deferred to the study report; this run alone does not establish a repair.
+
+### 2026-11-05T20:05:55.483443+00:00 — p3-precision-adapter-precision-quality-base_Q4_0-s17
+
+Status `complete`, 1291 generated tokens. Immutable raw inputs/responses/config/runtime and resource samples are in `runs/p3-precision-adapter-precision-quality-base_Q4_0-s17`. Interpretation is deferred to the study report; this run alone does not establish a repair.
