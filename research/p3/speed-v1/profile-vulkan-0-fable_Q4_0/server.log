@@ -1,0 +1,76 @@
+0.00.040.138 W Setting 'enable_thinking' via --chat-template-kwargs is deprecated. Use --reasoning on / --reasoning off instead.
+0.00.040.274 I srv  llama_server: initializing ...
+0.00.040.290 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.040.816 W srv  server_setup: security: no API key is set and CORS allows all origins (see https://github.com/ggml-org/llama.cpp/pull/25655)
+0.00.042.246 I srv    load_model: loading model 'artifacts/portfolio/fable_Q4_0.gguf'
+0.00.324.820 I cmn          init: llama threadpool init, n_threads = 4
+0.00.389.025 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 2048, kv_unified = 'false'
+0.00.393.077 I srv  server_run_i: model loaded
+0.00.393.087 I srv  server_on_li: listening on http://127.0.0.1:51259
+0.00.667.873 I slot get_availabl: id  0 | task -1 | selected slot by LRU, n_tokens = 0, t_last = -1
+0.00.667.908 I slot launch_slot_: id  0 | task 0 | processing task, is_child = 0
+0.01.528.348 I slot print_timing: id  0 | task 0 | prompt eval time =     140.96 ms /   128 tokens (    1.10 ms per token,   908.09 tokens per second)
+0.01.528.364 I slot print_timing: id  0 | task 0 |        eval time =     719.43 ms /    16 tokens (   47.96 ms per token,    20.85 tokens per second)
+0.01.528.366 I slot print_timing: id  0 | task 0 |       total time =     860.38 ms /   144 tokens
+0.01.528.373 I slot print_timing: id  0 | task 0 |    graphs reused =         14
+0.01.528.375 I slot print_timing: id  0 | task 0 |   graph reallocs =          0    /     0        (same size) / (changed size)
+0.01.528.418 I slot      release: id  0 | task 0 | stop processing: n_tokens = 143, truncated = 0
+0.01.601.168 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 1.000 (> 0.100 thold), f_keep = 0.895
+0.01.601.208 I slot launch_slot_: id  0 | task 18 | processing task, is_child = 0
+0.02.437.633 I slot print_timing: id  0 | task 18 | prompt eval time =     117.21 ms /   128 tokens (    0.92 ms per token,  1092.08 tokens per second)
+0.02.437.641 I slot print_timing: id  0 | task 18 |        eval time =     719.17 ms /    16 tokens (   47.95 ms per token,    20.86 tokens per second)
+0.02.437.643 I slot print_timing: id  0 | task 18 |       total time =     836.38 ms /   144 tokens
+0.02.437.645 I slot print_timing: id  0 | task 18 |    graphs reused =         28
+0.02.437.646 I slot print_timing: id  0 | task 18 |   graph reallocs =          0    /     0        (same size) / (changed size)
+0.02.437.672 I slot      release: id  0 | task 18 | stop processing: n_tokens = 143, truncated = 0
+0.02.444.513 I srv    operator(): operator(): cleaning up before exit...
+----------------
+Vulkan Timings:
+ADD: 373 x 6.925 us = 2583.32 us
+CONCAT: 280 x 8.058 us = 2256.28 us
+CPY: 280 x 3.795 us = 1062.72 us
+FLASH_ATTN_EXT dst(64,16,1,1),  q(64,1,16,1),  k(64,256,8,1),  v(64,256,8,1),  m(256,1,1,1): 180 x 28.031 us = 5045.68 us (37.407 GFLOPS/s)
+FLASH_ATTN_EXT dst(64,16,124,1),  q(64,124,16,1),  k(64,256,8,1),  v(64,256,8,1),  m(256,124,1,1): 12 x 244.785 us = 2937.42 us (531.174 GFLOPS/s)
+FLASH_ATTN_EXT dst(64,16,2,1),  q(64,2,16,1),  k(64,256,8,1),  v(64,256,8,1),  m(256,2,1,1): 6 x 31.826 us = 190.96 us (65.8929 GFLOPS/s)
+FLASH_ATTN_EXT dst(64,16,4,1),  q(64,4,16,1),  k(64,256,8,1),  v(64,256,8,1),  m(256,4,1,1): 12 x 28.263 us = 339.16 us (148.401 GFLOPS/s)
+GET_ROWS: 346 x 5.118 us = 1770.92 us
+GLU: 488 x 9.908 us = 4835.24 us
+MUL: 560 x 6.02 us = 3371.64 us
+MUL_MAT q4_0 m=1024 n=124 k=1024: 40 x 388.72 us = 15548.8 us (668.656 GFLOPS/s)
+MUL_MAT q4_0 m=1024 n=124 k=2560: 26 x 762.469 us = 19824.2 us (852.48 GFLOPS/s)
+MUL_MAT q4_0 m=2560 n=124 k=1024: 52 x 1243.96 us = 64685.8 us (522.365 GFLOPS/s)
+MUL_MAT q4_0 m=3072 n=124 k=1024: 16 x 1808.95 us = 28943.2 us (431.057 GFLOPS/s)
+MUL_MAT q4_0 m=512 n=124 k=1024: 24 x 172.363 us = 4136.73 us (753.986 GFLOPS/s)
+MUL_MAT_ADD MUL_MAT_VEC q4_0 m=1024 n=1 k=1024: 180 x 183.113 us = 32960.5 us (11.4471 GFLOPS/s)
+MUL_MAT_ADD MUL_MAT_VEC q4_0 m=1024 n=1 k=2560: 423 x 454.167 us = 192113 us (11.5417 GFLOPS/s)
+MUL_MAT_VEC q4_0 m=1024 n=1 k=1024: 420 x 203.344 us = 85404.6 us (10.3083 GFLOPS/s)
+MUL_MAT_VEC q4_0 m=1024 n=2 k=1024: 20 x 189.05 us = 3781 us (22.1754 GFLOPS/s)
+MUL_MAT_VEC q4_0 m=1024 n=2 k=2560: 13 x 612.912 us = 7967.86 us (17.1048 GFLOPS/s)
+MUL_MAT_VEC q4_0 m=1024 n=4 k=1024: 40 x 182.196 us = 7287.84 us (46.0192 GFLOPS/s)
+MUL_MAT_VEC q4_0 m=1024 n=4 k=2560: 26 x 450.61 us = 11715.9 us (46.5311 GFLOPS/s)
+MUL_MAT_VEC q4_0 m=2560 n=1 k=1024: 846 x 453.954 us = 384046 us (11.5437 GFLOPS/s)
+MUL_MAT_VEC q4_0 m=2560 n=2 k=1024: 26 x 449.556 us = 11688.5 us (23.3133 GFLOPS/s)
+MUL_MAT_VEC q4_0 m=2560 n=4 k=1024: 52 x 444.426 us = 23110.2 us (47.1647 GFLOPS/s)
+MUL_MAT_VEC q4_0 m=3072 n=1 k=1024: 240 x 541.588 us = 129981 us (11.611 GFLOPS/s)
+MUL_MAT_VEC q4_0 m=3072 n=2 k=1024: 8 x 1099.75 us = 8797.99 us (11.436 GFLOPS/s)
+MUL_MAT_VEC q4_0 m=3072 n=4 k=1024: 16 x 535.795 us = 8572.72 us (46.9462 GFLOPS/s)
+MUL_MAT_VEC q4_0 m=512 n=1 k=1024: 360 x 69.456 us = 25004.2 us (15.0896 GFLOPS/s)
+MUL_MAT_VEC q4_0 m=512 n=2 k=1024: 12 x 93.373 us = 1120.48 us (22.4489 GFLOPS/s)
+MUL_MAT_VEC q4_0 m=512 n=4 k=1024: 24 x 91.66 us = 2199.84 us (45.737 GFLOPS/s)
+MUL_MAT_VEC q6_K m=65536 n=1 k=1024: 33 x 16669.8 us = 550102 us (8.04764 GFLOPS/s)
+RMS_NORM_MUL RMS_NORM(1024,1,1,1): 876 x 7.736 us = 6777.24 us
+RMS_NORM_MUL RMS_NORM(1024,124,1,1): 54 x 24.904 us = 1344.84 us
+RMS_NORM_MUL RMS_NORM(1024,2,1,1): 27 x 13.256 us = 357.92 us
+RMS_NORM_MUL RMS_NORM(1024,4,1,1): 54 x 6.955 us = 375.6 us
+RMS_NORM_MUL_ROPE RMS_NORM(64,16,1,1): 180 x 10.06 us = 1810.84 us
+RMS_NORM_MUL_ROPE RMS_NORM(64,16,124,1): 12 x 40.54 us = 486.48 us
+RMS_NORM_MUL_ROPE RMS_NORM(64,16,2,1): 6 x 15.633 us = 93.8 us
+RMS_NORM_MUL_ROPE RMS_NORM(64,16,4,1): 12 x 6.966 us = 83.6 us
+RMS_NORM_MUL_ROPE_VIEW_SET_ROWS RMS_NORM(64,8,1,1): 180 x 5.26 us = 946.96 us
+RMS_NORM_MUL_ROPE_VIEW_SET_ROWS RMS_NORM(64,8,124,1): 12 x 25.63 us = 307.56 us
+RMS_NORM_MUL_ROPE_VIEW_SET_ROWS RMS_NORM(64,8,2,1): 6 x 21.56 us = 129.36 us
+RMS_NORM_MUL_ROPE_VIEW_SET_ROWS RMS_NORM(64,8,4,1): 12 x 6.39 us = 76.68 us
+SCALE: 24 x 6.436 us = 154.48 us
+SET_ROWS: 210 x 4.28 us = 898.8 us
+SSM_CONV: 280 x 9.87 us = 2763.84 us
+Total time: 1.65999e+06 us.
