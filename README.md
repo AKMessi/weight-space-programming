@@ -4,6 +4,8 @@ Five bounded experimental pilots have now been executed across **Qwen3-0.6B, LFM
 
 Read the [plain-language findings](research/FINDINGS.md), [five experiment reports](research/portfolio-v3/README.md), [current completion status](research/PROGRESS.md), and [reproduction instructions](docs/REPRODUCING.md). The [original five-study design](FIVE_EXPERIMENTS.md) retains the stronger research targets and publication criteria.
 
+The [next-experiment plan](NEXT_EXPERIMENTS.md) prioritizes a verified behavioral repair and compact Fable adapter recovery, followed by the speed anomaly and gated deployment/reliability studies. No new experiments were started when writing that plan.
+
 The practical results include:
 
 - An exact GGUF patch utility: the original 461.9 MB Fable checkpoint can be reconstructed from its **matching cached base plus a 20.3 MB patch**. A within-source rounding control needs 44.7 MB, versus 167.7 MB before rounding. This uses established XOR/deflate; patch sizes exclude the base.

@@ -6,6 +6,10 @@ The full record now contains **166 complete inference runs and one failed attemp
 
 The separate native-readout diagnostic settled **582 prompt/embedding tokens**. Every generated-token reservation is settled. Twenty unattempted cases in the partial editor trial were subsequently included in the full unchanged 24-case retry; they were not silently discarded.
 
+## Next plan
+
+The [next-experiment roadmap](../NEXT_EXPERIMENTS.md) was written after this completed pilot. It prioritizes a verified causal repair, precision-aware Fable adapter recovery, and the measured speed anomaly, with quantized deployment and clarification as gated extensions. This is planning only; it does not change the completion record or start new experiments.
+
 ## What each study achieved
 
 | Study | Executed evidence | Decision |
