@@ -2,6 +2,7 @@
 
 from contextlib import contextmanager
 import json
+import os
 from pathlib import Path
 import socket
 import subprocess
@@ -56,9 +57,14 @@ def server(binary, model, run_dir, config):
     if config.get('embedding'):
         cmd += ['--embedding','--pooling','last','--embd-normalize','-1']
     if 'log_verbosity' in config:cmd += ['-lv',str(int(config['log_verbosity']))]
+    if config.get('cpu_only'):cmd += ['--device','none','--no-op-offload','--no-kv-offload']
+    if config.get('no_warmup'):cmd += ['--no-warmup']
+    explicit_env=config.get('environment',{})
+    if set(explicit_env)-{'GGML_VK_PERF_LOGGER','GGML_VK_PERF_LOGGER_FREQUENCY'}:
+        raise ValueError('Unapproved runtime environment override')
     url = f"http://127.0.0.1:{port}"
     with open(Path(run_dir) / "server.log", "w") as log:
-        proc = subprocess.Popen(cmd, stdout=log, stderr=subprocess.STDOUT)
+        proc = subprocess.Popen(cmd, stdout=log, stderr=subprocess.STDOUT,env={**os.environ,**explicit_env})
         try:
             deadline = time.monotonic() + 120
             while True:
