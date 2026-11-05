@@ -639,3 +639,7 @@ Run status: complete; generated tokens: 1441. Group counts: `{"diagnosis_probe":
 ### 2026-11-05T12:46:19.334367+00:00 — p2-e5probes-qwen_diagnosis_ffn_sign-s17
 
 Run status: complete; generated tokens: 1245. Group counts: `{"diagnosis_probe": {"attempted": 12, "cutoff": 9, "payload_correct": 0, "responses": 12, "success": 0}}`. Full immutable requests, raw responses, and settings are in `runs/p2-e5probes-qwen_diagnosis_ffn_sign-s17`. These counts are observations; interpretation is deferred to the study report.
+
+### 2026-11-05T12:46:59.325440+00:00 — p2-e5probes-qwen_diagnosis_ffn_sign_permuted-s17
+
+Run status: complete; generated tokens: 1254. Group counts: `{"diagnosis_probe": {"attempted": 12, "cutoff": 8, "payload_correct": 0, "responses": 12, "success": 0}}`. Full immutable requests, raw responses, and settings are in `runs/p2-e5probes-qwen_diagnosis_ffn_sign_permuted-s17`. These counts are observations; interpretation is deferred to the study report.
