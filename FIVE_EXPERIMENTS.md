@@ -1,7 +1,7 @@
 # Five experiments for useful weight-space research
 
 **Models:** Qwen3-0.6B, LiquidAI LFM3-1.7B, and AKMESSI/lfm2.5-230m-fable-5.  
-**Designed:** 2026-11-05. **Status:** proposals only; no implementation or experiments started.
+**Designed:** 2026-11-05. **Execution update:** implementation and the first discovery/validation milestone have now been completed. The proposals below retain their original research targets; see [current progress](research/PROGRESS.md) and [actual findings](research/FINDINGS.md) for what has and has not been established.
 
 ## The goal in plain words
 
@@ -392,4 +392,4 @@ Each study can support its own report if it produces a substantial, well-control
 
 **Recommended first bet:** Experiment 1 for a model improvement you can use. **Strongest deployment bet:** Experiment 3. **Most fundamental weight-space question:** Experiment 5.
 
-Only research design is being delivered here. The next implementation step remains a baseline and artifact-compatibility report after your instruction to begin.
+The initial design preceded implementation. Following authorization, the baseline/artifact checks and first gated experiments were executed; [the progress record](research/PROGRESS.md) tracks remaining work. No publication or successful repair is promised by this design.
