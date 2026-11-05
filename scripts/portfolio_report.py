@@ -217,7 +217,9 @@ def e4(out):
 
 
 def e5(out):
-    screen=json.loads(Path('research/diagnosis-screening.json').read_text());editor=rows('e5editor','local_editor')
+    screen=json.loads(Path('research/diagnosis-screening.json').read_text())
+    execution=json.loads(Path('research/diagnosis-editor-run.json').read_text())
+    editor=rows(execution['label'],'local_editor')
     predictions={r['case']['id']:r for r in editor};metrics={};baseline={'weight_anomaly':[],'behavior_probe':[]}
     labels={}
     for s in screen['screens']:
@@ -235,8 +237,10 @@ def e5(out):
             included=[p for p in s['presentations'] if p['included']]
             if len(included)==2:
                 a,b=[predictions[p['anonymous_id']+'-'+arm]['grading']['diagnosis'] for p in included]
-                agreements.append(a==b)
+                agreements.append(a is not None and b is not None and a==b)
         metrics[arm]={'n':len(selected),'diagnosis_correct':sum(r['grading']['payload_correct'] for r in selected),
+             'raw_label_correct':sum(r['grading']['diagnosis']==r['case']['expected'] for r in selected),
+             'invalid_confidence_or_format':sum(not r['grading']['format_valid'] for r in selected),
              'healthy_presentations':len(healthy),'false_alarm_degraded':sum(r['grading']['diagnosis']=='degraded' for r in healthy),
              'layout_agreements':sum(agreements),'layout_pairs':len(agreements),
              'confidence_brier':statistics.mean((r['grading']['stated_confidence']-int(r['grading']['payload_correct']))**2 for r in confidence) if confidence else None,
