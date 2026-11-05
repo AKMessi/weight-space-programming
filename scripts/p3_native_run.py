@@ -10,14 +10,14 @@ from p3_batch import CAPS,stage_used
 
 def run(model,requests,label,stage,config=None):
  out=Path(f'research/p3/native-{stage}-{label}');out.mkdir(parents=True,exist_ok=False)
- binary=str(Path('local/weightlab-native-v4').resolve());library='/home/akmessi/llama-vulkan-build/bin'
+ binary=str(Path((config or {}).get('client_binary','local/weightlab-native-v4')).resolve());library='/home/akmessi/llama-vulkan-build/bin'
  if file_sha256(model['path'])!=model['sha256']:raise ValueError('model hash')
  cfg={'model':str(Path(model['path']).resolve()),'library_dir':library,'context':2048,'gpu_layers':99,
       'callback':True,'capture':True,'filter':'result_norm|component_down-[0-9]+'}
  cfg.update(config or {})
  write_json(out/'config.json',cfg)
  write_json(out/'manifest.json',{'utc':utc_now(),'git':git_state(),'model':model,'requests_sha256':digest(requests),
-  'binary':binary,'binary_sha256':file_sha256(binary),'native_source_sha256':file_sha256('native/trace_v4.cpp'),
+  'binary':binary,'binary_sha256':file_sha256(binary),'native_source_sha256':file_sha256((config or {}).get('client_source','native/trace_v4.cpp')),
   'libraries':runtime_libraries(library+'/llama-server'),'stage':stage,'config':cfg})
  write_json(out/'requests.json',requests)
  records=[];error=None;proc=None

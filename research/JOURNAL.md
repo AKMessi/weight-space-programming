@@ -949,3 +949,9 @@ Before component tracing/search, froze exact development prefixes, native/server
 ### CPU component fallback declared
 
 Observation: Vulkan Fable prefill FFN projections fail the frozen relative-error gate, while the final FFN projection and readout pass. Hypothesis: the matrix-prefill path's reduced-precision accumulation differs from the single-column path. We have not established this mechanism. The predeclared CPU fallback now tests four prefixes before any full CPU trace collection, with unchanged tolerances and source-motivated input rounding. Failed GPU checks remain immutable.
+
+### CPU-only lifecycle correction
+
+The four-request fallback completed but its analysis failed on missing early-layer component captures. The log showed Vulkan compute buffers despite zero GPU layers: default operation offload was still enabled. This is a mixed-backend attempt, not CPU-only evidence. The v5 client exposes explicit op_offload/offload_kqv flags; the fresh v2 fallback disables both. The earlier final-readout CPU-labeled gate likewise used zero layers without these explicit flags, so its readout algebra is valid for that configuration but cannot establish that every graph operation was CPU-only. No requests are discarded or recharged.
+
+Implementation preflight: the first v5 edit command used unavailable `python` instead of `python3`; no files were edited and no new native calls occurred. Subsequent missing-source build/immutable-directory errors were preflight only. Retry uses the same not-yet-created binary and a new build-evidence directory.

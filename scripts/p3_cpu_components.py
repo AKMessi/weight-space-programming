@@ -10,10 +10,10 @@ p=argparse.ArgumentParser();p.add_argument('phase',choices=['gate','run','analyz
 config=json.loads(Path('configs/p3_repair.json').read_text());model=config['models']['fable_float']
 requests=json.loads(Path('datasets/p3/repair-trace-prefixes.json').read_text())
 if a.phase in ['gate','run']:
- if a.phase=='run' and not json.loads(Path('research/p3/repair-cpu-gate-v1.json').read_text())['boundary_passed']:raise RuntimeError('CPU component gate failed')
- run(model,requests[:4] if a.phase=='gate' else requests,'cpu-component-'+a.phase,'repair',{'gpu_layers':0})
+ if a.phase=='run' and not json.loads(Path('research/p3/repair-cpu-gate-v2.json').read_text())['boundary_passed']:raise RuntimeError('CPU component gate failed')
+ run(model,requests[:4] if a.phase=='gate' else requests,'cpu-component-v2-'+a.phase,'repair',{'gpu_layers':0,'op_offload':False,'offload_kqv':False,'client_binary':'local/weightlab-native-v5','client_source':'native/trace_v5.cpp'})
  if a.phase=='run':raise SystemExit()
-path=Path('research/p3/native-repair-cpu-component-'+('gate' if a.phase=='gate' else 'run')+'/responses.jsonl')
+path=Path('research/p3/native-repair-cpu-component-v2-'+('gate' if a.phase=='gate' else 'run')+'/responses.jsonl')
 rows=list(map(json.loads,path.read_text().splitlines()));weights={t.name:t for t in GGUFReader(model['path']).tensors};checks=[];ratios=[];arrays={}
 for layer in range(14):
  def mat(items,kind):return np.stack([np.fromfile(r['raw_response']['captures'][f'component_{kind}-{layer}']['path'],np.float32) for r in items])
@@ -32,6 +32,6 @@ if arrays:
  cache=Path('artifacts/p3/repair-cpu-directions.npz')
  if cache.exists():raise FileExistsError(cache)
  np.savez(cache,**arrays);report.update(arrays_sha256=file_sha256(cache),ratios=ratios,chosen_layer=min(ratios,key=lambda r:(-r['ratio'],r['layer'])))
-out=Path('research/p3/repair-cpu-'+('gate' if a.phase=='gate' else 'analysis')+'-v1.json')
+out=Path('research/p3/repair-cpu-'+('gate' if a.phase=='gate' else 'analysis')+'-v2.json')
 if out.exists():raise FileExistsError(out)
 write_json(out,report);publish([out],'Record CPU fallback component boundary checks');print(json.dumps(report),flush=True)
