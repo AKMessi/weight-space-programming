@@ -1,5 +1,6 @@
 """Verify raw final states against native next-token logits before editing them."""
-import copy,json,sys
+import copy,json,sys,traceback,fcntl
+from contextlib import contextmanager
 from pathlib import Path
 import numpy as np
 from gguf import GGUFReader
@@ -22,8 +23,15 @@ if sys.argv[1:]==['freeze']:
     raise SystemExit(0)
 if not dataset.exists():raise FileNotFoundError('Freeze this exact suite in a separate preparation step before running')
 if json.loads(dataset.read_text())!=suite:raise ValueError('frozen suite mismatch')
+@contextmanager
+def owned_server(runtime,model,out):
+    with Path('local/execution.lock').open('w') as lock:
+        fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
+        with server(runtime['binary'],model,out,runtime) as value:
+            yield value
+
 results=[]
-for root in ['qwen','lfm3','fable']:
+def process_root(root):
     key=root+'_float';local=copy.deepcopy(config)
     if root=='lfm3':local['runtime']['gpu_layers']=18
     # Count model-prompt diagnostic work separately from generated tokens.
@@ -40,7 +48,7 @@ for root in ['qwen','lfm3','fable']:
     head=tensors.get('output.weight',tensors['token_embd.weight']).data.astype(np.float32)
     write_json(out/'manifest.json',{'utc':utc_now(),'git':git_state(),'source_responses_sha256':file_sha256(native_dir/'responses.jsonl'),
                'model':local['models'][key],'runtime':runtime,'criteria':{'top1_equal':True,'max_centered_logit_error':.05,'relative_centered_error':.01}})
-    with server(runtime['binary'],local['models'][key]['path'],out,runtime) as (url,command,proc):
+    with owned_server(runtime,local['models'][key]['path'],out) as (url,command,proc):
         write_json(out/'runtime.json',{'command':command,'props':request_json(url+'/props')})
         for row in records:
             rendered=row['rendered_prompt'];text=rendered['prompt'] if isinstance(rendered,dict) else rendered
@@ -64,14 +72,25 @@ for root in ['qwen','lfm3','fable']:
             if vector.shape!=(head.shape[1],) or not np.isfinite(vector).all():raise ValueError('Not one finite raw final state')
             native=row['raw_response']['choices'][0]['logprobs']['content'][0]['top_logprobs']
             ids=np.array([p['id'] for p in native],dtype=int);logp=np.array([p['logprob'] for p in native],dtype=float)
-            logits=head@vector;native_center=logp-logp[0];manual=logits[ids]-logits[ids[0]]
+            reference=int(np.argmax(logp))
+            logits=head@vector;native_center=logp-logp[reference];manual=logits[ids]-logits[ids[reference]]
             maximum=float(np.max(np.abs(native_center-manual)));relative=float(np.linalg.norm(native_center-manual)/max(np.linalg.norm(native_center),1e-9))
-            same=int(np.argmax(logits))==int(ids[0]);passed=same and maximum<=.05 and relative<=.01
+            same=int(np.argmax(logits))==int(ids[reference]);passed=same and maximum<=.05 and relative<=.01
             result={'model':root,'case_id':row['case']['id'],'top1_equal':same,'max_centered_logit_error':maximum,
                     'relative_centered_error':relative,'passed':passed,'raw_state_l2_norm':float(np.linalg.norm(vector))}
             append_jsonl(out/'responses.jsonl',{'case':row['case'],'tokenizations':tokenizations,'request':request,'response':response,'result':result})
             results.append(result);print(result,flush=True)
     write_json(out/'summary.json',{'status':'complete','results':[x for x in results if x['model']==root]})
     publish([out,'research/scored-budget.jsonl'],f'Verify native final-state compatibility for {root}')
+for root in ['qwen','lfm3','fable']:
+    out=Path(f'research/native-state-probes/{root}')
+    try:
+        process_root(root)
+    except BaseException as exc:
+        out.mkdir(parents=True,exist_ok=True)
+        if not (out/'summary.json').exists():
+            write_json(out/'summary.json',{'status':'failed','error':repr(exc),'traceback':traceback.format_exc()})
+        publish([out,'research/scored-budget.jsonl'],f'Record native final-state probe failure for {root}')
+        raise
 write_json('research/native-state-compatibility.json',{'utc':utc_now(),'git':git_state(),'results':results,
             'scope':'Two calibration contexts per architecture; not a repair or a guarantee on all contexts.'})
