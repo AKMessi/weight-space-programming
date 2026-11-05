@@ -1,0 +1,5 @@
+# CPU component fallback, fixed before new outcomes
+
+The Vulkan initial-prefill component projection check failed its declared 0.001 relative tolerance on layers0–12 (about0.007), while the final layer passed. Preserve that failure. The source has separate F16-accumulation matrix kernels; we have not reproduced their accumulation and do not infer a wrong tensor solely from this discrepancy.
+
+Use the roadmap's CPU fallback. First four frozen trace prefixes, all14 layers, compare captured output with W_F16 times input rounded toF16, following the already source-verified CPU vec-dot rule. Same thresholds: max0.05, relative0.001. No threshold change. If all pass, collect all128 frozen prefixes on CPU and repeat checks before using their mean directions. Select layer by the original fixed ratio policy, then test the original three causal doses on the same first8 pairs under Vulkan. Native/server no-callback generation parity remains separately required and already passed. CPU-derived geometry is not claimed numerically identical to Vulkan.

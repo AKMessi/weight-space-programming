@@ -945,3 +945,7 @@ The new switching gate gives Qwen64/64 correct contracts, so it is a correct ine
 Fixed16-prefix native fidelity retained top1 on all16 contexts for both approximate packages; mean reference-to-candidate KL is0.00607 for rank16 and0.00178 for rank32. These descriptive results do not erase generation differences or the coding score floor. The exact capsule restores the original byte-for-byte instead of claiming the approximation is identical.
 
 Before component tracing/search, froze exact development prefixes, native/server generation parity controls and explicit MLP formulas/budgets. True operation-based input/output mapping is verified algebraically before edits; no misleading debug label is accepted as proof.
+
+### CPU component fallback declared
+
+Observation: Vulkan Fable prefill FFN projections fail the frozen relative-error gate, while the final FFN projection and readout pass. Hypothesis: the matrix-prefill path's reduced-precision accumulation differs from the single-column path. We have not established this mechanism. The predeclared CPU fallback now tests four prefixes before any full CPU trace collection, with unchanged tolerances and source-motivated input rounding. Failed GPU checks remain immutable.
