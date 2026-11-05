@@ -353,3 +353,7 @@ Run status: complete; generated tokens: 1232. Group counts: `{"functional_code":
 ### 2026-11-05T11:51:36.014112+00:00 — p2-e1confirm-lfm3_qad-s29
 
 Run status: complete; generated tokens: 1301. Group counts: `{"functional_code": {"attempted": 6, "cutoff": 0, "payload_correct": 4, "responses": 6, "success": 4}, "functional_explain": {"attempted": 6, "cutoff": 1, "payload_correct": 6, "responses": 6, "success": 3}, "literal_copy": {"attempted": 8, "cutoff": 0, "payload_correct": 8, "responses": 8, "success": 0}, "structured": {"attempted": 8, "cutoff": 0, "payload_correct": 8, "responses": 8, "success": 8}}`. Full immutable requests, raw responses, and settings are in `runs/p2-e1confirm-lfm3_qad-s29`. These counts are observations; interpretation is deferred to the study report.
+
+### 2026-11-05T11:52:04.183648+00:00 — p2-e1confirm-lfm3_qad_A-s17
+
+Run status: complete; generated tokens: 1304. Group counts: `{"functional_code": {"attempted": 6, "cutoff": 0, "payload_correct": 5, "responses": 6, "success": 4}, "functional_explain": {"attempted": 6, "cutoff": 0, "payload_correct": 5, "responses": 6, "success": 3}, "literal_copy": {"attempted": 8, "cutoff": 0, "payload_correct": 8, "responses": 8, "success": 0}, "structured": {"attempted": 8, "cutoff": 0, "payload_correct": 8, "responses": 8, "success": 8}}`. Full immutable requests, raw responses, and settings are in `runs/p2-e1confirm-lfm3_qad_A-s17`. These counts are observations; interpretation is deferred to the study report.
