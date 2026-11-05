@@ -1,0 +1,36 @@
+{
+  "utc": "2026-11-05T13:41:22.715251+00:00",
+  "git": {
+    "commit": "18c37e0b425bb35fec369a73ef63373e62ed6456",
+    "status": " M research/scored-budget.jsonl"
+  },
+  "source_responses_sha256": "7c3fe4dc1b32425c9f6f4437de7651300efa1da8d7f6d76b0612da08d12890e1",
+  "model": {
+    "path": "local/models/LFM3-1.7B-F16.gguf",
+    "repo": "LiquidAI/LFM3-1.7B-GGUF",
+    "revision": "cd0c74c575b5c416f3011b5b4c298077f26ca8c2",
+    "file": "LFM3-1.7B-F16.gguf",
+    "sha256": "b7ab8b69a85e4dfbf62cdfd0e02d7d051ed09f2c5b84c701771dddb073b85970",
+    "sampling": {
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "min_p": 0.0,
+      "repeat_penalty": 1.1,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0
+    }
+  },
+  "runtime": {
+    "binary": "/home/akmessi/llama-vulkan-build/bin/llama-server",
+    "context": 2048,
+    "threads": 4,
+    "gpu_layers": 18,
+    "embedding": true
+  },
+  "criteria": {
+    "top1_equal": true,
+    "max_centered_logit_error": 0.05,
+    "relative_centered_error": 0.01
+  }
+}

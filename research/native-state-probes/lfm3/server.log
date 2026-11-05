@@ -1,0 +1,25 @@
+0.00.032.287 W Setting 'enable_thinking' via --chat-template-kwargs is deprecated. Use --reasoning on / --reasoning off instead.
+0.00.032.403 I srv  llama_server: initializing ...
+0.00.032.415 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.032.416 W srv  server_prepa: embeddings enabled with n_batch (2048) > n_ubatch (512)
+0.00.032.417 W srv  server_prepa: setting n_batch = n_ubatch = 512 to avoid assertion failure
+0.00.032.849 W srv  server_setup: security: no API key is set and CORS allows all origins (see https://github.com/ggml-org/llama.cpp/pull/25655)
+0.00.034.235 I srv    load_model: loading model 'local/models/LFM3-1.7B-F16.gguf'
+0.00.343.344 W common_fit_params: failed to fit params to free device memory: n_gpu_layers already set by user to 18, abort
+0.02.083.993 W llama_init_from_model: model default pooling_type is [-1], but [3] was specified
+0.02.089.060 W resolve_fused_ops: layer 6 is assigned to device CPU but Flash Attention is assigned to device Vulkan0 (usually due to missing support)
+0.02.089.063 W resolve_fused_ops: Flash Attention not supported, set to disabled
+0.02.111.108 I cmn          init: llama threadpool init, n_threads = 4
+0.02.111.225 W init: embeddings required but some input tokens were not marked as outputs -> overriding
+0.02.205.395 W init: embeddings required but some input tokens were not marked as outputs -> overriding
+0.02.302.875 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 2048, kv_unified = 'false'
+0.02.309.633 W srv          init: chat template supports preserving reasoning, it is enabled by default (may use more tokens, disable via --no-reasoning-preserve)
+0.02.309.691 I srv  server_run_i: model loaded
+0.02.309.697 I srv  server_on_li: listening on http://127.0.0.1:33461
+0.02.544.390 I slot get_availabl: id  0 | task -1 | selected slot by LRU, n_tokens = 0, t_last = -1
+0.02.544.401 I slot launch_slot_: id  0 | task 0 | processing task, is_child = 0
+0.03.049.756 I slot      release: id  0 | task 0 | stop processing: n_tokens = 48, truncated = 0
+0.03.095.307 I slot get_availabl: id  0 | task -1 | selected slot by LRU, n_tokens = 0, t_last = 15766035589
+0.03.095.316 I slot launch_slot_: id  0 | task 2 | processing task, is_child = 0
+0.03.597.821 I slot      release: id  0 | task 2 | stop processing: n_tokens = 49, truncated = 0
+0.03.664.177 I srv    operator(): operator(): cleaning up before exit...
