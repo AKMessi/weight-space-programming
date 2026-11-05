@@ -823,3 +823,7 @@ Status `complete`, 3405 generated tokens. Immutable raw inputs/responses/config/
 ### 2026-11-05T17:59:47.537754+00:00 — p3-adapter-repo-dev-parent_uniform_bf16-s17
 
 Status `complete`, 2676 generated tokens. Immutable raw inputs/responses/config/runtime and resource samples are in `runs/p3-adapter-repo-dev-parent_uniform_bf16-s17`. Interpretation is deferred to the study report; this run alone does not establish a repair.
+
+### 2026-11-05T18:00:01.096772+00:00 — p3-adapter-repo-cal-fable_f16-s17
+
+Status `complete`, 987 generated tokens. Immutable raw inputs/responses/config/runtime and resource samples are in `runs/p3-adapter-repo-cal-fable_f16-s17`. Interpretation is deferred to the study report; this run alone does not establish a repair.
