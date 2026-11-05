@@ -127,3 +127,11 @@ Record observations, hypotheses, decisions, failed attempts, confounds, and foll
 **Controls created:** a simulated BF16-value parent stored in its original F16 layout, and a two-site late-V rollback (1,021,626 changed entries; approximately 1.21–1.22% relative norm per selected matrix), each with all untouched tensors and originals verified.
 
 **Next:** evaluate both controls and fetch the separately published, checksummed BF16 parent. Exact BF16 source values can test the rounding/provenance explanation more directly than inferring them from already-rounded F16 values.
+
+## 2026-11-05 — Precision control and late-V candidate evaluated
+
+**Runs 013/014:** the simulated BF16-value parent retained the tested 4/4 exact-copy and 4/4 complete-evidence successes. This suggests value rounding alone does not explain those Fable losses on these cases. Its explanation lengths changed, including three 128-token cutoffs, so precision can still affect generation behavior.
+
+**Late-V candidate:** the two-site 25% attention-V rollback did not rescue the exact response contracts and lost one explanation proxy within its truncated output. Keep this negative result. It is not evidence that attention is irrelevant; it rejects this particular site/dose choice on this discovery screen.
+
+**Next artifact control:** support exact BF16 tensor decoding into the same F16 storage layout. Tests cover known BF16 bit patterns, shape/orientation, dtype preservation, ties-to-even rounding, and rejection of unsupported packed quantization. This avoids treating already-rounded F16 values as an exact source of BF16 values.

@@ -11,7 +11,7 @@ import shutil
 import numpy as np
 
 from .evidence import digest, file_sha256, git_state, utc_now, write_json
-from .precision import round_bf16_values
+from .precision import floating_tensor_values, round_bf16_values
 
 
 def blend_tensor(original, parent, alpha):
@@ -70,8 +70,10 @@ def create_rollback(config, base_key, parent_key, output, manifest_path, alpha, 
         layer_match = re.match(r'blk\.(\d+)\.', name)
         if match and (layers is None or (layer_match and int(layer_match[1]) in layers)):
             p = parent_tensors[name]
-            if t.data.shape != p.data.shape or t.data.dtype != p.data.dtype or t.data.dtype.kind != 'f':
+            if not np.array_equal(t.shape, p.shape) or t.data.dtype.kind != 'f':
                 raise ValueError(f"Selected tensor must be aligned floating values: {name}")
+            if p.data.dtype.kind != 'f' and getattr(p.tensor_type, 'name', None) != 'BF16':
+                raise ValueError('Only floating parent encodings are supported')
             selected.append(name)
     if not selected:
         raise ValueError("No matching floating tensors")
@@ -97,7 +99,8 @@ def create_rollback(config, base_key, parent_key, output, manifest_path, alpha, 
         for name in selected:
             o = source_tensors[name].data
             raw_parent = parent_tensors[name].data
-            b = round_bf16_values(raw_parent) if parent_round_bf16 else raw_parent
+            decoded_parent = floating_tensor_values(parent_tensors[name], dtype=o.dtype)
+            b = round_bf16_values(decoded_parent) if parent_round_bf16 else decoded_parent
             new = blend_tensor(o, b, alpha)
             delta = new.astype(np.float32) - o.astype(np.float32)
             norm = float(np.sqrt(np.square(o.astype(np.float32)).sum(dtype=np.float64)))
@@ -106,6 +109,7 @@ def create_rollback(config, base_key, parent_key, output, manifest_path, alpha, 
             edited_tensors[name].data[:] = new
             report['tensors'].append({'name': name, 'shape': list(o.shape), 'dtype': str(o.dtype),
                                       'base_sha256': tensor_hash(o), 'parent_sha256': tensor_hash(raw_parent),
+                                      'parent_encoding': str(parent_tensors[name].tensor_type),
                                       'effective_parent_sha256': tensor_hash(b),
                                       'edited_sha256': tensor_hash(new), 'changed_values': changed,
                                       'relative_frobenius_change': delta_norm / norm if norm else None})

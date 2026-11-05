@@ -7,16 +7,17 @@ import numpy as np
 from gguf import GGUFReader
 
 from weightlab.evidence import file_sha256, git_state, utc_now, write_json
-from weightlab.precision import round_bf16_values
+from weightlab.precision import floating_tensor_values, round_bf16_values
 
 p = argparse.ArgumentParser()
 p.add_argument('output')
 p.add_argument('--config', default='configs/local_models.json')
+p.add_argument('--parent-key', default='parent_f16')
 a = p.parse_args()
 if Path(a.output).exists():
     raise FileExistsError(a.output)
 config = json.loads(Path(a.config).read_text())
-sources = [config['models'][key] for key in ['fable_f16','parent_f16']]
+sources = [config['models'][key] for key in ['fable_f16',a.parent_key]]
 for spec in sources:
     if file_sha256(spec['path']) != spec['sha256']:
         raise ValueError('Source checksum mismatch')
@@ -27,9 +28,10 @@ report = {'utc':utc_now(),'git':git_state(),'sources':sources,
           'tensors':[]}
 for tensor in fine.tensors:
     other = pt[tensor.name]
-    if tensor.data.dtype.kind != 'f' or other.data.dtype != tensor.data.dtype or tensor.data.shape != other.data.shape:
+    parent_values = floating_tensor_values(other, dtype=tensor.data.dtype)
+    if tensor.data.dtype.kind != 'f' or parent_values.shape != tensor.data.shape:
         raise ValueError('Expected aligned floating tensor')
-    x,y = tensor.data.reshape(-1),other.data.reshape(-1)
+    x,y = tensor.data.reshape(-1),parent_values.reshape(-1)
     norm_sq=delta_sq=0.0
     changed=rounded_equal=reverse_equal=fine_on_grid=parent_on_grid=0
     max_delta=0.0
