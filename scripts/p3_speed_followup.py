@@ -11,6 +11,7 @@ rng=random.Random(1927);schedule=[]
 for block in range(3):
  order=keys.copy();rng.shuffle(order);schedule.extend({'block':block,'model':k,'profile':False} for k in order)
 schedule.extend({'block':0,'model':k,'profile':True} for k in keys if k.startswith('hybrid_'))
+schedule.extend({'block':1,'model':k,'profile':True,'frequency':'1'} for k in ['fable_float','fable_Q4_0','hybrid_head_shortconv'])
 ROOT.mkdir(parents=True,exist_ok=True)
 if not (ROOT/'schedule.json').exists():write_json(ROOT/'schedule.json',schedule);publish([ROOT/'schedule.json'],'Freeze interleaved timing order before follow-up outcomes')
 for item in schedule:
@@ -21,7 +22,7 @@ for item in schedule:
  out.mkdir();spec=config['models'][key]
  if file_sha256(spec['path'])!=spec['sha256']:raise ValueError('Model identity')
  cfg={**config['runtime'],'no_warmup':True};prefix=json.loads(Path('datasets/p3/speed-prefixes.json').read_text())['fable']['128']
- if profile:cfg['environment']={'GGML_VK_PERF_LOGGER':'1','GGML_VK_PERF_LOGGER_FREQUENCY':'999999'}
+ if profile:cfg['environment']={'GGML_VK_PERF_LOGGER':'1','GGML_VK_PERF_LOGGER_FREQUENCY':item.get('frequency','999999')}
  write_json(out/'manifest.json',{'utc':utc_now(),'git':git_state(),'model':spec,'runtime':cfg,'binary_sha256':file_sha256(cfg['binary']),'libraries':runtime_libraries(cfg['binary']),'runtime_version':subprocess.check_output([cfg['binary'],'--version'],stderr=subprocess.STDOUT,text=True),'condition':item,'design':'2profile or1warm+3measured128-prefix16decode','prefixes_sha256':file_sha256('datasets/p3/speed-prefixes.json')})
  records=[];error=None
  try:
