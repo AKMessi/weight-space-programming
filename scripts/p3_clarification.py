@@ -62,9 +62,9 @@ def development():
   scores={}
   for arm in ['original','strong','grammar']:
    rows=list(map(json.loads,Path(f'runs/p3-clarify-evidence-dev-{arm}-{key}-s17/responses.jsonl').read_text().splitlines()));scores[arm]=metrics(rows)
-  b=scores['original'];competent=b['supported_correct']/b['supported']>=.8 and b['update_correct']/b['cases']>=.8;natural=b['unsupported_nonnull']/b['unsupported']>=.2
+  b=scores['original'];competence_arms=[arm for arm,score in scores.items() if score['supported_correct']/score['supported']>=.8 and score['update_correct']/score['cases']>=.8];competent=bool(competence_arms);natural=b['unsupported_nonnull']/b['unsupported']>=.2
   dominates=[a for a in ['strong','grammar'] if scores[a]['joint_semantic']/scores[a]['cases']>=.95 and scores[a]['unsupported_nonnull']==0 and scores[a]['supported_correct']>=b['supported_correct']]
-  results.append({'model':key,'scores':scores,'competent':competent,'natural_failure':natural,'simple_controls_dominate':dominates,'edit_gate_open':competent and natural and not dominates})
+  results.append({'model':key,'scores':scores,'competent':competent,'competence_arms':competence_arms,'natural_failure':natural,'simple_controls_dominate':dominates,'edit_gate_open':competent and natural and not dominates})
  path=ROOT/'development-gates.json';write_json(path,{'utc':utc_now(),'results':results});publish([path],'Record prospectively gated clarification competence and simple controls');print(json.dumps(results),flush=True)
 
 def confirmation():
