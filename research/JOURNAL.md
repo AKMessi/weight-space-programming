@@ -531,3 +531,7 @@ Run status: complete; generated tokens: 1049. Group counts: `{"functional_code":
 ### 2026-11-05T12:23:52.279650+00:00 — p2-e4ordercheck-fable_f16_BA-s17
 
 Run status: complete; generated tokens: 155. Group counts: `{"functional_code": {"attempted": 6, "cutoff": 0, "payload_correct": 3, "responses": 6, "success": 0}}`. Full immutable requests, raw responses, and settings are in `runs/p2-e4ordercheck-fable_f16_BA-s17`. These counts are observations; interpretation is deferred to the study report.
+
+### 2026-11-05T12:24:03.130776+00:00 — p2-e4joint-fable_f16_R-s17
+
+Run status: complete; generated tokens: 548. Group counts: `{"complete": {"attempted": 4, "cutoff": 0, "payload_correct": 0, "responses": 4, "success": 0}, "conflict": {"attempted": 4, "cutoff": 0, "payload_correct": 0, "responses": 4, "success": 0}, "missing": {"attempted": 4, "cutoff": 0, "payload_correct": 0, "responses": 4, "success": 0}}`. Full immutable requests, raw responses, and settings are in `runs/p2-e4joint-fable_f16_R-s17`. These counts are observations; interpretation is deferred to the study report.
