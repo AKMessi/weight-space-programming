@@ -1,0 +1,580 @@
+{
+  "runtime": {
+    "binary": "/home/akmessi/llama-vulkan-build/bin/llama-server",
+    "context": 2048,
+    "threads": 4,
+    "gpu_layers": 99
+  },
+  "budgets": {
+    "overall_generated_tokens": 1800000,
+    "per_run_generated_tokens": 20000
+  },
+  "models": {
+    "base_float": {
+      "path": "artifacts/parent-uniform-bf16-f16.gguf",
+      "repo": "LiquidAI/LFM2.5-230M-GGUF",
+      "revision": "03502067c64ce32ac4fe87b0cec0310a1a13d3e9",
+      "file": "LFM2.5-230M-F16.gguf",
+      "sha256": "256feee13466c9a5101f2b553e58f61f284e552a4b6e8847754d9e3096f7ceed",
+      "sampling": {
+        "temperature": 0.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "local_patch_manifest": "research/patches/parent-uniform-bf16-f16.json",
+      "local_patch_manifest_sha256": "1074e5d560c48e478e54bc236dc21d896286e21278fe941cfefdcc047980c108"
+    },
+    "edited_float": {
+      "path": "artifacts/p3/adapters/fable_svd32.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "6c6a59e41b03f68b37a107e39bb6ae8dba371589890d44a895510e5d836370a3",
+      "sampling": {
+        "temperature": 0.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "package_path": "artifacts/p3/adapters/fable_svd32.npz",
+      "package_sha256": "b3675e32d312568055ddee163951cd8c4b9e258eaf8fa3209c210e1b838ca00d",
+      "package_bytes": 1830620,
+      "base_sha256": "256feee13466c9a5101f2b553e58f61f284e552a4b6e8847754d9e3096f7ceed"
+    },
+    "target_float": {
+      "path": "local/models/lfm2.5-230m-fable-5-f16.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "1e1624de4d7ebe413d82dbe2b5f48fcf83e6c46b1b5414c8aef0596009380cc6",
+      "sampling": {
+        "temperature": 0.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      }
+    },
+    "base_Q8_0": {
+      "path": "artifacts/p3/precision/base_Q8_0.gguf",
+      "repo": "LiquidAI/LFM2.5-230M-GGUF",
+      "revision": "03502067c64ce32ac4fe87b0cec0310a1a13d3e9",
+      "file": "LFM2.5-230M-F16.gguf",
+      "sha256": "35d074ac8e627f4a38b998b9da6e1897bc3fa798069d72bf8c719e9403325d54",
+      "sampling": {
+        "temperature": 0.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "local_patch_manifest": "research/p3/precision-adapter-v1/base_Q8_0.json",
+      "local_patch_manifest_sha256": "7e0600a7802e6070264ed18cef34bd4efb07353905cdbc2895d5d37420b95835"
+    },
+    "base_Q4_0": {
+      "path": "artifacts/p3/precision/base_Q4_0.gguf",
+      "repo": "LiquidAI/LFM2.5-230M-GGUF",
+      "revision": "03502067c64ce32ac4fe87b0cec0310a1a13d3e9",
+      "file": "LFM2.5-230M-F16.gguf",
+      "sha256": "4578543ca37a7801a54edaa31d195d7bc3d2b3eb972849b74d0830edd70c6df4",
+      "sampling": {
+        "temperature": 0.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "local_patch_manifest": "research/p3/precision-adapter-v1/base_Q4_0.json",
+      "local_patch_manifest_sha256": "1a1c56bfab40c94dd8e324c73d0643a6c435f3a3c0d881efe411b114990799df"
+    },
+    "edited_Q8_0": {
+      "path": "artifacts/p3/precision/edited_Q8_0.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "806cfa6d940852f5bac13f20e76d78997bfefeff57de12bbce2e33c72f2bd780",
+      "sampling": {
+        "temperature": 0.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "package_path": "artifacts/p3/adapters/fable_svd32.npz",
+      "package_sha256": "b3675e32d312568055ddee163951cd8c4b9e258eaf8fa3209c210e1b838ca00d",
+      "package_bytes": 1830620,
+      "base_sha256": "256feee13466c9a5101f2b553e58f61f284e552a4b6e8847754d9e3096f7ceed",
+      "local_patch_manifest": "research/p3/precision-adapter-v1/edited_Q8_0.json",
+      "local_patch_manifest_sha256": "7765f8537caa1d9562bd3efa774a7fa96575ec69fb949ddde2ac1a8b010c7539"
+    },
+    "edited_Q4_0": {
+      "path": "artifacts/p3/precision/edited_Q4_0.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "bd4db3c5ecd8041273381d84120b6a80d5d4045accc56409264b3c14fabd30c4",
+      "sampling": {
+        "temperature": 0.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "package_path": "artifacts/p3/adapters/fable_svd32.npz",
+      "package_sha256": "b3675e32d312568055ddee163951cd8c4b9e258eaf8fa3209c210e1b838ca00d",
+      "package_bytes": 1830620,
+      "base_sha256": "256feee13466c9a5101f2b553e58f61f284e552a4b6e8847754d9e3096f7ceed",
+      "local_patch_manifest": "research/p3/precision-adapter-v1/edited_Q4_0.json",
+      "local_patch_manifest_sha256": "3bc1907903e1ab50ae6d3162f3af5f6d60c7869ffd40b03fea2c285339606206"
+    },
+    "target_Q8_0": {
+      "path": "artifacts/p3/precision/target_Q8_0.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "fee3716c82f6d9de11072c45140bea130f987f56647e823e5df0802a1f881774",
+      "sampling": {
+        "temperature": 0.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "local_patch_manifest": "research/p3/precision-adapter-v1/target_Q8_0.json",
+      "local_patch_manifest_sha256": "4acb73da6ac9bab05f208a84f2525494c7c0eecb0c55c154f8654f695530d39f"
+    },
+    "target_Q4_0": {
+      "path": "artifacts/p3/precision/target_Q4_0.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "a3bcb56d36cb3327e9d2b6ac6dbbbe1a7fd1733f34eff94f62a27adb5e930da1",
+      "sampling": {
+        "temperature": 0.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "local_patch_manifest": "research/p3/precision-adapter-v1/target_Q4_0.json",
+      "local_patch_manifest_sha256": "eb736326fc0a6ba098a960734dcd68346e502dd192409fcc59708b5674617de4"
+    },
+    "single_0": {
+      "path": "artifacts/p3/precision/single_0.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "5e2c0918a8f55c79be34f72fd6bab4000a83f91d44359f8a5358f846d770224f",
+      "sampling": {
+        "temperature": 0.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "package_path": "artifacts/p3/adapters/fable_svd32.npz",
+      "package_sha256": "b3675e32d312568055ddee163951cd8c4b9e258eaf8fa3209c210e1b838ca00d",
+      "package_bytes": 1830620,
+      "base_sha256": "256feee13466c9a5101f2b553e58f61f284e552a4b6e8847754d9e3096f7ceed",
+      "local_patch_manifest": "research/p3/precision-adapter-v1/single_0.json",
+      "local_patch_manifest_sha256": "e42423469a34d09d990361f3901ace9f0e6cf98f3b12c9825885542cde2f54e3"
+    },
+    "single_1": {
+      "path": "artifacts/p3/precision/single_1.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "4d9d807c71c2b8e0bd09610b3b9d76c0e271ed023b0b98f7f8ee8611068c08fb",
+      "sampling": {
+        "temperature": 0.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "package_path": "artifacts/p3/adapters/fable_svd32.npz",
+      "package_sha256": "b3675e32d312568055ddee163951cd8c4b9e258eaf8fa3209c210e1b838ca00d",
+      "package_bytes": 1830620,
+      "base_sha256": "256feee13466c9a5101f2b553e58f61f284e552a4b6e8847754d9e3096f7ceed",
+      "local_patch_manifest": "research/p3/precision-adapter-v1/single_1.json",
+      "local_patch_manifest_sha256": "6618456ac85a4c21db187c3bbf9c57e128ee92377759a440ff8c56214616d228"
+    },
+    "single_2": {
+      "path": "artifacts/p3/precision/single_2.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "f818a5291551f88de84b3d28d6e64db67ce300fecd2d31bca86342cc222b1406",
+      "sampling": {
+        "temperature": 0.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "package_path": "artifacts/p3/adapters/fable_svd32.npz",
+      "package_sha256": "b3675e32d312568055ddee163951cd8c4b9e258eaf8fa3209c210e1b838ca00d",
+      "package_bytes": 1830620,
+      "base_sha256": "256feee13466c9a5101f2b553e58f61f284e552a4b6e8847754d9e3096f7ceed",
+      "local_patch_manifest": "research/p3/precision-adapter-v1/single_2.json",
+      "local_patch_manifest_sha256": "a86e0cd822b72caf633e6329e403343617be865f2cf4427f28d3c581acf72dd7"
+    },
+    "single_3": {
+      "path": "artifacts/p3/precision/single_3.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "43394533dd80dae5d741b88857f89aa2b267919a2aa73649050a2c27833647a3",
+      "sampling": {
+        "temperature": 0.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "package_path": "artifacts/p3/adapters/fable_svd32.npz",
+      "package_sha256": "b3675e32d312568055ddee163951cd8c4b9e258eaf8fa3209c210e1b838ca00d",
+      "package_bytes": 1830620,
+      "base_sha256": "256feee13466c9a5101f2b553e58f61f284e552a4b6e8847754d9e3096f7ceed",
+      "local_patch_manifest": "research/p3/precision-adapter-v1/single_3.json",
+      "local_patch_manifest_sha256": "d55f67b754072c679bffafd50c7dafab751e0bb0563d528ae00e070da7a07561"
+    },
+    "single_4": {
+      "path": "artifacts/p3/precision/single_4.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "f5f224b5a615eb6dcf35c8e4117086128dd34acac0fe06431430eccc1a4d6fdc",
+      "sampling": {
+        "temperature": 0.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "package_path": "artifacts/p3/adapters/fable_svd32.npz",
+      "package_sha256": "b3675e32d312568055ddee163951cd8c4b9e258eaf8fa3209c210e1b838ca00d",
+      "package_bytes": 1830620,
+      "base_sha256": "256feee13466c9a5101f2b553e58f61f284e552a4b6e8847754d9e3096f7ceed",
+      "local_patch_manifest": "research/p3/precision-adapter-v1/single_4.json",
+      "local_patch_manifest_sha256": "3a18d3b51ba7c4685ada99a7acd291c07bde4129c3788613c325cee5eb4c11a2"
+    },
+    "single_5": {
+      "path": "artifacts/p3/precision/single_5.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "06a070a8ae3a35b4114cb6468504a943fac8425380ada81447530efd665d3cd2",
+      "sampling": {
+        "temperature": 0.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "package_path": "artifacts/p3/adapters/fable_svd32.npz",
+      "package_sha256": "b3675e32d312568055ddee163951cd8c4b9e258eaf8fa3209c210e1b838ca00d",
+      "package_bytes": 1830620,
+      "base_sha256": "256feee13466c9a5101f2b553e58f61f284e552a4b6e8847754d9e3096f7ceed",
+      "local_patch_manifest": "research/p3/precision-adapter-v1/single_5.json",
+      "local_patch_manifest_sha256": "b5751d7128f2fa1076d76bdec41d0a1d2c79856e76bb2dddddcc8aa6eba40a18"
+    },
+    "single_6": {
+      "path": "artifacts/p3/precision/single_6.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "5870f2ece68e858e1ed52ffb32e3008bc904c729c178a59e3f80b98581779d51",
+      "sampling": {
+        "temperature": 0.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "package_path": "artifacts/p3/adapters/fable_svd32.npz",
+      "package_sha256": "b3675e32d312568055ddee163951cd8c4b9e258eaf8fa3209c210e1b838ca00d",
+      "package_bytes": 1830620,
+      "base_sha256": "256feee13466c9a5101f2b553e58f61f284e552a4b6e8847754d9e3096f7ceed",
+      "local_patch_manifest": "research/p3/precision-adapter-v1/single_6.json",
+      "local_patch_manifest_sha256": "1de63eabbf7d6238b2c6e9b5ec2938994153d795f349d93222edc79f1aed4fac"
+    },
+    "single_7": {
+      "path": "artifacts/p3/precision/single_7.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "c6b823e8396da2f95325c65c10b55f7f16938c5e21717f209cf7cd326a1b08b4",
+      "sampling": {
+        "temperature": 0.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "package_path": "artifacts/p3/adapters/fable_svd32.npz",
+      "package_sha256": "b3675e32d312568055ddee163951cd8c4b9e258eaf8fa3209c210e1b838ca00d",
+      "package_bytes": 1830620,
+      "base_sha256": "256feee13466c9a5101f2b553e58f61f284e552a4b6e8847754d9e3096f7ceed",
+      "local_patch_manifest": "research/p3/precision-adapter-v1/single_7.json",
+      "local_patch_manifest_sha256": "b35268ee061ad25fb8e283a2b8cb3aca67afe7b70439b65878f8e1389dc90ee8"
+    },
+    "single_8": {
+      "path": "artifacts/p3/precision/single_8.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "8d784dd9a10450a31480fadd06d3642b10e5647c307c7e5116bff3cae828f4dc",
+      "sampling": {
+        "temperature": 0.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "package_path": "artifacts/p3/adapters/fable_svd32.npz",
+      "package_sha256": "b3675e32d312568055ddee163951cd8c4b9e258eaf8fa3209c210e1b838ca00d",
+      "package_bytes": 1830620,
+      "base_sha256": "256feee13466c9a5101f2b553e58f61f284e552a4b6e8847754d9e3096f7ceed",
+      "local_patch_manifest": "research/p3/precision-adapter-v1/single_8.json",
+      "local_patch_manifest_sha256": "7f9eef89bad59b80f7a7343a1433da84a1b50fe8de4b442d6b7e6d18cbce533b"
+    },
+    "single_9": {
+      "path": "artifacts/p3/precision/single_9.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "e4d594b8287096eedc54acd7a7658793b181d78ae264b1ab3a9112f944191945",
+      "sampling": {
+        "temperature": 0.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "package_path": "artifacts/p3/adapters/fable_svd32.npz",
+      "package_sha256": "b3675e32d312568055ddee163951cd8c4b9e258eaf8fa3209c210e1b838ca00d",
+      "package_bytes": 1830620,
+      "base_sha256": "256feee13466c9a5101f2b553e58f61f284e552a4b6e8847754d9e3096f7ceed",
+      "local_patch_manifest": "research/p3/precision-adapter-v1/single_9.json",
+      "local_patch_manifest_sha256": "777faf1cba74af88820b100093e8536e048fabb8da1907e5a3f9f007875f0668"
+    },
+    "single_10": {
+      "path": "artifacts/p3/precision/single_10.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "5bc02945cce3b305498f62fff16ebc51082a20b82e2a7d1c982f63abfdce32b4",
+      "sampling": {
+        "temperature": 0.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "package_path": "artifacts/p3/adapters/fable_svd32.npz",
+      "package_sha256": "b3675e32d312568055ddee163951cd8c4b9e258eaf8fa3209c210e1b838ca00d",
+      "package_bytes": 1830620,
+      "base_sha256": "256feee13466c9a5101f2b553e58f61f284e552a4b6e8847754d9e3096f7ceed",
+      "local_patch_manifest": "research/p3/precision-adapter-v1/single_10.json",
+      "local_patch_manifest_sha256": "2a9c958132c5d4fca8d8ab945e1a050b4c1c9e5084d78ae451aede99f16cb7c1"
+    },
+    "single_11": {
+      "path": "artifacts/p3/precision/single_11.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "b8d28de800c697e0a47f1306fec4dbca7d01aaa84042f75ad773f4053c96c33e",
+      "sampling": {
+        "temperature": 0.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "package_path": "artifacts/p3/adapters/fable_svd32.npz",
+      "package_sha256": "b3675e32d312568055ddee163951cd8c4b9e258eaf8fa3209c210e1b838ca00d",
+      "package_bytes": 1830620,
+      "base_sha256": "256feee13466c9a5101f2b553e58f61f284e552a4b6e8847754d9e3096f7ceed",
+      "local_patch_manifest": "research/p3/precision-adapter-v1/single_11.json",
+      "local_patch_manifest_sha256": "0f2bf6e8ac46f23e3d9ff2717936c7ff19852371ee265fa800ad92d5957f3667"
+    },
+    "single_12": {
+      "path": "artifacts/p3/precision/single_12.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "682bd8b1b09e1558c6c4d88beb043df74e432b7d0149b7bd5a343ba24315d1df",
+      "sampling": {
+        "temperature": 0.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "package_path": "artifacts/p3/adapters/fable_svd32.npz",
+      "package_sha256": "b3675e32d312568055ddee163951cd8c4b9e258eaf8fa3209c210e1b838ca00d",
+      "package_bytes": 1830620,
+      "base_sha256": "256feee13466c9a5101f2b553e58f61f284e552a4b6e8847754d9e3096f7ceed",
+      "local_patch_manifest": "research/p3/precision-adapter-v1/single_12.json",
+      "local_patch_manifest_sha256": "81a6fe6fc039ef065863c47496e1eef55597c6c2263d3345d39ceaaae74ed285"
+    },
+    "single_13": {
+      "path": "artifacts/p3/precision/single_13.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "6cd8d7537361c35e885af624f83a4136709600ed476f96b36dacf7854ec2d785",
+      "sampling": {
+        "temperature": 0.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "package_path": "artifacts/p3/adapters/fable_svd32.npz",
+      "package_sha256": "b3675e32d312568055ddee163951cd8c4b9e258eaf8fa3209c210e1b838ca00d",
+      "package_bytes": 1830620,
+      "base_sha256": "256feee13466c9a5101f2b553e58f61f284e552a4b6e8847754d9e3096f7ceed",
+      "local_patch_manifest": "research/p3/precision-adapter-v1/single_13.json",
+      "local_patch_manifest_sha256": "a4793faf37632c323d87c56e7e292ecceba65b46465b7d8b7f002c37fc88c38d"
+    },
+    "single_14": {
+      "path": "artifacts/p3/precision/single_14.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "ce415742da1f28ceb8c558cafae560d1ed65b0a7884d0914c025ee1f55827445",
+      "sampling": {
+        "temperature": 0.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "package_path": "artifacts/p3/adapters/fable_svd32.npz",
+      "package_sha256": "b3675e32d312568055ddee163951cd8c4b9e258eaf8fa3209c210e1b838ca00d",
+      "package_bytes": 1830620,
+      "base_sha256": "256feee13466c9a5101f2b553e58f61f284e552a4b6e8847754d9e3096f7ceed",
+      "local_patch_manifest": "research/p3/precision-adapter-v1/single_14.json",
+      "local_patch_manifest_sha256": "8b7bfc643e088d502f082a1e884150d7bfd421b2a3f52f3383ab1d1536f842e3"
+    },
+    "single_15": {
+      "path": "artifacts/p3/precision/single_15.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "14c05d35b86892af4217918d35fb22437c1c3df9476a8cb98b4557836a87c3a8",
+      "sampling": {
+        "temperature": 0.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "package_path": "artifacts/p3/adapters/fable_svd32.npz",
+      "package_sha256": "b3675e32d312568055ddee163951cd8c4b9e258eaf8fa3209c210e1b838ca00d",
+      "package_bytes": 1830620,
+      "base_sha256": "256feee13466c9a5101f2b553e58f61f284e552a4b6e8847754d9e3096f7ceed",
+      "local_patch_manifest": "research/p3/precision-adapter-v1/single_15.json",
+      "local_patch_manifest_sha256": "c9d0b83a2a122e0192ece66b70caf8c86f0d9e3055ae50cc61cbcec815bb51e4"
+    },
+    "single_16": {
+      "path": "artifacts/p3/precision/single_16.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "8904989659b079839cb84a2d46e3375d88048eb9a107947c08143ae441e60e36",
+      "sampling": {
+        "temperature": 0.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "package_path": "artifacts/p3/adapters/fable_svd32.npz",
+      "package_sha256": "b3675e32d312568055ddee163951cd8c4b9e258eaf8fa3209c210e1b838ca00d",
+      "package_bytes": 1830620,
+      "base_sha256": "256feee13466c9a5101f2b553e58f61f284e552a4b6e8847754d9e3096f7ceed",
+      "local_patch_manifest": "research/p3/precision-adapter-v1/single_16.json",
+      "local_patch_manifest_sha256": "8cd9f6ca953b0affb1562ee92aad31ed98ec0661dd7fdd3c4ab0a46e79ab3bac"
+    },
+    "single_17": {
+      "path": "artifacts/p3/precision/single_17.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "4ed4e579d044375e779a39033daa39d9c416d3b35e227796b6f84402131f5294",
+      "sampling": {
+        "temperature": 0.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "package_path": "artifacts/p3/adapters/fable_svd32.npz",
+      "package_sha256": "b3675e32d312568055ddee163951cd8c4b9e258eaf8fa3209c210e1b838ca00d",
+      "package_bytes": 1830620,
+      "base_sha256": "256feee13466c9a5101f2b553e58f61f284e552a4b6e8847754d9e3096f7ceed",
+      "local_patch_manifest": "research/p3/precision-adapter-v1/single_17.json",
+      "local_patch_manifest_sha256": "daa00e83d1ce80830407ae1732e354d8649e41b977324846fec4d9662a6a8d81"
+    }
+  }
+}
