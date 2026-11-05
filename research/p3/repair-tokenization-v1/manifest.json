@@ -1,0 +1,31 @@
+{
+  "utc": "2026-11-05T18:33:23.934504+00:00",
+  "git": {
+    "commit": "bd37946e8a5102c5b8718a7a8bd3d1f6bfc9729c",
+    "status": "?? research/p3/repair-tokenization-v1/"
+  },
+  "command": [
+    "/home/akmessi/llama-vulkan-build/bin/llama-server",
+    "--model",
+    "local/models/lfm2.5-230m-fable-5-f16.gguf",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "54229",
+    "--ctx-size",
+    "2048",
+    "--parallel",
+    "1",
+    "--threads",
+    "4",
+    "--n-gpu-layers",
+    "99",
+    "--jinja",
+    "--reasoning",
+    "off",
+    "--chat-template-kwargs",
+    "{\"enable_thinking\": false}"
+  ],
+  "source_sha256": "265ec3d3d45871d1c1d6ca4a68d78e26b95ea3908821c847da873c135af75692",
+  "status": "tokenization only; zero diagnostic forwards/generation"
+}
