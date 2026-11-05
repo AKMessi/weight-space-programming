@@ -1,0 +1,776 @@
+{
+  "name": "discovery-v1",
+  "seed": 20261105,
+  "repetitions": 4,
+  "status": "exploratory; templates visible to investigator; not a held-out benchmark",
+  "cases": [
+    {
+      "id": "discovery-v1-json_extract-00",
+      "split": "discovery",
+      "family": "json_extract",
+      "group": "format",
+      "grader": "json",
+      "expected": {
+        "name": "Nolan",
+        "units": 28
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Record: name=Nolan; units=28. Return only one JSON object with keys name (string) and units (integer). No explanation or code fences."
+        }
+      ]
+    },
+    {
+      "id": "discovery-v1-json_reordered-00",
+      "split": "discovery",
+      "family": "json_reordered",
+      "group": "format",
+      "grader": "json",
+      "expected": {
+        "code": "ZX-797",
+        "available": true
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Item ZX-797 is available. Output only JSON with keys code (string), available (boolean)."
+        }
+      ]
+    },
+    {
+      "id": "discovery-v1-code_only-00",
+      "split": "discovery",
+      "family": "code_only",
+      "group": "coding",
+      "grader": "code_line",
+      "expected": "    return value + 4",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Complete the following function. Return only the next line of Python, without backticks or explanation.\ndef add_4(value):\n    \"\"\"Return value plus 4.\"\"\"\n"
+        }
+      ]
+    },
+    {
+      "id": "discovery-v1-code_explain-00",
+      "split": "discovery",
+      "family": "code_explain",
+      "group": "explanation",
+      "grader": "explanation_proxy",
+      "expected": "    return value + 4",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Give the next line of Python and explain why it implements this function.\ndef add_4(value):\n    \"\"\"Return value plus 4.\"\"\"\n"
+        }
+      ]
+    },
+    {
+      "id": "discovery-v1-exact_copy-00",
+      "split": "discovery",
+      "family": "exact_copy",
+      "group": "copy",
+      "grader": "copy",
+      "expected": "ZX-797|Nolan|28|ZX-797",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Copy the text between <data> and </data> exactly once. Return only the text, preserving case, symbols and repeated parts.\n<data>ZX-797|Nolan|28|ZX-797</data>"
+        }
+      ]
+    },
+    {
+      "id": "discovery-v1-requested_repeat-00",
+      "split": "discovery",
+      "family": "requested_repeat",
+      "group": "copy",
+      "grader": "copy",
+      "expected": "ZX-797 ZX-797 ZX-797",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Return ZX-797 exactly three times separated by single spaces. No other text."
+        }
+      ]
+    },
+    {
+      "id": "discovery-v1-tool_complete-00",
+      "split": "discovery",
+      "family": "tool_complete",
+      "group": "tool",
+      "grader": "json",
+      "expected": {
+        "name": "reserve",
+        "arguments": {
+          "item": "ZX-797",
+          "quantity": 28
+        }
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Mock tool reserve requires item (string) and quantity (integer). User wants 28 units of ZX-797. Return only a JSON object with name='reserve' and arguments containing those two values. Do not execute anything."
+        }
+      ]
+    },
+    {
+      "id": "discovery-v1-evidence_complete-00",
+      "split": "discovery",
+      "family": "evidence_complete",
+      "group": "evidence_complete",
+      "grader": "evidence_action",
+      "expected": "ANSWER: ZX-797",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Use only these facts. Reply with exactly ANSWER: value if the requested fact exists; ASK: field if it is absent; CONFLICT: field if two stated values disagree.\nFacts: recipient=Nolan; address=ZX-797; quantity=28.\nRequested field: address."
+        }
+      ]
+    },
+    {
+      "id": "discovery-v1-evidence_missing-00",
+      "split": "discovery",
+      "family": "evidence_missing",
+      "group": "evidence_missing",
+      "grader": "evidence_action",
+      "expected": "ASK: address",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Use only these facts. Reply with exactly ANSWER: value if the requested fact exists; ASK: field if it is absent; CONFLICT: field if two stated values disagree.\nFacts: recipient=Nolan; reference=ZX-797; quantity=28.\nRequested field: address."
+        }
+      ]
+    },
+    {
+      "id": "discovery-v1-evidence_conflict-00",
+      "split": "discovery",
+      "family": "evidence_conflict",
+      "group": "evidence_conflict",
+      "grader": "evidence_action",
+      "expected": "CONFLICT: address",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Use only these facts. Reply with exactly ANSWER: value if the requested fact exists; ASK: field if it is absent; CONFLICT: field if two stated values disagree.\nFacts: recipient=Nolan; address=ZX-797; address=YY-000. No precedence rule exists.\nRequested field: address."
+        }
+      ]
+    },
+    {
+      "id": "discovery-v1-json_extract-01",
+      "split": "discovery",
+      "family": "json_extract",
+      "group": "format",
+      "grader": "json",
+      "expected": {
+        "name": "Mira",
+        "units": 16
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Record: name=Mira; units=16. Return only one JSON object with keys name (string) and units (integer). No explanation or code fences."
+        }
+      ]
+    },
+    {
+      "id": "discovery-v1-json_reordered-01",
+      "split": "discovery",
+      "family": "json_reordered",
+      "group": "format",
+      "grader": "json",
+      "expected": {
+        "code": "ZX-729",
+        "available": true
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Item ZX-729 is available. Output only JSON with keys code (string), available (boolean)."
+        }
+      ]
+    },
+    {
+      "id": "discovery-v1-code_only-01",
+      "split": "discovery",
+      "family": "code_only",
+      "group": "coding",
+      "grader": "code_line",
+      "expected": "    return value + 4",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Complete the following function. Return only the next line of Python, without backticks or explanation.\ndef add_4(value):\n    \"\"\"Return value plus 4.\"\"\"\n"
+        }
+      ]
+    },
+    {
+      "id": "discovery-v1-code_explain-01",
+      "split": "discovery",
+      "family": "code_explain",
+      "group": "explanation",
+      "grader": "explanation_proxy",
+      "expected": "    return value + 4",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Give the next line of Python and explain why it implements this function.\ndef add_4(value):\n    \"\"\"Return value plus 4.\"\"\"\n"
+        }
+      ]
+    },
+    {
+      "id": "discovery-v1-exact_copy-01",
+      "split": "discovery",
+      "family": "exact_copy",
+      "group": "copy",
+      "grader": "copy",
+      "expected": "ZX-729|Mira|16|ZX-729",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Copy the text between <data> and </data> exactly once. Return only the text, preserving case, symbols and repeated parts.\n<data>ZX-729|Mira|16|ZX-729</data>"
+        }
+      ]
+    },
+    {
+      "id": "discovery-v1-requested_repeat-01",
+      "split": "discovery",
+      "family": "requested_repeat",
+      "group": "copy",
+      "grader": "copy",
+      "expected": "ZX-729 ZX-729 ZX-729",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Return ZX-729 exactly three times separated by single spaces. No other text."
+        }
+      ]
+    },
+    {
+      "id": "discovery-v1-tool_complete-01",
+      "split": "discovery",
+      "family": "tool_complete",
+      "group": "tool",
+      "grader": "json",
+      "expected": {
+        "name": "reserve",
+        "arguments": {
+          "item": "ZX-729",
+          "quantity": 16
+        }
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Mock tool reserve requires item (string) and quantity (integer). User wants 16 units of ZX-729. Return only a JSON object with name='reserve' and arguments containing those two values. Do not execute anything."
+        }
+      ]
+    },
+    {
+      "id": "discovery-v1-evidence_complete-01",
+      "split": "discovery",
+      "family": "evidence_complete",
+      "group": "evidence_complete",
+      "grader": "evidence_action",
+      "expected": "ANSWER: ZX-729",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Use only these facts. Reply with exactly ANSWER: value if the requested fact exists; ASK: field if it is absent; CONFLICT: field if two stated values disagree.\nFacts: recipient=Mira; address=ZX-729; quantity=16.\nRequested field: address."
+        }
+      ]
+    },
+    {
+      "id": "discovery-v1-evidence_missing-01",
+      "split": "discovery",
+      "family": "evidence_missing",
+      "group": "evidence_missing",
+      "grader": "evidence_action",
+      "expected": "ASK: address",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Use only these facts. Reply with exactly ANSWER: value if the requested fact exists; ASK: field if it is absent; CONFLICT: field if two stated values disagree.\nFacts: recipient=Mira; reference=ZX-729; quantity=16.\nRequested field: address."
+        }
+      ]
+    },
+    {
+      "id": "discovery-v1-evidence_conflict-01",
+      "split": "discovery",
+      "family": "evidence_conflict",
+      "group": "evidence_conflict",
+      "grader": "evidence_action",
+      "expected": "CONFLICT: address",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Use only these facts. Reply with exactly ANSWER: value if the requested fact exists; ASK: field if it is absent; CONFLICT: field if two stated values disagree.\nFacts: recipient=Mira; address=ZX-729; address=YY-000. No precedence rule exists.\nRequested field: address."
+        }
+      ]
+    },
+    {
+      "id": "discovery-v1-json_extract-02",
+      "split": "discovery",
+      "family": "json_extract",
+      "group": "format",
+      "grader": "json",
+      "expected": {
+        "name": "Sofia",
+        "units": 30
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Record: name=Sofia; units=30. Return only one JSON object with keys name (string) and units (integer). No explanation or code fences."
+        }
+      ]
+    },
+    {
+      "id": "discovery-v1-json_reordered-02",
+      "split": "discovery",
+      "family": "json_reordered",
+      "group": "format",
+      "grader": "json",
+      "expected": {
+        "code": "ZX-404",
+        "available": true
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Item ZX-404 is available. Output only JSON with keys code (string), available (boolean)."
+        }
+      ]
+    },
+    {
+      "id": "discovery-v1-code_only-02",
+      "split": "discovery",
+      "family": "code_only",
+      "group": "coding",
+      "grader": "code_line",
+      "expected": "    return value + 4",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Complete the following function. Return only the next line of Python, without backticks or explanation.\ndef add_4(value):\n    \"\"\"Return value plus 4.\"\"\"\n"
+        }
+      ]
+    },
+    {
+      "id": "discovery-v1-code_explain-02",
+      "split": "discovery",
+      "family": "code_explain",
+      "group": "explanation",
+      "grader": "explanation_proxy",
+      "expected": "    return value + 4",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Give the next line of Python and explain why it implements this function.\ndef add_4(value):\n    \"\"\"Return value plus 4.\"\"\"\n"
+        }
+      ]
+    },
+    {
+      "id": "discovery-v1-exact_copy-02",
+      "split": "discovery",
+      "family": "exact_copy",
+      "group": "copy",
+      "grader": "copy",
+      "expected": "ZX-404|Sofia|30|ZX-404",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Copy the text between <data> and </data> exactly once. Return only the text, preserving case, symbols and repeated parts.\n<data>ZX-404|Sofia|30|ZX-404</data>"
+        }
+      ]
+    },
+    {
+      "id": "discovery-v1-requested_repeat-02",
+      "split": "discovery",
+      "family": "requested_repeat",
+      "group": "copy",
+      "grader": "copy",
+      "expected": "ZX-404 ZX-404 ZX-404",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Return ZX-404 exactly three times separated by single spaces. No other text."
+        }
+      ]
+    },
+    {
+      "id": "discovery-v1-tool_complete-02",
+      "split": "discovery",
+      "family": "tool_complete",
+      "group": "tool",
+      "grader": "json",
+      "expected": {
+        "name": "reserve",
+        "arguments": {
+          "item": "ZX-404",
+          "quantity": 30
+        }
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Mock tool reserve requires item (string) and quantity (integer). User wants 30 units of ZX-404. Return only a JSON object with name='reserve' and arguments containing those two values. Do not execute anything."
+        }
+      ]
+    },
+    {
+      "id": "discovery-v1-evidence_complete-02",
+      "split": "discovery",
+      "family": "evidence_complete",
+      "group": "evidence_complete",
+      "grader": "evidence_action",
+      "expected": "ANSWER: ZX-404",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Use only these facts. Reply with exactly ANSWER: value if the requested fact exists; ASK: field if it is absent; CONFLICT: field if two stated values disagree.\nFacts: recipient=Sofia; address=ZX-404; quantity=30.\nRequested field: address."
+        }
+      ]
+    },
+    {
+      "id": "discovery-v1-evidence_missing-02",
+      "split": "discovery",
+      "family": "evidence_missing",
+      "group": "evidence_missing",
+      "grader": "evidence_action",
+      "expected": "ASK: address",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Use only these facts. Reply with exactly ANSWER: value if the requested fact exists; ASK: field if it is absent; CONFLICT: field if two stated values disagree.\nFacts: recipient=Sofia; reference=ZX-404; quantity=30.\nRequested field: address."
+        }
+      ]
+    },
+    {
+      "id": "discovery-v1-evidence_conflict-02",
+      "split": "discovery",
+      "family": "evidence_conflict",
+      "group": "evidence_conflict",
+      "grader": "evidence_action",
+      "expected": "CONFLICT: address",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Use only these facts. Reply with exactly ANSWER: value if the requested fact exists; ASK: field if it is absent; CONFLICT: field if two stated values disagree.\nFacts: recipient=Sofia; address=ZX-404; address=YY-000. No precedence rule exists.\nRequested field: address."
+        }
+      ]
+    },
+    {
+      "id": "discovery-v1-json_extract-03",
+      "split": "discovery",
+      "family": "json_extract",
+      "group": "format",
+      "grader": "json",
+      "expected": {
+        "name": "Sofia",
+        "units": 22
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Record: name=Sofia; units=22. Return only one JSON object with keys name (string) and units (integer). No explanation or code fences."
+        }
+      ]
+    },
+    {
+      "id": "discovery-v1-json_reordered-03",
+      "split": "discovery",
+      "family": "json_reordered",
+      "group": "format",
+      "grader": "json",
+      "expected": {
+        "code": "ZX-908",
+        "available": true
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Item ZX-908 is available. Output only JSON with keys code (string), available (boolean)."
+        }
+      ]
+    },
+    {
+      "id": "discovery-v1-code_only-03",
+      "split": "discovery",
+      "family": "code_only",
+      "group": "coding",
+      "grader": "code_line",
+      "expected": "    return value + 7",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Complete the following function. Return only the next line of Python, without backticks or explanation.\ndef add_7(value):\n    \"\"\"Return value plus 7.\"\"\"\n"
+        }
+      ]
+    },
+    {
+      "id": "discovery-v1-code_explain-03",
+      "split": "discovery",
+      "family": "code_explain",
+      "group": "explanation",
+      "grader": "explanation_proxy",
+      "expected": "    return value + 7",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Give the next line of Python and explain why it implements this function.\ndef add_7(value):\n    \"\"\"Return value plus 7.\"\"\"\n"
+        }
+      ]
+    },
+    {
+      "id": "discovery-v1-exact_copy-03",
+      "split": "discovery",
+      "family": "exact_copy",
+      "group": "copy",
+      "grader": "copy",
+      "expected": "ZX-908|Sofia|22|ZX-908",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Copy the text between <data> and </data> exactly once. Return only the text, preserving case, symbols and repeated parts.\n<data>ZX-908|Sofia|22|ZX-908</data>"
+        }
+      ]
+    },
+    {
+      "id": "discovery-v1-requested_repeat-03",
+      "split": "discovery",
+      "family": "requested_repeat",
+      "group": "copy",
+      "grader": "copy",
+      "expected": "ZX-908 ZX-908 ZX-908",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Return ZX-908 exactly three times separated by single spaces. No other text."
+        }
+      ]
+    },
+    {
+      "id": "discovery-v1-tool_complete-03",
+      "split": "discovery",
+      "family": "tool_complete",
+      "group": "tool",
+      "grader": "json",
+      "expected": {
+        "name": "reserve",
+        "arguments": {
+          "item": "ZX-908",
+          "quantity": 22
+        }
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Mock tool reserve requires item (string) and quantity (integer). User wants 22 units of ZX-908. Return only a JSON object with name='reserve' and arguments containing those two values. Do not execute anything."
+        }
+      ]
+    },
+    {
+      "id": "discovery-v1-evidence_complete-03",
+      "split": "discovery",
+      "family": "evidence_complete",
+      "group": "evidence_complete",
+      "grader": "evidence_action",
+      "expected": "ANSWER: ZX-908",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Use only these facts. Reply with exactly ANSWER: value if the requested fact exists; ASK: field if it is absent; CONFLICT: field if two stated values disagree.\nFacts: recipient=Sofia; address=ZX-908; quantity=22.\nRequested field: address."
+        }
+      ]
+    },
+    {
+      "id": "discovery-v1-evidence_missing-03",
+      "split": "discovery",
+      "family": "evidence_missing",
+      "group": "evidence_missing",
+      "grader": "evidence_action",
+      "expected": "ASK: address",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Use only these facts. Reply with exactly ANSWER: value if the requested fact exists; ASK: field if it is absent; CONFLICT: field if two stated values disagree.\nFacts: recipient=Sofia; reference=ZX-908; quantity=22.\nRequested field: address."
+        }
+      ]
+    },
+    {
+      "id": "discovery-v1-evidence_conflict-03",
+      "split": "discovery",
+      "family": "evidence_conflict",
+      "group": "evidence_conflict",
+      "grader": "evidence_action",
+      "expected": "CONFLICT: address",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Use only these facts. Reply with exactly ANSWER: value if the requested fact exists; ASK: field if it is absent; CONFLICT: field if two stated values disagree.\nFacts: recipient=Sofia; address=ZX-908; address=YY-000. No precedence rule exists.\nRequested field: address."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,394 @@
+{
+  "name": "template-probe-v1",
+  "status": "diagnostic discovery; not held-out",
+  "cases": [
+    {
+      "id": "probe-v1-false_raw-code_only",
+      "split": "discovery",
+      "family": "code_only",
+      "group": "false_raw",
+      "grader": "code_line",
+      "expected": "    return value + 4",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Complete the following function. Return only the next line of Python, without backticks or explanation.\ndef add_4(value):\n    \"\"\"Return value plus 4.\"\"\"\n"
+        }
+      ],
+      "request_overrides": {
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        },
+        "reasoning_format": "none"
+      }
+    },
+    {
+      "id": "probe-v1-false_raw-requested_repeat",
+      "split": "discovery",
+      "family": "requested_repeat",
+      "group": "false_raw",
+      "grader": "copy",
+      "expected": "ZX-729 ZX-729 ZX-729",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Return ZX-729 exactly three times separated by single spaces. No other text."
+        }
+      ],
+      "request_overrides": {
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        },
+        "reasoning_format": "none"
+      }
+    },
+    {
+      "id": "probe-v1-false_raw-evidence_missing",
+      "split": "discovery",
+      "family": "evidence_missing",
+      "group": "false_raw",
+      "grader": "evidence_action",
+      "expected": "ASK: address",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Use only these facts. Reply with exactly ANSWER: value if the requested fact exists; ASK: field if it is absent; CONFLICT: field if two stated values disagree.\nFacts: recipient=Mira; reference=ZX-729; quantity=16.\nRequested field: address."
+        }
+      ],
+      "request_overrides": {
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        },
+        "reasoning_format": "none"
+      }
+    },
+    {
+      "id": "probe-v1-false_raw-evidence_conflict",
+      "split": "discovery",
+      "family": "evidence_conflict",
+      "group": "false_raw",
+      "grader": "evidence_action",
+      "expected": "CONFLICT: address",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Use only these facts. Reply with exactly ANSWER: value if the requested fact exists; ASK: field if it is absent; CONFLICT: field if two stated values disagree.\nFacts: recipient=Mira; address=ZX-729; address=YY-000. No precedence rule exists.\nRequested field: address."
+        }
+      ],
+      "request_overrides": {
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        },
+        "reasoning_format": "none"
+      }
+    },
+    {
+      "id": "probe-v1-false_parsed-code_only",
+      "split": "discovery",
+      "family": "code_only",
+      "group": "false_parsed",
+      "grader": "code_line",
+      "expected": "    return value + 4",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Complete the following function. Return only the next line of Python, without backticks or explanation.\ndef add_4(value):\n    \"\"\"Return value plus 4.\"\"\"\n"
+        }
+      ],
+      "request_overrides": {
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        },
+        "reasoning_format": "deepseek"
+      }
+    },
+    {
+      "id": "probe-v1-false_parsed-requested_repeat",
+      "split": "discovery",
+      "family": "requested_repeat",
+      "group": "false_parsed",
+      "grader": "copy",
+      "expected": "ZX-729 ZX-729 ZX-729",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Return ZX-729 exactly three times separated by single spaces. No other text."
+        }
+      ],
+      "request_overrides": {
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        },
+        "reasoning_format": "deepseek"
+      }
+    },
+    {
+      "id": "probe-v1-false_parsed-evidence_missing",
+      "split": "discovery",
+      "family": "evidence_missing",
+      "group": "false_parsed",
+      "grader": "evidence_action",
+      "expected": "ASK: address",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Use only these facts. Reply with exactly ANSWER: value if the requested fact exists; ASK: field if it is absent; CONFLICT: field if two stated values disagree.\nFacts: recipient=Mira; reference=ZX-729; quantity=16.\nRequested field: address."
+        }
+      ],
+      "request_overrides": {
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        },
+        "reasoning_format": "deepseek"
+      }
+    },
+    {
+      "id": "probe-v1-false_parsed-evidence_conflict",
+      "split": "discovery",
+      "family": "evidence_conflict",
+      "group": "false_parsed",
+      "grader": "evidence_action",
+      "expected": "CONFLICT: address",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Use only these facts. Reply with exactly ANSWER: value if the requested fact exists; ASK: field if it is absent; CONFLICT: field if two stated values disagree.\nFacts: recipient=Mira; address=ZX-729; address=YY-000. No precedence rule exists.\nRequested field: address."
+        }
+      ],
+      "request_overrides": {
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        },
+        "reasoning_format": "deepseek"
+      }
+    },
+    {
+      "id": "probe-v1-false_effort_none-code_only",
+      "split": "discovery",
+      "family": "code_only",
+      "group": "false_effort_none",
+      "grader": "code_line",
+      "expected": "    return value + 4",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Complete the following function. Return only the next line of Python, without backticks or explanation.\ndef add_4(value):\n    \"\"\"Return value plus 4.\"\"\"\n"
+        }
+      ],
+      "request_overrides": {
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        },
+        "reasoning_effort": "none",
+        "reasoning_format": "none"
+      }
+    },
+    {
+      "id": "probe-v1-false_effort_none-requested_repeat",
+      "split": "discovery",
+      "family": "requested_repeat",
+      "group": "false_effort_none",
+      "grader": "copy",
+      "expected": "ZX-729 ZX-729 ZX-729",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Return ZX-729 exactly three times separated by single spaces. No other text."
+        }
+      ],
+      "request_overrides": {
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        },
+        "reasoning_effort": "none",
+        "reasoning_format": "none"
+      }
+    },
+    {
+      "id": "probe-v1-false_effort_none-evidence_missing",
+      "split": "discovery",
+      "family": "evidence_missing",
+      "group": "false_effort_none",
+      "grader": "evidence_action",
+      "expected": "ASK: address",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Use only these facts. Reply with exactly ANSWER: value if the requested fact exists; ASK: field if it is absent; CONFLICT: field if two stated values disagree.\nFacts: recipient=Mira; reference=ZX-729; quantity=16.\nRequested field: address."
+        }
+      ],
+      "request_overrides": {
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        },
+        "reasoning_effort": "none",
+        "reasoning_format": "none"
+      }
+    },
+    {
+      "id": "probe-v1-false_effort_none-evidence_conflict",
+      "split": "discovery",
+      "family": "evidence_conflict",
+      "group": "false_effort_none",
+      "grader": "evidence_action",
+      "expected": "CONFLICT: address",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Use only these facts. Reply with exactly ANSWER: value if the requested fact exists; ASK: field if it is absent; CONFLICT: field if two stated values disagree.\nFacts: recipient=Mira; address=ZX-729; address=YY-000. No precedence rule exists.\nRequested field: address."
+        }
+      ],
+      "request_overrides": {
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        },
+        "reasoning_effort": "none",
+        "reasoning_format": "none"
+      }
+    },
+    {
+      "id": "probe-v1-true_parsed-code_only",
+      "split": "discovery",
+      "family": "code_only",
+      "group": "true_parsed",
+      "grader": "code_line",
+      "expected": "    return value + 4",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Complete the following function. Return only the next line of Python, without backticks or explanation.\ndef add_4(value):\n    \"\"\"Return value plus 4.\"\"\"\n"
+        }
+      ],
+      "request_overrides": {
+        "chat_template_kwargs": {
+          "enable_thinking": true
+        },
+        "reasoning_format": "deepseek"
+      }
+    },
+    {
+      "id": "probe-v1-true_parsed-requested_repeat",
+      "split": "discovery",
+      "family": "requested_repeat",
+      "group": "true_parsed",
+      "grader": "copy",
+      "expected": "ZX-729 ZX-729 ZX-729",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Return ZX-729 exactly three times separated by single spaces. No other text."
+        }
+      ],
+      "request_overrides": {
+        "chat_template_kwargs": {
+          "enable_thinking": true
+        },
+        "reasoning_format": "deepseek"
+      }
+    },
+    {
+      "id": "probe-v1-true_parsed-evidence_missing",
+      "split": "discovery",
+      "family": "evidence_missing",
+      "group": "true_parsed",
+      "grader": "evidence_action",
+      "expected": "ASK: address",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Use only these facts. Reply with exactly ANSWER: value if the requested fact exists; ASK: field if it is absent; CONFLICT: field if two stated values disagree.\nFacts: recipient=Mira; reference=ZX-729; quantity=16.\nRequested field: address."
+        }
+      ],
+      "request_overrides": {
+        "chat_template_kwargs": {
+          "enable_thinking": true
+        },
+        "reasoning_format": "deepseek"
+      }
+    },
+    {
+      "id": "probe-v1-true_parsed-evidence_conflict",
+      "split": "discovery",
+      "family": "evidence_conflict",
+      "group": "true_parsed",
+      "grader": "evidence_action",
+      "expected": "CONFLICT: address",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Use only these facts. Reply with exactly ANSWER: value if the requested fact exists; ASK: field if it is absent; CONFLICT: field if two stated values disagree.\nFacts: recipient=Mira; address=ZX-729; address=YY-000. No precedence rule exists.\nRequested field: address."
+        }
+      ],
+      "request_overrides": {
+        "chat_template_kwargs": {
+          "enable_thinking": true
+        },
+        "reasoning_format": "deepseek"
+      }
+    }
+  ]
+}
