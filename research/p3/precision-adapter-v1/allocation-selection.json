@@ -1,0 +1,67 @@
+{
+  "utc": "2026-11-05T19:58:43.409177+00:00",
+  "baseline_cal_kl": 0.3145983682803476,
+  "single_tensor_kl_reductions": {
+    "blk.10.attn_k.weight": -0.0010618998482449515,
+    "blk.10.attn_q.weight": -0.013724418040693687,
+    "blk.10.attn_v.weight": 0.0001682100599574854,
+    "blk.12.attn_k.weight": 0.0018319059445720542,
+    "blk.12.attn_q.weight": 3.0208522008301486e-06,
+    "blk.12.attn_v.weight": 0.012470954454462335,
+    "blk.2.attn_k.weight": 0.020715795298083484,
+    "blk.2.attn_q.weight": 0.003251530897814714,
+    "blk.2.attn_v.weight": 0.009709405834667062,
+    "blk.4.attn_k.weight": 0.0025043148335780474,
+    "blk.4.attn_q.weight": -0.023492200000087504,
+    "blk.4.attn_v.weight": -0.013578723298556028,
+    "blk.6.attn_k.weight": -0.009880809713292693,
+    "blk.6.attn_q.weight": 0.009412502062212336,
+    "blk.6.attn_v.weight": -0.012772297929451781,
+    "blk.8.attn_k.weight": 0.006632775727982598,
+    "blk.8.attn_q.weight": -0.0014221881250828794,
+    "blk.8.attn_v.weight": 0.02067754362092422
+  },
+  "feasible_subsets": 906,
+  "seed": 811,
+  "allocations": {
+    "all": [
+      "blk.10.attn_k.weight",
+      "blk.10.attn_q.weight",
+      "blk.10.attn_v.weight",
+      "blk.12.attn_k.weight",
+      "blk.12.attn_q.weight",
+      "blk.12.attn_v.weight",
+      "blk.2.attn_k.weight",
+      "blk.2.attn_q.weight",
+      "blk.2.attn_v.weight",
+      "blk.4.attn_k.weight",
+      "blk.4.attn_q.weight",
+      "blk.4.attn_v.weight",
+      "blk.6.attn_k.weight",
+      "blk.6.attn_q.weight",
+      "blk.6.attn_v.weight",
+      "blk.8.attn_k.weight",
+      "blk.8.attn_q.weight",
+      "blk.8.attn_v.weight"
+    ],
+    "random": [
+      "blk.10.attn_q.weight",
+      "blk.12.attn_k.weight",
+      "blk.2.attn_v.weight"
+    ],
+    "reconstruction": [
+      "blk.10.attn_v.weight",
+      "blk.12.attn_v.weight",
+      "blk.6.attn_v.weight",
+      "blk.8.attn_v.weight"
+    ],
+    "distribution": [
+      "blk.12.attn_v.weight",
+      "blk.2.attn_k.weight",
+      "blk.2.attn_v.weight",
+      "blk.8.attn_v.weight"
+    ]
+  },
+  "budget": 3014656,
+  "allocation_method": "additive native full-vocabulary KL improvement; calibration only"
+}
