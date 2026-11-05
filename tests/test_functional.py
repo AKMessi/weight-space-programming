@@ -22,3 +22,7 @@ class FunctionalTests(unittest.TestCase):
         for code in ['import os\nreturn 0','return __import__("os").system("touch /tmp/forbidden")',
                      'while True:\n    pass','return 2 ** 100000000', 'return [0] * 100000000']:
             self.assertFalse(evaluate_code(self.case(),code)['payload_correct'])
+
+    def test_bounded_list_building_is_not_misclassified(self):
+        case={'expected':{'parameters':['xs'],'tests':[{'args':[[1,-2]],'result':[2,-4]},{'args':[[]],'result':[]}]}}
+        self.assertTrue(evaluate_code(case,'def double(xs):\n    result=[]\n    for x in xs:\n        result.append(x*2)\n    return result')['success'])

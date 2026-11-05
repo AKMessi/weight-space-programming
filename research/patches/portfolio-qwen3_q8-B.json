@@ -1,0 +1,46 @@
+{
+  "schema_version": 2,
+  "utc": "2026-11-05T11:27:12.273767+00:00",
+  "git": {
+    "commit": "22033baae495c3eeb4e630b0a88e37fe5cfaed2a",
+    "status": "?? research/patches/portfolio-qwen3_q8-A.json"
+  },
+  "base": {
+    "path": "local/models/Qwen3-0.6B-Q8_0.gguf",
+    "repo": "Qwen/Qwen3-0.6B-GGUF",
+    "revision": "23749fefcc72300e3a2ad315e1317431b06b590a",
+    "file": "Qwen3-0.6B-Q8_0.gguf",
+    "sha256": "9465e63a22add5354d9bb4b99e90117043c7124007664907259bd16d043bb031",
+    "sampling": {
+      "temperature": 0.7,
+      "top_k": 20,
+      "top_p": 0.8,
+      "min_p": 0.0,
+      "repeat_penalty": 1.0,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0
+    }
+  },
+  "operations": [
+    {
+      "tensor": "blk.27.attn_norm.weight",
+      "kind": "scale",
+      "factor": 0.9
+    }
+  ],
+  "output": "artifacts/portfolio/qwen3_q8-B.gguf",
+  "status": "verified",
+  "tensors": [
+    {
+      "name": "blk.27.attn_norm.weight",
+      "base_sha256": "0303a1a46030836fb8894dac73ab415c1d5d9a39dec4351c140ebfef04c5882c",
+      "edited_sha256": "a1a44c46ad07ef68c9eb7d165074522677c7570fe4219638a7e3d774c2693b9c",
+      "changed_values": 1024,
+      "relative_frobenius_change": 0.10000002632915456
+    }
+  ],
+  "untouched_tensors_verified": 309,
+  "edited_file_sha256": "0b7c0da60ee3af7734fd007156e9f1828333627b251ad7078276b33a31a6c375",
+  "changed_values": 1024,
+  "bytes": 639446688
+}

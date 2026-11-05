@@ -1,0 +1,454 @@
+{
+  "runtime": {
+    "binary": "/home/akmessi/llama-vulkan-build/bin/llama-server",
+    "context": 2048,
+    "threads": 4,
+    "gpu_layers": 99
+  },
+  "budgets": {
+    "overall_generated_tokens": 1800000,
+    "per_run_generated_tokens": 20000
+  },
+  "models": {
+    "lfm3_qad": {
+      "path": "/home/akmessi/models/lfm3/LFM3-1.7B-QAD-Q4_0.gguf",
+      "repo": "LiquidAI/LFM3-1.7B-GGUF",
+      "revision": "cd0c74c575b5c416f3011b5b4c298077f26ca8c2",
+      "file": "LFM3-1.7B-QAD-Q4_0.gguf",
+      "sha256": "43a7d09a0e9cba91b63eb7052488b9564569bddfd65754d2e426465e572a7452",
+      "sampling": {
+        "temperature": 0.1,
+        "top_k": 50,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.1,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      }
+    },
+    "qwen3_q8": {
+      "path": "local/models/Qwen3-0.6B-Q8_0.gguf",
+      "repo": "Qwen/Qwen3-0.6B-GGUF",
+      "revision": "23749fefcc72300e3a2ad315e1317431b06b590a",
+      "file": "Qwen3-0.6B-Q8_0.gguf",
+      "sha256": "9465e63a22add5354d9bb4b99e90117043c7124007664907259bd16d043bb031",
+      "sampling": {
+        "temperature": 0.7,
+        "top_k": 20,
+        "top_p": 0.8,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      }
+    },
+    "fable_f16": {
+      "path": "local/models/lfm2.5-230m-fable-5-f16.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "1e1624de4d7ebe413d82dbe2b5f48fcf83e6c46b1b5414c8aef0596009380cc6",
+      "sampling": {
+        "temperature": 0.1,
+        "top_k": 50,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.05,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      }
+    },
+    "parent_f16": {
+      "path": "local/models/LFM2.5-230M-F16.gguf",
+      "repo": "LiquidAI/LFM2.5-230M-GGUF",
+      "revision": "03502067c64ce32ac4fe87b0cec0310a1a13d3e9",
+      "file": "LFM2.5-230M-F16.gguf",
+      "sha256": "4d364976c7ae1b85bd380f743155aa2d532f7a10291beaa6b27a7d6c9b10527f",
+      "sampling": {
+        "temperature": 0.1,
+        "top_k": 50,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.05,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      }
+    },
+    "parent_bf16": {
+      "path": "local/models/LFM2.5-230M-BF16.gguf",
+      "repo": "LiquidAI/LFM2.5-230M-GGUF",
+      "revision": "03502067c64ce32ac4fe87b0cec0310a1a13d3e9",
+      "file": "LFM2.5-230M-BF16.gguf",
+      "sha256": "9a47cffa8c86d071e4cdb2adf6861251fecd6191c226c88607a193a0d9cc5a38",
+      "sampling": {
+        "temperature": 0.1,
+        "top_k": 50,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.05,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      }
+    },
+    "fable_q_only": {
+      "path": "artifacts/fable-q-only-parent.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "0c88fb78554e210d5876bd45f82261d5590f0426fd2e7ae95ed59a966647286b",
+      "sampling": {
+        "temperature": 0.1,
+        "top_k": 50,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.05,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "local_patch_manifest": "research/patches/fable-q-only-parent.json",
+      "local_patch_manifest_sha256": "5f2500a7ee9db747ade044a69f86721724d10c695c6c01527d9e0cf17866ca9a"
+    },
+    "fable_k_only": {
+      "path": "artifacts/fable-k-only-parent.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "fa5c4ed0dae3a5fd79e53c37a22a905f5a76e3e2de04994422fd82b62742387a",
+      "sampling": {
+        "temperature": 0.1,
+        "top_k": 50,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.05,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "local_patch_manifest": "research/patches/fable-k-only-parent.json",
+      "local_patch_manifest_sha256": "c6f896eed2c3b4d5cf12ee4a1c63131617d8a683ced746193220e93525228523"
+    },
+    "fable_v_only": {
+      "path": "artifacts/fable-v-only-parent.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "a7e5ac40b01b5d100f2d4e59ca1f795aaf5c430a83f855ed08b0cd1eaf6e44a7",
+      "sampling": {
+        "temperature": 0.1,
+        "top_k": 50,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.05,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "local_patch_manifest": "research/patches/fable-v-only-parent.json",
+      "local_patch_manifest_sha256": "d49d0cc35fd99c091f393895636f6336c46b9e9345abb74882863e9eef1ebe89"
+    },
+    "parent_uniform_bf16": {
+      "path": "artifacts/parent-uniform-bf16-f16.gguf",
+      "repo": "LiquidAI/LFM2.5-230M-GGUF",
+      "revision": "03502067c64ce32ac4fe87b0cec0310a1a13d3e9",
+      "file": "LFM2.5-230M-F16.gguf",
+      "sha256": "256feee13466c9a5101f2b553e58f61f284e552a4b6e8847754d9e3096f7ceed",
+      "sampling": {
+        "temperature": 0.1,
+        "top_k": 50,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.05,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "local_patch_manifest": "research/patches/parent-uniform-bf16-f16.json",
+      "local_patch_manifest_sha256": "1074e5d560c48e478e54bc236dc21d896286e21278fe941cfefdcc047980c108"
+    },
+    "fable_all_qkv_parent": {
+      "path": "artifacts/fable-all-qkv-parent.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "de39e08dfa54e8d23c4f8964d8a05de7f788656a7821b2dd7ed8b08d7aa2d230",
+      "sampling": {
+        "temperature": 0.1,
+        "top_k": 50,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.05,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "local_patch_manifest": "research/patches/fable-all-qkv-parent.json",
+      "local_patch_manifest_sha256": "11cd17e3da0cc41e5d9773e51fdec5f89bc044682424a5859a74385300965fe2"
+    },
+    "qwen3_q8_A": {
+      "path": "artifacts/portfolio/qwen3_q8-A.gguf",
+      "repo": "Qwen/Qwen3-0.6B-GGUF",
+      "revision": "23749fefcc72300e3a2ad315e1317431b06b590a",
+      "file": "Qwen3-0.6B-Q8_0.gguf",
+      "sha256": "bbd84486c8f47cd1cbe1fcbffbb66d8e3b62f6981c86446faecd5d12c74e3717",
+      "sampling": {
+        "temperature": 0.7,
+        "top_k": 20,
+        "top_p": 0.8,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "local_patch_manifest": "research/patches/portfolio-qwen3_q8-A.json",
+      "local_patch_manifest_sha256": "567bda8e7e61465ff924f4f66bc4cdd3b10345617a21a3d55e18b6d26da6d152"
+    },
+    "qwen3_q8_B": {
+      "path": "artifacts/portfolio/qwen3_q8-B.gguf",
+      "repo": "Qwen/Qwen3-0.6B-GGUF",
+      "revision": "23749fefcc72300e3a2ad315e1317431b06b590a",
+      "file": "Qwen3-0.6B-Q8_0.gguf",
+      "sha256": "0b7c0da60ee3af7734fd007156e9f1828333627b251ad7078276b33a31a6c375",
+      "sampling": {
+        "temperature": 0.7,
+        "top_k": 20,
+        "top_p": 0.8,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "local_patch_manifest": "research/patches/portfolio-qwen3_q8-B.json",
+      "local_patch_manifest_sha256": "772f399ece17f5a29abddb233e6f84fbc8bd914d3c6d6e8b23f308d461afc5f1"
+    },
+    "qwen3_q8_R": {
+      "path": "artifacts/portfolio/qwen3_q8-R.gguf",
+      "repo": "Qwen/Qwen3-0.6B-GGUF",
+      "revision": "23749fefcc72300e3a2ad315e1317431b06b590a",
+      "file": "Qwen3-0.6B-Q8_0.gguf",
+      "sha256": "6f239d34aca1d6e8ce5fecbb710d85fd3bd2f3085736e5f88660a19569bf24fc",
+      "sampling": {
+        "temperature": 0.7,
+        "top_k": 20,
+        "top_p": 0.8,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "local_patch_manifest": "research/patches/portfolio-qwen3_q8-R.json",
+      "local_patch_manifest_sha256": "adafe36c40b997ff7e3ac7d488196de1205a8f0b4bb7043ebf91952e9dba5bbc"
+    },
+    "qwen3_q8_AB": {
+      "path": "artifacts/portfolio/qwen3_q8-AB.gguf",
+      "repo": "Qwen/Qwen3-0.6B-GGUF",
+      "revision": "23749fefcc72300e3a2ad315e1317431b06b590a",
+      "file": "Qwen3-0.6B-Q8_0.gguf",
+      "sha256": "ff01b1dc0406b7b6cf4e52cf34916cc7f5633310a29653b0fd1bcc545e516a68",
+      "sampling": {
+        "temperature": 0.7,
+        "top_k": 20,
+        "top_p": 0.8,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "local_patch_manifest": "research/patches/portfolio-qwen3_q8-AB.json",
+      "local_patch_manifest_sha256": "69e7fd46ec2e70bf3f9bdaca442fddd2ff60b0a596ed0fd8c2dfc07359839792"
+    },
+    "qwen3_q8_BA": {
+      "path": "artifacts/portfolio/qwen3_q8-BA.gguf",
+      "repo": "Qwen/Qwen3-0.6B-GGUF",
+      "revision": "23749fefcc72300e3a2ad315e1317431b06b590a",
+      "file": "Qwen3-0.6B-Q8_0.gguf",
+      "sha256": "ff01b1dc0406b7b6cf4e52cf34916cc7f5633310a29653b0fd1bcc545e516a68",
+      "sampling": {
+        "temperature": 0.7,
+        "top_k": 20,
+        "top_p": 0.8,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "local_patch_manifest": "research/patches/portfolio-qwen3_q8-BA.json",
+      "local_patch_manifest_sha256": "e6c41c13b06845f5f7debd1f6a09b4b6e0f3e691c576c6cc529ec83045a767eb"
+    },
+    "lfm3_qad_A": {
+      "path": "artifacts/portfolio/lfm3_qad-A.gguf",
+      "repo": "LiquidAI/LFM3-1.7B-GGUF",
+      "revision": "cd0c74c575b5c416f3011b5b4c298077f26ca8c2",
+      "file": "LFM3-1.7B-QAD-Q4_0.gguf",
+      "sha256": "895fe33fe7c17b4004a2504bedf6c2a56f078fee4396f5d86ac2be1c2523f8bc",
+      "sampling": {
+        "temperature": 0.1,
+        "top_k": 50,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.1,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "local_patch_manifest": "research/patches/portfolio-lfm3_qad-A.json",
+      "local_patch_manifest_sha256": "a213bad47769cafc1cc1f30aa8aab6789de9b00b5dc571d7e250ad24cf64a218"
+    },
+    "lfm3_qad_B": {
+      "path": "artifacts/portfolio/lfm3_qad-B.gguf",
+      "repo": "LiquidAI/LFM3-1.7B-GGUF",
+      "revision": "cd0c74c575b5c416f3011b5b4c298077f26ca8c2",
+      "file": "LFM3-1.7B-QAD-Q4_0.gguf",
+      "sha256": "3e5c45880fd34969ea96957c482cb331fbd4b4014617b9f6b5afe8ab197ef4ee",
+      "sampling": {
+        "temperature": 0.1,
+        "top_k": 50,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.1,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "local_patch_manifest": "research/patches/portfolio-lfm3_qad-B.json",
+      "local_patch_manifest_sha256": "6951745e40562737c2dc61aea2aa4c55702521568a1d1e7b8e52ccc9cd0aa115"
+    },
+    "lfm3_qad_R": {
+      "path": "artifacts/portfolio/lfm3_qad-R.gguf",
+      "repo": "LiquidAI/LFM3-1.7B-GGUF",
+      "revision": "cd0c74c575b5c416f3011b5b4c298077f26ca8c2",
+      "file": "LFM3-1.7B-QAD-Q4_0.gguf",
+      "sha256": "ffff331eb440bba9237a6d47b750327c4de95f6f109dfdecc9fc922a94a34f2f",
+      "sampling": {
+        "temperature": 0.1,
+        "top_k": 50,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.1,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "local_patch_manifest": "research/patches/portfolio-lfm3_qad-R.json",
+      "local_patch_manifest_sha256": "071876aa50583be3a9e77a208d75e1bb16a02471f932134df46425b5aeef6f09"
+    },
+    "lfm3_qad_AB": {
+      "path": "artifacts/portfolio/lfm3_qad-AB.gguf",
+      "repo": "LiquidAI/LFM3-1.7B-GGUF",
+      "revision": "cd0c74c575b5c416f3011b5b4c298077f26ca8c2",
+      "file": "LFM3-1.7B-QAD-Q4_0.gguf",
+      "sha256": "7c9b65d32d81631aada50a2db99c3ed1108ebb1ca33b174e1ad8e6a6518ddf3e",
+      "sampling": {
+        "temperature": 0.1,
+        "top_k": 50,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.1,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "local_patch_manifest": "research/patches/portfolio-lfm3_qad-AB.json",
+      "local_patch_manifest_sha256": "05ebddea8ce2f6e5221df22b1189b016546b2cb03d54ac35924609f830a8651e"
+    },
+    "lfm3_qad_BA": {
+      "path": "artifacts/portfolio/lfm3_qad-BA.gguf",
+      "repo": "LiquidAI/LFM3-1.7B-GGUF",
+      "revision": "cd0c74c575b5c416f3011b5b4c298077f26ca8c2",
+      "file": "LFM3-1.7B-QAD-Q4_0.gguf",
+      "sha256": "7c9b65d32d81631aada50a2db99c3ed1108ebb1ca33b174e1ad8e6a6518ddf3e",
+      "sampling": {
+        "temperature": 0.1,
+        "top_k": 50,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.1,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "local_patch_manifest": "research/patches/portfolio-lfm3_qad-BA.json",
+      "local_patch_manifest_sha256": "edb028700f611216fe44b3f80b72cf085f58ed3eb27dc3927365603e4626d740"
+    },
+    "fable_f16_A": {
+      "path": "artifacts/portfolio/fable_f16-A.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "5ea1ace8017f8376db3ee0cc5d6a0bf9ba0b7b5d6961a3b3feef779702fd2606",
+      "sampling": {
+        "temperature": 0.1,
+        "top_k": 50,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.05,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "local_patch_manifest": "research/patches/portfolio-fable_f16-A.json",
+      "local_patch_manifest_sha256": "06d802fd0cdd2ef556675759301a239ebd0212eb45d48e7b21f962f5430f34df"
+    },
+    "fable_f16_B": {
+      "path": "artifacts/portfolio/fable_f16-B.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "6a8fa6e254df0105f1046483219433c872d7af0ea9cef9928ebd36565f02b214",
+      "sampling": {
+        "temperature": 0.1,
+        "top_k": 50,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.05,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "local_patch_manifest": "research/patches/portfolio-fable_f16-B.json",
+      "local_patch_manifest_sha256": "4fd9cae20d25faf6e094da08d30250d8d962ad8142f353b2c5cde171cf88477a"
+    },
+    "fable_f16_R": {
+      "path": "artifacts/portfolio/fable_f16-R.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "11d17af92eb6c7c08cfbe654054aa7e846b1936b1195d0f50da9bd7fd6ca5b71",
+      "sampling": {
+        "temperature": 0.1,
+        "top_k": 50,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.05,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "local_patch_manifest": "research/patches/portfolio-fable_f16-R.json",
+      "local_patch_manifest_sha256": "e562858d3a7a66d32196a79bd8a5c06178a051e8b6d232ca4f2e70839b688f53"
+    },
+    "fable_f16_AB": {
+      "path": "artifacts/portfolio/fable_f16-AB.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "227953315bbe6b4c1453e308b6ba66542a740fc94f3149660198b9c34ea2bb2b",
+      "sampling": {
+        "temperature": 0.1,
+        "top_k": 50,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.05,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "local_patch_manifest": "research/patches/portfolio-fable_f16-AB.json",
+      "local_patch_manifest_sha256": "0bb0bb4329c17239a284e3fba7059746ceafb145c57f7e5357578b7acf568a43"
+    },
+    "fable_f16_BA": {
+      "path": "artifacts/portfolio/fable_f16-BA.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "227953315bbe6b4c1453e308b6ba66542a740fc94f3149660198b9c34ea2bb2b",
+      "sampling": {
+        "temperature": 0.1,
+        "top_k": 50,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.05,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "local_patch_manifest": "research/patches/portfolio-fable_f16-BA.json",
+      "local_patch_manifest_sha256": "2ee50e09e8ed7e4f8ffa40f2a5ca683dfb9762bbf0960bd427f5741b50f9d63d"
+    }
+  }
+}

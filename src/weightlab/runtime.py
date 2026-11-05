@@ -10,6 +10,8 @@ import urllib.error
 import urllib.request
 
 from .evidence import file_sha256
+from .evidence import write_json
+from .resources import monitor
 
 
 def runtime_libraries(binary):
@@ -55,7 +57,9 @@ def server(binary, model, run_dir, config):
                 if time.monotonic() > deadline:
                     raise TimeoutError("Server did not become healthy within 120 seconds")
                 time.sleep(0.3)
-            yield url, cmd, proc
+            with monitor(proc.pid) as metrics:
+                try:yield url, cmd, proc
+                finally:write_json(Path(run_dir)/'resources.json',metrics)
         finally:
             if proc.poll() is None:
                 proc.terminate()

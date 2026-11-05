@@ -78,6 +78,12 @@ class Interpreter:
             if isinstance(node.func,ast.Attribute) and node.func.attr in ('lower','upper','strip','split','join'):
                 value=self.expression(node.func.value,env)
                 if type(value) is str:return getattr(value,node.func.attr)(*args)
+            if isinstance(node.func,ast.Attribute) and node.func.attr=='get':
+                value=self.expression(node.func.value,env)
+                if type(value) is dict and 1<=len(args)<=2:return value.get(*args)
+            if isinstance(node.func,ast.Attribute) and node.func.attr=='append':
+                value=self.expression(node.func.value,env)
+                if type(value) is list and len(value)<100 and len(args)==1:return value.append(args[0])
             raise Unsupported('call not allowed')
         if isinstance(node,(ast.ListComp,ast.GeneratorExp)) and len(node.generators)==1:
             gen=node.generators[0]
@@ -96,6 +102,8 @@ class Interpreter:
             self.tick()
             if isinstance(node,ast.Return):return True,self.expression(node.value,env) if node.value else None
             if isinstance(node,ast.Expr) and isinstance(node.value,ast.Constant) and isinstance(node.value.value,str):continue
+            if isinstance(node,ast.Expr) and isinstance(node.value,ast.Call):
+                self.expression(node.value,env);continue
             if isinstance(node,ast.Assign) and len(node.targets)==1 and isinstance(node.targets[0],ast.Name):
                 env[node.targets[0].id]=self.expression(node.value,env)
             elif isinstance(node,ast.AugAssign) and isinstance(node.target,ast.Name) and type(node.op) in BIN:

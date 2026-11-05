@@ -1,0 +1,46 @@
+{
+  "schema_version": 2,
+  "utc": "2026-11-05T11:30:21.944718+00:00",
+  "git": {
+    "commit": "0e772132cdce38b20fdc2d6435a8ca557e3bbe16",
+    "status": "?? research/patches/portfolio-lfm3_qad-A.json\n?? research/patches/portfolio-lfm3_qad-AB.json\n?? research/patches/portfolio-lfm3_qad-B.json\n?? research/patches/portfolio-lfm3_qad-BA.json\n?? research/patches/portfolio-lfm3_qad-R.json\n?? research/patches/portfolio-qwen3_q8-A.json\n?? research/patches/portfolio-qwen3_q8-AB.json\n?? research/patches/portfolio-qwen3_q8-B.json\n?? research/patches/portfolio-qwen3_q8-BA.json\n?? research/patches/portfolio-qwen3_q8-R.json"
+  },
+  "base": {
+    "path": "local/models/lfm2.5-230m-fable-5-f16.gguf",
+    "repo": "AKMESSI/lfm2.5-230m-fable-5",
+    "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+    "file": "lfm2.5-230m-fable-5-f16.gguf",
+    "sha256": "1e1624de4d7ebe413d82dbe2b5f48fcf83e6c46b1b5414c8aef0596009380cc6",
+    "sampling": {
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "min_p": 0.0,
+      "repeat_penalty": 1.05,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0
+    }
+  },
+  "operations": [
+    {
+      "tensor": "blk.13.ffn_norm.weight",
+      "kind": "scale",
+      "factor": 0.9
+    }
+  ],
+  "output": "artifacts/portfolio/fable_f16-A.gguf",
+  "status": "verified",
+  "tensors": [
+    {
+      "name": "blk.13.ffn_norm.weight",
+      "base_sha256": "86b5744d51433302c02720a2c985a3ba24433268e74416efb76a41f8c0c7b3d0",
+      "edited_sha256": "853817497211b1b105be8e83e7a84d67a198560f4b4624391298604daddc969a",
+      "changed_values": 1024,
+      "relative_frobenius_change": 0.10000002832943268
+    }
+  ],
+  "untouched_tensors_verified": 131,
+  "edited_file_sha256": "5ea1ace8017f8376db3ee0cc5d6a0bf9ba0b7b5d6961a3b3feef779702fd2606",
+  "changed_values": 1024,
+  "bytes": 461883712
+}

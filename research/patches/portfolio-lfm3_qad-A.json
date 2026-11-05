@@ -1,0 +1,46 @@
+{
+  "schema_version": 2,
+  "utc": "2026-11-05T11:28:30.841426+00:00",
+  "git": {
+    "commit": "0e772132cdce38b20fdc2d6435a8ca557e3bbe16",
+    "status": "?? research/patches/portfolio-qwen3_q8-A.json\n?? research/patches/portfolio-qwen3_q8-AB.json\n?? research/patches/portfolio-qwen3_q8-B.json\n?? research/patches/portfolio-qwen3_q8-BA.json\n?? research/patches/portfolio-qwen3_q8-R.json"
+  },
+  "base": {
+    "path": "/home/akmessi/models/lfm3/LFM3-1.7B-QAD-Q4_0.gguf",
+    "repo": "LiquidAI/LFM3-1.7B-GGUF",
+    "revision": "cd0c74c575b5c416f3011b5b4c298077f26ca8c2",
+    "file": "LFM3-1.7B-QAD-Q4_0.gguf",
+    "sha256": "43a7d09a0e9cba91b63eb7052488b9564569bddfd65754d2e426465e572a7452",
+    "sampling": {
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "min_p": 0.0,
+      "repeat_penalty": 1.1,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0
+    }
+  },
+  "operations": [
+    {
+      "tensor": "blk.23.ffn_norm.weight",
+      "kind": "scale",
+      "factor": 0.9
+    }
+  ],
+  "output": "artifacts/portfolio/lfm3_qad-A.gguf",
+  "status": "verified",
+  "tensors": [
+    {
+      "name": "blk.23.ffn_norm.weight",
+      "base_sha256": "57f72e3ecd3cb6dc2c8ae7a0fae0f744203d03155f4165485a628236b0479e68",
+      "edited_sha256": "fe70f58c3c351113f5fae2e4edd9e714c3993fbe94d0a6a838ee6a20be3e1120",
+      "changed_values": 2048,
+      "relative_frobenius_change": 0.10000002769643782
+    }
+  ],
+  "untouched_tensors_verified": 286,
+  "edited_file_sha256": "895fe33fe7c17b4004a2504bedf6c2a56f078fee4396f5d86ac2be1c2523f8bc",
+  "changed_values": 2048,
+  "bytes": 1049615680
+}
