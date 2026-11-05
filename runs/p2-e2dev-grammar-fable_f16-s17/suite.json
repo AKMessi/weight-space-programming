@@ -1,0 +1,870 @@
+{
+  "name": "portfolio-e2-development-grammar-v1",
+  "status": "frozen synthetic development; actual assistant response passed into next turn",
+  "cases": [
+    {
+      "id": "e2-development-address-complete",
+      "split": "development",
+      "family": "complete",
+      "group": "complete",
+      "grader": "json",
+      "expected": {
+        "action": "answer",
+        "field": "address",
+        "value": "blue-13"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools. Check every supplied record and follow the decision rule carefully. Emit a single JSON object and stop."
+        },
+        {
+          "role": "user",
+          "content": "Answer only JSON with action, field, value. If the required field has one unambiguous value, action is answer and value is that string. If absent, action is ask and value is null. If contradictory with no precedence rule, action is conflict and value is null. field names the requested field.\nRequired field: address\nSupplied records:\nproject=work-0; note=ordinary; address=blue-13; code=other-99\nNo precedence rule is provided."
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "action": "answer",
+            "field": "address",
+            "value": "green-81"
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: address=green-81. This replaces any earlier value of address. Complete the same task now."
+            }
+          ]
+        }
+      ],
+      "control": "grammar",
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "action": {
+                "type": "string",
+                "enum": [
+                  "answer",
+                  "ask",
+                  "conflict"
+                ]
+              },
+              "field": {
+                "type": "string"
+              },
+              "value": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "action",
+              "field",
+              "value"
+            ],
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    {
+      "id": "e2-development-address-missing",
+      "split": "development",
+      "family": "missing",
+      "group": "missing",
+      "grader": "json",
+      "expected": {
+        "action": "ask",
+        "field": "address",
+        "value": null
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools. Check every supplied record and follow the decision rule carefully. Emit a single JSON object and stop."
+        },
+        {
+          "role": "user",
+          "content": "Answer only JSON with action, field, value. If the required field has one unambiguous value, action is answer and value is that string. If absent, action is ask and value is null. If contradictory with no precedence rule, action is conflict and value is null. field names the requested field.\nRequired field: address\nSupplied records:\nproject=work-0; note=ordinary; reference=blue-13; code=other-99\nNo precedence rule is provided."
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "action": "answer",
+            "field": "address",
+            "value": "green-81"
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: address=green-81. This replaces any earlier value of address. Complete the same task now."
+            }
+          ]
+        }
+      ],
+      "control": "grammar",
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "action": {
+                "type": "string",
+                "enum": [
+                  "answer",
+                  "ask",
+                  "conflict"
+                ]
+              },
+              "field": {
+                "type": "string"
+              },
+              "value": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "action",
+              "field",
+              "value"
+            ],
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    {
+      "id": "e2-development-address-conflict",
+      "split": "development",
+      "family": "conflict",
+      "group": "conflict",
+      "grader": "json",
+      "expected": {
+        "action": "conflict",
+        "field": "address",
+        "value": null
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools. Check every supplied record and follow the decision rule carefully. Emit a single JSON object and stop."
+        },
+        {
+          "role": "user",
+          "content": "Answer only JSON with action, field, value. If the required field has one unambiguous value, action is answer and value is that string. If absent, action is ask and value is null. If contradictory with no precedence rule, action is conflict and value is null. field names the requested field.\nRequired field: address\nSupplied records:\nproject=work-0; note=ordinary; address=blue-13; address=other-99\nNo precedence rule is provided."
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "action": "answer",
+            "field": "address",
+            "value": "green-81"
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: address=green-81. This replaces any earlier value of address. Complete the same task now."
+            }
+          ]
+        }
+      ],
+      "control": "grammar",
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "action": {
+                "type": "string",
+                "enum": [
+                  "answer",
+                  "ask",
+                  "conflict"
+                ]
+              },
+              "field": {
+                "type": "string"
+              },
+              "value": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "action",
+              "field",
+              "value"
+            ],
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    {
+      "id": "e2-development-port-complete",
+      "split": "development",
+      "family": "complete",
+      "group": "complete",
+      "grader": "json",
+      "expected": {
+        "action": "answer",
+        "field": "port",
+        "value": "blue-20"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools. Check every supplied record and follow the decision rule carefully. Emit a single JSON object and stop."
+        },
+        {
+          "role": "user",
+          "content": "Answer only JSON with action, field, value. If the required field has one unambiguous value, action is answer and value is that string. If absent, action is ask and value is null. If contradictory with no precedence rule, action is conflict and value is null. field names the requested field.\nRequired field: port\nSupplied records:\nproject=work-1; note=ordinary; port=blue-20; code=other-99\nNo precedence rule is provided."
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "action": "answer",
+            "field": "port",
+            "value": "green-82"
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: port=green-82. This replaces any earlier value of port. Complete the same task now."
+            }
+          ]
+        }
+      ],
+      "control": "grammar",
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "action": {
+                "type": "string",
+                "enum": [
+                  "answer",
+                  "ask",
+                  "conflict"
+                ]
+              },
+              "field": {
+                "type": "string"
+              },
+              "value": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "action",
+              "field",
+              "value"
+            ],
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    {
+      "id": "e2-development-port-missing",
+      "split": "development",
+      "family": "missing",
+      "group": "missing",
+      "grader": "json",
+      "expected": {
+        "action": "ask",
+        "field": "port",
+        "value": null
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools. Check every supplied record and follow the decision rule carefully. Emit a single JSON object and stop."
+        },
+        {
+          "role": "user",
+          "content": "Answer only JSON with action, field, value. If the required field has one unambiguous value, action is answer and value is that string. If absent, action is ask and value is null. If contradictory with no precedence rule, action is conflict and value is null. field names the requested field.\nRequired field: port\nSupplied records:\nproject=work-1; note=ordinary; reference=blue-20; code=other-99\nNo precedence rule is provided."
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "action": "answer",
+            "field": "port",
+            "value": "green-82"
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: port=green-82. This replaces any earlier value of port. Complete the same task now."
+            }
+          ]
+        }
+      ],
+      "control": "grammar",
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "action": {
+                "type": "string",
+                "enum": [
+                  "answer",
+                  "ask",
+                  "conflict"
+                ]
+              },
+              "field": {
+                "type": "string"
+              },
+              "value": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "action",
+              "field",
+              "value"
+            ],
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    {
+      "id": "e2-development-port-conflict",
+      "split": "development",
+      "family": "conflict",
+      "group": "conflict",
+      "grader": "json",
+      "expected": {
+        "action": "conflict",
+        "field": "port",
+        "value": null
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools. Check every supplied record and follow the decision rule carefully. Emit a single JSON object and stop."
+        },
+        {
+          "role": "user",
+          "content": "Answer only JSON with action, field, value. If the required field has one unambiguous value, action is answer and value is that string. If absent, action is ask and value is null. If contradictory with no precedence rule, action is conflict and value is null. field names the requested field.\nRequired field: port\nSupplied records:\nproject=work-1; note=ordinary; port=blue-20; port=other-99\nNo precedence rule is provided."
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "action": "answer",
+            "field": "port",
+            "value": "green-82"
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: port=green-82. This replaces any earlier value of port. Complete the same task now."
+            }
+          ]
+        }
+      ],
+      "control": "grammar",
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "action": {
+                "type": "string",
+                "enum": [
+                  "answer",
+                  "ask",
+                  "conflict"
+                ]
+              },
+              "field": {
+                "type": "string"
+              },
+              "value": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "action",
+              "field",
+              "value"
+            ],
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    {
+      "id": "e2-development-branch-complete",
+      "split": "development",
+      "family": "complete",
+      "group": "complete",
+      "grader": "json",
+      "expected": {
+        "action": "answer",
+        "field": "branch",
+        "value": "blue-27"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools. Check every supplied record and follow the decision rule carefully. Emit a single JSON object and stop."
+        },
+        {
+          "role": "user",
+          "content": "Answer only JSON with action, field, value. If the required field has one unambiguous value, action is answer and value is that string. If absent, action is ask and value is null. If contradictory with no precedence rule, action is conflict and value is null. field names the requested field.\nRequired field: branch\nSupplied records:\nproject=work-2; note=ordinary; branch=blue-27; code=other-99\nNo precedence rule is provided."
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "action": "answer",
+            "field": "branch",
+            "value": "green-83"
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: branch=green-83. This replaces any earlier value of branch. Complete the same task now."
+            }
+          ]
+        }
+      ],
+      "control": "grammar",
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "action": {
+                "type": "string",
+                "enum": [
+                  "answer",
+                  "ask",
+                  "conflict"
+                ]
+              },
+              "field": {
+                "type": "string"
+              },
+              "value": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "action",
+              "field",
+              "value"
+            ],
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    {
+      "id": "e2-development-branch-missing",
+      "split": "development",
+      "family": "missing",
+      "group": "missing",
+      "grader": "json",
+      "expected": {
+        "action": "ask",
+        "field": "branch",
+        "value": null
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools. Check every supplied record and follow the decision rule carefully. Emit a single JSON object and stop."
+        },
+        {
+          "role": "user",
+          "content": "Answer only JSON with action, field, value. If the required field has one unambiguous value, action is answer and value is that string. If absent, action is ask and value is null. If contradictory with no precedence rule, action is conflict and value is null. field names the requested field.\nRequired field: branch\nSupplied records:\nproject=work-2; note=ordinary; reference=blue-27; code=other-99\nNo precedence rule is provided."
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "action": "answer",
+            "field": "branch",
+            "value": "green-83"
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: branch=green-83. This replaces any earlier value of branch. Complete the same task now."
+            }
+          ]
+        }
+      ],
+      "control": "grammar",
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "action": {
+                "type": "string",
+                "enum": [
+                  "answer",
+                  "ask",
+                  "conflict"
+                ]
+              },
+              "field": {
+                "type": "string"
+              },
+              "value": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "action",
+              "field",
+              "value"
+            ],
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    {
+      "id": "e2-development-branch-conflict",
+      "split": "development",
+      "family": "conflict",
+      "group": "conflict",
+      "grader": "json",
+      "expected": {
+        "action": "conflict",
+        "field": "branch",
+        "value": null
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools. Check every supplied record and follow the decision rule carefully. Emit a single JSON object and stop."
+        },
+        {
+          "role": "user",
+          "content": "Answer only JSON with action, field, value. If the required field has one unambiguous value, action is answer and value is that string. If absent, action is ask and value is null. If contradictory with no precedence rule, action is conflict and value is null. field names the requested field.\nRequired field: branch\nSupplied records:\nproject=work-2; note=ordinary; branch=blue-27; branch=other-99\nNo precedence rule is provided."
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "action": "answer",
+            "field": "branch",
+            "value": "green-83"
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: branch=green-83. This replaces any earlier value of branch. Complete the same task now."
+            }
+          ]
+        }
+      ],
+      "control": "grammar",
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "action": {
+                "type": "string",
+                "enum": [
+                  "answer",
+                  "ask",
+                  "conflict"
+                ]
+              },
+              "field": {
+                "type": "string"
+              },
+              "value": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "action",
+              "field",
+              "value"
+            ],
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    {
+      "id": "e2-development-destination-complete",
+      "split": "development",
+      "family": "complete",
+      "group": "complete",
+      "grader": "json",
+      "expected": {
+        "action": "answer",
+        "field": "destination",
+        "value": "blue-34"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools. Check every supplied record and follow the decision rule carefully. Emit a single JSON object and stop."
+        },
+        {
+          "role": "user",
+          "content": "Answer only JSON with action, field, value. If the required field has one unambiguous value, action is answer and value is that string. If absent, action is ask and value is null. If contradictory with no precedence rule, action is conflict and value is null. field names the requested field.\nRequired field: destination\nSupplied records:\nproject=work-3; note=ordinary; destination=blue-34; code=other-99\nNo precedence rule is provided."
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "action": "answer",
+            "field": "destination",
+            "value": "green-84"
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: destination=green-84. This replaces any earlier value of destination. Complete the same task now."
+            }
+          ]
+        }
+      ],
+      "control": "grammar",
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "action": {
+                "type": "string",
+                "enum": [
+                  "answer",
+                  "ask",
+                  "conflict"
+                ]
+              },
+              "field": {
+                "type": "string"
+              },
+              "value": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "action",
+              "field",
+              "value"
+            ],
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    {
+      "id": "e2-development-destination-missing",
+      "split": "development",
+      "family": "missing",
+      "group": "missing",
+      "grader": "json",
+      "expected": {
+        "action": "ask",
+        "field": "destination",
+        "value": null
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools. Check every supplied record and follow the decision rule carefully. Emit a single JSON object and stop."
+        },
+        {
+          "role": "user",
+          "content": "Answer only JSON with action, field, value. If the required field has one unambiguous value, action is answer and value is that string. If absent, action is ask and value is null. If contradictory with no precedence rule, action is conflict and value is null. field names the requested field.\nRequired field: destination\nSupplied records:\nproject=work-3; note=ordinary; reference=blue-34; code=other-99\nNo precedence rule is provided."
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "action": "answer",
+            "field": "destination",
+            "value": "green-84"
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: destination=green-84. This replaces any earlier value of destination. Complete the same task now."
+            }
+          ]
+        }
+      ],
+      "control": "grammar",
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "action": {
+                "type": "string",
+                "enum": [
+                  "answer",
+                  "ask",
+                  "conflict"
+                ]
+              },
+              "field": {
+                "type": "string"
+              },
+              "value": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "action",
+              "field",
+              "value"
+            ],
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    {
+      "id": "e2-development-destination-conflict",
+      "split": "development",
+      "family": "conflict",
+      "group": "conflict",
+      "grader": "json",
+      "expected": {
+        "action": "conflict",
+        "field": "destination",
+        "value": null
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response contract. Use only supplied facts. Do not call real tools. Check every supplied record and follow the decision rule carefully. Emit a single JSON object and stop."
+        },
+        {
+          "role": "user",
+          "content": "Answer only JSON with action, field, value. If the required field has one unambiguous value, action is answer and value is that string. If absent, action is ask and value is null. If contradictory with no precedence rule, action is conflict and value is null. field names the requested field.\nRequired field: destination\nSupplied records:\nproject=work-3; note=ordinary; destination=blue-34; destination=other-99\nNo precedence rule is provided."
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "action": "answer",
+            "field": "destination",
+            "value": "green-84"
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: destination=green-84. This replaces any earlier value of destination. Complete the same task now."
+            }
+          ]
+        }
+      ],
+      "control": "grammar",
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "action": {
+                "type": "string",
+                "enum": [
+                  "answer",
+                  "ask",
+                  "conflict"
+                ]
+              },
+              "field": {
+                "type": "string"
+              },
+              "value": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "action",
+              "field",
+              "value"
+            ],
+            "additionalProperties": false
+          }
+        }
+      }
+    }
+  ]
+}
