@@ -1,0 +1,121 @@
+{
+  "schema_version": 2,
+  "started_utc": "2026-11-05T17:59:22.156721+00:00",
+  "purpose": "development; repository-disjoint short-context adaptation, not full official RepoBench",
+  "git": {
+    "commit": "4ba9ad24d9a8312b0678bd834a839cb4215d39e6",
+    "status": ""
+  },
+  "python": "3.14.4",
+  "model_key": "parent_uniform_bf16",
+  "model": {
+    "path": "artifacts/parent-uniform-bf16-f16.gguf",
+    "repo": "LiquidAI/LFM2.5-230M-GGUF",
+    "revision": "03502067c64ce32ac4fe87b0cec0310a1a13d3e9",
+    "file": "LFM2.5-230M-F16.gguf",
+    "sha256": "256feee13466c9a5101f2b553e58f61f284e552a4b6e8847754d9e3096f7ceed",
+    "sampling": {
+      "temperature": 0.0,
+      "top_k": 0,
+      "top_p": 1.0,
+      "min_p": 0.0,
+      "repeat_penalty": 1.0,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0
+    },
+    "local_patch_manifest": "research/patches/parent-uniform-bf16-f16.json",
+    "local_patch_manifest_sha256": "1074e5d560c48e478e54bc236dc21d896286e21278fe941cfefdcc047980c108"
+  },
+  "verified_model_sha256": "256feee13466c9a5101f2b553e58f61f284e552a4b6e8847754d9e3096f7ceed",
+  "suite_sha256": "7eab190dd28a8773cfdcd04c6cbb240c450db136ce0f2c3acfb1a3c543816b70",
+  "max_tokens": 64,
+  "seed": 17,
+  "limit": null,
+  "grader_version": "8",
+  "runtime": {
+    "binary": "/home/akmessi/llama-vulkan-build/bin/llama-server",
+    "context": 2048,
+    "threads": 4,
+    "gpu_layers": 99
+  },
+  "config_sha256": "447f821eb59463b79d9e7c7a2ee0223f6217bdca2ce904121e9d353bc39e6366",
+  "binary_sha256": "fdd736cf5fa5da5488982c63229b8596ab641ca2fc695e78743cfab5250ea32b",
+  "colocated_runtime_libraries": [
+    {
+      "path": "/home/akmessi/llama-vulkan-build/bin/libggml-base.so.0.27.0",
+      "bytes": 942696,
+      "sha256": "2c0cd564b49358a83d2563d84d88dc1f7e986bc8bc74148c92bcb4e1909c66b6"
+    },
+    {
+      "path": "/home/akmessi/llama-vulkan-build/bin/libggml-cpu.so.0.27.0",
+      "bytes": 1402440,
+      "sha256": "0235354d0cd4dcae9fc2057306717e3a2ceac5322baa0d89744699e852c4e32f"
+    },
+    {
+      "path": "/home/akmessi/llama-vulkan-build/bin/libggml-vulkan.so.0.27.0",
+      "bytes": 41301376,
+      "sha256": "f88398e78f60208f5c680c53683e71a3daf0ab43e5facfbb85e36870ae5aa81b"
+    },
+    {
+      "path": "/home/akmessi/llama-vulkan-build/bin/libggml.so.0.27.0",
+      "bytes": 59552,
+      "sha256": "1d85a6c1a5816875af5717b5ecf281eac8216172f1148569cc06933ee5d8e353"
+    },
+    {
+      "path": "/home/akmessi/llama-vulkan-build/bin/libllama-batched-bench-impl.so",
+      "bytes": 44192,
+      "sha256": "7571114237e6a4e7f33d53740620a8480788488215ce49a4c3af9926afdb4345"
+    },
+    {
+      "path": "/home/akmessi/llama-vulkan-build/bin/libllama-bench-impl.so",
+      "bytes": 480808,
+      "sha256": "f0b8904b64fb0537171751f567201afff7b6a3bca29fdfeb0a6092ddde74bd67"
+    },
+    {
+      "path": "/home/akmessi/llama-vulkan-build/bin/libllama-cli-impl.so",
+      "bytes": 253864,
+      "sha256": "bd4a6f8ee73681f614753a1a0c03f1627239b164c5d1dd5f13fda5b8fc9d98e1"
+    },
+    {
+      "path": "/home/akmessi/llama-vulkan-build/bin/libllama-common.so.0.7.0",
+      "bytes": 6826696,
+      "sha256": "4e6783bde0ed9239d15667e1cfdad2bc756a948e1a3f6e81bdead0619accd141"
+    },
+    {
+      "path": "/home/akmessi/llama-vulkan-build/bin/libllama-completion-impl.so",
+      "bytes": 146272,
+      "sha256": "bd076bcbc93275fb49fb27692c102c08aa2ea5ec298dd1296aad6e1ccb879d13"
+    },
+    {
+      "path": "/home/akmessi/llama-vulkan-build/bin/libllama-fit-params-impl.so",
+      "bytes": 34976,
+      "sha256": "e14c8a03db39aeabe35bf4946b6c25f4b397b074728d0d09dfd7f6c902b83432"
+    },
+    {
+      "path": "/home/akmessi/llama-vulkan-build/bin/libllama-perplexity-impl.so",
+      "bytes": 168096,
+      "sha256": "a80043ca0a4b4e9b5f80d63b9c9b415a0535f74e6f2cf7c865c86f2d079b9a42"
+    },
+    {
+      "path": "/home/akmessi/llama-vulkan-build/bin/libllama-quantize-impl.so",
+      "bytes": 84112,
+      "sha256": "1e4de0efd3250a3c32d3e1cf843884c1c0b79a68ea73ff1efba5c926addbe1c5"
+    },
+    {
+      "path": "/home/akmessi/llama-vulkan-build/bin/libllama-server-impl.so",
+      "bytes": 8065448,
+      "sha256": "23e22107f10230e9d47dd0517da902fb23930cba5ab7f964e12be2662605a789"
+    },
+    {
+      "path": "/home/akmessi/llama-vulkan-build/bin/libllama.so.0.7.0",
+      "bytes": 5382512,
+      "sha256": "9dcdf82407b709bb326337554b4c8ed3c8c7e16fd609ecea93ad4f55b34889ae"
+    },
+    {
+      "path": "/home/akmessi/llama-vulkan-build/bin/libmtmd.so.0.7.0",
+      "bytes": 2342848,
+      "sha256": "28c6758f8706f141ba57acb5857a0ef9d7ba74f6eb3ba28ba70b7b383c185910"
+    }
+  ],
+  "runtime_version": "version: 0.7.0-dev (build 11942, commit 338fce651)\nbuilt with GNU 15.2.0 for Linux x86_64\n"
+}

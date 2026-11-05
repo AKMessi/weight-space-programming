@@ -819,3 +819,7 @@ Across all18 aligned Fable Q/K/V differences, rank32 captures more than99.99% of
 ### 2026-11-05T17:59:17.992823+00:00 — p3-adapter-repo-dev-fable_f16-s17
 
 Status `complete`, 3405 generated tokens. Immutable raw inputs/responses/config/runtime and resource samples are in `runs/p3-adapter-repo-dev-fable_f16-s17`. Interpretation is deferred to the study report; this run alone does not establish a repair.
+
+### 2026-11-05T17:59:47.537754+00:00 — p3-adapter-repo-dev-parent_uniform_bf16-s17
+
+Status `complete`, 2676 generated tokens. Immutable raw inputs/responses/config/runtime and resource samples are in `runs/p3-adapter-repo-dev-parent_uniform_bf16-s17`. Interpretation is deferred to the study report; this run alone does not establish a repair.
