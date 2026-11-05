@@ -18,6 +18,7 @@ def run(model,requests,label,stage,config=None):
  write_json(out/'config.json',cfg)
  write_json(out/'manifest.json',{'utc':utc_now(),'git':git_state(),'model':model,'requests_sha256':digest(requests),
   'binary':binary,'binary_sha256':file_sha256(binary),'native_source_sha256':file_sha256((config or {}).get('client_source','native/trace_v4.cpp')),
+  'runtime_version':subprocess.check_output([library+'/llama-server','--version'],stderr=subprocess.STDOUT,text=True),
   'libraries':runtime_libraries(library+'/llama-server'),'stage':stage,'config':cfg})
  write_json(out/'requests.json',requests)
  records=[];error=None;proc=None
