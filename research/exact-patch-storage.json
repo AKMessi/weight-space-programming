@@ -1,0 +1,63 @@
+{
+  "utc": "2026-11-05T12:18:11.371930+00:00",
+  "git": {
+    "commit": "ee01a6c2c3a6b1b62db5a3ba36d916e394102904",
+    "status": " M research/budget.jsonl\n?? runs/p2-e1-development-strong-lfm3_qad-s17/"
+  },
+  "pairs": {
+    "qwen-norm": {
+      "base_key": "qwen3_q8",
+      "target_key": "qwen3_q8_A",
+      "patch_bytes": 19270,
+      "target_bytes": 639446688,
+      "target_zlib_bytes": 610730163,
+      "changed_tensor_count": 1,
+      "exact_roundtrip": true,
+      "patch_sha256": "e2d5a4c636f3329de2b555e4b6c9c8b5ac768acd36839a84dd4675f2b25e62c1",
+      "target_sha256": "bbd84486c8f47cd1cbe1fcbffbb66d8e3b62f6981c86446faecd5d12c74e3717",
+      "pack_seconds": 17.910978211000838,
+      "apply_seconds": 3.662290976000804
+    },
+    "qad-norm": {
+      "base_key": "lfm3_qad",
+      "target_key": "lfm3_qad_A",
+      "patch_bytes": 19315,
+      "target_bytes": 1049615680,
+      "target_zlib_bytes": 995496702,
+      "changed_tensor_count": 1,
+      "exact_roundtrip": true,
+      "patch_sha256": "ef0064750e066f5995d68cf252bea46281cf39e6d393b8de3a1db9463a4867d2",
+      "target_sha256": "895fe33fe7c17b4004a2504bedf6c2a56f078fee4396f5d86ac2be1c2523f8bc",
+      "pack_seconds": 20.853666358001647,
+      "apply_seconds": 5.973617043999184
+    },
+    "fable-unaligned": {
+      "base_key": "parent_f16",
+      "target_key": "fable_f16",
+      "patch_bytes": 167671933,
+      "target_bytes": 461883712,
+      "target_zlib_bytes": 356510251,
+      "changed_tensor_count": 132,
+      "exact_roundtrip": true,
+      "patch_sha256": "57f877719a1efdbacdc1b95a88d2e7376c6e7b6b9817399d35714e46c3879a58",
+      "target_sha256": "1e1624de4d7ebe413d82dbe2b5f48fcf83e6c46b1b5414c8aef0596009380cc6",
+      "pack_seconds": 59.14661531999991,
+      "apply_seconds": 4.724039863998769
+    },
+    "fable-aligned": {
+      "base_key": "parent_uniform_bf16",
+      "target_key": "fable_f16",
+      "patch_bytes": 20308656,
+      "target_bytes": 461883712,
+      "target_zlib_bytes": 356510251,
+      "changed_tensor_count": 27,
+      "exact_roundtrip": true,
+      "patch_sha256": "93133f5b96084e72e3e113d6eb856c2580fe78bcd32a25eac27a75660eee3e12",
+      "target_sha256": "1e1624de4d7ebe413d82dbe2b5f48fcf83e6c46b1b5414c8aef0596009380cc6",
+      "pack_seconds": 14.46337174600012,
+      "apply_seconds": 2.951466103999337
+    }
+  },
+  "scope": "Exact file-delivery utility; established XOR/deflate coding, not model improvement.",
+  "status": "complete"
+}

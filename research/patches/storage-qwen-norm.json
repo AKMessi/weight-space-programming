@@ -1,0 +1,54 @@
+{
+  "utc": "2026-11-05T12:18:11.433610+00:00",
+  "git": {
+    "commit": "ee01a6c2c3a6b1b62db5a3ba36d916e394102904",
+    "status": " M research/budget.jsonl\n?? runs/p2-e1-development-strong-lfm3_qad-s17/"
+  },
+  "base": {
+    "path": "local/models/Qwen3-0.6B-Q8_0.gguf",
+    "repo": "Qwen/Qwen3-0.6B-GGUF",
+    "revision": "23749fefcc72300e3a2ad315e1317431b06b590a",
+    "file": "Qwen3-0.6B-Q8_0.gguf",
+    "sha256": "9465e63a22add5354d9bb4b99e90117043c7124007664907259bd16d043bb031",
+    "sampling": {
+      "temperature": 0.7,
+      "top_k": 20,
+      "top_p": 0.8,
+      "min_p": 0.0,
+      "repeat_penalty": 1.0,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0
+    }
+  },
+  "target": {
+    "path": "artifacts/portfolio/qwen3_q8-A.gguf",
+    "repo": "Qwen/Qwen3-0.6B-GGUF",
+    "revision": "23749fefcc72300e3a2ad315e1317431b06b590a",
+    "file": "Qwen3-0.6B-Q8_0.gguf",
+    "sha256": "bbd84486c8f47cd1cbe1fcbffbb66d8e3b62f6981c86446faecd5d12c74e3717",
+    "sampling": {
+      "temperature": 0.7,
+      "top_k": 20,
+      "top_p": 0.8,
+      "min_p": 0.0,
+      "repeat_penalty": 1.0,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0
+    },
+    "local_patch_manifest": "research/patches/portfolio-qwen3_q8-A.json",
+    "local_patch_manifest_sha256": "567bda8e7e61465ff924f4f66bc4cdd3b10345617a21a3d55e18b6d26da6d152"
+  },
+  "output": "artifacts/patches/qwen-norm.wpatch",
+  "format": "weightlab-gguf-xor-v1",
+  "status": "verified",
+  "zlib_version": "1.3.1",
+  "changed_tensors": [
+    "blk.27.ffn_norm.weight"
+  ],
+  "unchanged_tensors": 309,
+  "patch_sha256": "e2d5a4c636f3329de2b555e4b6c9c8b5ac768acd36839a84dd4675f2b25e62c1",
+  "patch_bytes": 19270,
+  "target_bytes": 639446688,
+  "seconds": 17.910978211000838,
+  "note": "Exact delta encoding, not a learned repair or new compression algorithm."
+}
