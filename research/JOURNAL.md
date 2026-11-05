@@ -749,3 +749,7 @@ Final comparison audit found that initial AB/BA engineering calls allowed 128 ou
 ### 2026-11-05T13:51:42.218412+00:00 — p2-e4engineering-v2-qwen3_q8_AB-s17
 
 Run status: complete; generated tokens: 357. Group counts: `{"functional_code": {"attempted": 6, "cutoff": 0, "payload_correct": 6, "responses": 6, "success": 6}, "literal_copy": {"attempted": 6, "cutoff": 0, "payload_correct": 6, "responses": 6, "success": 0}, "structured": {"attempted": 6, "cutoff": 0, "payload_correct": 6, "responses": 6, "success": 0}}`. Full immutable requests, raw responses, and settings are in `runs/p2-e4engineering-v2-qwen3_q8_AB-s17`. These counts are observations; interpretation is deferred to the study report.
+
+### 2026-11-05T13:52:41.116002+00:00 — p2-e4ordercheck-v2-qwen3_q8_BA-s17
+
+Run status: complete; generated tokens: 99. Group counts: `{"functional_code": {"attempted": 6, "cutoff": 0, "payload_correct": 6, "responses": 6, "success": 6}}`. Full immutable requests, raw responses, and settings are in `runs/p2-e4ordercheck-v2-qwen3_q8_BA-s17`. These counts are observations; interpretation is deferred to the study report.
