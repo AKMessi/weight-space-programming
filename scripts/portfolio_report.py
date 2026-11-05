@@ -246,16 +246,20 @@ def e5(out):
              'confidence_brier':statistics.mean((r['grading']['stated_confidence']-int(r['grading']['payload_correct']))**2 for r in confidence) if confidence else None,
              'editor_prompt_tokens':sum(r['usage']['prompt_tokens'] for r in selected)}
     metrics['baselines']={k:{'correct':sum(v),'n':len(v)} for k,v in baseline.items()}
+    label_counts={label:sum(p['label']==label for p in labels.values()) for label in ['healthy','degraded']}
+    metrics['majority_class_baseline']={'correct':max(label_counts.values()),'n':len(labels),'label_counts':label_counts}
     lines=['# Experiment 5 — Blinded diagnosis and equivalent layouts','',
-           'Completed a bounded local-editor pilot. The editor receives anonymized summaries/small raw samples or two fixed target outputs in a fresh request per case. It never receives filenames, target hashes, a healthy reference, screening scores or expected labels. This is not frontier-LLM full-weight tool use and does not replicate the motivating report.','',
+           'Completed a bounded local-editor pilot. The editor receives anonymized summaries/small raw samples or two fixed target outputs in a fresh request per case. It never receives filenames, target hashes, a healthy reference, screening scores or expected labels. This is not frontier-LLM full-weight tool use and does not replicate the motivating report.',
+           f'The full batch uses context {execution["context"]} after a tokenization preflight (maximum prompt {execution["max_prompt_tokens"]} tokens). The original 2K attempt completed three cases and rejected a fourth before decoding; its raw evidence and known-zero failed-request settlement remain in the ledger. The entire unchanged batch was repeated, rather than combining contexts or dropping the long case.','',
            '| Model | State | Healthy payload / 12 | Variant payload / 12 | Clear fault? | Numerical parity | Runtime parity |',
            '|---|---|---:|---:|---|---|---|']
     for s in screen['screens']:lines.append(f'| {s["model"]} | {s["state"]} | {s["healthy_payload_successes"]} | {s["variant_payload_successes"]} | {s["clear_phenotype"]} | {s["numerical_parity"]} | {s["runtime_content_parity"]} |')
     lines+=['','## Diagnosis results','','| Evidence | Correct | Healthy false alarms | Layout agreement | Confidence Brier |','|---|---:|---:|---:|---:|']
     for arm,m in metrics.items():
-        if arm=='baselines':continue
+        if arm not in ['weights','behavior']:continue
         lines.append(f'| {arm} | {m["diagnosis_correct"]}/{m["n"]} | {m["false_alarm_degraded"]}/{m["healthy_presentations"]} | {m["layout_agreements"]}/{m["layout_pairs"]} | {m["confidence_brier"]} |')
-    lines+=['',f'Deterministic baselines: {json.dumps(metrics["baselines"],sort_keys=True)}. The weight baseline flags a negative output-normalization mean; the behavior baseline checks the first two exposed extraction payloads.','',
+    lines+=['',f'Deterministic baselines: {json.dumps(metrics["baselines"],sort_keys=True)}. The weight baseline flags a negative output-normalization mean; the behavior baseline uses exact supplied-fact answer checks on the two exposed probes.',
+            f'Majority-class baseline: {metrics["majority_class_baseline"]["correct"]}/{metrics["majority_class_baseline"]["n"]}; class counts {label_counts}. Accuracy above 50% is not automatically better than this baseline.','',
             'Faults were screened before editor inference using a declared 25pp payload drop. Failed numerical/runtime layouts and perturbations without that decline were explicitly excluded from binary accuracy. Original/permuted presentations are correlated, and there are at most nine independent model-state combinations. High agreement can come from a constant diagnosis; read it with accuracy and false alarms.','',
             'Output-normalization sign reversal is conspicuous; FFN sign reversal is a different stress case. These injected changes are not natural failures or unique behavioral circuits. Summaries partly discard layout information by construction, while raw samples change under permutation; this measures only the limited evidence given. No diagnostic repair was executed, no external API editor was used, and confidence statistics are descriptive on this tiny set. Full case mapping, exclusions, frozen prompts and all editor outputs are retained.']
     (out/'experiment-5.md').write_text('\n'.join(lines)+'\n')
@@ -274,11 +278,15 @@ def main():
     for p in sorted(Path('runs').glob('p2-*/summary.json')):
         summary=json.loads(p.read_text());runs.append({'run':str(p.parent),'summary':summary,'response_sha256':file_sha256(p.parent/'responses.jsonl')})
     result.update(sources=SOURCES,runs=runs,phase_generated_tokens=sum(r['summary']['generated_tokens'] for r in runs),
-                  phase_inference_requests=sum(r['summary'].get('inference_requests',r['summary']['attempt_count']) for r in runs))
+                  phase_inference_requests=sum(r['summary'].get('inference_requests',r['summary']['attempt_count']) for r in runs),
+                  complete_runs=sum(r['summary']['status']=='complete' for r in runs),
+                  failed_runs=sum(r['summary']['status']!='complete' for r in runs))
     if len(runs)>150 or result['phase_generated_tokens']>250000:raise ValueError('declared phase envelope exceeded')
     write_json(output/'results.json',result)
     lines=['# Five-pilot portfolio results','',result['completion_scope'], '',
            f'Phase totals: {len(runs)} runs, {result["phase_inference_requests"]} inference requests, {result["phase_generated_tokens"]} generated tokens. Raw evidence, schema corrections and rejected candidates are retained.','']
+    lines += [f'Run statuses: {result["complete_runs"]} complete, {result["failed_runs"]} failed attempts. The intended editor trial completed through a separately frozen full-batch retry.','',
+              'Code tables use current versioned sensitivity grading: v6 separates a leading function from trailing prose and checks requested API signatures/fences; v7 adds measurement-only fixtures. Original v4/v5 records and frozen selections remain intact. Copying, JSON, evidence decisions and diagnosis semantics are unchanged. Conditional grouped uncertainty is in results.json; it is not population certainty.','']
     for i in range(1,6):lines.append(f'- [Experiment {i}](experiment-{i}.md)')
     lines+=['','Useful-repair and composition prerequisites must be read separately from completed stress measurements. Unsupported activation methods, a precision allocator, a large independently useful patch library, interactive frontier diagnosis, and paper-scale independent confirmation have not been performed. See machine-readable results for every source hash, actual run and decision.']
     (output/'README.md').write_text('\n'.join(lines)+'\n')

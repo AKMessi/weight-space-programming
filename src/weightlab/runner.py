@@ -78,7 +78,8 @@ def _execute(config, model_key, suite, output, max_tokens, seed, limit):
                            "chat_template_kwargs": {"enable_thinking": False}, **sampling}
                 overrides = case.get("request_overrides", {})
                 allowed = {"reasoning_format", "reasoning_effort", "chat_template_kwargs", "response_format",
-                           "temperature", "top_p", "top_k", "min_p", "repeat_penalty", "presence_penalty"}
+                           "temperature", "top_p", "top_k", "min_p", "repeat_penalty", "presence_penalty",
+                           "logprobs","top_logprobs"}
                 if set(overrides) - allowed:
                     raise ValueError(f"Unsupported request overrides: {set(overrides) - allowed}")
                 payload.update(overrides)

@@ -19,7 +19,7 @@ def _constant(value):
 
 
 DECODER = json.JSONDecoder(object_pairs_hook=_pairs, parse_constant=_constant)
-GRADER_VERSION = "6"
+GRADER_VERSION = "7"
 
 
 def code_payload_present(text, expected):
@@ -77,6 +77,9 @@ def first_json(text):
 
 def grade(case, text):
     kind, expected = case["grader"], case["expected"]
+    if kind=='measurement_only':
+        return {'success':False,'payload_correct':False,'not_scored':True,
+                'note':'Runtime measurement; these booleans are not a model-quality score.'}
     if kind == 'functional_code':
         from .functional import evaluate_code
         return evaluate_code(case,text)

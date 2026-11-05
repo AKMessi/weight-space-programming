@@ -53,6 +53,9 @@ def server(binary, model, run_dir, config):
            "--n-gpu-layers", str(config.get("gpu_layers", 99)), "--jinja",
            "--reasoning", config.get("reasoning", "off"), "--chat-template-kwargs",
            json.dumps(config.get("chat_template_kwargs", {"enable_thinking": False}))]
+    if config.get('embedding'):
+        cmd += ['--embedding','--pooling','last','--embd-normalize','-1']
+    if 'log_verbosity' in config:cmd += ['-lv',str(int(config['log_verbosity']))]
     url = f"http://127.0.0.1:{port}"
     with open(Path(run_dir) / "server.log", "w") as log:
         proc = subprocess.Popen(cmd, stdout=log, stderr=subprocess.STDOUT)
