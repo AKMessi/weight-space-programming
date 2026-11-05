@@ -1,0 +1,7 @@
+# Fixed interleaved hybrid confirmation and profiles
+
+Declared after initial hybrid repeats: head-only is unexpectedly slower; head+shortconv looks faster than fullF16. Earlier original/hybrid timing phases are separated in time, so their comparison can be confounded by desktop load/temperature. Do not claim a deployment win from those phase means alone.
+
+Three fixed interleaved blocks, independently shuffled with seed1927: fullF16, originalQ4_0, and all3frozenhybrids. Exact original128-token prefix,16decode, one charged warmup plus3measured requests per format/block. No artifact/config tuning. Compare within-block latency/decode ratios, retain every response/cache/actual length/resource record. This smaller9-measurement-per-format panel complements, rather than replaces, the primary21measurements/length. No claims about controlled512/1536hybrid-vs-original phase differences from this128panel.
+
+Separate2x16-token profiles for each of3hybrids with the same profiler settings and explicit overhead caveat; use to inspect backend path differences, not substitute profile wall times for normal runs. Profile presence can alter scheduling, so kernel means alone are not an exclusive root-cause proof. All other numerical work stops during these timed blocks. Additional960+96=1056generated tokens; primary13568+1056=14624under15000speedcap. Run after the existing sequential queue so there is no second resident model. No further format search here.
