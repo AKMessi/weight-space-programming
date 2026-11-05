@@ -1,5 +1,5 @@
 """Sequential resumable pilot batches; commit/push each run, including failures."""
-import argparse,json,subprocess
+import argparse,json,subprocess,fcntl
 from pathlib import Path
 from weightlab.runner import execute
 from weightlab.evidence import append_jsonl,utc_now
@@ -8,6 +8,13 @@ ROOTS=['qwen3_q8','lfm3_qad','fable_f16']
 
 
 def publish(paths,message):
+    Path('local').mkdir(exist_ok=True)
+    with Path('local/publication.lock').open('w') as lock:
+        fcntl.flock(lock,fcntl.LOCK_EX)
+        _publish(paths,message)
+
+
+def _publish(paths,message):
     subprocess.run(['git','add',*map(str,paths)],check=True)
     staged=subprocess.run(['git','diff','--cached','--quiet']).returncode
     if staged:subprocess.run(['git','commit','-m',message],check=True)
