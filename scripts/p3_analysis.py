@@ -31,10 +31,14 @@ def repair():
  sampling={k:{str(seed):quality(rows(f'runs/p3-repair-sampling-stability-{k}-s{seed}/responses.jsonl')) for seed in [17,29]} for k in ['fable_float',key]}
  return {'selected':key,'confirmation':arms,'paired':comparisons,'protection':protection,'diagnostics':controls,'sampling_fixed_confirmation_subset':sampling,'repair_deployment_gate':False,'gate_reason':'Fails requested-fence preservation on independent families; protected explanations also have cutoffs. Do not deploy as a validated repair. New-family task competence was weaker than development.'}
 def speed():
- groups=defaultdict(list);profiles={}
+ groups=defaultdict(list);profiles={};inventory=[];invalid=[]
  for root in sorted(Path('research/p3/speed-v1').glob('*')):
   if not (root/'responses.jsonl').exists():continue
   data=rows(root/'responses.jsonl')
+  summary=json.loads((root/'summary.json').read_text())
+  if summary['status']!='complete':raise RuntimeError('Incomplete timing condition: '+str(root))
+  inventory.append({'condition':root.name,'requests':len(data),'responses_sha256':file_sha256(root/'responses.jsonl'),'resources':json.loads((root/'resources.json').read_text())})
+  invalid.extend(r['request_id'] for r in data if not r['valid_timing'])
   if root.name.startswith('profile-'):
    text=(root/'server.log').read_text();ops=[]
    for m in re.finditer(r'^(.*?): (\d+) x ([\d.e+\-]+) us = ([\d.e+\-]+) us',text,re.M):ops.append({'op':m[1],'count':int(m[2]),'mean_us':float(m[3]),'total_us':float(m[4])})
@@ -45,7 +49,11 @@ def speed():
  for (model,backend,length),data in groups.items():
   sessions=sorted({r['session'] for r in data});per_session={str(s):float(np.median([r['timings']['predicted_per_second'] for r in data if r['session']==s])) for s in sessions}
   summaries.append({'model':model,'backend':backend,'prompt_tokens':length,'n':len(data),'sessions':sessions,'decode_tps_median':float(np.median([r['timings']['predicted_per_second'] for r in data])),'session_decode_medians':per_session,'ttft_ms_median':1000*float(np.median([r['ttft_seconds'] for r in data])),'prefill_ms_median':float(np.median([r['timings']['prompt_ms'] for r in data])),'total_ms_median':1000*float(np.median([r['seconds'] for r in data]))})
- return {'conditions':summaries,'profiles':profiles,'caveat':'Shared desktop, not controlled idle machine; session variation is material, especially CPU. Runtime-reported decode tokens/s uses its own first-token accounting. Quality evaluated separately.'}
+ if len(inventory)!=39:raise RuntimeError('Expected35timing runs and4profiles')
+ format_quality={key:quality(runrows('reserve','format-quality',key)) for key in ['fable_float','fable_Q8_0','fable_Q4_0','fable_Q4_K_M','hybrid_head','hybrid_head_ffn','hybrid_head_shortconv']}
+ return {'conditions':summaries,'profiles':profiles,'run_inventory':inventory,'invalid_request_ids':invalid,'quality':format_quality,
+         'noop_quality':quality(runrows('reserve','format-noop','hybrid_noop')),
+         'caveat':'Shared desktop, not controlled idle machine; session variation is material, especially CPU. Runtime-reported decode tokens/s uses its own first-token accounting. Quality evaluated separately.'}
 def precision():
  c=json.loads(Path('configs/p3_precision_final.json').read_text());target=rows('research/p3/native-precision-final-target_float/responses.jsonl');out={}
  for key,spec in c['models'].items():
