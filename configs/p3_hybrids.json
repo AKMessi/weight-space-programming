@@ -1,0 +1,90 @@
+{
+  "runtime": {
+    "binary": "/home/akmessi/llama-vulkan-build/bin/llama-server",
+    "context": 2048,
+    "threads": 4,
+    "gpu_layers": 99
+  },
+  "budgets": {
+    "overall_generated_tokens": 1800000,
+    "per_run_generated_tokens": 20000
+  },
+  "models": {
+    "hybrid_head": {
+      "path": "artifacts/p3/hybrids/hybrid_head.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "3192508959eb3dec4b5f43f41a7dc39c17b0564b9a66a7737a958046c4fa9760",
+      "sampling": {
+        "temperature": 0.1,
+        "top_k": 50,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0,
+        "ignore_eos": true
+      },
+      "local_patch_manifest": "research/p3/hybrids/hybrid_head.json",
+      "local_patch_manifest_sha256": "b81a5053a40ee9520942e9055a4ab319c0462931f069a8a12aab5d73b095f2eb"
+    },
+    "hybrid_head_ffn": {
+      "path": "artifacts/p3/hybrids/hybrid_head_ffn.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "c07cf006df9e3f73a275328d91999b6f0ad76e435f393b247d55d927f24b2daf",
+      "sampling": {
+        "temperature": 0.1,
+        "top_k": 50,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0,
+        "ignore_eos": true
+      },
+      "local_patch_manifest": "research/p3/hybrids/hybrid_head_ffn.json",
+      "local_patch_manifest_sha256": "0ec0d60668b997c9103935eb39e7b1c296058cb3028fd2e941f106e16240b4a7"
+    },
+    "hybrid_head_shortconv": {
+      "path": "artifacts/p3/hybrids/hybrid_head_shortconv.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "1043c2e8aecb8eb32a0c37a9175524d22a12888b238aed3f74a86aadfa0eb3a3",
+      "sampling": {
+        "temperature": 0.1,
+        "top_k": 50,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0,
+        "ignore_eos": true
+      },
+      "local_patch_manifest": "research/p3/hybrids/hybrid_head_shortconv.json",
+      "local_patch_manifest_sha256": "c218fd42e91ad373623c494ca70daf76c0756b096e039e2eb6d92a06742a9c54"
+    },
+    "hybrid_noop": {
+      "path": "artifacts/p3/hybrids/hybrid_noop.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "a3bcb56d36cb3327e9d2b6ac6dbbbe1a7fd1733f34eff94f62a27adb5e930da1",
+      "sampling": {
+        "temperature": 0.1,
+        "top_k": 50,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0,
+        "ignore_eos": true
+      },
+      "local_patch_manifest": "research/p3/hybrids/hybrid_noop.json",
+      "local_patch_manifest_sha256": "5e6a613a7d778611bb900fa38fabaaf048a22686f33235406855bff48daf6381"
+    }
+  }
+}
