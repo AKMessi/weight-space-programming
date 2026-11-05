@@ -875,3 +875,7 @@ Frozen the Qwen conditional JSON-switching development/confirmation families, fi
 ### 2026-11-05T18:05:55.794267+00:00 — p3-adapter-repo-confirm-fable_f16-s17
 
 Status `complete`, 11031 generated tokens. Immutable raw inputs/responses/config/runtime and resource samples are in `runs/p3-adapter-repo-confirm-fable_f16-s17`. Interpretation is deferred to the study report; this run alone does not establish a repair.
+
+### 2026-11-05T18:07:17.153640+00:00 — p3-adapter-repo-confirm-parent_uniform_bf16-s17
+
+Status `complete`, 8053 generated tokens. Immutable raw inputs/responses/config/runtime and resource samples are in `runs/p3-adapter-repo-confirm-parent_uniform_bf16-s17`. Interpretation is deferred to the study report; this run alone does not establish a repair.
