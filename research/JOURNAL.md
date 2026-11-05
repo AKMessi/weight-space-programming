@@ -647,3 +647,7 @@ Run status: complete; generated tokens: 1254. Group counts: `{"diagnosis_probe":
 ### 2026-11-05T12:47:30.287644+00:00 — p2-e5probes-lfm3_diagnosis_healthy-s17
 
 Run status: complete; generated tokens: 228. Group counts: `{"diagnosis_probe": {"attempted": 12, "cutoff": 0, "payload_correct": 12, "responses": 12, "success": 12}}`. Full immutable requests, raw responses, and settings are in `runs/p2-e5probes-lfm3_diagnosis_healthy-s17`. These counts are observations; interpretation is deferred to the study report.
+
+### 2026-11-05T12:48:34.973634+00:00 — p2-e5probes-lfm3_diagnosis_healthy_permuted-s17
+
+Run status: complete; generated tokens: 228. Group counts: `{"diagnosis_probe": {"attempted": 12, "cutoff": 0, "payload_correct": 12, "responses": 12, "success": 12}}`. Full immutable requests, raw responses, and settings are in `runs/p2-e5probes-lfm3_diagnosis_healthy_permuted-s17`. These counts are observations; interpretation is deferred to the study report.
