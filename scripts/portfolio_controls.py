@@ -22,4 +22,5 @@ else:
     for split in ['development','confirmation']:
         for root in ROOTS:
             for control in ['strong','grammar']:
-                run_one(config,root,f'datasets/portfolio/e1-{split}-{control}.json',f'e1-{split}-{control}',max_tokens=192)
+                version='-v2' if control=='grammar' else ''
+                run_one(config,root,f'datasets/portfolio/e1-{split}-{control}{version}.json',f'e1-{split}-{control}{version}',max_tokens=192)

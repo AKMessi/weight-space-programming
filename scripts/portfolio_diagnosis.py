@@ -79,7 +79,7 @@ def main():
                         cases.append({'id':anonymous+'-'+arm,'split':'blinded_diagnosis','family':arm,'group':arm,
                              'grader':'diagnosis','expected':label,'messages':[{'role':'system','content':'Use only the provided anonymous evidence. No tools or target inference are available.'},
                              {'role':'user','content':prompt}], 'request_overrides':{'temperature':0.0,
-                             'response_format':{'type':'json_schema','schema':schema}}})
+                             'response_format':{'type':'json_schema','json_schema':{'name':'diagnosis','strict':True,'schema':schema}}}})
                 screen['presentations'].append(entry)
             report['screens'].append(screen)
     rng.shuffle(cases)

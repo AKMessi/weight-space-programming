@@ -43,7 +43,7 @@ def run_one(config,key,suite_path,label,seed=17,max_tokens=128,limit=None):
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('phase',choices=['e1dev','e1confirm','e2dev','e2confirm','e4'])
+    p=argparse.ArgumentParser();p.add_argument('phase',choices=['e1dev','e1confirm','e2dev','e2schema','e2confirm','e4'])
     p.add_argument('--config',default='configs/portfolio.json');a=p.parse_args()
     config=json.loads(Path(a.config).read_text())
     if a.phase=='e1dev':
@@ -62,11 +62,14 @@ def main():
         for root in ROOTS:
             for suffix,control in [('', 'original'),('_A','original'),('_B','original'),('','strong'),('','grammar')]:
                 run_one(config,root+suffix,f'datasets/portfolio/e2-development-{control}.json',f'e2dev-{control}')
+    elif a.phase=='e2schema':
+        for root in ROOTS:run_one(config,root,'datasets/portfolio/e2-development-grammar-v2.json','e2dev-grammar-v2')
     elif a.phase=='e2confirm':
         selected=json.loads(Path('research/selections/e2.json').read_text())
         for root in ROOTS:
             for key,control in [(root,'original'),(selected['models'][root]['diagnostic_or_selected'],'original'),(root,'strong'),(root,'grammar')]:
-                run_one(config,key,f'datasets/portfolio/e2-confirmation-{control}.json',f'e2confirm-{control}')
+                version='-v2' if control=='grammar' else ''
+                run_one(config,key,f'datasets/portfolio/e2-confirmation-{control}{version}.json',f'e2confirm-{control}{version}')
     elif a.phase=='e4':
         for root in ROOTS:
             run_one(config,root+'_AB','datasets/portfolio/engineering.json','e4engineering')

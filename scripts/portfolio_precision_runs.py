@@ -14,11 +14,11 @@ if a.stage=='precision':
             for suffix in ['','_A']:
                 run_one(local,f'{root}_{precision}{suffix}','datasets/portfolio/engineering.json','e3precision')
     for key in ['lfm3_qad','qad_rewrite']:
-        run_one(config,key,'datasets/portfolio/diagnosis-probes.json','e3qadparity',limit=6)
+        run_one(config,key,'datasets/portfolio/diagnosis-probes-v2.json','e3qadparity',limit=6)
 else:
     for root in ['qwen','lfm3','fable']:
         local=copy.deepcopy(config)
         if root=='lfm3':local['runtime']['gpu_layers']=18
         for state in ['healthy','output_sign','ffn_sign']:
             for layout in ['','_permuted']:
-                run_one(local,f'{root}_diagnosis_{state}{layout}','datasets/portfolio/diagnosis-probes.json','e5probes')
+                run_one(local,f'{root}_diagnosis_{state}{layout}','datasets/portfolio/diagnosis-probes-v2.json','e5probes')
