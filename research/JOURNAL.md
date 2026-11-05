@@ -399,3 +399,7 @@ Run status: complete; generated tokens: 649. Group counts: `{"functional_code": 
 ### 2026-11-05T11:57:31.028264+00:00 — p2-e2confirm-original-qwen3_q8-s17
 
 Run status: complete; generated tokens: 727. Group counts: `{"complete": {"attempted": 4, "cutoff": 0, "payload_correct": 0, "responses": 4, "success": 0}, "conflict": {"attempted": 4, "cutoff": 0, "payload_correct": 0, "responses": 4, "success": 0}, "missing": {"attempted": 4, "cutoff": 0, "payload_correct": 0, "responses": 4, "success": 0}}`. Full immutable requests, raw responses, and settings are in `runs/p2-e2confirm-original-qwen3_q8-s17`. These counts are observations; interpretation is deferred to the study report.
+
+### 2026-11-05T11:57:52.363941+00:00 — p2-e2confirm-original-qwen3_q8_A-s17
+
+Run status: complete; generated tokens: 683. Group counts: `{"complete": {"attempted": 4, "cutoff": 0, "payload_correct": 0, "responses": 4, "success": 0}, "conflict": {"attempted": 4, "cutoff": 0, "payload_correct": 0, "responses": 4, "success": 0}, "missing": {"attempted": 4, "cutoff": 0, "payload_correct": 0, "responses": 4, "success": 0}}`. Full immutable requests, raw responses, and settings are in `runs/p2-e2confirm-original-qwen3_q8_A-s17`. These counts are observations; interpretation is deferred to the study report.
