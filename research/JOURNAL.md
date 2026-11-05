@@ -325,3 +325,7 @@ Run status: complete; generated tokens: 590. Group counts: `{"complete": {"attem
 ### 2026-11-05T11:49:23.572134+00:00 — p2-e2dev-grammar-v2-lfm3_qad-s17
 
 Run status: complete; generated tokens: 618. Group counts: `{"complete": {"attempted": 4, "cutoff": 0, "payload_correct": 4, "responses": 4, "success": 4}, "conflict": {"attempted": 4, "cutoff": 0, "payload_correct": 0, "responses": 4, "success": 0}, "missing": {"attempted": 4, "cutoff": 0, "payload_correct": 0, "responses": 4, "success": 0}}`. Full immutable requests, raw responses, and settings are in `runs/p2-e2dev-grammar-v2-lfm3_qad-s17`. These counts are observations; interpretation is deferred to the study report.
+
+### 2026-11-05T11:49:35.257907+00:00 — p2-e2dev-grammar-v2-fable_f16-s17
+
+Run status: complete; generated tokens: 634. Group counts: `{"complete": {"attempted": 4, "cutoff": 0, "payload_correct": 4, "responses": 4, "success": 4}, "conflict": {"attempted": 4, "cutoff": 0, "payload_correct": 0, "responses": 4, "success": 0}, "missing": {"attempted": 4, "cutoff": 0, "payload_correct": 0, "responses": 4, "success": 0}}`. Full immutable requests, raw responses, and settings are in `runs/p2-e2dev-grammar-v2-fable_f16-s17`. These counts are observations; interpretation is deferred to the study report.
