@@ -1,42 +1,36 @@
-# Research progress
+# Research completion status
 
-Updated 2026-11-05. **First implementation and experimental milestone completed. Five-study portfolio ongoing; no accepted model repair.**
+Updated 2026-11-05. **All five bounded pilot tracks executed and reported; no accepted general behavioral repair.** The original paper-level method goals remain unproved and several stronger arms are explicitly unimplemented after failed prerequisites.
 
-Read [findings](FINDINGS.md) for the plain-language results and [journal](JOURNAL.md) for the full decision record, negative results, and corrections.
+The full record now contains **166 complete inference runs and one failed attempt**, **3,999 actual inference requests** (3,998 responses and one known pre-decoding rejection), and **149,296 generated tokens**. This includes the original 30-run milestone and the 137-run continuation phase. The continuation used 107,388 generated tokens and 2,761 calls, within its 150-run / 250,000-token envelope. Real two-turn conversations count as two inference calls, not one.
 
-## Completed and verified
+The separate native-readout diagnostic settled **582 prompt/embedding tokens**. Every generated-token reservation is settled. Twenty unattempted cases in the partial editor trial were subsequently included in the full unchanged 24-case retry; they were not silently discarded.
 
-- Repository initialized and pushed to the user-authorized GitHub remote; coherent code/evidence changes are committed and pushed.
-- Hardware/runtime inventory, pinned downloads/checksums, one-model Vulkan execution, durable raw evidence, exact prompt rendering, conservative token ledger, and source/config/data provenance implemented.
-- All three deployments characterized: Qwen3-0.6B Q8, LFM3-1.7B QAD Q4, and Fable 230M F16; ordinary LFM3 Q8 and Fable's pinned public parent included as controls.
-- Separate-file floating GGUF edits, bit-identical identity check, BF16 decoding/alignment, per-tensor audits, rollback baselines, and Q/K/V-family ablations implemented and exercised.
-- Strong prompt and schema controls measured. All attempted edits and negative results retained.
-- Fresh validation protocol/data/arms committed before inference; ten validation runs completed and the promising copy-recovery interpretation rejected.
-- Versioned code-grader errors corrected through separate derived regrades; original evidence and frozen analysis preserved.
-- **30 complete runs, 1,238 requests, 41,908 generated tokens.** Evidence/ledger consistency verified; every request settled. **19 tests pass.**
+## What each study achieved
 
-## Five-study status
-
-| Study | Current evidence | Gate / next work |
+| Study | Executed evidence | Decision |
 |---|---|---|
-| 1. Preserve skills while repairing habits | Fable rollback discovery, controls, precision audit, and frozen copy validation completed | No accepted repair. Establish genuine coding utility; improve varied development cases before new patch search |
-| 2. Ask when information is missing | Small baseline and prompt-control screens collected | Underlying recognition versus formatting unresolved; complete two-turn development/evaluation needed |
-| 3. Repairs surviving quantization | QAD lineage and effective-precision confounds documented | No useful patch yet; no controlled quantization-repair result |
-| 4. Combine repairs | Common artifact/evidence infrastructure available | Fewer than two useful independent patches; composition experiment not started |
-| 5. Blind weight diagnosis | Numerical audit tooling available | Blinding, case library, symmetry controls, and editor protocol not implemented |
+| 1. Repair habits, preserve useful behavior | Three model baselines, A/B/random perturbations, Fable rollback/parent controls, functional code checks, frozen candidate decisions, fresh two-seed confirmation and matched prompt/schema controls | No eligible or confirmed repair; no demonstrated preservation of repository-level specialization |
+| 2. Ask, then answer when evidence arrives | Complete/absent/conflicting evidence, actual two-turn exchanges, fixed edits, prompt/schema controls, deterministic checker, fresh field/layout confirmation | No weight repair; format correctness alone did not prevent invented values |
+| 3. Quantization and deployment | Same-source floating/Q8/Q4 original/A arms for all three, untouched-F32 norm verification, separate QAD no-op parity, five exact binary patch roundtrips, controlled four-format timing follow-up | Stress and utility work complete; natural useful-repair retention and precision allocator failed their useful-patch prerequisite |
+| 4. Combine changes | Original/A/B/random/AB arms on engineering and joint-evidence panels, exact AB=BA files, six matching order probes per model, corrected matched output caps | Diagnostic composition complete; two independently useful repairs were not available, so useful-repair composition is unproved |
+| 5. Blind diagnosis | Nine screened healthy/fault states, eighteen original/permuted target runs, numerical and native parity checks, twelve retained presentations, two evidence arms, full local-editor retry, baselines/confidence/false alarms | Local bounded-summary pilot complete; weights-only editor tied majority accuracy and flagged every healthy presentation. No frontier/full-weight diagnosis or natural-fault claim |
 
-## Important conclusions
+The native final-state compatibility gate also ran on all three floating models: equal next-token top-1 in six contexts, but **0/6 passed the declared centered-logit tolerance**. No directional edit was built from that unverified readout. This does not establish that activation access is impossible.
 
-1. F16 storage does not guarantee matching effective precision. After explicit alignment, 105/132 Fable/parent tensors match exactly; the substantial residual differences concentrate in 18 Q/K/V matrices. Historical parent revision remains unverified.
-2. V-only rollback recovered the original 4/4 copy examples but 0/24 fresh validation requests, matching original Fable's 0/24. It also regressed a development explanation proxy. Do not ship it as a general repair.
-3. Schema-constrained generation is a strong development baseline. A weight method must demonstrate value beyond it where applicable.
+## Artifacts and checks
 
-## Next milestone
+- [Five reports and machine-readable results](portfolio-v3/README.md), with immutable derived regrades identifying every changed grade and raw-source checksum.
+- [Plain-language findings](FINDINGS.md), [exact checkpoint utility](EXACT_PATCH_DELIVERY.md), [timing/storage/symmetry figures](portfolio-v3/supplement/README.md), and [reproduction guide](../docs/REPRODUCING.md).
+- One-model execution, original-file preservation, exact BF16 decoding, streaming GGUF rewrites, controlled quantization, XOR patch reconstruction, recursive artifact rebuilds and full raw evidence.
+- **34 tests pass** in the inspection environment. The integrity audit reconciles frozen inputs, cases, follow-up messages, usage, failures and the reservation ledger.
+- A full-file integrity pass checked **65 unique current model artifacts**, including originals and derived files. Corrected cap reruns reused those exact artifacts and independently checked each loaded hash. The final request/ledger audit is [final-v2](evidence-integrity-final-v2.json); the full-file snapshot is [final-v1](evidence-integrity-final-v1.json).
+- Every coherent source/evidence change is committed and pushed to the user-authorized remote. Model/patch binaries stay ignored; source provenance and exact checksums are public research evidence.
 
-Build and freeze a richer **development** evaluation of coding utility and response switching, with task-family diversity and meaningful functional checks. Determine whether Fable has a measurable advantage worth preserving. Keep `validation-v1-frozen` out of new patch selection; reserve a newly authored confirmation set for a future candidate. Log the protocol before execution.
+The bounded portfolio is complete as an auditable local pilot. It is not five successful methods or five ready papers. Preservation-constrained directional editing, behavior-guided precision allocation, a validated repair library and a capable interactive external editor remain beyond the evidence here. Those are stronger experiments requiring a separately verified activation path, meaningful task competence and fresh independent evaluation; they are not silently counted as done.
 
-No unattended experiment is running at this milestone. Future work should resume from the committed state and these gates, rather than repeat the completed screens.
+## Corrections retained in the record
 
-## Budget and scope
+The initial Fable FFN difference was confounded by effective precision; an old copy recovery failed fresh validation. New v1 schema wrappers were malformed, then preserved and rerun with corrected v2 transport and an adversarial enforcement diagnostic. Code interpretation/extraction errors were fixed through disclosed derived grades without retuning frozen selections. The editor needed a full-batch 4096-context retry. An early report build encountered legacy unversioned metadata. The composition output-cap mismatch was corrected in six versioned runs. All original data, failures and intermediate analyses remain available.
 
-The 1.8M generated-token envelope is a ceiling, not an execution target. The completed runs used 41,908 tokens (about 2.3%). The remaining budget is not evidence that additional search is scientifically justified. No target-model training, paid compute, or external-editor API loop was used. Count future scored tokens and editor usage separately if those arms are introduced.
+No target training, paid compute, external editor API or unattended experiment was used. All owned model servers have been shut down. Earlier status is preserved in [the first-milestone record](PROGRESS_FIRST_MILESTONE.md).

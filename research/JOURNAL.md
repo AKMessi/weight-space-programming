@@ -769,3 +769,11 @@ Run status: complete; generated tokens: 1433. Group counts: `{"functional_code":
 ### 2026-11-05T13:53:47.069056+00:00 — p2-e4ordercheck-v2-fable_f16_BA-s17
 
 Run status: complete; generated tokens: 155. Group counts: `{"functional_code": {"attempted": 6, "cutoff": 0, "payload_correct": 3, "responses": 6, "success": 0}}`. Full immutable requests, raw responses, and settings are in `runs/p2-e4ordercheck-v2-fable_f16_BA-s17`. These counts are observations; interpretation is deferred to the study report.
+
+### Matched-cap replay completed; final comparison and artifact audits
+
+All six AB/BA cap-corrected runs completed and were pushed individually. The final bounded continuation contains 137 run attempts (136 complete and one preserved pre-decoding editor failure), 2,761 actual inference requests, and 107,388 generated tokens. Combined with the first milestone: 166 complete runs, one failed attempt, 3,999 calls, and 149,296 generated tokens. No repair has met the declared eligibility/confirmation gates. The separate native diagnostic prompt/embedding ledger totals 582 tokens.
+
+A full integrity pass checked 65 distinct current model-file hashes, including originals and derived artifacts. This snapshot began before the six cap-correction runs; those runs used the same already verified binaries and independently verified their loaded hashes. A fresh final request/ledger audit will include every corrected run. The initial full-file audit is retained, not overwritten. The final comparison audit additionally checks exact initial request/runtime equality across primary weight arms and records per-case strict/payload composition interactions, avoiding conclusions from aggregate zero or floor effects alone.
+
+Reproduction documentation now distinguishes the GGUF Python source from the working Vulkan native build, full model versus cached-base patch size, ordinary PTQ versus QAD lineage, original grading versus post-hoc sensitivity, and all analysis versions. First-milestone findings/status are archived rather than lost. All owned model servers are stopped; no further inference is queued in this bounded portfolio.

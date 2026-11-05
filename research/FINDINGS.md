@@ -1,85 +1,96 @@
-# First experimental findings
+# Findings from the five local pilots
 
-Updated 2026-11-05. **Implementation and the first experimental milestone are complete; the five-study portfolio is ongoing. No generally useful or skill-preserving repair has been established.**
+All five tracks have relevant executed measurements on Qwen3-0.6B, LFM3-1.7B and Fable 230M. The bounded pilots close with **no accepted general behavioral repair**. The strongest practical results are exact checkpoint delivery, a measured deployment-speed surprise, and controls showing why attractive weight-editing demos need careful validation. These results support a reproducible technical report and tools; they do not establish a new paper-ready editing method.
 
-We ran **30 local inference runs, 1,238 requests, and 41,908 generated tokens** on the inspected machine. Every request has raw evidence and settled token accounting. Nineteen tests pass. These are small synthetic experiments, not general model rankings or publication-ready results. The [integrity audit](evidence-integrity-latest.json) checks consistency of the records, not the truth of a scientific conclusion.
+See the [five detailed reports](portfolio-v3/README.md), [machine-readable analysis](portfolio-v3/results.json), [deployment/symmetry follow-ups](portfolio-v3/supplement/README.md), [journal](JOURNAL.md), and [reproduction guide](../docs/REPRODUCING.md). The [first-milestone findings](FINDINGS_FIRST_MILESTONE.md) retain the earlier 30-run history.
 
-## 1. A large apparent weight change can be a precision artifact
+## 1. Small edits changed responses, but did not produce a reliable repair
 
-**In simple words:** two files can both say “F16,” yet one contains numbers rounded more coarsely than the other. Subtracting the files then mixes actual model changes with rounding differences. Editing that difference may change precision instead of repairing a learned behavior.
+**In simple words:** making a model answer differently is easy. Showing that it follows instructions better while keeping its useful skills is harder.
 
-Fable's embedding and FFN output values lie on the BF16 value grid despite their F16 storage. The public F16 parent's values mostly do not. A first partial FFN rollback therefore was not a clean removal of a learned FFN update.
+For each deployment we tested fixed last-layer FFN-normalization attenuation, attention-normalization attenuation, and a seeded perturbation with matched numerical size. Fable also had parent-rollback controls. Selection used development examples before fresh confirmation; no candidate qualified. A retained negative diagnostic was confirmed on new functions, schemas and copy forms at two seeds. None met the declared repair/preservation gate.
 
-We fetched the separately published BF16 parent, decoded its values exactly, and explicitly aligned the remaining floating tensors to the same effective precision. After that alignment:
+The new code checks actually test simple Python functions on alternate inputs through a bounded interpreter. They distinguish correct content from following the requested format. They do not establish Fable's repository-level coding specialization. The Fable parent control was measured rather than assumed inferior. Code extraction/signature grading was corrected as disclosed post-hoc sensitivity analysis; original grades and selections remain intact.
 
-- **105 of 132 tensors match Fable exactly.**
-- **18 Q/K/V attention projection matrices carry substantial differences.**
-- The remaining 9 tensors differ at only 12 scalar positions in total.
+Grammar-constrained JSON is a useful practical baseline: on the matched confirmation control, all three models produced the correct exact object on 8/8 authored extraction cases. Strong prompting alone gave Qwen and Fable 0/8 strict objects despite 8/8 correct payloads; LFM3 already passed 8/8. This is a small synthetic panel and one fixed prompt policy, not proof that grammar always wins or that better prompting is impossible.
 
-This sharply narrows where substantial differences between these particular artifacts reside. It does **not** prove the exact historical training revision, identify a unique behavior circuit, or establish that every residual difference was learned. Fable's card does not pin its historical parent revision.
+Exact-copy contracts remain hard on the new BEGIN/END forms, even when the payload itself appears correctly. The stronger system prompt explicitly excludes markers, but the models still often include them. An aggregate zero strict score is a floor on this contract, not proof of no copying ability. Previous V-only Fable rollback recovered 4/4 old development examples and 0/24 fresh validation copies; it is not a general repair.
 
-**Value:** a reusable precision/provenance audit before weight subtraction, interpolation, or claims about where fine-tuning changed a model. This is a promising methods note or replication lead; novelty and broader relevance still need independent examples and a literature comparison.
+[Study 1](portfolio-v3/experiment-1.md) contains all confirmation arms, paired gains/losses, control results and limitations.
 
-Evidence: [initial audit](fable-parent-tensor-audit-v2.json), [official BF16 comparison](fable-vs-official-bf16-parent.json), [exact decoder and alignment checks](bf16-codec-and-alignment-check.json), [patch manifests](patches/).
+## 2. Valid JSON did not mean the model knew when to ask
 
-## 2. A visually exciting repair failed fresh examples
+**In simple words:** a model can produce a perfectly shaped tool call while inventing a value that was never supplied.
 
-**In simple words:** changing a few attention matrices made Fable copy the first four examples correctly. That looked promising. New kinds of text exposed that it was not a general copying repair.
+We tested complete, absent and conflicting evidence, then supplied an authoritative update in a real second turn containing the model's actual previous reply. Twelve conversations cover four authored field families; they are correlated synthetic tasks.
 
-We restored selected Fable projections toward the pinned public parent's values. These are rollback baselines, not a new editing algorithm. Restoring V projections across six attention layers recovered 4/4 original literal-copy examples, versus Fable's 0/4. However, it also regressed a simple explanation proxy from 4/4 to 0/4. Restoring all Q/K/V projections recovered more original response contracts but could erase specialization.
+LFM3's original achieved 4/12 correct whole conversations. Fable's schema control improved the complete/update formatting, also reaching 4/12 whole conversations, but answered all eight absent/conflicting first turns with unsupported non-null values. LFM3's schema arm did the same. Correct final answers after evidence arrives cannot erase the first-turn guess. Qwen struggled with the requested action protocol and update transition on this panel; this is not a general model ranking.
 
-Before further selection, we committed a fresh 48-example validation panel, fixed candidates and seeds, and then ran all ten declared arms. The literal-copy primary result was:
+Neither fixed weight candidate improved the declared joint outcome. A deterministic parser/checker solved 12/12 conversations using only the supplied explicit records and authoritative updates. For a tool with known required fields, checking those fields is a useful deployment baseline. This parser is task-specific and does not solve general ambiguity.
 
-| Arm | New exact copies | Interpretation |
+[Study 2](portfolio-v3/experiment-2.md) separates answer coverage, unsupported action, invented value, and first/second-turn correctness.
+
+## 3. We can ship an exact checkpoint change cheaply when the base matches
+
+**In simple words:** instead of sending another whole model, send the exact differences and rebuild the same file locally.
+
+The utility streams named-tensor XOR/deflate patches, handles metadata/layout changes and tensor reordering, preserves originals, rejects a wrong base and verifies the **entire restored target hash**. It uses established delta encoding, not a new compression algorithm.
+
+The same 461.9 MB original Fable GGUF was reconstructed exactly from three bases:
+
+| Matching base | Patch size | What this comparison means |
 |---|---:|---|
-| Original Fable | 0/24 | 12 prompts, two seeds |
-| V-only restoration | 0/24 | No exact-copy generalization |
-| All-QKV restoration | 0/24 | Broad rollback also insufficient |
-| Precision-aligned parent | 0/24 | These new forms also challenge this parent |
-| Qwen3-0.6B Q8 reference | 12/12 | One seed; different model/settings |
-| LFM3-1.7B QAD Q4 reference | 7/12 | One seed; different model/settings |
+| Published F16 parent | 167.7 MB | Unaligned baseline |
+| That same F16 parent, deterministically BF16-rounded | 44.7 MB | Within-source precision control; 3.75× smaller |
+| Separately published aligned BF16-value parent in F16 layout | 20.3 MB | Source-choice result; 8.26× smaller than unaligned |
 
-The seeds are repeated samples of the same prompts, not 24 independent prompt families. Some Fable failures were truncated outputs. A 128-token cap is part of this measured deployment contract; a cutoff does not prove an infinite loop or inability under a larger cap.
+The base is required and excluded from patch size. This is useful when it is already cached or shared. The extra aligned-source saving cannot be assigned solely to rounding; conversion provenance and double rounding remain possible factors. Tiny diagnostic Qwen and LFM3 QAD normalization changes also restore exactly from approximately 19 KB patches, but those diagnostics have no confirmed general behavioral utility.
 
-**Value:** we rejected a candidate that a cherry-picked demo would have celebrated. Follow-up work needs more varied development instructions and payload forms, task-competence controls, and a new independent confirmation panel. This exposed validation set must not become a source of new patches later presented as independently validated.
+This follows the earlier precision finding: two F16 files can encode different effective value precision. After explicit alignment, 105/132 Fable/parent tensors match exactly; substantial residuals lie in 18 Q/K/V projections, with twelve scalar residuals in nine other tensors. The exact historical training parent remains unverified. This is numerical evidence about these artifacts, not a unique behavior circuit.
 
-Evidence: [frozen protocol](protocols/validation-v1.md), [validation report](VALIDATION_REPORT.md), [paired analysis](validation-v1-analysis.json), [all raw runs](../runs/).
+We also executed same-source floating/Q8/Q4 comparisons for each model and verified a QAD no-op rewrite. The edited normalization vectors stayed F32 under quantization. Therefore those stress tests cannot show a sparse floating repair being rounded away. No useful-repair retention ratio or precision allocator is claimed because the prerequisite useful repair failed.
 
-## 3. Structured decoding is already a strong practical baseline
+[Study 3](portfolio-v3/experiment-3.md) and [the codec guide](EXACT_PATCH_DELIVERY.md) provide the data and runnable commands.
 
-**In simple words:** a model may know the answer and still surround it with unwanted formatting. For JSON, constraining the output format can solve much of that problem without editing weights.
+## 4. Combining arbitrary changes is not the same as combining improvements
 
-On twelve development JSON/tool examples, a stronger prompt plus a schema gave Qwen 12/12 and Fable 10/12 correct exact responses. The same stronger prompt without the grammar gave 2/12 and 0/12. Schemas specified keys and types already provided in the task; they did not contain the correct values.
+The two fixed changes touch disjoint tensors. AB and BA were byte-identical in all three models and produced identical content/token counts on their six matched order probes. This validates the implementation of this composition, not compatibility of two useful repairs: those independent repairs were never established.
 
-On fresh validation JSON-field tasks, original Fable and V-only each included the correct object on all 24 requests but satisfied the plain-response contract on none. These results distinguish content competence from response formatting. The discovery grammar scores have not been independently confirmed on that validation panel.
+The initial engineering comparison mixed 128- and 192-token output caps. The audit caught this, preserved the runs, declared the correction and repeated every affected AB/BA panel at 192 before final interpretation. Joint-evidence arms already matched at 128. The primary report uses the corrected engineering runs. Aggregate equality can hide per-case changes and floor effects; a zero interaction estimate is not evidence that all behaviors are independent.
 
-**Value:** any proposed weight repair should beat or offer a useful tradeoff against prompting and constrained decoding. We should not present an inferior, more expensive weight change as progress merely because it changes weights. Grammar use itself is established practice, not our novel contribution.
+[Study 4](portfolio-v3/experiment-4.md) reports the matched comparisons and the failed useful-repair prerequisite.
 
-Evidence: [current-grader discovery report](BASELINE_REPORT_GRADER_V3.md), [earlier baseline report](BASELINE_REPORT.md), [non-weight fixtures](../datasets/nonweight-controls-v1.json), runs [008](../runs/20261105-008-fable-nonweight-controls/), [009](../runs/20261105-009-qwen-nonweight-controls/), and [010](../runs/20261105-010-lfm3-qad-nonweight-controls/).
+## 5. The local editor did not demonstrate useful weight diagnosis
 
-## 4. LFM3's fast deployment has checkpoint and template subtleties
+**In simple words:** giving a small AI summaries of weights did not make it a reliable mechanic for these models.
 
-The first 40 QAD discovery requests had median server-reported decode throughput **77.46 tokens/s**, ranging from 61.01 to 80.82. This is specific to short prompts, this runtime, and this GPU; it is not a general performance promise.
+We created healthy states and two declared injected fault types for each architecture, then screened their behavior before editor calls. A local Qwen3-0.6B editor received anonymous bounded weight summaries/raw samples or two fixed behavioral outputs. It never received labels, screening scores, filenames, target hashes or a healthy reference. This tests a limited local editor, not the frontier editor or full interactive weight access in the motivating blog.
 
-Some responses include thinking markers or duplicated content despite disabled thinking. We verified the actual rendered prompt and separated a parser-exposed prefilled prefix from tokens newly generated by the model. Switching parsing settings alone did not resolve every observed issue.
+On twelve retained presentations, weights-only diagnosis scored **7/12**, exactly the majority-label baseline, and flagged all **5/5 healthy presentations** as degraded. Behavior-only diagnosis scored 8/12. A simple output-normalization sign detector scored 8/12 and an exact checker on the same two exposed behavior probes scored 12/12. The small correlated sample supports no general claim that an LLM can or cannot understand weights.
 
-Ordinary LFM3 Q8 and QAD Q4 differ on these tiny tasks in both directions. **QAD is a separately trained checkpoint**, so their differences cannot be attributed solely to 4-bit rounding. A controlled quantization study needs a common source checkpoint and a matched quantization path.
+All nine MLP permutation checks passed their FP32 numerical tolerance, but only three full-runtime layouts had identical greedy text on all twelve probes. Coarse task scores were equal in every original/permuted state, yet six layouts failed the stricter predeclared parity gate and were excluded before editor inference. Equal scores are not proof of full functional equivalence; mathematical symmetry is not automatically bitwise generation parity.
 
-Evidence: [journal diagnostics](JOURNAL.md), template-probe runs [002](../runs/20261105-002-lfm3-qad-template-probe/) and [003](../runs/20261105-003-lfm3-q8-template-probe/), [runtime inventory](runtime_inventory.json).
+The initial editor context was too short for one packet. The rejected request generated zero tokens; after a tokenizer preflight the entire unchanged batch was rerun at 4096 context. The partial attempt and full retry are separate. No long case was dropped to improve the result.
 
-## What we built
+[Study 5](portfolio-v3/experiment-5.md) includes confidence, false alarms, baselines, screening and exclusions.
 
-- A one-model-at-a-time Vulkan inference runner with exact artifact identities, source/config/data hashes, actual rendered prompts, full request/response evidence, timing, errors, and token accounting.
-- Separate-file floating GGUF edits with identity controls, exact BF16 decoding, per-tensor change accounting, untouched-tensor verification, and original-file checksum rechecks.
-- Prompt/schema controls, Q/K/V family ablations, frozen validation, paired prompt-level analysis, and explicit negative-result retention.
-- Versioned graders and derived corrections. Grader v3 corrects code equivalence/presence errors; the original frozen analysis remains intact. These code checks are static proxies, not functional execution or proof of coding specialization.
+## The deployment-speed surprise
 
-Earlier run manifests record the runtime executable hash/version and server logs. Future manifests additionally fingerprint colocated shared libraries; that later addition cannot retroactively establish historical library bytes. Reproducibility is bounded by the recorded provenance.
+The matched timing follow-up used the same prompt and 64 actual generated tokens per call, with one warmup and three repetitions per format:
 
-## The next research decision
+| Fable format | Median decode tokens/s |
+|---|---:|
+| F16 | 194.60 |
+| Q8_0 | 13.40 |
+| Q4_0 | 22.07 |
+| Q4_K_M | 21.52 |
 
-First establish what Fable does **better than its parent** on appropriate, varied coding tasks, using meaningful functional checks and a declared extraction policy. Then search for repairs that retain that advantage. Tiny return-expression fixtures cannot demonstrate preservation of coding specialization.
+F16 is approximately 14.5× faster than Q8 on this workload while taking more storage/VRAM. The Q8 and Q4_K_M conversions match their pinned published hashes. The verbose Q8 trace reports all 15/15 layers offloaded; it does not establish which kernel/path causes the slowdown. Three repeats in one session on one device are descriptive, not a universal ranking or an isolated kernel benchmark. There is no quality score on these timing fixtures.
 
-Experiment 2 needs stronger development controls separating missing-information recognition from JSON formatting and a complete two-turn evaluation. Experiment 3 should begin once a useful patch exists; Experiment 4 needs two independently useful patches. Neither prerequisite has passed. Experiment 5's blinded benchmark remains unimplemented and can proceed independently after its case-screening and editor-budget protocol is frozen.
+Finally, native raw-final-state readouts retained the next-token top-1 in all six calibration contexts but failed the predeclared centered-logit agreement gate. No directional edit was derived from an unverified readout. This is a boundary/backend compatibility failure, not proof that activation methods are impossible. [The supplement](portfolio-v3/supplement/README.md) preserves every discrepancy.
 
-The next potentially publishable result is a hypothesis, not a promised outcome: precision-aware weight comparison, a genuinely generalizing response repair with preserved utility, or a rigorous negative result about weight diagnosis. The current release supplies auditable starting evidence and tools for testing those claims.
+## What is complete, and what remains a research hypothesis
+
+The bounded local portfolio has implemented tools, executed all five pilot tracks, tested controls, closed failed gates, and produced source-linked reports. No target training, paid compute or external editor API was used. Model originals were preserved; compact evidence is committed while binaries remain ignored.
+
+The original paper-level goals remain hypotheses: a preservation-constrained behavioral editing method, evidence-sensitive directional repair, behavior-guided precision allocation, a library of independently useful composable patches, and frontier interactive weight diagnosis. They have not been silently relabeled as successes. A broader independently sampled task set, stronger methods/editor and proper novelty assessment would be needed before a paper-level claim. The immediate usable outputs are the exact patch/rebuild utilities, the precision audit, the small benchmark and the measured device-specific deployment result.

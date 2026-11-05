@@ -11,6 +11,7 @@ def jsonl(path):
 
 
 def audit(verify_artifacts=False):
+    started=utc_now()
     roots=sorted(p.parent for p in Path('runs').glob('*/manifest.json'))
     adjustments={r['request_id']:r for r in jsonl('research/budget-adjustments.jsonl')} if Path('research/budget-adjustments.jsonl').exists() else {}
     expected={};runs=[];models={}
@@ -61,7 +62,9 @@ def audit(verify_artifacts=False):
         totals['conversations_attempted']+=len(rows);totals['inference_requests']+=requests
         totals['successful_responses']+=responses;totals['failed_requests']+=failures;totals['generated_tokens']+=generated
         if not complete:totals['unattempted_cases_in_failed_runs']+=len(cases)-len(rows)
-        models[manifest['model']['path']]=manifest['verified_model_sha256']
+        model_path=manifest['model']['path']
+        assert model_path not in models or models[model_path]==manifest['verified_model_sha256'],model_path
+        models[model_path]=manifest['verified_model_sha256']
         runs.append({'run':str(root),'status':summary['status'],'manifest_sha256':file_sha256(root/'manifest.json'),
                      'responses_sha256':file_sha256(root/'responses.jsonl'),'suite_sha256':manifest['suite_sha256']})
     ledger={};reservations={}
@@ -75,6 +78,7 @@ def audit(verify_artifacts=False):
     assert set(ledger)==set(reservations)==set(expected),'Run/ledger identity mismatch'
     assert all(r['event']=='settle' and r['tokens']==expected[k] for k,r in ledger.items()),'Unsettled/mismatched charge'
     assert consumed()==totals['generated_tokens'],'Ledger/token mismatch'
+    ledger_sha256=file_sha256('research/budget.jsonl')
     scored={}
     if Path('research/scored-budget.jsonl').exists():
         for row in jsonl('research/scored-budget.jsonl'):scored[row['request_id']]=row
@@ -84,7 +88,7 @@ def audit(verify_artifacts=False):
         for path,sha in sorted(models.items()):
             assert file_sha256(path)==sha,path
             checked.append({'path':path,'sha256':sha})
-    return {'utc':utc_now(),'git':git_state(),**totals,'all_requests_settled':True,'ledger_matches':True,
+    return {'started_utc':started,'utc':utc_now(),'git':git_state(),'budget_sha256':ledger_sha256,**totals,'all_requests_settled':True,'ledger_matches':True,
             'generated_budget_ceiling':1800000,'known_zero_failed_request_adjustments':list(adjustments.values()),
             'separate_native_diagnostic_prefill_and_embedding_tokens':sum(r['tokens'] for r in scored.values()),
             'diagnostic_scoring_note':'The separate scored ledger covers the native-state diagnostic only. Ordinary chat prompt usage remains in every raw response; it is not additionally charged as generated tokens.',

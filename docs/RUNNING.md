@@ -1,5 +1,7 @@
 # Running the measurement pipeline
 
+For the completed five-pilot portfolio, artifact rebuilding, matched caps and final analysis, use the [reproduction guide](REPRODUCING.md). The instructions below retain the original single-panel examples.
+
 The first implementation uses Python's standard library and an existing local llama.cpp server. It does not require installing PyTorch to collect exploratory deployment evidence.
 
 ```bash
@@ -36,6 +38,6 @@ PYTHONPATH=src python3 scripts/verify_evidence.py
 PYTHONPATH=src python3 scripts/regrade.py runs/RUN/responses.jsonl research/regrades/NEW-UNIQUE-NAME.json
 ```
 
-The verifier checks complete runs, frozen suite hashes, exact case identities, unique request IDs, response counts, and the token-reservation ledger. It verifies consistency, not scientific validity. Regrading creates a derived artifact and never overwrites raw responses. The original frozen validation uses recorded grader v2; v3 sensitivity results are separate.
+The verifier checks complete and explicitly failed runs, frozen suite hashes, exact case identities, real follow-up conversations, unique request IDs, response counts, and the token-reservation ledger. Use a new `--output` audit name to preserve previous snapshots. It verifies consistency, not scientific validity. Regrading creates a derived artifact and never overwrites raw responses. The original frozen validation uses recorded grader v2; v3 sensitivity results are separate.
 
 Future manifests also fingerprint colocated shared libraries because the small server executable can load a larger inference implementation dynamically. Earlier manifests record the binary hash, build/version, arguments, template, and server logs; a later current-library snapshot is supplementary and cannot retroactively prove historical library bytes.

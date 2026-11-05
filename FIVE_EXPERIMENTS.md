@@ -1,7 +1,7 @@
 # Five experiments for useful weight-space research
 
 **Models:** Qwen3-0.6B, LiquidAI LFM3-1.7B, and AKMESSI/lfm2.5-230m-fable-5.  
-**Designed:** 2026-11-05. **Execution update:** implementation and the first discovery/validation milestone have now been completed. The proposals below retain their original research targets; see [current progress](research/PROGRESS.md) and [actual findings](research/FINDINGS.md) for what has and has not been established.
+**Designed:** 2026-11-05. **Execution update:** all five bounded local pilots have been executed and reported, including failed gates and negative results. No accepted general repair or paper-ready editing method is established. The proposals below retain their original, stronger research targets; see [current progress](research/PROGRESS.md) and [actual findings](research/FINDINGS.md) for what has and has not been established.
 
 ## The goal in plain words
 
