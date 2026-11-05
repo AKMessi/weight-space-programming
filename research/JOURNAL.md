@@ -631,3 +631,7 @@ Run status: complete; generated tokens: 281. Group counts: `{"diagnosis_probe": 
 ### 2026-11-05T12:44:29.480261+00:00 — p2-e5probes-qwen_diagnosis_output_sign-s17
 
 Run status: complete; generated tokens: 1445. Group counts: `{"diagnosis_probe": {"attempted": 12, "cutoff": 9, "payload_correct": 0, "responses": 12, "success": 0}}`. Full immutable requests, raw responses, and settings are in `runs/p2-e5probes-qwen_diagnosis_output_sign-s17`. These counts are observations; interpretation is deferred to the study report.
+
+### 2026-11-05T12:45:38.948299+00:00 — p2-e5probes-qwen_diagnosis_output_sign_permuted-s17
+
+Run status: complete; generated tokens: 1441. Group counts: `{"diagnosis_probe": {"attempted": 12, "cutoff": 10, "payload_correct": 0, "responses": 12, "success": 0}}`. Full immutable requests, raw responses, and settings are in `runs/p2-e5probes-qwen_diagnosis_output_sign_permuted-s17`. These counts are observations; interpretation is deferred to the study report.
