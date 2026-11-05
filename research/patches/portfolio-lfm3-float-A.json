@@ -1,0 +1,46 @@
+{
+  "schema_version": 2,
+  "utc": "2026-11-05T11:53:54.976824+00:00",
+  "git": {
+    "commit": "c8b747a1d85dc4d32508f87beffefdea981c9776",
+    "status": " M research/JOURNAL.md\n M research/artifact_events.jsonl\n M research/budget.jsonl\n M research/portfolio-events.jsonl\n?? research/patches/portfolio-qwen-float-A.json\n?? research/patches/portfolio-qwen-float.json\n?? runs/p2-e1confirm-lfm3_qad_A-s29/"
+  },
+  "base": {
+    "path": "local/models/LFM3-1.7B-F16.gguf",
+    "repo": "LiquidAI/LFM3-1.7B-GGUF",
+    "revision": "cd0c74c575b5c416f3011b5b4c298077f26ca8c2",
+    "file": "LFM3-1.7B-F16.gguf",
+    "sha256": "b7ab8b69a85e4dfbf62cdfd0e02d7d051ed09f2c5b84c701771dddb073b85970",
+    "sampling": {
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "min_p": 0.0,
+      "repeat_penalty": 1.1,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0
+    }
+  },
+  "operations": [
+    {
+      "tensor": "blk.23.ffn_norm.weight",
+      "kind": "scale",
+      "factor": 0.9
+    }
+  ],
+  "output": "artifacts/portfolio/lfm3-float-A.gguf",
+  "status": "verified",
+  "tensors": [
+    {
+      "name": "blk.23.ffn_norm.weight",
+      "base_sha256": "6297ca486d476ed645bf68cbf757d5df6282bcf222de93c4e14b4a7450624e8e",
+      "edited_sha256": "40966cb6041388972059a6086a7c1b699fe3572ee14fc108db9cbf0cb98e4dfb",
+      "changed_values": 2048,
+      "relative_frobenius_change": 0.1000000279707929
+    }
+  ],
+  "untouched_tensors_verified": 286,
+  "edited_file_sha256": "32bb05dd450113126a3c6a6d63c0549e6bd3659c868c3e4cd51270f8e5bd133a",
+  "changed_values": 2048,
+  "bytes": 3466626336
+}
