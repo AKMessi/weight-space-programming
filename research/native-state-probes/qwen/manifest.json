@@ -1,0 +1,38 @@
+{
+  "utc": "2026-11-05T13:40:44.998436+00:00",
+  "git": {
+    "commit": "e669e542c477ead89378a2a4f44866fcc5d0e6b3",
+    "status": "?? research/scored-budget.jsonl"
+  },
+  "source_responses_sha256": "c359440b9944a906290af87f18401283fb3e65e10693eab76983fef75ef2b4cf",
+  "model": {
+    "path": "artifacts/portfolio/qwen-float.gguf",
+    "repo": "unsloth/Qwen3-0.6B-GGUF",
+    "revision": "50968a4468ef4233ed78cd7c3de230dd1d61a56b",
+    "file": "Qwen3-0.6B-BF16.gguf",
+    "sha256": "e179a7ce5e9d1c9e897181a1f1183d6790ee33128b37e049432c70b6bf6f1c11",
+    "sampling": {
+      "temperature": 0.7,
+      "top_k": 20,
+      "top_p": 0.8,
+      "min_p": 0.0,
+      "repeat_penalty": 1.0,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0
+    },
+    "local_patch_manifest": "research/patches/portfolio-qwen-float.json",
+    "local_patch_manifest_sha256": "20d1b95d8db330d6aaabf2650d4d7a56597118ced2c02d7a6352a05b7afe119e"
+  },
+  "runtime": {
+    "binary": "/home/akmessi/llama-vulkan-build/bin/llama-server",
+    "context": 2048,
+    "threads": 4,
+    "gpu_layers": 99,
+    "embedding": true
+  },
+  "criteria": {
+    "top1_equal": true,
+    "max_centered_logit_error": 0.05,
+    "relative_centered_error": 0.01
+  }
+}
