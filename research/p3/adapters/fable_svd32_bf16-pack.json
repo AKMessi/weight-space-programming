@@ -1,0 +1,319 @@
+{
+  "utc": "2026-11-05T17:56:09.426574+00:00",
+  "git": {
+    "commit": "2b36f958c828cac83316f1d06a385c737a5ea9fd",
+    "status": ""
+  },
+  "base": {
+    "path": "artifacts/parent-uniform-bf16-f16.gguf",
+    "repo": "LiquidAI/LFM2.5-230M-GGUF",
+    "revision": "03502067c64ce32ac4fe87b0cec0310a1a13d3e9",
+    "file": "LFM2.5-230M-F16.gguf",
+    "sha256": "256feee13466c9a5101f2b553e58f61f284e552a4b6e8847754d9e3096f7ceed",
+    "sampling": {
+      "temperature": 0.0,
+      "top_k": 0,
+      "top_p": 1.0,
+      "min_p": 0.0,
+      "repeat_penalty": 1.0,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0
+    },
+    "local_patch_manifest": "research/patches/parent-uniform-bf16-f16.json",
+    "local_patch_manifest_sha256": "1074e5d560c48e478e54bc236dc21d896286e21278fe941cfefdcc047980c108"
+  },
+  "target": {
+    "path": "local/models/lfm2.5-230m-fable-5-f16.gguf",
+    "repo": "AKMESSI/lfm2.5-230m-fable-5",
+    "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+    "file": "lfm2.5-230m-fable-5-f16.gguf",
+    "sha256": "1e1624de4d7ebe413d82dbe2b5f48fcf83e6c46b1b5414c8aef0596009380cc6",
+    "sampling": {
+      "temperature": 0.0,
+      "top_k": 0,
+      "top_p": 1.0,
+      "min_p": 0.0,
+      "repeat_penalty": 1.0,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0
+    }
+  },
+  "output": "artifacts/p3/adapters/fable_svd32_bf16.npz",
+  "method": "svd",
+  "rank": 32,
+  "round_bf16": true,
+  "status": "verified",
+  "tensors": [
+    {
+      "name": "blk.0.ffn_norm.weight",
+      "prefix": "t5",
+      "shape": [
+        1024
+      ],
+      "kind": "exact_sparse",
+      "changed_values": 1
+    },
+    {
+      "name": "blk.0.shortconv.conv.weight",
+      "prefix": "t7",
+      "shape": [
+        1024,
+        3
+      ],
+      "kind": "exact_sparse",
+      "changed_values": 1
+    },
+    {
+      "name": "blk.1.ffn_norm.weight",
+      "prefix": "t13",
+      "shape": [
+        1024
+      ],
+      "kind": "exact_sparse",
+      "changed_values": 1
+    },
+    {
+      "name": "blk.1.shortconv.conv.weight",
+      "prefix": "t15",
+      "shape": [
+        1024,
+        3
+      ],
+      "kind": "exact_sparse",
+      "changed_values": 1
+    },
+    {
+      "name": "blk.2.attn_k.weight",
+      "prefix": "t18",
+      "shape": [
+        512,
+        1024
+      ],
+      "kind": "svd",
+      "relative_delta_error": 0.004764426965266466
+    },
+    {
+      "name": "blk.2.attn_q.weight",
+      "prefix": "t22",
+      "shape": [
+        1024,
+        1024
+      ],
+      "kind": "svd",
+      "relative_delta_error": 0.004765923134982586
+    },
+    {
+      "name": "blk.2.attn_v.weight",
+      "prefix": "t24",
+      "shape": [
+        512,
+        1024
+      ],
+      "kind": "svd",
+      "relative_delta_error": 0.004490703344345093
+    },
+    {
+      "name": "blk.3.shortconv.conv.weight",
+      "prefix": "t34",
+      "shape": [
+        1024,
+        3
+      ],
+      "kind": "exact_sparse",
+      "changed_values": 1
+    },
+    {
+      "name": "blk.4.attn_k.weight",
+      "prefix": "t37",
+      "shape": [
+        512,
+        1024
+      ],
+      "kind": "svd",
+      "relative_delta_error": 0.004973625298589468
+    },
+    {
+      "name": "blk.4.attn_q.weight",
+      "prefix": "t41",
+      "shape": [
+        1024,
+        1024
+      ],
+      "kind": "svd",
+      "relative_delta_error": 0.0049238745123147964
+    },
+    {
+      "name": "blk.4.attn_v.weight",
+      "prefix": "t43",
+      "shape": [
+        512,
+        1024
+      ],
+      "kind": "svd",
+      "relative_delta_error": 0.004824118688702583
+    },
+    {
+      "name": "blk.6.attn_k.weight",
+      "prefix": "t56",
+      "shape": [
+        512,
+        1024
+      ],
+      "kind": "svd",
+      "relative_delta_error": 0.005342943128198385
+    },
+    {
+      "name": "blk.6.attn_q.weight",
+      "prefix": "t60",
+      "shape": [
+        1024,
+        1024
+      ],
+      "kind": "svd",
+      "relative_delta_error": 0.0049091908149421215
+    },
+    {
+      "name": "blk.6.attn_v.weight",
+      "prefix": "t62",
+      "shape": [
+        512,
+        1024
+      ],
+      "kind": "svd",
+      "relative_delta_error": 0.005297147668898106
+    },
+    {
+      "name": "blk.7.shortconv.conv.weight",
+      "prefix": "t72",
+      "shape": [
+        1024,
+        3
+      ],
+      "kind": "exact_sparse",
+      "changed_values": 1
+    },
+    {
+      "name": "blk.8.attn_k.weight",
+      "prefix": "t75",
+      "shape": [
+        512,
+        1024
+      ],
+      "kind": "svd",
+      "relative_delta_error": 0.005540079437196255
+    },
+    {
+      "name": "blk.8.attn_q.weight",
+      "prefix": "t79",
+      "shape": [
+        1024,
+        1024
+      ],
+      "kind": "svd",
+      "relative_delta_error": 0.005297309253364801
+    },
+    {
+      "name": "blk.8.attn_v.weight",
+      "prefix": "t81",
+      "shape": [
+        512,
+        1024
+      ],
+      "kind": "svd",
+      "relative_delta_error": 0.005261714104562998
+    },
+    {
+      "name": "blk.9.shortconv.conv.weight",
+      "prefix": "t91",
+      "shape": [
+        1024,
+        3
+      ],
+      "kind": "exact_sparse",
+      "changed_values": 1
+    },
+    {
+      "name": "blk.10.attn_k.weight",
+      "prefix": "t94",
+      "shape": [
+        512,
+        1024
+      ],
+      "kind": "svd",
+      "relative_delta_error": 0.005096286069601774
+    },
+    {
+      "name": "blk.10.attn_q.weight",
+      "prefix": "t98",
+      "shape": [
+        1024,
+        1024
+      ],
+      "kind": "svd",
+      "relative_delta_error": 0.004759644158184528
+    },
+    {
+      "name": "blk.10.attn_v.weight",
+      "prefix": "t100",
+      "shape": [
+        512,
+        1024
+      ],
+      "kind": "svd",
+      "relative_delta_error": 0.0040873028337955475
+    },
+    {
+      "name": "blk.11.shortconv.conv.weight",
+      "prefix": "t110",
+      "shape": [
+        1024,
+        3
+      ],
+      "kind": "exact_sparse",
+      "changed_values": 3
+    },
+    {
+      "name": "blk.12.attn_k.weight",
+      "prefix": "t113",
+      "shape": [
+        512,
+        1024
+      ],
+      "kind": "svd",
+      "relative_delta_error": 0.004303504712879658
+    },
+    {
+      "name": "blk.12.attn_q.weight",
+      "prefix": "t117",
+      "shape": [
+        1024,
+        1024
+      ],
+      "kind": "svd",
+      "relative_delta_error": 0.004335415083914995
+    },
+    {
+      "name": "blk.12.attn_v.weight",
+      "prefix": "t119",
+      "shape": [
+        512,
+        1024
+      ],
+      "kind": "svd",
+      "relative_delta_error": 0.004048890434205532
+    },
+    {
+      "name": "blk.13.shortconv.conv.weight",
+      "prefix": "t129",
+      "shape": [
+        1024,
+        3
+      ],
+      "kind": "exact_sparse",
+      "changed_values": 2
+    }
+  ],
+  "bytes": 1830616,
+  "package_sha256": "e71ed44cd256e358ef5d7eec9f513a7a535256087356cbb4fa83a1dbc439e419",
+  "changed_tensor_count": 27
+}
