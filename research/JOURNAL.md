@@ -1055,3 +1055,7 @@ Remaining finite queue: finish randomized original/Qwen timings,3hybrid timing a
 ### 2026-11-05T19:22:20.918065+00:00 — p3-reserve-format-quality-fable_float-s17
 
 Status `complete`, 2381 generated tokens. Immutable raw inputs/responses/config/runtime and resource samples are in `runs/p3-reserve-format-quality-fable_float-s17`. Interpretation is deferred to the study report; this run alone does not establish a repair.
+
+### 2026-11-05T19:25:24.552893+00:00 — p3-reserve-format-quality-fable_Q8_0-s17
+
+Status `complete`, 2339 generated tokens. Immutable raw inputs/responses/config/runtime and resource samples are in `runs/p3-reserve-format-quality-fable_Q8_0-s17`. Interpretation is deferred to the study report; this run alone does not establish a repair.
