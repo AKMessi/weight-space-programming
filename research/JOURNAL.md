@@ -711,3 +711,7 @@ Run status: complete; generated tokens: 256. Group counts: `{"decode_measurement
 ### 2026-11-05T13:32:14.967534+00:00 — p2-speed-followup-fable_Q4_0-s17
 
 Run status: complete; generated tokens: 256. Group counts: `{"decode_measurement": {"attempted": 3, "cutoff": 3, "payload_correct": 0, "responses": 3, "success": 0}, "warmup": {"attempted": 1, "cutoff": 1, "payload_correct": 0, "responses": 1, "success": 0}}`. Full immutable requests, raw responses, and settings are in `runs/p2-speed-followup-fable_Q4_0-s17`. These counts are observations; interpretation is deferred to the study report.
+
+### 2026-11-05T13:32:31.245979+00:00 — p2-speed-followup-fable_Q4_K_M-s17
+
+Run status: complete; generated tokens: 256. Group counts: `{"decode_measurement": {"attempted": 3, "cutoff": 3, "payload_correct": 0, "responses": 3, "success": 0}, "warmup": {"attempted": 1, "cutoff": 1, "payload_correct": 0, "responses": 1, "success": 0}}`. Full immutable requests, raw responses, and settings are in `runs/p2-speed-followup-fable_Q4_K_M-s17`. These counts are observations; interpretation is deferred to the study report.
