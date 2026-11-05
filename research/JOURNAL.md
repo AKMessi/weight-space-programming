@@ -1139,3 +1139,7 @@ Status `complete`, 1780 generated tokens. Immutable raw inputs/responses/config/
 ### 2026-11-05T19:41:17.217723+00:00 — p3-clarify-answerability-qwen_float-s17
 
 Status `complete`, 612 generated tokens. Immutable raw inputs/responses/config/runtime and resource samples are in `runs/p3-clarify-answerability-qwen_float-s17`. Interpretation is deferred to the study report; this run alone does not establish a repair.
+
+### 2026-11-05T19:41:44.145234+00:00 — p3-clarify-evidence-dev-original-fable_float-s17
+
+Status `complete`, 3026 generated tokens. Immutable raw inputs/responses/config/runtime and resource samples are in `runs/p3-clarify-evidence-dev-original-fable_float-s17`. Interpretation is deferred to the study report; this run alone does not establish a repair.
