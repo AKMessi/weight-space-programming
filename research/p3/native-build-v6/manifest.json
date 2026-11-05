@@ -1,0 +1,27 @@
+{
+  "utc": "2026-11-05T19:51:01.179135+00:00",
+  "git": {
+    "commit": "c9482e6943fdfbc4ec17cc1b94ee4d71633ec4e1",
+    "status": " M research/budget.jsonl\n?? runs/p3-clarify-evidence-dev-combined-qwen_float-s17/"
+  },
+  "command": [
+    "c++",
+    "-O2",
+    "-std=c++17",
+    "native/trace_v6.cpp",
+    "-Ilocal/runtime-source/include",
+    "-Ilocal/runtime-source/ggml/include",
+    "-Ilocal/runtime-source/vendor/nlohmann",
+    "-L/home/akmessi/llama-vulkan-build/bin",
+    "-Wl,-rpath,/home/akmessi/llama-vulkan-build/bin",
+    "-lllama",
+    "-lggml",
+    "-lggml-base",
+    "-o",
+    "local/weightlab-native-v6"
+  ],
+  "source_revision": "338fce6511c744893cc0d3d958b275f40552c7a4",
+  "source_sha256": "e320bbfc1db250252cdd06f50b278fb6fe7ca0fe43a9b47f23de80520f224cc4",
+  "status": "complete",
+  "binary_sha256": "43f634f46e939f02fa23dfac9d9d510b8d28315927efbd71672e6588480a2555"
+}
