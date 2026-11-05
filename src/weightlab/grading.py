@@ -19,7 +19,7 @@ def _constant(value):
 
 
 DECODER = json.JSONDecoder(object_pairs_hook=_pairs, parse_constant=_constant)
-GRADER_VERSION = "7"
+GRADER_VERSION = "8"
 
 
 def code_payload_present(text, expected):
@@ -77,6 +77,13 @@ def first_json(text):
 
 def grade(case, text):
     kind, expected = case["grader"], case["expected"]
+    if kind=='next_line':
+        lines=text.splitlines()
+        if lines and lines[0].startswith('```'):lines=lines[1:]
+        first=next((line for line in lines if line.strip()),'')
+        payload=first.rstrip()==expected.rstrip()
+        return {'success':text.rstrip('\r\n')==expected,'payload_correct':payload,
+                'first_line':first,'note':'Fixed first nonempty line (after a leading fence); text match, not functional correctness.'}
     if kind=='measurement_only':
         return {'success':False,'payload_correct':False,'not_scored':True,
                 'note':'Runtime measurement; these booleans are not a model-quality score.'}

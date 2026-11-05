@@ -67,3 +67,11 @@ class GradingTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+class NextLineTests(unittest.TestCase):
+    def test_fixed_first_line_preserves_indentation_and_rejects_later_answer(self):
+        c={'grader':'next_line','expected':'    return value'}
+        self.assertTrue(grade(c,'    return value\n')['success'])
+        self.assertTrue(grade(c,'```python\n    return value\n```')['payload_correct'])
+        self.assertFalse(grade(c,'Here is the code:\n    return value')['payload_correct'])
+        self.assertFalse(grade(c,'return value')['payload_correct'])
