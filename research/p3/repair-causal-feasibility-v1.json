@@ -1,0 +1,1804 @@
+{
+  "utc": "2026-11-05T18:41:27.246590+00:00",
+  "analysis_sha256": "f0a2464bbf94d97c09aceac496aec3b3c2b7bcd1017048ab8c25125adc1cfd15",
+  "layer": 6,
+  "records": [
+    {
+      "id": "p3-switch-development-0-plain-dose0.5",
+      "dose": 0.5,
+      "case": {
+        "expected": {
+          "count": 3,
+          "tag": "AC-411"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_plain",
+        "id": "p3-switch-development-0-plain",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "Record: tag=AC-411; count=3.\nExtract tag as a string and count as an integer. Return only the JSON object, without Markdown or commentary.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "plain",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": true,
+        "payload_correct": true,
+        "success": true
+      },
+      "grading": {
+        "success": true,
+        "format_valid": true,
+        "payload_correct": true
+      },
+      "rescued_plain": false
+    },
+    {
+      "id": "p3-switch-development-0-fenced-dose0.5",
+      "dose": 0.5,
+      "case": {
+        "expected": {
+          "count": 3,
+          "tag": "AC-411"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_fenced",
+        "id": "p3-switch-development-0-fenced",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "Record: tag=AC-411; count=3.\nExtract tag as a string and count as an integer. Return only the JSON object inside one json code fence, with no other text.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "fenced",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": true,
+        "payload_correct": true,
+        "success": true
+      },
+      "grading": {
+        "success": true,
+        "payload_correct": true,
+        "format_valid": true
+      },
+      "rescued_plain": false
+    },
+    {
+      "id": "p3-switch-development-1-plain-dose0.5",
+      "dose": 0.5,
+      "case": {
+        "expected": {
+          "count": 4,
+          "tag": "AC-428"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_plain",
+        "id": "p3-switch-development-1-plain",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "The entry has tag AC-428 and count 4.\nExtract tag as a string and count as an integer. Return only the JSON object, without Markdown or commentary.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "plain",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": false,
+        "payload_correct": true,
+        "success": false
+      },
+      "grading": {
+        "success": true,
+        "format_valid": true,
+        "payload_correct": true
+      },
+      "rescued_plain": true
+    },
+    {
+      "id": "p3-switch-development-1-fenced-dose0.5",
+      "dose": 0.5,
+      "case": {
+        "expected": {
+          "count": 4,
+          "tag": "AC-428"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_fenced",
+        "id": "p3-switch-development-1-fenced",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "The entry has tag AC-428 and count 4.\nExtract tag as a string and count as an integer. Return only the JSON object inside one json code fence, with no other text.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "fenced",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": true,
+        "payload_correct": true,
+        "success": true
+      },
+      "grading": {
+        "success": true,
+        "payload_correct": true,
+        "format_valid": true
+      },
+      "rescued_plain": false
+    },
+    {
+      "id": "p3-switch-development-2-plain-dose0.5",
+      "dose": 0.5,
+      "case": {
+        "expected": {
+          "count": 5,
+          "tag": "AC-445"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_plain",
+        "id": "p3-switch-development-2-plain",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "Record: tag=AC-445; count=5.\nExtract tag as a string and count as an integer. Return only the JSON object, without Markdown or commentary.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "plain",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": true,
+        "payload_correct": true,
+        "success": true
+      },
+      "grading": {
+        "success": true,
+        "format_valid": true,
+        "payload_correct": true
+      },
+      "rescued_plain": false
+    },
+    {
+      "id": "p3-switch-development-2-fenced-dose0.5",
+      "dose": 0.5,
+      "case": {
+        "expected": {
+          "count": 5,
+          "tag": "AC-445"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_fenced",
+        "id": "p3-switch-development-2-fenced",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "Record: tag=AC-445; count=5.\nExtract tag as a string and count as an integer. Return only the JSON object inside one json code fence, with no other text.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "fenced",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": true,
+        "payload_correct": true,
+        "success": true
+      },
+      "grading": {
+        "success": true,
+        "payload_correct": true,
+        "format_valid": true
+      },
+      "rescued_plain": false
+    },
+    {
+      "id": "p3-switch-development-3-plain-dose0.5",
+      "dose": 0.5,
+      "case": {
+        "expected": {
+          "count": 6,
+          "tag": "AC-462"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_plain",
+        "id": "p3-switch-development-3-plain",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "The entry has tag AC-462 and count 6.\nExtract tag as a string and count as an integer. Return only the JSON object, without Markdown or commentary.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "plain",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": false,
+        "payload_correct": true,
+        "success": false
+      },
+      "grading": {
+        "success": true,
+        "format_valid": true,
+        "payload_correct": true
+      },
+      "rescued_plain": true
+    },
+    {
+      "id": "p3-switch-development-3-fenced-dose0.5",
+      "dose": 0.5,
+      "case": {
+        "expected": {
+          "count": 6,
+          "tag": "AC-462"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_fenced",
+        "id": "p3-switch-development-3-fenced",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "The entry has tag AC-462 and count 6.\nExtract tag as a string and count as an integer. Return only the JSON object inside one json code fence, with no other text.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "fenced",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": true,
+        "payload_correct": true,
+        "success": true
+      },
+      "grading": {
+        "success": true,
+        "payload_correct": true,
+        "format_valid": true
+      },
+      "rescued_plain": false
+    },
+    {
+      "id": "p3-switch-development-4-plain-dose0.5",
+      "dose": 0.5,
+      "case": {
+        "expected": {
+          "count": 7,
+          "tag": "AC-479"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_plain",
+        "id": "p3-switch-development-4-plain",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "Record: tag=AC-479; count=7.\nExtract tag as a string and count as an integer. Return only the JSON object, without Markdown or commentary.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "plain",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": true,
+        "payload_correct": true,
+        "success": true
+      },
+      "grading": {
+        "success": true,
+        "format_valid": true,
+        "payload_correct": true
+      },
+      "rescued_plain": false
+    },
+    {
+      "id": "p3-switch-development-4-fenced-dose0.5",
+      "dose": 0.5,
+      "case": {
+        "expected": {
+          "count": 7,
+          "tag": "AC-479"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_fenced",
+        "id": "p3-switch-development-4-fenced",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "Record: tag=AC-479; count=7.\nExtract tag as a string and count as an integer. Return only the JSON object inside one json code fence, with no other text.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "fenced",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": true,
+        "payload_correct": true,
+        "success": true
+      },
+      "grading": {
+        "success": true,
+        "payload_correct": true,
+        "format_valid": true
+      },
+      "rescued_plain": false
+    },
+    {
+      "id": "p3-switch-development-5-plain-dose0.5",
+      "dose": 0.5,
+      "case": {
+        "expected": {
+          "count": 8,
+          "tag": "AC-496"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_plain",
+        "id": "p3-switch-development-5-plain",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "The entry has tag AC-496 and count 8.\nExtract tag as a string and count as an integer. Return only the JSON object, without Markdown or commentary.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "plain",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": false,
+        "payload_correct": true,
+        "success": false
+      },
+      "grading": {
+        "success": true,
+        "format_valid": true,
+        "payload_correct": true
+      },
+      "rescued_plain": true
+    },
+    {
+      "id": "p3-switch-development-5-fenced-dose0.5",
+      "dose": 0.5,
+      "case": {
+        "expected": {
+          "count": 8,
+          "tag": "AC-496"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_fenced",
+        "id": "p3-switch-development-5-fenced",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "The entry has tag AC-496 and count 8.\nExtract tag as a string and count as an integer. Return only the JSON object inside one json code fence, with no other text.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "fenced",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": true,
+        "payload_correct": true,
+        "success": true
+      },
+      "grading": {
+        "success": true,
+        "payload_correct": true,
+        "format_valid": true
+      },
+      "rescued_plain": false
+    },
+    {
+      "id": "p3-switch-development-6-plain-dose0.5",
+      "dose": 0.5,
+      "case": {
+        "expected": {
+          "count": 9,
+          "tag": "AC-513"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_plain",
+        "id": "p3-switch-development-6-plain",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "Record: tag=AC-513; count=9.\nExtract tag as a string and count as an integer. Return only the JSON object, without Markdown or commentary.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "plain",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": true,
+        "payload_correct": true,
+        "success": true
+      },
+      "grading": {
+        "success": true,
+        "format_valid": true,
+        "payload_correct": true
+      },
+      "rescued_plain": false
+    },
+    {
+      "id": "p3-switch-development-6-fenced-dose0.5",
+      "dose": 0.5,
+      "case": {
+        "expected": {
+          "count": 9,
+          "tag": "AC-513"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_fenced",
+        "id": "p3-switch-development-6-fenced",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "Record: tag=AC-513; count=9.\nExtract tag as a string and count as an integer. Return only the JSON object inside one json code fence, with no other text.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "fenced",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": true,
+        "payload_correct": true,
+        "success": true
+      },
+      "grading": {
+        "success": true,
+        "payload_correct": true,
+        "format_valid": true
+      },
+      "rescued_plain": false
+    },
+    {
+      "id": "p3-switch-development-7-plain-dose0.5",
+      "dose": 0.5,
+      "case": {
+        "expected": {
+          "count": 10,
+          "tag": "AC-530"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_plain",
+        "id": "p3-switch-development-7-plain",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "The entry has tag AC-530 and count 10.\nExtract tag as a string and count as an integer. Return only the JSON object, without Markdown or commentary.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "plain",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": false,
+        "payload_correct": true,
+        "success": false
+      },
+      "grading": {
+        "success": true,
+        "format_valid": true,
+        "payload_correct": true
+      },
+      "rescued_plain": true
+    },
+    {
+      "id": "p3-switch-development-7-fenced-dose0.5",
+      "dose": 0.5,
+      "case": {
+        "expected": {
+          "count": 10,
+          "tag": "AC-530"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_fenced",
+        "id": "p3-switch-development-7-fenced",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "The entry has tag AC-530 and count 10.\nExtract tag as a string and count as an integer. Return only the JSON object inside one json code fence, with no other text.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "fenced",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": true,
+        "payload_correct": true,
+        "success": true
+      },
+      "grading": {
+        "success": true,
+        "payload_correct": true,
+        "format_valid": true
+      },
+      "rescued_plain": false
+    },
+    {
+      "id": "p3-switch-development-0-plain-dose1.0",
+      "dose": 1.0,
+      "case": {
+        "expected": {
+          "count": 3,
+          "tag": "AC-411"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_plain",
+        "id": "p3-switch-development-0-plain",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "Record: tag=AC-411; count=3.\nExtract tag as a string and count as an integer. Return only the JSON object, without Markdown or commentary.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "plain",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": true,
+        "payload_correct": true,
+        "success": true
+      },
+      "grading": {
+        "success": true,
+        "format_valid": true,
+        "payload_correct": true
+      },
+      "rescued_plain": false
+    },
+    {
+      "id": "p3-switch-development-0-fenced-dose1.0",
+      "dose": 1.0,
+      "case": {
+        "expected": {
+          "count": 3,
+          "tag": "AC-411"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_fenced",
+        "id": "p3-switch-development-0-fenced",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "Record: tag=AC-411; count=3.\nExtract tag as a string and count as an integer. Return only the JSON object inside one json code fence, with no other text.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "fenced",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": true,
+        "payload_correct": true,
+        "success": true
+      },
+      "grading": {
+        "success": true,
+        "payload_correct": true,
+        "format_valid": true
+      },
+      "rescued_plain": false
+    },
+    {
+      "id": "p3-switch-development-1-plain-dose1.0",
+      "dose": 1.0,
+      "case": {
+        "expected": {
+          "count": 4,
+          "tag": "AC-428"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_plain",
+        "id": "p3-switch-development-1-plain",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "The entry has tag AC-428 and count 4.\nExtract tag as a string and count as an integer. Return only the JSON object, without Markdown or commentary.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "plain",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": false,
+        "payload_correct": true,
+        "success": false
+      },
+      "grading": {
+        "success": true,
+        "format_valid": true,
+        "payload_correct": true
+      },
+      "rescued_plain": true
+    },
+    {
+      "id": "p3-switch-development-1-fenced-dose1.0",
+      "dose": 1.0,
+      "case": {
+        "expected": {
+          "count": 4,
+          "tag": "AC-428"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_fenced",
+        "id": "p3-switch-development-1-fenced",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "The entry has tag AC-428 and count 4.\nExtract tag as a string and count as an integer. Return only the JSON object inside one json code fence, with no other text.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "fenced",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": true,
+        "payload_correct": true,
+        "success": true
+      },
+      "grading": {
+        "success": true,
+        "payload_correct": true,
+        "format_valid": true
+      },
+      "rescued_plain": false
+    },
+    {
+      "id": "p3-switch-development-2-plain-dose1.0",
+      "dose": 1.0,
+      "case": {
+        "expected": {
+          "count": 5,
+          "tag": "AC-445"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_plain",
+        "id": "p3-switch-development-2-plain",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "Record: tag=AC-445; count=5.\nExtract tag as a string and count as an integer. Return only the JSON object, without Markdown or commentary.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "plain",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": true,
+        "payload_correct": true,
+        "success": true
+      },
+      "grading": {
+        "success": true,
+        "format_valid": true,
+        "payload_correct": true
+      },
+      "rescued_plain": false
+    },
+    {
+      "id": "p3-switch-development-2-fenced-dose1.0",
+      "dose": 1.0,
+      "case": {
+        "expected": {
+          "count": 5,
+          "tag": "AC-445"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_fenced",
+        "id": "p3-switch-development-2-fenced",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "Record: tag=AC-445; count=5.\nExtract tag as a string and count as an integer. Return only the JSON object inside one json code fence, with no other text.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "fenced",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": true,
+        "payload_correct": true,
+        "success": true
+      },
+      "grading": {
+        "success": true,
+        "payload_correct": true,
+        "format_valid": true
+      },
+      "rescued_plain": false
+    },
+    {
+      "id": "p3-switch-development-3-plain-dose1.0",
+      "dose": 1.0,
+      "case": {
+        "expected": {
+          "count": 6,
+          "tag": "AC-462"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_plain",
+        "id": "p3-switch-development-3-plain",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "The entry has tag AC-462 and count 6.\nExtract tag as a string and count as an integer. Return only the JSON object, without Markdown or commentary.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "plain",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": false,
+        "payload_correct": true,
+        "success": false
+      },
+      "grading": {
+        "success": true,
+        "format_valid": true,
+        "payload_correct": true
+      },
+      "rescued_plain": true
+    },
+    {
+      "id": "p3-switch-development-3-fenced-dose1.0",
+      "dose": 1.0,
+      "case": {
+        "expected": {
+          "count": 6,
+          "tag": "AC-462"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_fenced",
+        "id": "p3-switch-development-3-fenced",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "The entry has tag AC-462 and count 6.\nExtract tag as a string and count as an integer. Return only the JSON object inside one json code fence, with no other text.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "fenced",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": true,
+        "payload_correct": true,
+        "success": true
+      },
+      "grading": {
+        "success": true,
+        "payload_correct": true,
+        "format_valid": true
+      },
+      "rescued_plain": false
+    },
+    {
+      "id": "p3-switch-development-4-plain-dose1.0",
+      "dose": 1.0,
+      "case": {
+        "expected": {
+          "count": 7,
+          "tag": "AC-479"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_plain",
+        "id": "p3-switch-development-4-plain",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "Record: tag=AC-479; count=7.\nExtract tag as a string and count as an integer. Return only the JSON object, without Markdown or commentary.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "plain",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": true,
+        "payload_correct": true,
+        "success": true
+      },
+      "grading": {
+        "success": true,
+        "format_valid": true,
+        "payload_correct": true
+      },
+      "rescued_plain": false
+    },
+    {
+      "id": "p3-switch-development-4-fenced-dose1.0",
+      "dose": 1.0,
+      "case": {
+        "expected": {
+          "count": 7,
+          "tag": "AC-479"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_fenced",
+        "id": "p3-switch-development-4-fenced",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "Record: tag=AC-479; count=7.\nExtract tag as a string and count as an integer. Return only the JSON object inside one json code fence, with no other text.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "fenced",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": true,
+        "payload_correct": true,
+        "success": true
+      },
+      "grading": {
+        "success": true,
+        "payload_correct": true,
+        "format_valid": true
+      },
+      "rescued_plain": false
+    },
+    {
+      "id": "p3-switch-development-5-plain-dose1.0",
+      "dose": 1.0,
+      "case": {
+        "expected": {
+          "count": 8,
+          "tag": "AC-496"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_plain",
+        "id": "p3-switch-development-5-plain",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "The entry has tag AC-496 and count 8.\nExtract tag as a string and count as an integer. Return only the JSON object, without Markdown or commentary.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "plain",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": false,
+        "payload_correct": true,
+        "success": false
+      },
+      "grading": {
+        "success": true,
+        "format_valid": true,
+        "payload_correct": true
+      },
+      "rescued_plain": true
+    },
+    {
+      "id": "p3-switch-development-5-fenced-dose1.0",
+      "dose": 1.0,
+      "case": {
+        "expected": {
+          "count": 8,
+          "tag": "AC-496"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_fenced",
+        "id": "p3-switch-development-5-fenced",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "The entry has tag AC-496 and count 8.\nExtract tag as a string and count as an integer. Return only the JSON object inside one json code fence, with no other text.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "fenced",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": true,
+        "payload_correct": true,
+        "success": true
+      },
+      "grading": {
+        "success": true,
+        "payload_correct": true,
+        "format_valid": true
+      },
+      "rescued_plain": false
+    },
+    {
+      "id": "p3-switch-development-6-plain-dose1.0",
+      "dose": 1.0,
+      "case": {
+        "expected": {
+          "count": 9,
+          "tag": "AC-513"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_plain",
+        "id": "p3-switch-development-6-plain",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "Record: tag=AC-513; count=9.\nExtract tag as a string and count as an integer. Return only the JSON object, without Markdown or commentary.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "plain",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": true,
+        "payload_correct": true,
+        "success": true
+      },
+      "grading": {
+        "success": true,
+        "format_valid": true,
+        "payload_correct": true
+      },
+      "rescued_plain": false
+    },
+    {
+      "id": "p3-switch-development-6-fenced-dose1.0",
+      "dose": 1.0,
+      "case": {
+        "expected": {
+          "count": 9,
+          "tag": "AC-513"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_fenced",
+        "id": "p3-switch-development-6-fenced",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "Record: tag=AC-513; count=9.\nExtract tag as a string and count as an integer. Return only the JSON object inside one json code fence, with no other text.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "fenced",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": true,
+        "payload_correct": true,
+        "success": true
+      },
+      "grading": {
+        "success": true,
+        "payload_correct": true,
+        "format_valid": true
+      },
+      "rescued_plain": false
+    },
+    {
+      "id": "p3-switch-development-7-plain-dose1.0",
+      "dose": 1.0,
+      "case": {
+        "expected": {
+          "count": 10,
+          "tag": "AC-530"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_plain",
+        "id": "p3-switch-development-7-plain",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "The entry has tag AC-530 and count 10.\nExtract tag as a string and count as an integer. Return only the JSON object, without Markdown or commentary.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "plain",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": false,
+        "payload_correct": true,
+        "success": false
+      },
+      "grading": {
+        "success": true,
+        "format_valid": true,
+        "payload_correct": true
+      },
+      "rescued_plain": true
+    },
+    {
+      "id": "p3-switch-development-7-fenced-dose1.0",
+      "dose": 1.0,
+      "case": {
+        "expected": {
+          "count": 10,
+          "tag": "AC-530"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_fenced",
+        "id": "p3-switch-development-7-fenced",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "The entry has tag AC-530 and count 10.\nExtract tag as a string and count as an integer. Return only the JSON object inside one json code fence, with no other text.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "fenced",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": true,
+        "payload_correct": true,
+        "success": true
+      },
+      "grading": {
+        "success": true,
+        "payload_correct": true,
+        "format_valid": true
+      },
+      "rescued_plain": false
+    },
+    {
+      "id": "p3-switch-development-0-plain-dose2.0",
+      "dose": 2.0,
+      "case": {
+        "expected": {
+          "count": 3,
+          "tag": "AC-411"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_plain",
+        "id": "p3-switch-development-0-plain",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "Record: tag=AC-411; count=3.\nExtract tag as a string and count as an integer. Return only the JSON object, without Markdown or commentary.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "plain",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": true,
+        "payload_correct": true,
+        "success": true
+      },
+      "grading": {
+        "success": false,
+        "format_valid": false,
+        "payload_correct": false
+      },
+      "rescued_plain": false
+    },
+    {
+      "id": "p3-switch-development-0-fenced-dose2.0",
+      "dose": 2.0,
+      "case": {
+        "expected": {
+          "count": 3,
+          "tag": "AC-411"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_fenced",
+        "id": "p3-switch-development-0-fenced",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "Record: tag=AC-411; count=3.\nExtract tag as a string and count as an integer. Return only the JSON object inside one json code fence, with no other text.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "fenced",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": true,
+        "payload_correct": true,
+        "success": true
+      },
+      "grading": {
+        "success": false,
+        "payload_correct": false,
+        "format_valid": false
+      },
+      "rescued_plain": false
+    },
+    {
+      "id": "p3-switch-development-1-plain-dose2.0",
+      "dose": 2.0,
+      "case": {
+        "expected": {
+          "count": 4,
+          "tag": "AC-428"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_plain",
+        "id": "p3-switch-development-1-plain",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "The entry has tag AC-428 and count 4.\nExtract tag as a string and count as an integer. Return only the JSON object, without Markdown or commentary.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "plain",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": false,
+        "payload_correct": true,
+        "success": false
+      },
+      "grading": {
+        "success": false,
+        "format_valid": false,
+        "payload_correct": false
+      },
+      "rescued_plain": false
+    },
+    {
+      "id": "p3-switch-development-1-fenced-dose2.0",
+      "dose": 2.0,
+      "case": {
+        "expected": {
+          "count": 4,
+          "tag": "AC-428"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_fenced",
+        "id": "p3-switch-development-1-fenced",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "The entry has tag AC-428 and count 4.\nExtract tag as a string and count as an integer. Return only the JSON object inside one json code fence, with no other text.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "fenced",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": true,
+        "payload_correct": true,
+        "success": true
+      },
+      "grading": {
+        "success": false,
+        "payload_correct": false,
+        "format_valid": false
+      },
+      "rescued_plain": false
+    },
+    {
+      "id": "p3-switch-development-2-plain-dose2.0",
+      "dose": 2.0,
+      "case": {
+        "expected": {
+          "count": 5,
+          "tag": "AC-445"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_plain",
+        "id": "p3-switch-development-2-plain",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "Record: tag=AC-445; count=5.\nExtract tag as a string and count as an integer. Return only the JSON object, without Markdown or commentary.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "plain",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": true,
+        "payload_correct": true,
+        "success": true
+      },
+      "grading": {
+        "success": false,
+        "format_valid": false,
+        "payload_correct": false
+      },
+      "rescued_plain": false
+    },
+    {
+      "id": "p3-switch-development-2-fenced-dose2.0",
+      "dose": 2.0,
+      "case": {
+        "expected": {
+          "count": 5,
+          "tag": "AC-445"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_fenced",
+        "id": "p3-switch-development-2-fenced",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "Record: tag=AC-445; count=5.\nExtract tag as a string and count as an integer. Return only the JSON object inside one json code fence, with no other text.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "fenced",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": true,
+        "payload_correct": true,
+        "success": true
+      },
+      "grading": {
+        "success": false,
+        "payload_correct": false,
+        "format_valid": false
+      },
+      "rescued_plain": false
+    },
+    {
+      "id": "p3-switch-development-3-plain-dose2.0",
+      "dose": 2.0,
+      "case": {
+        "expected": {
+          "count": 6,
+          "tag": "AC-462"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_plain",
+        "id": "p3-switch-development-3-plain",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "The entry has tag AC-462 and count 6.\nExtract tag as a string and count as an integer. Return only the JSON object, without Markdown or commentary.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "plain",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": false,
+        "payload_correct": true,
+        "success": false
+      },
+      "grading": {
+        "success": false,
+        "format_valid": false,
+        "payload_correct": false
+      },
+      "rescued_plain": false
+    },
+    {
+      "id": "p3-switch-development-3-fenced-dose2.0",
+      "dose": 2.0,
+      "case": {
+        "expected": {
+          "count": 6,
+          "tag": "AC-462"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_fenced",
+        "id": "p3-switch-development-3-fenced",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "The entry has tag AC-462 and count 6.\nExtract tag as a string and count as an integer. Return only the JSON object inside one json code fence, with no other text.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "fenced",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": true,
+        "payload_correct": true,
+        "success": true
+      },
+      "grading": {
+        "success": false,
+        "payload_correct": false,
+        "format_valid": false
+      },
+      "rescued_plain": false
+    },
+    {
+      "id": "p3-switch-development-4-plain-dose2.0",
+      "dose": 2.0,
+      "case": {
+        "expected": {
+          "count": 7,
+          "tag": "AC-479"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_plain",
+        "id": "p3-switch-development-4-plain",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "Record: tag=AC-479; count=7.\nExtract tag as a string and count as an integer. Return only the JSON object, without Markdown or commentary.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "plain",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": true,
+        "payload_correct": true,
+        "success": true
+      },
+      "grading": {
+        "success": true,
+        "format_valid": true,
+        "payload_correct": true
+      },
+      "rescued_plain": false
+    },
+    {
+      "id": "p3-switch-development-4-fenced-dose2.0",
+      "dose": 2.0,
+      "case": {
+        "expected": {
+          "count": 7,
+          "tag": "AC-479"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_fenced",
+        "id": "p3-switch-development-4-fenced",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "Record: tag=AC-479; count=7.\nExtract tag as a string and count as an integer. Return only the JSON object inside one json code fence, with no other text.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "fenced",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": true,
+        "payload_correct": true,
+        "success": true
+      },
+      "grading": {
+        "success": false,
+        "payload_correct": false,
+        "format_valid": false
+      },
+      "rescued_plain": false
+    },
+    {
+      "id": "p3-switch-development-5-plain-dose2.0",
+      "dose": 2.0,
+      "case": {
+        "expected": {
+          "count": 8,
+          "tag": "AC-496"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_plain",
+        "id": "p3-switch-development-5-plain",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "The entry has tag AC-496 and count 8.\nExtract tag as a string and count as an integer. Return only the JSON object, without Markdown or commentary.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "plain",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": false,
+        "payload_correct": true,
+        "success": false
+      },
+      "grading": {
+        "success": false,
+        "format_valid": false,
+        "payload_correct": false
+      },
+      "rescued_plain": false
+    },
+    {
+      "id": "p3-switch-development-5-fenced-dose2.0",
+      "dose": 2.0,
+      "case": {
+        "expected": {
+          "count": 8,
+          "tag": "AC-496"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_fenced",
+        "id": "p3-switch-development-5-fenced",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "The entry has tag AC-496 and count 8.\nExtract tag as a string and count as an integer. Return only the JSON object inside one json code fence, with no other text.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "fenced",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": true,
+        "payload_correct": true,
+        "success": true
+      },
+      "grading": {
+        "success": true,
+        "payload_correct": true,
+        "format_valid": true
+      },
+      "rescued_plain": false
+    },
+    {
+      "id": "p3-switch-development-6-plain-dose2.0",
+      "dose": 2.0,
+      "case": {
+        "expected": {
+          "count": 9,
+          "tag": "AC-513"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_plain",
+        "id": "p3-switch-development-6-plain",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "Record: tag=AC-513; count=9.\nExtract tag as a string and count as an integer. Return only the JSON object, without Markdown or commentary.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "plain",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": true,
+        "payload_correct": true,
+        "success": true
+      },
+      "grading": {
+        "success": false,
+        "format_valid": true,
+        "payload_correct": false
+      },
+      "rescued_plain": false
+    },
+    {
+      "id": "p3-switch-development-6-fenced-dose2.0",
+      "dose": 2.0,
+      "case": {
+        "expected": {
+          "count": 9,
+          "tag": "AC-513"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_fenced",
+        "id": "p3-switch-development-6-fenced",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "Record: tag=AC-513; count=9.\nExtract tag as a string and count as an integer. Return only the JSON object inside one json code fence, with no other text.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "fenced",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": true,
+        "payload_correct": true,
+        "success": true
+      },
+      "grading": {
+        "success": false,
+        "payload_correct": false,
+        "format_valid": false
+      },
+      "rescued_plain": false
+    },
+    {
+      "id": "p3-switch-development-7-plain-dose2.0",
+      "dose": 2.0,
+      "case": {
+        "expected": {
+          "count": 10,
+          "tag": "AC-530"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_plain",
+        "id": "p3-switch-development-7-plain",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "The entry has tag AC-530 and count 10.\nExtract tag as a string and count as an integer. Return only the JSON object, without Markdown or commentary.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "plain",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": false,
+        "payload_correct": true,
+        "success": false
+      },
+      "grading": {
+        "success": false,
+        "format_valid": false,
+        "payload_correct": false
+      },
+      "rescued_plain": false
+    },
+    {
+      "id": "p3-switch-development-7-fenced-dose2.0",
+      "dose": 2.0,
+      "case": {
+        "expected": {
+          "count": 10,
+          "tag": "AC-530"
+        },
+        "family": "tag/count",
+        "grader": "json_switch",
+        "group": "json_fenced",
+        "id": "p3-switch-development-7-fenced",
+        "messages": [
+          {
+            "content": "Follow the response format requested by the user. Use only supplied facts.",
+            "role": "system"
+          },
+          {
+            "content": "The entry has tag AC-530 and count 10.\nExtract tag as a string and count as an integer. Return only the JSON object inside one json code fence, with no other text.",
+            "role": "user"
+          }
+        ],
+        "response_mode": "fenced",
+        "split": "development"
+      },
+      "baseline": {
+        "format_valid": true,
+        "payload_correct": true,
+        "success": true
+      },
+      "grading": {
+        "success": false,
+        "payload_correct": false,
+        "format_valid": false
+      },
+      "rescued_plain": false
+    }
+  ],
+  "open_permanent_search": true,
+  "dose_counts": {
+    "0.5": {
+      "plain_success": 8,
+      "fenced_success": 8,
+      "payload": 16,
+      "rescues": 4
+    },
+    "1.0": {
+      "plain_success": 8,
+      "fenced_success": 8,
+      "payload": 16,
+      "rescues": 4
+    },
+    "2.0": {
+      "plain_success": 1,
+      "fenced_success": 1,
+      "payload": 2,
+      "rescues": 0
+    }
+  }
+}
