@@ -1,0 +1,518 @@
+{
+  "checked_utc": "2026-11-05T09:50:34.063714+00:00",
+  "selection_version": 2,
+  "research_targets": [
+    "Qwen/Qwen3-0.6B",
+    "LiquidAI/LFM3-1.7B",
+    "AKMESSI/lfm2.5-230m-fable-5"
+  ],
+  "additional_entries": "GGUF deployment artifacts and matched Fable parent are controls, not extra research targets.",
+  "note": "Metadata only. No model weights downloaded. QAD is a separately trained checkpoint lineage, not ordinary PTQ of the BF16 model.",
+  "models": [
+    {
+      "repo_id": "Qwen/Qwen3-0.6B",
+      "revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+      "card_metadata": {
+        "library_name": "transformers",
+        "license": "apache-2.0",
+        "license_link": "https://huggingface.co/Qwen/Qwen3-0.6B/blob/main/LICENSE",
+        "pipeline_tag": "text-generation",
+        "base_model": [
+          "Qwen/Qwen3-0.6B-Base"
+        ]
+      },
+      "hub_safetensors_summary": {
+        "parameters": {
+          "BF16": 751632384
+        },
+        "total": 751632384
+      },
+      "files": [
+        {
+          "path": "config.json",
+          "bytes": 726,
+          "lfs_sha256": null
+        },
+        {
+          "path": "generation_config.json",
+          "bytes": 239,
+          "lfs_sha256": null
+        },
+        {
+          "path": "model.safetensors",
+          "bytes": 1503300328,
+          "lfs_sha256": "f47f71177f32bcd101b7573ec9171e6a57f4f4d31148d38e382306f42996874b"
+        },
+        {
+          "path": "tokenizer.json",
+          "bytes": 11422654,
+          "lfs_sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4"
+        },
+        {
+          "path": "tokenizer_config.json",
+          "bytes": 9732,
+          "lfs_sha256": null
+        },
+        {
+          "path": "vocab.json",
+          "bytes": 2776833,
+          "lfs_sha256": null
+        }
+      ],
+      "config": {
+        "architectures": [
+          "Qwen3ForCausalLM"
+        ],
+        "attention_bias": false,
+        "attention_dropout": 0.0,
+        "bos_token_id": 151643,
+        "eos_token_id": 151645,
+        "head_dim": 128,
+        "hidden_act": "silu",
+        "hidden_size": 1024,
+        "initializer_range": 0.02,
+        "intermediate_size": 3072,
+        "max_position_embeddings": 40960,
+        "max_window_layers": 28,
+        "model_type": "qwen3",
+        "num_attention_heads": 16,
+        "num_hidden_layers": 28,
+        "num_key_value_heads": 8,
+        "rms_norm_eps": 1e-06,
+        "rope_scaling": null,
+        "rope_theta": 1000000,
+        "sliding_window": null,
+        "tie_word_embeddings": true,
+        "torch_dtype": "bfloat16",
+        "transformers_version": "4.51.0",
+        "use_cache": true,
+        "use_sliding_window": false,
+        "vocab_size": 151936
+      }
+    },
+    {
+      "repo_id": "LiquidAI/LFM3-1.7B",
+      "revision": "0dc4268b561499c648c7ba7c9466bf3d8d01517a",
+      "card_metadata": {
+        "library_name": "transformers",
+        "license": "other",
+        "license_name": "lfm1.0",
+        "license_link": "LICENSE",
+        "pipeline_tag": "text-generation",
+        "tags": [
+          "liquid",
+          "lfm3",
+          "edge",
+          "conversational",
+          "custom_code"
+        ],
+        "language": [
+          "en",
+          "ar",
+          "zh",
+          "fr",
+          "de",
+          "it",
+          "ja",
+          "ko",
+          "pt",
+          "es",
+          "vi",
+          "th",
+          "id",
+          "hi",
+          "ru",
+          "pl"
+        ],
+        "base_model": "LiquidAI/LFM3-1.7B-Base"
+      },
+      "hub_safetensors_summary": {
+        "parameters": {
+          "BF16": 1728801536
+        },
+        "total": 1728801536
+      },
+      "files": [
+        {
+          "path": "chat_template.jinja",
+          "bytes": 12129,
+          "lfs_sha256": null
+        },
+        {
+          "path": "config.json",
+          "bytes": 1454,
+          "lfs_sha256": null
+        },
+        {
+          "path": "configuration_lfm3.py",
+          "bytes": 6113,
+          "lfs_sha256": null
+        },
+        {
+          "path": "generation_config.json",
+          "bytes": 328,
+          "lfs_sha256": null
+        },
+        {
+          "path": "lfm3_conv.py",
+          "bytes": 8532,
+          "lfs_sha256": null
+        },
+        {
+          "path": "model.safetensors",
+          "bytes": 3457635448,
+          "lfs_sha256": "135922caef64e81e52af88ede8b7c3ddaa9d6da220a9737fb3065275dbfb4330"
+        },
+        {
+          "path": "modeling_lfm3.py",
+          "bytes": 42359,
+          "lfs_sha256": null
+        },
+        {
+          "path": "special_tokens_map.json",
+          "bytes": 92,
+          "lfs_sha256": null
+        },
+        {
+          "path": "tokenizer.json",
+          "bytes": 17908635,
+          "lfs_sha256": "7e226e34bface23ccf6e495d157bf77186c1c30a7659880e1a8994db528c3701"
+        },
+        {
+          "path": "tokenizer_config.json",
+          "bytes": 1545,
+          "lfs_sha256": null
+        }
+      ],
+      "config": {
+        "architectures": [
+          "Lfm3ForCausalLM"
+        ],
+        "auto_map": {
+          "AutoConfig": "configuration_lfm3.Lfm3Config",
+          "AutoModel": "modeling_lfm3.Lfm3Model",
+          "AutoModelForCausalLM": "modeling_lfm3.Lfm3ForCausalLM"
+        },
+        "bos_token_id": 124894,
+        "conv_L_cache": 7,
+        "conv_bias": false,
+        "dtype": "bfloat16",
+        "eos_token_id": 124900,
+        "head_dim": 128,
+        "hidden_size": 2048,
+        "intermediate_size": 7680,
+        "layer_types": [
+          "conv",
+          "conv",
+          "full_attention",
+          "conv",
+          "sliding_attention",
+          "conv",
+          "full_attention",
+          "conv",
+          "sliding_attention",
+          "conv",
+          "full_attention",
+          "conv",
+          "sliding_attention",
+          "conv",
+          "full_attention",
+          "conv",
+          "sliding_attention",
+          "conv",
+          "full_attention",
+          "conv",
+          "sliding_attention",
+          "conv",
+          "full_attention",
+          "conv"
+        ],
+        "max_position_embeddings": 262144,
+        "model_type": "lfm3",
+        "norm_eps": 1e-05,
+        "num_attention_heads": 16,
+        "num_hidden_layers": 24,
+        "num_key_value_heads": 4,
+        "pad_token_id": 124893,
+        "rope_parameters": {
+          "full_attention": {
+            "partial_rotary_factor": 0.5,
+            "rope_theta": 1000000.0,
+            "rope_type": "default"
+          },
+          "sliding_attention": {
+            "rope_theta": 10000,
+            "rope_type": "default"
+          }
+        },
+        "sliding_window": 256,
+        "tie_word_embeddings": true,
+        "transformers_version": "5.12.1",
+        "use_cache": true,
+        "use_sandwich_norm": true,
+        "vocab_size": 128000
+      }
+    },
+    {
+      "repo_id": "LiquidAI/LFM3-1.7B-GGUF",
+      "revision": "cd0c74c575b5c416f3011b5b4c298077f26ca8c2",
+      "card_metadata": {
+        "library_name": "gguf",
+        "license": "other",
+        "license_name": "lfm1.0",
+        "license_link": "LICENSE",
+        "pipeline_tag": "text-generation",
+        "tags": [
+          "liquid",
+          "lfm3",
+          "gguf",
+          "llama.cpp"
+        ],
+        "language": [
+          "en",
+          "ar",
+          "zh",
+          "fr",
+          "de",
+          "it",
+          "ja",
+          "ko",
+          "pt",
+          "es",
+          "vi",
+          "th",
+          "id",
+          "hi",
+          "ru",
+          "pl"
+        ],
+        "base_model": [
+          "LiquidAI/LFM3-1.7B",
+          "LiquidAI/LFM3-1.7B-NVFP4"
+        ],
+        "base_model_relation": "quantized"
+      },
+      "hub_safetensors_summary": null,
+      "files": [
+        {
+          "path": "LFM3-1.7B-BF16.gguf",
+          "bytes": 3466626336,
+          "lfs_sha256": "39158a79f56edb85e0c4252ce6447b8d7883ef82ffedd02f0cda7c84da5e9f68"
+        },
+        {
+          "path": "LFM3-1.7B-F16.gguf",
+          "bytes": 3466626336,
+          "lfs_sha256": "b7ab8b69a85e4dfbf62cdfd0e02d7d051ed09f2c5b84c701771dddb073b85970"
+        },
+        {
+          "path": "LFM3-1.7B-NVFP4.gguf",
+          "bytes": 1280019776,
+          "lfs_sha256": "462c2379586a45b30fe3dbfa30e6ff08cbb440734d6934689e24e4fe59a67bec"
+        },
+        {
+          "path": "LFM3-1.7B-Q4_K_M.gguf",
+          "bytes": 1099627808,
+          "lfs_sha256": "3793e1e6e2266919d6e015287221b41100175a98eddaba92e111aed3b05c93c4"
+        },
+        {
+          "path": "LFM3-1.7B-Q5_K_M.gguf",
+          "bytes": 1258663200,
+          "lfs_sha256": "41e51fb0be5f472d323055f2734d986d5a2429570973508fa6322f3f07f6d7f3"
+        },
+        {
+          "path": "LFM3-1.7B-Q6_K.gguf",
+          "bytes": 1427638304,
+          "lfs_sha256": "54e1bd947c77167823d45bf495f1c3e2d226ca7fb242f83cfa141ee3a6ab55c6"
+        },
+        {
+          "path": "LFM3-1.7B-Q8_0.gguf",
+          "bytes": 1846238496,
+          "lfs_sha256": "8f6b24182258205e9e01e21f1f24a1f208c1e8115578825d202ce39976af20b6"
+        },
+        {
+          "path": "LFM3-1.7B-QAD-Q4_0.gguf",
+          "bytes": 1049615680,
+          "lfs_sha256": "43a7d09a0e9cba91b63eb7052488b9564569bddfd65754d2e426465e572a7452"
+        }
+      ],
+      "config": null
+    },
+    {
+      "repo_id": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "card_metadata": {
+        "license": "other",
+        "base_model": "LiquidAI/LFM2.5-230M",
+        "datasets": [
+          "Glint-Research/Fable-5-traces"
+        ],
+        "language": [
+          "en"
+        ],
+        "pipeline_tag": "text-generation",
+        "tags": [
+          "gguf",
+          "lfm2.5",
+          "liquid-ai",
+          "fable-5",
+          "coding-agent",
+          "tool-use",
+          "lora",
+          "peft"
+        ]
+      },
+      "hub_safetensors_summary": null,
+      "files": [
+        {
+          "path": "lfm2.5-230m-fable-5-f16.gguf",
+          "bytes": 461883712,
+          "lfs_sha256": "1e1624de4d7ebe413d82dbe2b5f48fcf83e6c46b1b5414c8aef0596009380cc6"
+        },
+        {
+          "path": "lfm2.5-230m-fable-5-q4_k_m.gguf",
+          "bytes": 153405760,
+          "lfs_sha256": "0c40569a1736081c7f33d33ec18208cf089e8ae0e762806c515281740e60c2f3"
+        },
+        {
+          "path": "lfm2.5-230m-fable-5-q8_0.gguf",
+          "bytes": 246597952,
+          "lfs_sha256": "fee3716c82f6d9de11072c45140bea130f987f56647e823e5df0802a1f881774"
+        }
+      ],
+      "config": null
+    },
+    {
+      "repo_id": "LiquidAI/LFM2.5-230M",
+      "revision": "40cb2ad3b3044d5a41eee083a6103c8b523afa45",
+      "card_metadata": {
+        "library_name": "transformers",
+        "license": "other",
+        "license_name": "lfm1.0",
+        "license_link": "LICENSE",
+        "language": [
+          "en",
+          "ar",
+          "zh",
+          "fr",
+          "de",
+          "ja",
+          "ko",
+          "es",
+          "pt",
+          "it"
+        ],
+        "pipeline_tag": "text-generation",
+        "tags": [
+          "liquid",
+          "lfm2.5",
+          "edge"
+        ],
+        "base_model": "LiquidAI/LFM2.5-230M-Base"
+      },
+      "hub_safetensors_summary": {
+        "parameters": {
+          "BF16": 229693184
+        },
+        "total": 229693184
+      },
+      "files": [
+        {
+          "path": "chat_template.jinja",
+          "bytes": 4762,
+          "lfs_sha256": null
+        },
+        {
+          "path": "config.json",
+          "bytes": 1568,
+          "lfs_sha256": null
+        },
+        {
+          "path": "generation_config.json",
+          "bytes": 303,
+          "lfs_sha256": null
+        },
+        {
+          "path": "model.safetensors",
+          "bytes": 459401112,
+          "lfs_sha256": "f630da86651136c9aee893b04b7542007e90fdd718355358e57e7ecc31517cfd"
+        },
+        {
+          "path": "tokenizer.json",
+          "bytes": 4733389,
+          "lfs_sha256": null
+        },
+        {
+          "path": "tokenizer_config.json",
+          "bytes": 489,
+          "lfs_sha256": null
+        }
+      ],
+      "config": {
+        "architectures": [
+          "Lfm2ForCausalLM"
+        ],
+        "block__name_mlp": "parallel_mlp_merged",
+        "block_auto_adjust_ff_dim": false,
+        "block_dim": 1024,
+        "block_ff_dim": 2560,
+        "block_ffn_dim_multiplier": 1.0,
+        "block_ffn_te_autocast": false,
+        "block_ffn_use_quantized_params": false,
+        "block_mlp_init_scale": 1.0,
+        "block_multiple_of": 256,
+        "block_norm_eps": 1e-05,
+        "block_out_init_scale": 1.0,
+        "block_sequence_parallel_norm_across_tp": false,
+        "block_use_swiglu": true,
+        "block_use_xavier_init": true,
+        "bos_token_id": 1,
+        "conv_L_cache": 3,
+        "conv_bias": false,
+        "conv_dim": 1024,
+        "conv_use_xavier_init": true,
+        "dtype": "bfloat16",
+        "eos_token_id": 7,
+        "ffn_te_autocast": false,
+        "ffn_use_quantized_params": false,
+        "hidden_size": 1024,
+        "initializer_range": 0.02,
+        "intermediate_size": 2560,
+        "layer_types": [
+          "conv",
+          "conv",
+          "full_attention",
+          "conv",
+          "full_attention",
+          "conv",
+          "full_attention",
+          "conv",
+          "full_attention",
+          "conv",
+          "full_attention",
+          "conv",
+          "full_attention",
+          "conv"
+        ],
+        "max_position_embeddings": 128000,
+        "model_type": "lfm2",
+        "norm_eps": 1e-05,
+        "num_attention_heads": 16,
+        "num_heads": 16,
+        "num_hidden_layers": 14,
+        "num_key_value_heads": 8,
+        "pad_token_id": 0,
+        "rope_parameters": {
+          "rope_theta": 1000000.0,
+          "rope_type": "default"
+        },
+        "sequence_parallel_norm_across_tp": false,
+        "tie_embedding": true,
+        "tie_word_embeddings": true,
+        "transformers_version": "5.2.0",
+        "use_cache": true,
+        "use_pos_enc": true,
+        "vocab_size": 65536
+      }
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+# Final strategy envelope; dataset IDs and measured runtime settings remain to be frozen.
+status = "strategy_finalized_implementation_not_started"
+prepared_date = "2026-11-05"
+implementation_start = "await_user_instruction"
+
+[models.qwen]
+repo_id = "Qwen/Qwen3-0.6B"
+revision = "c1899de289a04d12100db370d81485cdf75e47ca"
+role = "first mechanistic reference; conditional unwanted-loop repair"
+initial_test_max_new_tokens = 512
+
+[models.fable]
+repo_id = "AKMESSI/lfm2.5-230m-fable-5"
+revision = "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648"
+reference_file = "lfm2.5-230m-fable-5-f16.gguf"
+deployment_file = "lfm2.5-230m-fable-5-q4_k_m.gguf"
+role = "response behavior repair with coding preservation"
+initial_test_max_new_tokens = 256
+
+[models.lfm3]
+repo_id = "LiquidAI/LFM3-1.7B"
+revision = "0dc4268b561499c648c7ba7c9466bf3d8d01517a"
+gguf_repo_id = "LiquidAI/LFM3-1.7B-GGUF"
+gguf_revision = "cd0c74c575b5c416f3011b5b4c298077f26ca8c2"
+qad_file = "LFM3-1.7B-QAD-Q4_0.gguf"
+role = "deployment and hybrid architecture replication"
+initial_test_max_new_tokens = 256
+reported_quantized_decode_tokens_per_second = 50
+speed_source = "user_report_not_reproduced_here"
+qad_is_separate_trained_lineage = true
+
+[controls.fable_parent]
+repo_id = "LiquidAI/LFM2.5-230M"
+revision = "40cb2ad3b3044d5a41eee083a6103c8b523afa45"
+role = "matched parent; not an additional research target"
+require_matched_comparison_dtype = true
+
+[runtime]
+reuse_user_working_inference_setup = true
+reference_device = "cpu"
+reference_dtype_initial_candidate = "float32"
+require_lfm3_low_peak_memory_loading = true
+batch_size = 1
+initial_total_context_tokens = 2048
+benchmark_cpu_threads = [2, 4]
+physical_gpu = "AMD Radeon RX 6400"
+require_exact_artifact_hashes = true
+require_identity_roundtrip = true
+require_template_and_stop_token_checks = true
+
+[discovery]
+prompts_per_model = 64
+seeds = [17, 29]
+max_new_tokens = 256
+optional_long_cases_per_model = 8
+optional_long_max_new_tokens = 1024
+minimum_qwen_natural_loop_rate_trigger = 0.10
+maximum_matched_context_pairs = 48
+require_baseline_task_competence = true
+
+[editing]
+gradient_descent_allowed = false
+new_finetuning_allowed = false
+maximum_llm_candidates_per_target = 8
+maximum_heuristic_candidates_per_target = 8
+maximum_review_rounds_per_target = 3
+candidate_channel_counts = [16, 32]
+initial_alpha_candidates = [0.25, 0.5, 1.0]
+maximum_sites_per_patch = 2
+candidate_screen_prompts = 16
+candidate_screen_seeds = [17, 29]
+candidate_screen_max_new_tokens = 256
+require_exact_rollback = true
+require_equal_editor_feedback_budgets = true
+require_architecture_specific_localization = true
+
+[test]
+status = "unbuilt; freeze after baseline characterization and before test exposure"
+prompts_per_target = 120
+target_failure_prompts = 40
+preservation_prompts = 40
+general_control_prompts = 40
+pilot_seeds = [43]
+followup_seeds = [43, 71, 101]
+validation_prompts_per_target_minimum = 48
+split_unit = "template family and code fixture/repository lineage as appropriate"
+bootstrap_unit = "prompt with its seeds grouped"
+arm_envelope = ["original_float", "decoding_only_float", "deterministic_edit_float", "llm_edit_float", "random_edit_float", "original_quantized", "selected_edit_quantized", "decoding_only_quantized"]
+qad_missing_float_rule = "Do not substitute public BF16; label effective-weight/no-op controls or omit unavailable arms."
+
+[targets]
+relative_target_failure_reduction = 0.30
+maximum_preservation_regression_percentage_points = 3.0
+require_improved_correct_and_complete = true
+require_confidence_intervals = true
+small_pilot_may_be_inconclusive = true
+
+[budgets]
+all_models_generated_tokens_ceiling = 1800000
+initial_baseline_stage_generated_tokens_ceiling = 200000
+initial_teacher_forced_scored_tokens_ceiling = 1000000
+paid_compute_budget = 0
+unattended_external_api_calls = 0
+planned_artifact_storage_gb = 40
+
+[deployment]
+require_exact_lineage_comparisons = true
+require_noop_rewrite_control = true
+require_float_runtime_parity_for_float_claims = true
+require_size_and_latency_measurement = true
+allow_mixed_precision_touched_tensors_if_verified = true
+qad_recreation_from_public_bf16_assumed = false
