@@ -1,0 +1,21 @@
+0.00.030.829 W Setting 'enable_thinking' via --chat-template-kwargs is deprecated. Use --reasoning on / --reasoning off instead.
+0.00.030.951 I srv  llama_server: initializing ...
+0.00.030.962 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.030.965 W srv  server_prepa: embeddings enabled with n_batch (2048) > n_ubatch (512)
+0.00.030.965 W srv  server_prepa: setting n_batch = n_ubatch = 512 to avoid assertion failure
+0.00.031.483 W srv  server_setup: security: no API key is set and CORS allows all origins (see https://github.com/ggml-org/llama.cpp/pull/25655)
+0.00.032.858 I srv    load_model: loading model 'local/models/lfm2.5-230m-fable-5-f16.gguf'
+0.00.461.893 W llama_init_from_model: model default pooling_type is [-1], but [3] was specified
+0.00.481.880 I cmn          init: llama threadpool init, n_threads = 4
+0.00.481.982 W init: embeddings required but some input tokens were not marked as outputs -> overriding
+0.00.499.611 W init: embeddings required but some input tokens were not marked as outputs -> overriding
+0.00.506.616 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 2048, kv_unified = 'false'
+0.00.511.265 I srv  server_run_i: model loaded
+0.00.511.272 I srv  server_on_li: listening on http://127.0.0.1:34499
+0.00.606.218 I slot get_availabl: id  0 | task -1 | selected slot by LRU, n_tokens = 0, t_last = -1
+0.00.606.229 I slot launch_slot_: id  0 | task 0 | processing task, is_child = 0
+0.00.637.523 I slot      release: id  0 | task 0 | stop processing: n_tokens = 47, truncated = 0
+0.00.659.290 I slot get_availabl: id  0 | task -1 | selected slot by LRU, n_tokens = 0, t_last = 15778143357
+0.00.659.298 I slot launch_slot_: id  0 | task 2 | processing task, is_child = 0
+0.00.687.224 I slot      release: id  0 | task 2 | stop processing: n_tokens = 47, truncated = 0
+0.00.706.234 I srv    operator(): operator(): cleaning up before exit...

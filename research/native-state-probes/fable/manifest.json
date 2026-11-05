@@ -1,0 +1,36 @@
+{
+  "utc": "2026-11-05T13:41:37.239423+00:00",
+  "git": {
+    "commit": "e8b0d99c9a5eca71ec06b777563891141fb52498",
+    "status": " M research/scored-budget.jsonl"
+  },
+  "source_responses_sha256": "3727b1e3b2ba3b3d15a32eb57afca669743f1b67d5de8b89ecad6b88a5938e2b",
+  "model": {
+    "path": "local/models/lfm2.5-230m-fable-5-f16.gguf",
+    "repo": "AKMESSI/lfm2.5-230m-fable-5",
+    "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+    "file": "lfm2.5-230m-fable-5-f16.gguf",
+    "sha256": "1e1624de4d7ebe413d82dbe2b5f48fcf83e6c46b1b5414c8aef0596009380cc6",
+    "sampling": {
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "min_p": 0.0,
+      "repeat_penalty": 1.05,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0
+    }
+  },
+  "runtime": {
+    "binary": "/home/akmessi/llama-vulkan-build/bin/llama-server",
+    "context": 2048,
+    "threads": 4,
+    "gpu_layers": 99,
+    "embedding": true
+  },
+  "criteria": {
+    "top1_equal": true,
+    "max_centered_logit_error": 0.05,
+    "relative_centered_error": 0.01
+  }
+}
