@@ -1,0 +1,57 @@
+{
+  "utc": "2026-11-05T18:23:48.759149+00:00",
+  "git": {
+    "commit": "fdb5f7ac3b4f4172564e23bca938570b9eb9002c",
+    "status": "?? research/p3/fidelity-tokenization-v1/\n?? research/p3/lossless-capsules-v1/rank64-predictor.json"
+  },
+  "base": {
+    "path": "artifacts/p3/capsules/rank64-predictor.gguf",
+    "sha256": "1c52b603f87749b049e61d3c8d7f8e4b2060896c0a2e6980f74e56c0239912b6"
+  },
+  "target": {
+    "path": "local/models/lfm2.5-230m-fable-5-f16.gguf",
+    "repo": "AKMESSI/lfm2.5-230m-fable-5",
+    "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+    "file": "lfm2.5-230m-fable-5-f16.gguf",
+    "sha256": "1e1624de4d7ebe413d82dbe2b5f48fcf83e6c46b1b5414c8aef0596009380cc6",
+    "sampling": {
+      "temperature": 0.0,
+      "top_k": 0,
+      "top_p": 1.0,
+      "min_p": 0.0,
+      "repeat_penalty": 1.0,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0
+    }
+  },
+  "output": "artifacts/p3/capsules/rank64-residual.wpatch",
+  "format": "weightlab-gguf-xor-v1",
+  "status": "verified",
+  "zlib_version": "1.3.1",
+  "changed_tensors": [
+    "blk.10.attn_k.weight",
+    "blk.10.attn_q.weight",
+    "blk.10.attn_v.weight",
+    "blk.12.attn_k.weight",
+    "blk.12.attn_q.weight",
+    "blk.12.attn_v.weight",
+    "blk.2.attn_k.weight",
+    "blk.2.attn_q.weight",
+    "blk.2.attn_v.weight",
+    "blk.4.attn_k.weight",
+    "blk.4.attn_q.weight",
+    "blk.4.attn_v.weight",
+    "blk.6.attn_k.weight",
+    "blk.6.attn_q.weight",
+    "blk.6.attn_v.weight",
+    "blk.8.attn_k.weight",
+    "blk.8.attn_q.weight",
+    "blk.8.attn_v.weight"
+  ],
+  "unchanged_tensors": 114,
+  "patch_sha256": "80ac6d47f55340a07d73ba2781434024a93a55e8285d637028f861d18ead01cc",
+  "patch_bytes": 4500920,
+  "target_bytes": 461883712,
+  "seconds": 8.435862182000164,
+  "note": "Exact delta encoding, not a learned repair or new compression algorithm."
+}
