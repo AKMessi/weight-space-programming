@@ -899,3 +899,7 @@ Status `complete`, 11161 generated tokens. Immutable raw inputs/responses/config
 ### 2026-11-05T18:11:29.704032+00:00 — p3-reserve-rank32-protection-fable_svd32-s17
 
 Status `complete`, 1679 generated tokens. Immutable raw inputs/responses/config/runtime and resource samples are in `runs/p3-reserve-rank32-protection-fable_svd32-s17`. Interpretation is deferred to the study report; this run alone does not establish a repair.
+
+### 2026-11-05T18:12:54.899732+00:00 — p3-repair-switch-dev-original-qwen_float-s17
+
+Status `complete`, 1266 generated tokens. Immutable raw inputs/responses/config/runtime and resource samples are in `runs/p3-repair-switch-dev-original-qwen_float-s17`. Interpretation is deferred to the study report; this run alone does not establish a repair.
