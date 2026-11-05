@@ -567,3 +567,7 @@ Run status: complete; generated tokens: 370. Group counts: `{"functional_code": 
 ### 2026-11-05T12:32:08.692526+00:00 — p2-e3precision-lfm3_float-s17
 
 Run status: complete; generated tokens: 331. Group counts: `{"functional_code": {"attempted": 6, "cutoff": 0, "payload_correct": 6, "responses": 6, "success": 4}, "literal_copy": {"attempted": 6, "cutoff": 0, "payload_correct": 6, "responses": 6, "success": 0}, "structured": {"attempted": 6, "cutoff": 0, "payload_correct": 6, "responses": 6, "success": 6}}`. Full immutable requests, raw responses, and settings are in `runs/p2-e3precision-lfm3_float-s17`. These counts are observations; interpretation is deferred to the study report.
+
+### 2026-11-05T12:33:26.812307+00:00 — p2-e3precision-lfm3_float_A-s17
+
+Run status: complete; generated tokens: 331. Group counts: `{"functional_code": {"attempted": 6, "cutoff": 0, "payload_correct": 6, "responses": 6, "success": 4}, "literal_copy": {"attempted": 6, "cutoff": 0, "payload_correct": 6, "responses": 6, "success": 0}, "structured": {"attempted": 6, "cutoff": 0, "payload_correct": 6, "responses": 6, "success": 6}}`. Full immutable requests, raw responses, and settings are in `runs/p2-e3precision-lfm3_float_A-s17`. These counts are observations; interpretation is deferred to the study report.
