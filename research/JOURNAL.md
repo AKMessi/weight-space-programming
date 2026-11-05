@@ -663,3 +663,7 @@ Run status: complete; generated tokens: 1496. Group counts: `{"diagnosis_probe":
 ### 2026-11-05T12:55:30.925531+00:00 — p2-e5probes-lfm3_diagnosis_ffn_sign-s17
 
 Run status: complete; generated tokens: 1365. Group counts: `{"diagnosis_probe": {"attempted": 12, "cutoff": 8, "payload_correct": 0, "responses": 12, "success": 0}}`. Full immutable requests, raw responses, and settings are in `runs/p2-e5probes-lfm3_diagnosis_ffn_sign-s17`. These counts are observations; interpretation is deferred to the study report.
+
+### 2026-11-05T12:57:35.864691+00:00 — p2-e5probes-lfm3_diagnosis_ffn_sign_permuted-s17
+
+Run status: complete; generated tokens: 1344. Group counts: `{"diagnosis_probe": {"attempted": 12, "cutoff": 6, "payload_correct": 0, "responses": 12, "success": 0}}`. Full immutable requests, raw responses, and settings are in `runs/p2-e5probes-lfm3_diagnosis_ffn_sign_permuted-s17`. These counts are observations; interpretation is deferred to the study report.
