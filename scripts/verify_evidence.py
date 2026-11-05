@@ -67,6 +67,25 @@ def audit(verify_artifacts=False):
         models[model_path]=manifest['verified_model_sha256']
         runs.append({'run':str(root),'status':summary['status'],'manifest_sha256':file_sha256(root/'manifest.json'),
                      'responses_sha256':file_sha256(root/'responses.jsonl'),'suite_sha256':manifest['suite_sha256']})
+    custom_totals={'additional_generation_requests':0,'additional_generated_tokens':0}
+    for index_path in ['research/p3-native-generation.jsonl','research/p3-custom-generation.jsonl']:
+        if not Path(index_path).exists():continue
+        source_cache={}
+        for item in jsonl(index_path):
+            evidence=item['evidence']
+            if evidence not in source_cache:
+                source_cache[evidence]={digest(row):row for row in jsonl(evidence)}
+            row=source_cache[evidence][item['row_sha256']]
+            actual=row['raw_response']['generated_tokens'] if 'raw_response' in row else row['generated_tokens']
+            key=item['request_id']
+            assert key not in expected,key
+            assert actual==item['tokens'],key
+            assert row.get('generated_request_id',row.get('request_id'))==key,key
+            expected[key]=actual
+            custom_totals['additional_generation_requests']+=1
+            custom_totals['additional_generated_tokens']+=actual
+    standard_generated=totals['generated_tokens']
+    totals['generated_tokens']+=custom_totals['additional_generated_tokens']
     ledger={};reservations={}
     for row in jsonl('research/budget.jsonl'):
         key=row['request_id']
@@ -88,7 +107,9 @@ def audit(verify_artifacts=False):
         for path,sha in sorted(models.items()):
             assert file_sha256(path)==sha,path
             checked.append({'path':path,'sha256':sha})
-    return {'started_utc':started,'utc':utc_now(),'git':git_state(),'budget_sha256':ledger_sha256,**totals,'all_requests_settled':True,'ledger_matches':True,
+    return {'started_utc':started,'utc':utc_now(),'git':git_state(),'budget_sha256':ledger_sha256,**totals,**custom_totals,
+            'standard_generated_tokens':standard_generated,'standard_inference_requests':totals['inference_requests'],
+            'all_requests_settled':True,'ledger_matches':True,
             'generated_budget_ceiling':1800000,'known_zero_failed_request_adjustments':list(adjustments.values()),
             'separate_native_diagnostic_prefill_and_embedding_tokens':sum(r['tokens'] for r in scored.values()),
             'diagnostic_scoring_note':'The separate scored ledger covers the native-state diagnostic only. Ordinary chat prompt usage remains in every raw response; it is not additionally charged as generated tokens.',
