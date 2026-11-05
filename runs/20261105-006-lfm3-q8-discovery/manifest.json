@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "started_utc": "2026-11-05T10:31:18.898773+00:00",
+  "purpose": "exploratory discovery",
+  "git": {
+    "commit": "8133c011faf69d145b7c64eba7b01c2c090ba1bc",
+    "status": "M research/artifact_events.jsonl\n M research/budget.jsonl\n?? runs/20261105-003-lfm3-q8-template-probe/\n?? runs/20261105-004-qwen3-q8-discovery/\n?? runs/20261105-005-fable-f16-discovery/"
+  },
+  "python": "3.14.4",
+  "model_key": "lfm3_q8",
+  "model": {
+    "path": "/home/akmessi/models/lfm3/LFM3-1.7B-Q8_0.gguf",
+    "repo": "LiquidAI/LFM3-1.7B-GGUF",
+    "revision": "cd0c74c575b5c416f3011b5b4c298077f26ca8c2",
+    "file": "LFM3-1.7B-Q8_0.gguf",
+    "sha256": "8f6b24182258205e9e01e21f1f24a1f208c1e8115578825d202ce39976af20b6",
+    "sampling": {
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "min_p": 0.0,
+      "repeat_penalty": 1.1,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0
+    }
+  },
+  "verified_model_sha256": "8f6b24182258205e9e01e21f1f24a1f208c1e8115578825d202ce39976af20b6",
+  "suite_sha256": "8edad50351402d2a8543f8d0910ca3bf6009fc4c99e423d49f51037763eaa0d0",
+  "max_tokens": 128,
+  "seed": 17,
+  "limit": null,
+  "grader_version": "2",
+  "runtime": {
+    "binary": "/home/akmessi/llama-vulkan-build/bin/llama-server",
+    "context": 2048,
+    "threads": 4,
+    "gpu_layers": 99,
+    "reasoning": "auto",
+    "chat_template_kwargs": {}
+  },
+  "binary_sha256": "fdd736cf5fa5da5488982c63229b8596ab641ca2fc695e78743cfab5250ea32b",
+  "runtime_version": "version: 0.7.0-dev (build 11942, commit 338fce651)\nbuilt with GNU 15.2.0 for Linux x86_64\n"
+}

@@ -67,3 +67,13 @@ Record observations, hypotheses, decisions, failed attempts, confounds, and foll
 **Qwen observation:** all 8 JSON examples contained the correct decoded object, but only 2/8 satisfied the whole-response contract; fences explain several failures. In this suite, 7/8 copy/repetition cases and 4/4 missing-field cases passed. Tool shape and complete/conflicting-evidence contracts did not. Several code outputs do not contain the requested return expression. Do not interpret every failure here as removable style: underlying task/prompt competence must be established first.
 
 **Next:** collect Fable and same-precision parent before any rollback. Use strong prompt/grammar baselines for the JSON gap before proposing a weight-level solution.
+
+## 2026-11-05 — All target deployments screened; parent comparison underway
+
+**Runs:** `005-fable-f16-discovery` (40 requests, 2,058 tokens) and `006-lfm3-q8-discovery` (40 requests, 1,975 tokens). Their manifests pin the same discovery suite and exact artifact bytes. Fable and its parent's F16 downloads passed published SHA-256 checks.
+
+**Fable observation:** several requests with no tools supplied produce unsolicited tool-call-like syntax (for example, copying text becomes a fictitious `copy(...)` call). Code-only responses contain the correct expression in a fenced full function, while the strict next-line contract fails. Requested-repeat examples sometimes become unrelated processor descriptions. These specific outputs are retained verbatim; a fine-tuning causal claim needs the parent comparison.
+
+**LFM3 full paired lead:** ordinary Q8 passed 8/8 copy/repetition and 4/4 missing-field cases; QAD passed 5/8 and 0/4 on the same exploratory prompts. Both passed 8/8 simple JSON and 4/4 complete tool cases. QAD completed the four complete-evidence contracts while Q8 did not, often exhausting 128 tokens. Thus neither checkpoint dominates all conditions. Broader resampling, longer-cap checks, and lineage controls are needed.
+
+**Decision:** target response-mode switching and evidence decisions as conditional research questions. Do not label all cutoffs as loops. Run the matched F16 parent before attributing Fable's behavior to training or choosing a repair.
