@@ -1,4 +1,5 @@
 import unittest
+import importlib.util
 import numpy as np
 from weightlab.residual_words import encode_words,decode_words
 class WordResidualTests(unittest.TestCase):
@@ -11,6 +12,7 @@ class WordResidualTests(unittest.TestCase):
   for base,target,mode in [(b'1',b'2','signed'),(b'12',b'','signed'),(b'12',b'12','unknown')]:
    with self.assertRaises(ValueError):encode_words(base,target,mode)
 
+@unittest.skipUnless(importlib.util.find_spec('gguf'),'optional GGUF environment required')
 class MixedGGUFWordTests(unittest.TestCase):
  def test_reordered_mixed_encoding_and_explicit_chunk_size(self):
   import os,tempfile
