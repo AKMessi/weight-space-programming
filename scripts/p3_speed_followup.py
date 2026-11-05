@@ -6,7 +6,8 @@ from weightlab.evidence import append_jsonl,digest,file_sha256,git_state,utc_now
 from weightlab.runtime import server,request_json,runtime_libraries
 from p3_batch import stage_used,CAPS
 from portfolio_batch import publish
-ROOT=Path('research/p3/speed-followup-v1');config=json.loads(Path('configs/fable_speed_followup.json').read_text());config['models'].update(json.loads(Path('configs/p3_hybrids.json').read_text())['models']);keys=['fable_float','fable_Q4_0','hybrid_head','hybrid_head_ffn','hybrid_head_shortconv']
+ROOT=Path('research/p3/speed-followup-v1');config=json.loads(Path('configs/fable_speed_followup.json').read_text());config['models'].update(json.loads(Path('configs/p3_hybrids.json').read_text())['models']);keys=['fable_float','fable_Q4_0','hybrid_head','hybrid_head_ffn','hybrid_head_shortconv','hybrid_ffn_only']
+config['models'].update(json.loads(Path('configs/p3_format_final.json').read_text())['models'])
 rng=random.Random(1927);schedule=[]
 for block in range(3):
  order=keys.copy();rng.shuffle(order);schedule.extend({'block':block,'model':k,'profile':False} for k in order)
