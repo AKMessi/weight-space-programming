@@ -99,3 +99,11 @@ Record observations, hypotheses, decisions, failed attempts, confounds, and foll
 **Causal limitation:** the public Fable card identifies the parent repository but does not pin the original training revision. Our matched-precision parent is the currently pinned public checkpoint. Claims about the exact fine-tuning delta require verifying that it is the actual training parent; checkpoint comparisons remain valid as comparisons of these exact artifacts.
 
 **Next:** run an identity behavior check, evaluate the first rollback on discovery cases, and retain any negative result before considering other sites or doses.
+
+## 2026-11-05 — Audit decision before expanding edits
+
+**Observation:** the first 25% rollback changes many entries but only about 0.044% of each selected matrix's norm, with unusually similar magnitudes across all 14 FFN output matrices. This may reflect small learned updates, dtype/export effects, or another checkpoint difference. It does not justify a neuron/circuit claim.
+
+**Decision:** audit all corresponding floating tensors, including how often rounding Fable values to BF16 reproduces the public parent's values. This diagnoses precision/provenance confounds before expanding the edit search. It does not establish the exact original training checkpoint.
+
+**Implementation:** added paired-run comparison and streaming tensor-delta audit scripts. The existing report generator produces a readable per-group baseline table with strong-prompt and grammar conditions separated.
