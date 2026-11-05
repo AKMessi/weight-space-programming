@@ -683,3 +683,7 @@ Run status: complete; generated tokens: 1536. Group counts: `{"diagnosis_probe":
 ### 2026-11-05T12:58:26.042153+00:00 — p2-e5probes-fable_diagnosis_output_sign_permuted-s17
 
 Run status: complete; generated tokens: 1536. Group counts: `{"diagnosis_probe": {"attempted": 12, "cutoff": 12, "payload_correct": 0, "responses": 12, "success": 0}}`. Full immutable requests, raw responses, and settings are in `runs/p2-e5probes-fable_diagnosis_output_sign_permuted-s17`. These counts are observations; interpretation is deferred to the study report.
+
+### 2026-11-05T12:58:39.572383+00:00 — p2-e5probes-fable_diagnosis_ffn_sign-s17
+
+Run status: complete; generated tokens: 1030. Group counts: `{"diagnosis_probe": {"attempted": 12, "cutoff": 8, "payload_correct": 0, "responses": 12, "success": 0}}`. Full immutable requests, raw responses, and settings are in `runs/p2-e5probes-fable_diagnosis_ffn_sign-s17`. These counts are observations; interpretation is deferred to the study report.
