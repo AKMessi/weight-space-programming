@@ -815,3 +815,7 @@ The Fable adapter numerical stage and tests are also frozen. It packages declare
 CPU and Vulkan v2 each passed all 26 same-forward boundary checks and four controls. No-callback native logits were bit-identical on the two tested prefixes per backend; fixed-vector interventions had the predicted readout effect. This validates those tested native boundaries/settings, not arbitrary hidden layers or all prompts. The correctly reconstructed CPU input rounding is kept explicit. All original v1 failures remain available.
 
 Across all18 aligned Fable Q/K/V differences, rank32 captures more than99.99% of squared singular-value energy. This supports a compact-adapter hypothesis, not a behavioral preservation claim. The unaligned and within-source-rounded spectra remain separate controls. A fresh pinned repository-disjoint next-line stage and48-case extraction/code/explanation protection set are frozen before candidate quality calls. Nine candidate encodings remain fixed, calibration selects before confirmation, and the adapter stage's maximum-output arithmetic fits80000 tokens. PyArrow23.0.1 was installed only in the existing isolated environment to read the32MB pinned public parquet; no system packages or target training were changed.
+
+### 2026-11-05T17:59:17.992823+00:00 — p3-adapter-repo-dev-fable_f16-s17
+
+Status `complete`, 3405 generated tokens. Immutable raw inputs/responses/config/runtime and resource samples are in `runs/p3-adapter-repo-dev-fable_f16-s17`. Interpretation is deferred to the study report; this run alone does not establish a repair.
