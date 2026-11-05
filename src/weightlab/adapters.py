@@ -96,14 +96,33 @@ def pack(base,target,output,manifest,method='svd',rank=32,cache=None,round_bf16=
     return report
 
 
-def merge(base,package,output,manifest):
+def deterministic_add(base,a,b):
+    """Exact dyadic F16 predictor: integer products/sums, then one IEEE F16 cast."""
+    if base.dtype!=np.float16 or a.dtype!=np.float16 or b.dtype!=np.float16:raise ValueError('F16-only deterministic predictor')
+    if a.ndim!=2 or b.ndim!=2 or a.shape[1]!=b.shape[0] or base.shape!=(a.shape[0],b.shape[1]):raise ValueError('predictor shape')
+    if not all(np.isfinite(x).all() for x in [base,a,b]):raise ValueError('finite predictor')
+    # Every finite F16 value is an integer multiple of 2^-24.
+    ai=(a.astype(np.float64)*(2.**24)).astype(np.int64)
+    bi=(b.astype(np.float64)*(2.**24)).astype(np.int64)
+    product_bound=int(np.max(np.abs(ai)))*int(np.max(np.abs(bi)))*a.shape[1]
+    base_bound=float(np.max(np.abs(base)))*(2.**48)
+    # Keep both int64 accumulation and subsequent float64 conversion exact.
+    if product_bound+base_bound>=2**53:raise ValueError('Predictor exact-integer bound exceeded')
+    numerators=ai@bi
+    base_int=(base.astype(np.float64)*(2.**48)).astype(np.int64)
+    total=numerators+base_int
+    return (total.astype(np.float64)*(2.**-48)).astype(np.float16)
+
+
+def merge(base,package,output,manifest,deterministic=False):
     from gguf import GGUFReader
     from .precision import round_bf16_values
     output=check_output(output,manifest)
     z=np.load(package,allow_pickle=False);meta=json.loads(str(z['metadata']))
     if meta['format']!='weightlab-approx-delta-v1' or file_sha256(base)!=meta['base_sha256']:raise ValueError('Wrong base')
     report={'utc':utc_now(),'git':git_state(),'base_path':str(base),'base_sha256':meta['base_sha256'],
-            'package':str(package),'package_sha256':file_sha256(package),'output':str(output),'status':'started'}
+            'package':str(package),'package_sha256':file_sha256(package),'output':str(output),'status':'started',
+            'predictor_arithmetic':'exact-f16-dyadic-int64-v1' if deterministic else 'numpy-fp32-v1'}
     write_json(manifest,report)
     partial=output.with_suffix('.gguf.partial')
     try:
@@ -118,7 +137,10 @@ def merge(base,package,output,manifest):
                 new=old.copy();new.reshape(-1)[z[prefix+'_indices']]=z[prefix+'_values']
             else:
                 data={key[len(prefix)+1:]:z[key] for key in z.files if key.startswith(prefix+'_')}
-                new=(old.astype(np.float32)+decode(data,row['kind'],old.shape)).astype(old.dtype)
+                if deterministic:
+                    if row['kind']!='svd':raise ValueError('Deterministic predictor supports SVD factors only')
+                    new=deterministic_add(old,data['a'],data['b'])
+                else:new=(old.astype(np.float32)+decode(data,row['kind'],old.shape)).astype(old.dtype)
                 if meta['round_bf16']:new=round_bf16_values(new)
             if not np.isfinite(new).all():raise ValueError('nonfinite merge')
             edited[name].data[:]=new;expected[name]=tensor_hash(new)

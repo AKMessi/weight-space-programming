@@ -1,0 +1,27 @@
+{
+  "utc": "2026-11-05T18:17:27.048823+00:00",
+  "git": {
+    "commit": "160683d272357ca1db5c0b17223b44f37c53ebeb",
+    "status": " M research/budget.jsonl\n M research/p3-events.jsonl\n?? runs/p3-repair-switch-dev-strong-qwen_float-s17/"
+  },
+  "command": [
+    "c++",
+    "-O2",
+    "-std=c++17",
+    "native/trace_v4.cpp",
+    "-Ilocal/runtime-source/include",
+    "-Ilocal/runtime-source/ggml/include",
+    "-Ilocal/runtime-source/vendor/nlohmann",
+    "-L/home/akmessi/llama-vulkan-build/bin",
+    "-Wl,-rpath,/home/akmessi/llama-vulkan-build/bin",
+    "-lllama",
+    "-lggml",
+    "-lggml-base",
+    "-o",
+    "local/weightlab-native-v4"
+  ],
+  "source_revision": "338fce6511c744893cc0d3d958b275f40552c7a4",
+  "source_sha256": "3647e19edd54ffe242b1f4b9dadbb08efaf280c8eb7ff8fa419a479b9a193a2e",
+  "status": "complete",
+  "binary_sha256": "e583cae323c6cf39638da6fdd36ba6fd14b616135b73e1adc1b9f18f528ab433"
+}
