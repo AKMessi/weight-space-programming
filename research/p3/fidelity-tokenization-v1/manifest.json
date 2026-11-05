@@ -1,0 +1,32 @@
+{
+  "utc": "2026-11-05T18:23:49.555397+00:00",
+  "git": {
+    "commit": "fdb5f7ac3b4f4172564e23bca938570b9eb9002c",
+    "status": "?? research/p3/fidelity-tokenization-v1/\n?? research/p3/lossless-capsules-v1/rank64-predictor.json\n?? research/p3/lossless-capsules-v1/rank64-residual.json"
+  },
+  "command": [
+    "/home/akmessi/llama-vulkan-build/bin/llama-server",
+    "--model",
+    "local/models/lfm2.5-230m-fable-5-f16.gguf",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "50489",
+    "--ctx-size",
+    "2048",
+    "--parallel",
+    "1",
+    "--threads",
+    "4",
+    "--n-gpu-layers",
+    "99",
+    "--jinja",
+    "--reasoning",
+    "off",
+    "--chat-template-kwargs",
+    "{\"enable_thinking\": false}"
+  ],
+  "source": "runs/p3-adapter-protection-fable_f16-s17/responses.jsonl",
+  "source_sha256": "959f0a72be5d7ced6f70f906de47f6183299be688361a83afc60df7b37720eca",
+  "selection": "fixed first8 plus last8 protection rows; no quality/outcome filtering; tokenizer only, zero forward calls"
+}
