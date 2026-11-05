@@ -135,3 +135,11 @@ Record observations, hypotheses, decisions, failed attempts, confounds, and foll
 **Late-V candidate:** the two-site 25% attention-V rollback did not rescue the exact response contracts and lost one explanation proxy within its truncated output. Keep this negative result. It is not evidence that attention is irrelevant; it rejects this particular site/dose choice on this discovery screen.
 
 **Next artifact control:** support exact BF16 tensor decoding into the same F16 storage layout. Tests cover known BF16 bit patterns, shape/orientation, dtype preservation, ties-to-even rounding, and rejection of unsupported packed quantization. This avoids treating already-rounded F16 values as an exact source of BF16 values.
+
+## 2026-11-05 — Exact BF16 artifact, template parity, and QKV controls
+
+**Artifact:** the official BF16 parent downloaded and passed its published checksum. Its BF16 linear tensors and F32 normalization/convolution tensors are handled explicitly; “BF16 GGUF” does not mean every stored tensor is BF16. Exact decoding is cross-checked against the installed GGUF library on selected matrices.
+
+**Template control:** Fable and the parent use identical native template hashes, and all 40 rendered discovery prompts match exactly. This rules out a different prompt string as an explanation of their observed difference on these runs; it does not establish historical training provenance.
+
+**Next predeclared inference controls:** decode the published BF16 parent into the same F16 artifact layout; restore all 18 Q/K/V projection matrices in Fable to the published BF16 parent as an upper-bound rollback control; and restore 50% of Q/K/V deltas only at layers 10/12. The all-QKV control may remove specialization and must not be called a skill-preserving repair. Site/dose choices remain exploratory, selected before their inference outcomes.

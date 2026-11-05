@@ -1,0 +1,2116 @@
+{
+  "utc": "2026-11-05T10:46:37.695342+00:00",
+  "git": {
+    "commit": "9768e212d56bbc6998f68866fbbef1a8717a2ad7",
+    "status": "M research/artifact_events.jsonl"
+  },
+  "sources": [
+    {
+      "path": "local/models/lfm2.5-230m-fable-5-f16.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "1e1624de4d7ebe413d82dbe2b5f48fcf83e6c46b1b5414c8aef0596009380cc6",
+      "sampling": {
+        "temperature": 0.1,
+        "top_k": 50,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.05,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      }
+    },
+    {
+      "path": "local/models/LFM2.5-230M-BF16.gguf",
+      "repo": "LiquidAI/LFM2.5-230M-GGUF",
+      "revision": "03502067c64ce32ac4fe87b0cec0310a1a13d3e9",
+      "file": "LFM2.5-230M-BF16.gguf",
+      "sha256": "9a47cffa8c86d071e4cdb2adf6861251fecd6191c226c88607a193a0d9cc5a38",
+      "sampling": {
+        "temperature": 0.1,
+        "top_k": 50,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.05,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      }
+    }
+  ],
+  "interpretation": "Checkpoint differences; actual original training revision not yet established. BF16 rounding equality is a diagnostic, not proof of training provenance.",
+  "tensors": [
+    {
+      "name": "token_embd.weight",
+      "shape": [
+        65536,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 67108864,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "token_embd_norm.weight",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "values": 1024,
+      "changed_values": 1024,
+      "relative_frobenius_delta": 0.0014814634190741668,
+      "max_absolute_delta": 0.007809638977050781,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.0.shortconv.conv.weight",
+      "shape": [
+        1024,
+        3
+      ],
+      "dtype": "float32",
+      "values": 3072,
+      "changed_values": 3072,
+      "relative_frobenius_delta": 0.0016273496843622235,
+      "max_absolute_delta": 0.00048775970935821533,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 0.9996744791666666,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.0.shortconv.in_proj.weight",
+      "shape": [
+        3072,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 3145728,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.0.shortconv.out_proj.weight",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 1048576,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.0.ffn_gate.weight",
+      "shape": [
+        2560,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 2621440,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.0.ffn_down.weight",
+      "shape": [
+        1024,
+        2560
+      ],
+      "dtype": "float16",
+      "values": 2621440,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.0.ffn_up.weight",
+      "shape": [
+        2560,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 2621440,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.0.ffn_norm.weight",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "values": 1024,
+      "changed_values": 1024,
+      "relative_frobenius_delta": 0.001589011236088788,
+      "max_absolute_delta": 0.0009718537330627441,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 0.9990234375,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.0.attn_norm.weight",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "values": 1024,
+      "changed_values": 1024,
+      "relative_frobenius_delta": 0.001818634460262232,
+      "max_absolute_delta": 0.0019905567169189453,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.1.shortconv.conv.weight",
+      "shape": [
+        1024,
+        3
+      ],
+      "dtype": "float32",
+      "values": 3072,
+      "changed_values": 3072,
+      "relative_frobenius_delta": 0.0017496929668114477,
+      "max_absolute_delta": 0.0009616315364837646,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 0.9996744791666666,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.1.shortconv.in_proj.weight",
+      "shape": [
+        3072,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 3145728,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.1.shortconv.out_proj.weight",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 1048576,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.1.ffn_gate.weight",
+      "shape": [
+        2560,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 2621440,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.1.ffn_down.weight",
+      "shape": [
+        1024,
+        2560
+      ],
+      "dtype": "float16",
+      "values": 2621440,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.1.ffn_up.weight",
+      "shape": [
+        2560,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 2621440,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.1.ffn_norm.weight",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "values": 1024,
+      "changed_values": 1024,
+      "relative_frobenius_delta": 0.002015486339903629,
+      "max_absolute_delta": 0.0009756386280059814,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 0.9990234375,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.1.attn_norm.weight",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "values": 1024,
+      "changed_values": 1024,
+      "relative_frobenius_delta": 0.0015176164251150593,
+      "max_absolute_delta": 0.0018156170845031738,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.10.ffn_gate.weight",
+      "shape": [
+        2560,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 2621440,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.10.ffn_down.weight",
+      "shape": [
+        1024,
+        2560
+      ],
+      "dtype": "float16",
+      "values": 2621440,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.10.ffn_up.weight",
+      "shape": [
+        2560,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 2621440,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.10.ffn_norm.weight",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "values": 1024,
+      "changed_values": 1024,
+      "relative_frobenius_delta": 0.0024384612817150045,
+      "max_absolute_delta": 0.000975877046585083,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.10.attn_norm.weight",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "values": 1024,
+      "changed_values": 1024,
+      "relative_frobenius_delta": 0.001845308930193832,
+      "max_absolute_delta": 0.0009712278842926025,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.10.attn_k_norm.weight",
+      "shape": [
+        64
+      ],
+      "dtype": "float32",
+      "values": 64,
+      "changed_values": 64,
+      "relative_frobenius_delta": 0.001510489786054881,
+      "max_absolute_delta": 0.007563352584838867,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.10.attn_k.weight",
+      "shape": [
+        512,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 524288,
+      "changed_values": 521198,
+      "relative_frobenius_delta": 0.03877117140518168,
+      "max_absolute_delta": 0.00724029541015625,
+      "fine_rounded_bf16_equals_parent_fraction": 0.04697227478027344,
+      "parent_rounded_bf16_equals_fine_fraction": 0.005893707275390625,
+      "fine_on_bf16_grid_fraction": 0.1271343231201172,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.10.attn_output.weight",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 1048576,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.10.attn_q_norm.weight",
+      "shape": [
+        64
+      ],
+      "dtype": "float32",
+      "values": 64,
+      "changed_values": 64,
+      "relative_frobenius_delta": 0.0018407943591822315,
+      "max_absolute_delta": 0.00776219367980957,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.10.attn_q.weight",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 1048576,
+      "changed_values": 1042591,
+      "relative_frobenius_delta": 0.04215590001974522,
+      "max_absolute_delta": 0.0095672607421875,
+      "fine_rounded_bf16_equals_parent_fraction": 0.044979095458984375,
+      "parent_rounded_bf16_equals_fine_fraction": 0.005707740783691406,
+      "fine_on_bf16_grid_fraction": 0.12618541717529297,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.10.attn_v.weight",
+      "shape": [
+        512,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 524288,
+      "changed_values": 521616,
+      "relative_frobenius_delta": 0.04838763347954621,
+      "max_absolute_delta": 0.010711669921875,
+      "fine_rounded_bf16_equals_parent_fraction": 0.04150390625,
+      "parent_rounded_bf16_equals_fine_fraction": 0.005096435546875,
+      "fine_on_bf16_grid_fraction": 0.12627601623535156,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.11.shortconv.conv.weight",
+      "shape": [
+        1024,
+        3
+      ],
+      "dtype": "float32",
+      "values": 3072,
+      "changed_values": 3072,
+      "relative_frobenius_delta": 0.0018118152031802582,
+      "max_absolute_delta": 0.00048817694187164307,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 0.9990234375,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.11.shortconv.in_proj.weight",
+      "shape": [
+        3072,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 3145728,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.11.shortconv.out_proj.weight",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 1048576,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.11.ffn_gate.weight",
+      "shape": [
+        2560,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 2621440,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.11.ffn_down.weight",
+      "shape": [
+        1024,
+        2560
+      ],
+      "dtype": "float16",
+      "values": 2621440,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.11.ffn_up.weight",
+      "shape": [
+        2560,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 2621440,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.11.ffn_norm.weight",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "values": 1024,
+      "changed_values": 1024,
+      "relative_frobenius_delta": 0.0020411674364108024,
+      "max_absolute_delta": 0.0009765028953552246,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.11.attn_norm.weight",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "values": 1024,
+      "changed_values": 1024,
+      "relative_frobenius_delta": 0.001839337393451292,
+      "max_absolute_delta": 0.0019518733024597168,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.12.ffn_gate.weight",
+      "shape": [
+        2560,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 2621440,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.12.ffn_down.weight",
+      "shape": [
+        1024,
+        2560
+      ],
+      "dtype": "float16",
+      "values": 2621440,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.12.ffn_up.weight",
+      "shape": [
+        2560,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 2621440,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.12.ffn_norm.weight",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "values": 1024,
+      "changed_values": 1024,
+      "relative_frobenius_delta": 0.0019055182128396926,
+      "max_absolute_delta": 0.0010638236999511719,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.12.attn_norm.weight",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "values": 1024,
+      "changed_values": 1024,
+      "relative_frobenius_delta": 0.0017207532489395847,
+      "max_absolute_delta": 0.0009761154651641846,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.12.attn_k_norm.weight",
+      "shape": [
+        64
+      ],
+      "dtype": "float32",
+      "values": 64,
+      "changed_values": 64,
+      "relative_frobenius_delta": 0.0013465636042573458,
+      "max_absolute_delta": 0.0038614273071289062,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.12.attn_k.weight",
+      "shape": [
+        512,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 524288,
+      "changed_values": 521598,
+      "relative_frobenius_delta": 0.04582149698247179,
+      "max_absolute_delta": 0.00795745849609375,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0404052734375,
+      "parent_rounded_bf16_equals_fine_fraction": 0.005130767822265625,
+      "fine_on_bf16_grid_fraction": 0.12627601623535156,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.12.attn_output.weight",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 1048576,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.12.attn_q_norm.weight",
+      "shape": [
+        64
+      ],
+      "dtype": "float32",
+      "values": 64,
+      "changed_values": 64,
+      "relative_frobenius_delta": 0.001460038804965849,
+      "max_absolute_delta": 0.004853248596191406,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.12.attn_q.weight",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 1048576,
+      "changed_values": 1043139,
+      "relative_frobenius_delta": 0.046374451256012875,
+      "max_absolute_delta": 0.011199951171875,
+      "fine_rounded_bf16_equals_parent_fraction": 0.04089069366455078,
+      "parent_rounded_bf16_equals_fine_fraction": 0.005185127258300781,
+      "fine_on_bf16_grid_fraction": 0.1265707015991211,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.12.attn_v.weight",
+      "shape": [
+        512,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 524288,
+      "changed_values": 521597,
+      "relative_frobenius_delta": 0.048995388826249014,
+      "max_absolute_delta": 0.011322021484375,
+      "fine_rounded_bf16_equals_parent_fraction": 0.04112052917480469,
+      "parent_rounded_bf16_equals_fine_fraction": 0.0051326751708984375,
+      "fine_on_bf16_grid_fraction": 0.1259937286376953,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.13.shortconv.conv.weight",
+      "shape": [
+        1024,
+        3
+      ],
+      "dtype": "float32",
+      "values": 3072,
+      "changed_values": 3072,
+      "relative_frobenius_delta": 0.0018918315161357475,
+      "max_absolute_delta": 0.0009765625,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 0.9993489583333334,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.13.shortconv.in_proj.weight",
+      "shape": [
+        3072,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 3145728,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.13.shortconv.out_proj.weight",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 1048576,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.13.ffn_gate.weight",
+      "shape": [
+        2560,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 2621440,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.13.ffn_down.weight",
+      "shape": [
+        1024,
+        2560
+      ],
+      "dtype": "float16",
+      "values": 2621440,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.13.ffn_up.weight",
+      "shape": [
+        2560,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 2621440,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.13.ffn_norm.weight",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "values": 1024,
+      "changed_values": 1024,
+      "relative_frobenius_delta": 0.0015998183764602254,
+      "max_absolute_delta": 0.000996410846710205,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.13.attn_norm.weight",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "values": 1024,
+      "changed_values": 1024,
+      "relative_frobenius_delta": 0.0018915198252377728,
+      "max_absolute_delta": 0.0019530057907104492,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.2.ffn_gate.weight",
+      "shape": [
+        2560,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 2621440,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.2.ffn_down.weight",
+      "shape": [
+        1024,
+        2560
+      ],
+      "dtype": "float16",
+      "values": 2621440,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.2.ffn_up.weight",
+      "shape": [
+        2560,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 2621440,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.2.ffn_norm.weight",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "values": 1024,
+      "changed_values": 1024,
+      "relative_frobenius_delta": 0.0016855425378319725,
+      "max_absolute_delta": 0.0009717047214508057,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.2.attn_norm.weight",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "values": 1024,
+      "changed_values": 1024,
+      "relative_frobenius_delta": 0.0016502972637251127,
+      "max_absolute_delta": 0.00026553869247436523,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.2.attn_k_norm.weight",
+      "shape": [
+        64
+      ],
+      "dtype": "float32",
+      "values": 64,
+      "changed_values": 64,
+      "relative_frobenius_delta": 0.0016652723161358057,
+      "max_absolute_delta": 0.007744312286376953,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.2.attn_k.weight",
+      "shape": [
+        512,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 524288,
+      "changed_values": 521354,
+      "relative_frobenius_delta": 0.04152582537372044,
+      "max_absolute_delta": 0.006805419921875,
+      "fine_rounded_bf16_equals_parent_fraction": 0.04492759704589844,
+      "parent_rounded_bf16_equals_fine_fraction": 0.005596160888671875,
+      "fine_on_bf16_grid_fraction": 0.1252613067626953,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.2.attn_output.weight",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 1048576,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.2.attn_q_norm.weight",
+      "shape": [
+        64
+      ],
+      "dtype": "float32",
+      "values": 64,
+      "changed_values": 64,
+      "relative_frobenius_delta": 0.0014592449854616057,
+      "max_absolute_delta": 0.0038944482803344727,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.2.attn_q.weight",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 1048576,
+      "changed_values": 1042766,
+      "relative_frobenius_delta": 0.042130957094583206,
+      "max_absolute_delta": 0.009063720703125,
+      "fine_rounded_bf16_equals_parent_fraction": 0.04444694519042969,
+      "parent_rounded_bf16_equals_fine_fraction": 0.0055408477783203125,
+      "fine_on_bf16_grid_fraction": 0.1265268325805664,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.2.attn_v.weight",
+      "shape": [
+        512,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 524288,
+      "changed_values": 520914,
+      "relative_frobenius_delta": 0.0442310173553748,
+      "max_absolute_delta": 0.00830078125,
+      "fine_rounded_bf16_equals_parent_fraction": 0.05005836486816406,
+      "parent_rounded_bf16_equals_fine_fraction": 0.006435394287109375,
+      "fine_on_bf16_grid_fraction": 0.12628936767578125,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.3.shortconv.conv.weight",
+      "shape": [
+        1024,
+        3
+      ],
+      "dtype": "float32",
+      "values": 3072,
+      "changed_values": 3072,
+      "relative_frobenius_delta": 0.0016592238247740171,
+      "max_absolute_delta": 0.0009763538837432861,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 0.9996744791666666,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.3.shortconv.in_proj.weight",
+      "shape": [
+        3072,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 3145728,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.3.shortconv.out_proj.weight",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 1048576,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.3.ffn_gate.weight",
+      "shape": [
+        2560,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 2621440,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.3.ffn_down.weight",
+      "shape": [
+        1024,
+        2560
+      ],
+      "dtype": "float16",
+      "values": 2621440,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.3.ffn_up.weight",
+      "shape": [
+        2560,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 2621440,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.3.ffn_norm.weight",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "values": 1024,
+      "changed_values": 1024,
+      "relative_frobenius_delta": 0.0015979448622051122,
+      "max_absolute_delta": 0.00096932053565979,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.3.attn_norm.weight",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "values": 1024,
+      "changed_values": 1024,
+      "relative_frobenius_delta": 0.0014727711973577748,
+      "max_absolute_delta": 0.0009765326976776123,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.4.ffn_gate.weight",
+      "shape": [
+        2560,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 2621440,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.4.ffn_down.weight",
+      "shape": [
+        1024,
+        2560
+      ],
+      "dtype": "float16",
+      "values": 2621440,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.4.ffn_up.weight",
+      "shape": [
+        2560,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 2621440,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.4.ffn_norm.weight",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "values": 1024,
+      "changed_values": 1024,
+      "relative_frobenius_delta": 0.0016755473655762217,
+      "max_absolute_delta": 0.0009755790233612061,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.4.attn_norm.weight",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "values": 1024,
+      "changed_values": 1024,
+      "relative_frobenius_delta": 0.0022381077735705787,
+      "max_absolute_delta": 0.00048550963401794434,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.4.attn_k_norm.weight",
+      "shape": [
+        64
+      ],
+      "dtype": "float32",
+      "values": 64,
+      "changed_values": 64,
+      "relative_frobenius_delta": 0.0014806630117926987,
+      "max_absolute_delta": 0.004496574401855469,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.4.attn_k.weight",
+      "shape": [
+        512,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 524288,
+      "changed_values": 521299,
+      "relative_frobenius_delta": 0.03987838371309806,
+      "max_absolute_delta": 0.005340576171875,
+      "fine_rounded_bf16_equals_parent_fraction": 0.04497718811035156,
+      "parent_rounded_bf16_equals_fine_fraction": 0.0057010650634765625,
+      "fine_on_bf16_grid_fraction": 0.12593650817871094,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.4.attn_output.weight",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 1048576,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.4.attn_q_norm.weight",
+      "shape": [
+        64
+      ],
+      "dtype": "float32",
+      "values": 64,
+      "changed_values": 64,
+      "relative_frobenius_delta": 0.0016029610677916145,
+      "max_absolute_delta": 0.007390260696411133,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.4.attn_q.weight",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 1048576,
+      "changed_values": 1042726,
+      "relative_frobenius_delta": 0.04080161048413549,
+      "max_absolute_delta": 0.0063934326171875,
+      "fine_rounded_bf16_equals_parent_fraction": 0.04507255554199219,
+      "parent_rounded_bf16_equals_fine_fraction": 0.0055789947509765625,
+      "fine_on_bf16_grid_fraction": 0.12583446502685547,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.4.attn_v.weight",
+      "shape": [
+        512,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 524288,
+      "changed_values": 521027,
+      "relative_frobenius_delta": 0.04111611138223809,
+      "max_absolute_delta": 0.006160736083984375,
+      "fine_rounded_bf16_equals_parent_fraction": 0.04972267150878906,
+      "parent_rounded_bf16_equals_fine_fraction": 0.0062198638916015625,
+      "fine_on_bf16_grid_fraction": 0.12638473510742188,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.5.shortconv.conv.weight",
+      "shape": [
+        1024,
+        3
+      ],
+      "dtype": "float32",
+      "values": 3072,
+      "changed_values": 3072,
+      "relative_frobenius_delta": 0.0015540310741705855,
+      "max_absolute_delta": 0.0009624660015106201,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.5.shortconv.in_proj.weight",
+      "shape": [
+        3072,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 3145728,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.5.shortconv.out_proj.weight",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 1048576,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.5.ffn_gate.weight",
+      "shape": [
+        2560,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 2621440,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.5.ffn_down.weight",
+      "shape": [
+        1024,
+        2560
+      ],
+      "dtype": "float16",
+      "values": 2621440,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.5.ffn_up.weight",
+      "shape": [
+        2560,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 2621440,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.5.ffn_norm.weight",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "values": 1024,
+      "changed_values": 1024,
+      "relative_frobenius_delta": 0.0020305617773099657,
+      "max_absolute_delta": 0.00097617506980896,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.5.attn_norm.weight",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "values": 1024,
+      "changed_values": 1024,
+      "relative_frobenius_delta": 0.0015376665123893276,
+      "max_absolute_delta": 0.0018898248672485352,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.6.ffn_gate.weight",
+      "shape": [
+        2560,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 2621440,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.6.ffn_down.weight",
+      "shape": [
+        1024,
+        2560
+      ],
+      "dtype": "float16",
+      "values": 2621440,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.6.ffn_up.weight",
+      "shape": [
+        2560,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 2621440,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.6.ffn_norm.weight",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "values": 1024,
+      "changed_values": 1024,
+      "relative_frobenius_delta": 0.0016612057791137425,
+      "max_absolute_delta": 0.0009561479091644287,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.6.attn_norm.weight",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "values": 1024,
+      "changed_values": 1024,
+      "relative_frobenius_delta": 0.001731607174570036,
+      "max_absolute_delta": 0.0004855990409851074,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.6.attn_k_norm.weight",
+      "shape": [
+        64
+      ],
+      "dtype": "float32",
+      "values": 64,
+      "changed_values": 64,
+      "relative_frobenius_delta": 0.001344936680147831,
+      "max_absolute_delta": 0.0038682222366333008,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.6.attn_k.weight",
+      "shape": [
+        512,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 524288,
+      "changed_values": 521092,
+      "relative_frobenius_delta": 0.036932251276607826,
+      "max_absolute_delta": 0.0062713623046875,
+      "fine_rounded_bf16_equals_parent_fraction": 0.04902076721191406,
+      "parent_rounded_bf16_equals_fine_fraction": 0.00609588623046875,
+      "fine_on_bf16_grid_fraction": 0.12664794921875,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.6.attn_output.weight",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 1048576,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.6.attn_q_norm.weight",
+      "shape": [
+        64
+      ],
+      "dtype": "float32",
+      "values": 64,
+      "changed_values": 64,
+      "relative_frobenius_delta": 0.001755353094490432,
+      "max_absolute_delta": 0.007729768753051758,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.6.attn_q.weight",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 1048576,
+      "changed_values": 1042468,
+      "relative_frobenius_delta": 0.04091145079154942,
+      "max_absolute_delta": 0.00725555419921875,
+      "fine_rounded_bf16_equals_parent_fraction": 0.046927452087402344,
+      "parent_rounded_bf16_equals_fine_fraction": 0.005825042724609375,
+      "fine_on_bf16_grid_fraction": 0.12607765197753906,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.6.attn_v.weight",
+      "shape": [
+        512,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 524288,
+      "changed_values": 520609,
+      "relative_frobenius_delta": 0.03733097241837121,
+      "max_absolute_delta": 0.006053924560546875,
+      "fine_rounded_bf16_equals_parent_fraction": 0.05496025085449219,
+      "parent_rounded_bf16_equals_fine_fraction": 0.0070171356201171875,
+      "fine_on_bf16_grid_fraction": 0.12664413452148438,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.7.shortconv.conv.weight",
+      "shape": [
+        1024,
+        3
+      ],
+      "dtype": "float32",
+      "values": 3072,
+      "changed_values": 3072,
+      "relative_frobenius_delta": 0.0017980901558955894,
+      "max_absolute_delta": 0.0009059011936187744,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 0.9996744791666666,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.7.shortconv.in_proj.weight",
+      "shape": [
+        3072,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 3145728,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.7.shortconv.out_proj.weight",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 1048576,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.7.ffn_gate.weight",
+      "shape": [
+        2560,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 2621440,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.7.ffn_down.weight",
+      "shape": [
+        1024,
+        2560
+      ],
+      "dtype": "float16",
+      "values": 2621440,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.7.ffn_up.weight",
+      "shape": [
+        2560,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 2621440,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.7.ffn_norm.weight",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "values": 1024,
+      "changed_values": 1024,
+      "relative_frobenius_delta": 0.0019978092279392488,
+      "max_absolute_delta": 0.0009765326976776123,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.7.attn_norm.weight",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "values": 1024,
+      "changed_values": 1024,
+      "relative_frobenius_delta": 0.0015573241755790532,
+      "max_absolute_delta": 0.001941978931427002,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.8.ffn_gate.weight",
+      "shape": [
+        2560,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 2621440,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.8.ffn_down.weight",
+      "shape": [
+        1024,
+        2560
+      ],
+      "dtype": "float16",
+      "values": 2621440,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.8.ffn_up.weight",
+      "shape": [
+        2560,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 2621440,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.8.ffn_norm.weight",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "values": 1024,
+      "changed_values": 1024,
+      "relative_frobenius_delta": 0.0023948322928837047,
+      "max_absolute_delta": 0.0009763538837432861,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.8.attn_norm.weight",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "values": 1024,
+      "changed_values": 1024,
+      "relative_frobenius_delta": 0.0019395000349663992,
+      "max_absolute_delta": 0.0009497404098510742,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.8.attn_k_norm.weight",
+      "shape": [
+        64
+      ],
+      "dtype": "float32",
+      "values": 64,
+      "changed_values": 64,
+      "relative_frobenius_delta": 0.0015320041854057767,
+      "max_absolute_delta": 0.0048291683197021484,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.8.attn_k.weight",
+      "shape": [
+        512,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 524288,
+      "changed_values": 520851,
+      "relative_frobenius_delta": 0.03565978533486729,
+      "max_absolute_delta": 0.004856109619140625,
+      "fine_rounded_bf16_equals_parent_fraction": 0.052433013916015625,
+      "parent_rounded_bf16_equals_fine_fraction": 0.0065555572509765625,
+      "fine_on_bf16_grid_fraction": 0.12665748596191406,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.8.attn_output.weight",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 1048576,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.8.attn_q_norm.weight",
+      "shape": [
+        64
+      ],
+      "dtype": "float32",
+      "values": 64,
+      "changed_values": 64,
+      "relative_frobenius_delta": 0.0015232111564344455,
+      "max_absolute_delta": 0.007376432418823242,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.8.attn_q.weight",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 1048576,
+      "changed_values": 1042160,
+      "relative_frobenius_delta": 0.03800505188005056,
+      "max_absolute_delta": 0.00677490234375,
+      "fine_rounded_bf16_equals_parent_fraction": 0.04895305633544922,
+      "parent_rounded_bf16_equals_fine_fraction": 0.0061187744140625,
+      "fine_on_bf16_grid_fraction": 0.12622547149658203,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.8.attn_v.weight",
+      "shape": [
+        512,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 524288,
+      "changed_values": 520736,
+      "relative_frobenius_delta": 0.037578790903268086,
+      "max_absolute_delta": 0.006781578063964844,
+      "fine_rounded_bf16_equals_parent_fraction": 0.05352210998535156,
+      "parent_rounded_bf16_equals_fine_fraction": 0.00677490234375,
+      "fine_on_bf16_grid_fraction": 0.12515640258789062,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.9.shortconv.conv.weight",
+      "shape": [
+        1024,
+        3
+      ],
+      "dtype": "float32",
+      "values": 3072,
+      "changed_values": 3072,
+      "relative_frobenius_delta": 0.0017979849058646375,
+      "max_absolute_delta": 0.0008768141269683838,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 0.9996744791666666,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.9.shortconv.in_proj.weight",
+      "shape": [
+        3072,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 3145728,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.9.shortconv.out_proj.weight",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 1048576,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.9.ffn_gate.weight",
+      "shape": [
+        2560,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 2621440,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.9.ffn_down.weight",
+      "shape": [
+        1024,
+        2560
+      ],
+      "dtype": "float16",
+      "values": 2621440,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.9.ffn_up.weight",
+      "shape": [
+        2560,
+        1024
+      ],
+      "dtype": "float16",
+      "values": 2621440,
+      "changed_values": 0,
+      "relative_frobenius_delta": 0.0,
+      "max_absolute_delta": 0.0,
+      "fine_rounded_bf16_equals_parent_fraction": 1.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 1.0
+    },
+    {
+      "name": "blk.9.ffn_norm.weight",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "values": 1024,
+      "changed_values": 1024,
+      "relative_frobenius_delta": 0.0026602556514343707,
+      "max_absolute_delta": 0.0009764730930328369,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    },
+    {
+      "name": "blk.9.attn_norm.weight",
+      "shape": [
+        1024
+      ],
+      "dtype": "float32",
+      "values": 1024,
+      "changed_values": 1024,
+      "relative_frobenius_delta": 0.0015768357833000053,
+      "max_absolute_delta": 0.0019304752349853516,
+      "fine_rounded_bf16_equals_parent_fraction": 0.0,
+      "parent_rounded_bf16_equals_fine_fraction": 1.0,
+      "fine_on_bf16_grid_fraction": 1.0,
+      "parent_on_bf16_grid_fraction": 0.0
+    }
+  ],
+  "status": "complete"
+}

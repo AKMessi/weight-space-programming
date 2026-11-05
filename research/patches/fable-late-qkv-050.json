@@ -1,0 +1,155 @@
+{
+  "schema_version": 1,
+  "started_utc": "2026-11-05T10:47:20.639371+00:00",
+  "git": {
+    "commit": "9768e212d56bbc6998f68866fbbef1a8717a2ad7",
+    "status": "M research/artifact_events.jsonl\n?? research/fable-vs-official-bf16-parent.json\n?? research/patches/fable-all-qkv-parent.json\n?? research/patches/parent-exact-bf16-values-f16.json"
+  },
+  "operation": "partial_parent_rollback_of_selected_floating_tensors",
+  "status": "verified",
+  "base": {
+    "path": "local/models/lfm2.5-230m-fable-5-f16.gguf",
+    "repo": "AKMESSI/lfm2.5-230m-fable-5",
+    "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+    "file": "lfm2.5-230m-fable-5-f16.gguf",
+    "sha256": "1e1624de4d7ebe413d82dbe2b5f48fcf83e6c46b1b5414c8aef0596009380cc6",
+    "sampling": {
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "min_p": 0.0,
+      "repeat_penalty": 1.05,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0
+    }
+  },
+  "parent": {
+    "path": "local/models/LFM2.5-230M-BF16.gguf",
+    "repo": "LiquidAI/LFM2.5-230M-GGUF",
+    "revision": "03502067c64ce32ac4fe87b0cec0310a1a13d3e9",
+    "file": "LFM2.5-230M-BF16.gguf",
+    "sha256": "9a47cffa8c86d071e4cdb2adf6861251fecd6191c226c88607a193a0d9cc5a38",
+    "sampling": {
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "min_p": 0.0,
+      "repeat_penalty": 1.05,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0
+    }
+  },
+  "alpha": 0.5,
+  "selected": [
+    "blk.10.attn_k.weight",
+    "blk.10.attn_q.weight",
+    "blk.10.attn_v.weight",
+    "blk.12.attn_k.weight",
+    "blk.12.attn_q.weight",
+    "blk.12.attn_v.weight"
+  ],
+  "output": "artifacts/fable-late-qkv-050.gguf",
+  "selection_pattern": "blk\\.(\\d+)\\.attn_[qkv]\\.weight",
+  "parent_transformation": "none",
+  "notes": [
+    "No gradients or training. Not a sparse/rank-one edit.",
+    "F16 casting is part of the evaluated operation."
+  ],
+  "tensors": [
+    {
+      "name": "blk.10.attn_k.weight",
+      "shape": [
+        512,
+        1024
+      ],
+      "dtype": "float16",
+      "base_sha256": "656180d694bbefbdd96348721e95934331dc4127406a1cb6841a012cb9a18c4b",
+      "parent_sha256": "154dfa71efec9506717917c39b8f449d33271747feee4c31c222f708a4678f7a",
+      "parent_encoding": "30",
+      "effective_parent_sha256": "f8e022e385398416d0e2e6b7e87eba2c91d771ea13cd41c2d7014862610d6423",
+      "edited_sha256": "f9a0eea4dea60d7708004bb1535bf8f77342322ddba5bf68df590d2b84170019",
+      "changed_values": 521198,
+      "relative_frobenius_change": 0.019373499187412768
+    },
+    {
+      "name": "blk.10.attn_q.weight",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float16",
+      "base_sha256": "3dfcd2c50dc3da835d934c97fac00d5579d8f7dad7d46d09425956c97e16b9fb",
+      "parent_sha256": "c727cc40f1f83ae4cb08c23b0020d33ec06ad4cc7877c2de0d808903ad3aaa7c",
+      "parent_encoding": "30",
+      "effective_parent_sha256": "3e85b74cfd7186d6f2315ed58fd622f40510599c36d7b416685b4fb1e7f8c789",
+      "edited_sha256": "ec98688bf038598fe8bb194470a510267f42510ece0e2faae7050456dee3d64c",
+      "changed_values": 1042591,
+      "relative_frobenius_change": 0.021061680599685342
+    },
+    {
+      "name": "blk.10.attn_v.weight",
+      "shape": [
+        512,
+        1024
+      ],
+      "dtype": "float16",
+      "base_sha256": "99e4cb828f2f64fa8beab568ecfa63987666619ce54bbf6166944e8b86c1f38b",
+      "parent_sha256": "113acfb3c9a5477d1da2ddce72d64045df26e998c3f270e14e40da2a8e1ff93a",
+      "parent_encoding": "30",
+      "effective_parent_sha256": "a2ea3719e4236b44bfced54bfa05dfb7ea4e409c50867a3901db9b2d8836cc13",
+      "edited_sha256": "b36e53cd680ab7fc60ae469b3fdd5a7281eb47070dad5e2605c28dbff6bd652f",
+      "changed_values": 521616,
+      "relative_frobenius_change": 0.02416432539975878
+    },
+    {
+      "name": "blk.12.attn_k.weight",
+      "shape": [
+        512,
+        1024
+      ],
+      "dtype": "float16",
+      "base_sha256": "8c61f10ea6f179027ae40748d5afda88889c380401e32b5bc03e303da6c8d81f",
+      "parent_sha256": "1aaa90950aa3a30160056d952c2758f2363ce16fe04bda18d376f0e22c083676",
+      "parent_encoding": "30",
+      "effective_parent_sha256": "19eaa1f902d83e3248813f5b528d871c7299e2dbcece2bf9a7e16a45384ed0a3",
+      "edited_sha256": "444ea27014a0eafffaf87848b6c43d6af0b788994687ecb53fabef9c872253ee",
+      "changed_values": 521598,
+      "relative_frobenius_change": 0.02289018600814844
+    },
+    {
+      "name": "blk.12.attn_q.weight",
+      "shape": [
+        1024,
+        1024
+      ],
+      "dtype": "float16",
+      "base_sha256": "ba56a76b58c02b819ac70417645d6ec8d4461a521221b2110873d42dd200ca3a",
+      "parent_sha256": "10af7c61ea593f6e2ec88c6968a3ad18291e8c73041e754a82a8d592342d3db5",
+      "parent_encoding": "30",
+      "effective_parent_sha256": "431d03ecbc6ef4ff64384fe1a5f65af10e13e75a10dacbc4eae0d27de586715b",
+      "edited_sha256": "a85280de083d1218de9ca1804ea234b4cbc3d26bc11136851a634296b625fb41",
+      "changed_values": 1043139,
+      "relative_frobenius_change": 0.02316281508754018
+    },
+    {
+      "name": "blk.12.attn_v.weight",
+      "shape": [
+        512,
+        1024
+      ],
+      "dtype": "float16",
+      "base_sha256": "f9b3f504eeab51f36ee611587091d813ce0be68b3de54f3c4f8f0339ef58dbe9",
+      "parent_sha256": "2f05651711a82e73393d1490e1cb899a1ed766cfcaf23c48c9028ae4f21f7c99",
+      "parent_encoding": "30",
+      "effective_parent_sha256": "a90225ced18e29f66e6b2fd1568087f58429ed5ae45f7a89a8a626508fc805e7",
+      "edited_sha256": "26b2b542ab676e4eeba1911adca84b8eaa592c531ea81de6e85826ac505d337e",
+      "changed_values": 521597,
+      "relative_frobenius_change": 0.024468169150699347
+    }
+  ],
+  "untouched_tensors_verified": 126,
+  "changed_values": 4171739,
+  "edited_file_sha256": "f8067cc049c562a3c0693183b98c120aa48a4dd74174b5e4ce06181df927abeb",
+  "ended_utc": "2026-11-05T10:47:26.291867+00:00",
+  "bytes": 461883712
+}
