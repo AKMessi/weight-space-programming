@@ -1,0 +1,114 @@
+{
+  "runtime": {
+    "binary": "/home/akmessi/llama-vulkan-build/bin/llama-server",
+    "context": 2048,
+    "threads": 4,
+    "gpu_layers": 99
+  },
+  "budgets": {
+    "overall_generated_tokens": 1800000,
+    "per_run_generated_tokens": 20000
+  },
+  "models": {
+    "lfm3_qad": {
+      "path": "/home/akmessi/models/lfm3/LFM3-1.7B-QAD-Q4_0.gguf",
+      "repo": "LiquidAI/LFM3-1.7B-GGUF",
+      "revision": "cd0c74c575b5c416f3011b5b4c298077f26ca8c2",
+      "file": "LFM3-1.7B-QAD-Q4_0.gguf",
+      "sha256": "43a7d09a0e9cba91b63eb7052488b9564569bddfd65754d2e426465e572a7452",
+      "sampling": {
+        "temperature": 0.1,
+        "top_k": 50,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.1,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      }
+    },
+    "qwen3_q8": {
+      "path": "local/models/Qwen3-0.6B-Q8_0.gguf",
+      "repo": "Qwen/Qwen3-0.6B-GGUF",
+      "revision": "23749fefcc72300e3a2ad315e1317431b06b590a",
+      "file": "Qwen3-0.6B-Q8_0.gguf",
+      "sha256": "9465e63a22add5354d9bb4b99e90117043c7124007664907259bd16d043bb031",
+      "sampling": {
+        "temperature": 0.7,
+        "top_k": 20,
+        "top_p": 0.8,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      }
+    },
+    "fable_f16": {
+      "path": "local/models/lfm2.5-230m-fable-5-f16.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "1e1624de4d7ebe413d82dbe2b5f48fcf83e6c46b1b5414c8aef0596009380cc6",
+      "sampling": {
+        "temperature": 0.1,
+        "top_k": 50,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.05,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      }
+    },
+    "parent_f16": {
+      "path": "local/models/LFM2.5-230M-F16.gguf",
+      "repo": "LiquidAI/LFM2.5-230M-GGUF",
+      "revision": "03502067c64ce32ac4fe87b0cec0310a1a13d3e9",
+      "file": "LFM2.5-230M-F16.gguf",
+      "sha256": "4d364976c7ae1b85bd380f743155aa2d532f7a10291beaa6b27a7d6c9b10527f",
+      "sampling": {
+        "temperature": 0.1,
+        "top_k": 50,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.05,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      }
+    },
+    "fable_identity": {
+      "path": "artifacts/fable-identity.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "1e1624de4d7ebe413d82dbe2b5f48fcf83e6c46b1b5414c8aef0596009380cc6",
+      "sampling": {
+        "temperature": 0.1,
+        "top_k": 50,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.05,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "local_patch_manifest": "research/patches/fable-identity.json",
+      "local_patch_manifest_sha256": "7bac5978daea0264435d408c24029f9640045385f7e38861010a5da02cf856b1"
+    },
+    "fable_rollback_025": {
+      "path": "artifacts/fable-ffn-rollback-025.gguf",
+      "repo": "AKMESSI/lfm2.5-230m-fable-5",
+      "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+      "file": "lfm2.5-230m-fable-5-f16.gguf",
+      "sha256": "886dec26e4f87801838fb95142ede66355c2cf0e96fd019101450bc104621b3f",
+      "sampling": {
+        "temperature": 0.1,
+        "top_k": 50,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.05,
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+      },
+      "local_patch_manifest": "research/patches/fable-ffn-rollback-025.json",
+      "local_patch_manifest_sha256": "87655f72bac46c15e1a09e4cca99e4ffb84f1a6dc9b8c19e4dfa9280458f7537"
+    }
+  }
+}

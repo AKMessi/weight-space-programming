@@ -25,6 +25,8 @@ for folder in a.runs:
     original_rows = [json.loads(l) for l in (root/'responses.jsonl').read_text().splitlines()]
     rows = []
     for row in original_rows:
+        if row['case'].get('control'):
+            row['case']['group'] += '/' + row['case']['control']
         if 'content' in row:
             row['grading'] = grade(row['case'], row['content'])
         rows.append(row)

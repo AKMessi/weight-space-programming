@@ -87,3 +87,15 @@ Record observations, hypotheses, decisions, failed attempts, confounds, and foll
 **Implemented protocol:** separate-file F16 GGUF FFN-output rollback with source/artifact checksums, tokenizer/architecture alignment, per-tensor changed-entry and norm accounting, untouched-tensor verification, exact alpha-zero identity, and original-file rechecks. This is explicitly a non-sparse baseline. Twelve tests pass, including exact endpoint bytes, source immutability, dtype/shape mismatch, and non-finite rejection.
 
 **Planned comparisons:** alpha-zero identity before nonzero edits; then a bounded 25% FFN-output rollback as a discovery candidate. Strong prompt and grammar controls are generated separately without encoding gold values in the schema. No selected checkpoint will be called a validated improvement from this discovery suite alone.
+
+## 2026-11-05 — Identity verified, first nonzero artifact created, and non-weight baselines
+
+**Artifact evidence:** `research/patches/fable-identity.json` records byte-identical alpha-zero output, matching the original whole-file SHA-256. `fable-ffn-rollback-025.json` records a 25% rollback of all 14 FFN output matrices toward the published F16 parent, with 13,764,917 post-cast entries changed. Relative matrix changes are approximately 0.044% each. All 118 untouched tensors and both source file hashes were verified. No behavioral improvement is implied by file integrity.
+
+**Non-weight runs:** `008-fable-nonweight-controls`, `009-qwen-nonweight-controls`, `010-lfm3-qad-nonweight-controls`, 52 development requests each. A schema constrains keys and types already given by the task, never gold values. On the 12 JSON/tool examples, prompt-plus-grammar gave Fable 10/12 and Qwen 12/12 exact correct outputs. Strong prompt without grammar gave 0/12 and 2/12 respectively. These are powerful development baselines that a weight method must be compared with, not omitted.
+
+**Other prompt effects:** the stronger prompt repaired QAD's tested requested-repetition contracts (copy/repeat 8/8 versus 5/8 under the original system prompt), but did not fix its missing-information contracts. On these cases Qwen's missing-field exact responses fell from 4/4 to 1/4 under the stronger system prompt. These are prompt-sensitive exploratory effects with four examples per category, not general rates.
+
+**Causal limitation:** the public Fable card identifies the parent repository but does not pin the original training revision. Our matched-precision parent is the currently pinned public checkpoint. Claims about the exact fine-tuning delta require verifying that it is the actual training parent; checkpoint comparisons remain valid as comparisons of these exact artifacts.
+
+**Next:** run an identity behavior check, evaluate the first rollback on discovery cases, and retain any negative result before considering other sites or doses.
