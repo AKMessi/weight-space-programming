@@ -91,5 +91,5 @@ def main():
  else:
   BASE['models'].update(json.loads(Path('configs/p3_hybrids.json').read_text())['models'])
   for session in range(3):
-   for key in sorted(k for k in BASE['models'] if k.startswith('hybrid_')):condition(key,'vulkan',session)
+   for key in sorted(k for k in BASE['models'] if k.startswith('hybrid_') and k!='hybrid_noop'):condition(key,'vulkan',session)
 if __name__=='__main__':main()
