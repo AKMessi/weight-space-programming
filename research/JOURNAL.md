@@ -1059,3 +1059,7 @@ Status `complete`, 2381 generated tokens. Immutable raw inputs/responses/config/
 ### 2026-11-05T19:25:24.552893+00:00 — p3-reserve-format-quality-fable_Q8_0-s17
 
 Status `complete`, 2339 generated tokens. Immutable raw inputs/responses/config/runtime and resource samples are in `runs/p3-reserve-format-quality-fable_Q8_0-s17`. Interpretation is deferred to the study report; this run alone does not establish a repair.
+
+### 2026-11-05T19:27:23.026755+00:00 — p3-reserve-format-quality-fable_Q4_0-s17
+
+Status `complete`, 2405 generated tokens. Immutable raw inputs/responses/config/runtime and resource samples are in `runs/p3-reserve-format-quality-fable_Q4_0-s17`. Interpretation is deferred to the study report; this run alone does not establish a repair.
