@@ -77,3 +77,13 @@ Record observations, hypotheses, decisions, failed attempts, confounds, and foll
 **LFM3 full paired lead:** ordinary Q8 passed 8/8 copy/repetition and 4/4 missing-field cases; QAD passed 5/8 and 0/4 on the same exploratory prompts. Both passed 8/8 simple JSON and 4/4 complete tool cases. QAD completed the four complete-evidence contracts while Q8 did not, often exhausting 128 tokens. Thus neither checkpoint dominates all conditions. Broader resampling, longer-cap checks, and lineage controls are needed.
 
 **Decision:** target response-mode switching and evidence decisions as conditional research questions. Do not label all cutoffs as loops. Run the matched F16 parent before attributing Fable's behavior to training or choosing a repair.
+
+## 2026-11-05 — Same-precision parent comparison and first edit protocol
+
+**Run:** `007-parent-f16-discovery`, same suite, seed, F16 precision, and sampling as Fable. Generated tokens: 869. Parent JSON payloads were correct in 8/8 cases (strict format 0/8 due to fences), compared with Fable's 1/8 payloads. Parent exact-copy cases passed 4/4 versus Fable 0/4. Both contained the correct return expressions in all four code-only cases, while failing the requested next-line contract. These tiny tasks do not establish a coding-specialization gain.
+
+**Hypothesis:** at least some Fable response-mode regressions may be recoverable by partial rollback. This is not yet a repair result, and a full/partial return to the parent could erase valuable behavior not represented by this screen.
+
+**Implemented protocol:** separate-file F16 GGUF FFN-output rollback with source/artifact checksums, tokenizer/architecture alignment, per-tensor changed-entry and norm accounting, untouched-tensor verification, exact alpha-zero identity, and original-file rechecks. This is explicitly a non-sparse baseline. Twelve tests pass, including exact endpoint bytes, source immutability, dtype/shape mismatch, and non-finite rejection.
+
+**Planned comparisons:** alpha-zero identity before nonzero edits; then a bounded 25% FFN-output rollback as a discovery candidate. Strong prompt and grammar controls are generated separately without encoding gold values in the schema. No selected checkpoint will be called a validated improvement from this discovery suite alone.

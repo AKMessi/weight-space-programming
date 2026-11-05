@@ -9,6 +9,9 @@ description = "Auditable local weight-editing research"
 requires-python = ">=3.11"
 dependencies = []
 
+[project.optional-dependencies]
+editing = ["numpy>=1.24", "gguf==0.19.0"]
+
 [project.scripts]
 weightlab = "weightlab.__main__:main"
 
