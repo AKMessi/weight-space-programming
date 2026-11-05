@@ -101,7 +101,7 @@ def causal(key):
  layer=direction['selected']['layer'];v=np.load('artifacts/p3/clarify/'+key+'-direction.npz')['v'];rng=np.random.default_rng(811);random=rng.standard_normal(len(v));random*=float(np.linalg.norm(v)/np.linalg.norm(random));requests=json.loads((root/'trace-requests.json').read_text());panel=[r for r in requests if r['record_id'] in selection['record_ids'][:json.loads((ROOT/'budget-plan.json').read_text())['selected']['panel_records']] and r['role'] in ['key','update']];cases=[]
  for name,scale,vec in [('zero',0.,v),('half',.5,v),('one',1.,v),('two',2.,v),('random',1.,random)]:
   for q in panel:cases.append({**q,'id':q['id']+'-'+name,'max_tokens':48,'arm':name,'intervention':{'tensor':f'component_down-{layer}','scale':scale,'vector':vec.tolist()}})
- results=run(C['models'][key],cases,key+'-semantic-causal','clarify',{**SET,'capture':False});grades=[]
+ results=run(C['models'][key],cases,key+'-semantic-causal','clarify',{**SET,'capture':True,'filter':f'component_down-{layer}|component_post-{layer}'});grades=[]
  for row in results:
   q=row['case'];g=grade({'grader':'json','expected':q['expected']},row['raw_response']['completion']);grades.append({'id':q['id'],'source_id':q['id'].rsplit('-',1)[0],'arm':q['arm'],'kind':q['kind'],'role':q['role'],'grading':g,'content':row['raw_response']['completion']})
  zero={r['source_id']:r for r in grades if r['arm']=='zero'};counts={}

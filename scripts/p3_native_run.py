@@ -64,7 +64,9 @@ def run(model,requests,label,stage,config=None):
           'evidence':str(out/'responses.jsonl'),'case_id':case['id'],'row_sha256':digest(row),'stage':stage})
       print(label,case['id'],'scored',response['prompt_tokens'],'generated',response['generated_tokens'],flush=True)
     write_json(out/'resources.json',metrics)
-   write_json(out/'summary.json',{'status':'complete','requests':len(records),'generated_tokens':sum(r['raw_response']['generated_tokens'] for r in records),
+   after_sha=file_sha256(model['path'])
+   if after_sha!=model['sha256']:raise ValueError('Model original changed during native run')
+   write_json(out/'summary.json',{'model_sha256_after':after_sha,'status':'complete','requests':len(records),'generated_tokens':sum(r['raw_response']['generated_tokens'] for r in records),
                  'scored_tokens':sum(r['raw_response']['prompt_tokens'] for r in records)})
   except BaseException as exc:
    error=exc;write_json(out/'summary.json',{'status':'failed','error':repr(exc),'completed_responses':len(records)})

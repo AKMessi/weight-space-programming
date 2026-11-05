@@ -20,4 +20,5 @@ for n in [3,2]:
  projected=sum(charges.values())+sum(r['scored_max'] for r in details);choices.append({'panel_records':n,'details':details,'projected_scored_tokens':projected})
  if projected<=50000:chosen=choices[-1];break
 else:raise RuntimeError('Exact diagnostics exceed scored cap; prospectively redesign before any new forwards')
+if stage_used('clarify')+61440+26368+sum(r['generated_max'] for r in chosen['details'])>120000:raise RuntimeError('Prospective semantic arm maxima exceed generated cap')
 write_json(plan,{'utc':utc_now(),'already_scored':sum(charges.values()),'choices_checked':choices,'selected':chosen,'clarify_generated_used':stage_used('clarify'),'planned_primary_confirmation_generated_max':61440,'new_permanent_route_generated_max':26368,'scope':'Prefix-count choice only, no native causal/component outcomes inspected.'});publish([plan],'Freeze exact-cost semantic diagnostic panel before forwards');print(json.dumps(chosen),flush=True)
