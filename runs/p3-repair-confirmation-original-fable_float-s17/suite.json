@@ -1,0 +1,5286 @@
+{
+  "name": "p3-switch-confirmation",
+  "status": "confirmation; paired content with different requested formats",
+  "cases": [
+    {
+      "id": "p3-switch-confirmation-0-plain",
+      "split": "confirmation",
+      "family": "name/size",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "name": "NX-823",
+        "size": 6
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: name: NX-823 | size: 6.\nExtract name as a string and size as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-0-fenced",
+      "split": "confirmation",
+      "family": "name/size",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "name": "NX-823",
+        "size": 6
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: name: NX-823 | size: 6.\nExtract name as a string and size as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-1-plain",
+      "split": "confirmation",
+      "family": "name/size",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "name": "NX-834",
+        "size": 8
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "NAME [NX-834]\nSIZE [8]\nExtract name as a string and size as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-1-fenced",
+      "split": "confirmation",
+      "family": "name/size",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "name": "NX-834",
+        "size": 8
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "NAME [NX-834]\nSIZE [8]\nExtract name as a string and size as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-2-plain",
+      "split": "confirmation",
+      "family": "name/size",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "name": "NX-845",
+        "size": 10
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the size is 10; its name is NX-845.\nExtract name as a string and size as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-2-fenced",
+      "split": "confirmation",
+      "family": "name/size",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "name": "NX-845",
+        "size": 10
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the size is 10; its name is NX-845.\nExtract name as a string and size as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-3-plain",
+      "split": "confirmation",
+      "family": "name/size",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "name": "NX-856",
+        "size": 12
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: name: NX-856 | size: 12.\nExtract name as a string and size as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-3-fenced",
+      "split": "confirmation",
+      "family": "name/size",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "name": "NX-856",
+        "size": 12
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: name: NX-856 | size: 12.\nExtract name as a string and size as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-4-plain",
+      "split": "confirmation",
+      "family": "name/size",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "name": "NX-867",
+        "size": 14
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "NAME [NX-867]\nSIZE [14]\nExtract name as a string and size as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-4-fenced",
+      "split": "confirmation",
+      "family": "name/size",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "name": "NX-867",
+        "size": 14
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "NAME [NX-867]\nSIZE [14]\nExtract name as a string and size as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-5-plain",
+      "split": "confirmation",
+      "family": "name/size",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "name": "NX-878",
+        "size": 16
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the size is 16; its name is NX-878.\nExtract name as a string and size as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-5-fenced",
+      "split": "confirmation",
+      "family": "name/size",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "name": "NX-878",
+        "size": 16
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the size is 16; its name is NX-878.\nExtract name as a string and size as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-6-plain",
+      "split": "confirmation",
+      "family": "name/size",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "name": "NX-889",
+        "size": 18
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: name: NX-889 | size: 18.\nExtract name as a string and size as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-6-fenced",
+      "split": "confirmation",
+      "family": "name/size",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "name": "NX-889",
+        "size": 18
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: name: NX-889 | size: 18.\nExtract name as a string and size as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-7-plain",
+      "split": "confirmation",
+      "family": "name/size",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "name": "NX-900",
+        "size": 20
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "NAME [NX-900]\nSIZE [20]\nExtract name as a string and size as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-7-fenced",
+      "split": "confirmation",
+      "family": "name/size",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "name": "NX-900",
+        "size": 20
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "NAME [NX-900]\nSIZE [20]\nExtract name as a string and size as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-8-plain",
+      "split": "confirmation",
+      "family": "name/size",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "name": "NX-911",
+        "size": 22
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the size is 22; its name is NX-911.\nExtract name as a string and size as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-8-fenced",
+      "split": "confirmation",
+      "family": "name/size",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "name": "NX-911",
+        "size": 22
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the size is 22; its name is NX-911.\nExtract name as a string and size as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-9-plain",
+      "split": "confirmation",
+      "family": "name/size",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "name": "NX-922",
+        "size": 24
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: name: NX-922 | size: 24.\nExtract name as a string and size as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-9-fenced",
+      "split": "confirmation",
+      "family": "name/size",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "name": "NX-922",
+        "size": 24
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: name: NX-922 | size: 24.\nExtract name as a string and size as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-10-plain",
+      "split": "confirmation",
+      "family": "name/size",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "name": "NX-933",
+        "size": 26
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "NAME [NX-933]\nSIZE [26]\nExtract name as a string and size as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-10-fenced",
+      "split": "confirmation",
+      "family": "name/size",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "name": "NX-933",
+        "size": 26
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "NAME [NX-933]\nSIZE [26]\nExtract name as a string and size as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-11-plain",
+      "split": "confirmation",
+      "family": "name/size",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "name": "NX-944",
+        "size": 28
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the size is 28; its name is NX-944.\nExtract name as a string and size as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-11-fenced",
+      "split": "confirmation",
+      "family": "name/size",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "name": "NX-944",
+        "size": 28
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the size is 28; its name is NX-944.\nExtract name as a string and size as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-12-plain",
+      "split": "confirmation",
+      "family": "name/size",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "name": "NX-955",
+        "size": 30
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: name: NX-955 | size: 30.\nExtract name as a string and size as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-12-fenced",
+      "split": "confirmation",
+      "family": "name/size",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "name": "NX-955",
+        "size": 30
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: name: NX-955 | size: 30.\nExtract name as a string and size as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-13-plain",
+      "split": "confirmation",
+      "family": "name/size",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "name": "NX-966",
+        "size": 32
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "NAME [NX-966]\nSIZE [32]\nExtract name as a string and size as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-13-fenced",
+      "split": "confirmation",
+      "family": "name/size",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "name": "NX-966",
+        "size": 32
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "NAME [NX-966]\nSIZE [32]\nExtract name as a string and size as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-14-plain",
+      "split": "confirmation",
+      "family": "name/size",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "name": "NX-977",
+        "size": 34
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the size is 34; its name is NX-977.\nExtract name as a string and size as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-14-fenced",
+      "split": "confirmation",
+      "family": "name/size",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "name": "NX-977",
+        "size": 34
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the size is 34; its name is NX-977.\nExtract name as a string and size as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-15-plain",
+      "split": "confirmation",
+      "family": "name/size",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "name": "NX-988",
+        "size": 36
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: name: NX-988 | size: 36.\nExtract name as a string and size as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-15-fenced",
+      "split": "confirmation",
+      "family": "name/size",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "name": "NX-988",
+        "size": 36
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: name: NX-988 | size: 36.\nExtract name as a string and size as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-16-plain",
+      "split": "confirmation",
+      "family": "name/size",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "name": "NX-999",
+        "size": 38
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "NAME [NX-999]\nSIZE [38]\nExtract name as a string and size as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-16-fenced",
+      "split": "confirmation",
+      "family": "name/size",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "name": "NX-999",
+        "size": 38
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "NAME [NX-999]\nSIZE [38]\nExtract name as a string and size as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-17-plain",
+      "split": "confirmation",
+      "family": "name/size",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "name": "NX-1010",
+        "size": 40
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the size is 40; its name is NX-1010.\nExtract name as a string and size as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-17-fenced",
+      "split": "confirmation",
+      "family": "name/size",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "name": "NX-1010",
+        "size": 40
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the size is 40; its name is NX-1010.\nExtract name as a string and size as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-18-plain",
+      "split": "confirmation",
+      "family": "name/size",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "name": "NX-1021",
+        "size": 42
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: name: NX-1021 | size: 42.\nExtract name as a string and size as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-18-fenced",
+      "split": "confirmation",
+      "family": "name/size",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "name": "NX-1021",
+        "size": 42
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: name: NX-1021 | size: 42.\nExtract name as a string and size as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-19-plain",
+      "split": "confirmation",
+      "family": "name/size",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "name": "NX-1032",
+        "size": 44
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "NAME [NX-1032]\nSIZE [44]\nExtract name as a string and size as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-19-fenced",
+      "split": "confirmation",
+      "family": "name/size",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "name": "NX-1032",
+        "size": 44
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "NAME [NX-1032]\nSIZE [44]\nExtract name as a string and size as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-20-plain",
+      "split": "confirmation",
+      "family": "label/amount",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "label": "NX-1043",
+        "amount": 46
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the amount is 46; its label is NX-1043.\nExtract label as a string and amount as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-20-fenced",
+      "split": "confirmation",
+      "family": "label/amount",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "label": "NX-1043",
+        "amount": 46
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the amount is 46; its label is NX-1043.\nExtract label as a string and amount as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-21-plain",
+      "split": "confirmation",
+      "family": "label/amount",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "label": "NX-1054",
+        "amount": 48
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: label: NX-1054 | amount: 48.\nExtract label as a string and amount as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-21-fenced",
+      "split": "confirmation",
+      "family": "label/amount",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "label": "NX-1054",
+        "amount": 48
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: label: NX-1054 | amount: 48.\nExtract label as a string and amount as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-22-plain",
+      "split": "confirmation",
+      "family": "label/amount",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "label": "NX-1065",
+        "amount": 50
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "LABEL [NX-1065]\nAMOUNT [50]\nExtract label as a string and amount as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-22-fenced",
+      "split": "confirmation",
+      "family": "label/amount",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "label": "NX-1065",
+        "amount": 50
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "LABEL [NX-1065]\nAMOUNT [50]\nExtract label as a string and amount as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-23-plain",
+      "split": "confirmation",
+      "family": "label/amount",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "label": "NX-1076",
+        "amount": 52
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the amount is 52; its label is NX-1076.\nExtract label as a string and amount as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-23-fenced",
+      "split": "confirmation",
+      "family": "label/amount",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "label": "NX-1076",
+        "amount": 52
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the amount is 52; its label is NX-1076.\nExtract label as a string and amount as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-24-plain",
+      "split": "confirmation",
+      "family": "label/amount",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "label": "NX-1087",
+        "amount": 54
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: label: NX-1087 | amount: 54.\nExtract label as a string and amount as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-24-fenced",
+      "split": "confirmation",
+      "family": "label/amount",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "label": "NX-1087",
+        "amount": 54
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: label: NX-1087 | amount: 54.\nExtract label as a string and amount as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-25-plain",
+      "split": "confirmation",
+      "family": "label/amount",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "label": "NX-1098",
+        "amount": 56
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "LABEL [NX-1098]\nAMOUNT [56]\nExtract label as a string and amount as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-25-fenced",
+      "split": "confirmation",
+      "family": "label/amount",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "label": "NX-1098",
+        "amount": 56
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "LABEL [NX-1098]\nAMOUNT [56]\nExtract label as a string and amount as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-26-plain",
+      "split": "confirmation",
+      "family": "label/amount",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "label": "NX-1109",
+        "amount": 58
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the amount is 58; its label is NX-1109.\nExtract label as a string and amount as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-26-fenced",
+      "split": "confirmation",
+      "family": "label/amount",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "label": "NX-1109",
+        "amount": 58
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the amount is 58; its label is NX-1109.\nExtract label as a string and amount as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-27-plain",
+      "split": "confirmation",
+      "family": "label/amount",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "label": "NX-1120",
+        "amount": 60
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: label: NX-1120 | amount: 60.\nExtract label as a string and amount as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-27-fenced",
+      "split": "confirmation",
+      "family": "label/amount",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "label": "NX-1120",
+        "amount": 60
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: label: NX-1120 | amount: 60.\nExtract label as a string and amount as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-28-plain",
+      "split": "confirmation",
+      "family": "label/amount",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "label": "NX-1131",
+        "amount": 62
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "LABEL [NX-1131]\nAMOUNT [62]\nExtract label as a string and amount as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-28-fenced",
+      "split": "confirmation",
+      "family": "label/amount",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "label": "NX-1131",
+        "amount": 62
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "LABEL [NX-1131]\nAMOUNT [62]\nExtract label as a string and amount as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-29-plain",
+      "split": "confirmation",
+      "family": "label/amount",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "label": "NX-1142",
+        "amount": 64
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the amount is 64; its label is NX-1142.\nExtract label as a string and amount as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-29-fenced",
+      "split": "confirmation",
+      "family": "label/amount",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "label": "NX-1142",
+        "amount": 64
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the amount is 64; its label is NX-1142.\nExtract label as a string and amount as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-30-plain",
+      "split": "confirmation",
+      "family": "label/amount",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "label": "NX-1153",
+        "amount": 66
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: label: NX-1153 | amount: 66.\nExtract label as a string and amount as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-30-fenced",
+      "split": "confirmation",
+      "family": "label/amount",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "label": "NX-1153",
+        "amount": 66
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: label: NX-1153 | amount: 66.\nExtract label as a string and amount as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-31-plain",
+      "split": "confirmation",
+      "family": "label/amount",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "label": "NX-1164",
+        "amount": 68
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "LABEL [NX-1164]\nAMOUNT [68]\nExtract label as a string and amount as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-31-fenced",
+      "split": "confirmation",
+      "family": "label/amount",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "label": "NX-1164",
+        "amount": 68
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "LABEL [NX-1164]\nAMOUNT [68]\nExtract label as a string and amount as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-32-plain",
+      "split": "confirmation",
+      "family": "label/amount",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "label": "NX-1175",
+        "amount": 70
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the amount is 70; its label is NX-1175.\nExtract label as a string and amount as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-32-fenced",
+      "split": "confirmation",
+      "family": "label/amount",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "label": "NX-1175",
+        "amount": 70
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the amount is 70; its label is NX-1175.\nExtract label as a string and amount as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-33-plain",
+      "split": "confirmation",
+      "family": "label/amount",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "label": "NX-1186",
+        "amount": 72
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: label: NX-1186 | amount: 72.\nExtract label as a string and amount as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-33-fenced",
+      "split": "confirmation",
+      "family": "label/amount",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "label": "NX-1186",
+        "amount": 72
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: label: NX-1186 | amount: 72.\nExtract label as a string and amount as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-34-plain",
+      "split": "confirmation",
+      "family": "label/amount",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "label": "NX-1197",
+        "amount": 74
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "LABEL [NX-1197]\nAMOUNT [74]\nExtract label as a string and amount as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-34-fenced",
+      "split": "confirmation",
+      "family": "label/amount",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "label": "NX-1197",
+        "amount": 74
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "LABEL [NX-1197]\nAMOUNT [74]\nExtract label as a string and amount as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-35-plain",
+      "split": "confirmation",
+      "family": "label/amount",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "label": "NX-1208",
+        "amount": 76
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the amount is 76; its label is NX-1208.\nExtract label as a string and amount as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-35-fenced",
+      "split": "confirmation",
+      "family": "label/amount",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "label": "NX-1208",
+        "amount": 76
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the amount is 76; its label is NX-1208.\nExtract label as a string and amount as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-36-plain",
+      "split": "confirmation",
+      "family": "label/amount",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "label": "NX-1219",
+        "amount": 78
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: label: NX-1219 | amount: 78.\nExtract label as a string and amount as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-36-fenced",
+      "split": "confirmation",
+      "family": "label/amount",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "label": "NX-1219",
+        "amount": 78
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: label: NX-1219 | amount: 78.\nExtract label as a string and amount as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-37-plain",
+      "split": "confirmation",
+      "family": "label/amount",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "label": "NX-1230",
+        "amount": 80
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "LABEL [NX-1230]\nAMOUNT [80]\nExtract label as a string and amount as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-37-fenced",
+      "split": "confirmation",
+      "family": "label/amount",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "label": "NX-1230",
+        "amount": 80
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "LABEL [NX-1230]\nAMOUNT [80]\nExtract label as a string and amount as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-38-plain",
+      "split": "confirmation",
+      "family": "label/amount",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "label": "NX-1241",
+        "amount": 82
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the amount is 82; its label is NX-1241.\nExtract label as a string and amount as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-38-fenced",
+      "split": "confirmation",
+      "family": "label/amount",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "label": "NX-1241",
+        "amount": 82
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the amount is 82; its label is NX-1241.\nExtract label as a string and amount as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-39-plain",
+      "split": "confirmation",
+      "family": "label/amount",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "label": "NX-1252",
+        "amount": 84
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: label: NX-1252 | amount: 84.\nExtract label as a string and amount as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-39-fenced",
+      "split": "confirmation",
+      "family": "label/amount",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "label": "NX-1252",
+        "amount": 84
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: label: NX-1252 | amount: 84.\nExtract label as a string and amount as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-40-plain",
+      "split": "confirmation",
+      "family": "item/qty",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "item": "NX-1263",
+        "qty": 86
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "ITEM [NX-1263]\nQTY [86]\nExtract item as a string and qty as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-40-fenced",
+      "split": "confirmation",
+      "family": "item/qty",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "item": "NX-1263",
+        "qty": 86
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "ITEM [NX-1263]\nQTY [86]\nExtract item as a string and qty as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-41-plain",
+      "split": "confirmation",
+      "family": "item/qty",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "item": "NX-1274",
+        "qty": 88
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the qty is 88; its item is NX-1274.\nExtract item as a string and qty as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-41-fenced",
+      "split": "confirmation",
+      "family": "item/qty",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "item": "NX-1274",
+        "qty": 88
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the qty is 88; its item is NX-1274.\nExtract item as a string and qty as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-42-plain",
+      "split": "confirmation",
+      "family": "item/qty",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "item": "NX-1285",
+        "qty": 90
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: item: NX-1285 | qty: 90.\nExtract item as a string and qty as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-42-fenced",
+      "split": "confirmation",
+      "family": "item/qty",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "item": "NX-1285",
+        "qty": 90
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: item: NX-1285 | qty: 90.\nExtract item as a string and qty as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-43-plain",
+      "split": "confirmation",
+      "family": "item/qty",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "item": "NX-1296",
+        "qty": 92
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "ITEM [NX-1296]\nQTY [92]\nExtract item as a string and qty as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-43-fenced",
+      "split": "confirmation",
+      "family": "item/qty",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "item": "NX-1296",
+        "qty": 92
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "ITEM [NX-1296]\nQTY [92]\nExtract item as a string and qty as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-44-plain",
+      "split": "confirmation",
+      "family": "item/qty",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "item": "NX-1307",
+        "qty": 94
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the qty is 94; its item is NX-1307.\nExtract item as a string and qty as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-44-fenced",
+      "split": "confirmation",
+      "family": "item/qty",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "item": "NX-1307",
+        "qty": 94
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the qty is 94; its item is NX-1307.\nExtract item as a string and qty as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-45-plain",
+      "split": "confirmation",
+      "family": "item/qty",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "item": "NX-1318",
+        "qty": 96
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: item: NX-1318 | qty: 96.\nExtract item as a string and qty as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-45-fenced",
+      "split": "confirmation",
+      "family": "item/qty",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "item": "NX-1318",
+        "qty": 96
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: item: NX-1318 | qty: 96.\nExtract item as a string and qty as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-46-plain",
+      "split": "confirmation",
+      "family": "item/qty",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "item": "NX-1329",
+        "qty": 98
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "ITEM [NX-1329]\nQTY [98]\nExtract item as a string and qty as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-46-fenced",
+      "split": "confirmation",
+      "family": "item/qty",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "item": "NX-1329",
+        "qty": 98
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "ITEM [NX-1329]\nQTY [98]\nExtract item as a string and qty as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-47-plain",
+      "split": "confirmation",
+      "family": "item/qty",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "item": "NX-1340",
+        "qty": 100
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the qty is 100; its item is NX-1340.\nExtract item as a string and qty as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-47-fenced",
+      "split": "confirmation",
+      "family": "item/qty",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "item": "NX-1340",
+        "qty": 100
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the qty is 100; its item is NX-1340.\nExtract item as a string and qty as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-48-plain",
+      "split": "confirmation",
+      "family": "item/qty",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "item": "NX-1351",
+        "qty": 102
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: item: NX-1351 | qty: 102.\nExtract item as a string and qty as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-48-fenced",
+      "split": "confirmation",
+      "family": "item/qty",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "item": "NX-1351",
+        "qty": 102
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: item: NX-1351 | qty: 102.\nExtract item as a string and qty as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-49-plain",
+      "split": "confirmation",
+      "family": "item/qty",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "item": "NX-1362",
+        "qty": 104
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "ITEM [NX-1362]\nQTY [104]\nExtract item as a string and qty as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-49-fenced",
+      "split": "confirmation",
+      "family": "item/qty",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "item": "NX-1362",
+        "qty": 104
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "ITEM [NX-1362]\nQTY [104]\nExtract item as a string and qty as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-50-plain",
+      "split": "confirmation",
+      "family": "item/qty",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "item": "NX-1373",
+        "qty": 106
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the qty is 106; its item is NX-1373.\nExtract item as a string and qty as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-50-fenced",
+      "split": "confirmation",
+      "family": "item/qty",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "item": "NX-1373",
+        "qty": 106
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the qty is 106; its item is NX-1373.\nExtract item as a string and qty as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-51-plain",
+      "split": "confirmation",
+      "family": "item/qty",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "item": "NX-1384",
+        "qty": 108
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: item: NX-1384 | qty: 108.\nExtract item as a string and qty as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-51-fenced",
+      "split": "confirmation",
+      "family": "item/qty",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "item": "NX-1384",
+        "qty": 108
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: item: NX-1384 | qty: 108.\nExtract item as a string and qty as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-52-plain",
+      "split": "confirmation",
+      "family": "item/qty",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "item": "NX-1395",
+        "qty": 110
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "ITEM [NX-1395]\nQTY [110]\nExtract item as a string and qty as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-52-fenced",
+      "split": "confirmation",
+      "family": "item/qty",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "item": "NX-1395",
+        "qty": 110
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "ITEM [NX-1395]\nQTY [110]\nExtract item as a string and qty as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-53-plain",
+      "split": "confirmation",
+      "family": "item/qty",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "item": "NX-1406",
+        "qty": 112
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the qty is 112; its item is NX-1406.\nExtract item as a string and qty as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-53-fenced",
+      "split": "confirmation",
+      "family": "item/qty",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "item": "NX-1406",
+        "qty": 112
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the qty is 112; its item is NX-1406.\nExtract item as a string and qty as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-54-plain",
+      "split": "confirmation",
+      "family": "item/qty",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "item": "NX-1417",
+        "qty": 114
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: item: NX-1417 | qty: 114.\nExtract item as a string and qty as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-54-fenced",
+      "split": "confirmation",
+      "family": "item/qty",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "item": "NX-1417",
+        "qty": 114
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: item: NX-1417 | qty: 114.\nExtract item as a string and qty as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-55-plain",
+      "split": "confirmation",
+      "family": "item/qty",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "item": "NX-1428",
+        "qty": 116
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "ITEM [NX-1428]\nQTY [116]\nExtract item as a string and qty as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-55-fenced",
+      "split": "confirmation",
+      "family": "item/qty",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "item": "NX-1428",
+        "qty": 116
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "ITEM [NX-1428]\nQTY [116]\nExtract item as a string and qty as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-56-plain",
+      "split": "confirmation",
+      "family": "item/qty",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "item": "NX-1439",
+        "qty": 118
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the qty is 118; its item is NX-1439.\nExtract item as a string and qty as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-56-fenced",
+      "split": "confirmation",
+      "family": "item/qty",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "item": "NX-1439",
+        "qty": 118
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the qty is 118; its item is NX-1439.\nExtract item as a string and qty as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-57-plain",
+      "split": "confirmation",
+      "family": "item/qty",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "item": "NX-1450",
+        "qty": 120
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: item: NX-1450 | qty: 120.\nExtract item as a string and qty as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-57-fenced",
+      "split": "confirmation",
+      "family": "item/qty",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "item": "NX-1450",
+        "qty": 120
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: item: NX-1450 | qty: 120.\nExtract item as a string and qty as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-58-plain",
+      "split": "confirmation",
+      "family": "item/qty",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "item": "NX-1461",
+        "qty": 122
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "ITEM [NX-1461]\nQTY [122]\nExtract item as a string and qty as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-58-fenced",
+      "split": "confirmation",
+      "family": "item/qty",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "item": "NX-1461",
+        "qty": 122
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "ITEM [NX-1461]\nQTY [122]\nExtract item as a string and qty as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-59-plain",
+      "split": "confirmation",
+      "family": "item/qty",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "item": "NX-1472",
+        "qty": 124
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the qty is 124; its item is NX-1472.\nExtract item as a string and qty as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-59-fenced",
+      "split": "confirmation",
+      "family": "item/qty",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "item": "NX-1472",
+        "qty": 124
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the qty is 124; its item is NX-1472.\nExtract item as a string and qty as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-60-plain",
+      "split": "confirmation",
+      "family": "identifier/total",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "identifier": "NX-1483",
+        "total": 126
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: identifier: NX-1483 | total: 126.\nExtract identifier as a string and total as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-60-fenced",
+      "split": "confirmation",
+      "family": "identifier/total",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "identifier": "NX-1483",
+        "total": 126
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: identifier: NX-1483 | total: 126.\nExtract identifier as a string and total as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-61-plain",
+      "split": "confirmation",
+      "family": "identifier/total",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "identifier": "NX-1494",
+        "total": 128
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "IDENTIFIER [NX-1494]\nTOTAL [128]\nExtract identifier as a string and total as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-61-fenced",
+      "split": "confirmation",
+      "family": "identifier/total",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "identifier": "NX-1494",
+        "total": 128
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "IDENTIFIER [NX-1494]\nTOTAL [128]\nExtract identifier as a string and total as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-62-plain",
+      "split": "confirmation",
+      "family": "identifier/total",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "identifier": "NX-1505",
+        "total": 130
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the total is 130; its identifier is NX-1505.\nExtract identifier as a string and total as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-62-fenced",
+      "split": "confirmation",
+      "family": "identifier/total",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "identifier": "NX-1505",
+        "total": 130
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the total is 130; its identifier is NX-1505.\nExtract identifier as a string and total as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-63-plain",
+      "split": "confirmation",
+      "family": "identifier/total",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "identifier": "NX-1516",
+        "total": 132
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: identifier: NX-1516 | total: 132.\nExtract identifier as a string and total as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-63-fenced",
+      "split": "confirmation",
+      "family": "identifier/total",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "identifier": "NX-1516",
+        "total": 132
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: identifier: NX-1516 | total: 132.\nExtract identifier as a string and total as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-64-plain",
+      "split": "confirmation",
+      "family": "identifier/total",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "identifier": "NX-1527",
+        "total": 134
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "IDENTIFIER [NX-1527]\nTOTAL [134]\nExtract identifier as a string and total as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-64-fenced",
+      "split": "confirmation",
+      "family": "identifier/total",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "identifier": "NX-1527",
+        "total": 134
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "IDENTIFIER [NX-1527]\nTOTAL [134]\nExtract identifier as a string and total as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-65-plain",
+      "split": "confirmation",
+      "family": "identifier/total",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "identifier": "NX-1538",
+        "total": 136
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the total is 136; its identifier is NX-1538.\nExtract identifier as a string and total as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-65-fenced",
+      "split": "confirmation",
+      "family": "identifier/total",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "identifier": "NX-1538",
+        "total": 136
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the total is 136; its identifier is NX-1538.\nExtract identifier as a string and total as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-66-plain",
+      "split": "confirmation",
+      "family": "identifier/total",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "identifier": "NX-1549",
+        "total": 138
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: identifier: NX-1549 | total: 138.\nExtract identifier as a string and total as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-66-fenced",
+      "split": "confirmation",
+      "family": "identifier/total",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "identifier": "NX-1549",
+        "total": 138
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: identifier: NX-1549 | total: 138.\nExtract identifier as a string and total as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-67-plain",
+      "split": "confirmation",
+      "family": "identifier/total",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "identifier": "NX-1560",
+        "total": 140
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "IDENTIFIER [NX-1560]\nTOTAL [140]\nExtract identifier as a string and total as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-67-fenced",
+      "split": "confirmation",
+      "family": "identifier/total",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "identifier": "NX-1560",
+        "total": 140
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "IDENTIFIER [NX-1560]\nTOTAL [140]\nExtract identifier as a string and total as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-68-plain",
+      "split": "confirmation",
+      "family": "identifier/total",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "identifier": "NX-1571",
+        "total": 142
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the total is 142; its identifier is NX-1571.\nExtract identifier as a string and total as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-68-fenced",
+      "split": "confirmation",
+      "family": "identifier/total",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "identifier": "NX-1571",
+        "total": 142
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the total is 142; its identifier is NX-1571.\nExtract identifier as a string and total as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-69-plain",
+      "split": "confirmation",
+      "family": "identifier/total",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "identifier": "NX-1582",
+        "total": 144
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: identifier: NX-1582 | total: 144.\nExtract identifier as a string and total as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-69-fenced",
+      "split": "confirmation",
+      "family": "identifier/total",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "identifier": "NX-1582",
+        "total": 144
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: identifier: NX-1582 | total: 144.\nExtract identifier as a string and total as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-70-plain",
+      "split": "confirmation",
+      "family": "identifier/total",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "identifier": "NX-1593",
+        "total": 146
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "IDENTIFIER [NX-1593]\nTOTAL [146]\nExtract identifier as a string and total as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-70-fenced",
+      "split": "confirmation",
+      "family": "identifier/total",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "identifier": "NX-1593",
+        "total": 146
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "IDENTIFIER [NX-1593]\nTOTAL [146]\nExtract identifier as a string and total as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-71-plain",
+      "split": "confirmation",
+      "family": "identifier/total",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "identifier": "NX-1604",
+        "total": 148
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the total is 148; its identifier is NX-1604.\nExtract identifier as a string and total as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-71-fenced",
+      "split": "confirmation",
+      "family": "identifier/total",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "identifier": "NX-1604",
+        "total": 148
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the total is 148; its identifier is NX-1604.\nExtract identifier as a string and total as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-72-plain",
+      "split": "confirmation",
+      "family": "identifier/total",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "identifier": "NX-1615",
+        "total": 150
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: identifier: NX-1615 | total: 150.\nExtract identifier as a string and total as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-72-fenced",
+      "split": "confirmation",
+      "family": "identifier/total",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "identifier": "NX-1615",
+        "total": 150
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: identifier: NX-1615 | total: 150.\nExtract identifier as a string and total as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-73-plain",
+      "split": "confirmation",
+      "family": "identifier/total",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "identifier": "NX-1626",
+        "total": 152
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "IDENTIFIER [NX-1626]\nTOTAL [152]\nExtract identifier as a string and total as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-73-fenced",
+      "split": "confirmation",
+      "family": "identifier/total",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "identifier": "NX-1626",
+        "total": 152
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "IDENTIFIER [NX-1626]\nTOTAL [152]\nExtract identifier as a string and total as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-74-plain",
+      "split": "confirmation",
+      "family": "identifier/total",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "identifier": "NX-1637",
+        "total": 154
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the total is 154; its identifier is NX-1637.\nExtract identifier as a string and total as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-74-fenced",
+      "split": "confirmation",
+      "family": "identifier/total",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "identifier": "NX-1637",
+        "total": 154
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the total is 154; its identifier is NX-1637.\nExtract identifier as a string and total as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-75-plain",
+      "split": "confirmation",
+      "family": "identifier/total",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "identifier": "NX-1648",
+        "total": 156
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: identifier: NX-1648 | total: 156.\nExtract identifier as a string and total as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-75-fenced",
+      "split": "confirmation",
+      "family": "identifier/total",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "identifier": "NX-1648",
+        "total": 156
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: identifier: NX-1648 | total: 156.\nExtract identifier as a string and total as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-76-plain",
+      "split": "confirmation",
+      "family": "identifier/total",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "identifier": "NX-1659",
+        "total": 158
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "IDENTIFIER [NX-1659]\nTOTAL [158]\nExtract identifier as a string and total as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-76-fenced",
+      "split": "confirmation",
+      "family": "identifier/total",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "identifier": "NX-1659",
+        "total": 158
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "IDENTIFIER [NX-1659]\nTOTAL [158]\nExtract identifier as a string and total as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-77-plain",
+      "split": "confirmation",
+      "family": "identifier/total",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "identifier": "NX-1670",
+        "total": 160
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the total is 160; its identifier is NX-1670.\nExtract identifier as a string and total as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-77-fenced",
+      "split": "confirmation",
+      "family": "identifier/total",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "identifier": "NX-1670",
+        "total": 160
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the total is 160; its identifier is NX-1670.\nExtract identifier as a string and total as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-78-plain",
+      "split": "confirmation",
+      "family": "identifier/total",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "identifier": "NX-1681",
+        "total": 162
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: identifier: NX-1681 | total: 162.\nExtract identifier as a string and total as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-78-fenced",
+      "split": "confirmation",
+      "family": "identifier/total",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "identifier": "NX-1681",
+        "total": 162
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: identifier: NX-1681 | total: 162.\nExtract identifier as a string and total as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-79-plain",
+      "split": "confirmation",
+      "family": "identifier/total",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "identifier": "NX-1692",
+        "total": 164
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "IDENTIFIER [NX-1692]\nTOTAL [164]\nExtract identifier as a string and total as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-79-fenced",
+      "split": "confirmation",
+      "family": "identifier/total",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "identifier": "NX-1692",
+        "total": 164
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "IDENTIFIER [NX-1692]\nTOTAL [164]\nExtract identifier as a string and total as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-80-plain",
+      "split": "confirmation",
+      "family": "mark/units",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "mark": "NX-1703",
+        "units": 166
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the units is 166; its mark is NX-1703.\nExtract mark as a string and units as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-80-fenced",
+      "split": "confirmation",
+      "family": "mark/units",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "mark": "NX-1703",
+        "units": 166
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the units is 166; its mark is NX-1703.\nExtract mark as a string and units as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-81-plain",
+      "split": "confirmation",
+      "family": "mark/units",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "mark": "NX-1714",
+        "units": 168
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: mark: NX-1714 | units: 168.\nExtract mark as a string and units as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-81-fenced",
+      "split": "confirmation",
+      "family": "mark/units",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "mark": "NX-1714",
+        "units": 168
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: mark: NX-1714 | units: 168.\nExtract mark as a string and units as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-82-plain",
+      "split": "confirmation",
+      "family": "mark/units",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "mark": "NX-1725",
+        "units": 170
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "MARK [NX-1725]\nUNITS [170]\nExtract mark as a string and units as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-82-fenced",
+      "split": "confirmation",
+      "family": "mark/units",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "mark": "NX-1725",
+        "units": 170
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "MARK [NX-1725]\nUNITS [170]\nExtract mark as a string and units as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-83-plain",
+      "split": "confirmation",
+      "family": "mark/units",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "mark": "NX-1736",
+        "units": 172
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the units is 172; its mark is NX-1736.\nExtract mark as a string and units as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-83-fenced",
+      "split": "confirmation",
+      "family": "mark/units",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "mark": "NX-1736",
+        "units": 172
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the units is 172; its mark is NX-1736.\nExtract mark as a string and units as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-84-plain",
+      "split": "confirmation",
+      "family": "mark/units",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "mark": "NX-1747",
+        "units": 174
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: mark: NX-1747 | units: 174.\nExtract mark as a string and units as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-84-fenced",
+      "split": "confirmation",
+      "family": "mark/units",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "mark": "NX-1747",
+        "units": 174
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: mark: NX-1747 | units: 174.\nExtract mark as a string and units as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-85-plain",
+      "split": "confirmation",
+      "family": "mark/units",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "mark": "NX-1758",
+        "units": 176
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "MARK [NX-1758]\nUNITS [176]\nExtract mark as a string and units as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-85-fenced",
+      "split": "confirmation",
+      "family": "mark/units",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "mark": "NX-1758",
+        "units": 176
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "MARK [NX-1758]\nUNITS [176]\nExtract mark as a string and units as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-86-plain",
+      "split": "confirmation",
+      "family": "mark/units",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "mark": "NX-1769",
+        "units": 178
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the units is 178; its mark is NX-1769.\nExtract mark as a string and units as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-86-fenced",
+      "split": "confirmation",
+      "family": "mark/units",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "mark": "NX-1769",
+        "units": 178
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the units is 178; its mark is NX-1769.\nExtract mark as a string and units as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-87-plain",
+      "split": "confirmation",
+      "family": "mark/units",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "mark": "NX-1780",
+        "units": 180
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: mark: NX-1780 | units: 180.\nExtract mark as a string and units as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-87-fenced",
+      "split": "confirmation",
+      "family": "mark/units",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "mark": "NX-1780",
+        "units": 180
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: mark: NX-1780 | units: 180.\nExtract mark as a string and units as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-88-plain",
+      "split": "confirmation",
+      "family": "mark/units",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "mark": "NX-1791",
+        "units": 182
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "MARK [NX-1791]\nUNITS [182]\nExtract mark as a string and units as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-88-fenced",
+      "split": "confirmation",
+      "family": "mark/units",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "mark": "NX-1791",
+        "units": 182
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "MARK [NX-1791]\nUNITS [182]\nExtract mark as a string and units as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-89-plain",
+      "split": "confirmation",
+      "family": "mark/units",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "mark": "NX-1802",
+        "units": 184
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the units is 184; its mark is NX-1802.\nExtract mark as a string and units as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-89-fenced",
+      "split": "confirmation",
+      "family": "mark/units",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "mark": "NX-1802",
+        "units": 184
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the units is 184; its mark is NX-1802.\nExtract mark as a string and units as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-90-plain",
+      "split": "confirmation",
+      "family": "mark/units",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "mark": "NX-1813",
+        "units": 186
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: mark: NX-1813 | units: 186.\nExtract mark as a string and units as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-90-fenced",
+      "split": "confirmation",
+      "family": "mark/units",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "mark": "NX-1813",
+        "units": 186
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: mark: NX-1813 | units: 186.\nExtract mark as a string and units as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-91-plain",
+      "split": "confirmation",
+      "family": "mark/units",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "mark": "NX-1824",
+        "units": 188
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "MARK [NX-1824]\nUNITS [188]\nExtract mark as a string and units as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-91-fenced",
+      "split": "confirmation",
+      "family": "mark/units",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "mark": "NX-1824",
+        "units": 188
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "MARK [NX-1824]\nUNITS [188]\nExtract mark as a string and units as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-92-plain",
+      "split": "confirmation",
+      "family": "mark/units",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "mark": "NX-1835",
+        "units": 190
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the units is 190; its mark is NX-1835.\nExtract mark as a string and units as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-92-fenced",
+      "split": "confirmation",
+      "family": "mark/units",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "mark": "NX-1835",
+        "units": 190
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the units is 190; its mark is NX-1835.\nExtract mark as a string and units as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-93-plain",
+      "split": "confirmation",
+      "family": "mark/units",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "mark": "NX-1846",
+        "units": 192
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: mark: NX-1846 | units: 192.\nExtract mark as a string and units as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-93-fenced",
+      "split": "confirmation",
+      "family": "mark/units",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "mark": "NX-1846",
+        "units": 192
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: mark: NX-1846 | units: 192.\nExtract mark as a string and units as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-94-plain",
+      "split": "confirmation",
+      "family": "mark/units",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "mark": "NX-1857",
+        "units": 194
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "MARK [NX-1857]\nUNITS [194]\nExtract mark as a string and units as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-94-fenced",
+      "split": "confirmation",
+      "family": "mark/units",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "mark": "NX-1857",
+        "units": 194
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "MARK [NX-1857]\nUNITS [194]\nExtract mark as a string and units as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-95-plain",
+      "split": "confirmation",
+      "family": "mark/units",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "mark": "NX-1868",
+        "units": 196
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the units is 196; its mark is NX-1868.\nExtract mark as a string and units as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-95-fenced",
+      "split": "confirmation",
+      "family": "mark/units",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "mark": "NX-1868",
+        "units": 196
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the units is 196; its mark is NX-1868.\nExtract mark as a string and units as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-96-plain",
+      "split": "confirmation",
+      "family": "mark/units",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "mark": "NX-1879",
+        "units": 198
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: mark: NX-1879 | units: 198.\nExtract mark as a string and units as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-96-fenced",
+      "split": "confirmation",
+      "family": "mark/units",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "mark": "NX-1879",
+        "units": 198
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: mark: NX-1879 | units: 198.\nExtract mark as a string and units as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-97-plain",
+      "split": "confirmation",
+      "family": "mark/units",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "mark": "NX-1890",
+        "units": 200
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "MARK [NX-1890]\nUNITS [200]\nExtract mark as a string and units as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-97-fenced",
+      "split": "confirmation",
+      "family": "mark/units",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "mark": "NX-1890",
+        "units": 200
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "MARK [NX-1890]\nUNITS [200]\nExtract mark as a string and units as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-98-plain",
+      "split": "confirmation",
+      "family": "mark/units",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "mark": "NX-1901",
+        "units": 202
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the units is 202; its mark is NX-1901.\nExtract mark as a string and units as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-98-fenced",
+      "split": "confirmation",
+      "family": "mark/units",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "mark": "NX-1901",
+        "units": 202
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the units is 202; its mark is NX-1901.\nExtract mark as a string and units as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-99-plain",
+      "split": "confirmation",
+      "family": "mark/units",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "mark": "NX-1912",
+        "units": 204
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: mark: NX-1912 | units: 204.\nExtract mark as a string and units as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-99-fenced",
+      "split": "confirmation",
+      "family": "mark/units",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "mark": "NX-1912",
+        "units": 204
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: mark: NX-1912 | units: 204.\nExtract mark as a string and units as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-100-plain",
+      "split": "confirmation",
+      "family": "symbol/number",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "symbol": "NX-1923",
+        "number": 206
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "SYMBOL [NX-1923]\nNUMBER [206]\nExtract symbol as a string and number as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-100-fenced",
+      "split": "confirmation",
+      "family": "symbol/number",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "symbol": "NX-1923",
+        "number": 206
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "SYMBOL [NX-1923]\nNUMBER [206]\nExtract symbol as a string and number as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-101-plain",
+      "split": "confirmation",
+      "family": "symbol/number",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "symbol": "NX-1934",
+        "number": 208
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the number is 208; its symbol is NX-1934.\nExtract symbol as a string and number as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-101-fenced",
+      "split": "confirmation",
+      "family": "symbol/number",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "symbol": "NX-1934",
+        "number": 208
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the number is 208; its symbol is NX-1934.\nExtract symbol as a string and number as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-102-plain",
+      "split": "confirmation",
+      "family": "symbol/number",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "symbol": "NX-1945",
+        "number": 210
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: symbol: NX-1945 | number: 210.\nExtract symbol as a string and number as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-102-fenced",
+      "split": "confirmation",
+      "family": "symbol/number",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "symbol": "NX-1945",
+        "number": 210
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: symbol: NX-1945 | number: 210.\nExtract symbol as a string and number as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-103-plain",
+      "split": "confirmation",
+      "family": "symbol/number",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "symbol": "NX-1956",
+        "number": 212
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "SYMBOL [NX-1956]\nNUMBER [212]\nExtract symbol as a string and number as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-103-fenced",
+      "split": "confirmation",
+      "family": "symbol/number",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "symbol": "NX-1956",
+        "number": 212
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "SYMBOL [NX-1956]\nNUMBER [212]\nExtract symbol as a string and number as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-104-plain",
+      "split": "confirmation",
+      "family": "symbol/number",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "symbol": "NX-1967",
+        "number": 214
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the number is 214; its symbol is NX-1967.\nExtract symbol as a string and number as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-104-fenced",
+      "split": "confirmation",
+      "family": "symbol/number",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "symbol": "NX-1967",
+        "number": 214
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the number is 214; its symbol is NX-1967.\nExtract symbol as a string and number as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-105-plain",
+      "split": "confirmation",
+      "family": "symbol/number",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "symbol": "NX-1978",
+        "number": 216
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: symbol: NX-1978 | number: 216.\nExtract symbol as a string and number as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-105-fenced",
+      "split": "confirmation",
+      "family": "symbol/number",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "symbol": "NX-1978",
+        "number": 216
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: symbol: NX-1978 | number: 216.\nExtract symbol as a string and number as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-106-plain",
+      "split": "confirmation",
+      "family": "symbol/number",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "symbol": "NX-1989",
+        "number": 218
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "SYMBOL [NX-1989]\nNUMBER [218]\nExtract symbol as a string and number as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-106-fenced",
+      "split": "confirmation",
+      "family": "symbol/number",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "symbol": "NX-1989",
+        "number": 218
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "SYMBOL [NX-1989]\nNUMBER [218]\nExtract symbol as a string and number as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-107-plain",
+      "split": "confirmation",
+      "family": "symbol/number",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "symbol": "NX-2000",
+        "number": 220
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the number is 220; its symbol is NX-2000.\nExtract symbol as a string and number as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-107-fenced",
+      "split": "confirmation",
+      "family": "symbol/number",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "symbol": "NX-2000",
+        "number": 220
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the number is 220; its symbol is NX-2000.\nExtract symbol as a string and number as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-108-plain",
+      "split": "confirmation",
+      "family": "symbol/number",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "symbol": "NX-2011",
+        "number": 222
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: symbol: NX-2011 | number: 222.\nExtract symbol as a string and number as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-108-fenced",
+      "split": "confirmation",
+      "family": "symbol/number",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "symbol": "NX-2011",
+        "number": 222
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: symbol: NX-2011 | number: 222.\nExtract symbol as a string and number as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-109-plain",
+      "split": "confirmation",
+      "family": "symbol/number",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "symbol": "NX-2022",
+        "number": 224
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "SYMBOL [NX-2022]\nNUMBER [224]\nExtract symbol as a string and number as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-109-fenced",
+      "split": "confirmation",
+      "family": "symbol/number",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "symbol": "NX-2022",
+        "number": 224
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "SYMBOL [NX-2022]\nNUMBER [224]\nExtract symbol as a string and number as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-110-plain",
+      "split": "confirmation",
+      "family": "symbol/number",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "symbol": "NX-2033",
+        "number": 226
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the number is 226; its symbol is NX-2033.\nExtract symbol as a string and number as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-110-fenced",
+      "split": "confirmation",
+      "family": "symbol/number",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "symbol": "NX-2033",
+        "number": 226
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the number is 226; its symbol is NX-2033.\nExtract symbol as a string and number as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-111-plain",
+      "split": "confirmation",
+      "family": "symbol/number",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "symbol": "NX-2044",
+        "number": 228
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: symbol: NX-2044 | number: 228.\nExtract symbol as a string and number as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-111-fenced",
+      "split": "confirmation",
+      "family": "symbol/number",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "symbol": "NX-2044",
+        "number": 228
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: symbol: NX-2044 | number: 228.\nExtract symbol as a string and number as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-112-plain",
+      "split": "confirmation",
+      "family": "symbol/number",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "symbol": "NX-2055",
+        "number": 230
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "SYMBOL [NX-2055]\nNUMBER [230]\nExtract symbol as a string and number as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-112-fenced",
+      "split": "confirmation",
+      "family": "symbol/number",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "symbol": "NX-2055",
+        "number": 230
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "SYMBOL [NX-2055]\nNUMBER [230]\nExtract symbol as a string and number as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-113-plain",
+      "split": "confirmation",
+      "family": "symbol/number",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "symbol": "NX-2066",
+        "number": 232
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the number is 232; its symbol is NX-2066.\nExtract symbol as a string and number as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-113-fenced",
+      "split": "confirmation",
+      "family": "symbol/number",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "symbol": "NX-2066",
+        "number": 232
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the number is 232; its symbol is NX-2066.\nExtract symbol as a string and number as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-114-plain",
+      "split": "confirmation",
+      "family": "symbol/number",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "symbol": "NX-2077",
+        "number": 234
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: symbol: NX-2077 | number: 234.\nExtract symbol as a string and number as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-114-fenced",
+      "split": "confirmation",
+      "family": "symbol/number",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "symbol": "NX-2077",
+        "number": 234
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: symbol: NX-2077 | number: 234.\nExtract symbol as a string and number as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-115-plain",
+      "split": "confirmation",
+      "family": "symbol/number",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "symbol": "NX-2088",
+        "number": 236
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "SYMBOL [NX-2088]\nNUMBER [236]\nExtract symbol as a string and number as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-115-fenced",
+      "split": "confirmation",
+      "family": "symbol/number",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "symbol": "NX-2088",
+        "number": 236
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "SYMBOL [NX-2088]\nNUMBER [236]\nExtract symbol as a string and number as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-116-plain",
+      "split": "confirmation",
+      "family": "symbol/number",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "symbol": "NX-2099",
+        "number": 238
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the number is 238; its symbol is NX-2099.\nExtract symbol as a string and number as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-116-fenced",
+      "split": "confirmation",
+      "family": "symbol/number",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "symbol": "NX-2099",
+        "number": 238
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the number is 238; its symbol is NX-2099.\nExtract symbol as a string and number as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-117-plain",
+      "split": "confirmation",
+      "family": "symbol/number",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "symbol": "NX-2110",
+        "number": 240
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: symbol: NX-2110 | number: 240.\nExtract symbol as a string and number as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-117-fenced",
+      "split": "confirmation",
+      "family": "symbol/number",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "symbol": "NX-2110",
+        "number": 240
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "Supplied fields: symbol: NX-2110 | number: 240.\nExtract symbol as a string and number as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-118-plain",
+      "split": "confirmation",
+      "family": "symbol/number",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "symbol": "NX-2121",
+        "number": 242
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "SYMBOL [NX-2121]\nNUMBER [242]\nExtract symbol as a string and number as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-118-fenced",
+      "split": "confirmation",
+      "family": "symbol/number",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "symbol": "NX-2121",
+        "number": 242
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "SYMBOL [NX-2121]\nNUMBER [242]\nExtract symbol as a string and number as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-119-plain",
+      "split": "confirmation",
+      "family": "symbol/number",
+      "group": "json_plain",
+      "grader": "json_switch",
+      "response_mode": "plain",
+      "expected": {
+        "symbol": "NX-2132",
+        "number": 244
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the number is 244; its symbol is NX-2132.\nExtract symbol as a string and number as an integer. Your entire reply must be a bare JSON object. Do not include a code fence or other text."
+        }
+      ]
+    },
+    {
+      "id": "p3-switch-confirmation-119-fenced",
+      "split": "confirmation",
+      "family": "symbol/number",
+      "group": "json_fenced",
+      "grader": "json_switch",
+      "response_mode": "fenced",
+      "expected": {
+        "symbol": "NX-2132",
+        "number": 244
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the response format requested by the user. Use only supplied facts."
+        },
+        {
+          "role": "user",
+          "content": "For this entry the number is 244; its symbol is NX-2132.\nExtract symbol as a string and number as an integer. Your entire reply must be one Markdown code block labeled json, containing the JSON object."
+        }
+      ]
+    }
+  ]
+}
