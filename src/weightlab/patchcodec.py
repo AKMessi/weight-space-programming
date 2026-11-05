@@ -30,13 +30,15 @@ def range_hash(stream,offset,n):
     return h.hexdigest()
 
 
-def create_patch(base,target,output,manifest):
+def create_patch(base,target,output,manifest,word_method=None):
     from gguf import GGUFReader
+    if word_method not in (None,'signed','zigzag_shuffle'):raise ValueError('Unknown residual word method')
+    format_id='weightlab-gguf-word-v2' if word_method else 'weightlab-gguf-xor-v1'
     output=output_path(output)
     if Path(manifest).exists():raise FileExistsError(manifest)
     start=time.monotonic()
     report={'utc':utc_now(),'git':git_state(),'base':base,'target':target,'output':str(output),
-            'format':'weightlab-gguf-xor-v1','status':'started','zlib_version':zlib.ZLIB_RUNTIME_VERSION}
+            'format':format_id,'word_method':word_method,'status':'started','zlib_version':zlib.ZLIB_RUNTIME_VERSION}
     write_json(manifest,report);partial=output.with_name(output.name+'.partial')
     try:
         if file_sha256(base['path'])!=base['sha256'] or file_sha256(target['path'])!=target['sha256']:
@@ -48,8 +50,9 @@ def create_patch(base,target,output,manifest):
             u=lt[name]
             if t.n_bytes!=u.n_bytes or t.tensor_type!=u.tensor_type or not np.array_equal(t.shape,u.shape):
                 raise ValueError('tensor shape/encoding mismatch')
-        index={'format':'weightlab-gguf-xor-v1','base_sha256':base['sha256'],'target_sha256':target['sha256'],
+        index={'format':format_id,'base_sha256':base['sha256'],'target_sha256':target['sha256'],
                'target_bytes':Path(target['path']).stat().st_size,'segments':[]}
+        if word_method:index['word_chunk_bytes']=CHUNK
         changed=[]
         with open(base['path'],'rb') as a,open(target['path'],'rb') as b,zipfile.ZipFile(partial,'x',compression=zipfile.ZIP_DEFLATED,compresslevel=6) as archive:
             def add_segment(offset,n,base_offset=None,tensor_name=None):
@@ -62,7 +65,9 @@ def create_patch(base,target,output,manifest):
                 if same:item.update(kind='copy',base_offset=base_offset)
                 else:
                     item.update(kind='xor' if tensor_name else 'literal',payload=f'blocks/{len(index["segments"]):05d}')
-                    if tensor_name:item['base_offset']=base_offset;changed.append(tensor_name)
+                    if tensor_name:
+                        item['base_offset']=base_offset;changed.append(tensor_name)
+                        if word_method and rt[tensor_name].tensor_type.name=='F16':item.update(kind='delta16',method=word_method)
                     b.seek(offset)
                     if tensor_name:a.seek(base_offset)
                     with archive.open(item['payload'],'w',force_zip64=True) as dst:
@@ -73,7 +78,10 @@ def create_patch(base,target,output,manifest):
                             if tensor_name:
                                 old=a.read(len(data))
                                 if len(old)!=len(data):raise ValueError('truncated base')
-                                data=np.bitwise_xor(np.frombuffer(data,np.uint8),np.frombuffer(old,np.uint8)).tobytes()
+                                if item['kind']=='delta16':
+                                    from .residual_words import encode_words
+                                    data=encode_words(old,data,word_method)
+                                else:data=np.bitwise_xor(np.frombuffer(data,np.uint8),np.frombuffer(old,np.uint8)).tobytes()
                             dst.write(data);remaining-=len(data)
                 index['segments'].append(item)
             cursor=0
@@ -108,7 +116,7 @@ def apply_patch_file(base_path,patch_path,output,manifest):
         with zipfile.ZipFile(patch_path) as archive:
             if archive.getinfo('index.json').file_size>16*1024*1024:raise ValueError('index too large')
             index=json.loads(archive.read('index.json'))
-            if index['format']!='weightlab-gguf-xor-v1':raise ValueError('unknown patch format')
+            if index['format'] not in ('weightlab-gguf-xor-v1','weightlab-gguf-word-v2'):raise ValueError('unknown patch format')
             if file_sha256(base_path)!=index['base_sha256']:raise ValueError('wrong base checkpoint')
             size=index['target_bytes']
             if type(size) is not int or not 0<size<=16*1024**3:raise ValueError('target size bound')
@@ -119,8 +127,12 @@ def apply_patch_file(base_path,patch_path,output,manifest):
                     n=item['bytes']
                     if type(n) is not int or n<=0 or item['offset']!=cursor or cursor+n>size:raise ValueError('invalid/overlapping segment')
                     kind=item['kind']
-                    if kind not in ('copy','literal','xor'):raise ValueError('unknown segment')
-                    if kind in ('copy','xor'):
+                    if kind not in ('copy','literal','xor','delta16'):raise ValueError('unknown segment')
+                    block_bytes=CHUNK
+                    if kind=='delta16':
+                        block_bytes=index.get('word_chunk_bytes')
+                        if index['format']!='weightlab-gguf-word-v2' or type(block_bytes) is not int or block_bytes<2 or block_bytes>16*1024**2 or block_bytes%2 or n%2:raise ValueError('Invalid word block layout')
+                    if kind in ('copy','xor','delta16'):
                         start_at=item['base_offset']
                         if type(start_at) is not int or start_at<0 or start_at+n>base_size:raise ValueError('source range')
                         source.seek(start_at)
@@ -131,13 +143,16 @@ def apply_patch_file(base_path,patch_path,output,manifest):
                     h=hashlib.sha256();remaining=n;target.seek(cursor)
                     try:
                         while remaining:
-                            count=min(CHUNK,remaining)
+                            count=min(block_bytes,remaining)
                             data=source.read(count) if kind=='copy' else payload.read(count)
                             if len(data)!=count:raise ValueError('truncated segment')
-                            if kind=='xor':
+                            if kind in ('xor','delta16'):
                                 old=source.read(count)
                                 if len(old)!=count:raise ValueError('truncated source')
-                                data=np.bitwise_xor(np.frombuffer(data,np.uint8),np.frombuffer(old,np.uint8)).tobytes()
+                                if kind=='delta16':
+                                    from .residual_words import decode_words
+                                    data=decode_words(old,data,item['method'])
+                                else:data=np.bitwise_xor(np.frombuffer(data,np.uint8),np.frombuffer(old,np.uint8)).tobytes()
                             target.write(data);h.update(data);remaining-=count
                         if payload is not None and payload.read(1):raise ValueError('extra payload data')
                     finally:
