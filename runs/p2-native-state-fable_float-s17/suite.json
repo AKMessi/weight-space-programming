@@ -1,0 +1,60 @@
+{
+  "name": "native-final-state-parity-v1",
+  "status": "compatibility calibration only; no model quality or repair claim",
+  "cases": [
+    {
+      "id": "raw-state-0",
+      "split": "compatibility_calibration",
+      "family": "raw_state",
+      "group": "raw_state",
+      "grader": "measurement_only",
+      "expected": null,
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response format."
+        },
+        {
+          "role": "user",
+          "content": "Record: label=CY-17; count=4. Return only JSON with label as a string and count as an integer."
+        }
+      ],
+      "request_overrides": {
+        "logprobs": true,
+        "top_logprobs": 20,
+        "temperature": 1.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0
+      }
+    },
+    {
+      "id": "raw-state-1",
+      "split": "compatibility_calibration",
+      "family": "raw_state",
+      "group": "raw_state",
+      "grader": "measurement_only",
+      "expected": null,
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the requested response format."
+        },
+        {
+          "role": "user",
+          "content": "Return a Python function def add(a, b): that adds its two arguments, in a code fence, and explain why it works."
+        }
+      ],
+      "request_overrides": {
+        "logprobs": true,
+        "top_logprobs": 20,
+        "temperature": 1.0,
+        "top_k": 0,
+        "top_p": 1.0,
+        "min_p": 0.0,
+        "repeat_penalty": 1.0
+      }
+    }
+  ]
+}
