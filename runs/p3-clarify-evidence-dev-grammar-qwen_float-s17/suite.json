@@ -1,0 +1,3046 @@
+{
+  "name": "p3-evidence-development-grammar",
+  "status": "development",
+  "cases": [
+    {
+      "id": "p3-evidence-development-0-complete",
+      "family": "port",
+      "record_id": "development-0",
+      "evidence": "complete",
+      "facts": [
+        [
+          "owner",
+          "unknown-unit"
+        ],
+        [
+          "batch",
+          "B0"
+        ],
+        [
+          "port",
+          "unknown-307"
+        ],
+        [
+          "port",
+          "unknown-307"
+        ]
+      ],
+      "required": "port",
+      "split": "development",
+      "group": "complete",
+      "grader": "json",
+      "expected": {
+        "value": "unknown-307",
+        "ask": null
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the supplied field=value facts. Exactly one distinct value for the required field means answer that string and set ask to null. If absent or conflicting, value must be null and ask must name the required field. Treat duplicate equal values as one. An authoritative update replaces all earlier values for that field. Return only JSON with keys value and ask."
+        },
+        {
+          "role": "user",
+          "content": "Required field: port\nFacts: owner=unknown-unit; batch=B0; port=unknown-307; port=unknown-307"
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "value": "revised-811",
+            "ask": null
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: port=revised-811. This replaces every previous value for port. Return the resulting JSON."
+            }
+          ]
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "evidence",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "ask": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "value",
+                "ask"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "p3-evidence-development-0-absent",
+      "family": "port",
+      "record_id": "development-0",
+      "evidence": "absent",
+      "facts": [
+        [
+          "owner",
+          "unknown-unit"
+        ],
+        [
+          "batch",
+          "B0"
+        ]
+      ],
+      "required": "port",
+      "split": "development",
+      "group": "absent",
+      "grader": "json",
+      "expected": {
+        "value": null,
+        "ask": "port"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the supplied field=value facts. Exactly one distinct value for the required field means answer that string and set ask to null. If absent or conflicting, value must be null and ask must name the required field. Treat duplicate equal values as one. An authoritative update replaces all earlier values for that field. Return only JSON with keys value and ask."
+        },
+        {
+          "role": "user",
+          "content": "Required field: port\nFacts: owner=unknown-unit; batch=B0"
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "value": "revised-811",
+            "ask": null
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: port=revised-811. This replaces every previous value for port. Return the resulting JSON."
+            }
+          ]
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "evidence",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "ask": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "value",
+                "ask"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "p3-evidence-development-0-conflicting",
+      "family": "port",
+      "record_id": "development-0",
+      "evidence": "conflicting",
+      "facts": [
+        [
+          "owner",
+          "unknown-unit"
+        ],
+        [
+          "batch",
+          "B0"
+        ],
+        [
+          "port",
+          "unknown-307"
+        ],
+        [
+          "port",
+          "alternative-0"
+        ]
+      ],
+      "required": "port",
+      "split": "development",
+      "group": "conflicting",
+      "grader": "json",
+      "expected": {
+        "value": null,
+        "ask": "port"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the supplied field=value facts. Exactly one distinct value for the required field means answer that string and set ask to null. If absent or conflicting, value must be null and ask must name the required field. Treat duplicate equal values as one. An authoritative update replaces all earlier values for that field. Return only JSON with keys value and ask."
+        },
+        {
+          "role": "user",
+          "content": "Required field: port\nFacts: owner=unknown-unit; batch=B0; port=unknown-307; port=alternative-0"
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "value": "revised-811",
+            "ask": null
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: port=revised-811. This replaces every previous value for port. Return the resulting JSON."
+            }
+          ]
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "evidence",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "ask": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "value",
+                "ask"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "p3-evidence-development-1-complete",
+      "family": "region",
+      "record_id": "development-1",
+      "evidence": "complete",
+      "facts": [
+        [
+          "region",
+          "item-326"
+        ],
+        [
+          "batch",
+          "B1"
+        ],
+        [
+          "owner",
+          "unknown-unit"
+        ]
+      ],
+      "required": "region",
+      "split": "development",
+      "group": "complete",
+      "grader": "json",
+      "expected": {
+        "value": "item-326",
+        "ask": null
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the supplied field=value facts. Exactly one distinct value for the required field means answer that string and set ask to null. If absent or conflicting, value must be null and ask must name the required field. Treat duplicate equal values as one. An authoritative update replaces all earlier values for that field. Return only JSON with keys value and ask."
+        },
+        {
+          "role": "user",
+          "content": "Required field: region\nFacts: region=item-326; batch=B1; owner=unknown-unit"
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "value": "revised-834",
+            "ask": null
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: region=revised-834. This replaces every previous value for region. Return the resulting JSON."
+            }
+          ]
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "evidence",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "ask": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "value",
+                "ask"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "p3-evidence-development-1-absent",
+      "family": "region",
+      "record_id": "development-1",
+      "evidence": "absent",
+      "facts": [
+        [
+          "batch",
+          "B1"
+        ],
+        [
+          "owner",
+          "unknown-unit"
+        ]
+      ],
+      "required": "region",
+      "split": "development",
+      "group": "absent",
+      "grader": "json",
+      "expected": {
+        "value": null,
+        "ask": "region"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the supplied field=value facts. Exactly one distinct value for the required field means answer that string and set ask to null. If absent or conflicting, value must be null and ask must name the required field. Treat duplicate equal values as one. An authoritative update replaces all earlier values for that field. Return only JSON with keys value and ask."
+        },
+        {
+          "role": "user",
+          "content": "Required field: region\nFacts: batch=B1; owner=unknown-unit"
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "value": "revised-834",
+            "ask": null
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: region=revised-834. This replaces every previous value for region. Return the resulting JSON."
+            }
+          ]
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "evidence",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "ask": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "value",
+                "ask"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "p3-evidence-development-1-conflicting",
+      "family": "region",
+      "record_id": "development-1",
+      "evidence": "conflicting",
+      "facts": [
+        [
+          "region",
+          "alternative-1"
+        ],
+        [
+          "region",
+          "item-326"
+        ],
+        [
+          "batch",
+          "B1"
+        ],
+        [
+          "owner",
+          "unknown-unit"
+        ]
+      ],
+      "required": "region",
+      "split": "development",
+      "group": "conflicting",
+      "grader": "json",
+      "expected": {
+        "value": null,
+        "ask": "region"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the supplied field=value facts. Exactly one distinct value for the required field means answer that string and set ask to null. If absent or conflicting, value must be null and ask must name the required field. Treat duplicate equal values as one. An authoritative update replaces all earlier values for that field. Return only JSON with keys value and ask."
+        },
+        {
+          "role": "user",
+          "content": "Required field: region\nFacts: region=alternative-1; region=item-326; batch=B1; owner=unknown-unit"
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "value": "revised-834",
+            "ask": null
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: region=revised-834. This replaces every previous value for region. Return the resulting JSON."
+            }
+          ]
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "evidence",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "ask": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "value",
+                "ask"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "p3-evidence-development-2-complete",
+      "family": "route",
+      "record_id": "development-2",
+      "evidence": "complete",
+      "facts": [
+        [
+          "owner",
+          "unknown-unit"
+        ],
+        [
+          "batch",
+          "B2"
+        ],
+        [
+          "route",
+          "item-345"
+        ]
+      ],
+      "required": "route",
+      "split": "development",
+      "group": "complete",
+      "grader": "json",
+      "expected": {
+        "value": "item-345",
+        "ask": null
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the supplied field=value facts. Exactly one distinct value for the required field means answer that string and set ask to null. If absent or conflicting, value must be null and ask must name the required field. Treat duplicate equal values as one. An authoritative update replaces all earlier values for that field. Return only JSON with keys value and ask."
+        },
+        {
+          "role": "user",
+          "content": "Required field: route\nFacts: owner=unknown-unit; batch=B2; route=item-345"
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "value": "revised-857",
+            "ask": null
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: route=revised-857. This replaces every previous value for route. Return the resulting JSON."
+            }
+          ]
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "evidence",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "ask": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "value",
+                "ask"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "p3-evidence-development-2-absent",
+      "family": "route",
+      "record_id": "development-2",
+      "evidence": "absent",
+      "facts": [
+        [
+          "owner",
+          "unknown-unit"
+        ],
+        [
+          "batch",
+          "B2"
+        ]
+      ],
+      "required": "route",
+      "split": "development",
+      "group": "absent",
+      "grader": "json",
+      "expected": {
+        "value": null,
+        "ask": "route"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the supplied field=value facts. Exactly one distinct value for the required field means answer that string and set ask to null. If absent or conflicting, value must be null and ask must name the required field. Treat duplicate equal values as one. An authoritative update replaces all earlier values for that field. Return only JSON with keys value and ask."
+        },
+        {
+          "role": "user",
+          "content": "Required field: route\nFacts: owner=unknown-unit; batch=B2"
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "value": "revised-857",
+            "ask": null
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: route=revised-857. This replaces every previous value for route. Return the resulting JSON."
+            }
+          ]
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "evidence",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "ask": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "value",
+                "ask"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "p3-evidence-development-2-conflicting",
+      "family": "route",
+      "record_id": "development-2",
+      "evidence": "conflicting",
+      "facts": [
+        [
+          "owner",
+          "unknown-unit"
+        ],
+        [
+          "batch",
+          "B2"
+        ],
+        [
+          "route",
+          "item-345"
+        ],
+        [
+          "route",
+          "alternative-2"
+        ]
+      ],
+      "required": "route",
+      "split": "development",
+      "group": "conflicting",
+      "grader": "json",
+      "expected": {
+        "value": null,
+        "ask": "route"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the supplied field=value facts. Exactly one distinct value for the required field means answer that string and set ask to null. If absent or conflicting, value must be null and ask must name the required field. Treat duplicate equal values as one. An authoritative update replaces all earlier values for that field. Return only JSON with keys value and ask."
+        },
+        {
+          "role": "user",
+          "content": "Required field: route\nFacts: owner=unknown-unit; batch=B2; route=item-345; route=alternative-2"
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "value": "revised-857",
+            "ask": null
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: route=revised-857. This replaces every previous value for route. Return the resulting JSON."
+            }
+          ]
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "evidence",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "ask": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "value",
+                "ask"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "p3-evidence-development-3-complete",
+      "family": "port",
+      "record_id": "development-3",
+      "evidence": "complete",
+      "facts": [
+        [
+          "port",
+          "item-364"
+        ],
+        [
+          "port",
+          "item-364"
+        ],
+        [
+          "batch",
+          "B3"
+        ],
+        [
+          "owner",
+          "unknown-unit"
+        ]
+      ],
+      "required": "port",
+      "split": "development",
+      "group": "complete",
+      "grader": "json",
+      "expected": {
+        "value": "item-364",
+        "ask": null
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the supplied field=value facts. Exactly one distinct value for the required field means answer that string and set ask to null. If absent or conflicting, value must be null and ask must name the required field. Treat duplicate equal values as one. An authoritative update replaces all earlier values for that field. Return only JSON with keys value and ask."
+        },
+        {
+          "role": "user",
+          "content": "Required field: port\nFacts: port=item-364; port=item-364; batch=B3; owner=unknown-unit"
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "value": "revised-880",
+            "ask": null
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: port=revised-880. This replaces every previous value for port. Return the resulting JSON."
+            }
+          ]
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "evidence",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "ask": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "value",
+                "ask"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "p3-evidence-development-3-absent",
+      "family": "port",
+      "record_id": "development-3",
+      "evidence": "absent",
+      "facts": [
+        [
+          "batch",
+          "B3"
+        ],
+        [
+          "owner",
+          "unknown-unit"
+        ]
+      ],
+      "required": "port",
+      "split": "development",
+      "group": "absent",
+      "grader": "json",
+      "expected": {
+        "value": null,
+        "ask": "port"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the supplied field=value facts. Exactly one distinct value for the required field means answer that string and set ask to null. If absent or conflicting, value must be null and ask must name the required field. Treat duplicate equal values as one. An authoritative update replaces all earlier values for that field. Return only JSON with keys value and ask."
+        },
+        {
+          "role": "user",
+          "content": "Required field: port\nFacts: batch=B3; owner=unknown-unit"
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "value": "revised-880",
+            "ask": null
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: port=revised-880. This replaces every previous value for port. Return the resulting JSON."
+            }
+          ]
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "evidence",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "ask": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "value",
+                "ask"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "p3-evidence-development-3-conflicting",
+      "family": "port",
+      "record_id": "development-3",
+      "evidence": "conflicting",
+      "facts": [
+        [
+          "port",
+          "alternative-3"
+        ],
+        [
+          "port",
+          "item-364"
+        ],
+        [
+          "batch",
+          "B3"
+        ],
+        [
+          "owner",
+          "unknown-unit"
+        ]
+      ],
+      "required": "port",
+      "split": "development",
+      "group": "conflicting",
+      "grader": "json",
+      "expected": {
+        "value": null,
+        "ask": "port"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the supplied field=value facts. Exactly one distinct value for the required field means answer that string and set ask to null. If absent or conflicting, value must be null and ask must name the required field. Treat duplicate equal values as one. An authoritative update replaces all earlier values for that field. Return only JSON with keys value and ask."
+        },
+        {
+          "role": "user",
+          "content": "Required field: port\nFacts: port=alternative-3; port=item-364; batch=B3; owner=unknown-unit"
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "value": "revised-880",
+            "ask": null
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: port=revised-880. This replaces every previous value for port. Return the resulting JSON."
+            }
+          ]
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "evidence",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "ask": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "value",
+                "ask"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "p3-evidence-development-4-complete",
+      "family": "region",
+      "record_id": "development-4",
+      "evidence": "complete",
+      "facts": [
+        [
+          "owner",
+          "unknown-unit"
+        ],
+        [
+          "batch",
+          "B4"
+        ],
+        [
+          "region",
+          "unknown-383"
+        ]
+      ],
+      "required": "region",
+      "split": "development",
+      "group": "complete",
+      "grader": "json",
+      "expected": {
+        "value": "unknown-383",
+        "ask": null
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the supplied field=value facts. Exactly one distinct value for the required field means answer that string and set ask to null. If absent or conflicting, value must be null and ask must name the required field. Treat duplicate equal values as one. An authoritative update replaces all earlier values for that field. Return only JSON with keys value and ask."
+        },
+        {
+          "role": "user",
+          "content": "Required field: region\nFacts: owner=unknown-unit; batch=B4; region=unknown-383"
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "value": "revised-903",
+            "ask": null
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: region=revised-903. This replaces every previous value for region. Return the resulting JSON."
+            }
+          ]
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "evidence",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "ask": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "value",
+                "ask"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "p3-evidence-development-4-absent",
+      "family": "region",
+      "record_id": "development-4",
+      "evidence": "absent",
+      "facts": [
+        [
+          "owner",
+          "unknown-unit"
+        ],
+        [
+          "batch",
+          "B4"
+        ]
+      ],
+      "required": "region",
+      "split": "development",
+      "group": "absent",
+      "grader": "json",
+      "expected": {
+        "value": null,
+        "ask": "region"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the supplied field=value facts. Exactly one distinct value for the required field means answer that string and set ask to null. If absent or conflicting, value must be null and ask must name the required field. Treat duplicate equal values as one. An authoritative update replaces all earlier values for that field. Return only JSON with keys value and ask."
+        },
+        {
+          "role": "user",
+          "content": "Required field: region\nFacts: owner=unknown-unit; batch=B4"
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "value": "revised-903",
+            "ask": null
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: region=revised-903. This replaces every previous value for region. Return the resulting JSON."
+            }
+          ]
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "evidence",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "ask": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "value",
+                "ask"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "p3-evidence-development-4-conflicting",
+      "family": "region",
+      "record_id": "development-4",
+      "evidence": "conflicting",
+      "facts": [
+        [
+          "owner",
+          "unknown-unit"
+        ],
+        [
+          "batch",
+          "B4"
+        ],
+        [
+          "region",
+          "unknown-383"
+        ],
+        [
+          "region",
+          "alternative-4"
+        ]
+      ],
+      "required": "region",
+      "split": "development",
+      "group": "conflicting",
+      "grader": "json",
+      "expected": {
+        "value": null,
+        "ask": "region"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the supplied field=value facts. Exactly one distinct value for the required field means answer that string and set ask to null. If absent or conflicting, value must be null and ask must name the required field. Treat duplicate equal values as one. An authoritative update replaces all earlier values for that field. Return only JSON with keys value and ask."
+        },
+        {
+          "role": "user",
+          "content": "Required field: region\nFacts: owner=unknown-unit; batch=B4; region=unknown-383; region=alternative-4"
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "value": "revised-903",
+            "ask": null
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: region=revised-903. This replaces every previous value for region. Return the resulting JSON."
+            }
+          ]
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "evidence",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "ask": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "value",
+                "ask"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "p3-evidence-development-5-complete",
+      "family": "route",
+      "record_id": "development-5",
+      "evidence": "complete",
+      "facts": [
+        [
+          "route",
+          "item-402"
+        ],
+        [
+          "batch",
+          "B5"
+        ],
+        [
+          "owner",
+          "unknown-unit"
+        ]
+      ],
+      "required": "route",
+      "split": "development",
+      "group": "complete",
+      "grader": "json",
+      "expected": {
+        "value": "item-402",
+        "ask": null
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the supplied field=value facts. Exactly one distinct value for the required field means answer that string and set ask to null. If absent or conflicting, value must be null and ask must name the required field. Treat duplicate equal values as one. An authoritative update replaces all earlier values for that field. Return only JSON with keys value and ask."
+        },
+        {
+          "role": "user",
+          "content": "Required field: route\nFacts: route=item-402; batch=B5; owner=unknown-unit"
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "value": "revised-926",
+            "ask": null
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: route=revised-926. This replaces every previous value for route. Return the resulting JSON."
+            }
+          ]
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "evidence",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "ask": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "value",
+                "ask"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "p3-evidence-development-5-absent",
+      "family": "route",
+      "record_id": "development-5",
+      "evidence": "absent",
+      "facts": [
+        [
+          "batch",
+          "B5"
+        ],
+        [
+          "owner",
+          "unknown-unit"
+        ]
+      ],
+      "required": "route",
+      "split": "development",
+      "group": "absent",
+      "grader": "json",
+      "expected": {
+        "value": null,
+        "ask": "route"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the supplied field=value facts. Exactly one distinct value for the required field means answer that string and set ask to null. If absent or conflicting, value must be null and ask must name the required field. Treat duplicate equal values as one. An authoritative update replaces all earlier values for that field. Return only JSON with keys value and ask."
+        },
+        {
+          "role": "user",
+          "content": "Required field: route\nFacts: batch=B5; owner=unknown-unit"
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "value": "revised-926",
+            "ask": null
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: route=revised-926. This replaces every previous value for route. Return the resulting JSON."
+            }
+          ]
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "evidence",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "ask": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "value",
+                "ask"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "p3-evidence-development-5-conflicting",
+      "family": "route",
+      "record_id": "development-5",
+      "evidence": "conflicting",
+      "facts": [
+        [
+          "route",
+          "alternative-5"
+        ],
+        [
+          "route",
+          "item-402"
+        ],
+        [
+          "batch",
+          "B5"
+        ],
+        [
+          "owner",
+          "unknown-unit"
+        ]
+      ],
+      "required": "route",
+      "split": "development",
+      "group": "conflicting",
+      "grader": "json",
+      "expected": {
+        "value": null,
+        "ask": "route"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the supplied field=value facts. Exactly one distinct value for the required field means answer that string and set ask to null. If absent or conflicting, value must be null and ask must name the required field. Treat duplicate equal values as one. An authoritative update replaces all earlier values for that field. Return only JSON with keys value and ask."
+        },
+        {
+          "role": "user",
+          "content": "Required field: route\nFacts: route=alternative-5; route=item-402; batch=B5; owner=unknown-unit"
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "value": "revised-926",
+            "ask": null
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: route=revised-926. This replaces every previous value for route. Return the resulting JSON."
+            }
+          ]
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "evidence",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "ask": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "value",
+                "ask"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "p3-evidence-development-6-complete",
+      "family": "port",
+      "record_id": "development-6",
+      "evidence": "complete",
+      "facts": [
+        [
+          "owner",
+          "unknown-unit"
+        ],
+        [
+          "batch",
+          "B6"
+        ],
+        [
+          "port",
+          "item-421"
+        ],
+        [
+          "port",
+          "item-421"
+        ]
+      ],
+      "required": "port",
+      "split": "development",
+      "group": "complete",
+      "grader": "json",
+      "expected": {
+        "value": "item-421",
+        "ask": null
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the supplied field=value facts. Exactly one distinct value for the required field means answer that string and set ask to null. If absent or conflicting, value must be null and ask must name the required field. Treat duplicate equal values as one. An authoritative update replaces all earlier values for that field. Return only JSON with keys value and ask."
+        },
+        {
+          "role": "user",
+          "content": "Required field: port\nFacts: owner=unknown-unit; batch=B6; port=item-421; port=item-421"
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "value": "revised-949",
+            "ask": null
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: port=revised-949. This replaces every previous value for port. Return the resulting JSON."
+            }
+          ]
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "evidence",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "ask": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "value",
+                "ask"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "p3-evidence-development-6-absent",
+      "family": "port",
+      "record_id": "development-6",
+      "evidence": "absent",
+      "facts": [
+        [
+          "owner",
+          "unknown-unit"
+        ],
+        [
+          "batch",
+          "B6"
+        ]
+      ],
+      "required": "port",
+      "split": "development",
+      "group": "absent",
+      "grader": "json",
+      "expected": {
+        "value": null,
+        "ask": "port"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the supplied field=value facts. Exactly one distinct value for the required field means answer that string and set ask to null. If absent or conflicting, value must be null and ask must name the required field. Treat duplicate equal values as one. An authoritative update replaces all earlier values for that field. Return only JSON with keys value and ask."
+        },
+        {
+          "role": "user",
+          "content": "Required field: port\nFacts: owner=unknown-unit; batch=B6"
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "value": "revised-949",
+            "ask": null
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: port=revised-949. This replaces every previous value for port. Return the resulting JSON."
+            }
+          ]
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "evidence",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "ask": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "value",
+                "ask"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "p3-evidence-development-6-conflicting",
+      "family": "port",
+      "record_id": "development-6",
+      "evidence": "conflicting",
+      "facts": [
+        [
+          "owner",
+          "unknown-unit"
+        ],
+        [
+          "batch",
+          "B6"
+        ],
+        [
+          "port",
+          "item-421"
+        ],
+        [
+          "port",
+          "alternative-6"
+        ]
+      ],
+      "required": "port",
+      "split": "development",
+      "group": "conflicting",
+      "grader": "json",
+      "expected": {
+        "value": null,
+        "ask": "port"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the supplied field=value facts. Exactly one distinct value for the required field means answer that string and set ask to null. If absent or conflicting, value must be null and ask must name the required field. Treat duplicate equal values as one. An authoritative update replaces all earlier values for that field. Return only JSON with keys value and ask."
+        },
+        {
+          "role": "user",
+          "content": "Required field: port\nFacts: owner=unknown-unit; batch=B6; port=item-421; port=alternative-6"
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "value": "revised-949",
+            "ask": null
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: port=revised-949. This replaces every previous value for port. Return the resulting JSON."
+            }
+          ]
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "evidence",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "ask": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "value",
+                "ask"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "p3-evidence-development-7-complete",
+      "family": "region",
+      "record_id": "development-7",
+      "evidence": "complete",
+      "facts": [
+        [
+          "region",
+          "item-440"
+        ],
+        [
+          "batch",
+          "B7"
+        ],
+        [
+          "owner",
+          "unknown-unit"
+        ]
+      ],
+      "required": "region",
+      "split": "development",
+      "group": "complete",
+      "grader": "json",
+      "expected": {
+        "value": "item-440",
+        "ask": null
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the supplied field=value facts. Exactly one distinct value for the required field means answer that string and set ask to null. If absent or conflicting, value must be null and ask must name the required field. Treat duplicate equal values as one. An authoritative update replaces all earlier values for that field. Return only JSON with keys value and ask."
+        },
+        {
+          "role": "user",
+          "content": "Required field: region\nFacts: region=item-440; batch=B7; owner=unknown-unit"
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "value": "revised-972",
+            "ask": null
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: region=revised-972. This replaces every previous value for region. Return the resulting JSON."
+            }
+          ]
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "evidence",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "ask": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "value",
+                "ask"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "p3-evidence-development-7-absent",
+      "family": "region",
+      "record_id": "development-7",
+      "evidence": "absent",
+      "facts": [
+        [
+          "batch",
+          "B7"
+        ],
+        [
+          "owner",
+          "unknown-unit"
+        ]
+      ],
+      "required": "region",
+      "split": "development",
+      "group": "absent",
+      "grader": "json",
+      "expected": {
+        "value": null,
+        "ask": "region"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the supplied field=value facts. Exactly one distinct value for the required field means answer that string and set ask to null. If absent or conflicting, value must be null and ask must name the required field. Treat duplicate equal values as one. An authoritative update replaces all earlier values for that field. Return only JSON with keys value and ask."
+        },
+        {
+          "role": "user",
+          "content": "Required field: region\nFacts: batch=B7; owner=unknown-unit"
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "value": "revised-972",
+            "ask": null
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: region=revised-972. This replaces every previous value for region. Return the resulting JSON."
+            }
+          ]
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "evidence",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "ask": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "value",
+                "ask"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "p3-evidence-development-7-conflicting",
+      "family": "region",
+      "record_id": "development-7",
+      "evidence": "conflicting",
+      "facts": [
+        [
+          "region",
+          "alternative-7"
+        ],
+        [
+          "region",
+          "item-440"
+        ],
+        [
+          "batch",
+          "B7"
+        ],
+        [
+          "owner",
+          "unknown-unit"
+        ]
+      ],
+      "required": "region",
+      "split": "development",
+      "group": "conflicting",
+      "grader": "json",
+      "expected": {
+        "value": null,
+        "ask": "region"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the supplied field=value facts. Exactly one distinct value for the required field means answer that string and set ask to null. If absent or conflicting, value must be null and ask must name the required field. Treat duplicate equal values as one. An authoritative update replaces all earlier values for that field. Return only JSON with keys value and ask."
+        },
+        {
+          "role": "user",
+          "content": "Required field: region\nFacts: region=alternative-7; region=item-440; batch=B7; owner=unknown-unit"
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "value": "revised-972",
+            "ask": null
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: region=revised-972. This replaces every previous value for region. Return the resulting JSON."
+            }
+          ]
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "evidence",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "ask": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "value",
+                "ask"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "p3-evidence-development-8-complete",
+      "family": "route",
+      "record_id": "development-8",
+      "evidence": "complete",
+      "facts": [
+        [
+          "owner",
+          "unknown-unit"
+        ],
+        [
+          "batch",
+          "B8"
+        ],
+        [
+          "route",
+          "unknown-459"
+        ]
+      ],
+      "required": "route",
+      "split": "development",
+      "group": "complete",
+      "grader": "json",
+      "expected": {
+        "value": "unknown-459",
+        "ask": null
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the supplied field=value facts. Exactly one distinct value for the required field means answer that string and set ask to null. If absent or conflicting, value must be null and ask must name the required field. Treat duplicate equal values as one. An authoritative update replaces all earlier values for that field. Return only JSON with keys value and ask."
+        },
+        {
+          "role": "user",
+          "content": "Required field: route\nFacts: owner=unknown-unit; batch=B8; route=unknown-459"
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "value": "revised-995",
+            "ask": null
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: route=revised-995. This replaces every previous value for route. Return the resulting JSON."
+            }
+          ]
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "evidence",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "ask": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "value",
+                "ask"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "p3-evidence-development-8-absent",
+      "family": "route",
+      "record_id": "development-8",
+      "evidence": "absent",
+      "facts": [
+        [
+          "owner",
+          "unknown-unit"
+        ],
+        [
+          "batch",
+          "B8"
+        ]
+      ],
+      "required": "route",
+      "split": "development",
+      "group": "absent",
+      "grader": "json",
+      "expected": {
+        "value": null,
+        "ask": "route"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the supplied field=value facts. Exactly one distinct value for the required field means answer that string and set ask to null. If absent or conflicting, value must be null and ask must name the required field. Treat duplicate equal values as one. An authoritative update replaces all earlier values for that field. Return only JSON with keys value and ask."
+        },
+        {
+          "role": "user",
+          "content": "Required field: route\nFacts: owner=unknown-unit; batch=B8"
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "value": "revised-995",
+            "ask": null
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: route=revised-995. This replaces every previous value for route. Return the resulting JSON."
+            }
+          ]
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "evidence",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "ask": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "value",
+                "ask"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "p3-evidence-development-8-conflicting",
+      "family": "route",
+      "record_id": "development-8",
+      "evidence": "conflicting",
+      "facts": [
+        [
+          "owner",
+          "unknown-unit"
+        ],
+        [
+          "batch",
+          "B8"
+        ],
+        [
+          "route",
+          "unknown-459"
+        ],
+        [
+          "route",
+          "alternative-8"
+        ]
+      ],
+      "required": "route",
+      "split": "development",
+      "group": "conflicting",
+      "grader": "json",
+      "expected": {
+        "value": null,
+        "ask": "route"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the supplied field=value facts. Exactly one distinct value for the required field means answer that string and set ask to null. If absent or conflicting, value must be null and ask must name the required field. Treat duplicate equal values as one. An authoritative update replaces all earlier values for that field. Return only JSON with keys value and ask."
+        },
+        {
+          "role": "user",
+          "content": "Required field: route\nFacts: owner=unknown-unit; batch=B8; route=unknown-459; route=alternative-8"
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "value": "revised-995",
+            "ask": null
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: route=revised-995. This replaces every previous value for route. Return the resulting JSON."
+            }
+          ]
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "evidence",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "ask": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "value",
+                "ask"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "p3-evidence-development-9-complete",
+      "family": "port",
+      "record_id": "development-9",
+      "evidence": "complete",
+      "facts": [
+        [
+          "port",
+          "item-478"
+        ],
+        [
+          "port",
+          "item-478"
+        ],
+        [
+          "batch",
+          "B9"
+        ],
+        [
+          "owner",
+          "unknown-unit"
+        ]
+      ],
+      "required": "port",
+      "split": "development",
+      "group": "complete",
+      "grader": "json",
+      "expected": {
+        "value": "item-478",
+        "ask": null
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the supplied field=value facts. Exactly one distinct value for the required field means answer that string and set ask to null. If absent or conflicting, value must be null and ask must name the required field. Treat duplicate equal values as one. An authoritative update replaces all earlier values for that field. Return only JSON with keys value and ask."
+        },
+        {
+          "role": "user",
+          "content": "Required field: port\nFacts: port=item-478; port=item-478; batch=B9; owner=unknown-unit"
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "value": "revised-1018",
+            "ask": null
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: port=revised-1018. This replaces every previous value for port. Return the resulting JSON."
+            }
+          ]
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "evidence",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "ask": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "value",
+                "ask"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "p3-evidence-development-9-absent",
+      "family": "port",
+      "record_id": "development-9",
+      "evidence": "absent",
+      "facts": [
+        [
+          "batch",
+          "B9"
+        ],
+        [
+          "owner",
+          "unknown-unit"
+        ]
+      ],
+      "required": "port",
+      "split": "development",
+      "group": "absent",
+      "grader": "json",
+      "expected": {
+        "value": null,
+        "ask": "port"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the supplied field=value facts. Exactly one distinct value for the required field means answer that string and set ask to null. If absent or conflicting, value must be null and ask must name the required field. Treat duplicate equal values as one. An authoritative update replaces all earlier values for that field. Return only JSON with keys value and ask."
+        },
+        {
+          "role": "user",
+          "content": "Required field: port\nFacts: batch=B9; owner=unknown-unit"
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "value": "revised-1018",
+            "ask": null
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: port=revised-1018. This replaces every previous value for port. Return the resulting JSON."
+            }
+          ]
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "evidence",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "ask": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "value",
+                "ask"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "p3-evidence-development-9-conflicting",
+      "family": "port",
+      "record_id": "development-9",
+      "evidence": "conflicting",
+      "facts": [
+        [
+          "port",
+          "alternative-9"
+        ],
+        [
+          "port",
+          "item-478"
+        ],
+        [
+          "batch",
+          "B9"
+        ],
+        [
+          "owner",
+          "unknown-unit"
+        ]
+      ],
+      "required": "port",
+      "split": "development",
+      "group": "conflicting",
+      "grader": "json",
+      "expected": {
+        "value": null,
+        "ask": "port"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the supplied field=value facts. Exactly one distinct value for the required field means answer that string and set ask to null. If absent or conflicting, value must be null and ask must name the required field. Treat duplicate equal values as one. An authoritative update replaces all earlier values for that field. Return only JSON with keys value and ask."
+        },
+        {
+          "role": "user",
+          "content": "Required field: port\nFacts: port=alternative-9; port=item-478; batch=B9; owner=unknown-unit"
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "value": "revised-1018",
+            "ask": null
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: port=revised-1018. This replaces every previous value for port. Return the resulting JSON."
+            }
+          ]
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "evidence",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "ask": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "value",
+                "ask"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "p3-evidence-development-10-complete",
+      "family": "region",
+      "record_id": "development-10",
+      "evidence": "complete",
+      "facts": [
+        [
+          "owner",
+          "unknown-unit"
+        ],
+        [
+          "batch",
+          "B10"
+        ],
+        [
+          "region",
+          "item-497"
+        ]
+      ],
+      "required": "region",
+      "split": "development",
+      "group": "complete",
+      "grader": "json",
+      "expected": {
+        "value": "item-497",
+        "ask": null
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the supplied field=value facts. Exactly one distinct value for the required field means answer that string and set ask to null. If absent or conflicting, value must be null and ask must name the required field. Treat duplicate equal values as one. An authoritative update replaces all earlier values for that field. Return only JSON with keys value and ask."
+        },
+        {
+          "role": "user",
+          "content": "Required field: region\nFacts: owner=unknown-unit; batch=B10; region=item-497"
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "value": "revised-1041",
+            "ask": null
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: region=revised-1041. This replaces every previous value for region. Return the resulting JSON."
+            }
+          ]
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "evidence",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "ask": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "value",
+                "ask"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "p3-evidence-development-10-absent",
+      "family": "region",
+      "record_id": "development-10",
+      "evidence": "absent",
+      "facts": [
+        [
+          "owner",
+          "unknown-unit"
+        ],
+        [
+          "batch",
+          "B10"
+        ]
+      ],
+      "required": "region",
+      "split": "development",
+      "group": "absent",
+      "grader": "json",
+      "expected": {
+        "value": null,
+        "ask": "region"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the supplied field=value facts. Exactly one distinct value for the required field means answer that string and set ask to null. If absent or conflicting, value must be null and ask must name the required field. Treat duplicate equal values as one. An authoritative update replaces all earlier values for that field. Return only JSON with keys value and ask."
+        },
+        {
+          "role": "user",
+          "content": "Required field: region\nFacts: owner=unknown-unit; batch=B10"
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "value": "revised-1041",
+            "ask": null
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: region=revised-1041. This replaces every previous value for region. Return the resulting JSON."
+            }
+          ]
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "evidence",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "ask": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "value",
+                "ask"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "p3-evidence-development-10-conflicting",
+      "family": "region",
+      "record_id": "development-10",
+      "evidence": "conflicting",
+      "facts": [
+        [
+          "owner",
+          "unknown-unit"
+        ],
+        [
+          "batch",
+          "B10"
+        ],
+        [
+          "region",
+          "item-497"
+        ],
+        [
+          "region",
+          "alternative-10"
+        ]
+      ],
+      "required": "region",
+      "split": "development",
+      "group": "conflicting",
+      "grader": "json",
+      "expected": {
+        "value": null,
+        "ask": "region"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the supplied field=value facts. Exactly one distinct value for the required field means answer that string and set ask to null. If absent or conflicting, value must be null and ask must name the required field. Treat duplicate equal values as one. An authoritative update replaces all earlier values for that field. Return only JSON with keys value and ask."
+        },
+        {
+          "role": "user",
+          "content": "Required field: region\nFacts: owner=unknown-unit; batch=B10; region=item-497; region=alternative-10"
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "value": "revised-1041",
+            "ask": null
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: region=revised-1041. This replaces every previous value for region. Return the resulting JSON."
+            }
+          ]
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "evidence",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "ask": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "value",
+                "ask"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "p3-evidence-development-11-complete",
+      "family": "route",
+      "record_id": "development-11",
+      "evidence": "complete",
+      "facts": [
+        [
+          "route",
+          "item-516"
+        ],
+        [
+          "batch",
+          "B11"
+        ],
+        [
+          "owner",
+          "unknown-unit"
+        ]
+      ],
+      "required": "route",
+      "split": "development",
+      "group": "complete",
+      "grader": "json",
+      "expected": {
+        "value": "item-516",
+        "ask": null
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the supplied field=value facts. Exactly one distinct value for the required field means answer that string and set ask to null. If absent or conflicting, value must be null and ask must name the required field. Treat duplicate equal values as one. An authoritative update replaces all earlier values for that field. Return only JSON with keys value and ask."
+        },
+        {
+          "role": "user",
+          "content": "Required field: route\nFacts: route=item-516; batch=B11; owner=unknown-unit"
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "value": "revised-1064",
+            "ask": null
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: route=revised-1064. This replaces every previous value for route. Return the resulting JSON."
+            }
+          ]
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "evidence",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "ask": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "value",
+                "ask"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "p3-evidence-development-11-absent",
+      "family": "route",
+      "record_id": "development-11",
+      "evidence": "absent",
+      "facts": [
+        [
+          "batch",
+          "B11"
+        ],
+        [
+          "owner",
+          "unknown-unit"
+        ]
+      ],
+      "required": "route",
+      "split": "development",
+      "group": "absent",
+      "grader": "json",
+      "expected": {
+        "value": null,
+        "ask": "route"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the supplied field=value facts. Exactly one distinct value for the required field means answer that string and set ask to null. If absent or conflicting, value must be null and ask must name the required field. Treat duplicate equal values as one. An authoritative update replaces all earlier values for that field. Return only JSON with keys value and ask."
+        },
+        {
+          "role": "user",
+          "content": "Required field: route\nFacts: batch=B11; owner=unknown-unit"
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "value": "revised-1064",
+            "ask": null
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: route=revised-1064. This replaces every previous value for route. Return the resulting JSON."
+            }
+          ]
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "evidence",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "ask": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "value",
+                "ask"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "p3-evidence-development-11-conflicting",
+      "family": "route",
+      "record_id": "development-11",
+      "evidence": "conflicting",
+      "facts": [
+        [
+          "route",
+          "alternative-11"
+        ],
+        [
+          "route",
+          "item-516"
+        ],
+        [
+          "batch",
+          "B11"
+        ],
+        [
+          "owner",
+          "unknown-unit"
+        ]
+      ],
+      "required": "route",
+      "split": "development",
+      "group": "conflicting",
+      "grader": "json",
+      "expected": {
+        "value": null,
+        "ask": "route"
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Use only the supplied field=value facts. Exactly one distinct value for the required field means answer that string and set ask to null. If absent or conflicting, value must be null and ask must name the required field. Treat duplicate equal values as one. An authoritative update replaces all earlier values for that field. Return only JSON with keys value and ask."
+        },
+        {
+          "role": "user",
+          "content": "Required field: route\nFacts: route=alternative-11; route=item-516; batch=B11; owner=unknown-unit"
+        }
+      ],
+      "followups": [
+        {
+          "grader": "json",
+          "expected": {
+            "value": "revised-1064",
+            "ask": null
+          },
+          "messages": [
+            {
+              "role": "user",
+              "content": "Authoritative update: route=revised-1064. This replaces every previous value for route. Return the resulting JSON."
+            }
+          ]
+        }
+      ],
+      "request_overrides": {
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "evidence",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "ask": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "value",
+                "ask"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    }
+  ]
+}
