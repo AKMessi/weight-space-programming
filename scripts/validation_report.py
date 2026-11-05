@@ -83,7 +83,7 @@ def main():
     write_json('research/validation-v1-analysis.json',report)
     lines=['# Frozen validation v1 results','',report['scope'],'',
            'Protocol, fixtures, and candidate artifacts were committed before validation inference. No new dose/site was chosen on this panel. Counts aggregate decoding seeds; uncertainty groups seeds by prompt.', '',
-           '| Model/arm | Group | Exact contract | Payload proxy | Cutoffs |',
+           '| Model/arm | Group | Recorded exact/reference metric | Payload proxy | Cutoffs |',
            '|---|---|---:|---:|---:|']
     for model,result in report['models'].items():
         for group,g in result['groups'].items():
@@ -96,6 +96,7 @@ def main():
         '- Twelve prompts per category and a few authored forms are insufficient for broad generalization or a tight no-regression claim.',
         '- A degenerate bootstrap interval does not eliminate uncertainty outside these fixtures; see the exact event bounds and assumptions in the JSON analysis.',
         '- Dictionary code payload is a static return-expression proxy, not an execution benchmark or proof of the fine-tune\'s coding advantage.',
+        '- Frozen grader v2 used an overly literal code reference-line comparison. Later grader v3 accepts equivalent quotes/spacing and improves expression-presence detection. Keep this recorded analysis unchanged; report v3 corrections as separate post-hoc sensitivity results. Literal-copy primary results are unaffected.',
         '- V-only already regressed the discovery explanation proxy. Even if copying improves here, it is not an accepted overall repair.',
         '- All-QKV is a broad rollback that may erase specialization. Qwen and LFM3 are reference deployments with different sizes/sampling/precision, not controlled architecture comparisons.',
         '- Do not reuse this panel to select a new patch and then call it held-out.',

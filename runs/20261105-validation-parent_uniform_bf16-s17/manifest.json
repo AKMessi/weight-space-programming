@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "started_utc": "2026-11-05T10:58:50.576567+00:00",
+  "purpose": "exploratory discovery",
+  "git": {
+    "commit": "d68074fa76323bf4e389780b36a01d589c8c3a3a",
+    "status": "M research/budget.jsonl\n?? runs/20261105-validation-fable_all_qkv_parent-s17/\n?? runs/20261105-validation-fable_all_qkv_parent-s29/\n?? runs/20261105-validation-fable_f16-s17/\n?? runs/20261105-validation-fable_f16-s29/\n?? runs/20261105-validation-fable_v_only-s17/\n?? runs/20261105-validation-fable_v_only-s29/"
+  },
+  "python": "3.14.4",
+  "model_key": "parent_uniform_bf16",
+  "model": {
+    "path": "artifacts/parent-uniform-bf16-f16.gguf",
+    "repo": "LiquidAI/LFM2.5-230M-GGUF",
+    "revision": "03502067c64ce32ac4fe87b0cec0310a1a13d3e9",
+    "file": "LFM2.5-230M-F16.gguf",
+    "sha256": "256feee13466c9a5101f2b553e58f61f284e552a4b6e8847754d9e3096f7ceed",
+    "sampling": {
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "min_p": 0.0,
+      "repeat_penalty": 1.05,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0
+    },
+    "local_patch_manifest": "research/patches/parent-uniform-bf16-f16.json",
+    "local_patch_manifest_sha256": "1074e5d560c48e478e54bc236dc21d896286e21278fe941cfefdcc047980c108"
+  },
+  "verified_model_sha256": "256feee13466c9a5101f2b553e58f61f284e552a4b6e8847754d9e3096f7ceed",
+  "suite_sha256": "60be2266c25e16d65e81e28bc2610405dce9b8fd82d02505311fa5fd716e92bf",
+  "max_tokens": 128,
+  "seed": 17,
+  "limit": null,
+  "grader_version": "2",
+  "runtime": {
+    "binary": "/home/akmessi/llama-vulkan-build/bin/llama-server",
+    "context": 2048,
+    "threads": 4,
+    "gpu_layers": 99
+  },
+  "binary_sha256": "fdd736cf5fa5da5488982c63229b8596ab641ca2fc695e78743cfab5250ea32b",
+  "runtime_version": "version: 0.7.0-dev (build 11942, commit 338fce651)\nbuilt with GNU 15.2.0 for Linux x86_64\n"
+}

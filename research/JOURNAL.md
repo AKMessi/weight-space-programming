@@ -159,3 +159,15 @@ Record observations, hypotheses, decisions, failed attempts, confounds, and foll
 **Runs 018–020:** Q-only and K-only restorations did not recover exact copy on this screen. V-only recovered 4/4 literal-copy contracts and 6/8 JSON payloads, compared with Fable's 0/4 and 1/8. However, its explanation proxy fell from 4/4 to 0/4, so this is a selective behavior change with a regression, not an accepted repair. K-only also lost the simple code expression proxy. These are not clean independent semantic knobs.
 
 **Decision before new evaluation:** freeze a fresh 48-fixture panel and evaluate original Fable, V-only, broad all-QKV, and a uniformly BF16-aligned parent at two seeds. Add Qwen/LFM3 original references at one seed. The purpose is to test the narrow copy-recovery lead and quantify regressions, without further choosing sites/doses. The protocol is `research/protocols/validation-v1.md`; max 480 requests / 61,440 generated tokens. Keep this data out of further patch selection.
+
+## 2026-11-05 — Fresh validation rejects broad copy-repair interpretation
+
+**Completed:** all 10 predeclared validation runs, 480 requests. The frozen analysis is in `research/validation-v1-analysis.json` and `research/VALIDATION_REPORT.md`.
+
+**Primary result:** original Fable and V-only both passed 0/24 literal-copy requests on the new payload forms (12 prompts × 2 seeds). The discovery 4/4 copy recovery therefore did not generalize to this fresh panel. Broad all-QKV rollback and the aligned parent also failed the exact literal-copy contract here. Qwen passed 12/12 reference copies; LFM3 QAD passed 7/12. This does not support shipping the candidate as a general repair.
+
+**Other recorded outcomes:** Fable and V-only both included correct JSON objects on all 24 new JSON-field requests but failed the plain-response contract. Broad QKV rollback/aligned parent restored many dictionary-return expression payloads compared with Fable. These are narrow, synthetic, task-dependent outcomes, not a benchmark of coding specialization.
+
+**Secondary grading issue found by manual audit:** the code-line strict scorer treated equivalent single/double quotes and Python whitespace as different reference strings. Some correct return expressions around thinking markers also escaped the limited payload proxy. Grader v3 uses AST equality for a single return statement and broader static expression-presence detection. It still rejects functions/prose/duplicate outputs as strict next-line responses. Preserve all original v2 validation records and the frozen analysis; publish separate explicitly post-hoc sensitivity regrades. The primary literal-copy metric does not change.
+
+**Decision:** do not tune more doses/sites on this validation panel. Next research should use better task-competence controls, stronger wrapper diversity in development, and a new independent confirmation set. No accepted skill-preserving weight repair has been established.

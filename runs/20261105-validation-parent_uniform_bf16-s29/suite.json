@@ -1,0 +1,919 @@
+{
+  "name": "validation-v1-frozen",
+  "seed": 20261105517,
+  "status": "Frozen after discovery, before validation inference. Not for choosing sites/doses. Synthetic fixtures, not an external benchmark.",
+  "cases": [
+    {
+      "id": "validation-v1-new_json_fields-04",
+      "split": "validation_frozen",
+      "family": "new_json_fields",
+      "group": "new_json_fields",
+      "grader": "json",
+      "expected": {
+        "owner": "Felix",
+        "active": false,
+        "count": 14
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Data card:\nOwner: Felix\nActive: false\nCount: 14\nReturn only JSON with owner (string), active (boolean), count (integer). Use those exact keys, no markdown."
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-dictionary_code-02",
+      "split": "validation_frozen",
+      "family": "dictionary_code",
+      "group": "dictionary_code",
+      "grader": "code_line",
+      "expected": "return record[\"label\"]",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Write only the missing return statement for this function; no fences or function declaration.\ndef read_label(record):\n    \"\"\"Return the value stored under the key 'label'.\"\"\"\n    # missing return statement"
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-new_json_fields-01",
+      "split": "validation_frozen",
+      "family": "new_json_fields",
+      "group": "new_json_fields",
+      "grader": "json",
+      "expected": {
+        "owner": "Felix",
+        "active": true,
+        "count": 9
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Data card:\nOwner: Felix\nActive: true\nCount: 9\nReturn only JSON with owner (string), active (boolean), count (integer). Use those exact keys, no markdown."
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-evidence_decision-01",
+      "split": "validation_frozen",
+      "family": "evidence_decision",
+      "group": "evidence_decision",
+      "grader": "evidence_action",
+      "expected": "ASK: tag",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Return one line using these reply forms: ANSWER: <value>, ASK: <field>, CONFLICT: <field>. Use ANSWER when exactly one distinct value for the requested field is supplied, ASK when none is supplied, and CONFLICT when multiple distinct values are supplied. Do not add anything else.\nSource record:\nowner: Felix\nreference: obj_9435\ncount: 9\nRequested field: tag."
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-literal_copy-08",
+      "split": "validation_frozen",
+      "family": "literal_copy",
+      "group": "literal_copy",
+      "grader": "copy",
+      "expected": "/src/obj_3527.py | Leila",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Reproduce the following payload exactly once, with no introduction or tool call.\nPAYLOAD START\n/src/obj_3527.py | Leila\nPAYLOAD END"
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-new_json_fields-00",
+      "split": "validation_frozen",
+      "family": "new_json_fields",
+      "group": "new_json_fields",
+      "grader": "json",
+      "expected": {
+        "owner": "Asha",
+        "active": false,
+        "count": 4
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Data card:\nOwner: Asha\nActive: false\nCount: 4\nReturn only JSON with owner (string), active (boolean), count (integer). Use those exact keys, no markdown."
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-evidence_decision-02",
+      "split": "validation_frozen",
+      "family": "evidence_decision",
+      "group": "evidence_decision",
+      "grader": "evidence_action",
+      "expected": "CONFLICT: tag",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Return one line using these reply forms: ANSWER: <value>, ASK: <field>, CONFLICT: <field>. Use ANSWER when exactly one distinct value for the requested field is supplied, ASK when none is supplied, and CONFLICT when multiple distinct values are supplied. Do not add anything else.\nSource record:\nowner: Omar\ntag: obj_2710\ntag: other_0000\ncount: 37\nRequested field: tag."
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-literal_copy-02",
+      "split": "validation_frozen",
+      "family": "literal_copy",
+      "group": "literal_copy",
+      "grader": "copy",
+      "expected": "/src/obj_2710.py | Omar",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Reproduce the following payload exactly once, with no introduction or tool call.\nPAYLOAD START\n/src/obj_2710.py | Omar\nPAYLOAD END"
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-literal_copy-04",
+      "split": "validation_frozen",
+      "family": "literal_copy",
+      "group": "literal_copy",
+      "grader": "copy",
+      "expected": "[Felix]::obj_1933#v2",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Reproduce the following payload exactly once, with no introduction or tool call.\nPAYLOAD START\n[Felix]::obj_1933#v2\nPAYLOAD END"
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-evidence_decision-08",
+      "split": "validation_frozen",
+      "family": "evidence_decision",
+      "group": "evidence_decision",
+      "grader": "evidence_action",
+      "expected": "CONFLICT: tag",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Return one line using these reply forms: ANSWER: <value>, ASK: <field>, CONFLICT: <field>. Use ANSWER when exactly one distinct value for the requested field is supplied, ASK when none is supplied, and CONFLICT when multiple distinct values are supplied. Do not add anything else.\nSource record:\nowner: Leila\ntag: obj_3527\ntag: other_0000\ncount: 22\nRequested field: tag."
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-evidence_decision-11",
+      "split": "validation_frozen",
+      "family": "evidence_decision",
+      "group": "evidence_decision",
+      "grader": "evidence_action",
+      "expected": "CONFLICT: tag",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Return one line using these reply forms: ANSWER: <value>, ASK: <field>, CONFLICT: <field>. Use ANSWER when exactly one distinct value for the requested field is supplied, ASK when none is supplied, and CONFLICT when multiple distinct values are supplied. Do not add anything else.\nSource record:\nowner: Felix\ntag: obj_1669\ntag: other_0000\ncount: 20\nRequested field: tag."
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-dictionary_code-08",
+      "split": "validation_frozen",
+      "family": "dictionary_code",
+      "group": "dictionary_code",
+      "grader": "code_line",
+      "expected": "return record[\"label\"]",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Write only the missing return statement for this function; no fences or function declaration.\ndef read_label(record):\n    \"\"\"Return the value stored under the key 'label'.\"\"\"\n    # missing return statement"
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-dictionary_code-09",
+      "split": "validation_frozen",
+      "family": "dictionary_code",
+      "group": "dictionary_code",
+      "grader": "code_line",
+      "expected": "return record[\"score\"]",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Write only the missing return statement for this function; no fences or function declaration.\ndef read_score(record):\n    \"\"\"Return the value stored under the key 'score'.\"\"\"\n    # missing return statement"
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-literal_copy-11",
+      "split": "validation_frozen",
+      "family": "literal_copy",
+      "group": "literal_copy",
+      "grader": "copy",
+      "expected": "/src/obj_1669.py | Felix",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Reproduce the following payload exactly once, with no introduction or tool call.\nPAYLOAD START\n/src/obj_1669.py | Felix\nPAYLOAD END"
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-dictionary_code-03",
+      "split": "validation_frozen",
+      "family": "dictionary_code",
+      "group": "dictionary_code",
+      "grader": "code_line",
+      "expected": "return record[\"score\"]",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Write only the missing return statement for this function; no fences or function declaration.\ndef read_score(record):\n    \"\"\"Return the value stored under the key 'score'.\"\"\"\n    # missing return statement"
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-dictionary_code-04",
+      "split": "validation_frozen",
+      "family": "dictionary_code",
+      "group": "dictionary_code",
+      "grader": "code_line",
+      "expected": "return record[\"label\"]",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Write only the missing return statement for this function; no fences or function declaration.\ndef read_label(record):\n    \"\"\"Return the value stored under the key 'label'.\"\"\"\n    # missing return statement"
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-new_json_fields-05",
+      "split": "validation_frozen",
+      "family": "new_json_fields",
+      "group": "new_json_fields",
+      "grader": "json",
+      "expected": {
+        "owner": "Asha",
+        "active": true,
+        "count": 29
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Data card:\nOwner: Asha\nActive: true\nCount: 29\nReturn only JSON with owner (string), active (boolean), count (integer). Use those exact keys, no markdown."
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-evidence_decision-00",
+      "split": "validation_frozen",
+      "family": "evidence_decision",
+      "group": "evidence_decision",
+      "grader": "evidence_action",
+      "expected": "ANSWER: obj_7450",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Return one line using these reply forms: ANSWER: <value>, ASK: <field>, CONFLICT: <field>. Use ANSWER when exactly one distinct value for the requested field is supplied, ASK when none is supplied, and CONFLICT when multiple distinct values are supplied. Do not add anything else.\nSource record:\nowner: Asha\ntag: obj_7450\ncount: 4\nRequested field: tag."
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-new_json_fields-06",
+      "split": "validation_frozen",
+      "family": "new_json_fields",
+      "group": "new_json_fields",
+      "grader": "json",
+      "expected": {
+        "owner": "Leila",
+        "active": false,
+        "count": 24
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Data card:\nOwner: Leila\nActive: false\nCount: 24\nReturn only JSON with owner (string), active (boolean), count (integer). Use those exact keys, no markdown."
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-new_json_fields-02",
+      "split": "validation_frozen",
+      "family": "new_json_fields",
+      "group": "new_json_fields",
+      "grader": "json",
+      "expected": {
+        "owner": "Omar",
+        "active": false,
+        "count": 37
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Data card:\nOwner: Omar\nActive: false\nCount: 37\nReturn only JSON with owner (string), active (boolean), count (integer). Use those exact keys, no markdown."
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-dictionary_code-05",
+      "split": "validation_frozen",
+      "family": "dictionary_code",
+      "group": "dictionary_code",
+      "grader": "code_line",
+      "expected": "return record[\"amount\"]",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Write only the missing return statement for this function; no fences or function declaration.\ndef read_amount(record):\n    \"\"\"Return the value stored under the key 'amount'.\"\"\"\n    # missing return statement"
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-new_json_fields-03",
+      "split": "validation_frozen",
+      "family": "new_json_fields",
+      "group": "new_json_fields",
+      "grader": "json",
+      "expected": {
+        "owner": "Omar",
+        "active": true,
+        "count": 14
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Data card:\nOwner: Omar\nActive: true\nCount: 14\nReturn only JSON with owner (string), active (boolean), count (integer). Use those exact keys, no markdown."
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-dictionary_code-07",
+      "split": "validation_frozen",
+      "family": "dictionary_code",
+      "group": "dictionary_code",
+      "grader": "code_line",
+      "expected": "return record[\"label\"]",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Write only the missing return statement for this function; no fences or function declaration.\ndef read_label(record):\n    \"\"\"Return the value stored under the key 'label'.\"\"\"\n    # missing return statement"
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-new_json_fields-09",
+      "split": "validation_frozen",
+      "family": "new_json_fields",
+      "group": "new_json_fields",
+      "grader": "json",
+      "expected": {
+        "owner": "Asha",
+        "active": true,
+        "count": 16
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Data card:\nOwner: Asha\nActive: true\nCount: 16\nReturn only JSON with owner (string), active (boolean), count (integer). Use those exact keys, no markdown."
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-new_json_fields-10",
+      "split": "validation_frozen",
+      "family": "new_json_fields",
+      "group": "new_json_fields",
+      "grader": "json",
+      "expected": {
+        "owner": "Leila",
+        "active": false,
+        "count": 9
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Data card:\nOwner: Leila\nActive: false\nCount: 9\nReturn only JSON with owner (string), active (boolean), count (integer). Use those exact keys, no markdown."
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-evidence_decision-05",
+      "split": "validation_frozen",
+      "family": "evidence_decision",
+      "group": "evidence_decision",
+      "grader": "evidence_action",
+      "expected": "CONFLICT: tag",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Return one line using these reply forms: ANSWER: <value>, ASK: <field>, CONFLICT: <field>. Use ANSWER when exactly one distinct value for the requested field is supplied, ASK when none is supplied, and CONFLICT when multiple distinct values are supplied. Do not add anything else.\nSource record:\nowner: Asha\ntag: obj_3693\ntag: other_0000\ncount: 29\nRequested field: tag."
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-literal_copy-09",
+      "split": "validation_frozen",
+      "family": "literal_copy",
+      "group": "literal_copy",
+      "grader": "copy",
+      "expected": "/src/obj_4803.py | Asha",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Reproduce the following payload exactly once, with no introduction or tool call.\nPAYLOAD START\n/src/obj_4803.py | Asha\nPAYLOAD END"
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-dictionary_code-10",
+      "split": "validation_frozen",
+      "family": "dictionary_code",
+      "group": "dictionary_code",
+      "grader": "code_line",
+      "expected": "return record[\"label\"]",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Write only the missing return statement for this function; no fences or function declaration.\ndef read_label(record):\n    \"\"\"Return the value stored under the key 'label'.\"\"\"\n    # missing return statement"
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-evidence_decision-07",
+      "split": "validation_frozen",
+      "family": "evidence_decision",
+      "group": "evidence_decision",
+      "grader": "evidence_action",
+      "expected": "ASK: tag",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Return one line using these reply forms: ANSWER: <value>, ASK: <field>, CONFLICT: <field>. Use ANSWER when exactly one distinct value for the requested field is supplied, ASK when none is supplied, and CONFLICT when multiple distinct values are supplied. Do not add anything else.\nSource record:\nowner: Omar\nreference: obj_3905\ncount: 28\nRequested field: tag."
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-dictionary_code-06",
+      "split": "validation_frozen",
+      "family": "dictionary_code",
+      "group": "dictionary_code",
+      "grader": "code_line",
+      "expected": "return record[\"score\"]",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Write only the missing return statement for this function; no fences or function declaration.\ndef read_score(record):\n    \"\"\"Return the value stored under the key 'score'.\"\"\"\n    # missing return statement"
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-evidence_decision-03",
+      "split": "validation_frozen",
+      "family": "evidence_decision",
+      "group": "evidence_decision",
+      "grader": "evidence_action",
+      "expected": "ANSWER: obj_1819",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Return one line using these reply forms: ANSWER: <value>, ASK: <field>, CONFLICT: <field>. Use ANSWER when exactly one distinct value for the requested field is supplied, ASK when none is supplied, and CONFLICT when multiple distinct values are supplied. Do not add anything else.\nSource record:\nowner: Omar\ntag: obj_1819\ncount: 14\nRequested field: tag."
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-literal_copy-06",
+      "split": "validation_frozen",
+      "family": "literal_copy",
+      "group": "literal_copy",
+      "grader": "copy",
+      "expected": "[Leila]::obj_6925#v2",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Reproduce the following payload exactly once, with no introduction or tool call.\nPAYLOAD START\n[Leila]::obj_6925#v2\nPAYLOAD END"
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-evidence_decision-06",
+      "split": "validation_frozen",
+      "family": "evidence_decision",
+      "group": "evidence_decision",
+      "grader": "evidence_action",
+      "expected": "ANSWER: obj_6925",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Return one line using these reply forms: ANSWER: <value>, ASK: <field>, CONFLICT: <field>. Use ANSWER when exactly one distinct value for the requested field is supplied, ASK when none is supplied, and CONFLICT when multiple distinct values are supplied. Do not add anything else.\nSource record:\nowner: Leila\ntag: obj_6925\ncount: 24\nRequested field: tag."
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-dictionary_code-11",
+      "split": "validation_frozen",
+      "family": "dictionary_code",
+      "group": "dictionary_code",
+      "grader": "code_line",
+      "expected": "return record[\"state\"]",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Write only the missing return statement for this function; no fences or function declaration.\ndef read_state(record):\n    \"\"\"Return the value stored under the key 'state'.\"\"\"\n    # missing return statement"
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-new_json_fields-07",
+      "split": "validation_frozen",
+      "family": "new_json_fields",
+      "group": "new_json_fields",
+      "grader": "json",
+      "expected": {
+        "owner": "Omar",
+        "active": true,
+        "count": 28
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Data card:\nOwner: Omar\nActive: true\nCount: 28\nReturn only JSON with owner (string), active (boolean), count (integer). Use those exact keys, no markdown."
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-literal_copy-05",
+      "split": "validation_frozen",
+      "family": "literal_copy",
+      "group": "literal_copy",
+      "grader": "copy",
+      "expected": "pkg::obj_3693::obj_3693",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Reproduce the following payload exactly once, with no introduction or tool call.\nPAYLOAD START\npkg::obj_3693::obj_3693\nPAYLOAD END"
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-evidence_decision-04",
+      "split": "validation_frozen",
+      "family": "evidence_decision",
+      "group": "evidence_decision",
+      "grader": "evidence_action",
+      "expected": "ASK: tag",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Return one line using these reply forms: ANSWER: <value>, ASK: <field>, CONFLICT: <field>. Use ANSWER when exactly one distinct value for the requested field is supplied, ASK when none is supplied, and CONFLICT when multiple distinct values are supplied. Do not add anything else.\nSource record:\nowner: Felix\nreference: obj_1933\ncount: 14\nRequested field: tag."
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-literal_copy-07",
+      "split": "validation_frozen",
+      "family": "literal_copy",
+      "group": "literal_copy",
+      "grader": "copy",
+      "expected": "[Omar]::obj_3905#v2",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Reproduce the following payload exactly once, with no introduction or tool call.\nPAYLOAD START\n[Omar]::obj_3905#v2\nPAYLOAD END"
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-evidence_decision-10",
+      "split": "validation_frozen",
+      "family": "evidence_decision",
+      "group": "evidence_decision",
+      "grader": "evidence_action",
+      "expected": "ASK: tag",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Return one line using these reply forms: ANSWER: <value>, ASK: <field>, CONFLICT: <field>. Use ANSWER when exactly one distinct value for the requested field is supplied, ASK when none is supplied, and CONFLICT when multiple distinct values are supplied. Do not add anything else.\nSource record:\nowner: Leila\nreference: obj_2888\ncount: 9\nRequested field: tag."
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-literal_copy-10",
+      "split": "validation_frozen",
+      "family": "literal_copy",
+      "group": "literal_copy",
+      "grader": "copy",
+      "expected": "/src/obj_2888.py | Leila",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Reproduce the following payload exactly once, with no introduction or tool call.\nPAYLOAD START\n/src/obj_2888.py | Leila\nPAYLOAD END"
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-literal_copy-00",
+      "split": "validation_frozen",
+      "family": "literal_copy",
+      "group": "literal_copy",
+      "grader": "copy",
+      "expected": "pkg::obj_7450::obj_7450",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Reproduce the following payload exactly once, with no introduction or tool call.\nPAYLOAD START\npkg::obj_7450::obj_7450\nPAYLOAD END"
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-literal_copy-03",
+      "split": "validation_frozen",
+      "family": "literal_copy",
+      "group": "literal_copy",
+      "grader": "copy",
+      "expected": "[Omar]::obj_1819#v2",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Reproduce the following payload exactly once, with no introduction or tool call.\nPAYLOAD START\n[Omar]::obj_1819#v2\nPAYLOAD END"
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-new_json_fields-08",
+      "split": "validation_frozen",
+      "family": "new_json_fields",
+      "group": "new_json_fields",
+      "grader": "json",
+      "expected": {
+        "owner": "Leila",
+        "active": false,
+        "count": 22
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Data card:\nOwner: Leila\nActive: false\nCount: 22\nReturn only JSON with owner (string), active (boolean), count (integer). Use those exact keys, no markdown."
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-dictionary_code-00",
+      "split": "validation_frozen",
+      "family": "dictionary_code",
+      "group": "dictionary_code",
+      "grader": "code_line",
+      "expected": "return record[\"state\"]",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Write only the missing return statement for this function; no fences or function declaration.\ndef read_state(record):\n    \"\"\"Return the value stored under the key 'state'.\"\"\"\n    # missing return statement"
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-literal_copy-01",
+      "split": "validation_frozen",
+      "family": "literal_copy",
+      "group": "literal_copy",
+      "grader": "copy",
+      "expected": "pkg::obj_9435::obj_9435",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Reproduce the following payload exactly once, with no introduction or tool call.\nPAYLOAD START\npkg::obj_9435::obj_9435\nPAYLOAD END"
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-dictionary_code-01",
+      "split": "validation_frozen",
+      "family": "dictionary_code",
+      "group": "dictionary_code",
+      "grader": "code_line",
+      "expected": "return record[\"label\"]",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Write only the missing return statement for this function; no fences or function declaration.\ndef read_label(record):\n    \"\"\"Return the value stored under the key 'label'.\"\"\"\n    # missing return statement"
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-evidence_decision-09",
+      "split": "validation_frozen",
+      "family": "evidence_decision",
+      "group": "evidence_decision",
+      "grader": "evidence_action",
+      "expected": "ANSWER: obj_4803",
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Return one line using these reply forms: ANSWER: <value>, ASK: <field>, CONFLICT: <field>. Use ANSWER when exactly one distinct value for the requested field is supplied, ASK when none is supplied, and CONFLICT when multiple distinct values are supplied. Do not add anything else.\nSource record:\nowner: Asha\ntag: obj_4803\ncount: 16\nRequested field: tag."
+        }
+      ]
+    },
+    {
+      "id": "validation-v1-new_json_fields-11",
+      "split": "validation_frozen",
+      "family": "new_json_fields",
+      "group": "new_json_fields",
+      "grader": "json",
+      "expected": {
+        "owner": "Felix",
+        "active": true,
+        "count": 20
+      },
+      "messages": [
+        {
+          "role": "system",
+          "content": "Follow the user's instructions. Use only supplied facts for extraction and tool arguments."
+        },
+        {
+          "role": "user",
+          "content": "Data card:\nOwner: Felix\nActive: true\nCount: 20\nReturn only JSON with owner (string), active (boolean), count (integer). Use those exact keys, no markdown."
+        }
+      ]
+    }
+  ]
+}

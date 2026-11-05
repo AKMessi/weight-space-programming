@@ -19,7 +19,7 @@ def _constant(value):
 
 
 DECODER = json.JSONDecoder(object_pairs_hook=_pairs, parse_constant=_constant)
-GRADER_VERSION = "2"
+GRADER_VERSION = "3"
 
 
 def code_payload_present(text, expected):
@@ -29,6 +29,9 @@ def code_payload_present(text, expected):
     except SyntaxError:
         return False
     snippets = re.findall(r"```(?:python)?\s*\n(.*?)```", text, re.DOTALL) or [text]
+    # Presence is a limited proxy, not a final-answer/function-correctness judgment.
+    snippets += re.findall(r"`([^`\n]+)`", text)
+    snippets += text.replace('<think>', '\n').replace('</think>', '\n').splitlines()
     for snippet in snippets:
         try:
             tree = ast.parse(snippet.strip())
@@ -37,6 +40,17 @@ def code_payload_present(text, expected):
         except SyntaxError:
             pass
     return expected.strip() in [line.strip() for line in text.splitlines()]
+
+
+def one_return_statement_matches(text, expected):
+    """Ignore Python quote/spacing choices, but reject prose/functions/fences."""
+    try:
+        actual = ast.parse(text.strip())
+        wanted = ast.parse(expected.strip())
+        return (len(actual.body) == 1 and isinstance(actual.body[0], ast.Return)
+                and ast.dump(actual) == ast.dump(wanted))
+    except SyntaxError:
+        return False
 
 
 def typed_equal(left, right):
@@ -75,7 +89,7 @@ def grade(case, text):
     if kind in {"copy", "code_line"}:
         strict = text.rstrip("\r\n") == expected
         if kind == "code_line":
-            strict = text.strip() == expected.strip()
+            strict = one_return_statement_matches(text, expected)
         payload = expected in text if kind == "copy" else code_payload_present(text, expected)
         return {"success": strict, "payload_correct": payload}
     if kind == "explanation_proxy":

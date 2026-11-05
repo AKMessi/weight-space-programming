@@ -36,6 +36,14 @@ class GradingTests(unittest.TestCase):
         self.assertTrue(g['payload_correct'])
         self.assertFalse(grade(c, 'def add_4(value): return value + 5')['payload_correct'])
 
+    def test_code_contract_ignores_quotes_and_spacing_but_rejects_extra_structure(self):
+        c = {'grader': 'code_line', 'expected': 'return record["label"]'}
+        self.assertTrue(grade(c, "return record['label']")['success'])
+        self.assertTrue(grade(c, 'return   record [ "label" ]')['success'])
+        self.assertFalse(grade(c, "def f(record): return record['label']")['success'])
+        self.assertFalse(grade(c, "return record['label']</think>return record['label']")['success'])
+        self.assertTrue(grade(c, "return record['label']</think>return record['label']")['payload_correct'])
+
     def test_evidence_payload_not_generic_abstention(self):
         c = {"grader": "evidence_action", "expected": "ASK: address"}
         self.assertTrue(grade(c, 'ASK: address')['success'])

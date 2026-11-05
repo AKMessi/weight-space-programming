@@ -1,0 +1,468 @@
+{
+  "utc": "2026-11-05T11:02:23.575906+00:00",
+  "git": {
+    "commit": "28a6bd99f95f5012d3eb4a52a8df8a50fe89f3b0",
+    "status": "M research/budget.jsonl\n?? runs/20261105-validation-fable_all_qkv_parent-s17/\n?? runs/20261105-validation-fable_all_qkv_parent-s29/\n?? runs/20261105-validation-fable_f16-s17/\n?? runs/20261105-validation-fable_f16-s29/\n?? runs/20261105-validation-fable_v_only-s17/\n?? runs/20261105-validation-fable_v_only-s29/\n?? runs/20261105-validation-lfm3_qad-s17/\n?? runs/20261105-validation-parent_uniform_bf16-s17/\n?? runs/20261105-validation-parent_uniform_bf16-s29/\n?? runs/20261105-validation-qwen3_q8-s17/"
+  },
+  "protocol": "research/protocols/validation-v1.md",
+  "dataset_sha256": "59909b4980824802117547aec4e975f009ac2ca210a79dd8988dfc0c9efaa448",
+  "scope": "Small frozen synthetic validation, not a general benchmark or proof of useful specialization preservation.",
+  "models": {
+    "fable_f16": {
+      "seeds": [
+        17,
+        29
+      ],
+      "groups": {
+        "dictionary_code": {
+          "requests": 24,
+          "unique_prompts": 12,
+          "exact_successes": 0,
+          "payload_proxy_successes": 0,
+          "cutoffs": 5
+        },
+        "evidence_decision": {
+          "requests": 24,
+          "unique_prompts": 12,
+          "exact_successes": 0,
+          "payload_proxy_successes": 0,
+          "cutoffs": 0
+        },
+        "literal_copy": {
+          "requests": 24,
+          "unique_prompts": 12,
+          "exact_successes": 0,
+          "payload_proxy_successes": 1,
+          "cutoffs": 20
+        },
+        "new_json_fields": {
+          "requests": 24,
+          "unique_prompts": 12,
+          "exact_successes": 0,
+          "payload_proxy_successes": 24,
+          "cutoffs": 0
+        }
+      }
+    },
+    "fable_v_only": {
+      "seeds": [
+        17,
+        29
+      ],
+      "groups": {
+        "dictionary_code": {
+          "requests": 24,
+          "unique_prompts": 12,
+          "exact_successes": 0,
+          "payload_proxy_successes": 3,
+          "cutoffs": 0
+        },
+        "evidence_decision": {
+          "requests": 24,
+          "unique_prompts": 12,
+          "exact_successes": 0,
+          "payload_proxy_successes": 0,
+          "cutoffs": 0
+        },
+        "literal_copy": {
+          "requests": 24,
+          "unique_prompts": 12,
+          "exact_successes": 0,
+          "payload_proxy_successes": 5,
+          "cutoffs": 11
+        },
+        "new_json_fields": {
+          "requests": 24,
+          "unique_prompts": 12,
+          "exact_successes": 0,
+          "payload_proxy_successes": 24,
+          "cutoffs": 0
+        }
+      }
+    },
+    "fable_all_qkv_parent": {
+      "seeds": [
+        17,
+        29
+      ],
+      "groups": {
+        "dictionary_code": {
+          "requests": 24,
+          "unique_prompts": 12,
+          "exact_successes": 0,
+          "payload_proxy_successes": 20,
+          "cutoffs": 0
+        },
+        "evidence_decision": {
+          "requests": 24,
+          "unique_prompts": 12,
+          "exact_successes": 0,
+          "payload_proxy_successes": 0,
+          "cutoffs": 0
+        },
+        "literal_copy": {
+          "requests": 24,
+          "unique_prompts": 12,
+          "exact_successes": 0,
+          "payload_proxy_successes": 10,
+          "cutoffs": 0
+        },
+        "new_json_fields": {
+          "requests": 24,
+          "unique_prompts": 12,
+          "exact_successes": 0,
+          "payload_proxy_successes": 24,
+          "cutoffs": 0
+        }
+      }
+    },
+    "parent_uniform_bf16": {
+      "seeds": [
+        17,
+        29
+      ],
+      "groups": {
+        "dictionary_code": {
+          "requests": 24,
+          "unique_prompts": 12,
+          "exact_successes": 0,
+          "payload_proxy_successes": 20,
+          "cutoffs": 0
+        },
+        "evidence_decision": {
+          "requests": 24,
+          "unique_prompts": 12,
+          "exact_successes": 0,
+          "payload_proxy_successes": 0,
+          "cutoffs": 0
+        },
+        "literal_copy": {
+          "requests": 24,
+          "unique_prompts": 12,
+          "exact_successes": 0,
+          "payload_proxy_successes": 10,
+          "cutoffs": 0
+        },
+        "new_json_fields": {
+          "requests": 24,
+          "unique_prompts": 12,
+          "exact_successes": 0,
+          "payload_proxy_successes": 24,
+          "cutoffs": 0
+        }
+      }
+    },
+    "qwen3_q8": {
+      "seeds": [
+        17
+      ],
+      "groups": {
+        "dictionary_code": {
+          "requests": 12,
+          "unique_prompts": 12,
+          "exact_successes": 3,
+          "payload_proxy_successes": 4,
+          "cutoffs": 0
+        },
+        "evidence_decision": {
+          "requests": 12,
+          "unique_prompts": 12,
+          "exact_successes": 3,
+          "payload_proxy_successes": 3,
+          "cutoffs": 0
+        },
+        "literal_copy": {
+          "requests": 12,
+          "unique_prompts": 12,
+          "exact_successes": 12,
+          "payload_proxy_successes": 12,
+          "cutoffs": 0
+        },
+        "new_json_fields": {
+          "requests": 12,
+          "unique_prompts": 12,
+          "exact_successes": 8,
+          "payload_proxy_successes": 8,
+          "cutoffs": 0
+        }
+      }
+    },
+    "lfm3_qad": {
+      "seeds": [
+        17
+      ],
+      "groups": {
+        "dictionary_code": {
+          "requests": 12,
+          "unique_prompts": 12,
+          "exact_successes": 0,
+          "payload_proxy_successes": 0,
+          "cutoffs": 0
+        },
+        "evidence_decision": {
+          "requests": 12,
+          "unique_prompts": 12,
+          "exact_successes": 3,
+          "payload_proxy_successes": 3,
+          "cutoffs": 1
+        },
+        "literal_copy": {
+          "requests": 12,
+          "unique_prompts": 12,
+          "exact_successes": 7,
+          "payload_proxy_successes": 8,
+          "cutoffs": 0
+        },
+        "new_json_fields": {
+          "requests": 12,
+          "unique_prompts": 12,
+          "exact_successes": 12,
+          "payload_proxy_successes": 12,
+          "cutoffs": 0
+        }
+      }
+    }
+  },
+  "sources": [
+    {
+      "run": "runs/20261105-validation-fable_f16-s17",
+      "responses_sha256": "624b6f1dad833eb5ee33a68c490ee9a289498258d597f1fd04b2e8449f4f2993"
+    },
+    {
+      "run": "runs/20261105-validation-fable_f16-s29",
+      "responses_sha256": "8560146c666a4f7a972f756b192fc2942a413a63fd9c5fa224f51abc026c741e"
+    },
+    {
+      "run": "runs/20261105-validation-fable_v_only-s17",
+      "responses_sha256": "3b5fcc033a0cc40a35b532be05a96d3754d15c32c432e17d818b8f7433611ba1"
+    },
+    {
+      "run": "runs/20261105-validation-fable_v_only-s29",
+      "responses_sha256": "ea840d0936d2e49bc2642bf79d44a32a8cd9bebf5cb729e0fa006b10ce54626b"
+    },
+    {
+      "run": "runs/20261105-validation-fable_all_qkv_parent-s17",
+      "responses_sha256": "bb520ac99d5eb411e79a9b2d4edf266914e52411d0214b09594e801c17e9652b"
+    },
+    {
+      "run": "runs/20261105-validation-fable_all_qkv_parent-s29",
+      "responses_sha256": "cb7e571c7bd0c2ec6e0b16bb95699a899a13f755f55dfe409d0168343e28b8ea"
+    },
+    {
+      "run": "runs/20261105-validation-parent_uniform_bf16-s17",
+      "responses_sha256": "998bb4f86956fd74fe8542a145cdb89729b819187265c0ab0c9a8fd4864e1dba"
+    },
+    {
+      "run": "runs/20261105-validation-parent_uniform_bf16-s29",
+      "responses_sha256": "be7e04a0abdeb977606c255e6d7a489533ccda0af198fb7d86273b8f8a86d5df"
+    },
+    {
+      "run": "runs/20261105-validation-qwen3_q8-s17",
+      "responses_sha256": "7a8b41288e9682b5e50b1b57708add047e1c41d806aba8d224632ee048c8aea8"
+    },
+    {
+      "run": "runs/20261105-validation-lfm3_qad-s17",
+      "responses_sha256": "97e94235d85f9115fef0bf9083cdb5b00ced07622c1286cabb772f137161f95d"
+    }
+  ],
+  "paired_vs_fable": {
+    "fable_v_only": {
+      "dictionary_code": {
+        "prompts": 12,
+        "seeds": [
+          17,
+          29
+        ],
+        "mean_paired_gain": 0,
+        "prompt_bootstrap_percentile_95": [
+          0,
+          0
+        ],
+        "prompts_with_any_rescue": 0,
+        "prompts_with_any_loss": 0,
+        "one_sided_95_upper_loss_event_probability": 0.2209221919455559,
+        "limits": "Intervals assume prompt sampling within these fixed authored families; seeds are grouped. Degenerate bootstrap intervals are not population certainty. Binomial bound assumes independent prompt events; template correlation can weaken it."
+      },
+      "evidence_decision": {
+        "prompts": 12,
+        "seeds": [
+          17,
+          29
+        ],
+        "mean_paired_gain": 0,
+        "prompt_bootstrap_percentile_95": [
+          0,
+          0
+        ],
+        "prompts_with_any_rescue": 0,
+        "prompts_with_any_loss": 0,
+        "one_sided_95_upper_loss_event_probability": 0.2209221919455559,
+        "limits": "Intervals assume prompt sampling within these fixed authored families; seeds are grouped. Degenerate bootstrap intervals are not population certainty. Binomial bound assumes independent prompt events; template correlation can weaken it."
+      },
+      "literal_copy": {
+        "prompts": 12,
+        "seeds": [
+          17,
+          29
+        ],
+        "mean_paired_gain": 0,
+        "prompt_bootstrap_percentile_95": [
+          0,
+          0
+        ],
+        "prompts_with_any_rescue": 0,
+        "prompts_with_any_loss": 0,
+        "one_sided_95_upper_loss_event_probability": 0.2209221919455559,
+        "limits": "Intervals assume prompt sampling within these fixed authored families; seeds are grouped. Degenerate bootstrap intervals are not population certainty. Binomial bound assumes independent prompt events; template correlation can weaken it."
+      },
+      "new_json_fields": {
+        "prompts": 12,
+        "seeds": [
+          17,
+          29
+        ],
+        "mean_paired_gain": 0,
+        "prompt_bootstrap_percentile_95": [
+          0,
+          0
+        ],
+        "prompts_with_any_rescue": 0,
+        "prompts_with_any_loss": 0,
+        "one_sided_95_upper_loss_event_probability": 0.2209221919455559,
+        "limits": "Intervals assume prompt sampling within these fixed authored families; seeds are grouped. Degenerate bootstrap intervals are not population certainty. Binomial bound assumes independent prompt events; template correlation can weaken it."
+      }
+    },
+    "fable_all_qkv_parent": {
+      "dictionary_code": {
+        "prompts": 12,
+        "seeds": [
+          17,
+          29
+        ],
+        "mean_paired_gain": 0,
+        "prompt_bootstrap_percentile_95": [
+          0,
+          0
+        ],
+        "prompts_with_any_rescue": 0,
+        "prompts_with_any_loss": 0,
+        "one_sided_95_upper_loss_event_probability": 0.2209221919455559,
+        "limits": "Intervals assume prompt sampling within these fixed authored families; seeds are grouped. Degenerate bootstrap intervals are not population certainty. Binomial bound assumes independent prompt events; template correlation can weaken it."
+      },
+      "evidence_decision": {
+        "prompts": 12,
+        "seeds": [
+          17,
+          29
+        ],
+        "mean_paired_gain": 0,
+        "prompt_bootstrap_percentile_95": [
+          0,
+          0
+        ],
+        "prompts_with_any_rescue": 0,
+        "prompts_with_any_loss": 0,
+        "one_sided_95_upper_loss_event_probability": 0.2209221919455559,
+        "limits": "Intervals assume prompt sampling within these fixed authored families; seeds are grouped. Degenerate bootstrap intervals are not population certainty. Binomial bound assumes independent prompt events; template correlation can weaken it."
+      },
+      "literal_copy": {
+        "prompts": 12,
+        "seeds": [
+          17,
+          29
+        ],
+        "mean_paired_gain": 0,
+        "prompt_bootstrap_percentile_95": [
+          0,
+          0
+        ],
+        "prompts_with_any_rescue": 0,
+        "prompts_with_any_loss": 0,
+        "one_sided_95_upper_loss_event_probability": 0.2209221919455559,
+        "limits": "Intervals assume prompt sampling within these fixed authored families; seeds are grouped. Degenerate bootstrap intervals are not population certainty. Binomial bound assumes independent prompt events; template correlation can weaken it."
+      },
+      "new_json_fields": {
+        "prompts": 12,
+        "seeds": [
+          17,
+          29
+        ],
+        "mean_paired_gain": 0,
+        "prompt_bootstrap_percentile_95": [
+          0,
+          0
+        ],
+        "prompts_with_any_rescue": 0,
+        "prompts_with_any_loss": 0,
+        "one_sided_95_upper_loss_event_probability": 0.2209221919455559,
+        "limits": "Intervals assume prompt sampling within these fixed authored families; seeds are grouped. Degenerate bootstrap intervals are not population certainty. Binomial bound assumes independent prompt events; template correlation can weaken it."
+      }
+    },
+    "parent_uniform_bf16": {
+      "dictionary_code": {
+        "prompts": 12,
+        "seeds": [
+          17,
+          29
+        ],
+        "mean_paired_gain": 0,
+        "prompt_bootstrap_percentile_95": [
+          0,
+          0
+        ],
+        "prompts_with_any_rescue": 0,
+        "prompts_with_any_loss": 0,
+        "one_sided_95_upper_loss_event_probability": 0.2209221919455559,
+        "limits": "Intervals assume prompt sampling within these fixed authored families; seeds are grouped. Degenerate bootstrap intervals are not population certainty. Binomial bound assumes independent prompt events; template correlation can weaken it."
+      },
+      "evidence_decision": {
+        "prompts": 12,
+        "seeds": [
+          17,
+          29
+        ],
+        "mean_paired_gain": 0,
+        "prompt_bootstrap_percentile_95": [
+          0,
+          0
+        ],
+        "prompts_with_any_rescue": 0,
+        "prompts_with_any_loss": 0,
+        "one_sided_95_upper_loss_event_probability": 0.2209221919455559,
+        "limits": "Intervals assume prompt sampling within these fixed authored families; seeds are grouped. Degenerate bootstrap intervals are not population certainty. Binomial bound assumes independent prompt events; template correlation can weaken it."
+      },
+      "literal_copy": {
+        "prompts": 12,
+        "seeds": [
+          17,
+          29
+        ],
+        "mean_paired_gain": 0,
+        "prompt_bootstrap_percentile_95": [
+          0,
+          0
+        ],
+        "prompts_with_any_rescue": 0,
+        "prompts_with_any_loss": 0,
+        "one_sided_95_upper_loss_event_probability": 0.2209221919455559,
+        "limits": "Intervals assume prompt sampling within these fixed authored families; seeds are grouped. Degenerate bootstrap intervals are not population certainty. Binomial bound assumes independent prompt events; template correlation can weaken it."
+      },
+      "new_json_fields": {
+        "prompts": 12,
+        "seeds": [
+          17,
+          29
+        ],
+        "mean_paired_gain": 0,
+        "prompt_bootstrap_percentile_95": [
+          0,
+          0
+        ],
+        "prompts_with_any_rescue": 0,
+        "prompts_with_any_loss": 0,
+        "one_sided_95_upper_loss_event_probability": 0.2209221919455559,
+        "limits": "Intervals assume prompt sampling within these fixed authored families; seeds are grouped. Degenerate bootstrap intervals are not population certainty. Binomial bound assumes independent prompt events; template correlation can weaken it."
+      }
+    }
+  }
+}
