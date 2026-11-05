@@ -55,7 +55,7 @@ On fresh validation JSON-field tasks, original Fable and V-only each included th
 
 **Value:** any proposed weight repair should beat or offer a useful tradeoff against prompting and constrained decoding. We should not present an inferior, more expensive weight change as progress merely because it changes weights. Grammar use itself is established practice, not our novel contribution.
 
-Evidence: [development baseline report](BASELINE_REPORT.md), [non-weight fixtures](../datasets/nonweight-controls-v1.json), runs [008](../runs/20261105-008-fable-nonweight-controls/), [009](../runs/20261105-009-qwen-nonweight-controls/), and [010](../runs/20261105-010-lfm3-qad-nonweight-controls/).
+Evidence: [current-grader discovery report](BASELINE_REPORT_GRADER_V3.md), [earlier baseline report](BASELINE_REPORT.md), [non-weight fixtures](../datasets/nonweight-controls-v1.json), runs [008](../runs/20261105-008-fable-nonweight-controls/), [009](../runs/20261105-009-qwen-nonweight-controls/), and [010](../runs/20261105-010-lfm3-qad-nonweight-controls/).
 
 ## 4. LFM3's fast deployment has checkpoint and template subtleties
 
