@@ -11,7 +11,7 @@ import time
 from .evidence import append_jsonl, digest, file_sha256, git_state, utc_now, write_json
 from .budget import reserve, settle
 from .grading import GRADER_VERSION, grade
-from .runtime import request_json, server
+from .runtime import request_json, runtime_libraries, server
 
 
 def summarize(rows):
@@ -57,6 +57,7 @@ def _execute(config, model_key, suite, output, max_tokens, seed, limit):
                 "model": spec, "verified_model_sha256": actual, "suite_sha256": digest(suite),
                 "max_tokens": max_tokens, "seed": seed, "limit": limit, "grader_version": GRADER_VERSION,
                 "runtime": config["runtime"], "binary_sha256": file_sha256(binary),
+                "colocated_runtime_libraries": runtime_libraries(binary),
                 "runtime_version": subprocess.check_output([binary, "--version"], stderr=subprocess.STDOUT, text=True)}
     write_json(out / "manifest.json", manifest)
     write_json(out / "suite.json", suite)

@@ -9,6 +9,14 @@ import time
 import urllib.error
 import urllib.request
 
+from .evidence import file_sha256
+
+
+def runtime_libraries(binary):
+    """Fingerprint colocated libraries, including dlopen-loaded server backends."""
+    paths = {p.resolve() for p in Path(binary).resolve().parent.glob('*.so*') if p.is_file()}
+    return [{'path': str(p), 'bytes': p.stat().st_size, 'sha256': file_sha256(p)} for p in sorted(paths)]
+
 
 def request_json(url, payload=None, timeout=180):
     body = None if payload is None else json.dumps(payload).encode()

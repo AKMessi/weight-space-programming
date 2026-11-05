@@ -47,3 +47,7 @@ Protocol, fixtures, and candidate artifacts were committed before validation inf
 - Do not reuse this panel to select a new patch and then call it held-out.
 
 [Machine-readable paired analysis](validation-v1-analysis.json). Raw per-run evidence is under `runs/20261105-validation-*`.
+
+## Post-analysis grading addendum
+
+The frozen records use grader v2. Its code-line exact/reference comparison was too literal about equivalent quote and whitespace choices. Grader v3 accepts AST-equivalent single return statements and recognizes reference expressions around inline/thinking delimiters as a presence proxy. All v2 records and the primary analysis above are retained. Separate v3 regrades are explicitly post-hoc sensitivity results; they do not change the literal-copy primary outcome or establish functional code quality.

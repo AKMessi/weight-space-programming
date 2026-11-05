@@ -21,10 +21,21 @@ Model paths in `configs/local_models.json` describe this device. Adapt a copied 
 
 ## Separate-file weight arithmetic
 
-`weightlab.edit` requires NumPy and GGUF (the isolated inspection environment is recorded in `research/environment.json`). It currently implements a **non-sparse baseline**: partial rollback of selected F16 FFN output matrices toward the F16 parent. It verifies source checksums, architecture/tokenizer compatibility, selected shapes/dtypes, untouched tensor hashes, and post-cast values. An alpha-zero operation must preserve the entire file hash.
+`weightlab.edit` requires NumPy and GGUF (the isolated inspection environment is recorded in `research/environment.json`). It implements a **non-sparse baseline**: partial rollback of selected floating GGUF tensors, with FFN outputs selected by default. `--pattern` and `--layers` select other explicitly declared sites. Exact BF16 parent decoding and an explicit uniform-BF16 value control are supported. It verifies source checksums, architecture/tokenizer compatibility, selected shapes/dtypes, untouched tensor hashes, and post-cast values. An alpha-zero operation must preserve the entire file hash.
 
 ```bash
 PYTHONPATH=src /path/to/inspection-venv/bin/python -m weightlab.edit --alpha 0 --output artifacts/fable-identity.gguf --manifest research/patches/fable-identity.json
 ```
 
 Originals are read-only, outputs must be new files under ignored `artifacts/` or `local/`, and manifests are retained even after a failed edit. This is infrastructure and a comparison baseline, not evidence that rollback preserves specialization or improves the model.
+
+## Evidence checks and grading corrections
+
+```bash
+PYTHONPATH=src python3 scripts/verify_evidence.py
+PYTHONPATH=src python3 scripts/regrade.py runs/RUN/responses.jsonl research/regrades/NEW-UNIQUE-NAME.json
+```
+
+The verifier checks complete runs, frozen suite hashes, exact case identities, unique request IDs, response counts, and the token-reservation ledger. It verifies consistency, not scientific validity. Regrading creates a derived artifact and never overwrites raw responses. The original frozen validation uses recorded grader v2; v3 sensitivity results are separate.
+
+Future manifests also fingerprint colocated shared libraries because the small server executable can load a larger inference implementation dynamically. Earlier manifests record the binary hash, build/version, arguments, template, and server logs; a later current-library snapshot is supplementary and cannot retroactively prove historical library bytes.
