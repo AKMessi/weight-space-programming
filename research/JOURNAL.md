@@ -741,3 +741,7 @@ Final packaging adds recursive rebuilding of ignored GGUF artifacts from committ
 ### Analysis generation correction
 
 The first final-report build stopped while exporting legacy regrades: the earliest original run's manifest predates `grader_version`. Its actual source commit and raw grades exist. This is an analysis compatibility error, not a model failure. `research/portfolio-v1/` is retained as an explicitly incomplete attempt. The corrected builder labels the legacy version as unversioned and writes a fresh `portfolio-v2/`; it never invents historical metadata or changes raw records.
+
+### Composition-cap audit and declared correction
+
+Final comparison audit found that initial AB/BA engineering calls allowed 128 output tokens, whereas the reused original/A/B/R study-1 calls allowed 192. This is a nuisance-variable mismatch even where aggregate successes agree. The original runs and first complete analysis snapshot (`portfolio-v2`) stay available. Six explicitly versioned AB/BA runs will match 192 tokens before final composition interpretation. The joint-evidence calls already all use 128. No candidate or dataset changes are allowed. Final reports move to `portfolio-v3`; v2 is a prior analysis snapshot with this disclosed limitation.

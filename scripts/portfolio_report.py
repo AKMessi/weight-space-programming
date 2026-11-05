@@ -199,7 +199,7 @@ def e4(out):
             data={}
             for suffix in ['', '_A','_B','_R','_AB']:
                 if panel=='engineering':
-                    candidate=rows('e4engineering',root+suffix) if suffix=='_AB' else [r for r in rows('e1dev',root+suffix) if r['case']['id'] in ids]
+                    candidate=rows('e4engineering-v2',root+suffix) if suffix=='_AB' else [r for r in rows('e1dev',root+suffix) if r['case']['id'] in ids]
                 else:candidate=rows('e4joint',root+suffix) if suffix in ['_R','_AB'] else rows('e2dev-original',root+suffix)
                 data[suffix or 'base']=counts(candidate)
             n=data['base']['n']
@@ -207,12 +207,13 @@ def e4(out):
             result[root][panel]={'arms':data,'interaction_percentage_points':interaction,'n':n}
             values=[data[k]['strict'] for k in ['base','_A','_B','_R','_AB']]
             lines.append(f'| {root} | {panel} (n={n}) | '+ ' | '.join(map(str,values))+f' | {interaction:+.1f} |')
-        ab=rows('e4engineering',root+'_AB')[:6];ba=rows('e4ordercheck',root+'_BA')
+        ab=rows('e4engineering-v2',root+'_AB')[:6];ba=rows('e4ordercheck-v2',root+'_BA')
         identity=config['models'][root+'_AB']['sha256']==config['models'][root+'_BA']['sha256']
         outputs=all(a['content']==b['content'] and a['usage']['completion_tokens']==b['usage']['completion_tokens'] for a,b in zip(ab,ba))
         result[root]['order']={'file_identity':identity,'six_request_content_token_identity':outputs}
     lines+=['','AB/BA file identity and six-request behavioral identity are reported in the JSON. Parameter commutation follows from disjoint edited tensors; additive behavior does not follow. Nonzero interactions on a small shared panel are exploratory, not a learned interference predictor. R has a matched L2 delta but is not a semantic repair.','',
-            'The engineering subset reuses the declared development cases from Experiment 1; the joint panel reuses Experiment 2 development conversations. This reuse reduces compute and is explicit. Neither panel is presented as fresh confirmation for composition. A larger independently useful patch library is required for the original paper-level hypothesis.']
+            'The engineering subset reuses the declared development cases from Experiment 1; the joint panel reuses Experiment 2 development conversations. This reuse reduces compute and is explicit. Neither panel is presented as fresh confirmation for composition. A larger independently useful patch library is required for the original paper-level hypothesis.',
+            '', 'The initial AB/BA engineering runs used 128 output tokens while the reused individual arms allowed 192. Those runs are preserved as a mismatched-cap diagnostic. The primary v2 engineering/order runs repeat the same frozen cases at 192, matching all individual arms; the joint-evidence arms already matched at 128.']
     (out/'experiment-4.md').write_text('\n'.join(lines)+'\n')
     return result
 
@@ -269,7 +270,7 @@ def e5(out):
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--output',default='research/portfolio-v2')
+    parser.add_argument('--output',default='research/portfolio-v3')
     output=Path(parser.parse_args().output)
     # Build only after every required study has evidence; a partial output is not completion.
     if output.exists():raise FileExistsError('version reports rather than overwrite')

@@ -1,0 +1,402 @@
+{
+  "utc": "2026-11-05T13:47:53.800121+00:00",
+  "git": {
+    "commit": "8b4bb1a02cb55999884adfa13eb1110ea9034779",
+    "status": ""
+  },
+  "timing": {
+    "fable_float": {
+      "bytes": 461883712,
+      "sha256": "1e1624de4d7ebe413d82dbe2b5f48fcf83e6c46b1b5414c8aef0596009380cc6",
+      "first_warmup_decode_tps": 188.29633659016258,
+      "post_warmup_decode_tps": [
+        195.04643962848297,
+        193.88791432000738,
+        194.60000432444457
+      ],
+      "median_decode_tps": 194.60000432444457,
+      "min_decode_tps": 193.88791432000738,
+      "max_decode_tps": 195.04643962848297,
+      "resources": {
+        "sample_interval_seconds": 0.2,
+        "host_vm_hwm_kib": 571348,
+        "device_vram_used_bytes": 1137729536,
+        "note": "Device-wide VRAM includes desktop/other users; sampled maximum may miss brief spikes."
+      }
+    },
+    "fable_Q8_0": {
+      "bytes": 246597952,
+      "sha256": "fee3716c82f6d9de11072c45140bea130f987f56647e823e5df0802a1f881774",
+      "first_warmup_decode_tps": 13.410064444938275,
+      "post_warmup_decode_tps": [
+        13.40382468563244,
+        13.400885139099062,
+        13.399263380812807
+      ],
+      "median_decode_tps": 13.400885139099062,
+      "min_decode_tps": 13.399263380812807,
+      "max_decode_tps": 13.40382468563244,
+      "resources": {
+        "sample_interval_seconds": 0.2,
+        "host_vm_hwm_kib": 360800,
+        "device_vram_used_bytes": 678301696,
+        "note": "Device-wide VRAM includes desktop/other users; sampled maximum may miss brief spikes."
+      }
+    },
+    "fable_Q4_0": {
+      "bytes": 149080384,
+      "sha256": "a3bcb56d36cb3327e9d2b6ac6dbbbe1a7fd1733f34eff94f62a27adb5e930da1",
+      "first_warmup_decode_tps": 22.068977113419827,
+      "post_warmup_decode_tps": [
+        22.06699820872018,
+        22.051519349683197,
+        22.079194214550192
+      ],
+      "median_decode_tps": 22.06699820872018,
+      "min_decode_tps": 22.051519349683197,
+      "max_decode_tps": 22.079194214550192,
+      "resources": {
+        "sample_interval_seconds": 0.2,
+        "host_vm_hwm_kib": 265292,
+        "device_vram_used_bytes": 678305792,
+        "note": "Device-wide VRAM includes desktop/other users; sampled maximum may miss brief spikes."
+      }
+    },
+    "fable_Q4_K_M": {
+      "bytes": 153405760,
+      "sha256": "0c40569a1736081c7f33d33ec18208cf089e8ae0e762806c515281740e60c2f3",
+      "first_warmup_decode_tps": 21.33394016540915,
+      "post_warmup_decode_tps": [
+        21.47136810104494,
+        21.53807127597346,
+        21.522200320441648
+      ],
+      "median_decode_tps": 21.522200320441648,
+      "min_decode_tps": 21.47136810104494,
+      "max_decode_tps": 21.53807127597346,
+      "resources": {
+        "sample_interval_seconds": 0.2,
+        "host_vm_hwm_kib": 269500,
+        "device_vram_used_bytes": 678830080,
+        "note": "Device-wide VRAM includes desktop/other users; sampled maximum may miss brief spikes."
+      }
+    }
+  },
+  "symmetry": [
+    {
+      "model": "qwen",
+      "state": "healthy",
+      "original": {
+        "n": 12,
+        "payload": 12,
+        "strict": 8
+      },
+      "permuted": {
+        "n": 12,
+        "payload": 12,
+        "strict": 8
+      },
+      "exact_content_pairs": 10,
+      "coarse_score_equal": true
+    },
+    {
+      "model": "qwen",
+      "state": "output_sign",
+      "original": {
+        "n": 12,
+        "payload": 0,
+        "strict": 0
+      },
+      "permuted": {
+        "n": 12,
+        "payload": 0,
+        "strict": 0
+      },
+      "exact_content_pairs": 0,
+      "coarse_score_equal": true
+    },
+    {
+      "model": "qwen",
+      "state": "ffn_sign",
+      "original": {
+        "n": 12,
+        "payload": 0,
+        "strict": 0
+      },
+      "permuted": {
+        "n": 12,
+        "payload": 0,
+        "strict": 0
+      },
+      "exact_content_pairs": 0,
+      "coarse_score_equal": true
+    },
+    {
+      "model": "lfm3",
+      "state": "healthy",
+      "original": {
+        "n": 12,
+        "payload": 12,
+        "strict": 12
+      },
+      "permuted": {
+        "n": 12,
+        "payload": 12,
+        "strict": 12
+      },
+      "exact_content_pairs": 12,
+      "coarse_score_equal": true
+    },
+    {
+      "model": "lfm3",
+      "state": "output_sign",
+      "original": {
+        "n": 12,
+        "payload": 0,
+        "strict": 0
+      },
+      "permuted": {
+        "n": 12,
+        "payload": 0,
+        "strict": 0
+      },
+      "exact_content_pairs": 3,
+      "coarse_score_equal": true
+    },
+    {
+      "model": "lfm3",
+      "state": "ffn_sign",
+      "original": {
+        "n": 12,
+        "payload": 0,
+        "strict": 0
+      },
+      "permuted": {
+        "n": 12,
+        "payload": 0,
+        "strict": 0
+      },
+      "exact_content_pairs": 3,
+      "coarse_score_equal": true
+    },
+    {
+      "model": "fable",
+      "state": "healthy",
+      "original": {
+        "n": 12,
+        "payload": 8,
+        "strict": 8
+      },
+      "permuted": {
+        "n": 12,
+        "payload": 8,
+        "strict": 8
+      },
+      "exact_content_pairs": 12,
+      "coarse_score_equal": true
+    },
+    {
+      "model": "fable",
+      "state": "output_sign",
+      "original": {
+        "n": 12,
+        "payload": 0,
+        "strict": 0
+      },
+      "permuted": {
+        "n": 12,
+        "payload": 0,
+        "strict": 0
+      },
+      "exact_content_pairs": 10,
+      "coarse_score_equal": true
+    },
+    {
+      "model": "fable",
+      "state": "ffn_sign",
+      "original": {
+        "n": 12,
+        "payload": 0,
+        "strict": 0
+      },
+      "permuted": {
+        "n": 12,
+        "payload": 0,
+        "strict": 0
+      },
+      "exact_content_pairs": 12,
+      "coarse_score_equal": true
+    }
+  ],
+  "native_state": {
+    "utc": "2026-11-05T13:41:41.091822+00:00",
+    "git": {
+      "commit": "b7ad2d38d00bbbe40af75d4ee5d315aaf46e8584",
+      "status": ""
+    },
+    "results": [
+      {
+        "model": "qwen",
+        "case_id": "raw-state-0",
+        "top1_equal": true,
+        "max_centered_logit_error": 0.08096599578857422,
+        "relative_centered_error": 0.00436302083216384,
+        "passed": false,
+        "raw_state_l2_norm": 140.83705139160156
+      },
+      {
+        "model": "qwen",
+        "case_id": "raw-state-1",
+        "top1_equal": true,
+        "max_centered_logit_error": 0.24293366074562073,
+        "relative_centered_error": 0.013272103063704218,
+        "passed": false,
+        "raw_state_l2_norm": 133.71310424804688
+      },
+      {
+        "model": "lfm3",
+        "case_id": "raw-state-0",
+        "top1_equal": true,
+        "max_centered_logit_error": 0.47311247140169144,
+        "relative_centered_error": 0.014642340716963248,
+        "passed": false,
+        "raw_state_l2_norm": 88.4796142578125
+      },
+      {
+        "model": "lfm3",
+        "case_id": "raw-state-1",
+        "top1_equal": true,
+        "max_centered_logit_error": 0.6061512725427747,
+        "relative_centered_error": 0.022483816889384476,
+        "passed": false,
+        "raw_state_l2_norm": 88.61747741699219
+      },
+      {
+        "model": "fable",
+        "case_id": "raw-state-0",
+        "top1_equal": true,
+        "max_centered_logit_error": 0.32487016916275024,
+        "relative_centered_error": 0.03282452841383409,
+        "passed": false,
+        "raw_state_l2_norm": 102.51567840576172
+      },
+      {
+        "model": "fable",
+        "case_id": "raw-state-1",
+        "top1_equal": true,
+        "max_centered_logit_error": 0.2183629274368286,
+        "relative_centered_error": 0.021299185748915674,
+        "passed": false,
+        "raw_state_l2_norm": 100.9459457397461
+      }
+    ],
+    "scope": "Two calibration contexts per architecture; not a repair or a guarantee on all contexts."
+  },
+  "storage": {
+    "utc": "2026-11-05T12:18:11.371930+00:00",
+    "git": {
+      "commit": "ee01a6c2c3a6b1b62db5a3ba36d916e394102904",
+      "status": " M research/budget.jsonl\n?? runs/p2-e1-development-strong-lfm3_qad-s17/"
+    },
+    "pairs": {
+      "qwen-norm": {
+        "base_key": "qwen3_q8",
+        "target_key": "qwen3_q8_A",
+        "patch_bytes": 19270,
+        "target_bytes": 639446688,
+        "target_zlib_bytes": 610730163,
+        "changed_tensor_count": 1,
+        "exact_roundtrip": true,
+        "patch_sha256": "e2d5a4c636f3329de2b555e4b6c9c8b5ac768acd36839a84dd4675f2b25e62c1",
+        "target_sha256": "bbd84486c8f47cd1cbe1fcbffbb66d8e3b62f6981c86446faecd5d12c74e3717",
+        "pack_seconds": 17.910978211000838,
+        "apply_seconds": 3.662290976000804
+      },
+      "qad-norm": {
+        "base_key": "lfm3_qad",
+        "target_key": "lfm3_qad_A",
+        "patch_bytes": 19315,
+        "target_bytes": 1049615680,
+        "target_zlib_bytes": 995496702,
+        "changed_tensor_count": 1,
+        "exact_roundtrip": true,
+        "patch_sha256": "ef0064750e066f5995d68cf252bea46281cf39e6d393b8de3a1db9463a4867d2",
+        "target_sha256": "895fe33fe7c17b4004a2504bedf6c2a56f078fee4396f5d86ac2be1c2523f8bc",
+        "pack_seconds": 20.853666358001647,
+        "apply_seconds": 5.973617043999184
+      },
+      "fable-unaligned": {
+        "base_key": "parent_f16",
+        "target_key": "fable_f16",
+        "patch_bytes": 167671933,
+        "target_bytes": 461883712,
+        "target_zlib_bytes": 356510251,
+        "changed_tensor_count": 132,
+        "exact_roundtrip": true,
+        "patch_sha256": "57f877719a1efdbacdc1b95a88d2e7376c6e7b6b9817399d35714e46c3879a58",
+        "target_sha256": "1e1624de4d7ebe413d82dbe2b5f48fcf83e6c46b1b5414c8aef0596009380cc6",
+        "pack_seconds": 59.14661531999991,
+        "apply_seconds": 4.724039863998769
+      },
+      "fable-aligned": {
+        "base_key": "parent_uniform_bf16",
+        "target_key": "fable_f16",
+        "patch_bytes": 20308656,
+        "target_bytes": 461883712,
+        "target_zlib_bytes": 356510251,
+        "changed_tensor_count": 27,
+        "exact_roundtrip": true,
+        "patch_sha256": "93133f5b96084e72e3e113d6eb856c2580fe78bcd32a25eac27a75660eee3e12",
+        "target_sha256": "1e1624de4d7ebe413d82dbe2b5f48fcf83e6c46b1b5414c8aef0596009380cc6",
+        "pack_seconds": 14.46337174600012,
+        "apply_seconds": 2.951466103999337
+      }
+    },
+    "scope": "Exact file-delivery utility; established XOR/deflate coding, not model improvement.",
+    "status": "complete"
+  },
+  "within_source_rounding": {
+    "utc": "2026-11-05T12:29:59.281122+00:00",
+    "git": {
+      "commit": "ab1f247ece561706f0964496e50911f2d2f370d6",
+      "status": "?? research/patches/storage-fable-same-parent-rounded-roundtrip.json\n?? research/patches/storage-fable-same-parent-rounded.json"
+    },
+    "status": "complete",
+    "reason": "Post-hoc control after the source-choice result: same original F16 parent with deterministic BF16 value rounding, not another source checkpoint.",
+    "prior_results_sha256": "9400c96b7557de2c02304306c032f9407ab8a94de0a40385564caac9882968be",
+    "rounding_manifest_sha256": "bf19652dc483df76e274a1a92c2228c166282c773862a70ccecc46f01c283f5c",
+    "patch_bytes": 44653069,
+    "changed_tensors": 92,
+    "exact_roundtrip": true,
+    "target_sha256": "1e1624de4d7ebe413d82dbe2b5f48fcf83e6c46b1b5414c8aef0596009380cc6"
+  },
+  "sources": {
+    "runs/p2-speed-followup-fable_float-s17/responses.jsonl": "615e55cba2e8b21fdba67f96891428f38474054958c199c4b7549fcb8ba2a6ab",
+    "runs/p2-speed-followup-fable_Q8_0-s17/responses.jsonl": "e2d8b86c46a88199c4a64bd280facb64f555b5cf3b62568b445af23f3622a332",
+    "runs/p2-speed-followup-fable_Q4_0-s17/responses.jsonl": "dc182ce3e7cdd2dd94f555811de3f2e72855c87a7fb564dc213044ccc63c6051",
+    "runs/p2-speed-followup-fable_Q4_K_M-s17/responses.jsonl": "b09dac90da320cae0cfc06fd72e1b5c9122e436dcc5721853ecabc798795bda1",
+    "runs/p2-e5probes-qwen_diagnosis_healthy-s17/responses.jsonl": "e4120408e9efd42ba5e612b3b6bcc539bdde4d12f24cbe016d36ae4e64bbda66",
+    "runs/p2-e5probes-qwen_diagnosis_healthy_permuted-s17/responses.jsonl": "b01a5ba20234bcfec5f86934f7dc0ef97ff863da09033e3633496b33d0eed541",
+    "runs/p2-e5probes-qwen_diagnosis_output_sign-s17/responses.jsonl": "eae302a7a1b4cac0670a4311aa436b1f2630e49f13487a5d8f2c693663797f6e",
+    "runs/p2-e5probes-qwen_diagnosis_output_sign_permuted-s17/responses.jsonl": "9c9a16f91affed6f18dc948be8ee8151f9eb00b04ec1619344617fab3d5bd827",
+    "runs/p2-e5probes-qwen_diagnosis_ffn_sign-s17/responses.jsonl": "976c53b3904b3fb62d10a664f4a31c4b413dd50123b792a3b1226a49c1eb9f29",
+    "runs/p2-e5probes-qwen_diagnosis_ffn_sign_permuted-s17/responses.jsonl": "c59ad8d1a376744d4f49546cbc9814c792f2a6a710c6968dbb5088fd480207e3",
+    "runs/p2-e5probes-lfm3_diagnosis_healthy-s17/responses.jsonl": "cf4662603c1f86f1e9e27431c771bfcf3511745fc7dd1bbe39f3d4fb48e3c461",
+    "runs/p2-e5probes-lfm3_diagnosis_healthy_permuted-s17/responses.jsonl": "8e3de703fa0773a8b5cb035d8b0e225a86e0f3683aad8beb247b65719e001049",
+    "runs/p2-e5probes-lfm3_diagnosis_output_sign-s17/responses.jsonl": "85352341ebb1e620f6e643e2c8129eada0d45e2e17265546fdabc0730d5de4a5",
+    "runs/p2-e5probes-lfm3_diagnosis_output_sign_permuted-s17/responses.jsonl": "a1582ffe42631449e1345f31103deb01671d2ddfc8e029298e82554d1e87c1b7",
+    "runs/p2-e5probes-lfm3_diagnosis_ffn_sign-s17/responses.jsonl": "f12ecb1ed4082ab9b3cf9573c5308513c8cbedeae195064464eaa0a3d935612f",
+    "runs/p2-e5probes-lfm3_diagnosis_ffn_sign_permuted-s17/responses.jsonl": "543bed748cd23d2b5a90bcf6da58370d0db852da8d2c831e9bd7c6c2d5874175",
+    "runs/p2-e5probes-fable_diagnosis_healthy-s17/responses.jsonl": "dab2320935c2aa7db6dc99a46c5574d03196f090a848d025a3f8ca2d552d6041",
+    "runs/p2-e5probes-fable_diagnosis_healthy_permuted-s17/responses.jsonl": "4b8e919913fe245b97eeabe3f1f81d666d0acd4a994388064cfef5b97d63d19a",
+    "runs/p2-e5probes-fable_diagnosis_output_sign-s17/responses.jsonl": "044794e7078952e3321bd26a8aa68025036650a2d69d353d46b771751975fd4a",
+    "runs/p2-e5probes-fable_diagnosis_output_sign_permuted-s17/responses.jsonl": "d6be2c774bbed66491e8ab46b84cca6a5846e25182cb95143c35f5d621a7430f",
+    "runs/p2-e5probes-fable_diagnosis_ffn_sign-s17/responses.jsonl": "e25a8c2a19f428d2a51fc4c6005116394122aa8fe987d151f03f79f59720240c",
+    "runs/p2-e5probes-fable_diagnosis_ffn_sign_permuted-s17/responses.jsonl": "d3c4489d7bd13ebfad8b5d544cef9f0506bf477a447fd6db17cd5c53e066248a",
+    "research/native-state-compatibility.json": "39a14410c1ec77e49caac88a462791e6eb2f3253a3a87782578ec0c0b6daf8dd",
+    "research/exact-patch-storage.json": "9400c96b7557de2c02304306c032f9407ab8a94de0a40385564caac9882968be",
+    "research/exact-patch-rounding-control.json": "c5564a75c0048e0b0e55aa53d303bc6f567afe278dc1c6ed2c17d635f16ca3ed",
+    "research/diagnosis-screening.json": "9151f7e2de8fe829e348b0689bc5aa45d0aff742daadd822cc551cdbcd995869",
+    "research/symmetry-numerical.json": "1422d3e6a533bb5cab00b63187e99f46f6342cad33517992e93b6f38084e7104"
+  }
+}

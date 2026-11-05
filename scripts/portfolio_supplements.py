@@ -104,7 +104,8 @@ def figures(out,data):
     primary=read(out.parent/'results.json');metrics=primary['experiment_5']
     correct=[metrics['weights']['diagnosis_correct'],metrics['behavior']['diagnosis_correct'],
              metrics['baselines']['weight_anomaly']['correct'],metrics['baselines']['behavior_probe']['correct'],metrics['majority_class_baseline']['correct']]
-    fig,ax=plt.subplots(figsize=(9,4.6),layout='constrained')
+    fig,ax=plt.subplots(figsize=(9,4.6))
+    fig.subplots_adjust(left=.30,bottom=.21,top=.90,right=.94)
     bars=ax.barh(['0.6B editor: weight summaries','0.6B editor: two outputs','Output-norm sign detector','Exact two-output checker','Majority label'],correct,color=['#246B9A','#528A75','#8A69A3','#DA9441','#999999'])
     ax.invert_yaxis();ax.set_xlim(0,13.5);ax.set_xticks(range(0,13,2));ax.set_xlabel('Correct diagnoses / 12 retained presentations')
     ax.bar_label(bars,labels=[f'{x}/12' for x in correct],padding=4)
