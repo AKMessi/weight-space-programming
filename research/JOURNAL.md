@@ -117,3 +117,13 @@ Record observations, hypotheses, decisions, failed attempts, confounds, and foll
 **Audit observation:** Q/K/V attention matrices differ by roughly 3.6–4.9% in relative norm between these published checkpoints, while most FFN/convolution/embedding tensors differ by roughly 0.17%. The first one-way BF16 diagnostic does not identify which export is coarser. Add the reverse rounding comparison and on-grid fractions before interpreting these differences as training updates.
 
 **Next predeclared candidates:** (a) a parent with BF16-rounded values stored in the same floating GGUF layout, to isolate value precision from runtime format; (b) a 25% rollback of only attention V matrices at layers 10 and 12 toward precision-aligned parent values. These sites are selected by the weight-delta audit, not by hidden test outcomes. They are discovery baselines, not a claimed new method or identified behavior circuit.
+
+## 2026-11-05 — Precision audit exposes a real checkpoint-comparison confound
+
+**Measured:** Fable's embedding and FFN output values lie entirely on the BF16 value grid despite being stored in an F16 file. The public F16 parent has only about 12.5% of those values on that grid. Rounding the parent's values to BF16 matches approximately 93.7% of Fable's embedding/FFN values. Attention Q/K/V matrices differ substantially beyond that pattern.
+
+**Interpretation:** equal storage dtype does not guarantee equal effective value precision. Some apparent checkpoint differences are plausibly export/precision changes, not useful learned deltas. The approximately 6.3% rounding mismatch may involve double-rounding ties or other provenance differences; do not claim an exact reconstruction from the F16 parent.
+
+**Controls created:** a simulated BF16-value parent stored in its original F16 layout, and a two-site late-V rollback (1,021,626 changed entries; approximately 1.21–1.22% relative norm per selected matrix), each with all untouched tensors and originals verified.
+
+**Next:** evaluate both controls and fetch the separately published, checksummed BF16 parent. Exact BF16 source values can test the rounding/provenance explanation more directly than inferring them from already-rounded F16 values.

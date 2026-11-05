@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "started_utc": "2026-11-05T10:42:25.263085+00:00",
+  "git": {
+    "commit": "3546862157e27e407a92c26f834c397d8d623e06",
+    "status": "?? research/fable-parent-tensor-audit-v2.json\n?? research/patches/parent-bf16-values-f16.json"
+  },
+  "operation": "partial_parent_rollback_of_selected_floating_tensors",
+  "status": "verified",
+  "base": {
+    "path": "local/models/lfm2.5-230m-fable-5-f16.gguf",
+    "repo": "AKMESSI/lfm2.5-230m-fable-5",
+    "revision": "b1bf3b1c3bd6001e4cf6d7e44054eb34b8f01648",
+    "file": "lfm2.5-230m-fable-5-f16.gguf",
+    "sha256": "1e1624de4d7ebe413d82dbe2b5f48fcf83e6c46b1b5414c8aef0596009380cc6",
+    "sampling": {
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "min_p": 0.0,
+      "repeat_penalty": 1.05,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0
+    }
+  },
+  "parent": {
+    "path": "local/models/LFM2.5-230M-F16.gguf",
+    "repo": "LiquidAI/LFM2.5-230M-GGUF",
+    "revision": "03502067c64ce32ac4fe87b0cec0310a1a13d3e9",
+    "file": "LFM2.5-230M-F16.gguf",
+    "sha256": "4d364976c7ae1b85bd380f743155aa2d532f7a10291beaa6b27a7d6c9b10527f",
+    "sampling": {
+      "temperature": 0.1,
+      "top_k": 50,
+      "top_p": 1.0,
+      "min_p": 0.0,
+      "repeat_penalty": 1.05,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0
+    }
+  },
+  "alpha": 0.25,
+  "selected": [
+    "blk.10.attn_v.weight",
+    "blk.12.attn_v.weight"
+  ],
+  "output": "artifacts/fable-late-v-rollback-025.gguf",
+  "selection_pattern": "blk\\.(\\d+)\\.attn_v\\.weight",
+  "parent_transformation": "round_bf16_values_then_cast_back",
+  "notes": [
+    "No gradients or training. Not a sparse/rank-one edit.",
+    "F16 casting is part of the evaluated operation."
+  ],
+  "tensors": [
+    {
+      "name": "blk.10.attn_v.weight",
+      "shape": [
+        512,
+        1024
+      ],
+      "dtype": "float16",
+      "base_sha256": "99e4cb828f2f64fa8beab568ecfa63987666619ce54bbf6166944e8b86c1f38b",
+      "parent_sha256": "b39ea91622656e4a9902a40604b7c5cf8fe9b7a76189afc7a902fd1243aeb897",
+      "effective_parent_sha256": "ebe566949f3985114836ebaeb0222445901c5e4682a9fee3c004f6cc3afccce4",
+      "edited_sha256": "41a0e42817e6b3e3fb393a8d709931002c36650b6cafdf767bbd9b4150b1b400",
+      "changed_values": 510721,
+      "relative_frobenius_change": 0.012089242963108648
+    },
+    {
+      "name": "blk.12.attn_v.weight",
+      "shape": [
+        512,
+        1024
+      ],
+      "dtype": "float16",
+      "base_sha256": "f9b3f504eeab51f36ee611587091d813ce0be68b3de54f3c4f8f0339ef58dbe9",
+      "parent_sha256": "6a077fb6075d9f045a353b8c0500f127ec4c386caf2a45996442337c295964ca",
+      "effective_parent_sha256": "482ec350a892c0f650ecf93f2f20e666835603daef4f261895c179a28b69fe7e",
+      "edited_sha256": "28ee8d7fbfbba455e08d402400387c4e766879c8385598a197a6015851842787",
+      "changed_values": 510905,
+      "relative_frobenius_change": 0.012241913501839853
+    }
+  ],
+  "untouched_tensors_verified": 130,
+  "changed_values": 1021626,
+  "edited_file_sha256": "c0d216d9ebd9ca6ba181fa47263172a3e3dc9193eea97ce1d9dbdd16cbade57d",
+  "ended_utc": "2026-11-05T10:42:30.946918+00:00",
+  "bytes": 461883712
+}
