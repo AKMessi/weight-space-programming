@@ -201,3 +201,7 @@ Run status: complete; generated tokens: 582. Group counts: `{"functional_code": 
 ### 2026-11-05T11:33:36.731740+00:00 — p2-e1dev-qwen3_q8_A-s17
 
 Run status: complete; generated tokens: 684. Group counts: `{"functional_code": {"attempted": 6, "cutoff": 0, "payload_correct": 6, "responses": 6, "success": 6}, "functional_explain": {"attempted": 6, "cutoff": 0, "payload_correct": 3, "responses": 6, "success": 3}, "literal_copy": {"attempted": 8, "cutoff": 0, "payload_correct": 8, "responses": 8, "success": 0}, "structured": {"attempted": 8, "cutoff": 0, "payload_correct": 8, "responses": 8, "success": 0}}`. Full immutable requests, raw responses, and settings are in `runs/p2-e1dev-qwen3_q8_A-s17`. These counts are observations; interpretation is deferred to the study report.
+
+### 2026-11-05T11:33:54.336796+00:00 — p2-e1dev-qwen3_q8_B-s17
+
+Run status: complete; generated tokens: 591. Group counts: `{"functional_code": {"attempted": 6, "cutoff": 0, "payload_correct": 5, "responses": 6, "success": 5}, "functional_explain": {"attempted": 6, "cutoff": 0, "payload_correct": 6, "responses": 6, "success": 1}, "literal_copy": {"attempted": 8, "cutoff": 0, "payload_correct": 8, "responses": 8, "success": 0}, "structured": {"attempted": 8, "cutoff": 0, "payload_correct": 8, "responses": 8, "success": 0}}`. Full immutable requests, raw responses, and settings are in `runs/p2-e1dev-qwen3_q8_B-s17`. These counts are observations; interpretation is deferred to the study report.
