@@ -2,7 +2,8 @@
 import json,statistics,random
 from pathlib import Path
 from weightlab.evidence import file_sha256,git_state,utc_now,write_json
-from weightlab.grading import first_json,typed_equal,grade_turns,GRADER_VERSION
+from weightlab.grading import first_json,typed_equal,grade_turns,grade,GRADER_VERSION
+from weightlab.runner import summarize
 from validation_report import upper_event_probability
 from portfolio_batch import ROOTS
 import re
@@ -274,6 +275,26 @@ def main():
     result={'utc':utc_now(),'git':git_state(),'completion_scope':'five bounded pilots with negative prerequisite closures; not five paper-ready studies',
             'analysis_grader_version':GRADER_VERSION,'grading_note':'Post-hoc v6 functional extraction/signature sensitivity; original recorded v4/v5 and frozen selections preserved. Primary copying/JSON/evidence/diagnosis semantics unchanged.',
             'experiment_1':e1(output),'experiment_2':e2(output),'experiment_3':e3(output),'experiment_4':e4(output),'experiment_5':e5(output)}
+    # Derived artifacts preserve both the raw-source checksum and every changed grade.
+    regrades=output/'regrades';regrades.mkdir()
+    grading_index=[]
+    for raw in sorted(Path('runs').glob('*/responses.jsonl')):
+        records=list(map(json.loads,raw.read_text().splitlines()));changes=[]
+        manifest=json.loads((raw.parent/'manifest.json').read_text())
+        for record in records:
+            if 'content' not in record:continue
+            old=record['grading']
+            new=grade_turns(record['case'],record['steps']) if record.get('steps') else grade(record['case'],record['content'])
+            if old!=new:changes.append({'case_id':record['case']['id'],'recorded':old,'derived':new})
+            record['grading']=new
+        sidecar={'source':str(raw),'source_sha256':file_sha256(raw),'recorded_grader_version':manifest['grader_version'],
+                 'analysis_grader_version':GRADER_VERSION,'changes':changes,'derived_summary':summarize(records)}
+        write_json(regrades/(raw.parent.name+'.json'),sidecar)
+        grading_index.append({'run':str(raw.parent),'changes':len(changes),'recorded_grader_version':manifest['grader_version']})
+    write_json(regrades/'index.json',grading_index)
+    for report in output.glob('experiment-*.md'):
+        with report.open('a') as f:
+            f.write('\nCode scoring uses post-hoc derived grader v7 (v6 functional rules); original recorded grades, frozen selections and raw outputs are preserved. The [derived sidecars](regrades/) list every change with its source checksum. This correction is sensitivity analysis, not an independent prespecified confirmation.\n')
     runs=[]
     for p in sorted(Path('runs').glob('p2-*/summary.json')):
         summary=json.loads(p.read_text());runs.append({'run':str(p.parent),'summary':summary,'response_sha256':file_sha256(p.parent/'responses.jsonl')})

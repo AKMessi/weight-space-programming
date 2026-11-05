@@ -2,7 +2,7 @@
 import argparse,json,subprocess,fcntl
 from pathlib import Path
 from weightlab.runner import execute
-from weightlab.evidence import append_jsonl,utc_now
+from weightlab.evidence import append_jsonl,utc_now,digest
 
 ROOTS=['qwen3_q8','lfm3_qad','fable_f16']
 
@@ -23,12 +23,17 @@ def _publish(paths,message):
 
 def run_one(config,key,suite_path,label,seed=17,max_tokens=128,limit=None):
     out=Path(f'runs/p2-{label}-{key}-s{seed}')
+    suite=json.loads(Path(suite_path).read_text())
     if (out/'summary.json').exists():
         previous=json.loads((out/'summary.json').read_text())
         if previous.get('status')=='complete':
+            manifest=json.loads((out/'manifest.json').read_text())
+            expected={'config_sha256':digest(config),'suite_sha256':digest(suite),
+                      'model_key':key,'seed':seed,'max_tokens':max_tokens,'limit':limit}
+            if any(manifest.get(k)!=v for k,v in expected.items()):
+                raise ValueError(f'Resume inputs differ from completed immutable run: {out}')
             print('Already complete:',out,flush=True);return previous
         raise RuntimeError(f'Previous failed run requires an explicitly versioned retry: {out}')
-    suite=json.loads(Path(suite_path).read_text())
     error=None
     try:summary=execute(config,key,suite,out,max_tokens,seed,limit)
     except BaseException as exc:
