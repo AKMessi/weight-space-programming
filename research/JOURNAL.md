@@ -1083,3 +1083,7 @@ Status `complete`, 2221 generated tokens. Immutable raw inputs/responses/config/
 ### 2026-11-05T19:33:14.093129+00:00 — p3-reserve-format-noop-hybrid_noop-s17
 
 Status `complete`, 381 generated tokens. Immutable raw inputs/responses/config/runtime and resource samples are in `runs/p3-reserve-format-noop-hybrid_noop-s17`. Interpretation is deferred to the study report; this run alone does not establish a repair.
+
+### 2026-11-05T19:33:35.272252+00:00 — p3-repair-random-control-random_control-s17
+
+Status `complete`, 528 generated tokens. Immutable raw inputs/responses/config/runtime and resource samples are in `runs/p3-repair-random-control-random_control-s17`. Interpretation is deferred to the study report; this run alone does not establish a repair.
