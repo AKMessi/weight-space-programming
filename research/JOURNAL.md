@@ -935,3 +935,13 @@ Status `complete`, 1472 generated tokens. Immutable raw inputs/responses/config/
 ### 2026-11-05T18:23:45.259614+00:00 — p3-repair-switch-dev-grammar-fable_float-s17
 
 Status `complete`, 1344 generated tokens. Immutable raw inputs/responses/config/runtime and resource samples are in `runs/p3-repair-switch-dev-grammar-fable_float-s17`. Interpretation is deferred to the study report; this run alone does not establish a repair.
+
+### Exact delivery result and naturally eligible repair subject
+
+The first three lossless capsules reconstructed the complete original Fable hash. Combined factor+residual sizes: rank16 18,116,720 bytes; rank32 5,958,793 bytes; rank64 8,189,207 bytes. Rank32 is3.41x smaller than the previous20.3MB exact patch, but misses the aspirational5MB target. This is an exact cached-base delivery result, not an improved model or standalone6MB model. Deterministic integer prediction avoids BLAS-dependent intermediate identity.
+
+The new switching gate gives Qwen64/64 correct contracts, so it is a correct ineligible control. Original Fable has64/64 correct payloads,19/32 correct plain contracts and32/32 correct fenced contracts: a genuine style failure with content competence. Its stronger prompt worsened plain formatting to0/32; schema control reached32/32 plain and32/32 fenced. Fable is the naturally eligible subject, with grammar a strong practical baseline.
+
+Fixed16-prefix native fidelity retained top1 on all16 contexts for both approximate packages; mean reference-to-candidate KL is0.00607 for rank16 and0.00178 for rank32. These descriptive results do not erase generation differences or the coding score floor. The exact capsule restores the original byte-for-byte instead of claiming the approximation is identical.
+
+Before component tracing/search, froze exact development prefixes, native/server generation parity controls and explicit MLP formulas/budgets. True operation-based input/output mapping is verified algebraically before edits; no misleading debug label is accepted as proof.
