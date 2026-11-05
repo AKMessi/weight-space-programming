@@ -619,3 +619,7 @@ Run status: complete; generated tokens: 114. Group counts: `{"diagnosis_probe": 
 ### 2026-11-05T12:42:44.371550+00:00 — p2-e3qadparity-qad_rewrite-s17
 
 Run status: complete; generated tokens: 114. Group counts: `{"diagnosis_probe": {"attempted": 6, "cutoff": 0, "payload_correct": 6, "responses": 6, "success": 6}}`. Full immutable requests, raw responses, and settings are in `runs/p2-e3qadparity-qad_rewrite-s17`. These counts are observations; interpretation is deferred to the study report.
+
+### 2026-11-05T12:43:02.343861+00:00 — p2-e5probes-qwen_diagnosis_healthy-s17
+
+Run status: complete; generated tokens: 281. Group counts: `{"diagnosis_probe": {"attempted": 12, "cutoff": 0, "payload_correct": 12, "responses": 12, "success": 8}}`. Full immutable requests, raw responses, and settings are in `runs/p2-e5probes-qwen_diagnosis_healthy-s17`. These counts are observations; interpretation is deferred to the study report.
