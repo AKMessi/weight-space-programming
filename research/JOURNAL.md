@@ -555,3 +555,7 @@ Run status: complete; generated tokens: 356. Group counts: `{"functional_code": 
 ### 2026-11-05T12:30:43.097367+00:00 — p2-e3precision-qwen_Q8_0_A-s17
 
 Run status: complete; generated tokens: 362. Group counts: `{"functional_code": {"attempted": 6, "cutoff": 0, "payload_correct": 6, "responses": 6, "success": 6}, "literal_copy": {"attempted": 6, "cutoff": 0, "payload_correct": 6, "responses": 6, "success": 0}, "structured": {"attempted": 6, "cutoff": 0, "payload_correct": 6, "responses": 6, "success": 0}}`. Full immutable requests, raw responses, and settings are in `runs/p2-e3precision-qwen_Q8_0_A-s17`. These counts are observations; interpretation is deferred to the study report.
+
+### 2026-11-05T12:30:54.613558+00:00 — p2-e3precision-qwen_Q4_0-s17
+
+Run status: complete; generated tokens: 361. Group counts: `{"functional_code": {"attempted": 6, "cutoff": 0, "payload_correct": 5, "responses": 6, "success": 5}, "literal_copy": {"attempted": 6, "cutoff": 0, "payload_correct": 6, "responses": 6, "success": 0}, "structured": {"attempted": 6, "cutoff": 0, "payload_correct": 6, "responses": 6, "success": 0}}`. Full immutable requests, raw responses, and settings are in `runs/p2-e3precision-qwen_Q4_0-s17`. These counts are observations; interpretation is deferred to the study report.
