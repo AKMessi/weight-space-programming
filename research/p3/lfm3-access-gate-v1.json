@@ -1,0 +1,83 @@
+{
+  "utc": "2026-11-05T19:35:14.076072+00:00",
+  "model": {
+    "path": "/home/akmessi/models/lfm3/LFM3-1.7B-QAD-Q4_0.gguf",
+    "repo": "LiquidAI/LFM3-1.7B-GGUF",
+    "revision": "cd0c74c575b5c416f3011b5b4c298077f26ca8c2",
+    "file": "LFM3-1.7B-QAD-Q4_0.gguf",
+    "sha256": "43a7d09a0e9cba91b63eb7052488b9564569bddfd65754d2e426465e572a7452",
+    "sampling": {
+      "temperature": 0.0,
+      "top_k": 0,
+      "top_p": 1.0,
+      "min_p": 0.0,
+      "repeat_penalty": 1.0,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0
+    }
+  },
+  "readout_tensor": "token_embd.weight",
+  "readout_encoding": "14",
+  "checks": [
+    {
+      "id": "p3-evidence-development-0-complete",
+      "max_centered_error": 4.76837158203125e-06,
+      "relative_centered_error": 1.8768785992051562e-07,
+      "top1_equal": true,
+      "passed": true
+    },
+    {
+      "id": "p3-evidence-development-0-absent",
+      "max_centered_error": 4.76837158203125e-06,
+      "relative_centered_error": 1.9009385709978233e-07,
+      "top1_equal": true,
+      "passed": true
+    },
+    {
+      "id": "p3-evidence-development-0-conflicting",
+      "max_centered_error": 5.7220458984375e-06,
+      "relative_centered_error": 3.3065688853639585e-07,
+      "top1_equal": true,
+      "passed": true
+    },
+    {
+      "id": "p3-evidence-development-1-complete",
+      "max_centered_error": 6.67572021484375e-06,
+      "relative_centered_error": 3.4301973528272356e-07,
+      "top1_equal": true,
+      "passed": true
+    }
+  ],
+  "controls": [
+    {
+      "mode": "no_callback",
+      "id": "p3-evidence-development-0-complete",
+      "max_logit_difference": 0.0,
+      "exact_equal": true,
+      "passed": true
+    },
+    {
+      "mode": "no_callback",
+      "id": "p3-evidence-development-0-absent",
+      "max_logit_difference": 0.0,
+      "exact_equal": true,
+      "passed": true
+    },
+    {
+      "mode": "known_vector",
+      "id": "p3-evidence-development-0-complete",
+      "max_centered_shift_error": 2.164393663406372e-06,
+      "max_state_delta_error": 2.2351741790771484e-07,
+      "passed": true
+    },
+    {
+      "mode": "known_vector",
+      "id": "p3-evidence-development-0-absent",
+      "max_centered_shift_error": 3.291293978691101e-06,
+      "max_state_delta_error": 4.2049214243888855e-07,
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "scope": "Same-forward final readout and interventions, not unverified intermediate/post-FFN-normalization algebra."
+}
