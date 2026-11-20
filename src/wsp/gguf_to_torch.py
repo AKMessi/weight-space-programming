@@ -10,11 +10,15 @@ from transformers import AutoConfig, AutoModelForCausalLM
 from .gguf_patch import read_gguf_tensor_f32
 
 
-def load_causal_lm_from_gguf(hf_config_dir: Path | str, gguf_path: Path | str) -> torch.nn.Module:
+def load_causal_lm_from_gguf(
+    hf_config_dir: Path | str,
+    gguf_path: Path | str,
+    dtype: torch.dtype = torch.bfloat16,
+) -> torch.nn.Module:
     """Instantiate model from HF config.json and populate exact BF16/F32 tensors directly from GGUF."""
     cfg = AutoConfig.from_pretrained(str(hf_config_dir))
     with torch.device("meta"):
-        model = AutoModelForCausalLM.from_config(cfg, dtype=torch.bfloat16)
+        model = AutoModelForCausalLM.from_config(cfg, dtype=dtype)
 
     reader = GGUFReader(str(gguf_path), mode="r")
     gmap = {t.name: t for t in reader.tensors}
@@ -55,7 +59,7 @@ def load_causal_lm_from_gguf(hf_config_dir: Path | str, gguf_path: Path | str) -
     sd = {}
     for hf_key, gg_key in mapping.items():
         arr = read_gguf_tensor_f32(gmap[gg_key])
-        sd[hf_key] = torch.from_numpy(arr).to(torch.bfloat16)
+        sd[hf_key] = torch.from_numpy(arr).to(dtype)
 
     missing, unexpected = model.load_state_dict(sd, strict=False, assign=True)
     # Ignore non-persistent buffers like rotary inv_freq if any

@@ -177,9 +177,21 @@ def collect_layer_activations(
         return idxs, seq_len
 
     try:
+        import time as _time
+        _t0 = _time.time()
+        _done = 0
+        _total = len(path_texts) + len(healthy_texts) + len(resolve_texts) + len(preserve_texts)
+
+        def _tick(phase: str):
+            nonlocal _done
+            _done += 1
+            if _done % 10 == 0 or _done == _total:
+                print(f"  [trace:{phase}] {_done}/{_total} seqs ({_time.time()-_t0:.1f}s)", flush=True)
+
         # 1. Pathological (loop / cutoff tail) sequences
         for txt, onset_c in path_texts:
             idxs, _ = run_seq(txt, start_char=onset_c)
+            _tick("path")
             if not idxs:
                 continue
             idx_t = torch.tensor(idxs, dtype=torch.long)
@@ -193,6 +205,7 @@ def collect_layer_activations(
         # 2. Healthy reasoning sequences
         for txt, start_c in healthy_texts:
             idxs, seq_len = run_seq(txt, start_char=start_c)
+            _tick("healthy")
             if not idxs:
                 continue
             idx_t = torch.tensor(idxs, dtype=torch.long)
@@ -215,6 +228,7 @@ def collect_layer_activations(
         for txt, close_c in resolve_texts:
             # Capture the last 12 tokens right up to and including </think>
             idxs, _ = run_seq(txt, start_char=max(0, close_c - 120), end_char=close_c + 16, window_tail=12)
+            _tick("resolve")
             if not idxs:
                 continue
             idx_t = torch.tensor(idxs, dtype=torch.long)
@@ -225,6 +239,7 @@ def collect_layer_activations(
         # 4. General preservation (exact copy + WikiText-2) sequences
         for txt in preserve_texts:
             idxs, _ = run_seq(txt, start_char=0)
+            _tick("preserve")
             if not idxs:
                 continue
             idx_t = torch.tensor(idxs, dtype=torch.long)

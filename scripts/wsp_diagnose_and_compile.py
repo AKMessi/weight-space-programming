@@ -36,9 +36,9 @@ def load_cal_trajectories(
     cal_copy_dir: Path,
     cal_wikitext_path: Path,
     *,
-    max_path: int = 28,
-    max_healthy: int = 28,
-    max_preserve: int = 40,
+    max_path: int = 18,
+    max_healthy: int = 18,
+    max_preserve: int = 24,
 ) -> tuple[list[tuple[str, int]], list[tuple[str, int]], list[tuple[str, int]], list[str], dict[str, int]]:
     """Build strictly-calibration-only trajectory sets for PyTorch tracing."""
     # Map dataset items by id so we reconstruct the EXACT chat-templated prompt + generated output
@@ -102,24 +102,27 @@ def load_cal_trajectories(
                 else:
                     # Final 45% stalled tail of generation
                     onset_char = p_len + int(len(raw) * 0.55)
-                # Keep the window near onset so max_seq_len=1024 captures the actual pathology!
-                # Construct prompt + truncated slice centered around pathology if raw is huge
-                if len(full) > 3600:
-                    # Keep prompt + first 600 chars of think + 2400 chars starting near onset
+                # Keep a compact window centered tightly around pathology so max_seq_len=384 captures it cleanly!
+                if len(full) > 1200:
                     raw_onset = max(0, onset_char - p_len)
-                    tail_slice = raw[max(0, raw_onset - 200) : raw_onset + 2400]
-                    full_trim = prompt_str + raw[:400] + "\n...\n" + tail_slice
-                    onset_trim = len(prompt_str) + 405 + min(200, raw_onset)
+                    tail_slice = raw[max(0, raw_onset - 120) : raw_onset + 900]
+                    full_trim = prompt_str[:300] + "\n...\n" + tail_slice
+                    onset_trim = min(300, len(prompt_str)) + 5 + min(120, raw_onset)
                     path_texts.append((full_trim, onset_trim))
                 else:
                     path_texts.append((full, onset_char))
 
             # Healthy: correct, non-looping, finished cleanly
             elif g.get("correct") and not g.get("loop_detected") and not g.get("hit_limit"):
-                healthy_texts.append((full, p_len))
+                h_full = full if len(full) <= 1400 else (prompt_str[:300] + "\n...\n" + raw[-1000:])
+                h_start = p_len if len(full) <= 1400 else (min(300, len(prompt_str)) + 5)
+                healthy_texts.append((h_full, h_start))
                 if g.get("has_think_close") and "</think>" in raw:
-                    close_char = p_len + raw.find("</think>")
-                    resolve_texts.append((full, close_char))
+                    cpos = raw.find("</think>")
+                    r_slice = raw[max(0, cpos - 800) : cpos + 64]
+                    r_full = prompt_str[:250] + "\n...\n" + r_slice
+                    r_close = len(prompt_str[:250]) + 5 + min(800, cpos)
+                    resolve_texts.append((r_full, r_close))
 
     # Preservation texts: exact-copy prompt+gold AND WikiText-2 validation passages
     preserve_texts: list[str] = []
@@ -152,7 +155,7 @@ def main() -> None:
     p.add_argument("--baseline-dir", required=True)
     p.add_argument("--cache-dir", default="local/cache")
     p.add_argument("--report-dir", default="research/wsp")
-    p.add_argument("--max-seq-len", type=int, default=1024)
+    p.add_argument("--max-seq-len", type=int, default=384)
     p.add_argument("--force-retrace", action="store_true")
     a = p.parse_args()
 
@@ -174,14 +177,14 @@ def main() -> None:
         counts = payload["counts"]
     else:
         t0 = time.time()
-        print(f"Loading PyTorch model & tokenizer from {a.hf_dir}...", flush=True)
+        print(f"Loading PyTorch model & tokenizer from {a.hf_dir} (float32 for fast AVX2 CPU)...", flush=True)
         tok = AutoTokenizer.from_pretrained(a.hf_dir)
         has_st = any(Path(a.hf_dir).glob("*.safetensors"))
         if has_st:
-            model = AutoModelForCausalLM.from_pretrained(a.hf_dir, dtype=torch.bfloat16)
+            model = AutoModelForCausalLM.from_pretrained(a.hf_dir, dtype=torch.float32)
         else:
-            print(f"No safetensors in {a.hf_dir}; loading exact BF16 weights from {a.base_gguf}...", flush=True)
-            model = load_causal_lm_from_gguf(a.hf_dir, a.base_gguf)
+            print(f"No safetensors in {a.hf_dir}; loading exact BF16->F32 weights from {a.base_gguf}...", flush=True)
+            model = load_causal_lm_from_gguf(a.hf_dir, a.base_gguf, dtype=torch.float32)
         model.eval()
 
         path_texts, healthy_texts, resolve_texts, preserve_texts, counts = load_cal_trajectories(
