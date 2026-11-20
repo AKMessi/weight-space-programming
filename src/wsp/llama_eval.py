@@ -138,6 +138,7 @@ class LlamaServer:
             "-dev", self.device,
             "-c", str(self.ctx_size),
             "-np", str(self.parallel),
+            "--cache-ram", "0",
             "--reasoning-format", "none",
             "--no-webui",
         ] + self.extra_args

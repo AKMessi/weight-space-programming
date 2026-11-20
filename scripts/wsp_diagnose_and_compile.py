@@ -25,6 +25,7 @@ from src.wsp.compiler import (
     compile_uncond_subspace,
 )
 from src.wsp.gguf_patch import patch_gguf_tensors
+from src.wsp.gguf_to_torch import load_causal_lm_from_gguf
 from src.wsp.llama_eval import format_messages
 
 
@@ -175,7 +176,12 @@ def main() -> None:
         t0 = time.time()
         print(f"Loading PyTorch model & tokenizer from {a.hf_dir}...", flush=True)
         tok = AutoTokenizer.from_pretrained(a.hf_dir)
-        model = AutoModelForCausalLM.from_pretrained(a.hf_dir, dtype=torch.bfloat16)
+        has_st = any(Path(a.hf_dir).glob("*.safetensors"))
+        if has_st:
+            model = AutoModelForCausalLM.from_pretrained(a.hf_dir, dtype=torch.bfloat16)
+        else:
+            print(f"No safetensors in {a.hf_dir}; loading exact BF16 weights from {a.base_gguf}...", flush=True)
+            model = load_causal_lm_from_gguf(a.hf_dir, a.base_gguf)
         model.eval()
 
         path_texts, healthy_texts, resolve_texts, preserve_texts, counts = load_cal_trajectories(
