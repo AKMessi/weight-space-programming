@@ -1187,3 +1187,14 @@ Status `complete`, 1291 generated tokens. Immutable raw inputs/responses/config/
 ### 2026-11-05T20:09:00.378118+00:00 — p3-precision-adapter-precision-quality-edited_Q8_0-s17
 
 Status `complete`, 2363 generated tokens. Immutable raw inputs/responses/config/runtime and resource samples are in `runs/p3-precision-adapter-precision-quality-edited_Q8_0-s17`. Interpretation is deferred to the study report; this run alone does not establish a repair.
+
+
+## 2026-11-21 — New Weight-Space Programming (WSP) Research Program Launch
+
+**Direction:** Pivoting from prior narrow synthetic JSON/copy normalization pilots to a rigorous, multi-architecture, zero-gradient Weight-Space Programming program on real open-source small reasoning models (`Qwen3-0.6B`, `Qwen3.5-0.8B` hybrid Gated-DeltaNet, and `DeepSeek-R1-Distill-Qwen-1.5B`) evaluated on standard benchmarks (`MATH-500`, `GSM8K`, `ARC-Challenge`, `WikiText-2` perplexity, and a controlled Dual-Function Entanglement copy/KV/cycle-induction suite) on the local RX 6400 4 GB Vulkan workstation.
+
+**Two core unexplored research pillars:**
+1. **Conditional Control-Flow Compilation in Weight Space (`src/wsp/compiler.py`):** Comparing unconditional rank-r direction excision and sparse column excision (Takehi et al. / Steer2Edit style) against (A) Null-Space-Gated Oblique Projection in post-SwiGLU hidden space and (B) Nonlinear Thresholded IF-THEN Control-Flow Compilation into dormant SwiGLU neurons via a closed-form Virtual Constant-1 Bias Register $b^*$ ($b^{*T} x \approx 1$), plus non-weight controls (DRY/presence-penalty decoding, random matched-norm edits, exact permutation no-ops).
+2. **Quantization Survival & Block-Aligned Weight-Space Compilation (BA-WSC):** Measuring the quantization cliff of WSP edits across `BF16`, `Q8_0`, `Q4_K_M`, `Q4_0`, and `Q3_K_M`, and testing whether combining exact SwiGLU neuron-permutation symmetry $P$ (gathering $G=32$ edited dormant slots into dedicated quantization blocks) with exact per-neuron gauge scaling $\eta$ preserves surgical weight-space edits at 4-bit and 3-bit precision with zero extra bytes or runtime overhead — plus testing post-quantization WSP healing of quantization-induced reasoning loops.
+
+**Data discipline:** Strictly disjoint splits frozen in `datasets/wsp/manifest.json`. Calibration (`cal_math_50`, `cal_gsm8k_48`, `cal_copy_36`, `cal_wikitext_64`) and hyperparameter selection (`dev_math_60`, `dev_gsm8k_60`) come strictly from MATH-train, GSM8K-train, and WikiText-2-validation. Held-out test benchmarks (`test_math500`, `test_gsm8k_250`/`full`, `test_arc_challenge_250`, `test_copy_90`, `test_wikitext2_raw`) are strictly untouched during calibration and selection.
