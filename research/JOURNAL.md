@@ -1221,3 +1221,21 @@ On `cal_math_50` (2048 max tokens, greedy, 4-slot Vulkan RX 6400):
 - `sparse64_a1.0` (Takehi-style scattered 64 columns): `cos_sim = 0.640` (`Q4_0`), `0.379` (`Q3_K_M`); collateral-to-signal `0.633` (`Q4_0`), **`2.257` (`Q3_K_M`)** across 30,921 mixed 32-blocks.
 - `dormant32_scattered` (without block alignment): `cos_sim = 0.988` (`Q4_0`), `0.950` (`Q3_K_M`); collateral-to-signal `0.116` (`Q4_0`), `0.313` (`Q3_K_M`) across 27,645 mixed blocks.
 - **`ba_wsc_32_aligned` (Block-Aligned Weight-Space Compilation via exact MLP permutation $P$):** `cos_sim = 0.9960` (`Q4_0`), **`0.9997` (`Q4_K_M`)**, **`0.9942` (`Q3_K_M`)**; `Q4_0` collateral-to-signal slashed **100x (`0.1161 -> 0.00115`)**, `Q3_K_M` slashed **29x vs `sparse64` (`2.257 -> 0.0786`)**. Residual `Q4_K`/`Q3_K` collateral (`0.0145`/`0.0786` vs `Q4_0`'s `0.00115`) directly reflects the `QK_K=256` super-block scale sharing across 8 sub-blocks of 32.
+
+
+### 2026-11-21 — First Zero-Gradient WSP Dose Probe on Qwen3-0.6B (`research/wsp/qwen3_0.6b/dose_probe.json`)
+
+**Observed on `dev_math_60[:16]` (strictly MATH-train dev, 2048 max tokens, greedy) + 16-chunk WikiText-2 PPL:**
+- `baseline_fp`: PPL `25.770`, `10/16 (62.5%)`, `limit=5`, `loops=3`, `meanTok=1347.8`, `close=68.8%`.
+- `uncond_a0.5` (Takehi/Steer2Edit): PPL `26.761 (+0.991)`, `13/16 (81.2%)`, `limit=2`, `loops=1`, `close=87.5%`.
+- `uncond_a1.0`: PPL `28.439 (+2.669)`, `12/16 (75.0%)`, `limit=2`, `loops=2`, `close=93.8%`.
+- `sparse64_a1.0` (Takehi 64-col): PPL `26.407 (+0.637)`, `11/16 (68.8%)`, `limit=4`, `loops=1`, `close=81.2%`.
+- `oblique_res_a0.25` (Method A, null-space oblique): PPL `26.036 (+0.266)`, `13/16 (81.2%)`, `limit=2`, `loops=1`, `close=93.8%`.
+- `dormant32_res_a0.25` (Method B, scattered dormant IF-THEN): PPL `25.744 (-0.026)`, `12/16 (75.0%)`, `limit=3`, `loops=2`, `close=93.8%`.
+- `dormant32_anti_a0.25` (`H_healthy - H_path` control): PPL `25.742 (-0.028)`, `9/16 (56.2%)`, `limit=6`, `close=68.8%`.
+- **`bawsc32_res_a0.25` (Method C, Block-Aligned Dormant IF-THEN):** PPL **`25.739 (-0.031)`**, **`13/16 (81.2%, +18.7 pp)`**, `limit=2`, `loops=1`, `meanTok=1199.3`, `close=93.8%`.
+
+**Key mechanistic takeaways (discovery/dev only, pending full dev selection and held-out test confirmation):**
+1. The nonlinear thresholded SwiGLU IF-THEN gate (`bawsc32_res_a0.25`) matched the highest accuracy gain (`+18.7 pp`) with **zero WikiText-2 PPL penalty (`-0.031`)**, whereas unconditional excision incurred `+0.991` to `+2.669` PPL degradation.
+2. Targeting the resolution state (`H_resolve - H_path`, closing `</think>`) markedly outperformed targeting mid-thought healthy state (`H_healthy - H_path`, `56.2%`).
+3. Launching full 60-problem `dev_math_60` + `dev_copy_36` + PPL selection (including `ctrl_dry_sampler`, `ctrl_presence_pen`, `ctrl_concise_prompt`, and stronger conditional doses `0.45`/`0.70`).
