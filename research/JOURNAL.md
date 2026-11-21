@@ -1258,3 +1258,14 @@ On `cal_math_50` (2048 max tokens, greedy, 4-slot Vulkan RX 6400):
 Inspecting the 20 `loop_detected` traces in `bawsc32_res_a0.70` revealed a second-order **"Final-Answer Echo" resonance**: 5 of the 12 rescued items cleanly closed `</think>` and emitted the correct `\boxed{...}`, then re-triggered the `resolve` circuit on post-`</think>` summary tokens and repeated `Final Answer: \boxed{...}` until 2048 tokens. Cause: post-`</think>` tokens were not included in the negative class `X_other`.
 
 **Next:** Test an iterative weight-space fix on `dev_math_60` (`bawsc32_noecho`) that adds calibration post-`</think>` answer tokens to the negative preservation set (and/or gates `W_up` on inside-`<think>` state) before freezing Stage 2 held-out evaluation.
+
+
+### 2026-11-21 — Qwen3-0.6B Anti-Echo Dev Ablation & Stage 2 Pre-Registration
+
+**Anti-Echo Ablation on `dev_math_60` (`research/wsp/qwen3_0.6b/dev_noecho_results.json`):**
+- `bawsc32_noecho_a0.70` (post-`</think>` added to negative class): PPL `21.136 (-0.024)`, `26/60 (43.3%, +5/-1, p=0.219)`, `limit=30`, `loops=15`, `close=60.0%`, `copy36=25/36`.
+- `bawsc32_andgate_a0.70` (explicit SwiGLU `W_up` inside-`<think>` AND-gate, `act_pt_rms = 0.0008`): PPL `21.140 (-0.020)`, `25/60 (41.7%, +6/-3, p=0.508)`, `limit=30`, `loops=12` (eliminated echo!), `copy36=25/36`.
+- Retained as an explicit tradeoff ablation: raising the post-`</think>` threshold suppresses the echo (`loops 20 -> 12`) at the cost of fewer rescues inside `<think>` (`32 -> 25-26/60`).
+
+**Frozen Stage 2 & Stage 3 Pre-Registration (`configs/wsp_qwen3_0.6b.json`):**
+Freezing exact dev winners BEFORE touching any held-out test set: `bawsc32_res_a0.70`, `oblique_res_a0.25`, `uncond_a0.8`, `sparse64_a1.0`, `dormant32_res_a0.70` (scattered ablation), `ba_wsc_noop` (exact permutation no-op), `random_matched` (matched Frobenius Gaussian control), plus `baseline_fp`, `ctrl_concise_prompt`, and `ctrl_dry_sampler`.

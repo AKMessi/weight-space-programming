@@ -15,5 +15,25 @@
     {"name": "bawsc32_res_a0.25", "method": "ba_wsc", "layers": [18, 20, 22], "alpha": 0.25, "k_neurons": 32, "gamma": 2.5, "tau_quantile": 0.95, "action_mode": "resolve"},
     {"name": "bawsc32_res_a0.45", "method": "ba_wsc", "layers": [18, 20, 22], "alpha": 0.45, "k_neurons": 32, "gamma": 2.5, "tau_quantile": 0.95, "action_mode": "resolve"},
     {"name": "bawsc32_res_a0.70", "method": "ba_wsc", "layers": [18, 20, 22], "alpha": 0.70, "k_neurons": 32, "gamma": 2.5, "tau_quantile": 0.95, "action_mode": "resolve"}
-  ]
+  ],
+  "frozen_test_specs": [
+    {"name": "bawsc32_res_a0.70", "method": "ba_wsc", "layers": [18, 20, 22], "alpha": 0.70, "k_neurons": 32, "gamma": 2.5, "tau_quantile": 0.95, "action_mode": "resolve", "run_arc_gsm": true},
+    {"name": "oblique_res_a0.25", "method": "oblique_nullspace", "layers": [18, 20, 22], "alpha": 0.25, "action_mode": "resolve", "null_rank": 64, "run_arc_gsm": true},
+    {"name": "uncond_a0.8", "method": "uncond_subspace", "layers": [18, 20, 22], "alpha": 0.8, "rank": 1, "run_arc_gsm": true},
+    {"name": "sparse64_a1.0", "method": "sparse_cols", "layers": [18, 20, 22], "alpha": 1.0, "top_k": 64, "run_arc_gsm": false},
+    {"name": "dormant32_res_a0.70", "method": "dormant_if_then", "layers": [18, 20, 22], "alpha": 0.70, "k_neurons": 32, "gamma": 2.5, "tau_quantile": 0.95, "action_mode": "resolve", "run_arc_gsm": false},
+    {"name": "ba_wsc_noop", "method": "ba_wsc_noop", "layers": [18, 20, 22], "k_neurons": 32, "run_arc_gsm": false},
+    {"name": "random_matched", "method": "random_matched", "layers": [18, 20, 22], "ref_name": "bawsc32_res_a0.70", "seed": 999, "run_arc_gsm": false}
+  ],
+  "quant_matrix": {
+    "qtypes": ["Q4_K_M", "Q4_0", "Q3_K_M"],
+    "arms": [
+      {"name": "ba_wsc_noop", "method": "ba_wsc_noop", "layers": [18, 20, 22], "k_neurons": 32, "cleanup_quant": false},
+      {"name": "bawsc32_res_a0.70", "method": "ba_wsc", "layers": [18, 20, 22], "alpha": 0.70, "k_neurons": 32, "gamma": 2.5, "tau_quantile": 0.95, "action_mode": "resolve", "cleanup_quant": false},
+      {"name": "dormant32_res_a0.70", "method": "dormant_if_then", "layers": [18, 20, 22], "alpha": 0.70, "k_neurons": 32, "gamma": 2.5, "tau_quantile": 0.95, "action_mode": "resolve", "cleanup_quant": true},
+      {"name": "oblique_res_a0.25", "method": "oblique_nullspace", "layers": [18, 20, 22], "alpha": 0.25, "action_mode": "resolve", "null_rank": 64, "cleanup_quant": true},
+      {"name": "uncond_a0.8", "method": "uncond_subspace", "layers": [18, 20, 22], "alpha": 0.8, "rank": 1, "cleanup_quant": true},
+      {"name": "sparse64_a1.0", "method": "sparse_cols", "layers": [18, 20, 22], "alpha": 1.0, "top_k": 64, "cleanup_quant": true}
+    ]
+  }
 }

@@ -317,17 +317,17 @@ def main() -> None:
             max_tokens=max_toks, parallel=parallel, ctx_per_slot=ctx_slot, temperature=temp,
             full_math500=cfg.get("full_math500_primary", False),
         )
-        for ctrl_name, sp, se in [
-            ("ctrl_dry_sampler", None, {"dry_multiplier": 0.8, "dry_base": 1.75, "dry_allowed_length": 2}),
-            ("ctrl_presence_pen", None, {"presence_penalty": 1.5}),
-            ("ctrl_concise_prompt", CONCISE_SYS_PROMPT, None),
+        for ctrl_name, sp, se, do_ag in [
+            ("ctrl_concise_prompt", CONCISE_SYS_PROMPT, None, True),
+            ("ctrl_dry_sampler", None, {"dry_multiplier": 0.8, "dry_base": 1.75, "dry_allowed_length": 2}, False),
         ]:
             test_results[ctrl_name] = eval_heldout_suite(
                 name=ctrl_name, model_path=base_gguf, run_root=run_root / "test",
                 max_tokens=max_toks, parallel=parallel, ctx_per_slot=ctx_slot, temperature=temp,
                 system_prompt=sp, sampling_extra=se, skip_ppl=True,
-                full_math500=False,
+                full_math500=False, run_arc_gsm=do_ag,
             )
+            (rep_root / "test_results.json").write_text(json.dumps(test_results, indent=2) + "\n", encoding="utf-8")
 
         compiled_cache: dict[str, dict[str, np.ndarray]] = {}
         for spec in cfg["frozen_test_specs"]:
