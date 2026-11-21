@@ -1315,3 +1315,32 @@ Full 150-item held-out `MATH-500-strat150` (`Qwen3-0.6B-BF16`, `temp=0.0`, 2048 
 - Because the reservoir of baseline truncated failures (`97/150`) is nearly 2x larger than the reservoir of baseline successes (`52/150`, most of which are short and perturbation-robust), ANY small weight perturbation acts as a single-shot deterministic trajectory reroll with net positive bias `N_trunc * p_escape - N_fragile * p_break > 0`.
 - Pure random Gaussian noise thus beats `uncond_a0.8` (`61` vs `57/150`) and accounts for `+6.0 pp` of the `+8.7 pp` greedy Clean-EOS gain of `bawsc32_res_a0.25` (direct `bawsc32_res_a0.25` vs `random_matched_oblique` at greedy `temp=0.0` is `+12/-8`, `p = 0.5034` n.s.!), although only `bawsc32_res_a0.25` reduced repetition loops (`29 -> 22` vs random's `29 -> 30`).
 - **Implication:** Greedy finite-budget reasoning benchmarks (`temp=0.0`) WITHOUT Frobenius-matched random controls create a severe false-positive methodological artifact. Next: launching `scripts/wsp_greedy_illusion_and_stochastic.py --mode both --seeds 17,42` on `Q8_0` to (a) confirm the Greedy-Perturbation Illusion across 3 independent random seeds (`999, 1000, 1001`) at `temp=0.0`, and (b) measure true unconfounded causal WSP effects under multi-seed official stochastic sampling (`temp=0.6, top_p=0.95, top_k=20`).
+
+
+### 2026-11-22 — Decisive Greedy-Illusion & Multi-Seed Stochastic Proof on Qwen3-0.6B (`research/wsp/qwen3_0.6b/stochastic_pooled_stats.json`)
+
+**Part A — Multi-Seed Zero-Information Perturbation Distribution at Greedy `temp=0.0` (`MATH-500-strat150`, `N=150`):**
+Across 6 zero-information draws (`BF16 base`, `Q8_0 base`, `Q8_0 + rand_s999/1000/1001`, `BF16 + rand_s999`):
+- `BF16 base`: STD `53/150`, Clean-EOS `52/150 (34.7%)`, Limit `97`, Loops `29`.
+- `Q8_0 base`: STD `57/150`, Clean-EOS `57/150 (38.0%)`, Limit `92`, Loops `21`.
+- `Q8_0 + rand_s999`: STD `57/150`, Clean-EOS `55/150 (36.7%, p=0.804 vs Q8 base)`, Limit `93`, Loops `26`.
+- `Q8_0 + rand_s1000`: STD `53/150`, Clean-EOS `52/150 (34.7%, p=0.359)`, Limit `95`, Loops `25`.
+- `Q8_0 + rand_s1001`: STD `60/150`, Clean-EOS `57/150 (38.0%, p=1.000)`, Limit `91`, Loops `30`.
+- `BF16 + rand_s999`: STD `61/150`, Clean-EOS `61/150 (40.7%, +6.0pp vs BF16 base)`, Limit `88`, Loops `30`.
+- **Conclusion:** Under finite-budget greedy decoding, zero-information weight noise spans a **`52–61/150` (`6.0 pp`) chaotic band** (mean `55.7`, SD `3.4`).
+
+**Part B — Multi-Seed Official Stochastic Sampling (`temp=0.6, top_p=0.95, top_k=20`, Seeds 17 + 42, `N=300` rollouts over `150` held-out problems, `Qwen3-0.6B-Q8_0`):**
+Both exact pooled two-sided McNemar (`mc_p`) and **problem-clustered paired sign-permutation tests (`cl_p`, 100,000 permutations + 20,000-sample problem-clustered bootstrap 95% CI)** were computed:
+- **`baseline`**: STD `109/300 (36.3%)`, Clean-EOS `105/300 (35.0%)` (Seed 17: `52`, Seed 42: `53` — ±1 item stability!), Close `44.7%`, Limit `189`, Loops `20`, MeanTok `1784.9`.
+- **`random_s999`** (Frobenius-matched Gaussian noise): STD `109/300 (36.3%)`, **Clean-EOS `104/300 (34.7%, Δ = -0.33 pp [-4.3, +3.7], mc_p = 1.000, cl_p = 1.000)`**, Close `43.0% (p=0.562)`, Limit `191 (p=0.865)`, Loops `22`, MeanTok `1774.1 (p=0.420)`. **The +6.0 pp Greedy-Perturbation Illusion collapses completely to zero under official stochastic sampling!**
+- **`oblique_res_a0.25`** (Method A — Null-Space-Gated Oblique Surgery, `ΔPPL = +0.141`):
+  - STD `125/300 (41.7%)`, **Clean-EOS `122/300 (40.7%)`** (Seed 17: `60`, Seed 42: `62`).
+  - **vs Baseline:** **`+5.67 pp [+1.3, +10.0]` (`+30/-13`, `mc_p = 0.0137`, `cl_p = 0.0148`)**.
+  - **vs Random Noise:** **`+6.00 pp` (`+32/-14`, `mc_p = 0.0114`, `cl_p = 0.0146`)**.
+  - **`</think>` Close:** **`52.3%` (`+7.7 pp`, `cl_p = 0.0017`)**; **Limit:** **`171` (`-18`, `cl_p = 0.0146`)**; **MeanTok:** **`1722.5` (`-62.4 tok/prob`, `cl_p = 0.0008`)**!
+- **`bawsc32_res_a0.25`** (Method C — BA-WSC Dormant SwiGLU IF-THEN, **`ΔPPL = -0.018`**):
+  - STD `118/300 (39.3%)`, Clean-EOS `114/300 (38.0%)` (Seed 17: `54`, Seed 42: `60`, beat random on S42 `p=0.0309`).
+  - vs Baseline: `+3.00 pp [-1.7, +7.7]` (`mc_p = 0.262`, `cl_p = 0.255`); vs Random: `+3.33 pp` (`mc_p = 0.184`, `cl_p = 0.154`).
+  - Statistically significant **`</think>` Close `50.0%` (`cl_p = 0.0200`)**, **Limit `173` (`cl_p = 0.0245`)**, and **MeanTok `1733.5` (`-51.4`, `cl_p = 0.0071`)** at literally zero PPL cost.
+- **`uncond_a0.8`** (Unconditional subspace excision, **`ΔPPL = +1.338`** — 10x worse PPL cost):
+  - STD `121/300 (40.3%)`, Clean-EOS `116/300 (38.7%)`, vs Baseline `+3.67 pp [-0.3, +7.7]` (`mc_p = 0.108`, `cl_p = 0.108` n.s.), vs Random `+4.00 pp` (`cl_p = 0.088` n.s.), Close `49.0% (p=0.065)`, Limit `176 (p=0.065)`, MeanTok `1741.7 (-43.2, p=0.013)`.
