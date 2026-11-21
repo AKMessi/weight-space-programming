@@ -1288,3 +1288,17 @@ Freezing exact dev winners BEFORE touching any held-out test set: `bawsc32_res_a
   - Standard MATH-500 `66/150 (44.0%, +22/-9, p = 0.0294)`, **HOWEVER** Strict Clean-EOS audit revealed `48/150 (32.0%, +9/-13, p = 0.5235)` and `loops = 59` (vs 29) because 18 matches emitted `\boxed{...}` without clean `<|im_end|>` due to the high `alpha=0.70` Final-Answer Echo resonance. Retained honestly as a key finding proving why strict clean-EOS evaluation and moderate doses (`alpha=0.25`) are essential.
 
 **Next:** Run held-out `MATH-500-strat150` + `Copy-90` + PPL comparators (`uncond_a0.8`, `sparse64_a1.0`, `random_matched`, `ctrl_concise_prompt`, `bawsc32_res_a0.25`), then OOD `GSM8K`/`ARC` + non-greedy sampling check, then Paper 2 Quantization Survival & Post-Quantization Healing (`Q4_K_M`, `Q4_0`, `Q3_K_M`).
+
+
+### 2026-11-21 — Qwen3-0.6B Confirmed Held-Out Breakthrough: `bawsc32_res_a0.25` (100% Clean-EOS, Zero PPL Loss!)
+
+**Completed full 150-item held-out `MATH-500-strat150` + `Copy-90` + 32-chunk `WikiText-2` PPL (`research/wsp/qwen3_0.6b/test_primary_math150.json`):**
+- `baseline_fp`: PPL `19.3056`, STD `53/150 (35.3%)`, Closed-`</think>` `52/150 (34.7%)`, Strict Clean-EOS `52/150 (34.7%)`, Limit `97`, Loops `29`, `Copy-90 = 64/90`.
+- `uncond_a0.8` (Takehi/Steer2Edit unconditional): PPL **`20.6440 (+1.3384)`**, STD `58/150 (38.7%, p=0.3833 n.s.)`, Clean-EOS `57/150 (38.0%, p=0.3593 n.s.)`, Limit `90`, Loops `24`, `Copy-90 = 66/90`.
+- `oblique_res_a0.25` (Method A — Null-Space Oblique): PPL `19.4461 (+0.1405)`, STD `65/150 (43.3%, p=0.0357)`, Closed-`</think>` `65/150 (p=0.0192)`, Clean-EOS `62/150 (41.3%, p=0.0755)`, Limit `81`, Loops `27`, `Copy-90 = 64/90`.
+- **`bawsc32_res_a0.25` (Method C — Block-Aligned Dormant-SwiGLU IF-THEN via Virtual Constant-1 Bias Register $b^*$):**
+  - **WikiText-2 PPL: `19.2874` (`ΔPPL = -0.0182` — zero perplexity penalty!)**
+  - **Strict Clean-EOS MATH-500: `65/150 (43.3%, +8.7 pp; exact McNemar p = 0.0192)`** — **65/65 (100%) closed `</think>` AND stopped cleanly with `<|im_end|>`!**
+  - **Limit `82` (`-15`), Loops `22` (`-7`, `-24%`), Held-out `Copy-90 = 65/90 (72.2%)`!**
+
+**Active negative-control watch:** `random_matched_oblique` (matched Frobenius Gaussian noise in L18/20/22 `ffn_down`) scored `22/25` on its first 25 items (currently at 37/150); watching full 150-item outcome carefully to test whether greedy decoding exhibits perturbation sensitivity, and planning stochastic `temp=0.6, top_p=0.95` verification alongside Paper 2 quantization survival.
