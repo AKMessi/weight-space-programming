@@ -1,11 +1,13 @@
 """Decisive test of the Greedy-Perturbation Illusion vs. True Causal WSP under multi-seed stochastic sampling.
 
-Tests on Qwen3-0.6B (using Q8_0 for 2x RX 6400 speed with identical PPL 19.28 vs BF16 19.31, plus BF16 parity check):
-  1. Multi-seed random Gaussian noise (seeds 999, 1000, 1001) at greedy temp=0.0 -> proves whether
-     asymmetric argmax escape causes systematic positive bias for random perturbations at temp=0.0.
-  2. Multi-seed official stochastic sampling (temp=0.6, top_p=0.95, top_k=20; seeds 17, 42, 101)
-     comparing baseline vs random_matched vs uncond_a0.8 vs oblique_res_a0.25 vs bawsc32_res_a0.25
-     on held-out MATH-500-strat150!
+Tests on Qwen3-0.6B (using Q8_0 for 2x RX 6400 speed with identical PPL 19.28 vs BF16 19.31):
+  Part A (greedy_rand_seeds):
+    - Multi-seed random Gaussian noise (seeds 999, 1000, 1001) at greedy temp=0.0 vs Q8_0 baseline,
+      proving whether asymmetric argmax escape causes systematic positive bias for random edits at temp=0.0.
+  Part B (stochastic_q8):
+    - Multi-seed official stochastic sampling (temp=0.6, top_p=0.95, top_k=20; seeds 17, 42, 101)
+      looped seed-outer / arm-inner so every seed yields a complete 5-arm paired comparison:
+      baseline vs random_s999 vs oblique_res_a0.25 vs bawsc32_res_a0.25 vs uncond_a0.8 on held-out MATH-500-strat150.
 """
 from __future__ import annotations
 
@@ -24,6 +26,19 @@ from src.wsp.compiler import (
 )
 from src.wsp.gguf_patch import patch_gguf_tensors, quantize_gguf
 from src.wsp.llama_eval import mcnemar_exact, run_benchmark
+
+
+def _flags(run_dir: Path, ids: list[str]) -> tuple[list[bool], list[bool], list[bool], list[bool]]:
+    mp = {
+        json.loads(l)["id"]: json.loads(l)
+        for l in (run_dir / "responses.jsonl").read_text(encoding="utf-8").splitlines()
+        if l.strip()
+    }
+    std = [bool(mp[i]["grade"]["correct"]) for i in ids]
+    eos = [bool(mp[i]["grade"]["correct"]) and mp[i]["finish_reason"] == "stop" for i in ids]
+    cls = [bool(mp[i]["grade"]["correct"]) and mp[i]["grade"]["has_think_close"] for i in ids]
+    lp = [bool(mp[i]["grade"]["loop_detected"]) for i in ids]
+    return std, eos, cls, lp
 
 
 def main() -> None:
@@ -50,7 +65,6 @@ def main() -> None:
 
     ed_oblique, _ = compile_oblique_nullspace(gmap, stats, layers, alpha=0.25, action_mode="resolve", null_rank=64)
 
-    # Ensure Q8_0 versions exist for fast 2x RX 6400 multi-seed stochastic sweeps (PPL identical to BF16: 19.28 vs 19.31!)
     def get_q8(name: str, compiled) -> Path:
         q8_p = art_dir / f"{name}-Q8_0.gguf"
         if q8_p.exists():
@@ -68,26 +82,40 @@ def main() -> None:
         print("\n=== PART A: MULTI-SEED RANDOM GAUSSIAN NOISE AT GREEDY temp=0.0 (Q8_0) ===", flush=True)
         q8_base = get_q8("baseline", None)
         if "greedy_q8_baseline" not in results:
-            results["greedy_q8_baseline"] = run_benchmark(
+            ev = run_benchmark(
                 model_path=q8_base, dataset_path=ds_math, benchmark="math",
                 run_dir=run_root / "greedy_q8_baseline", max_tokens=a.max_tokens,
                 temperature=0.0, parallel=4, ctx_per_slot=2560, tag="greedy_q8_baseline",
             )
+            std_f, eos_f, cls_f, _ = _flags(run_root / "greedy_q8_baseline", ids)
+            ev["clean_eos_correct"] = sum(eos_f)
+            ev["closed_think_correct"] = sum(cls_f)
+            results["greedy_q8_baseline"] = ev
             out_path.write_text(json.dumps(results, indent=2) + "\n", encoding="utf-8")
+
+        b_std, b_eos, _, _ = _flags(run_root / "greedy_q8_baseline", ids)
+        print(f"  greedy_q8_baseline            : STD={sum(b_std):2d}/150 | EOS={sum(b_eos):2d}/150 | lim={results['greedy_q8_baseline']['hit_limit_count']} lp={results['greedy_q8_baseline']['loop_count']}", flush=True)
 
         for rseed in [999, 1000, 1001]:
             key = f"greedy_q8_rand_s{rseed}"
-            if key in results:
-                continue
-            q8_r = get_q8(f"rand_s{rseed}", compile_random_matched(gmap, layers, ed_oblique, seed=rseed))
-            results[key] = run_benchmark(
-                model_path=q8_r, dataset_path=ds_math, benchmark="math",
-                run_dir=run_root / key, max_tokens=a.max_tokens,
-                temperature=0.0, parallel=4, ctx_per_slot=2560, tag=key,
-            )
-            out_path.write_text(json.dumps(results, indent=2) + "\n", encoding="utf-8")
-            if rseed != 999 and q8_r.exists():
-                q8_r.unlink()
+            if key not in results:
+                q8_r = get_q8(f"random_s{rseed}", compile_random_matched(gmap, layers, ed_oblique, seed=rseed))
+                ev = run_benchmark(
+                    model_path=q8_r, dataset_path=ds_math, benchmark="math",
+                    run_dir=run_root / key, max_tokens=a.max_tokens,
+                    temperature=0.0, parallel=4, ctx_per_slot=2560, tag=key,
+                )
+                std_f, eos_f, cls_f, _ = _flags(run_root / key, ids)
+                ev["clean_eos_correct"] = sum(eos_f)
+                ev["closed_think_correct"] = sum(cls_f)
+                ev["mcnemar_std_vs_base"] = mcnemar_exact(b_std, std_f)
+                ev["mcnemar_eos_vs_base"] = mcnemar_exact(b_eos, eos_f)
+                results[key] = ev
+                out_path.write_text(json.dumps(results, indent=2) + "\n", encoding="utf-8")
+                if rseed != 999 and q8_r.exists():
+                    q8_r.unlink()
+            ev = results[key]
+            print(f"  {key:30s}: STD={ev['correct']:2d}/150 | EOS={ev.get('clean_eos_correct', ev['correct']):2d}/150 (p={ev.get('mcnemar_eos_vs_base', {}).get('mcnemar_p_two_sided', 1.0):.4f}) | lim={ev['hit_limit_count']} lp={ev['loop_count']}", flush=True)
 
     if a.mode in ("stochastic_q8", "both"):
         print("\n=== PART B: MULTI-SEED OFFICIAL STOCHASTIC SAMPLING (temp=0.6, top_p=0.95, top_k=20) ===", flush=True)
@@ -98,22 +126,45 @@ def main() -> None:
             ("bawsc32_res_a0.25", compile_dormant_if_then(gmap, stats, layers, alpha=0.25, k_neurons=32, gamma=2.5, tau_quantile=0.95, action_mode="resolve", block_align=True)),
             ("uncond_a0.8", compile_uncond_subspace(gmap, stats, layers, alpha=0.8, rank=1)),
         ]
+        # Pre-build Q8_0 files once
+        q8_paths = {name: get_q8(name, comp) for name, comp in arm_specs}
         seeds = [int(x) for x in a.seeds.split(",") if x.strip()]
-        for name, comp in arm_specs:
-            q8_p = get_q8(name, comp)
-            for sd in seeds:
+
+        # Seed-outer, arm-inner: complete 5-arm comparison after EVERY single seed!
+        for sd in seeds:
+            print(f"\n--- Stochastic Seed {sd} (temp=0.6, top_p=0.95, top_k=20) ---", flush=True)
+            seed_flags = {}
+            for name, _ in arm_specs:
                 key = f"stoch_q8_{name}_s{sd}"
-                if key in results:
-                    continue
-                ev = run_benchmark(
-                    model_path=q8_p, dataset_path=ds_math, benchmark="math",
-                    run_dir=run_root / key, max_tokens=a.max_tokens,
-                    temperature=0.6, top_p=0.95, top_k=20, seed=sd,
-                    parallel=4, ctx_per_slot=2560, tag=key,
+                rdir = run_root / key
+                if key not in results:
+                    ev = run_benchmark(
+                        model_path=q8_paths[name], dataset_path=ds_math, benchmark="math",
+                        run_dir=rdir, max_tokens=a.max_tokens,
+                        temperature=0.6, top_p=0.95, top_k=20, seed=sd,
+                        parallel=4, ctx_per_slot=2560, tag=key,
+                    )
+                    std_f, eos_f, cls_f, lp_f = _flags(rdir, ids)
+                    ev["clean_eos_correct"] = sum(eos_f)
+                    ev["closed_think_correct"] = sum(cls_f)
+                    if "baseline" in seed_flags:
+                        ev["mcnemar_std_vs_base"] = mcnemar_exact(seed_flags["baseline"][0], std_f)
+                        ev["mcnemar_eos_vs_base"] = mcnemar_exact(seed_flags["baseline"][1], eos_f)
+                        ev["mcnemar_lp_vs_base"] = mcnemar_exact(seed_flags["baseline"][3], lp_f)
+                    if "random_s999" in seed_flags and name != "random_s999":
+                        ev["mcnemar_eos_vs_rand"] = mcnemar_exact(seed_flags["random_s999"][1], eos_f)
+                        ev["mcnemar_lp_vs_rand"] = mcnemar_exact(seed_flags["random_s999"][3], lp_f)
+                    results[key] = ev
+                    out_path.write_text(json.dumps(results, indent=2) + "\n", encoding="utf-8")
+                seed_flags[name] = _flags(rdir, ids)
+                ev = results[key]
+                eos_n = ev.get("clean_eos_correct", sum(seed_flags[name][1]))
+                p_b = ev.get("mcnemar_eos_vs_base", {}).get("mcnemar_p_two_sided", float("nan"))
+                print(
+                    f"  {key:30s}: STD={ev['correct']:2d}/150 | EOS={eos_n:2d}/150 (p_vsB={p_b:.4f}) | "
+                    f"lim={ev['hit_limit_count']} lp={ev['loop_count']} close={100*ev['think_close_rate']:.1f}% toks={ev['mean_completion_tokens']:.0f}",
+                    flush=True,
                 )
-                results[key] = ev
-                print(f"  {key:30s}: acc={ev['correct']:2d}/150 ({100*ev['accuracy']:.1f}%) | lim={ev['hit_limit_count']} lp={ev['loop_count']} close={100*ev['think_close_rate']:.1f}% toks={ev['mean_completion_tokens']:.0f}", flush=True)
-                out_path.write_text(json.dumps(results, indent=2) + "\n", encoding="utf-8")
 
 
 if __name__ == "__main__":
