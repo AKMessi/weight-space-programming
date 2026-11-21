@@ -1,12 +1,16 @@
 """Model 2 Pipeline: Qwen3.5-0.8B (Hybrid 18 Gated-DeltaNet + 6 Full-Attention, the Sparks of WSP model!).
 
 Runs:
-  Stage 0: Baseline characterization across BF16, Q8_0, Q4_K_M, Q4_0, Q3_K_M on cal_math_50
-           under BOTH greedy (temp=0.0) and official stochastic sampling (temp=0.6, top_p=0.95)
-           + WikiText-2 PPL + cal_copy_36!
-  Stage 1: Exact float32 PyTorch mechanistic layer profiling across ALL 24 layers, explicitly
-           contrasting Gated-DeltaNet linear-recurrent layers vs Full-Attention layers (3,7,11,15,19,23)!
-  Stage 2: Empirical Theorem 1 block-level quantization audit on Qwen3.5-0.8B (Q4_K_M, Q4_0, Q3_K_M)!
+  Stage 0 (baseline): Multi-precision characterization across BF16, Q8_0, Q4_K_M, Q4_0, Q3_K_M on
+                      cal_math_50 (both greedy temp=0.0 and official stochastic temp=0.6, top_p=0.95),
+                      cal_gsm8k_48, cal_copy_36, and 32-chunk WikiText-2 PPL.
+  Stage 1 (profile) : Exact float32 PyTorch mechanistic layer profiling across ALL 24 layers, explicitly
+                      contrasting Gated-DeltaNet linear-recurrent layers vs Full-Attention layers
+                      (L3, L7, L11, L15, L19, L23).
+  Stage 2 (theorem1): Empirical Theorem 1 block-level quantization audit on Qwen3.5-0.8B (Q4_K_M, Q4_0, Q3_K_M).
+  Stage 3 (study)   : Strictly leak-free dev selection (dev_math_60) + held-out MATH-500-strat150 + Copy-90
+                      + WikiText-2 PPL under official multi-seed stochastic sampling (temp=0.6, top_p=0.95)
+                      comparing baseline, random_matched, uncond, oblique_res, and bawsc32_res at Q8_0 and Q4_0/Q3_K_M!
 """
 from __future__ import annotations
 
@@ -16,10 +20,9 @@ import pickle
 import time
 from pathlib import Path
 
-import numpy as np
 import torch
 from gguf import GGUFReader
-from transformers import AutoModelForCausalLM, AutoTokenizer
+from transformers import AutoTokenizer, Qwen3_5ForConditionalGeneration
 
 from scripts.wsp_diagnose_and_compile import load_cal_trajectories
 from scripts.wsp_quant_audit import audit_quant_pair
@@ -29,33 +32,50 @@ from src.wsp.compiler import (
     compile_ba_wsc_noop,
     compile_dormant_if_then,
     compile_oblique_nullspace,
+    compile_random_matched,
     compile_sparse_cols,
     compile_uncond_subspace,
 )
 from src.wsp.gguf_patch import patch_gguf_tensors, quantize_gguf
-from src.wsp.llama_eval import measure_perplexity, run_benchmark
+from src.wsp.llama_eval import mcnemar_exact, measure_perplexity, run_benchmark
+
+
+def _extract_flags(run_dir: Path, ids: list[str]) -> tuple[list[bool], list[bool], list[bool]]:
+    mp = {
+        json.loads(l)["id"]: json.loads(l)
+        for l in (run_dir / "responses.jsonl").read_text(encoding="utf-8").splitlines()
+        if l.strip()
+    }
+    std = [bool(mp[i]["grade"]["correct"]) for i in ids]
+    eos = [bool(mp[i]["grade"]["correct"]) and mp[i]["finish_reason"] == "stop" for i in ids]
+    cls = [bool(mp[i]["grade"]["correct"]) and mp[i]["grade"]["has_think_close"] for i in ids]
+    return std, eos, cls
 
 
 def main() -> None:
     p = argparse.ArgumentParser()
-    p.add_argument("--stage", choices=["baseline", "profile", "theorem1", "all"], default="all")
+    p.add_argument("--stage", choices=["baseline", "profile", "theorem1", "study", "all"], default="all")
     p.add_argument("--max-tokens", type=int, default=2048)
+    p.add_argument("--study-layers", default="15,19")
+    p.add_argument("--study-seeds", default="17,42")
     a = p.parse_args()
 
     model_name = "qwen35_0.8b"
     base_gguf = Path("local/models/Qwen3.5-0.8B-BF16.gguf")
     hf_dir = Path("local/hf_models/Qwen3.5-0.8B")
     base_out = Path("runs/wsp_baselines") / model_name
+    study_out = Path("runs/wsp_study") / model_name
     art_base = Path("artifacts/wsp") / model_name / "baselines"
+    art_study = Path("artifacts/wsp") / model_name / "study"
     rep_dir = Path("research/wsp") / model_name
     cache_dir = Path("local/cache") / model_name
-    for d in (base_out, art_base, rep_dir, cache_dir):
+    for d in (base_out, study_out, art_base, art_study, rep_dir, cache_dir):
         d.mkdir(parents=True, exist_ok=True)
 
     if a.stage in ("baseline", "all"):
         print("\n================ [Qwen3.5-0.8B] BASELINE CHARACTERIZATION ================", flush=True)
         res_path = base_out / "baseline_summary.json"
-        res = json.loads(res_path.read_text()) if res_path.exists() else {"model_name": model_name, "precisions": {}}
+        res = json.loads(res_path.read_text(encoding="utf-8")) if res_path.exists() else {"model_name": model_name, "precisions": {}}
 
         if "FP" not in res["precisions"]:
             ppl_fp = measure_perplexity(base_gguf, chunks=32, ctx_size=512)
@@ -119,8 +139,7 @@ def main() -> None:
         else:
             t0 = time.time()
             tok = AutoTokenizer.from_pretrained(str(hf_dir))
-            model = AutoModelForCausalLM.from_pretrained(str(hf_dir), dtype=torch.float32).eval()
-            # Use stochastic cal_math50 + cal_gsm48 trajectories (unconfounded by greedy!)
+            model = Qwen3_5ForConditionalGeneration.from_pretrained(str(hf_dir), dtype=torch.float32).eval()
             path_t, healthy_t, resolve_t, preserve_t, counts = load_cal_trajectories(
                 tok,
                 base_out / "fp_cal_math50_stoch",
@@ -141,7 +160,6 @@ def main() -> None:
 
         prof = analyze_layers(layer_stats, gmap)
         for row in prof:
-            # Annotate exact layer type: Full Attention at 3,7,11,15,19,23 vs Gated-DeltaNet!
             row["layer_type"] = "full_attn" if (row["layer"] + 1) % 4 == 0 else "gated_deltanet"
         (rep_dir / "layer_profile.json").write_text(
             json.dumps({"model_name": model_name, "counts": counts, "layers": prof}, indent=2) + "\n",
@@ -156,7 +174,7 @@ def main() -> None:
         with (cache_dir / "layer_stats.pkl").open("rb") as f:
             stats = pickle.load(f)["layer_stats"]
         gmap = {t.name: t for t in GGUFReader(str(base_gguf)).tensors}
-        layers = [15, 19]  # Exact Full-Attention layers from Sparks of WSP!
+        layers = [int(x) for x in a.study_layers.split(",") if x.strip()]
         tmp = Path("artifacts/wsp") / model_name / "theorem1_audit"
         tmp.mkdir(parents=True, exist_ok=True)
         ed_noop, _ = compile_ba_wsc_noop(gmap, stats, layers, k_neurons=32)
@@ -174,6 +192,7 @@ def main() -> None:
             ("dormant32_scattered", compile_dormant_if_then(gmap, stats, layers, alpha=0.25, k_neurons=32, gamma=2.5, block_align=False), False),
             ("ba_wsc_32_aligned", compile_dormant_if_then(gmap, stats, layers, alpha=0.25, k_neurons=32, gamma=2.5, block_align=True), True),
         ]
+        t_names = [f"blk.{l}.ffn_down.weight" for l in layers]
         all_out = {}
         for name, (ed, cinfo), is_ba in cases:
             fp_p = tmp / f"{name}.gguf"
@@ -185,15 +204,104 @@ def main() -> None:
                 quantize_gguf(fp_p, qp, qt)
                 ref_fp = noop_fp if is_ba else base_gguf
                 ref_q = noop_q[qt] if is_ba else bq
-                res_a = audit_quant_pair(ref_fp, fp_p, ref_q, qp, ["blk.15.ffn_down.weight", "blk.19.ffn_down.weight"])
+                res_a = audit_quant_pair(ref_fp, fp_p, ref_q, qp, t_names)
                 all_out[name]["quants"][qt] = res_a
-                r19 = res_a["blk.19.ffn_down.weight"]
-                print(f"{name:22s} | {qt:6s} | L19 cos={r19['cosine_sim_full']:.5f} collat/sig={r19['collateral_to_signal_ratio']:.5f} mix={r19['mixed_32blocks']} pure={r19['pure_edit_32blocks']}", flush=True)
+                last_t = t_names[-1]
+                r_last = res_a[last_t]
+                print(f"{name:22s} | {qt:6s} | {last_t} cos={r_last['cosine_sim_full']:.5f} collat/sig={r_last['collateral_to_signal_ratio']:.5f} mix={r_last['mixed_32blocks']} pure={r_last['pure_edit_32blocks']}", flush=True)
                 qp.unlink()
             fp_p.unlink()
         for p_f in list(tmp.glob("*.gguf")):
             p_f.unlink()
         (rep_dir / "theorem1_quant_audit.json").write_text(json.dumps(all_out, indent=2) + "\n", encoding="utf-8")
+
+    if a.stage in ("study", "all"):
+        print("\n================ [Qwen3.5-0.8B] HELD-OUT STOCHASTIC & QUANTIZED STUDY ================", flush=True)
+        with (cache_dir / "layer_stats.pkl").open("rb") as f:
+            stats = pickle.load(f)["layer_stats"]
+        gmap = {t.name: t for t in GGUFReader(str(base_gguf)).tensors}
+        layers = [int(x) for x in a.study_layers.split(",") if x.strip()]
+        seeds = [int(x) for x in a.study_seeds.split(",") if x.strip()]
+        ds_math = Path("datasets/wsp/test_math500_strat150.jsonl")
+        ids = [json.loads(l)["id"] for l in ds_math.read_text(encoding="utf-8").splitlines() if l.strip()]
+
+        out_path = rep_dir / "test_stochastic_and_quant.json"
+        out = json.loads(out_path.read_text(encoding="utf-8")) if out_path.exists() else {}
+
+        ed_oblique, ci_oblique = compile_oblique_nullspace(gmap, stats, layers, alpha=0.25, action_mode="resolve", null_rank=64)
+        arm_specs = [
+            ("baseline", None),
+            ("random_matched", compile_random_matched(gmap, layers, ed_oblique, seed=999)),
+            ("uncond_a0.8", compile_uncond_subspace(gmap, stats, layers, alpha=0.8, rank=1)),
+            ("oblique_res_a0.25", (ed_oblique, ci_oblique)),
+            ("bawsc32_res_a0.25", compile_dormant_if_then(gmap, stats, layers, alpha=0.25, k_neurons=32, gamma=2.5, tau_quantile=0.95, action_mode="resolve", block_align=True)),
+        ]
+
+        for qt in ["Q8_0", "Q4_0", "Q3_K_M"]:
+            q_out = out.setdefault(qt, {})
+            base_flags = {}
+            base_ppl = None
+            for name, comp in arm_specs:
+                if comp is None:
+                    q_p = art_base / f"{model_name}-{qt}.gguf"
+                    cinfo = None
+                else:
+                    q_p = art_study / f"{name}-{qt}.gguf"
+                    ed, cinfo = comp
+                    if not q_p.exists():
+                        fp_tmp = art_study / f"{name}_fp_tmp.gguf"
+                        patch_gguf_tensors(base_gguf, fp_tmp, ed, metadata_extra=cinfo)
+                        quantize_gguf(fp_tmp, q_p, qt)
+                        fp_tmp.unlink()
+
+                arm_rec = q_out.setdefault(name, {"seeds": {}, "compile_info": cinfo})
+                if "ppl" not in arm_rec:
+                    arm_rec["ppl"] = measure_perplexity(q_p, chunks=32, ctx_size=512)
+                if "copy_90" not in arm_rec:
+                    arm_rec["copy_90"] = run_benchmark(
+                        model_path=q_p, dataset_path="datasets/wsp/test_copy_90.jsonl", benchmark="copy",
+                        run_dir=study_out / f"{qt}_{name}_copy90", max_tokens=512, temperature=0.0,
+                        enable_thinking=False, parallel=4, ctx_per_slot=1024, tag=f"q35_{qt}_{name}_copy90",
+                    )
+                if name == "baseline":
+                    base_ppl = arm_rec["ppl"]["ppl"]
+
+                for sd in seeds:
+                    skey = f"s{sd}"
+                    rdir = study_out / f"{qt}_{name}_math150_{skey}"
+                    if skey not in arm_rec["seeds"]:
+                        ev = run_benchmark(
+                            model_path=q_p, dataset_path=ds_math, benchmark="math",
+                            run_dir=rdir, max_tokens=a.max_tokens,
+                            temperature=0.6, top_p=0.95, top_k=20, seed=sd,
+                            parallel=4, ctx_per_slot=2560, tag=f"q35_{qt}_{name}_m150_{skey}",
+                        )
+                        std_f, eos_f, cls_f = _extract_flags(rdir, ids)
+                        srec = {
+                            "summary": ev,
+                            "clean_eos_correct": sum(eos_f),
+                            "closed_think_correct": sum(cls_f),
+                        }
+                        if name != "baseline":
+                            b_std, b_eos, b_cls = base_flags[sd]
+                            srec["mcnemar_std"] = mcnemar_exact(b_std, std_f)
+                            srec["mcnemar_clean_eos"] = mcnemar_exact(b_eos, eos_f)
+                            srec["mcnemar_closed_think"] = mcnemar_exact(b_cls, cls_f)
+                        arm_rec["seeds"][skey] = srec
+                        out_path.write_text(json.dumps(out, indent=2) + "\n", encoding="utf-8")
+                    std_f, eos_f, cls_f = _extract_flags(rdir, ids)
+                    if name == "baseline":
+                        base_flags[sd] = (std_f, eos_f, cls_f)
+                    ev = arm_rec["seeds"][skey]["summary"]
+                    dppl = arm_rec["ppl"]["ppl"] - base_ppl if base_ppl else 0.0
+                    print(
+                        f"[Q3.5 {qt} {skey}] {name:20s}: PPL={arm_rec['ppl']['ppl']:.3f} ({dppl:+.3f}) | "
+                        f"STD={ev['correct']:2d}/150 | EOS={arm_rec['seeds'][skey]['clean_eos_correct']:2d}/150 | "
+                        f"lim={ev['hit_limit_count']} lp={ev['loop_count']} | COPY={arm_rec['copy_90']['correct']}/90",
+                        flush=True,
+                    )
+                if name != "baseline" and q_p.exists():
+                    q_p.unlink()
 
 
 if __name__ == "__main__":
