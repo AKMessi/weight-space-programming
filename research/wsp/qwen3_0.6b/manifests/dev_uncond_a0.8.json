@@ -1,0 +1,73 @@
+{
+  "base_path": "E:\\coding\\weight space prog\\local\\models\\Qwen3-0.6B-BF16.gguf",
+  "base_sha256": "f9c9f1d3c1e21755b82d4e165f88dbbbd4355646d632fb5d6cef7c66ed4ee04e",
+  "output_path": "E:\\coding\\weight space prog\\artifacts\\wsp\\qwen3_0.6b\\dev\\uncond_a0.8.gguf",
+  "output_sha256": "3f21002d547cb285a788cbb172a0ec9d767b4c83588fc7ae46597ad3dde04360",
+  "output_bytes": 1198182848,
+  "total_model_params": 596049920,
+  "total_changed_params": 7506688,
+  "changed_param_fraction": 0.01259405923584387,
+  "touched_tensors": 3,
+  "untouched_tensors_verified": true,
+  "tensors": [
+    {
+      "name": "blk.18.ffn_down.weight",
+      "shape": [
+        1024,
+        3072
+      ],
+      "gguf_type": "BF16",
+      "changed_values": 2416793,
+      "total_values": 3145728,
+      "orig_fro_norm": 44.406441810680704,
+      "delta_fro_norm": 1.2499790744583084,
+      "rel_fro_change": 0.02814859789458883,
+      "max_abs_delta": 0.032470703125,
+      "base_sha256": "565a7c5c71606bc2a8dd075c53d721a0a13253a4f9b560aaa26877c8d400c646",
+      "edited_sha256": "b1f15159cb596c1caca986b625f8c63aa6638b10668d4eb77615e9cd44bde00b"
+    },
+    {
+      "name": "blk.20.ffn_down.weight",
+      "shape": [
+        1024,
+        3072
+      ],
+      "gguf_type": "BF16",
+      "changed_values": 2527413,
+      "total_values": 3145728,
+      "orig_fro_norm": 49.85296036925506,
+      "delta_fro_norm": 1.5689750260188633,
+      "rel_fro_change": 0.03147205330230438,
+      "max_abs_delta": 0.0625,
+      "base_sha256": "17e2d231008930cda3e2d200663f6637fcb288e2ad3d6430a6ee65f57bf3e789",
+      "edited_sha256": "4135d3e12543ea10abb1b3507adb7188a1194426c66c70baf9df07b03d752c40"
+    },
+    {
+      "name": "blk.22.ffn_down.weight",
+      "shape": [
+        1024,
+        3072
+      ],
+      "gguf_type": "BF16",
+      "changed_values": 2562482,
+      "total_values": 3145728,
+      "orig_fro_norm": 56.5335775826644,
+      "delta_fro_norm": 1.9689030785020298,
+      "rel_fro_change": 0.03482714455180313,
+      "max_abs_delta": 0.078125,
+      "base_sha256": "16fbef4b193f1d3b5986de6555604e63b6538fef9a05e9ff902c22da4abe25e0",
+      "edited_sha256": "488e745635d3e2342f4f7e3f316e6e0cc507536a8da76e7dbbf5a0bd408a6506"
+    }
+  ],
+  "elapsed_sec": 27.549,
+  "metadata": {
+    "method": "uncond_subspace",
+    "layers": [
+      18,
+      20,
+      22
+    ],
+    "alpha": 0.8,
+    "rank": 1
+  }
+}

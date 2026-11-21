@@ -1269,3 +1269,22 @@ Inspecting the 20 `loop_detected` traces in `bawsc32_res_a0.70` revealed a secon
 
 **Frozen Stage 2 & Stage 3 Pre-Registration (`configs/wsp_qwen3_0.6b.json`):**
 Freezing exact dev winners BEFORE touching any held-out test set: `bawsc32_res_a0.70`, `oblique_res_a0.25`, `uncond_a0.8`, `sparse64_a1.0`, `dormant32_res_a0.70` (scattered ablation), `ba_wsc_noop` (exact permutation no-op), `random_matched` (matched Frobenius Gaussian control), plus `baseline_fp`, `ctrl_concise_prompt`, and `ctrl_dry_sampler`.
+
+
+### 2026-11-21 — Qwen3-0.6B Confirmed Held-Out MATH-500-strat150 Primary Results (`research/wsp/qwen3_0.6b/test_primary_math150.json`)
+
+**100% Untouched Held-Out `MATH-500-strat150` (`N=150`), `Copy-90`, and 32-chunk `WikiText-2` PPL (`Qwen3-0.6B-BF16`, greedy, 2048 max tokens):**
+- **`baseline_fp`:** PPL `19.3056`, Standard `53/150 (35.3%)`, Closed-`</think>` correct `52/150 (34.7%)`, Strict Clean-EOS `52/150 (34.7%)`, Clean-NoLoop `49/150 (32.7%)`, Clean EOS rate `53/150 (35.3%)`, Mean tokens `1757.8`, `Copy-90 = 64/90 (71.1%)`.
+- **`oblique_res_a0.25` (Method A — Null-Space-Gated Oblique Surgery, L18/20/22):**
+  - PPL `19.4461` (`ΔPPL = +0.1405`, +0.7%).
+  - **Closed-`</think>` correct: `65/150 (43.3%, +8.7 pp; +20/-7, McNemar p = 0.0192)`**.
+  - **Standard MATH-500: `65/150 (43.3%, +8.0 pp; +20/-8, McNemar p = 0.0357)`**.
+  - **Strict Clean-EOS (`correct` AND `stop`): `62/150 (41.3%, +6.7 pp; +18/-8, p = 0.0755)`**; Clean-NoLoop `59/150 (39.3%, +17/-7, p = 0.0639)`.
+  - **Clean EOS termination rate: `69/150 (46.0%, +10.7 pp; +22/-6, McNemar p = 0.0037)`**; Mean tokens `1686.6` (`-71.1` tokens/problem); `loops: 29 -> 27`.
+  - **Held-out `Copy-90`: `64/90 (71.1%)`** (exact match, zero degradation).
+  - By difficulty (Strict Clean-EOS): L1 `76.9% -> 92.3%`, L2 `70.4% -> 70.4%`, L3 `31.2% -> 46.9%`, L4 `21.1% -> 28.9%`, L5 `12.5% -> 12.5%`.
+- **`bawsc32_res_a0.70` (Method C — BA-WSC Dormant SwiGLU IF-THEN, high dose `alpha=0.70`):**
+  - PPL `19.2836` (`ΔPPL = -0.0220`, zero PPL cost), `Copy-90 = 65/90 (72.2%)`.
+  - Standard MATH-500 `66/150 (44.0%, +22/-9, p = 0.0294)`, **HOWEVER** Strict Clean-EOS audit revealed `48/150 (32.0%, +9/-13, p = 0.5235)` and `loops = 59` (vs 29) because 18 matches emitted `\boxed{...}` without clean `<|im_end|>` due to the high `alpha=0.70` Final-Answer Echo resonance. Retained honestly as a key finding proving why strict clean-EOS evaluation and moderate doses (`alpha=0.25`) are essential.
+
+**Next:** Run held-out `MATH-500-strat150` + `Copy-90` + PPL comparators (`uncond_a0.8`, `sparse64_a1.0`, `random_matched`, `ctrl_concise_prompt`, `bawsc32_res_a0.25`), then OOD `GSM8K`/`ARC` + non-greedy sampling check, then Paper 2 Quantization Survival & Post-Quantization Healing (`Q4_K_M`, `Q4_0`, `Q3_K_M`).
