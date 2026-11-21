@@ -1,0 +1,23 @@
+{
+  "model_name": "qwen3_0.6b",
+  "base_gguf": "local/models/Qwen3-0.6B-BF16.gguf",
+  "layer_stats_pkl": "local/cache/qwen3_0.6b/layer_stats.pkl",
+  "max_tokens": 2048,
+  "parallel": 4,
+  "ctx_per_slot": 2560,
+  "temperature": 0.0,
+  "dev_candidates": [
+    {"name": "uncond_a0.3", "method": "uncond_subspace", "layers": [18, 20, 22], "alpha": 0.3, "rank": 1},
+    {"name": "uncond_a0.6", "method": "uncond_subspace", "layers": [18, 20, 22], "alpha": 0.6, "rank": 1},
+    {"name": "uncond_a1.0", "method": "uncond_subspace", "layers": [18, 20, 22], "alpha": 1.0, "rank": 1},
+    {"name": "sparse64_a0.5", "method": "sparse_cols", "layers": [18, 20, 22], "alpha": 0.5, "top_k": 64},
+    {"name": "sparse64_a1.0", "method": "sparse_cols", "layers": [18, 20, 22], "alpha": 1.0, "top_k": 64},
+    {"name": "oblique_res_a0.15", "method": "oblique_nullspace", "layers": [18, 20, 22], "alpha": 0.15, "action_mode": "resolve", "null_rank": 64},
+    {"name": "oblique_res_a0.35", "method": "oblique_nullspace", "layers": [18, 20, 22], "alpha": 0.35, "action_mode": "resolve", "null_rank": 64},
+    {"name": "oblique_anti_a0.35", "method": "oblique_nullspace", "layers": [18, 20, 22], "alpha": 0.35, "action_mode": "anti_loop", "null_rank": 64},
+    {"name": "dormant32_res_a0.15", "method": "dormant_if_then", "layers": [18, 20, 22], "alpha": 0.15, "k_neurons": 32, "gamma": 2.5, "tau_quantile": 0.95, "action_mode": "resolve"},
+    {"name": "dormant32_res_a0.35", "method": "dormant_if_then", "layers": [18, 20, 22], "alpha": 0.35, "k_neurons": 32, "gamma": 2.5, "tau_quantile": 0.95, "action_mode": "resolve"},
+    {"name": "dormant32_anti_a0.35", "method": "dormant_if_then", "layers": [18, 20, 22], "alpha": 0.35, "k_neurons": 32, "gamma": 2.5, "tau_quantile": 0.95, "action_mode": "anti_loop"},
+    {"name": "bawsc32_res_a0.35", "method": "ba_wsc", "layers": [18, 20, 22], "alpha": 0.35, "k_neurons": 32, "gamma": 2.5, "tau_quantile": 0.95, "action_mode": "resolve"}
+  ]
+}

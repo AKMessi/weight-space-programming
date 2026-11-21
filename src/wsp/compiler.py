@@ -292,21 +292,23 @@ def collect_layer_activations(
     return stats
 
 
-def solve_virtual_bias_register(X_preserve: np.ndarray, ridge: float = 1e-2) -> tuple[np.ndarray, dict[str, float]]:
-    """Solve b* = argmin_b E[(b^T x - 1)^2] + ridge * ||b||^2 on post-RMSNorm activations.
+def solve_virtual_bias_register(X_preserve: np.ndarray, ridge_scale: float = 0.5) -> tuple[np.ndarray, dict[str, float]]:
+    """Solve b* = argmin_b E[(b^T x - 1)^2] + lam * ||b||^2 on post-RMSNorm activations.
 
     Returns (b_star, diagnostics) where b_star^T x ≈ 1 for all tokens x, creating an exact
     Virtual Constant-1 Bias Register in bias-free SwiGLU layers!
+    Uses trace-scaled ridge regularization validated by sequence-disjoint OOS CV.
     """
     X = X_preserve.astype(np.float64)
     n, d = X.shape
     gram = (X.T @ X) / n
+    tr_scale = float(np.trace(gram) / d)
+    lam = max(1e-6, ridge_scale * tr_scale)
     rhs = X.mean(axis=0)
-    b = np.linalg.solve(gram + ridge * np.eye(d), rhs)
+    b = np.linalg.solve(gram + lam * np.eye(d), rhs)
     vals = X @ b
     mean_v = float(vals.mean())
     std_v = float(vals.std())
-    # Rescale so mean is exactly 1.0
     if abs(mean_v) > 1e-8:
         b = b / mean_v
         vals = vals / mean_v
@@ -319,6 +321,47 @@ def solve_virtual_bias_register(X_preserve: np.ndarray, ridge: float = 1e-2) -> 
         "p95": float(np.percentile(vals, 95)),
     }
     return b.astype(np.float32), diag
+
+
+def solve_balanced_detector(
+    X_path: np.ndarray,
+    X_healthy: np.ndarray,
+    X_other: np.ndarray,
+    ridge_scale: float = 1.5,
+) -> tuple[np.ndarray, dict[str, float]]:
+    """Balanced dual-negative Ridge discriminant separating pathological math from BOTH
+    healthy math AND non-math (exact-copy + WikiText-2), preventing domain-shortcut false positives."""
+    P = X_path.astype(np.float64)
+    H = X_healthy.astype(np.float64)
+    O = X_other.astype(np.float64) if len(X_other) > 0 else H
+
+    mu_p = P.mean(axis=0)
+    mu_h = H.mean(axis=0)
+    mu_o = O.mean(axis=0)
+    mu_n = 0.5 * mu_h + 0.5 * mu_o
+
+    Hc = H - mu_h
+    Oc = O - mu_o
+    cov = 0.5 * (Hc.T @ Hc) / max(1, len(H)) + 0.5 * (Oc.T @ Oc) / max(1, len(O))
+    tr_scale = float(np.trace(cov) / cov.shape[0])
+    lam = max(1e-6, ridge_scale * tr_scale)
+    w = np.linalg.solve(cov + lam * np.eye(cov.shape[0]), mu_p - mu_n)
+    w /= float(np.linalg.norm(w)) + 1e-12
+
+    s_p = P @ w
+    s_h = H @ w
+    s_o = O @ w
+    diag = {
+        "auroc_vs_healthy": round(_auroc_binary(s_p, s_h), 4),
+        "auroc_vs_other": round(_auroc_binary(s_p, s_o), 4),
+        "healthy_mean": float(s_h.mean()),
+        "healthy_std": float(s_h.std()),
+        "healthy_p95": float(np.percentile(s_h, 95)),
+        "other_p95": float(np.percentile(s_o, 95)),
+        "path_mean": float(s_p.mean()),
+        "path_median": float(np.median(s_p)),
+    }
+    return w.astype(np.float32), diag
 
 
 def solve_ridge_detector(
@@ -391,7 +434,7 @@ def analyze_layers(
         auroc_z = _auroc_binary(st.Z_path @ w_z_diag, st.Z_preserve @ w_z_diag)
 
         # Virtual bias register quality
-        _, vb_diag = solve_virtual_bias_register(st.X_preserve, ridge=1e-2)
+        _, vb_diag = solve_virtual_bias_register(st.X_preserve, ridge_scale=0.5)
 
         # Dormancy quantiles
         sorted_c = np.sort(contrib_rms)
@@ -415,8 +458,8 @@ def analyze_layers(
     return rows
 
 
-def get_action_vector(st: LayerStats, action_mode: str = "resolve") -> np.ndarray:
-    """Compute unit corrective residual direction v_action."""
+def get_action_vector_and_scale(st: LayerStats, action_mode: str = "resolve") -> tuple[np.ndarray, float]:
+    """Compute (unit corrective direction v_action, empirical raw L2 gap ||v_raw||)."""
     if action_mode == "anti_loop":
         v = (st.H_healthy_mean - st.H_path_mean).astype(np.float64)
     elif action_mode == "resolve":
@@ -426,7 +469,11 @@ def get_action_vector(st: LayerStats, action_mode: str = "resolve") -> np.ndarra
     else:
         raise ValueError(f"Unknown action_mode: {action_mode}")
     v_norm = float(np.linalg.norm(v))
-    return (v / (v_norm + 1e-12)).astype(np.float32)
+    return (v / (v_norm + 1e-12)).astype(np.float32), v_norm
+
+
+def get_action_vector(st: LayerStats, action_mode: str = "resolve") -> np.ndarray:
+    return get_action_vector_and_scale(st, action_mode)[0]
 
 
 def compile_uncond_subspace(
@@ -511,23 +558,21 @@ def compile_oblique_nullspace(
     for l_idx in layers:
         st = layer_stats[l_idx]
         W_down = read_gguf_tensor_f32(gguf_tensors[f"blk.{l_idx}.ffn_down.weight"]).astype(np.float64)
-        v_act = get_action_vector(st, action_mode).astype(np.float64)
+        v_act_f32, v_gap = get_action_vector_and_scale(st, action_mode)
+        v_act = v_act_f32.astype(np.float64)
 
         Z_pr = st.Z_preserve.astype(np.float64)
         Z_pa = st.Z_path.astype(np.float64)
         # Dual-SVD (fast even when d_ff=8960, since N_pr ~ 1500)
-        # Compute top-r right singular vectors of Z_pr (uncentered, so also orthogonal to mean!)
         _, S_pr, Vt_pr = np.linalg.svd(Z_pr, full_matrices=False)
         r = min(null_rank, Vt_pr.shape[0] - 1)
         V_keep = Vt_pr[:r]  # [r, d_ff]
 
-        # Contrastive hidden direction projected strictly into null space of V_keep
+        # Contrastive hidden direction (path vs healthy+other) projected strictly into null space of V_keep
         d_z = Z_pa.mean(axis=0) - Z_pr.mean(axis=0)
-        # Variance-weighted in residual complement for stability
         z_var = Z_pr.var(axis=0)
         d_z_w = d_z / (z_var + ridge_scale * float(z_var.mean()) + 1e-8)
         w_det = d_z_w - V_keep.T @ (V_keep @ d_z_w)
-        # Re-orthogonalize once for FP64 precision
         w_det = w_det - V_keep.T @ (V_keep @ w_det)
 
         s_pa = Z_pa @ w_det
@@ -535,19 +580,20 @@ def compile_oblique_nullspace(
         gap = float(s_pa.mean() - s_pr.mean())
         if abs(gap) < 1e-12:
             raise RuntimeError(f"Zero null-space gap at layer {l_idx}")
-        # Normalize so E_path[w_det^T z] - E_preserve[w_det^T z] == 1.0
         w_det = w_det / gap
         s_pa = Z_pa @ w_det
         s_pr = Z_pr @ w_det
 
-        # Scale alpha relative to typical layer residual step magnitude (RMS of Y_healthy)
-        # Wait: alpha is directly the residual-stream injection magnitude (in L2 units) on pathological tokens!
-        delta_W = alpha * np.outer(v_act, w_det)
+        # Scale physical injection as alpha * v_gap (fraction of empirical path->resolve residual gap)
+        step_mag = alpha * v_gap
+        delta_W = step_mag * np.outer(v_act, w_det)
         W_new = W_down + delta_W
         edited[f"blk.{l_idx}.ffn_down.weight"] = W_new.astype(np.float32)
 
         per_layer_diag[l_idx] = {
             "auroc": round(_auroc_binary(s_pa, s_pr), 4),
+            "v_gap": round(v_gap, 3),
+            "step_mag": round(step_mag, 3),
             "preserve_rms": round(float(np.sqrt(np.mean(s_pr ** 2))), 5),
             "preserve_mean": round(float(np.mean(s_pr)), 5),
             "path_mean": round(float(np.mean(s_pa)), 5),
@@ -601,36 +647,39 @@ def compile_dormant_if_then(
         evicted_energy_max = float(contrib_rms[dormant_idx[-1]])
         median_energy = float(np.median(contrib_rms))
 
-        # 2. Solve Virtual Constant-1 Bias Register b* and Ridge Trigger u_trig in post-RMSNorm space
-        b_star, vb_diag = solve_virtual_bias_register(st.X_preserve, ridge=1e-2)
+        # 2. Solve OOS-regularized Virtual Constant-1 Bias Register b* and Balanced Dual-Negative Trigger
+        b_star, vb_diag = solve_virtual_bias_register(st.X_preserve, ridge_scale=0.5)
         b_star_64 = b_star.astype(np.float64)
-        u_trig, det_diag = solve_ridge_detector(st.X_path, st.X_preserve, ridge_scale=0.1)
+        X_other = st.X_preserve[len(st.X_healthy):]
+        u_trig, det_diag = solve_balanced_detector(st.X_path, st.X_healthy, X_other, ridge_scale=1.5)
         u_trig_64 = u_trig.astype(np.float64)
 
-        # 3. Choose threshold tau from calibration preserve quantile (zero test leakage!)
-        s_pr = st.X_preserve.astype(np.float64) @ u_trig_64
+        # 3. Choose threshold tau from calibration preserve quantile (strictly >= both healthy & other!)
+        s_h = st.X_healthy.astype(np.float64) @ u_trig_64
+        s_o = X_other.astype(np.float64) @ u_trig_64 if len(X_other) > 0 else s_h
         s_pa = st.X_path.astype(np.float64) @ u_trig_64
-        tau = float(np.quantile(s_pr, tau_quantile))
-        # Ensure tau sits strictly below median pathological score so circuit actually fires on loops
+        tau = max(float(np.quantile(s_h, tau_quantile)), float(np.quantile(s_o, tau_quantile)))
         if tau >= float(np.median(s_pa)):
-            tau = 0.5 * (float(np.quantile(s_pr, 0.90)) + float(np.median(s_pa)))
+            tau = 0.5 * (max(float(np.quantile(s_h, 0.90)), float(np.quantile(s_o, 0.90))) + float(np.median(s_pa)))
+
+        # Scale SiLU sharpness gamma in z-score units of healthy score std for cross-model invariance
+        s_std = max(float(np.std(s_h)), 1e-4)
+        gamma_eff = gamma / s_std
 
         # Compute exact expected SiLU activation on path vs preserve with virtual bias
-        w_gate_vec = gamma * (u_trig_64 - tau * b_star_64)
+        w_gate_vec = gamma_eff * (u_trig_64 - tau * b_star_64)
         pre_pr = st.X_preserve.astype(np.float64) @ w_gate_vec
         pre_pa = st.X_path.astype(np.float64) @ w_gate_vec
         silu_pr = pre_pr / (1.0 + np.exp(-np.clip(pre_pr, -40, 40)))
         silu_pa = pre_pa / (1.0 + np.exp(-np.clip(pre_pa, -40, 40)))
         b_pr = st.X_preserve.astype(np.float64) @ b_star_64
         b_pa = st.X_path.astype(np.float64) @ b_star_64
-        # Raw unscaled single-neuron output coefficient: silu(w_gate^T x) * (b*^T x)
         act_pr = silu_pr * b_pr
         act_pa = silu_pa * b_pa
         mean_act_pa = float(np.mean(act_pa))
         if mean_act_pa <= 1e-4:
-            # Soft fallback if tau was too steep
-            tau = float(np.quantile(s_pr, 0.85))
-            w_gate_vec = gamma * (u_trig_64 - tau * b_star_64)
+            tau = max(float(np.quantile(s_h, 0.85)), float(np.quantile(s_o, 0.85)))
+            w_gate_vec = gamma_eff * (u_trig_64 - tau * b_star_64)
             pre_pr = st.X_preserve.astype(np.float64) @ w_gate_vec
             pre_pa = st.X_path.astype(np.float64) @ w_gate_vec
             silu_pr = pre_pr / (1.0 + np.exp(-np.clip(pre_pr, -40, 40)))
@@ -639,10 +688,11 @@ def compile_dormant_if_then(
             act_pa = silu_pa * b_pa
             mean_act_pa = float(np.mean(act_pa))
 
-        # 4. Target total residual jump on pathological tokens = alpha * v_act
-        # Each of the k_neurons contributes (1 / k_neurons) of the total jump!
-        v_act = get_action_vector(st, action_mode).astype(np.float64)
-        per_neuron_scale = alpha / (k_neurons * max(mean_act_pa, 1e-4))
+        # 4. Target total residual jump on pathological tokens = (alpha * v_gap) * v_act
+        v_act_f32, v_gap = get_action_vector_and_scale(st, action_mode)
+        v_act = v_act_f32.astype(np.float64)
+        step_mag = alpha * v_gap
+        per_neuron_scale = step_mag / (k_neurons * max(mean_act_pa, 1e-4))
 
         # 5. Exact SwiGLU Gauge Scaling eta between W_up and W_down:
         #    (eta * b*) and (per_neuron_scale / eta) * v_act
@@ -689,10 +739,14 @@ def compile_dormant_if_then(
             "k_neurons": k_neurons,
             "evicted_max_rms": round(evicted_energy_max, 6),
             "median_neuron_rms": round(median_energy, 6),
-            "detector_auroc": det_diag["auroc"],
+            "auroc_vs_healthy": det_diag["auroc_vs_healthy"],
+            "auroc_vs_other": det_diag["auroc_vs_other"],
             "vb_std": round(vb_diag["std"], 4),
             "tau": round(tau, 4),
-            "gamma": gamma,
+            "gamma_z": gamma,
+            "gamma_eff": round(gamma_eff, 3),
+            "v_gap": round(v_gap, 3),
+            "step_mag": round(step_mag, 3),
             "eta_gauge": round(eta, 4),
             "w_gate_max_abs": round(float(np.max(np.abs(w_gate_vec))), 4),
             "w_up_max_abs": round(float(np.max(np.abs(w_up_vec))), 4),

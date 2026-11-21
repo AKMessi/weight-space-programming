@@ -1198,3 +1198,26 @@ Status `complete`, 2363 generated tokens. Immutable raw inputs/responses/config/
 2. **Quantization Survival & Block-Aligned Weight-Space Compilation (BA-WSC):** Measuring the quantization cliff of WSP edits across `BF16`, `Q8_0`, `Q4_K_M`, `Q4_0`, and `Q3_K_M`, and testing whether combining exact SwiGLU neuron-permutation symmetry $P$ (gathering $G=32$ edited dormant slots into dedicated quantization blocks) with exact per-neuron gauge scaling $\eta$ preserves surgical weight-space edits at 4-bit and 3-bit precision with zero extra bytes or runtime overhead — plus testing post-quantization WSP healing of quantization-induced reasoning loops.
 
 **Data discipline:** Strictly disjoint splits frozen in `datasets/wsp/manifest.json`. Calibration (`cal_math_50`, `cal_gsm8k_48`, `cal_copy_36`, `cal_wikitext_64`) and hyperparameter selection (`dev_math_60`, `dev_gsm8k_60`) come strictly from MATH-train, GSM8K-train, and WikiText-2-validation. Held-out test benchmarks (`test_math500`, `test_gsm8k_250`/`full`, `test_arc_challenge_250`, `test_copy_90`, `test_wikitext2_raw`) are strictly untouched during calibration and selection.
+
+
+### 2026-11-21 — Qwen3-0.6B Multi-Precision Quantization Cliff, OOS Geometry Audit, and Theorem 1 Verification
+
+**Baseline Quantization Cliff (`runs/wsp_baselines/qwen3_0.6b/baseline_summary.json`):**
+On `cal_math_50` (2048 max tokens, greedy, 4-slot Vulkan RX 6400):
+- `BF16`: PPL `19.31 ± 0.71`, Acc `26/50 (52.0%)`, Hit-limit `23/50 (46%)`, Loops `10/50 (20%)`. Whenever `</think>` closed (`28/50`), accuracy was `26/28 (92.9%)`.
+- `Q8_0`: PPL `19.28 ± 0.71`, Acc `27/50 (54.0%)`, Hit-limit `23/50 (46%)`, Loops `12/50 (24%)` (2x faster decode).
+- `Q4_K_M`: PPL `20.73 ± 0.77`, Acc `25/50 (50.0%)`, Hit-limit `26/50 (52%)`, Loops `13/50 (26%)`.
+- `Q4_0`: PPL `21.87 ± 0.80`, Acc `18/50 (36.0%)`, Hit-limit `34/50 (68%)`, Loops `23/50 (46%)` (**2.3x loop explosion**).
+- `Q3_K_M`: PPL `26.72 ± 1.01`, Acc `12/50 (24.0%)`, Hit-limit `34/50 (68%)`, Loops `37/50 (74%)` (**3.7x loop explosion**).
+- Also on `fp_cal_gsm48`: `29/48 (60.4%)`, Hit-limit `14/48 (29.2%)`, Loops `19/48 (39.6%)`. `fp_cal_copy36`: `25/36 (69.4%)`, `0` loops.
+
+**Mechanistic Layer Localization & Out-of-Sample Geometry Audit (`research/wsp/qwen3_0.6b/layer_profile.json`):**
+- MLP attribution along the loop residual direction surges at layers 16–22 (`1.12 -> 6.98`) and readout layer 27 (`65.87`).
+- Sequence-disjoint out-of-sample CV verified our closed-form **Virtual Constant-1 Bias Register $b^*$** in bias-free SwiGLU layers: `std = 0.048 - 0.074` across unseen math/copy/WikiText sequences (`ridge_scale=0.5`, `||b*|| = 0.04`).
+- Balanced Dual-Negative Ridge detector (`X_path` vs `0.5 X_healthy + 0.5 X_other`) achieved OOS AUROC `0.986 - 0.991` vs. copy/WikiText (`FP_O = 0.00` across L16–L24) and `0.84 - 0.88` vs. same-domain healthy math (`TP = 0.62 - 0.76`).
+
+**Empirical Theorem 1 Verification on Real `llama-quantize` (`research/wsp/qwen3_0.6b/theorem1_quant_audit.json`, Layer 20 `ffn_down`):**
+- `uncond_a0.6`: `cos_sim = 0.386` (`Q4_0`), `0.332` (`Q3_K_M`); collateral-to-signal ratio `0.473` (`Q4_0`), `0.958` (`Q3_K_M`).
+- `sparse64_a1.0` (Takehi-style scattered 64 columns): `cos_sim = 0.640` (`Q4_0`), `0.379` (`Q3_K_M`); collateral-to-signal `0.633` (`Q4_0`), **`2.257` (`Q3_K_M`)** across 30,921 mixed 32-blocks.
+- `dormant32_scattered` (without block alignment): `cos_sim = 0.988` (`Q4_0`), `0.950` (`Q3_K_M`); collateral-to-signal `0.116` (`Q4_0`), `0.313` (`Q3_K_M`) across 27,645 mixed blocks.
+- **`ba_wsc_32_aligned` (Block-Aligned Weight-Space Compilation via exact MLP permutation $P$):** `cos_sim = 0.9960` (`Q4_0`), **`0.9997` (`Q4_K_M`)**, **`0.9942` (`Q3_K_M`)**; `Q4_0` collateral-to-signal slashed **100x (`0.1161 -> 0.00115`)**, `Q3_K_M` slashed **29x vs `sparse64` (`2.257 -> 0.0786`)**. Residual `Q4_K`/`Q3_K` collateral (`0.0145`/`0.0786` vs `Q4_0`'s `0.00115`) directly reflects the `QK_K=256` super-block scale sharing across 8 sub-blocks of 32.
