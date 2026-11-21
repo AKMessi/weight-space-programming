@@ -1,0 +1,206 @@
+{
+  "ba_wsc_32_aligned": {
+    "compile": {
+      "method": "ba_wsc",
+      "layers": [
+        20
+      ],
+      "alpha": 0.25,
+      "k_neurons": 32,
+      "gamma": 2.5,
+      "tau_quantile": 0.95,
+      "action_mode": "resolve",
+      "block_align": true,
+      "gauge_balance": true,
+      "per_layer": {
+        "20": {
+          "dormant_idx_first8": [
+            2016,
+            1903,
+            1662,
+            1385,
+            1993,
+            1904,
+            2392,
+            2561
+          ],
+          "k_neurons": 32,
+          "evicted_max_rms": 0.228352,
+          "median_neuron_rms": 0.680523,
+          "auroc_vs_healthy": 0.9409,
+          "auroc_vs_other": 1.0,
+          "vb_std": 0.0245,
+          "tau": 7.024,
+          "gamma_z": 2.5,
+          "gamma_eff": 1.39,
+          "v_gap": 72.044,
+          "step_mag": 18.011,
+          "eta_gauge": 2.5537,
+          "w_gate_max_abs": 0.3024,
+          "w_up_max_abs": 0.0282,
+          "w_down_max_abs": 0.0282,
+          "inj_preserve_rms": 1.05937,
+          "inj_preserve_p95": 1.39029,
+          "inj_path_mean": 18.011,
+          "selectivity_ratio": 17.0,
+          "block_aligned": true
+        }
+      }
+    },
+    "quants": {
+      "Q4_0": {
+        "blk.20.ffn_down.weight": {
+          "qtype_quant": "Q4_0",
+          "edited_entries": 32765,
+          "delta_fp_fro": 5.511272,
+          "delta_q_fro": 5.522166,
+          "cosine_sim_full": 0.99594,
+          "projection_retention_full": 0.99791,
+          "signal_retention_edited_only": 0.99791,
+          "collateral_unedited_fro": 0.003473,
+          "collateral_unedited_changed_frac": 1e-06,
+          "collateral_to_signal_ratio": 0.00063,
+          "mixed_32blocks": 3,
+          "pure_edit_32blocks": 1021,
+          "mixed_block_scale_blowup": 0.025
+        }
+      },
+      "Q4_K_M": {
+        "blk.20.ffn_down.weight": {
+          "qtype_quant": "Q6_K",
+          "edited_entries": 32765,
+          "delta_fp_fro": 5.511272,
+          "delta_q_fro": 5.512185,
+          "cosine_sim_full": 0.99971,
+          "projection_retention_full": 0.99988,
+          "signal_retention_edited_only": 0.99988,
+          "collateral_unedited_fro": 0.080069,
+          "collateral_unedited_changed_frac": 0.039142,
+          "collateral_to_signal_ratio": 0.01453,
+          "mixed_32blocks": 3,
+          "pure_edit_32blocks": 1021,
+          "mixed_block_scale_blowup": 0.025
+        }
+      },
+      "Q3_K_M": {
+        "blk.20.ffn_down.weight": {
+          "qtype_quant": "Q4_K",
+          "edited_entries": 32765,
+          "delta_fp_fro": 5.511272,
+          "delta_q_fro": 5.525538,
+          "cosine_sim_full": 0.99415,
+          "projection_retention_full": 0.99672,
+          "signal_retention_edited_only": 0.99672,
+          "collateral_unedited_fro": 0.434114,
+          "collateral_unedited_changed_frac": 0.048096,
+          "collateral_to_signal_ratio": 0.07877,
+          "mixed_32blocks": 3,
+          "pure_edit_32blocks": 1021,
+          "mixed_block_scale_blowup": 0.025
+        }
+      }
+    }
+  },
+  "ba_wsc_256_aligned": {
+    "compile": {
+      "method": "ba_wsc",
+      "layers": [
+        20
+      ],
+      "alpha": 0.25,
+      "k_neurons": 256,
+      "gamma": 2.5,
+      "tau_quantile": 0.95,
+      "action_mode": "resolve",
+      "block_align": true,
+      "gauge_balance": true,
+      "per_layer": {
+        "20": {
+          "dormant_idx_first8": [
+            2016,
+            1903,
+            1662,
+            1385,
+            1993,
+            1904,
+            2392,
+            2561
+          ],
+          "k_neurons": 256,
+          "evicted_max_rms": 0.342386,
+          "median_neuron_rms": 0.680523,
+          "auroc_vs_healthy": 0.9409,
+          "auroc_vs_other": 1.0,
+          "vb_std": 0.0245,
+          "tau": 7.024,
+          "gamma_z": 2.5,
+          "gamma_eff": 1.39,
+          "v_gap": 72.044,
+          "step_mag": 18.011,
+          "eta_gauge": 0.9029,
+          "w_gate_max_abs": 0.3024,
+          "w_up_max_abs": 0.01,
+          "w_down_max_abs": 0.01,
+          "inj_preserve_rms": 1.05937,
+          "inj_preserve_p95": 1.39029,
+          "inj_path_mean": 18.011,
+          "selectivity_ratio": 17.0,
+          "block_aligned": true
+        }
+      }
+    },
+    "quants": {
+      "Q4_0": {
+        "blk.20.ffn_down.weight": {
+          "qtype_quant": "Q4_0",
+          "edited_entries": 262127,
+          "delta_fp_fro": 15.048871,
+          "delta_q_fro": 15.077173,
+          "cosine_sim_full": 0.99605,
+          "projection_retention_full": 0.99792,
+          "signal_retention_edited_only": 0.99792,
+          "collateral_unedited_fro": 0.004697,
+          "collateral_unedited_changed_frac": 6e-06,
+          "collateral_to_signal_ratio": 0.00031,
+          "mixed_32blocks": 17,
+          "pure_edit_32blocks": 8175,
+          "mixed_block_scale_blowup": 0.0513
+        }
+      },
+      "Q4_K_M": {
+        "blk.20.ffn_down.weight": {
+          "qtype_quant": "Q6_K",
+          "edited_entries": 262127,
+          "delta_fp_fro": 15.048871,
+          "delta_q_fro": 15.050467,
+          "cosine_sim_full": 0.99983,
+          "projection_retention_full": 0.99994,
+          "signal_retention_edited_only": 0.99994,
+          "collateral_unedited_fro": 0.00159,
+          "collateral_unedited_changed_frac": 6e-06,
+          "collateral_to_signal_ratio": 0.00011,
+          "mixed_32blocks": 17,
+          "pure_edit_32blocks": 8175,
+          "mixed_block_scale_blowup": 0.0513
+        }
+      },
+      "Q3_K_M": {
+        "blk.20.ffn_down.weight": {
+          "qtype_quant": "Q4_K",
+          "edited_entries": 262127,
+          "delta_fp_fro": 15.048871,
+          "delta_q_fro": 15.047797,
+          "cosine_sim_full": 0.99732,
+          "projection_retention_full": 0.99725,
+          "signal_retention_edited_only": 0.99725,
+          "collateral_unedited_fro": 0.007453,
+          "collateral_unedited_changed_frac": 6e-06,
+          "collateral_to_signal_ratio": 0.0005,
+          "mixed_32blocks": 17,
+          "pure_edit_32blocks": 8175,
+          "mixed_block_scale_blowup": 0.0513
+        }
+      }
+    }
+  }
+}

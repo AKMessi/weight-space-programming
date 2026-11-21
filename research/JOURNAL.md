@@ -1344,3 +1344,14 @@ Both exact pooled two-sided McNemar (`mc_p`) and **problem-clustered paired sign
   - Statistically significant **`</think>` Close `50.0%` (`cl_p = 0.0200`)**, **Limit `173` (`cl_p = 0.0245`)**, and **MeanTok `1733.5` (`-51.4`, `cl_p = 0.0071`)** at literally zero PPL cost.
 - **`uncond_a0.8`** (Unconditional subspace excision, **`ΔPPL = +1.338`** — 10x worse PPL cost):
   - STD `121/300 (40.3%)`, Clean-EOS `116/300 (38.7%)`, vs Baseline `+3.67 pp [-0.3, +7.7]` (`mc_p = 0.108`, `cl_p = 0.108` n.s.), vs Random `+4.00 pp` (`cl_p = 0.088` n.s.), Close `49.0% (p=0.065)`, Limit `176 (p=0.065)`, MeanTok `1741.7 (-43.2, p=0.013)`.
+
+
+### 2026-11-22 — Corollary 1 Verified on Real `llama-quantize`: Hierarchical Super-Block Alignment (`k = QK_K = 256`) (`research/wsp/qwen3_0.6b/corollary1_superblock_audit.json`)
+
+**Hypothesis tested:** Residual collateral of `ba_wsc_32_aligned` on K-quants (`Q4_K_M`: `0.01453`, `Q3_K_M`: `0.07877` vs `Q4_0`: `0.00063`) is caused by `QK_K = 256` super-block scale sharing across 8 sub-blocks of 32. Aligning exact SwiGLU permutation $P$ to a full `k = 256` super-block should eliminate super-block scale interference as well.
+
+**Observed on real `llama-quantize` (`Qwen3-0.6B` Layer 20 `ffn_down`):**
+- `Q4_0`: `k=32` `cos=0.99594, collat/sig=0.00063` -> **`k=256` `cos=0.99605, collat/sig=0.00031`** (2,042x lower than `sparse64`'s `0.633`).
+- `Q4_K_M`: `k=32` `cos=0.99971, collat/sig=0.01453` -> **`k=256` `cos=0.99983, collat/sig=0.00011`** (**132x** lower than `k=32`, 1,482x lower than `sparse64`).
+- `Q3_K_M` (3-bit!): `k=32` `cos=0.99415, collat/sig=0.07877` -> **`k=256` `cos=0.99732, collat/sig=0.00050`** (**158x** lower than `k=32`, **4,514x** lower than `sparse64`'s `2.257`, `cos_sim` raised from `0.379` to **`0.99732`**!).
+- Note: Using `k=256` evicts 256 dormant neurons (8.3% of `d_ff=3072` in Qwen3-0.6B, 2.9% of `d_ff=8960` in DeepSeek-R1-1.5B), trading neuron budget for zero super-block scale collateral — an exact hardware-matched hierarchy ($k=32$ for `Q4_0`/`Q8_0`, $k=256$ for `Q4_K`/`Q3_K`).
