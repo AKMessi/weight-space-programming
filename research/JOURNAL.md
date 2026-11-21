@@ -1239,3 +1239,22 @@ On `cal_math_50` (2048 max tokens, greedy, 4-slot Vulkan RX 6400):
 1. The nonlinear thresholded SwiGLU IF-THEN gate (`bawsc32_res_a0.25`) matched the highest accuracy gain (`+18.7 pp`) with **zero WikiText-2 PPL penalty (`-0.031`)**, whereas unconditional excision incurred `+0.991` to `+2.669` PPL degradation.
 2. Targeting the resolution state (`H_resolve - H_path`, closing `</think>`) markedly outperformed targeting mid-thought healthy state (`H_healthy - H_path`, `56.2%`).
 3. Launching full 60-problem `dev_math_60` + `dev_copy_36` + PPL selection (including `ctrl_dry_sampler`, `ctrl_presence_pen`, `ctrl_concise_prompt`, and stronger conditional doses `0.45`/`0.70`).
+
+
+### 2026-11-21 — Qwen3-0.6B Stage 1 Full Dev Selection (`dev_math_60` + `dev_copy_36` + PPL)
+
+**Results (`research/wsp/qwen3_0.6b/dev_results.json`, strictly MATH-train dev, 2048 max tokens, greedy):**
+- `baseline_fp`: PPL `21.160`, `22/60 (36.7%)`, `limit=36`, `loops=11`, `close=48.3%`, `copy36=25/36`.
+- `ctrl_concise_prompt`: `25/60 (41.7%, +6/-3, p=0.508)`, `limit=32`, `loops=5`, `copy36=25/36`.
+- `ctrl_dry_sampler`: `14/60 (23.3%, +2/-10, p=0.039 — significant harm)`, `limit=40`, `loops=0` (DRY breaks multi-step algebra by penalizing repeated mathematical variables).
+- `ctrl_presence_pen`: `21/60 (35.0%, +4/-5, p=1.000)`, `limit=37`, `loops=6`.
+- `uncond_a0.8` (Takehi/Steer2Edit unconditional): PPL `22.648 (+1.488)`, `27/60 (45.0%, +7/-2, p=0.180)`, `limit=33`, `loops=11`, `copy36=26/36`.
+- `sparse64_a1.0` (Takehi 64-col): PPL `21.672 (+0.512)`, `24/60 (40.0%, +5/-3, p=0.727)`, `limit=35`, `loops=10`, `copy36=26/36`.
+- **`oblique_res_a0.25` (Method A — Null-Space Oblique):** PPL `21.328 (+0.169)`, **`28/60 (46.7%, +7/-1, p=0.070)`**, `limit=29` (best), `loops=5` (-55%), `close=63.3%` (best), `copy36=24/36`.
+- `bawsc32_res_a0.25`: PPL `21.139 (-0.021)`, `26/60 (43.3%, +8/-4, p=0.388)`, `limit=31`, `loops=8`, `close=58.3%`, `copy36=25/36`.
+- **`bawsc32_res_a0.70` (Method C — BA-WSC Dormant SwiGLU IF-THEN):** PPL **`21.135 (-0.025)`**, **`32/60 (53.3%, +16.7 pp, +12/-2, McNemar p=0.013)`**, `copy36=25/36`.
+
+**Mechanistic Failure Audit of `bawsc32_res_a0.70`:**
+Inspecting the 20 `loop_detected` traces in `bawsc32_res_a0.70` revealed a second-order **"Final-Answer Echo" resonance**: 5 of the 12 rescued items cleanly closed `</think>` and emitted the correct `\boxed{...}`, then re-triggered the `resolve` circuit on post-`</think>` summary tokens and repeated `Final Answer: \boxed{...}` until 2048 tokens. Cause: post-`</think>` tokens were not included in the negative class `X_other`.
+
+**Next:** Test an iterative weight-space fix on `dev_math_60` (`bawsc32_noecho`) that adds calibration post-`</think>` answer tokens to the negative preservation set (and/or gates `W_up` on inside-`<think>` state) before freezing Stage 2 held-out evaluation.
