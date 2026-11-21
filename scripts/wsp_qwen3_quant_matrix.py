@@ -263,6 +263,12 @@ def main() -> None:
                     target_layers=layers,
                     cache_path=pq_cache,
                 )
+                pq_noop_ed, _ = compile_ba_wsc_noop(gmap, pq_stats, layers, k_neurons=32)
+                pq_noop_fp = art_q / f"pq_noop_{qt}_fp.gguf"
+                pq_noop_q = art_q / f"pq_noop_{qt}.gguf"
+                if not pq_noop_q.exists():
+                    patch_gguf_tensors(base_fp, pq_noop_fp, pq_noop_ed)
+                    quantize_gguf(pq_noop_fp, pq_noop_q, qt)
                 pq_specs = [
                     (f"pq_oblique_a0.25_{qt}", compile_oblique_nullspace(gmap, pq_stats, layers, alpha=0.25, action_mode="resolve", null_rank=64), False),
                     (f"pq_bawsc32_a0.25_{qt}", compile_dormant_if_then(gmap, pq_stats, layers, alpha=0.25, k_neurons=32, gamma=2.5, tau_quantile=0.95, action_mode="resolve", block_align=True), True),
@@ -277,8 +283,8 @@ def main() -> None:
                     if not q_p.exists():
                         patch_gguf_tensors(base_fp, fp_tmp, ed, metadata_extra=cinfo)
                         q_meta = quantize_gguf(fp_tmp, q_p, qt)
-                        ref_fp = noop_fp if is_ba else base_fp
-                        ref_q = noop_q if is_ba else base_q
+                        ref_fp = pq_noop_fp if is_ba else base_fp
+                        ref_q = pq_noop_q if is_ba else base_q
                         audit = audit_quant_pair(ref_fp, fp_tmp, ref_q, q_p, ["blk.20.ffn_down.weight"])
                         if fp_tmp.exists():
                             fp_tmp.unlink()
@@ -293,6 +299,8 @@ def main() -> None:
                     )
                     results[tag]["compile_info"] = cinfo
                     out_path.write_text(json.dumps(results, indent=2) + "\n", encoding="utf-8")
+                if pq_noop_fp.exists():
+                    pq_noop_fp.unlink()
 
 
 if __name__ == "__main__":
