@@ -1444,4 +1444,9 @@ Reference unedited `Q8_0` baseline: PPL `19.28`, STD `55/150 (36.7%)`, Clean-EOS
 - **`oblique_res_a0.45`**: PPL `20.673 (+0.196)`, **STD `7/24 (29.2% — 7x jump!)`**, Clean-EOS `3/24`, Limit `21`, Loops `5`, MeanTok `2018`.
 - `bawsc32_res_a0.25`: PPL `20.511 (+0.034)`, STD `3/24 (12.5%)`, Clean-EOS `1/24`, Loops `3`.
 - **`bawsc32_res_a0.45`**: PPL `20.510 (+0.034)`, STD `4/24 (16.7%)`, Clean-EOS `3/24`, Limit `21`, MeanTok `1954`.
-- Because `a=0.45` is still well below saturation (`ΔPPL = +0.196 / +0.034`, `toks ~1954–2018`), probing stronger dev doses (`oblique a=0.70, 1.00`, `bawsc32 a=0.80`) on `dev_math_60[:24]` before freezing the held-out `MATH-500-strat150` run.
+- Higher-dose dev sweep completed (`dev_dose_selection.json`):
+  - `oblique_res_a0.70`: PPL `20.832 (+0.355)`, STD `7/24 (29.2%)`, Clean-EOS `4/24 (16.7%)`, Limit `19`, MeanTok `1926`.
+  - **`oblique_res_a1.00` (Frozen Oblique Dev Winner):** PPL `21.100 (+0.623)`, STD `6/24 (25.0%)`, **Clean-EOS `6/24 (25.0% — 6/6 = 100% Clean-EOS, +25.0 pp from 0% baseline, 3x better than concise prompt and uncond!)`**, Limit `16 (-33%)`, MeanTok `1666 (-382 tok/prob, 19% faster!)`.
+  - `bawsc32_res_a0.80`: PPL `20.505 (+0.028)`, STD `3/24`, Clean-EOS `3/24`, Limit `21`.
+  - `bawsc32_res_a1.20`: PPL `20.520 (+0.043)`, STD `3/24`, Clean-EOS `2/24`, Limit `19`, MeanTok `1824`.
+- **Frozen Model 2 Pre-Registration (strictly before held-out evaluation):** `layers=[15, 19, 21]`, `oblique_alpha=1.0`, `bawsc_alpha=0.45`, comparators `baseline`, `random_matched` (matched to `oblique_res_a1.0`), `uncond_a0.8` across `Q8_0` and 4-bit `Q4_0` on 100% untouched held-out `MATH-500-strat150` + `Copy-90` + 32-chunk `WikiText-2` PPL under official stochastic sampling (`temp=0.6, top_p=0.95, top_k=20`, Seed 42).
