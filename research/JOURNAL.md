@@ -1405,3 +1405,26 @@ Reference unedited `Q8_0` baseline: PPL `19.28`, STD `55/150 (36.7%)`, Clean-EOS
 - **`pq_bawsc32_a0.35_Q3_K_M` (PQ-BA-WSC `a=0.35` — #1 OVERALL 3-BIT WINNER!):** PPL **`26.839 (+0.116, 19x lower PPL penalty than uncond!)`**, STD `34/150 (p=0.0525)`, CLOSED `33/150 (p=0.0414)`, **Clean-EOS `32/150 (21.3%, +8.7 pp = +68% relative gain over 3-bit baseline! Exact McNemar p=0.0044)`**, Limit **`82 (-33)`**, Loops `60 (-14)`, `Copy-90 = 40/90`!
 
 **Core Paper 2 Finding:** Post-Quantization Weight-Space Healing (`PQ-BA-WSC`) compiled directly on exact dequantized `Q4_0`/`Q3_K_M` activations systematically outperforms FP-compiled `BA-WSC` transfer at BOTH 4-bit (`46/150, p=0.0347, ΔPPL=+0.003` vs `41/150`) and 3-bit (`30-32/150, p=0.0347/0.0044, ΔPPL=+0.11` vs `26/150`) while preserving `cos_sim > 0.994`! Launching Model 2 (`Qwen3.5-0.8B` hybrid Gated-DeltaNet) next.
+
+
+### 2026-11-22 — Model 2 (`Qwen3.5-0.8B` Hybrid 18 Gated-DeltaNet + 6 Full-Attention): Quantization Cliff, 24-Layer Anatomy & Theorem 1 (`research/wsp/qwen35_0.8b/`)
+
+**Multi-Precision Baselines (`runs/wsp_baselines/qwen35_0.8b/baseline_summary.json`, `cal_math_50`, 2048 max tokens):**
+- `BF16` (PPL `15.523`): Greedy `2/50 (4.0%)`, `limit=50/50 (100%)`, **`loops=43/50 (86%)`**; Official Stochastic (`temp=0.6, top_p=0.95, top_k=20`) `4/50 (8.0%)`, `limit=48/50 (96%)`, `loops=18/50 (36%)`; `cal_gsm48_stoch` `3/48 (6.2%)`, `limit=48/48`, `loops=34/48 (71%)`; `cal_copy36` **`27/36 (75.0%)`**, `0` loops. Raw trace audit confirms extreme overthinking: `Qwen3.5-0.8B` solves problems in 100–200 tokens, then obsessively re-verifies for ~1,850 tokens without closing `</think>`.
+- `Q8_0` (PPL `15.513`): `1/50`, `limit=50/50`, `loops=17/50 (34%)`.
+- `Q4_K_M` (PPL `16.188`): `3/50`, `limit=49/50`, `loops=20/50 (40%)`.
+- **`Q4_0` (PPL `18.227`):** `3/50`, `limit=47/50`, **`loops=44/50 (88% — 2.6x stochastic loop explosion!)`**.
+- **`Q3_K_M` (PPL `19.195`):** `5/50`, `limit=49/50`, **`loops=46/50 (92% — 2.7x stochastic loop explosion!)`**.
+
+**24-Layer Hybrid Gated-DeltaNet vs. Full-Attention Mechanistic Profile (`research/wsp/qwen35_0.8b/layer_profile.json`):**
+- MLP loop attribution stays flat (`0.004–0.023`) across early layers L0–L13, then surges **10x right at Full-Attention Layer 15 (`0.1723`, highest non-readout peak)**, with secondary peaks at **Full-Attention Layer 19 (`0.1372`)**, DeltaNet Layer 21 (`0.1670`), and readout Full-Attention Layer 23 (`0.5682`) — independently rediscovering L15 & L19 from *Sparks of WSP*.
+- Virtual Constant-1 Bias Register $b^*$ holds even tighter on this hybrid architecture: **`vb_std = 0.0208–0.0252`** across all 24 layers.
+
+**Empirical Theorem 1 Verification on Real `llama-quantize` (`research/wsp/qwen35_0.8b/theorem1_quant_audit.json`, Hybrid L19 `ffn_down`, `d_ff=3584`):**
+- `uncond_a0.6`: `cos = 0.3394 (Q4_0), 0.2843 (Q4_K_M / Q3_K_M)`; collateral/signal `0.5926 (Q4_0), 1.1803 (Q4_K_M / Q3_K_M)`.
+- `sparse64_a1.0` (Takehi-style): `cos = 0.5481 (Q4_0), 0.2927 (Q4_K_M / Q3_K_M)`; collateral/signal `0.8342 (Q4_0),` **`3.0357` (Q4_K_M / Q3_K_M — 3x more collateral noise than signal!)**.
+- `oblique_a0.25`: `cos = 0.5441 (Q4_0), 0.5257 (Q4_K_M / Q3_K_M)`; collateral/signal `0.2607 / 0.4270`.
+- `dormant32_scattered`: `cos = 0.9910 (Q4_0), 0.9377 (Q4_K_M / Q3_K_M)`; collateral/signal `0.0922 / 0.3517`.
+- **`ba_wsc_32_aligned` (Theorem 1):** **`cos = 0.99608 (Q4_0), 0.99554 (Q4_K_M / Q3_K_M)`**; collateral/signal **`0.00013 (Q4_0 — 709x lower than scattered, 6,417x lower than sparse64!)`** and **`0.05881` (Q4_K_M / Q3_K_M — 52x lower than sparse64!)**.
+
+**Next:** Because unprompted `Qwen3.5-0.8B` only closed `</think>` on `2/50` calibration items (`n_resolve=2`), run leak-free concise-prompt calibration elicitation on `cal_math_50[:25]` + `cal_gsm8k_48[:25]` (Prompt-to-Weight Control-Flow Distillation), verify Corollary 1 (`k=256`) on `Qwen3.5-0.8B`, select doses strictly on `dev_math_60[:20]`, then run held-out `MATH-500-strat150` + `Copy-90` + PPL on `Q8_0` & `Q4_0`.

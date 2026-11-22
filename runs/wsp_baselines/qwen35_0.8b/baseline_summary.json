@@ -1,0 +1,633 @@
+{
+  "model_name": "qwen35_0.8b",
+  "precisions": {
+    "FP": {
+      "ppl": {
+        "model_path": "E:\\coding\\weight space prog\\local\\models\\Qwen3.5-0.8B-BF16.gguf",
+        "model_sha256": "cedf89af31c9041b601fa58303285bc46d99c51baee1b13f5e919626ca526ee5",
+        "text_path": "E:\\coding\\weight space prog\\datasets\\wsp\\test_wikitext2_raw.txt",
+        "chunks": 32,
+        "ctx_size": 512,
+        "ppl": 15.5234,
+        "ppl_se": 0.5127,
+        "elapsed_sec": 35.22
+      },
+      "cal_math50_greedy": {
+        "tag": "qwen35_fp_cal_math50_greedy",
+        "ended_utc": "2026-11-22T10:54:10.313694+00:00",
+        "wall_sec": 2250.31,
+        "model_path": "E:\\coding\\weight space prog\\local\\models\\Qwen3.5-0.8B-BF16.gguf",
+        "model_sha256": "cedf89af31c9041b601fa58303285bc46d99c51baee1b13f5e919626ca526ee5",
+        "benchmark": "math",
+        "n": 50,
+        "correct": 2,
+        "accuracy": 0.04,
+        "wilson_95ci": [
+          0.011,
+          0.1346
+        ],
+        "hit_limit_count": 50,
+        "hit_limit_rate": 1.0,
+        "loop_count": 43,
+        "loop_rate": 0.86,
+        "think_close_rate": 0.0,
+        "latent_in_think_count": 11,
+        "error_count": 0,
+        "total_prompt_tokens": 4863,
+        "total_generated_tokens": 102189,
+        "mean_completion_tokens": 2043.8,
+        "median_completion_tokens": 2048,
+        "median_slot_tps": 11.66,
+        "by_group": {
+          "level_1": {
+            "n": 10,
+            "correct": 2,
+            "hit_limit": 10,
+            "loop": 8,
+            "tokens": 20480,
+            "acc": 0.2,
+            "mean_tokens": 2048.0
+          },
+          "level_2": {
+            "n": 10,
+            "correct": 0,
+            "hit_limit": 10,
+            "loop": 8,
+            "tokens": 20480,
+            "acc": 0.0,
+            "mean_tokens": 2048.0
+          },
+          "level_3": {
+            "n": 10,
+            "correct": 0,
+            "hit_limit": 10,
+            "loop": 8,
+            "tokens": 20480,
+            "acc": 0.0,
+            "mean_tokens": 2048.0
+          },
+          "level_4": {
+            "n": 10,
+            "correct": 0,
+            "hit_limit": 10,
+            "loop": 9,
+            "tokens": 20269,
+            "acc": 0.0,
+            "mean_tokens": 2026.9
+          },
+          "level_5": {
+            "n": 10,
+            "correct": 0,
+            "hit_limit": 10,
+            "loop": 10,
+            "tokens": 20480,
+            "acc": 0.0,
+            "mean_tokens": 2048.0
+          }
+        }
+      },
+      "cal_math50_stoch": {
+        "tag": "qwen35_fp_cal_math50_stoch",
+        "ended_utc": "2026-11-22T11:30:47.260621+00:00",
+        "wall_sec": 2195.23,
+        "model_path": "E:\\coding\\weight space prog\\local\\models\\Qwen3.5-0.8B-BF16.gguf",
+        "model_sha256": "cedf89af31c9041b601fa58303285bc46d99c51baee1b13f5e919626ca526ee5",
+        "benchmark": "math",
+        "n": 50,
+        "correct": 4,
+        "accuracy": 0.08,
+        "wilson_95ci": [
+          0.0315,
+          0.1884
+        ],
+        "hit_limit_count": 48,
+        "hit_limit_rate": 0.96,
+        "loop_count": 18,
+        "loop_rate": 0.36,
+        "think_close_rate": 0.04,
+        "latent_in_think_count": 6,
+        "error_count": 0,
+        "total_prompt_tokens": 4863,
+        "total_generated_tokens": 100882,
+        "mean_completion_tokens": 2017.6,
+        "median_completion_tokens": 2048,
+        "median_slot_tps": 11.63,
+        "by_group": {
+          "level_1": {
+            "n": 10,
+            "correct": 3,
+            "hit_limit": 8,
+            "loop": 2,
+            "tokens": 19173,
+            "acc": 0.3,
+            "mean_tokens": 1917.3
+          },
+          "level_2": {
+            "n": 10,
+            "correct": 0,
+            "hit_limit": 10,
+            "loop": 3,
+            "tokens": 20480,
+            "acc": 0.0,
+            "mean_tokens": 2048.0
+          },
+          "level_3": {
+            "n": 10,
+            "correct": 0,
+            "hit_limit": 10,
+            "loop": 2,
+            "tokens": 20480,
+            "acc": 0.0,
+            "mean_tokens": 2048.0
+          },
+          "level_4": {
+            "n": 10,
+            "correct": 1,
+            "hit_limit": 10,
+            "loop": 4,
+            "tokens": 20269,
+            "acc": 0.1,
+            "mean_tokens": 2026.9
+          },
+          "level_5": {
+            "n": 10,
+            "correct": 0,
+            "hit_limit": 10,
+            "loop": 7,
+            "tokens": 20480,
+            "acc": 0.0,
+            "mean_tokens": 2048.0
+          }
+        }
+      },
+      "cal_gsm48_stoch": {
+        "tag": "qwen35_fp_cal_gsm48_stoch",
+        "ended_utc": "2026-11-22T12:06:06.976213+00:00",
+        "wall_sec": 2117.99,
+        "model_path": "E:\\coding\\weight space prog\\local\\models\\Qwen3.5-0.8B-BF16.gguf",
+        "model_sha256": "cedf89af31c9041b601fa58303285bc46d99c51baee1b13f5e919626ca526ee5",
+        "benchmark": "gsm8k",
+        "n": 48,
+        "correct": 3,
+        "accuracy": 0.0625,
+        "wilson_95ci": [
+          0.0215,
+          0.1684
+        ],
+        "hit_limit_count": 48,
+        "hit_limit_rate": 1.0,
+        "loop_count": 34,
+        "loop_rate": 0.7083333333333334,
+        "think_close_rate": 0.0,
+        "latent_in_think_count": 20,
+        "error_count": 0,
+        "total_prompt_tokens": 4341,
+        "total_generated_tokens": 98304,
+        "mean_completion_tokens": 2048.0,
+        "median_completion_tokens": 2048,
+        "median_slot_tps": 11.68,
+        "by_group": {}
+      },
+      "cal_copy36": {
+        "tag": "qwen35_fp_cal_copy36",
+        "ended_utc": "2026-11-22T12:06:24.840515+00:00",
+        "wall_sec": 16.06,
+        "model_path": "E:\\coding\\weight space prog\\local\\models\\Qwen3.5-0.8B-BF16.gguf",
+        "model_sha256": "cedf89af31c9041b601fa58303285bc46d99c51baee1b13f5e919626ca526ee5",
+        "benchmark": "copy",
+        "n": 36,
+        "correct": 27,
+        "accuracy": 0.75,
+        "wilson_95ci": [
+          0.5893,
+          0.8625
+        ],
+        "hit_limit_count": 0,
+        "hit_limit_rate": 0.0,
+        "loop_count": 0,
+        "loop_rate": 0.0,
+        "think_close_rate": 1.0,
+        "latent_in_think_count": 0,
+        "error_count": 0,
+        "total_prompt_tokens": 3804,
+        "total_generated_tokens": 304,
+        "mean_completion_tokens": 8.4,
+        "median_completion_tokens": 8,
+        "median_slot_tps": 11.36,
+        "by_group": {
+          "exact_copy": {
+            "n": 12,
+            "correct": 12,
+            "hit_limit": 0,
+            "loop": 0,
+            "tokens": 176,
+            "acc": 1.0,
+            "mean_tokens": 14.666666666666666
+          },
+          "kv_retrieval": {
+            "n": 12,
+            "correct": 12,
+            "hit_limit": 0,
+            "loop": 0,
+            "tokens": 91,
+            "acc": 1.0,
+            "mean_tokens": 7.583333333333333
+          },
+          "cycle_induction": {
+            "n": 12,
+            "correct": 3,
+            "hit_limit": 0,
+            "loop": 0,
+            "tokens": 37,
+            "acc": 0.25,
+            "mean_tokens": 3.0833333333333335
+          }
+        }
+      }
+    },
+    "Q8_0": {
+      "quant_meta": {
+        "src_path": "E:\\coding\\weight space prog\\local\\models\\Qwen3.5-0.8B-BF16.gguf",
+        "src_sha256": "cedf89af31c9041b601fa58303285bc46d99c51baee1b13f5e919626ca526ee5",
+        "dst_path": "E:\\coding\\weight space prog\\artifacts\\wsp\\qwen35_0.8b\\baselines\\qwen35_0.8b-Q8_0.gguf",
+        "dst_sha256": "53cd0781fd25f92bed48cff932aecb9716410d604c65449b0c88accd43f42503",
+        "dst_bytes": 811843616,
+        "qtype": "Q8_0",
+        "extra_args": [],
+        "elapsed_sec": 4.44
+      },
+      "ppl": {
+        "model_path": "E:\\coding\\weight space prog\\artifacts\\wsp\\qwen35_0.8b\\baselines\\qwen35_0.8b-Q8_0.gguf",
+        "model_sha256": "53cd0781fd25f92bed48cff932aecb9716410d604c65449b0c88accd43f42503",
+        "text_path": "E:\\coding\\weight space prog\\datasets\\wsp\\test_wikitext2_raw.txt",
+        "chunks": 32,
+        "ctx_size": 512,
+        "ppl": 15.5128,
+        "ppl_se": 0.51237,
+        "elapsed_sec": 24.26
+      },
+      "cal_math50_stoch": {
+        "tag": "qwen35_Q8_0_cal_math50_stoch",
+        "ended_utc": "2026-11-22T12:42:14.099300+00:00",
+        "wall_sec": 2117.24,
+        "model_path": "E:\\coding\\weight space prog\\artifacts\\wsp\\qwen35_0.8b\\baselines\\qwen35_0.8b-Q8_0.gguf",
+        "model_sha256": "53cd0781fd25f92bed48cff932aecb9716410d604c65449b0c88accd43f42503",
+        "benchmark": "math",
+        "n": 50,
+        "correct": 1,
+        "accuracy": 0.02,
+        "wilson_95ci": [
+          0.0035,
+          0.105
+        ],
+        "hit_limit_count": 50,
+        "hit_limit_rate": 1.0,
+        "loop_count": 17,
+        "loop_rate": 0.34,
+        "think_close_rate": 0.0,
+        "latent_in_think_count": 12,
+        "error_count": 0,
+        "total_prompt_tokens": 4863,
+        "total_generated_tokens": 102189,
+        "mean_completion_tokens": 2043.8,
+        "median_completion_tokens": 2048,
+        "median_slot_tps": 12.3,
+        "by_group": {
+          "level_1": {
+            "n": 10,
+            "correct": 0,
+            "hit_limit": 10,
+            "loop": 5,
+            "tokens": 20480,
+            "acc": 0.0,
+            "mean_tokens": 2048.0
+          },
+          "level_2": {
+            "n": 10,
+            "correct": 1,
+            "hit_limit": 10,
+            "loop": 3,
+            "tokens": 20480,
+            "acc": 0.1,
+            "mean_tokens": 2048.0
+          },
+          "level_3": {
+            "n": 10,
+            "correct": 0,
+            "hit_limit": 10,
+            "loop": 3,
+            "tokens": 20480,
+            "acc": 0.0,
+            "mean_tokens": 2048.0
+          },
+          "level_4": {
+            "n": 10,
+            "correct": 0,
+            "hit_limit": 10,
+            "loop": 1,
+            "tokens": 20269,
+            "acc": 0.0,
+            "mean_tokens": 2026.9
+          },
+          "level_5": {
+            "n": 10,
+            "correct": 0,
+            "hit_limit": 10,
+            "loop": 5,
+            "tokens": 20480,
+            "acc": 0.0,
+            "mean_tokens": 2048.0
+          }
+        }
+      }
+    },
+    "Q4_K_M": {
+      "quant_meta": {
+        "src_path": "E:\\coding\\weight space prog\\local\\models\\Qwen3.5-0.8B-BF16.gguf",
+        "src_sha256": "cedf89af31c9041b601fa58303285bc46d99c51baee1b13f5e919626ca526ee5",
+        "dst_path": "E:\\coding\\weight space prog\\artifacts\\wsp\\qwen35_0.8b\\baselines\\qwen35_0.8b-Q4_K_M.gguf",
+        "dst_sha256": "939c8c348ca27beb14e5a0b91a4fa2d471d128d5f2d2fd076253beca4bbc0ad0",
+        "dst_bytes": 529297440,
+        "qtype": "Q4_K_M",
+        "extra_args": [],
+        "elapsed_sec": 21.235
+      },
+      "ppl": {
+        "model_path": "E:\\coding\\weight space prog\\artifacts\\wsp\\qwen35_0.8b\\baselines\\qwen35_0.8b-Q4_K_M.gguf",
+        "model_sha256": "939c8c348ca27beb14e5a0b91a4fa2d471d128d5f2d2fd076253beca4bbc0ad0",
+        "text_path": "E:\\coding\\weight space prog\\datasets\\wsp\\test_wikitext2_raw.txt",
+        "chunks": 32,
+        "ctx_size": 512,
+        "ppl": 16.1883,
+        "ppl_se": 0.53567,
+        "elapsed_sec": 24.58
+      },
+      "cal_math50_stoch": {
+        "tag": "qwen35_Q4_K_M_cal_math50_stoch",
+        "ended_utc": "2026-11-22T13:19:04.759629+00:00",
+        "wall_sec": 2162.11,
+        "model_path": "E:\\coding\\weight space prog\\artifacts\\wsp\\qwen35_0.8b\\baselines\\qwen35_0.8b-Q4_K_M.gguf",
+        "model_sha256": "939c8c348ca27beb14e5a0b91a4fa2d471d128d5f2d2fd076253beca4bbc0ad0",
+        "benchmark": "math",
+        "n": 50,
+        "correct": 3,
+        "accuracy": 0.06,
+        "wilson_95ci": [
+          0.0206,
+          0.1622
+        ],
+        "hit_limit_count": 49,
+        "hit_limit_rate": 0.98,
+        "loop_count": 20,
+        "loop_rate": 0.4,
+        "think_close_rate": 0.02,
+        "latent_in_think_count": 8,
+        "error_count": 0,
+        "total_prompt_tokens": 4863,
+        "total_generated_tokens": 101297,
+        "mean_completion_tokens": 2025.9,
+        "median_completion_tokens": 2048,
+        "median_slot_tps": 11.84,
+        "by_group": {
+          "level_1": {
+            "n": 10,
+            "correct": 3,
+            "hit_limit": 9,
+            "loop": 2,
+            "tokens": 19588,
+            "acc": 0.3,
+            "mean_tokens": 1958.8
+          },
+          "level_2": {
+            "n": 10,
+            "correct": 0,
+            "hit_limit": 10,
+            "loop": 6,
+            "tokens": 20480,
+            "acc": 0.0,
+            "mean_tokens": 2048.0
+          },
+          "level_3": {
+            "n": 10,
+            "correct": 0,
+            "hit_limit": 10,
+            "loop": 5,
+            "tokens": 20480,
+            "acc": 0.0,
+            "mean_tokens": 2048.0
+          },
+          "level_4": {
+            "n": 10,
+            "correct": 0,
+            "hit_limit": 10,
+            "loop": 2,
+            "tokens": 20269,
+            "acc": 0.0,
+            "mean_tokens": 2026.9
+          },
+          "level_5": {
+            "n": 10,
+            "correct": 0,
+            "hit_limit": 10,
+            "loop": 5,
+            "tokens": 20480,
+            "acc": 0.0,
+            "mean_tokens": 2048.0
+          }
+        }
+      }
+    },
+    "Q4_0": {
+      "quant_meta": {
+        "src_path": "E:\\coding\\weight space prog\\local\\models\\Qwen3.5-0.8B-BF16.gguf",
+        "src_sha256": "cedf89af31c9041b601fa58303285bc46d99c51baee1b13f5e919626ca526ee5",
+        "dst_path": "E:\\coding\\weight space prog\\artifacts\\wsp\\qwen35_0.8b\\baselines\\qwen35_0.8b-Q4_0.gguf",
+        "dst_sha256": "bf3a0753226029ffddce293be80cf52f8fa818440be31c1f91c98e811973b396",
+        "dst_bytes": 501452832,
+        "qtype": "Q4_0",
+        "extra_args": [],
+        "elapsed_sec": 7.986
+      },
+      "ppl": {
+        "model_path": "E:\\coding\\weight space prog\\artifacts\\wsp\\qwen35_0.8b\\baselines\\qwen35_0.8b-Q4_0.gguf",
+        "model_sha256": "bf3a0753226029ffddce293be80cf52f8fa818440be31c1f91c98e811973b396",
+        "text_path": "E:\\coding\\weight space prog\\datasets\\wsp\\test_wikitext2_raw.txt",
+        "chunks": 32,
+        "ctx_size": 512,
+        "ppl": 18.2268,
+        "ppl_se": 0.61506,
+        "elapsed_sec": 22.88
+      },
+      "cal_math50_stoch": {
+        "tag": "qwen35_Q4_0_cal_math50_stoch",
+        "ended_utc": "2026-11-22T13:54:39.340626+00:00",
+        "wall_sec": 2100.97,
+        "model_path": "E:\\coding\\weight space prog\\artifacts\\wsp\\qwen35_0.8b\\baselines\\qwen35_0.8b-Q4_0.gguf",
+        "model_sha256": "bf3a0753226029ffddce293be80cf52f8fa818440be31c1f91c98e811973b396",
+        "benchmark": "math",
+        "n": 50,
+        "correct": 3,
+        "accuracy": 0.06,
+        "wilson_95ci": [
+          0.0206,
+          0.1622
+        ],
+        "hit_limit_count": 47,
+        "hit_limit_rate": 0.94,
+        "loop_count": 44,
+        "loop_rate": 0.88,
+        "think_close_rate": 0.06,
+        "latent_in_think_count": 7,
+        "error_count": 0,
+        "total_prompt_tokens": 4863,
+        "total_generated_tokens": 100187,
+        "mean_completion_tokens": 2003.7,
+        "median_completion_tokens": 2048,
+        "median_slot_tps": 12.04,
+        "by_group": {
+          "level_1": {
+            "n": 10,
+            "correct": 1,
+            "hit_limit": 9,
+            "loop": 8,
+            "tokens": 19445,
+            "acc": 0.1,
+            "mean_tokens": 1944.5
+          },
+          "level_2": {
+            "n": 10,
+            "correct": 1,
+            "hit_limit": 9,
+            "loop": 8,
+            "tokens": 20135,
+            "acc": 0.1,
+            "mean_tokens": 2013.5
+          },
+          "level_3": {
+            "n": 10,
+            "correct": 0,
+            "hit_limit": 10,
+            "loop": 9,
+            "tokens": 20480,
+            "acc": 0.0,
+            "mean_tokens": 2048.0
+          },
+          "level_4": {
+            "n": 10,
+            "correct": 1,
+            "hit_limit": 9,
+            "loop": 9,
+            "tokens": 19647,
+            "acc": 0.1,
+            "mean_tokens": 1964.7
+          },
+          "level_5": {
+            "n": 10,
+            "correct": 0,
+            "hit_limit": 10,
+            "loop": 10,
+            "tokens": 20480,
+            "acc": 0.0,
+            "mean_tokens": 2048.0
+          }
+        }
+      }
+    },
+    "Q3_K_M": {
+      "quant_meta": {
+        "src_path": "E:\\coding\\weight space prog\\local\\models\\Qwen3.5-0.8B-BF16.gguf",
+        "src_sha256": "cedf89af31c9041b601fa58303285bc46d99c51baee1b13f5e919626ca526ee5",
+        "dst_path": "E:\\coding\\weight space prog\\artifacts\\wsp\\qwen35_0.8b\\baselines\\qwen35_0.8b-Q3_K_M.gguf",
+        "dst_sha256": "7bbd274ecd8af41e08204c443321b8141fe28e66f23230a926613221285c3fa3",
+        "dst_bytes": 466222624,
+        "qtype": "Q3_K_M",
+        "extra_args": [],
+        "elapsed_sec": 16.979
+      },
+      "ppl": {
+        "model_path": "E:\\coding\\weight space prog\\artifacts\\wsp\\qwen35_0.8b\\baselines\\qwen35_0.8b-Q3_K_M.gguf",
+        "model_sha256": "7bbd274ecd8af41e08204c443321b8141fe28e66f23230a926613221285c3fa3",
+        "text_path": "E:\\coding\\weight space prog\\datasets\\wsp\\test_wikitext2_raw.txt",
+        "chunks": 32,
+        "ctx_size": 512,
+        "ppl": 19.1949,
+        "ppl_se": 0.65198,
+        "elapsed_sec": 24.83
+      },
+      "cal_math50_stoch": {
+        "tag": "qwen35_Q3_K_M_cal_math50_stoch",
+        "ended_utc": "2026-11-22T14:32:14.045570+00:00",
+        "wall_sec": 2210.16,
+        "model_path": "E:\\coding\\weight space prog\\artifacts\\wsp\\qwen35_0.8b\\baselines\\qwen35_0.8b-Q3_K_M.gguf",
+        "model_sha256": "7bbd274ecd8af41e08204c443321b8141fe28e66f23230a926613221285c3fa3",
+        "benchmark": "math",
+        "n": 50,
+        "correct": 5,
+        "accuracy": 0.1,
+        "wilson_95ci": [
+          0.0435,
+          0.2136
+        ],
+        "hit_limit_count": 49,
+        "hit_limit_rate": 0.98,
+        "loop_count": 46,
+        "loop_rate": 0.92,
+        "think_close_rate": 0.02,
+        "latent_in_think_count": 6,
+        "error_count": 0,
+        "total_prompt_tokens": 4863,
+        "total_generated_tokens": 100955,
+        "mean_completion_tokens": 2019.1,
+        "median_completion_tokens": 2048,
+        "median_slot_tps": 11.5,
+        "by_group": {
+          "level_1": {
+            "n": 10,
+            "correct": 1,
+            "hit_limit": 10,
+            "loop": 10,
+            "tokens": 20480,
+            "acc": 0.1,
+            "mean_tokens": 2048.0
+          },
+          "level_2": {
+            "n": 10,
+            "correct": 2,
+            "hit_limit": 9,
+            "loop": 10,
+            "tokens": 19246,
+            "acc": 0.2,
+            "mean_tokens": 1924.6
+          },
+          "level_3": {
+            "n": 10,
+            "correct": 2,
+            "hit_limit": 10,
+            "loop": 7,
+            "tokens": 20480,
+            "acc": 0.2,
+            "mean_tokens": 2048.0
+          },
+          "level_4": {
+            "n": 10,
+            "correct": 0,
+            "hit_limit": 10,
+            "loop": 10,
+            "tokens": 20269,
+            "acc": 0.0,
+            "mean_tokens": 2026.9
+          },
+          "level_5": {
+            "n": 10,
+            "correct": 0,
+            "hit_limit": 10,
+            "loop": 9,
+            "tokens": 20480,
+            "acc": 0.0,
+            "mean_tokens": 2048.0
+          }
+        }
+      }
+    }
+  }
+}
