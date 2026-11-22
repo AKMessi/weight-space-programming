@@ -1376,3 +1376,20 @@ Both exact pooled two-sided McNemar (`mc_p`) and **problem-clustered paired sign
 - **`oblique_res_a0.25`**: STD `73/100`, **Clean-EOS `71/100 (+15.0 pp, p=0.0003)`**, **Limit `9 (-65%)`**, **Loops `0`**, **MeanTok `497 (-100)`**, **Wall `182s (-19% faster)`**!
 
 **Mechanistic takeaway:** Both conditional compilers (`oblique_res_a0.25` and `bawsc32_res_a0.25`) compiled a **domain-general metacognitive `</think>` resolution circuit** that transfers zero-shot from math calibration to non-math science reasoning (`ARC-Challenge`) with massive budget-exhaustion reductions (`-58%` to `-65%`) and highly significant Clean-EOS accuracy gains (`p=0.0003` and `p=0.0074`).
+
+
+### 2026-11-22 — Paper 2 Breakthrough: Healing the 4-Bit `Q4_0` Quantization Cliff on Held-Out `MATH-500` (`research/wsp/qwen3_0.6b/quant_matrix_stoch_results.json`)
+
+**Full 10-Arm `Q4_0` Matrix (`Qwen3-0.6B`, 100% untouched held-out `MATH-500-strat150`, official stochastic `temp=0.6, top_p=0.95, top_k=20`, Seed 42):**
+Reference unedited `Q8_0` baseline: PPL `19.28`, STD `55/150 (36.7%)`, Clean-EOS `53/150 (35.3%)`, Limit `94`, Loops `9`.
+- **`baseline_Q4_0`**: PPL `21.866`, STD `36/150`, **Clean-EOS `35/150 (23.3%, -12.0 pp cliff!)`**, Limit `114`, **Loops `28` (3.1x stochastic loop explosion!)**, `Copy-90 = 65/90`.
+- `ba_wsc_noop_Q4_0` (exact permutation no-op): PPL `21.870`, Clean-EOS `32/150 (-2.0 pp, p=0.607)`, Limit `116`, Loops `25`, `Copy-90 = 64/90`.
+- `random_matched_oblique_Q4_0` (matched Gaussian noise): PPL `21.785`, Clean-EOS `32/150 (-2.0 pp, p=0.664)`, Limit `118`, Loops `23`, `Copy-90 = 66/90`, `cos=0.5819`, `col=0.1474`.
+- `uncond_a0.8_Q4_0` (Takehi/Steer2Edit): PPL `22.805 (+0.939)`, Clean-EOS `38/150 (+2.0 pp, p=0.581 n.s. — destroyed by Q4_0!)`, `cos=0.4434`, `col=0.3702`.
+- `bawsc32_res_a0.25_Q4_0` (FP-compiled BA-WSC -> Q4_0): PPL `21.847 (-0.019)`, Clean-EOS `41/150 (+4.0 pp, p=0.263)`, Limit `102`, `Copy-90 = 64/90`, **`cos=0.9959`, `col=0.00063`**.
+- `dormant32_res_a0.25_Q4_0` (scattered ablation): PPL `21.848`, Clean-EOS `44/150 (+6.0 pp, p=0.078)`, Loops `53` (higher echo vs aligned `42`), `cos=0.9884`, `col=0.1163` (185x higher collateral).
+- `pq_oblique_a0.25_Q4_0` (Post-Quantization Oblique): PPL `21.838`, STD `48/150`, Clean-EOS `40/150 (+3.3 pp, p=0.332)`, `cos=0.6679`, `col=0.1735`.
+- **`pq_bawsc32_a0.25_Q4_0` (Post-Quantization Block-Aligned Healing — PQ-BA-WSC!):** PPL **`21.869 (+0.003 — ZERO PPL cost!)`**, STD `47/150`, **Clean-EOS `46/150 (30.7%, +7.3 pp vs Q4_0 base, +17/-6, exact McNemar p=0.0347; +9.3 pp vs random!)`**, Limit `100 (-14)`, `Copy-90 = 64/90`, **`cos=0.9960`, `col=0.00036` (1,028x lower than uncond!)**. Compiling directly on dequantized `Q4_0` activations/loops nearly doubled BA-WSC's healing gain (`+4.0 pp -> +7.3 pp`)!
+- **`oblique_res_a0.25_Q4_0` (FP Oblique -> Q4_0!):** PPL `22.034 (+0.168)`, **STD `53/150 (35.3%!)`**, **Clean-EOS `50/150 (33.3%, +10.0 pp vs Q4_0 base, +20/-5, exact McNemar p=0.0041; +12.0 pp vs random!)`**, Limit `98 (-16)`, `Copy-90 = 64/90` — **recovering 83% of the entire 4-bit quantization Clean-EOS cliff (`35 -> 50/150` vs 8-bit `53/150`) with zero training, zero extra bytes, and zero latency!**
+
+**`Q3_K_M` (3-bit) in progress (`task-623`):** `baseline_Q3_K_M_s42` confirmed an **8.2x stochastic loop explosion (`9 -> 74/150`, PPL `26.723`, Clean-EOS `19/150 = 12.7%`, `Copy-90 = 39/90`)**; `ba_wsc_noop_Q3_K_M_s42` matched baseline (`20/150`, `p=1.000`). 7.5 `Q3_K_M` arms remaining (~4 h).
