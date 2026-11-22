@@ -1,0 +1,206 @@
+{
+  "ba_wsc_32_aligned": {
+    "compile": {
+      "method": "ba_wsc",
+      "layers": [
+        19
+      ],
+      "alpha": 0.25,
+      "k_neurons": 32,
+      "gamma": 2.5,
+      "tau_quantile": 0.96,
+      "action_mode": "resolve",
+      "block_align": true,
+      "gauge_balance": true,
+      "per_layer": {
+        "19": {
+          "dormant_idx_first8": [
+            3002,
+            1965,
+            1045,
+            2526,
+            1143,
+            1373,
+            2208,
+            460
+          ],
+          "k_neurons": 32,
+          "evicted_max_rms": 0.015284,
+          "median_neuron_rms": 0.024522,
+          "auroc_vs_healthy": 0.9963,
+          "auroc_vs_other": 1.0,
+          "vb_std": 0.0252,
+          "tau": 0.7936,
+          "gamma_z": 2.5,
+          "gamma_eff": 6.63,
+          "v_gap": 3.241,
+          "step_mag": 0.81,
+          "eta_gauge": 0.1095,
+          "w_gate_max_abs": 1.2071,
+          "w_up_max_abs": 0.0021,
+          "w_down_max_abs": 0.0021,
+          "inj_preserve_rms": 0.00158,
+          "inj_preserve_p95": 0.00037,
+          "inj_path_mean": 0.8101,
+          "selectivity_ratio": 512.94,
+          "block_aligned": true
+        }
+      }
+    },
+    "quants": {
+      "Q4_0": {
+        "blk.19.ffn_down.weight": {
+          "qtype_quant": "Q4_0",
+          "edited_entries": 32766,
+          "delta_fp_fro": 1.473696,
+          "delta_q_fro": 1.475551,
+          "cosine_sim_full": 0.99608,
+          "projection_retention_full": 0.99734,
+          "signal_retention_edited_only": 0.99734,
+          "collateral_unedited_fro": 0.000185,
+          "collateral_unedited_changed_frac": 1e-06,
+          "collateral_to_signal_ratio": 0.00013,
+          "mixed_32blocks": 2,
+          "pure_edit_32blocks": 1022,
+          "mixed_block_scale_blowup": 0.0072
+        }
+      },
+      "Q4_K_M": {
+        "blk.19.ffn_down.weight": {
+          "qtype_quant": "Q4_K",
+          "edited_entries": 32766,
+          "delta_fp_fro": 1.473696,
+          "delta_q_fro": 1.475771,
+          "cosine_sim_full": 0.99554,
+          "projection_retention_full": 0.99694,
+          "signal_retention_edited_only": 0.99694,
+          "collateral_unedited_fro": 0.086661,
+          "collateral_unedited_changed_frac": 0.01851,
+          "collateral_to_signal_ratio": 0.05881,
+          "mixed_32blocks": 2,
+          "pure_edit_32blocks": 1022,
+          "mixed_block_scale_blowup": 0.0072
+        }
+      },
+      "Q3_K_M": {
+        "blk.19.ffn_down.weight": {
+          "qtype_quant": "Q4_K",
+          "edited_entries": 32766,
+          "delta_fp_fro": 1.473696,
+          "delta_q_fro": 1.475771,
+          "cosine_sim_full": 0.99554,
+          "projection_retention_full": 0.99694,
+          "signal_retention_edited_only": 0.99694,
+          "collateral_unedited_fro": 0.086661,
+          "collateral_unedited_changed_frac": 0.01851,
+          "collateral_to_signal_ratio": 0.05881,
+          "mixed_32blocks": 2,
+          "pure_edit_32blocks": 1022,
+          "mixed_block_scale_blowup": 0.0072
+        }
+      }
+    }
+  },
+  "ba_wsc_256_aligned": {
+    "compile": {
+      "method": "ba_wsc",
+      "layers": [
+        19
+      ],
+      "alpha": 0.25,
+      "k_neurons": 256,
+      "gamma": 2.5,
+      "tau_quantile": 0.96,
+      "action_mode": "resolve",
+      "block_align": true,
+      "gauge_balance": true,
+      "per_layer": {
+        "19": {
+          "dormant_idx_first8": [
+            3002,
+            1965,
+            1045,
+            2526,
+            1143,
+            1373,
+            2208,
+            460
+          ],
+          "k_neurons": 256,
+          "evicted_max_rms": 0.018655,
+          "median_neuron_rms": 0.024522,
+          "auroc_vs_healthy": 0.9963,
+          "auroc_vs_other": 1.0,
+          "vb_std": 0.0252,
+          "tau": 0.7936,
+          "gamma_z": 2.5,
+          "gamma_eff": 6.63,
+          "v_gap": 3.241,
+          "step_mag": 0.81,
+          "eta_gauge": 0.0387,
+          "w_gate_max_abs": 1.2071,
+          "w_up_max_abs": 0.0007,
+          "w_down_max_abs": 0.0007,
+          "inj_preserve_rms": 0.00158,
+          "inj_preserve_p95": 0.00037,
+          "inj_path_mean": 0.8101,
+          "selectivity_ratio": 512.94,
+          "block_aligned": true
+        }
+      }
+    },
+    "quants": {
+      "Q4_0": {
+        "blk.19.ffn_down.weight": {
+          "qtype_quant": "Q4_0",
+          "edited_entries": 262139,
+          "delta_fp_fro": 4.400166,
+          "delta_q_fro": 4.406969,
+          "cosine_sim_full": 0.99619,
+          "projection_retention_full": 0.99773,
+          "signal_retention_edited_only": 0.99773,
+          "collateral_unedited_fro": 0.000199,
+          "collateral_unedited_changed_frac": 1e-06,
+          "collateral_to_signal_ratio": 5e-05,
+          "mixed_32blocks": 5,
+          "pure_edit_32blocks": 8187,
+          "mixed_block_scale_blowup": 0.0034
+        }
+      },
+      "Q4_K_M": {
+        "blk.19.ffn_down.weight": {
+          "qtype_quant": "Q4_K",
+          "edited_entries": 262139,
+          "delta_fp_fro": 4.400166,
+          "delta_q_fro": 4.399674,
+          "cosine_sim_full": 0.99739,
+          "projection_retention_full": 0.99728,
+          "signal_retention_edited_only": 0.99728,
+          "collateral_unedited_fro": 0.001304,
+          "collateral_unedited_changed_frac": 1e-06,
+          "collateral_to_signal_ratio": 0.0003,
+          "mixed_32blocks": 5,
+          "pure_edit_32blocks": 8187,
+          "mixed_block_scale_blowup": 0.0034
+        }
+      },
+      "Q3_K_M": {
+        "blk.19.ffn_down.weight": {
+          "qtype_quant": "Q4_K",
+          "edited_entries": 262139,
+          "delta_fp_fro": 4.400166,
+          "delta_q_fro": 4.399674,
+          "cosine_sim_full": 0.99739,
+          "projection_retention_full": 0.99728,
+          "signal_retention_edited_only": 0.99728,
+          "collateral_unedited_fro": 0.001304,
+          "collateral_unedited_changed_frac": 1e-06,
+          "collateral_to_signal_ratio": 0.0003,
+          "mixed_32blocks": 5,
+          "pure_edit_32blocks": 8187,
+          "mixed_block_scale_blowup": 0.0034
+        }
+      }
+    }
+  }
+}

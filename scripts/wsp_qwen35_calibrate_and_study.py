@@ -161,8 +161,12 @@ def stage_enrich_and_dev() -> None:
         ("uncond_a0.8", compile_uncond_subspace(gmap, enr_stats, layers, alpha=0.8, rank=1), None),
         ("oblique_res_a0.25", compile_oblique_nullspace(gmap, enr_stats, layers, alpha=0.25, action_mode="resolve", null_rank=64), None),
         ("oblique_res_a0.45", compile_oblique_nullspace(gmap, enr_stats, layers, alpha=0.45, action_mode="resolve", null_rank=64), None),
+        ("oblique_res_a0.70", compile_oblique_nullspace(gmap, enr_stats, layers, alpha=0.70, action_mode="resolve", null_rank=64), None),
+        ("oblique_res_a1.00", compile_oblique_nullspace(gmap, enr_stats, layers, alpha=1.00, action_mode="resolve", null_rank=64), None),
         ("bawsc32_res_a0.25", compile_dormant_if_then(gmap, enr_stats, layers, alpha=0.25, k_neurons=32, gamma=2.5, tau_quantile=0.90, action_mode="resolve", block_align=True), None),
         ("bawsc32_res_a0.45", compile_dormant_if_then(gmap, enr_stats, layers, alpha=0.45, k_neurons=32, gamma=2.5, tau_quantile=0.90, action_mode="resolve", block_align=True), None),
+        ("bawsc32_res_a0.80", compile_dormant_if_then(gmap, enr_stats, layers, alpha=0.80, k_neurons=32, gamma=2.5, tau_quantile=0.90, action_mode="resolve", block_align=True), None),
+        ("bawsc32_res_a1.20", compile_dormant_if_then(gmap, enr_stats, layers, alpha=1.20, k_neurons=32, gamma=2.5, tau_quantile=0.90, action_mode="resolve", block_align=True), None),
     ]
 
     for name, comp, sys_p in dev_specs:

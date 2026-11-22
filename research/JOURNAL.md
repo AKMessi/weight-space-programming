@@ -1428,3 +1428,20 @@ Reference unedited `Q8_0` baseline: PPL `19.28`, STD `55/150 (36.7%)`, Clean-EOS
 - **`ba_wsc_32_aligned` (Theorem 1):** **`cos = 0.99608 (Q4_0), 0.99554 (Q4_K_M / Q3_K_M)`**; collateral/signal **`0.00013 (Q4_0 — 709x lower than scattered, 6,417x lower than sparse64!)`** and **`0.05881` (Q4_K_M / Q3_K_M — 52x lower than sparse64!)**.
 
 **Next:** Because unprompted `Qwen3.5-0.8B` only closed `</think>` on `2/50` calibration items (`n_resolve=2`), run leak-free concise-prompt calibration elicitation on `cal_math_50[:25]` + `cal_gsm8k_48[:25]` (Prompt-to-Weight Control-Flow Distillation), verify Corollary 1 (`k=256`) on `Qwen3.5-0.8B`, select doses strictly on `dev_math_60[:20]`, then run held-out `MATH-500-strat150` + `Copy-90` + PPL on `Q8_0` & `Q4_0`.
+
+
+### 2026-11-22 — Model 2 (`Qwen3.5-0.8B`) Corollary 1 (`10,119x–16,685x` Collateral Reduction!) & Dev Dose Probe (`research/wsp/qwen35_0.8b/`)
+
+**Corollary 1 (`k = QK_K = 256` Super-Block Alignment) Verified on Hybrid `Qwen3.5-0.8B` L19 `ffn_down` (`corollary1_superblock_audit.json`):**
+- `Q4_0`: `k=32` `cos=0.99608, col=0.00013` -> **`k=256` `cos=0.99619, col=0.00005`** (**16,685x** lower collateral than Takehi-style `sparse64`'s `0.8342`!).
+- `Q4_K_M` & `Q3_K_M`: `k=32` `cos=0.99554, col=0.05881` -> **`k=256` `cos=0.99739, col=0.00030`** (**196x** lower than `k=32`, **10,119x** lower than `sparse64`'s `3.0357`!).
+
+**Strict Dev Dose Selection (`dev_math_60[:24]`, `Qwen3.5-0.8B-Q8_0`, stochastic `temp=0.6`, `dev_dose_selection.json`):**
+- `baseline`: PPL `20.477`, STD `1/24 (4.2%)`, Clean-EOS `0/24`, Limit `24`, Loops `7`, MeanTok `2048`.
+- `ctrl_concise_prompt`: PPL `20.477`, STD `2/24 (8.3%)`, Clean-EOS `2/24`, Limit `21`, Loops `11`, MeanTok `1914`.
+- `uncond_a0.8`: PPL `20.474 (-0.003)`, STD `2/24 (8.3%)`, Clean-EOS `2/24`, Limit `22`, Loops `8`, MeanTok `2009`.
+- `oblique_res_a0.25`: PPL `20.552 (+0.076)`, STD `1/24`, Clean-EOS `1/24`.
+- **`oblique_res_a0.45`**: PPL `20.673 (+0.196)`, **STD `7/24 (29.2% — 7x jump!)`**, Clean-EOS `3/24`, Limit `21`, Loops `5`, MeanTok `2018`.
+- `bawsc32_res_a0.25`: PPL `20.511 (+0.034)`, STD `3/24 (12.5%)`, Clean-EOS `1/24`, Loops `3`.
+- **`bawsc32_res_a0.45`**: PPL `20.510 (+0.034)`, STD `4/24 (16.7%)`, Clean-EOS `3/24`, Limit `21`, MeanTok `1954`.
+- Because `a=0.45` is still well below saturation (`ΔPPL = +0.196 / +0.034`, `toks ~1954–2018`), probing stronger dev doses (`oblique a=0.70, 1.00`, `bawsc32 a=0.80`) on `dev_math_60[:24]` before freezing the held-out `MATH-500-strat150` run.
