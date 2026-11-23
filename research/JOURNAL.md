@@ -1511,3 +1511,14 @@ Reference unedited `Q8_0` baseline: PPL `19.28`, STD `55/150 (36.7%)`, Clean-EOS
   - `Q3_K_M`: **`cos = 0.99741, col/sig = 0.00034`** (**12,133x** lower than `sparse64`'s `4.12538`, 134x lower than `k=32`!)
 
 **Next:** Launching strict anti-leakage dev dose selection (`--stage dev --study-layers 20,22,25` on `dev_math_60[:24]`) to freeze Model 3's doses before held-out `MATH-500-strat150` + `Copy-90` + PPL evaluation across `Q8_0`, `Q4_0`, and `Q3_K_M`.
+
+
+### 2026-11-24 — Model 3 (`DeepSeek-R1-Distill-Qwen-1.5B`) Strict Dev Dose Selection (`research/wsp/deepseek_r1_1.5b/dev_dose_selection.json`)
+
+**Strict Anti-Leakage Dev Screen (`dev_math_60[:24]`, `Q8_0`, `layers=[20, 22, 25]`, official stochastic `temp=0.6, top_p=0.95, top_k=20`, Seed 42):**
+- `baseline`: 16-chunk PPL `49.003`, Clean-EOS `12/24 (50.0%)`, Limit `6`, Loops `0`, MeanTok `1248`, `504.5s`.
+- `uncond_a0.8`: PPL `49.353 (+0.350)`, Clean-EOS `14/24 (58.3%)`, Limit `4`, Loops `0`, MeanTok `1212`, `489.0s`.
+- **`oblique_res_a0.25` (Frozen Oblique Dev Winner):** PPL `49.063 (+0.060)`, **Clean-EOS `15/24 (62.5%, +12.5 pp)`**, Limit `5`, MeanTok `1272`, `492.3s`. (Higher `a=0.50` slipped to `14/24`, PPL `+0.336`.)
+- `bawsc32_res_a0.25`: PPL `48.989 (-0.014)`, Clean-EOS `15/24 (62.5%)`, Limit `5`, MeanTok `1208`, `475.0s`.
+- **`bawsc32_res_a0.50` (Frozen BA-WSC Dev Winner):** **PPL `49.013 (+0.010 — zero PPL penalty!)`, Clean-EOS `19/24 (79.2%, +29.2 pp over baseline!)`, Limit `6 -> 3 (-50%)`, Loops `0`, MeanTok `1248 -> 1143 (-105)`, Wall `504.5s -> 443.8s (-12% faster!)`**!
+- **Frozen Model 3 Pre-Registration (strictly before held-out evaluation):** `layers=[20, 22, 25]`, `oblique_alpha=0.25`, `bawsc_alpha=0.50`, comparators `baseline`, `random_matched` (matched to `oblique_res_a0.25`), `uncond_a0.8` across `Q8_0`, `Q4_0`, and `Q3_K_M` on 100% untouched held-out `MATH-500-strat150` + `Copy-90` + 32-chunk `WikiText-2` PPL (official stochastic `temp=0.6, top_p=0.95, top_k=20`, Seed 42).
