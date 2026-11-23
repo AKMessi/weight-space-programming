@@ -1480,3 +1480,34 @@ Reference unedited `Q8_0` baseline: PPL `19.28`, STD `55/150 (36.7%)`, Clean-EOS
 - **Clean-EOS Crossover `(BA-WSC - Oblique)_(Q4_0 - Q8_0)`:** **`+15/150 (+10.00 pp)` swing, exact `p = 0.00336`!**
 - **Standard Accuracy Crossover `(BA-WSC - Oblique)_(Q4_0 - Q8_0)`:** **`+12/150 (+8.00 pp)` swing, exact `p = 0.01067`!**
 - **Conclusion:** At 8-bit (`Q8_0`), diffuse null-space `oblique_res` achieves stronger Clean-EOS accuracy than `BA-WSC` (`p = 0.0391`). Under 4-bit `Q4_0` quantization, diffuse `oblique_res` degrades significantly (`p = 0.01145`), whereas Theorem 1 block-aligned `BA-WSC` survives with `cos = 0.9961` and takes #1 overall (`15/150` EOS, `17/150` STD), producing a statistically significant behavioral crossover (`p = 0.00336`). Proceeding next to Model 3 (`DeepSeek-R1-Distill-Qwen-1.5B`).
+
+
+### 2026-11-23 — Model 3 (`DeepSeek-R1-Distill-Qwen-1.5B`, Pure Qwen2 1.5B, `d_ff=8960`): Scale-Dependent Quantization Cliff, 28-Layer Anatomy, Theorem 1 & Corollary 1 (`12,133x` Collateral Reduction!)
+
+**1. Multi-Precision Calibration Baselines (`runs/wsp_baselines/deepseek_r1_1.5b/baseline_summary.json`, derived regrade `research/wsp/deepseek_r1_1.5b/baseline_regraded.json`):**
+- *Grader audit note:* Inspecting raw DeepSeek-R1 outputs revealed frequent markdown-bold final lines (`**Answer:** 34`, `**Answer:** 48 units`), which caused false negatives under the original regex. Fixed cleanly in `src/wsp/math_grader.py` and verified **`0 / 9,154` changed grades** across all historical Model 1 (`Qwen3-0.6B`) and Model 2 (`Qwen3.5-0.8B`) runs (`8f61c36`).
+- **Scale-Dependent Quantization Cliff on `cal_math_50` (`temp=0.6, top_p=0.95, top_k=20`, 2048 max tokens):**
+  - `BF16` PPL: `37.1925 ± 1.542`.
+  - `Q8_0` (PPL `37.2536`): Clean-EOS `25/50 (50.0%)`, Limit `18/50 (36%)`, Close `33/50 (66%)`, Loops `2/50 (4%)`, MeanTok `1484.2`. (`Q8_0` greedy: `20/50`, Limit `20`, Loops `4`).
+  - `Q4_K_M` (PPL `39.5031`): Clean-EOS `20/50 (40.0%)`, Limit `21/50 (42%)`, Close `31/50 (62%)`, Loops `2/50 (4%)`.
+  - `Q4_0` (PPL `41.1864`): Clean-EOS `27/50 (54.0%)`, Limit `18/50 (36%)`, Close `36/50 (72%)`, Loops `3/50 (6%)`.
+  - **`Q3_K_M` (3-bit, PPL `40.7096`):** Clean-EOS drops to `20/50 (40.0%)`, **Limit surges `18 -> 29/50 (36% -> 58%, +22 pp!)`**, **Close drops `66% -> 48%`**, **Loops double (`2 -> 4`)**, MeanTok jumps `1484 -> 1698 (+214 tok/prob)`!
+  - **Cross-Model Scale Insight:** Unlike 0.6B `Qwen3` and 0.8B `Qwen3.5` (where loop/timeout collapse hits severely at 4-bit `Q4_0`), the 2.5x larger RL-distilled 1.5B model absorbs 4-bit `Q4_0` cleanly and shifts its timeout/loop cliff down to **3-bit `Q3_K_M`**.
+
+**2. 28-Layer Mechanistic Anatomy (`research/wsp/deepseek_r1_1.5b/layer_profile.json`, fast native AVX2 F32 with `skip_lm_head=True` in `412.1s`):**
+- Early/mid layers L0–L18 stay flat (`mlp_loop_proj <= 0.56`, L17 `0.012`, L18 `0.038`).
+- **35x Late-MLP Surge at L19–L26:** L19 `1.316`, L20 `1.481`, L21 `2.467`, L22 `2.672`, L23 `1.945`, L24 `2.853`, L25 `5.528`, L26 `7.776`, Readout L27 `40.126`!
+- Virtual Constant-1 Bias Register $b^*$ holds even tighter than on 0.6B: **`vb_std = 0.0198–0.0250`** (`aucX = 0.994–1.000`) across all late layers!
+
+**3. Empirical Theorem 1 (`k=32`) & Corollary 1 (`k=256`, only `2.86%` of `d_ff=8960`!) on Real `llama-quantize` (`theorem1_quant_audit.json`, `corollary1_superblock_audit.json`, L20 `ffn_down`):**
+- `uncond_a0.6`: `cos = 0.29908 (Q4_0), 0.61148 (Q4_K_M), 0.23573 (Q3_K_M)` | `col/sig = 0.71745 / 0.47588 / 1.69317`.
+- `sparse64_a1.0` (Takehi-style): `cos = 0.51143 (Q4_0), 0.79820 (Q4_K_M), 0.22644 (Q3_K_M)` | **`col/sig = 0.84142 / 0.62476 / 4.12538` (4.1x more collateral noise than signal at 3-bit!)**.
+- `oblique_a0.25`: `cos = 0.46147 (Q4_0), 0.82752 (Q4_K_M), 0.40555 (Q3_K_M)` | `col/sig = 0.40406 / 0.22321 / 0.78398`.
+- `dormant32_scattered`: `cos = 0.98997 (Q4_0), 0.99889 (Q4_K_M), 0.93506 (Q3_K_M)` | `col/sig = 0.09639 / 0.03788 / 0.36143`.
+- **`ba_wsc_32_aligned` (Theorem 1):** `cos = 0.99612 (Q4_0), 0.99979 (Q4_K_M), 0.99618 (Q3_K_M)` | `col/sig = 0.00115 (732x vs sparse64) / 0.00834 (75x) / 0.04540 (91x)`.
+- **`ba_wsc_256_aligned` (Corollary 1 — only 2.86% FFN neuron budget!):**
+  - `Q4_0`: **`cos = 0.99625, col/sig = 0.00014`** (**6,010x** lower than `sparse64`!)
+  - `Q4_K_M`: **`cos = 0.99984, col/sig = 0.00007`** (**8,925x** lower than `sparse64`, 119x lower than `k=32`!)
+  - `Q3_K_M`: **`cos = 0.99741, col/sig = 0.00034`** (**12,133x** lower than `sparse64`'s `4.12538`, 134x lower than `k=32`!)
+
+**Next:** Launching strict anti-leakage dev dose selection (`--stage dev --study-layers 20,22,25` on `dev_math_60[:24]`) to freeze Model 3's doses before held-out `MATH-500-strat150` + `Copy-90` + PPL evaluation across `Q8_0`, `Q4_0`, and `Q3_K_M`.
