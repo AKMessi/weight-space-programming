@@ -143,7 +143,7 @@ def main() -> None:
         else:
             t0 = time.time()
             tok = AutoTokenizer.from_pretrained(str(hf_dir))
-            model = load_causal_lm_from_gguf(hf_dir, base_gguf, dtype=torch.float32)
+            model = load_causal_lm_from_gguf(hf_dir, base_gguf, dtype=torch.bfloat16)
             path_t, healthy_t, resolve_t, preserve_t, counts = load_cal_trajectories(
                 tok,
                 base_out / "Q8_0_cal_math50_stoch",
