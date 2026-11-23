@@ -1,0 +1,472 @@
+{
+  "model": "qwen35_0.8b",
+  "n": 150,
+  "crossover_interactions": {
+    "bawsc_vs_oblique_q4_minus_q8_eos": {
+      "swing_items": 15,
+      "swing_pp": 10.0,
+      "nonzero_items": 19,
+      "perm_p_two_sided": 0.00336
+    },
+    "bawsc32_res_a0.45_vs_base_q4_minus_q8_eos": {
+      "swing_items": 4,
+      "swing_pp": 2.6667,
+      "nonzero_items": 12,
+      "perm_p_two_sided": 0.486425
+    },
+    "oblique_res_a1.0_vs_base_q4_minus_q8_eos": {
+      "swing_items": -11,
+      "swing_pp": -7.3333,
+      "nonzero_items": 14,
+      "perm_p_two_sided": 0.01145
+    },
+    "bawsc_vs_oblique_q4_minus_q8_std": {
+      "swing_items": 12,
+      "swing_pp": 8.0,
+      "nonzero_items": 17,
+      "perm_p_two_sided": 0.01067
+    },
+    "bawsc32_res_a0.45_vs_base_q4_minus_q8_std": {
+      "swing_items": 4,
+      "swing_pp": 2.6667,
+      "nonzero_items": 18,
+      "perm_p_two_sided": 0.545965
+    },
+    "oblique_res_a1.0_vs_base_q4_minus_q8_std": {
+      "swing_items": -8,
+      "swing_pp": -5.3333,
+      "nonzero_items": 21,
+      "perm_p_two_sided": 0.154588
+    }
+  },
+  "pairwise_mcnemar": {
+    "Q8_0": {
+      "oblique_res_a1.0": {
+        "baseline": {
+          "eos": {
+            "rescued": 9,
+            "broken": 0,
+            "delta": 9,
+            "p": 0.003906
+          },
+          "std": {
+            "rescued": 10,
+            "broken": 4,
+            "delta": 6,
+            "p": 0.179565
+          },
+          "lim": {
+            "rescued": 0,
+            "broken": 23,
+            "delta": -23,
+            "p": 0.0
+          },
+          "close": {
+            "rescued": 68,
+            "broken": 0,
+            "delta": 68,
+            "p": 0.0
+          }
+        },
+        "random_matched": {
+          "eos": {
+            "rescued": 8,
+            "broken": 1,
+            "delta": 7,
+            "p": 0.039062
+          },
+          "std": {
+            "rescued": 10,
+            "broken": 2,
+            "delta": 8,
+            "p": 0.038574
+          },
+          "lim": {
+            "rescued": 1,
+            "broken": 22,
+            "delta": -21,
+            "p": 6e-06
+          },
+          "close": {
+            "rescued": 66,
+            "broken": 0,
+            "delta": 66,
+            "p": 0.0
+          }
+        },
+        "uncond_a0.8": {
+          "eos": {
+            "rescued": 10,
+            "broken": 0,
+            "delta": 10,
+            "p": 0.001953
+          },
+          "std": {
+            "rescued": 12,
+            "broken": 1,
+            "delta": 11,
+            "p": 0.003418
+          },
+          "lim": {
+            "rescued": 0,
+            "broken": 24,
+            "delta": -24,
+            "p": 0.0
+          },
+          "close": {
+            "rescued": 69,
+            "broken": 0,
+            "delta": 69,
+            "p": 0.0
+          }
+        },
+        "bawsc32_res_a0.45": {
+          "eos": {
+            "rescued": 8,
+            "broken": 1,
+            "delta": 7,
+            "p": 0.039062
+          },
+          "std": {
+            "rescued": 7,
+            "broken": 3,
+            "delta": 4,
+            "p": 0.34375
+          },
+          "lim": {
+            "rescued": 2,
+            "broken": 21,
+            "delta": -19,
+            "p": 6.6e-05
+          },
+          "close": {
+            "rescued": 64,
+            "broken": 2,
+            "delta": 62,
+            "p": 0.0
+          }
+        }
+      },
+      "bawsc32_res_a0.45": {
+        "baseline": {
+          "eos": {
+            "rescued": 3,
+            "broken": 1,
+            "delta": 2,
+            "p": 0.625
+          },
+          "std": {
+            "rescued": 6,
+            "broken": 4,
+            "delta": 2,
+            "p": 0.753906
+          },
+          "lim": {
+            "rescued": 1,
+            "broken": 5,
+            "delta": -4,
+            "p": 0.21875
+          },
+          "close": {
+            "rescued": 6,
+            "broken": 0,
+            "delta": 6,
+            "p": 0.03125
+          }
+        },
+        "random_matched": {
+          "eos": {
+            "rescued": 3,
+            "broken": 3,
+            "delta": 0,
+            "p": 1.0
+          },
+          "std": {
+            "rescued": 6,
+            "broken": 2,
+            "delta": 4,
+            "p": 0.289062
+          },
+          "lim": {
+            "rescued": 3,
+            "broken": 5,
+            "delta": -2,
+            "p": 0.726562
+          },
+          "close": {
+            "rescued": 6,
+            "broken": 2,
+            "delta": 4,
+            "p": 0.289062
+          }
+        },
+        "uncond_a0.8": {
+          "eos": {
+            "rescued": 3,
+            "broken": 0,
+            "delta": 3,
+            "p": 0.25
+          },
+          "std": {
+            "rescued": 7,
+            "broken": 0,
+            "delta": 7,
+            "p": 0.015625
+          },
+          "lim": {
+            "rescued": 0,
+            "broken": 5,
+            "delta": -5,
+            "p": 0.0625
+          },
+          "close": {
+            "rescued": 7,
+            "broken": 0,
+            "delta": 7,
+            "p": 0.015625
+          }
+        },
+        "oblique_res_a1.0": {
+          "eos": {
+            "rescued": 1,
+            "broken": 8,
+            "delta": -7,
+            "p": 0.039062
+          },
+          "std": {
+            "rescued": 3,
+            "broken": 7,
+            "delta": -4,
+            "p": 0.34375
+          },
+          "lim": {
+            "rescued": 21,
+            "broken": 2,
+            "delta": 19,
+            "p": 6.6e-05
+          },
+          "close": {
+            "rescued": 2,
+            "broken": 64,
+            "delta": -62,
+            "p": 0.0
+          }
+        }
+      }
+    },
+    "Q4_0": {
+      "oblique_res_a1.0": {
+        "baseline": {
+          "eos": {
+            "rescued": 5,
+            "broken": 7,
+            "delta": -2,
+            "p": 0.774414
+          },
+          "std": {
+            "rescued": 7,
+            "broken": 9,
+            "delta": -2,
+            "p": 0.803619
+          },
+          "lim": {
+            "rescued": 6,
+            "broken": 11,
+            "delta": -5,
+            "p": 0.332306
+          },
+          "close": {
+            "rescued": 67,
+            "broken": 3,
+            "delta": 64,
+            "p": 0.0
+          }
+        },
+        "random_matched": {
+          "eos": {
+            "rescued": 5,
+            "broken": 5,
+            "delta": 0,
+            "p": 1.0
+          },
+          "std": {
+            "rescued": 7,
+            "broken": 5,
+            "delta": 2,
+            "p": 0.774414
+          },
+          "lim": {
+            "rescued": 5,
+            "broken": 12,
+            "delta": -7,
+            "p": 0.143463
+          },
+          "close": {
+            "rescued": 70,
+            "broken": 4,
+            "delta": 66,
+            "p": 0.0
+          }
+        },
+        "uncond_a0.8": {
+          "eos": {
+            "rescued": 6,
+            "broken": 5,
+            "delta": 1,
+            "p": 1.0
+          },
+          "std": {
+            "rescued": 8,
+            "broken": 5,
+            "delta": 3,
+            "p": 0.581055
+          },
+          "lim": {
+            "rescued": 5,
+            "broken": 13,
+            "delta": -8,
+            "p": 0.096252
+          },
+          "close": {
+            "rescued": 71,
+            "broken": 5,
+            "delta": 66,
+            "p": 0.0
+          }
+        },
+        "bawsc32_res_a0.45": {
+          "eos": {
+            "rescued": 5,
+            "broken": 13,
+            "delta": -8,
+            "p": 0.096252
+          },
+          "std": {
+            "rescued": 5,
+            "broken": 13,
+            "delta": -8,
+            "p": 0.096252
+          },
+          "lim": {
+            "rescued": 11,
+            "broken": 10,
+            "delta": 1,
+            "p": 1.0
+          },
+          "close": {
+            "rescued": 60,
+            "broken": 9,
+            "delta": 51,
+            "p": 0.0
+          }
+        }
+      },
+      "bawsc32_res_a0.45": {
+        "baseline": {
+          "eos": {
+            "rescued": 10,
+            "broken": 4,
+            "delta": 6,
+            "p": 0.179565
+          },
+          "std": {
+            "rescued": 10,
+            "broken": 4,
+            "delta": 6,
+            "p": 0.179565
+          },
+          "lim": {
+            "rescued": 4,
+            "broken": 10,
+            "delta": -6,
+            "p": 0.179565
+          },
+          "close": {
+            "rescued": 17,
+            "broken": 4,
+            "delta": 13,
+            "p": 0.007197
+          }
+        },
+        "random_matched": {
+          "eos": {
+            "rescued": 12,
+            "broken": 4,
+            "delta": 8,
+            "p": 0.076813
+          },
+          "std": {
+            "rescued": 13,
+            "broken": 3,
+            "delta": 10,
+            "p": 0.021271
+          },
+          "lim": {
+            "rescued": 4,
+            "broken": 12,
+            "delta": -8,
+            "p": 0.076813
+          },
+          "close": {
+            "rescued": 19,
+            "broken": 4,
+            "delta": 15,
+            "p": 0.002599
+          }
+        },
+        "uncond_a0.8": {
+          "eos": {
+            "rescued": 10,
+            "broken": 1,
+            "delta": 9,
+            "p": 0.011719
+          },
+          "std": {
+            "rescued": 11,
+            "broken": 0,
+            "delta": 11,
+            "p": 0.000977
+          },
+          "lim": {
+            "rescued": 1,
+            "broken": 10,
+            "delta": -9,
+            "p": 0.011719
+          },
+          "close": {
+            "rescued": 17,
+            "broken": 2,
+            "delta": 15,
+            "p": 0.000729
+          }
+        },
+        "oblique_res_a1.0": {
+          "eos": {
+            "rescued": 13,
+            "broken": 5,
+            "delta": 8,
+            "p": 0.096252
+          },
+          "std": {
+            "rescued": 13,
+            "broken": 5,
+            "delta": 8,
+            "p": 0.096252
+          },
+          "lim": {
+            "rescued": 10,
+            "broken": 11,
+            "delta": -1,
+            "p": 1.0
+          },
+          "close": {
+            "rescued": 9,
+            "broken": 60,
+            "delta": -51,
+            "p": 0.0
+          }
+        }
+      }
+    }
+  }
+}

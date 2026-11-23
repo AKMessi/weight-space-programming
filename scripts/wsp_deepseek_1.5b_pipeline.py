@@ -60,10 +60,13 @@ def _extract_flags(run_dir: Path, ids: list[str]) -> tuple[list[bool], list[bool
 
 def main() -> None:
     p = argparse.ArgumentParser()
-    p.add_argument("--stage", choices=["baseline", "profile", "theorem1", "study", "all"], default="all")
+    p.add_argument("--stage", choices=["baseline", "profile", "theorem1", "dev", "study", "all"], default="all")
     p.add_argument("--max-tokens", type=int, default=2048)
     p.add_argument("--study-layers", default="18,20,22")
-    p.add_argument("--study-seeds", default="17,42")
+    p.add_argument("--oblique-alpha", type=float, default=0.25)
+    p.add_argument("--bawsc-alpha", type=float, default=0.25)
+    p.add_argument("--study-quants", default="Q8_0,Q4_0,Q3_K_M")
+    p.add_argument("--study-seeds", default="42")
     a = p.parse_args()
 
     model_name = "deepseek_r1_1.5b"
@@ -99,7 +102,7 @@ def main() -> None:
             qm = quantize_gguf(base_gguf, qp, qt) if not qp.exists() else {"dst_path": str(qp), "dst_bytes": qp.stat().st_size, "qtype": qt}
             ppl_q = measure_perplexity(qp, chunks=32, ctx_size=512, ngl=99)
             print(f"  PPL({qt}): {ppl_q['ppl']:.4f} +/- {ppl_q['ppl_se']:.4f} | {qm['dst_bytes']/1e6:.1f} MB", flush=True)
-            par = 2 if qt == "Q8_0" else 4  # Leave ample KV headroom in 4 GB VRAM for 1.89 GB Q8_0!
+            par = 3 if qt == "Q8_0" else 4  # Q8_0 (1.89 GB) + 3x2560 KV (~220 MB) fits comfortably in 4 GB VRAM!
             ev_stoch = run_benchmark(
                 model_path=qp, dataset_path="datasets/wsp/cal_math_50.jsonl", benchmark="math",
                 run_dir=base_out / f"{qt}_cal_math50_stoch", max_tokens=a.max_tokens,
@@ -212,6 +215,92 @@ def main() -> None:
             p_f.unlink()
         (rep_dir / "theorem1_quant_audit.json").write_text(json.dumps(all_out, indent=2) + "\n", encoding="utf-8")
 
+        # Corollary 1 (k=256 super-block alignment) verification on DeepSeek-R1-1.5B (d_ff=8960 -> only 2.86% neurons!)
+        print("\n=== [DeepSeek-R1-1.5B] COROLLARY 1 SUPER-BLOCK AUDIT (k=32 vs k=256, L20, d_ff=8960) ===", flush=True)
+        cor_out = {}
+        for k_n in [32, 256]:
+            ed_n, _ = compile_ba_wsc_noop(gmap, stats, layers, k_neurons=k_n)
+            n_fp = tmp / f"cor_noop_{k_n}.gguf"
+            patch_gguf_tensors(base_gguf, n_fp, ed_n)
+            ed_b, ci = compile_dormant_if_then(gmap, stats, layers, alpha=0.25, k_neurons=k_n, gamma=2.5, block_align=True)
+            b_fp = tmp / f"cor_ba_{k_n}.gguf"
+            patch_gguf_tensors(base_gguf, b_fp, ed_b)
+            cor_out[f"ba_wsc_{k_n}_aligned"] = {"compile": ci, "quants": {}}
+            for qt in ["Q4_0", "Q4_K_M", "Q3_K_M"]:
+                nq = tmp / f"cor_noop_{k_n}-{qt}.gguf"
+                bq = tmp / f"cor_ba_{k_n}-{qt}.gguf"
+                quantize_gguf(n_fp, nq, qt)
+                quantize_gguf(b_fp, bq, qt)
+                res_c = audit_quant_pair(n_fp, b_fp, nq, bq, ["blk.20.ffn_down.weight"])
+                cor_out[f"ba_wsc_{k_n}_aligned"]["quants"][qt] = res_c
+                rc = res_c["blk.20.ffn_down.weight"]
+                print(
+                    f"  DS1.5B k={k_n:3d} | {qt:6s} | L20 cos={rc['cosine_sim_full']:.6f} "
+                    f"collat/sig={rc['collateral_to_signal_ratio']:.6f}",
+                    flush=True,
+                )
+                nq.unlink()
+                bq.unlink()
+            n_fp.unlink()
+            b_fp.unlink()
+        (rep_dir / "corollary1_superblock_audit.json").write_text(json.dumps(cor_out, indent=2) + "\n", encoding="utf-8")
+
+    if a.stage == "dev":
+        print("\n================ [DeepSeek-R1-1.5B] STRICT DEV DOSE SELECTION (dev_math_60[:24]) ================", flush=True)
+        with (cache_dir / "layer_stats.pkl").open("rb") as f:
+            stats = pickle.load(f)["layer_stats"]
+        gmap = {t.name: t for t in GGUFReader(str(base_gguf)).tensors}
+        layers = [int(x) for x in a.study_layers.split(",") if x.strip()]
+        ds_dev = Path("datasets/wsp/dev_math_60.jsonl")
+        dev_ids = [json.loads(l)["id"] for l in ds_dev.read_text(encoding="utf-8").splitlines() if l.strip()][:24]
+        dev_out_path = rep_dir / "dev_dose_selection.json"
+        dev_res = json.loads(dev_out_path.read_text(encoding="utf-8")) if dev_out_path.exists() else {}
+        art_dev = Path("artifacts/wsp") / model_name / "dev"
+        art_dev.mkdir(parents=True, exist_ok=True)
+        q8_base = art_base / f"{model_name}-Q8_0.gguf"
+
+        dev_specs = [
+            ("baseline", None),
+            ("uncond_a0.8", compile_uncond_subspace(gmap, stats, layers, alpha=0.8, rank=1)),
+            ("oblique_res_a0.25", compile_oblique_nullspace(gmap, stats, layers, alpha=0.25, action_mode="resolve", null_rank=64)),
+            ("oblique_res_a0.50", compile_oblique_nullspace(gmap, stats, layers, alpha=0.50, action_mode="resolve", null_rank=64)),
+            ("bawsc32_res_a0.25", compile_dormant_if_then(gmap, stats, layers, alpha=0.25, k_neurons=32, gamma=2.5, tau_quantile=0.95, action_mode="resolve", block_align=True)),
+            ("bawsc32_res_a0.50", compile_dormant_if_then(gmap, stats, layers, alpha=0.50, k_neurons=32, gamma=2.5, tau_quantile=0.95, action_mode="resolve", block_align=True)),
+        ]
+        for name, comp in dev_specs:
+            if name in dev_res:
+                continue
+            if comp is None:
+                mp = q8_base
+                cinfo = None
+            else:
+                ed, cinfo = comp
+                fp_tmp = art_dev / f"{name}_fp.gguf"
+                mp = art_dev / f"{name}-Q8_0.gguf"
+                patch_gguf_tensors(base_gguf, fp_tmp, ed, metadata_extra=cinfo)
+                quantize_gguf(fp_tmp, mp, "Q8_0")
+                fp_tmp.unlink()
+            ppl = measure_perplexity(mp, chunks=16, ctx_size=512, ngl=99)
+            rdir = study_out / "dev" / f"Q8_0_{name}_dev24"
+            ev = run_benchmark(
+                model_path=mp, dataset_path=ds_dev, benchmark="math", run_dir=rdir,
+                max_tokens=a.max_tokens, temperature=0.6, top_p=0.95, top_k=20, seed=42,
+                parallel=3, ctx_per_slot=2560, limit=24, tag=f"ds15b_dev_{name}",
+            )
+            std_f, eos_f, cls_f = _extract_flags(rdir, dev_ids)
+            dev_res[name] = {
+                "layers": layers, "ppl": ppl, "summary": ev,
+                "std_correct": sum(std_f), "clean_eos_correct": sum(eos_f), "closed_think_correct": sum(cls_f),
+            }
+            dev_out_path.write_text(json.dumps(dev_res, indent=2) + "\n", encoding="utf-8")
+            print(
+                f"[DS1.5B DEV] {name:20s}: PPL={ppl['ppl']:.3f} | STD={sum(std_f):2d}/24 | EOS={sum(eos_f):2d}/24 | "
+                f"lim={ev['hit_limit_count']} lp={ev['loop_count']} tok={ev['mean_completion_tokens']:.0f}",
+                flush=True,
+            )
+            if comp is not None and mp.exists():
+                mp.unlink()
+
     if a.stage in ("study", "all"):
         print("\n================ [DeepSeek-R1-1.5B] HELD-OUT STOCHASTIC & QUANTIZED STUDY ================", flush=True)
         with (cache_dir / "layer_stats.pkl").open("rb") as f:
@@ -219,23 +308,26 @@ def main() -> None:
         gmap = {t.name: t for t in GGUFReader(str(base_gguf)).tensors}
         layers = [int(x) for x in a.study_layers.split(",") if x.strip()]
         seeds = [int(x) for x in a.study_seeds.split(",") if x.strip()]
+        quants = [x.strip() for x in a.study_quants.split(",") if x.strip()]
         ds_math = Path("datasets/wsp/test_math500_strat150.jsonl")
         ids = [json.loads(l)["id"] for l in ds_math.read_text(encoding="utf-8").splitlines() if l.strip()]
 
         out_path = rep_dir / "test_stochastic_and_quant.json"
         out = json.loads(out_path.read_text(encoding="utf-8")) if out_path.exists() else {}
 
-        ed_oblique, ci_oblique = compile_oblique_nullspace(gmap, stats, layers, alpha=0.25, action_mode="resolve", null_rank=64)
+        oa = a.oblique_alpha
+        ba = a.bawsc_alpha
+        ed_oblique, ci_oblique = compile_oblique_nullspace(gmap, stats, layers, alpha=oa, action_mode="resolve", null_rank=64)
         arm_specs = [
             ("baseline", None),
             ("random_matched", compile_random_matched(gmap, layers, ed_oblique, seed=999)),
             ("uncond_a0.8", compile_uncond_subspace(gmap, stats, layers, alpha=0.8, rank=1)),
-            ("oblique_res_a0.25", (ed_oblique, ci_oblique)),
-            ("bawsc32_res_a0.25", compile_dormant_if_then(gmap, stats, layers, alpha=0.25, k_neurons=32, gamma=2.5, tau_quantile=0.95, action_mode="resolve", block_align=True)),
+            (f"oblique_res_a{oa}", (ed_oblique, ci_oblique)),
+            (f"bawsc32_res_a{ba}", compile_dormant_if_then(gmap, stats, layers, alpha=ba, k_neurons=32, gamma=2.5, tau_quantile=0.95, action_mode="resolve", block_align=True)),
         ]
 
-        for qt in ["Q8_0", "Q4_0", "Q3_K_M"]:
-            par = 2 if qt == "Q8_0" else 4
+        for qt in quants:
+            par = 3 if qt == "Q8_0" else 4
             q_out = out.setdefault(qt, {})
             base_flags = {}
             base_ppl = None

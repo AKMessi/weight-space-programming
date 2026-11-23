@@ -1450,3 +1450,33 @@ Reference unedited `Q8_0` baseline: PPL `19.28`, STD `55/150 (36.7%)`, Clean-EOS
   - `bawsc32_res_a0.80`: PPL `20.505 (+0.028)`, STD `3/24`, Clean-EOS `3/24`, Limit `21`.
   - `bawsc32_res_a1.20`: PPL `20.520 (+0.043)`, STD `3/24`, Clean-EOS `2/24`, Limit `19`, MeanTok `1824`.
 - **Frozen Model 2 Pre-Registration (strictly before held-out evaluation):** `layers=[15, 19, 21]`, `oblique_alpha=1.0`, `bawsc_alpha=0.45`, comparators `baseline`, `random_matched` (matched to `oblique_res_a1.0`), `uncond_a0.8` across `Q8_0` and 4-bit `Q4_0` on 100% untouched held-out `MATH-500-strat150` + `Copy-90` + 32-chunk `WikiText-2` PPL under official stochastic sampling (`temp=0.6, top_p=0.95, top_k=20`, Seed 42).
+
+
+### 2026-11-23 — Model 2 (`Qwen3.5-0.8B` Hybrid Gated-DeltaNet) Complete 10-Arm Held-Out Study & Theorem 1 Behavioral Crossover (`research/wsp/qwen35_0.8b/test_heldout_results.json`, `heldout_stats_audit.json`)
+
+**Protocol:** 100% untouched held-out `MATH-500-strat150` (`max_tokens=2048`, official stochastic `temp=0.6, top_p=0.95, top_k=20`, Seed 42) + `Copy-90` + 32-chunk `WikiText-2` PPL on all 10 arms (`Q8_0` and 4-bit `Q4_0`). Verified `error_count = 0` across all 1,500 math responses and 900 copy responses. (Note: temporary GPU contention on 2026-11-23 11:35 caused 6 HTTP timeouts during `Q4_0_random_matched_math150_s42`; only those 6 error records were purged and re-evaluated with raised 1200s HTTP timeout after GPU contention cleared; all 150 items completed cleanly with `error_count = 0`.)
+
+**1. 8-Bit `Q8_0` Held-Out Results (Paper 1 Cross-Architecture Replication on Hybrid Gated-DeltaNet):**
+- `baseline`: PPL `15.5128`, STD `6/150 (4.0%)`, Clean-EOS `1/150 (0.7%)`, Limit `149`, Loops `71`, Close `0.7%`, MeanTok `2044.0`, `Copy-90 = 66/90`.
+- `random_matched` (Frobenius-matched to `oblique_res_a1.0`): PPL `15.7232 (+0.210)`, STD `4/150`, Clean-EOS `3/150 (2.0%, p=0.500 n.s.)`, Limit `147`, Loops `65`, Close `2.0%`, MeanTok `2041.0`, `Copy-90 = 67/90`.
+- `uncond_a0.8`: PPL `15.5090 (-0.004)`, STD `1/150`, **Clean-EOS `0/150 (0.0%, limit=150, close=0.0% — completely fails!)`**, `Copy-90 = 66/90`.
+- **`oblique_res_a1.0` (Method A — Null-Space Oblique Surgery):** PPL `15.8137 (+0.301)`, STD `12/150 (8.0%)`, **Clean-EOS `10/150 (6.7% — 10x jump!)`**:
+  - vs Baseline: **`+9/-0, exact McNemar p = 0.0039`** (Limit `-23, p < 0.0001`; Close `0.7% -> 46.0%, p < 0.0001`; MeanTok `2044 -> 1845 [-199]`).
+  - vs Random Noise: **`+8/-1, exact McNemar p = 0.0391`** (STD `p = 0.0386`).
+  - vs `uncond_a0.8`: **`+10/-0, exact McNemar p = 0.0020`** (STD `p = 0.0034`).
+  - vs `bawsc32_res_a0.45`: **`+8/-1, exact McNemar p = 0.0391`**.
+  - `Copy-90 = 66/90` (0.0 pp degradation!).
+- `bawsc32_res_a0.45`: PPL `15.5405 (+0.028)`, STD `8/150`, Clean-EOS `3/150 (2.0%, p=0.625)`, Close `4.7% (p=0.0312 vs base)`, Limit `145`, `Copy-90 = 66/90`.
+
+**2. 4-Bit `Q4_0` Held-Out Results — Empirical Behavioral Proof of Theorem 1 (Precision × Method Double Crossover!):**
+- `baseline`: PPL `18.2268`, STD `11/150 (7.3%)`, Clean-EOS `9/150 (6.0%)`, Limit `141`, **Loops `125 (83.3% — 1.76x loop surge vs Q8_0!)`**, Close `6.7%`, MeanTok `1981.0`, `Copy-90 = 70/90`. *(Honest mechanistic observation: 4-bit noise simultaneously triggers an 83.3% loop explosion while randomly jolting 9/150 Level 1–2 items out of Qwen3.5's pathological smooth overthinking.)*
+- `random_matched`: PPL `18.4317 (+0.205)`, STD `7/150`, Clean-EOS `7/150 (4.7%, p=0.754)`, Limit `143`, Loops `129`, Close `5.3%`, `Copy-90 = 69/90`.
+- `uncond_a0.8`: PPL `18.1895 (-0.037)`, STD `6/150`, Clean-EOS `6/150 (4.0%, p=0.453)`, Limit `144`, Loops `130`, Close `5.3%`, `Copy-90 = 70/90`.
+- **`oblique_res_a1.0` (Diffuse Edit, `cos=0.5441`, `col=0.2607`):** **PPL `18.7172 (+0.490)`**, STD `9/150`, **Clean-EOS `7/150 (4.7%, p=0.774 vs base, p=1.000 vs random)`** — **loses its entire `Q8_0` gain under 4-bit quantization** (paired `Q4_0 - Q8_0` drop relative to baseline = `-11/150 [-7.33 pp]`, exact permutation `p = 0.01145`!). Notice its `</think>` close rate remains `49.3%`, showing the diffuse edit's 4-bit quantization collateral (`ΔPPL = +0.490`) corrupts post-close answer quality rather than failing to close.
+- **`bawsc32_res_a0.45` (Theorem 1 Block-Aligned, `cos=0.99608`, `col=0.00013`):** **PPL `18.2922 (+0.065 — 7.5x smaller PPL shift than oblique!)`, STD `17/150 (11.3%)`, Clean-EOS `15/150 (10.0% — #1 OVERALL AT 4-BIT!)`**, Limit `135 (-6)`, Loops `122 (-3)`, Close `15.3% (p=0.0072 vs base, p=0.0026 vs rand, p=0.0007 vs uncond)`, `Copy-90 = 69/90`!
+  - Beats `uncond_a0.8` (`+10/-1, p=0.0117` EOS; `+11/-0, p=0.0010` STD), beats `random_matched` (`+13/-3, p=0.0213` STD; `+12/-4, p=0.0768` EOS), and outperforms `oblique_res_a1.0` by `+8/150` (`+13/-5, p=0.0963`), completely reversing the `Q8_0` ranking!
+
+**3. Exact Paired Precision (`Q8_0 -> Q4_0`) × Method (`BA-WSC` vs `Oblique`) Double-Crossover Interaction Test (100,000 exact sign permutations over the 150 identical held-out problems):**
+- **Clean-EOS Crossover `(BA-WSC - Oblique)_(Q4_0 - Q8_0)`:** **`+15/150 (+10.00 pp)` swing, exact `p = 0.00336`!**
+- **Standard Accuracy Crossover `(BA-WSC - Oblique)_(Q4_0 - Q8_0)`:** **`+12/150 (+8.00 pp)` swing, exact `p = 0.01067`!**
+- **Conclusion:** At 8-bit (`Q8_0`), diffuse null-space `oblique_res` achieves stronger Clean-EOS accuracy than `BA-WSC` (`p = 0.0391`). Under 4-bit `Q4_0` quantization, diffuse `oblique_res` degrades significantly (`p = 0.01145`), whereas Theorem 1 block-aligned `BA-WSC` survives with `cos = 0.9961` and takes #1 overall (`15/150` EOS, `17/150` STD), producing a statistically significant behavioral crossover (`p = 0.00336`). Proceeding next to Model 3 (`DeepSeek-R1-Distill-Qwen-1.5B`).
