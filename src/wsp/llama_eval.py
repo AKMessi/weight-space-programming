@@ -300,7 +300,7 @@ def run_benchmark(
                 body.update(sampling_extra)
             t0 = time.time()
             try:
-                res = _http_json(f"{srv.base_url}/v1/chat/completions", body, timeout=420.0)
+                res = _http_json(f"{srv.base_url}/v1/chat/completions", body, timeout=1200.0)
                 elapsed = round(time.time() - t0, 3)
                 choice = res["choices"][0]
                 msg = choice.get("message", {})
