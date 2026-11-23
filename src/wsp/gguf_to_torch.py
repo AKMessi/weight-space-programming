@@ -14,6 +14,7 @@ def load_causal_lm_from_gguf(
     hf_config_dir: Path | str,
     gguf_path: Path | str,
     dtype: torch.dtype = torch.bfloat16,
+    skip_lm_head: bool = False,
 ) -> torch.nn.Module:
     """Instantiate model from HF config.json and populate exact BF16/F32 tensors directly from GGUF."""
     cfg = AutoConfig.from_pretrained(str(hf_config_dir))
@@ -27,10 +28,11 @@ def load_causal_lm_from_gguf(
         "model.embed_tokens.weight": "token_embd.weight",
         "model.norm.weight": "output_norm.weight",
     }
-    if "output.weight" in gmap:
-        mapping["lm_head.weight"] = "output.weight"
-    else:
-        mapping["lm_head.weight"] = "token_embd.weight"
+    if not skip_lm_head:
+        if "output.weight" in gmap:
+            mapping["lm_head.weight"] = "output.weight"
+        else:
+            mapping["lm_head.weight"] = "token_embd.weight"
 
     n_layers = int(cfg.num_hidden_layers)
     for l in range(n_layers):
@@ -62,18 +64,23 @@ def load_causal_lm_from_gguf(
         sd[hf_key] = torch.from_numpy(arr).to(dtype)
 
     missing, unexpected = model.load_state_dict(sd, strict=False, assign=True)
-    # Ignore non-persistent buffers like rotary inv_freq if any
-    real_missing = [k for k in missing if not k.endswith("inv_freq")]
+    # Ignore non-persistent buffers like rotary inv_freq (and lm_head when skip_lm_head=True)
+    real_missing = [
+        k for k in missing
+        if not k.endswith("inv_freq") and not (skip_lm_head and k == "lm_head.weight")
+    ]
     if real_missing:
         raise RuntimeError(f"Missing weights loading GGUF into PyTorch: {real_missing}")
     if unexpected:
         raise RuntimeError(f"Unexpected weights loading GGUF into PyTorch: {unexpected}")
+    if skip_lm_head:
+        model.lm_head = torch.nn.Identity()
     # Materialize rotary_emb (which lives on meta device if not in state_dict)
     if hasattr(model, "model") and hasattr(model.model, "rotary_emb"):
         rot_cls = type(model.model.rotary_emb)
         model.model.rotary_emb = rot_cls(config=cfg)
     # Tie lm_head if tied_word_embeddings
-    if getattr(cfg, "tie_word_embeddings", False) and "output.weight" not in gmap:
+    if not skip_lm_head and getattr(cfg, "tie_word_embeddings", False) and "output.weight" not in gmap:
         model.tie_weights()
     model.eval()
     return model

@@ -176,13 +176,18 @@ def extract_final_math_answer(raw: str) -> tuple[str, str]:
         return m[-1].strip(), "hash"
     # Only fall back to explicit final answer phrases if think actually closed (or non-thinking)
     if has_close or "<think>" not in raw:
+        # Strip markdown bold/italic markers so "**Answer:** 34" extracts cleanly as "34"
+        clean_search = re.sub(r"\*\*|__", "", search_text)
         m2 = re.findall(
             r"(?:final answer is|the answer is|answer:|therefore,?\s*(?:the answer is)?)\s*[:$]?\s*([^\n\.]+)",
-            search_text,
+            clean_search,
             flags=re.IGNORECASE,
         )
         if m2:
             cand = m2[-1].strip().rstrip(".")
+            mu = re.match(r"^([-+]?\d+(?:,\d{3})*(?:\.\d+)?(?:/\d+)?)\s*(?:[a-zA-Z]+)$", cand)
+            if mu:
+                cand = mu.group(1)
             return cand, "phrase"
         # Last numeric token in final section if short
         if final:
