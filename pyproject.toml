@@ -4,13 +4,22 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "weightlab"
-version = "0.1.0"
-description = "Auditable local weight-editing research"
+version = "1.0.0"
+description = "Zero-gradient Weight-Space Programming (WSP) compilers, GGUF quantization survival theory, and auditable local weight-editing research"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Aaryan Kakad" }]
 requires-python = ">=3.11"
 dependencies = []
 
+[project.urls]
+Homepage = "https://github.com/AKMessi/weight-space-programming"
+Repository = "https://github.com/AKMessi/weight-space-programming"
+
 [project.optional-dependencies]
-editing = ["numpy>=1.24", "gguf==0.19.0"]
+editing = ["numpy>=1.24", "gguf>=0.17.0"]
+wsp = ["numpy>=1.24", "scipy>=1.11", "torch>=2.2", "transformers>=4.48", "gguf>=0.17.0", "matplotlib>=3.8"]
+pdf = ["typst>=0.15", "pymupdf>=1.24"]
 
 [project.scripts]
 weightlab = "weightlab.__main__:main"

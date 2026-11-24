@@ -142,12 +142,28 @@ def main() -> None:
             print("FAIL:", e)
         raise SystemExit(1)
 
-    # 6. Verify ZERO error_count across all Model 2 & Model 3 held-out JSONL files
+    # 6. Verify both compiled camera-ready PDFs exist (> 500 KB)
+    pdfs = [
+        "papers/Paper1_Greedy_Perturbation_Illusion_and_Zero_Gradient_WSP_Kakad2026.pdf",
+        "papers/Paper2_Quantization_Cliff_and_BA_WSC_Kakad2026.pdf",
+    ]
+    for pdf in pdfs:
+        pp = Path(pdf)
+        assert pp.exists() and pp.stat().st_size > 500_000, f"PDF missing or truncated: {pdf}"
+    print(f"[OK] Both camera-ready PDFs verified on disk.")
+
+    # 7. Verify ZERO error_count across local raw JSONL files (when present; ignored in public git clones)
+    found_any_raw = False
     for glob_pat in [
-        "runs/wsp_study/qwen35_0.8b/heldout/*/responses.jsonl",
-        "runs/wsp_study/deepseek_r1_1.5b/*/responses.jsonl",
+        "runs/wsp_study/qwen3_0.6b/**/responses.jsonl",
+        "runs/wsp_study/qwen35_0.8b/**/responses.jsonl",
+        "runs/wsp_study/deepseek_r1_1.5b/**/responses.jsonl",
+        "runs/wsp_baselines/**/responses.jsonl",
     ]:
         files = list(Path(".").glob(glob_pat))
+        if not files:
+            continue
+        found_any_raw = True
         total_rows = 0
         for f in files:
             for line in f.read_text(encoding="utf-8").splitlines():
@@ -156,6 +172,8 @@ def main() -> None:
                 total_rows += 1
                 assert not json.loads(line).get("error"), f"Non-zero error in {f}"
         print(f"[OK] {glob_pat}: {len(files)} runs, {total_rows} responses, 0 errors.")
+    if not found_any_raw:
+        print("[INFO] Local ignored raw runs/wsp_study/ JSONL traces not present (public clone mode); all committed JSON summaries, figures, and PDFs verified.")
 
     print(f"\nALL {len(p1_checks)} PAPER 1 CHECKS AND ALL {len(p2_checks)} PAPER 2 CHECKS PASSED 100%!")
 

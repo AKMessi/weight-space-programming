@@ -375,11 +375,12 @@ def build(out_path: Path) -> None:
 
 
 if __name__ == "__main__":
+    import sys
+
     out_repo = Path("research/wsp/figures/wsp_simple_infographic.png")
     build(out_repo)
-    art_dst = Path(
-        r"C:\Users\home\.t3\userdata\providers\antigravity\ac0a3dfd6dddb20962cecff6ee5fe65e19d3923be20e52c5ab52ff877f7e4c32\antigravity-acp\brain\f5209084-998a-408d-8ca4-c49861c6afce\wsp_simple_infographic.png"
-    )
-    art_dst.parent.mkdir(parents=True, exist_ok=True)
-    shutil.copy2(out_repo, art_dst)
-    print(f"Copied to artifact dir: {art_dst}")
+    if len(sys.argv) > 1:
+        dst = Path(sys.argv[1])
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(out_repo, dst)
+        print(f"Copied to: {dst}")

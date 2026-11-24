@@ -49,4 +49,7 @@ class TransformTests(unittest.TestCase):
                 np.testing.assert_array_equal(b['blk.0.ffn_gate.weight'].data,gate[p])
                 np.testing.assert_array_equal(b['blk.0.ffn_down.weight'].data,a['blk.0.ffn_down.weight'].data[:,p])
                 self.assertEqual(file_sha256('base.gguf'),base['sha256'])
+                for r in (original,permuted):
+                    if hasattr(r.data,'_mmap') and r.data._mmap is not None:r.data._mmap.close()
+                del a,b,original,permuted
             finally:os.chdir(old_cwd)

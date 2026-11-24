@@ -1,6 +1,38 @@
-# Reproducing the portfolio
+# Reproducing the Research
 
-## Inspect results without inference
+## Part 1 — WSP Companion Papers 1 & 2 (3-Architecture Study)
+
+### Offline Verification (No GPU or Models Required)
+All committed JSON summaries, statistical audits, 8 publication figures, Markdown/Typst/LaTeX manuscripts, and both compiled PDFs can be independently audited in seconds:
+
+```bash
+# 1. Verify all 44 numerical claims, pooled McNemar & Fisher meta-p, Theorem 1 ratios, figures & PDFs
+python scripts/wsp_verify_papers.py
+
+# 2. Run unit tests (WSP core + GGUF transforms, patch codec, statistical tests)
+PYTHONPATH=src python -m unittest discover -s tests -v
+
+# 3. Regenerate all 8 publication 300-DPI figures from committed JSON logs
+python scripts/wsp_generate_all_paper_figures.py
+
+# 4. Recompile both publication PDFs from Typst sources and audit embedded PDF text (pip install typst pymupdf)
+python scripts/wsp_build_pdfs.py
+```
+
+### Full Local Hardware Reproduction (Models + `llama.cpp`)
+- **Runtime:** `llama.cpp` build `8864 (ff6b1062a)` (`llama-server`, `llama-quantize`, `llama-perplexity`), Vulkan backend (`-ngl 99 -dev Vulkan0 --cache-ram 0 --reasoning-format none`), AMD Radeon RX 6400 (4 GB VRAM) + CPU PyTorch (`AVX2 float32`).
+- **Base BF16 Models (place in `local/models/`, kept unmodified):**
+  - `Qwen3-0.6B-BF16.gguf` (`1,198,182,848 B`, SHA-256 `f9c9f1d3c1e21755b82d4e165f88dbbbd4355646d632fb5d6cef7c66ed4ee04e`)
+  - `Qwen3.5-0.8B-BF16.gguf` (`1,516,744,736 B`, SHA-256 `cedf89af31c9041b601fa58303285bc46d99c51baee1b13f5e919626ca526ee5`)
+  - `DeepSeek-R1-Distill-Qwen-1.5B-BF16.gguf` (`3,560,416,576 B`, SHA-256 `6ec1aa822868a25c5cdc505e468d4b3556a4c02b610e5ad439419f151ce588de`)
+- **Pinned Datasets:** `datasets/wsp/` with exact SHA-256 digests in `datasets/wsp/manifest.json`.
+- **Entry-Point Pipelines:** `scripts/wsp_*.py` (e.g., `wsp_profile_layers.py`, `wsp_run_qwen35_study.py`, `wsp_run_deepseek_15b.py`, `wsp_theorem1_audit.py`, `wsp_corollary1_audit.py`).
+
+---
+
+## Part 2 — Preserved Historical Pilot Portfolio (`weightlab`)
+
+### Inspect historical pilot results without inference
 
 The repository contains the frozen suites, source/config/artifact hashes, actual rendered prompts, complete native requests/responses, errors, timings, graders, selections, reports and derived sensitivity grades. Model binaries are intentionally ignored.
 

@@ -66,6 +66,9 @@ def intervene(base,operations,output,manifest):
         if file_sha256(base['path'])!=base['sha256']:raise ValueError('original changed')
         report.update(untouched_tensors_verified=len(sources)-len(touched),edited_file_sha256=file_sha256(partial),
                       changed_values=sum(t['changed_values'] for t in report['tensors']),bytes=partial.stat().st_size,status='verified')
+        if hasattr(changed.data,'_mmap') and changed.data._mmap is not None:
+            changed.data._mmap.close()
+        del target,changed
         partial.replace(output)
     except BaseException as exc:
         report.update(status='failed',error=repr(exc));raise
@@ -135,6 +138,9 @@ def rewrite(base,output,manifest,mode='identity',permutation_seed=811,layer=0,fa
         if file_sha256(base['path'])!=base['sha256']:raise ValueError('original changed')
         report.update(status='verified',edited_file_sha256=file_sha256(partial),bytes=partial.stat().st_size,
                       metadata_digest=digest({k:v.contents() for k,v in reader.fields.items() if not k.startswith('GGUF.')}))
+        if hasattr(result.data,'_mmap') and result.data._mmap is not None:
+            result.data._mmap.close()
+        del result
         partial.replace(output)
     except BaseException as exc:report.update(status='failed',error=repr(exc));raise
     finally:write_json(manifest,report)
