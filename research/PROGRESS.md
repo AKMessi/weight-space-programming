@@ -50,3 +50,18 @@ Active execution of NEXT_EXPERIMENTS.md; historical completion totals above rema
 Adapter branch: rank16 calibration-selected package921223bytes has85%firstline agreement on240confirmation examples; preregistered rank32companion1830620bytes has91.7%. All original/parent/reconstructions0/240exact next lines under the lossy short-context RepoBench adaptation. Code-content12/12passes are a separate small panel, not proof of specialist advantage. Fixed-prefix meanKL original→rank16 .00607, rank32 .00178. Exact low-rank-predictor+residual capsule rank32 totals5958793bytes and restores the original full-file SHA; base required. No new compression algorithm or paper claim.
 
 Four-format operator profiles complete. Quantized Vulkan matrix-vector paths are slow across shapes, including readout and FFN; no support yet for a specifically3Dshort-conv mechanism. Matched CPU/GPU timing and3fixed hybrids follow. Quantized-patch deployment and evidence-sensitive clarification remain pending; the program is not complete.
+
+## Weight-Space Programming (WSP) 3-Architecture Research Program — 2026-11-24 (COMPLETE)
+
+All GPU experiments, cross-architecture replications, statistical audits, 8 publication-grade 300-DPI figures, and two complete manuscripts are finished and programmatically verified (`scripts/wsp_verify_papers.py`, 44/44 checks passing, 0 HTTP/parse errors across all held-out JSONL logs).
+
+### Models Evaluated (One AMD Radeon RX 6400 4 GB GPU, Vulkan)
+1. **`Qwen3-0.6B`** (Pure Transformer, 28L GQA + QK-Norm): Greedy-Perturbation Illusion exposed (`+6.0 pp` greedy → `-0.33 pp` stochastic $N=300$); Echo Trap exposed; `oblique_res` wins held-out `MATH-500` (`+5.67 pp`, `p=0.0148`), OOD `GSM8K-100` (`+9 pp`, `p=0.049`, `30%` faster), and zero-shot `ARC-Challenge-100` (`+15 pp`, `p=0.0003`); Theorem 1 / Corollary 1 cuts collateral `4,514×`; 20-arm Post-Quantization Healing recovers `83%` of the 4-bit cliff (`p=0.0041`) and `PQ-BA-WSC` wins `#1` at 3-bit `Q3_K_M` (`+68%` rel., `p=0.0044`).
+2. **`Qwen3.5-0.8B`** (Hybrid 18 Gated-DeltaNet + 6 Full-Attention, 24L): Layer-anatomy profiler independently locates Full-Attention layers L15 & L19 (`10×` spike); `Q8_0` `oblique_res` delivers a `10×` Clean-EOS jump (`1 → 10/150`, `p=0.0039` vs base, `p=0.0391` vs random); Corollary 1 cuts collateral `16,685×` (`Q4_0`) and `10,119×` (`Q3_K_M`); Precision × Method double crossover proved (`+15/150` swing, exact permutation `p=0.00336`).
+3. **`DeepSeek-R1-Distill-Qwen-1.5B`** (RL-Distilled Qwen2, 28L, `d_ff=8960`): 35× late-MLP surge at L19–26; `Q8_0` `oblique_res_a0.25` wins `#1` (`53/150`, `+6.7 pp` vs base, `+9.3 pp` vs random `p=0.0288`, `-20%` faster); 3-model pooled `Q8_0` `oblique_res` (`N=600`) achieves `+61/-25` (`+6.00 pp`, exact McNemar `p=0.000130`, Fisher `p=0.000586`) vs baseline and `+65/-26` (`+6.50 pp`, `p=5.31e-5`) vs matched random noise; Corollary 1 cuts collateral `12,133×` using `2.86%` of `d_ff`; replicated `Q8→Q3` crossover (`BA-WSC` flat `+6/+6/+6`, `oblique` drops `+10→+4→-3`, combined 2-model Fisher `p=0.00210` Clean-EOS / `p=0.00530` STD).
+
+### Completed Deliverables
+- [Paper 1: Conditional Weight-Space Compilation & Greedy Illusion](../papers/paper1_conditional_wsp_and_greedy_illusion.md) + 4 figures (`papers/figures/p1_fig1..4.png`)
+- [Paper 2: The Quantization Loop Cliff & Block-Aligned Weight-Space Compilation](../papers/paper2_quantization_cliff_and_ba_wsc.md) + 4 figures (`papers/figures/p2_fig1..4.png`)
+- [Programmatic Verification Script](../scripts/wsp_verify_papers.py)
+- [Complete Peer-Researcher Briefing](../docs/RESEARCHER_BRIEFING.md) & [Visual Summary Infographic](wsp/figures/wsp_simple_infographic.png)

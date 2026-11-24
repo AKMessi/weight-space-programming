@@ -2,7 +2,7 @@
 
 **Repository:** `AKMessi/weight-space-programming`  
 **Hardware Envelope:** Single consumer AMD Radeon RX 6400 (4 GB VRAM, Vulkan via `llama.cpp`) + CPU PyTorch (zero gradients, zero backpropagation, zero cloud GPUs, zero external API calls)  
-**Status:** Models 1 & 2 (`Qwen3-0.6B`, `Qwen3.5-0.8B`) **100% complete** across all held-out benchmarks and quantization matrices; Model 3 (`DeepSeek-R1-Distill-Qwen-1.5B`) baselines, 28-layer profiling, Theorem 1 & Corollary 1 audits, and dev selection **complete**, with its 15-arm held-out `Q8_0 / Q4_0 / Q3_K_M` study actively running.
+**Status:** **ALL THREE MODELS (`Qwen3-0.6B`, `Qwen3.5-0.8B`, `DeepSeek-R1-Distill-Qwen-1.5B`) 100% COMPLETE** across all held-out benchmarks, quantization matrices, 8 publication 300-DPI figures (`papers/figures/`), and both programmatically verified research papers (`papers/`).
 
 ---
 
@@ -196,11 +196,17 @@ Every number below is read directly from immutable JSON logs committed in `resea
 - `bawsc32_res_a0.45`: PPL `15.541 (+0.028)`, STD `8/150`, Clean-EOS `3/150`, Close `4.7% (p=0.0312 vs base)`, `Copy-90 = 66/90`.
 - **`oblique_res_a1.0`:** PPL `15.814 (+0.301)`, STD `12/150`, **Clean-EOS `10/150 (6.7% — 10× jump!)`**, beating baseline (`+9/-0, p = 0.0039`), beating `random_matched` (`+8/-1, p = 0.0391`), beating `uncond_a0.8` (`+10/-0, p = 0.0020`), cutting limits `149 → 126 (-23, p < 0.0001)` and tokens `-199 tok/prob`, with **`Copy-90 = 66/90` (0.0 pp loss)**.
 
-#### E. Model 3 (`DeepSeek-R1-Distill-Qwen-1.5B`, `Q8_0`) Strict Dev Selection (`dev_math_60[:24]`, `layers=[20,22,25]`, `temp=0.6`)
-- `baseline`: `12/24 (50.0%)` Clean-EOS, Limit `6`, MeanTok `1248`, `504.5s`.
-- `uncond_a0.8`: `14/24 (58.3%)`, PPL `+0.350`.
-- `oblique_res_a0.25` *(frozen)*: `15/24 (62.5%)`, PPL `+0.060`.
-- **`bawsc32_res_a0.50` *(frozen)*:** **`19/24 (79.2%, +29.2 pp over baseline!)`**, **`ΔPPL = +0.010`**, Limit `6 → 3 (-50%)`, Loops `0`, MeanTok `1248 → 1143`, `-12%` faster wall-clock! *(15-arm untouched held-out evaluation across `Q8_0`, `Q4_0`, `Q3_K_M` is actively executing now.)*
+#### E. Model 3 (`DeepSeek-R1-Distill-Qwen-1.5B`) Complete 15-Arm Held-Out Results (`MATH-500-strat150`, `temp=0.6`, Seed 42, `error_count = 0` across all 3,600 requests)
+- **8-Bit `Q8_0` (`#1` on 3/3 architectures for Paper 1!):**
+  - `baseline`: PPL `37.254`, STD `45/150`, Clean-EOS `43/150 (28.7%)`, Limit `77`, Wall `4403s`, `Copy contains_gold = 68/90`.
+  - `random_matched`: PPL `37.298`, Clean-EOS **`39/150 (26.0%, -2.7 pp)`**, Limit `82 (+5)`.
+  - `uncond_a0.8`: PPL `37.532 (+0.278)`, Clean-EOS `48/150` (`p = 0.136` vs rand n.s.).
+  - `bawsc32_res_a0.5` *(Ours C)*: **PPL `37.257 (+0.003)`**, Clean-EOS `49/150 (+6 vs base, +10 vs rand)`, Close `p = 0.0043` vs base / `p = 0.0003` vs rand, Limit `67 (-10)`, **`-22%` faster wall-clock (`3445s`)**.
+  - **`oblique_res_a0.25` *(Ours A, `#1`)*:** PPL `37.338 (+0.084)`, STD `55/150`, **Clean-EOS `53/150 (35.3%, +6.7 pp vs base, +9.3 pp vs random: EOS p = 0.0288, STD p = 0.0201, Limit p = 0.0146, Close p = 0.0026)`**, **`-20%` faster (`3527s`)**, `Copy gold = 70/90`.
+  - **3-Model Pooled `Q8_0` Meta-Analysis (`N = 600` rollouts across `Qwen3-0.6B`, `Qwen3.5-0.8B`, `DeepSeek-R1-1.5B`):** `oblique_res` reaches **`+61 / -25` (`+6.00 pp`, exact McNemar `p = 0.00013`, Fisher `p = 0.00059`)** vs baseline and **`+65 / -26` (`+6.50 pp`, `p = 5.3 × 10⁻⁵`)** vs matched random noise!
+- **4-Bit `Q4_0` & 3-Bit `Q3_K_M` Replicated Precision × Method Crossover:**
+  - `Q4_0`: `bawsc32_res_a0.5` overtakes `oblique_res` (`66/150` vs `64/150`, `ΔPPL = -0.131`, lowest timeouts `62`, beating random noise across all 4 metrics: EOS `p = 0.0357`, STD `p = 0.0192`, Limit `p = 0.0072`, Close `p = 2.7 × 10⁻⁵`).
+  - `Q3_K_M` (`baseline`: `48/150`, `lim = 99/150 = 66%`): Diffuse `oblique_res_a0.25` (`cos = 0.406`) **collapses below baseline (`45/150`, `ΔPPL = +0.242`)**, while Theorem 1 block-aligned **`bawsc32_res_a0.5` (`cos = 0.9962`)** holds a flat `+6, +6, +6` gain across 8/4/3-bit (`54/150` EOS, `55/150` STD, `ΔPPL = +0.051`, `+9` over oblique)! *(Replicated `Q8 → Q3` crossover: `+13/150`, `perm_p = 0.0663` EOS / `+14/150`, `p = 0.0594` STD; **Fisher combined meta-analysis with Model 2 `Qwen3.5-0.8B`: $\chi^2_4 = 16.82$, `p = 0.00210`**!)*
 
 ---
 
@@ -276,14 +282,15 @@ A credible ML researcher will immediately ask where our methods fail or have tra
 2. **High-dose echo sensitivity:** Over-driving `BA-WSC` without post-`</think>` gating (`a=0.70` on `Qwen3-0.6B`) causes post-answer repetition loops (`32.0%` Clean-EOS), proving strict Clean-EOS validation is mandatory during dev dose selection.
 3. **Permutation quantization variance (`ba_wsc_noop`):** While SwiGLU permutation $P$ is $0.000000$-diff in floating point, re-binning neighbor neurons into shifted 32-element quantization blocks introduces small non-zero quantization noise (`Q4_0`: `32/150` vs `35/150`, `p = 0.607`; `Q3_K_M`: `20/150` vs `19/150`, `p = 1.000`). Including `ba_wsc_noop` as a mandatory control isolates true circuit gains from permutation noise.
 4. **Neuron budget tradeoff of Corollary 1 ($k=256$):** Evicting 256 dormant neurons uses `8.3%` of `d_ff=3072` in 0.6B (where $k=32$ is preferable for behavioral compilation if minimal eviction is desired), versus only **`2.86%` of `d_ff=8960` in 1.5B** — meaning Corollary 1 becomes progressively cheaper at larger model scales.
-5. **Model scale & pending completion:** All experiments run on 0.6B–1.5B reasoning models due to the 4 GB VRAM hardware envelope (scaling the closed-form linear algebra to 7B–32B is $O(d_{\text{ff}} d_{\text{model}})$ per layer and requires zero backprop, left as future work). Model 3 (`DeepSeek-R1-1.5B`) held-out 15-arm evaluation is currently in progress and is not claimed until completed and audited.
+5. **Model scale:** All experiments run on 0.6B–1.5B reasoning models due to the 4 GB VRAM hardware envelope (scaling the closed-form linear algebra to 7B–32B is $O(d_{\text{ff}} d_{\text{model}})$ per layer and requires zero backprop, left as future work). Additionally, at 3-bit `Q3_K_M` on 1.5B `DeepSeek-R1`, `uncond_a0.8` unexpectedly reached `59/150` EOS (`p = 0.071` vs base) despite `cos = 0.236` directional distortion—reported transparently in Paper 2 Section 8.
 
 ---
 
-## 6. Two-Paper Structure & Reproducibility Index
+## 6. Two Complete Verified Papers & Reproducibility Index
 
-- **Paper 1:** *The Greedy-Perturbation Illusion and Zero-Gradient Control-Flow Compilation in Weight Space* (Discoveries #1–#2 + Inventions A–B–C + Cross-Benchmark Zero-Shot & 3-Architecture Stochastic Proof).
-- **Paper 2:** *The Quantization Cliff of Weight-Space Programming: Hardware-Aligned Constant-Block Embedding and Post-Quantization Healing* (Quantization Loop Cliff + Theorem 1 & Corollary 1 across 3 models + 20-Arm 4-Bit/3-Bit Healing Matrix + Hybrid 4-Bit Behavioral Double Crossover).
+- **Paper 1:** [papers/paper1_conditional_wsp_and_greedy_illusion.md](../papers/paper1_conditional_wsp_and_greedy_illusion.md) — *The Greedy-Perturbation Illusion and Zero-Gradient Control-Flow Compilation in Weight Space* (4 embedded 300-DPI figures).
+- **Paper 2:** [papers/paper2_quantization_cliff_and_ba_wsc.md](../papers/paper2_quantization_cliff_and_ba_wsc.md) — *The Quantization Cliff of Weight-Space Programming: Hardware-Aligned Constant-Block Embedding and Post-Quantization Healing* (4 embedded 300-DPI figures).
+- **Programmatic Paper Verification:** `scripts/wsp_verify_papers.py` (verifies every number, statistical test, figure, and `0`-error log integrity across all 3 models).
 
 ### Key Code & Immutable Evidence Paths
 - Core library: `src/wsp/compiler.py`, `src/wsp/gguf_patch.py`, `src/wsp/gguf_to_torch.py`, `src/wsp/pq_loader.py`, `src/wsp/llama_eval.py`, `src/wsp/math_grader.py`

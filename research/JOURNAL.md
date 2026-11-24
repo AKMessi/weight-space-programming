@@ -1522,3 +1522,35 @@ Reference unedited `Q8_0` baseline: PPL `19.28`, STD `55/150 (36.7%)`, Clean-EOS
 - `bawsc32_res_a0.25`: PPL `48.989 (-0.014)`, Clean-EOS `15/24 (62.5%)`, Limit `5`, MeanTok `1208`, `475.0s`.
 - **`bawsc32_res_a0.50` (Frozen BA-WSC Dev Winner):** **PPL `49.013 (+0.010 — zero PPL penalty!)`, Clean-EOS `19/24 (79.2%, +29.2 pp over baseline!)`, Limit `6 -> 3 (-50%)`, Loops `0`, MeanTok `1248 -> 1143 (-105)`, Wall `504.5s -> 443.8s (-12% faster!)`**!
 - **Frozen Model 3 Pre-Registration (strictly before held-out evaluation):** `layers=[20, 22, 25]`, `oblique_alpha=0.25`, `bawsc_alpha=0.50`, comparators `baseline`, `random_matched` (matched to `oblique_res_a0.25`), `uncond_a0.8` across `Q8_0`, `Q4_0`, and `Q3_K_M` on 100% untouched held-out `MATH-500-strat150` + `Copy-90` + 32-chunk `WikiText-2` PPL (official stochastic `temp=0.6, top_p=0.95, top_k=20`, Seed 42).
+
+
+### 2026-11-24 — Model 3 (`DeepSeek-R1-Distill-Qwen-1.5B`) Complete 15-Arm Held-Out Study & Replicated Low-Bit Crossover (`test_stochastic_and_quant.json`, `heldout_stats_audit.json`)
+
+**Protocol & Integrity Audit:** 100% untouched held-out `MATH-500-strat150` (`max_tokens=2048`, `temp=0.6, top_p=0.95, top_k=20`, Seed 42) + `Copy-90` + 32-chunk `WikiText-2` PPL across 15 arms (`Q8_0`, `Q4_0`, `Q3_K_M` × 5 arms). One transient HTTP-500 error (`math500_232` on `Q3_K_M bawsc32_res_a0.5`) was caught by our integrity assertion and cleanly re-evaluated; all **3,600 / 3,600** responses (2,250 math + 1,350 copy) verified with `error_count = 0`. Note on `Copy-90`: DeepSeek-R1's chat template forces `<think>\n` and wraps final copy answers in markdown (`**value**`), so we audit both strict exact match and `contains_gold` (which stays 63–76/90 across all 15 arms, confirming zero copy-retrieval collapse).
+
+**1. 8-Bit `Q8_0` Held-Out Results (3/3 Architectures Confirmed for Paper 1!):**
+- `baseline`: PPL `37.2536`, STD `45/150`, Clean-EOS `43/150 (28.7%)`, Limit `77`, Loops `8`, MeanTok `1661.1`, Wall `4403s`, `Copy contains_gold = 68/90`.
+- `random_matched`: PPL `37.2980 (+0.044)`, STD `40/150`, **Clean-EOS `39/150 (26.0%, -2.7 pp vs base)`**, Limit `82 (+5 worse!)`, `Copy gold = 76/90`.
+- `uncond_a0.8`: PPL `37.5316 (+0.278)`, STD `49/150`, Clean-EOS `48/150 (32.0%, vs rand p=0.136 n.s.)`, Limit `69`, `Copy gold = 70/90`.
+- **`bawsc32_res_a0.5` (Ours C — Zero PPL Cost!):** **PPL `37.2565 (+0.003)`**, STD `51/150`, Clean-EOS `49/150 (32.7%, +4.0 pp vs base, +6.7 pp vs rand p=0.064)`, **Limit `67 (-10, vs rand p=0.0041)`**, **Close `+14 vs base (p=0.0043)` / `+18 vs rand (p=0.0003)`**, Wall **`3445s (-22% faster)`**, `Copy gold = 67/90`.
+- **`oblique_res_a0.25` (Ours A — #1 Overall at `Q8_0` on ALL 3 Models!):** PPL `37.3376 (+0.084 — 3.3x cleaner PPL than uncond)`, **STD `55/150 (36.7%)`**, **Clean-EOS `53/150 (35.3%, +6.7 pp vs base p=0.121; +9.3 pp vs random: EOS p=0.0288, STD p=0.0201, Limit p=0.0146, Close p=0.0026!)`**, Limit `69 (-8)`, Loops `6 (-25%)`, Wall **`3527s (-20% faster)`**, `Copy gold = 70/90`.
+
+**2. 4-Bit `Q4_0` Held-Out Results:**
+- `baseline`: PPL `41.1864`, STD `61/150`, Clean-EOS `60/150 (40.0%)`, Limit `71`, `Copy gold = 66/90`.
+- `random_matched`: PPL `41.1979 (+0.011)`, STD `54/150`, Clean-EOS `54/150 (36.0%, -4.0 pp)`, Limit `75`, `Copy gold = 64/90`.
+- `uncond_a0.8`: PPL `41.4213 (+0.235)`, STD `67/150`, Clean-EOS `66/150 (vs rand p=0.0169)`, Limit `65`, `Copy gold = 71/90`.
+- `oblique_res_a0.25`: PPL `41.2234 (+0.037)`, STD `67/150`, Clean-EOS `64/150 (vs rand STD p=0.0146, EOS p=0.0639)`, Limit `65`, `Copy gold = 63/90`.
+- **`bawsc32_res_a0.5` (Theorem 1 Block-Aligned — Overtakes Oblique at 4-Bit!):** **PPL `41.0557 (-0.131 — improved PPL!)`**, **STD `67/150`, Clean-EOS `66/150 (44.0%, +4.0 pp vs base, +8.0 pp vs rand: EOS p=0.0357, STD p=0.0192, Limit p=0.0072, Close p=0.000027 vs rand & p=0.0009 vs base!)`**, **Limit `62 (-9, lowest of all 5 arms)`**, `Copy gold = 65/90`.
+
+**3. 3-Bit `Q3_K_M` Held-Out Results & Replicated Theorem 1 Crossover:**
+- `baseline`: PPL `40.7096`, STD `48/150`, Clean-EOS `48/150 (32.0%)`, **Limit `99/150 (66.0% — severe 3-bit timeout cliff!)`**, `Copy gold = 72/90`.
+- `random_matched`: PPL `40.7499`, STD `54/150`, Clean-EOS `51/150`, Limit `94`, Loops `13 (+63%)`, `Copy gold = 73/90`.
+- `uncond_a0.8`: PPL `40.7472 (+0.038)`, STD `60/150`, Clean-EOS `59/150 (p=0.0708 vs base, lim 99->85 p=0.0125)`, `Copy gold = 72/90`. *(Honest nuance: at 1.5B scale, a strong unconditional rank-1 shift can still nudge 3-bit stopping despite `cos=0.236` vector distortion.)*
+- **`oblique_res_a0.25` (Diffuse Edit, `Q3_K_M cos=0.4056, col=0.784`):** **PPL `40.9519 (+0.242)`**, **Clean-EOS collapses BELOW baseline to `45/150 (-2.0 pp vs base, -4.0 pp vs random)`**, Limit `95`, Loops `13`.
+- **`bawsc32_res_a0.5` (Theorem 1 Block-Aligned, `Q3_K_M cos=0.9962`):** **PPL `40.7609 (+0.051)`**, **STD `55/150`, Clean-EOS `54/150 (+6 over base, +9 over oblique p=0.093 EOS / p=0.064 STD)`**, Limit `89 (-10)`, `Copy gold = 70/90`!
+- **Replicated `Q8_0 → Q3_K_M` Crossover Interaction `(BA-WSC - Oblique)_(Q3_K_M - Q8_0)` (100,000 exact permutations):**
+  - Clean-EOS: **`+13/150 (+8.67 pp)` swing (`perm_p = 0.0663`)** — BA-WSC holds a rock-steady `+6, +6, +6` vs baseline across `Q8_0 → Q4_0 → Q3_K_M`, while diffuse Oblique plunges `+10 → +4 → -3`!
+  - Standard Acc: **`+14/150 (+9.33 pp)` swing (`perm_p = 0.0594`)**.
+  - Combined across our two independent models exhibiting low-bit crossovers (`Qwen3.5-0.8B` `p=0.00336` and `DeepSeek-R1-1.5B` `p=0.06633`), Fisher's combined exact meta-analysis gives **$\chi^2_4 = 16.82$, `p = 0.00209`** (EOS) and **$\chi^2_4 = 14.73$, `p = 0.00530`** (STD)!
+
+**All 3-Model GPU Experiments Complete!** Proceeding immediately to polish all 8 publication 300-DPI figures, write & programmatically verify both complete papers in `papers/`, update `docs/RESEARCHER_BRIEFING.md` + `research/wsp/figures/wsp_simple_infographic.png`, and push final verified deliverables to `origin/main`.
