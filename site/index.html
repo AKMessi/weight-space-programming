@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weight-Space Programming &amp; Quantization Survival | Aaryan Kakad</title>
+  <meta name="description" content="Zero-gradient Weight-Space Programming compilers and hardware-aligned four-bit and three-bit GGUF quantization survival across three reasoning LLM architectures, by Aaryan Kakad.">
+  <meta name="author" content="Aaryan Kakad">
+  <meta property="og:title" content="Weight-Space Programming &amp; Quantization Survival in Reasoning LLMs">
+  <meta property="og:description" content="Two verified research papers by Aaryan Kakad: the Greedy-Perturbation Illusion, zero-gradient SwiGLU compilers, and zero-byte block alignment slashing low-bit collateral up to 16,685x.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="./assets/wsp_simple_infographic.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Weight-Space Programming &amp; Quantization Survival">
+  <meta name="twitter:description" content="Zero-training weight compilers and hardware-aligned four-bit and three-bit survival across Qwen3, hybrid Qwen3.5, and DeepSeek-R1-1.5B.">
+  <meta name="twitter:image" content="./assets/wsp_simple_infographic.png">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230B1324'/%3E%3Crect x='5' y='6' width='6' height='20' rx='1.5' fill='%2310B981'/%3E%3Crect x='13' y='11' width='6' height='15' rx='1.5' fill='%233B82F6'/%3E%3Crect x='21' y='16' width='6' height='10' rx='1.5' fill='%2394A3B8'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#top">Weight-Space Programming</a>
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation">
+        <a href="#traps">Traps</a>
+        <a href="#compilers">Compilers</a>
+        <a href="#quantization">Quantization</a>
+        <a href="#results">Evidence</a>
+        <a href="#papers">Papers</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-grid-bg" aria-hidden="true"></div>
+      <div class="container hero-content">
+        <h1 class="hero-title" id="hero-title">Compile reasoning fixes straight into frozen weights.</h1>
+        <p class="hero-subtitle">Zero training, zero extra bytes, and zero runtime slowdown across three reasoning architectures, surviving four-bit and three-bit quantization.</p>
+        <div class="hero-action">
+          <a class="btn-primary" href="#papers">Read both papers</a>
+        </div>
+
+        <div class="workbench" aria-label="Interactive cross-architecture results explorer">
+          <div class="workbench-controls">
+            <div class="segmented" role="tablist" aria-label="Select model architecture" id="hero-model-tabs">
+              <button class="seg-btn is-active" type="button" role="tab" aria-selected="true" data-model="qwen3">Qwen3-0.6B</button>
+              <button class="seg-btn" type="button" role="tab" aria-selected="false" data-model="qwen35">Qwen3.5-0.8B Hybrid</button>
+              <button class="seg-btn" type="button" role="tab" aria-selected="false" data-model="deepseek">DeepSeek-R1-1.5B</button>
+            </div>
+            <div class="segmented" role="tablist" aria-label="Select quantization precision" id="hero-prec-tabs">
+              <button class="seg-btn is-active" type="button" role="tab" aria-selected="true" data-prec="high">8-bit Q8_0</button>
+              <button class="seg-btn" type="button" role="tab" aria-selected="false" data-prec="low">Low-bit Q4_0 / Q3_K_M</button>
+            </div>
+          </div>
+
+          <div class="workbench-body">
+            <div class="workbench-meta">
+              <p class="wb-arch" id="wb-arch-desc">Pure GQA Transformer (28 layers, d_ff = 3,072). Multi-seed stochastic MATH-500 (temp = 0.6, N = 300 rollouts).</p>
+              <p class="wb-verdict" id="wb-verdict">Oblique surgery ranks first at 8-bit (+5.67 pp, clustered p = 0.0148 vs baseline, p = 0.0146 vs random noise).</p>
+            </div>
+            <div class="wb-bars" id="wb-bars" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="traps" aria-labelledby="traps-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="traps-title">Two evaluation traps that make random noise look like progress</h2>
+          <p class="section-intro">Before claiming any weight edit works, we ran norm-matched Gaussian noise and transcript audits on Qwen3-0.6B. Both controls exposed failure modes that invalidate naive greedy and boxed-answer math benchmarks.</p>
+        </div>
+
+        <div class="editorial-split">
+          <div class="interactive-panel">
+            <div class="panel-header">
+              <h3>Watch the illusions collapse under strict auditing</h3>
+              <div class="segmented" role="tablist" aria-label="Select evaluation trap mode" id="trap-tabs">
+                <button class="seg-btn is-active" type="button" role="tab" aria-selected="true" data-trap="greedy">Greedy vs. stochastic</button>
+                <button class="seg-btn" type="button" role="tab" aria-selected="false" data-trap="echo">Boxed vs. Clean-EOS</button>
+              </div>
+            </div>
+
+            <div class="trap-stage" id="trap-stage" aria-live="polite"></div>
+            <p class="caption-note" id="trap-note">On greedy MATH-500 (temp = 0.0), six zero-information draws span a 6.0 pp chaotic band because 14 of 14 rescued problems were baseline 2048-token timeouts getting randomly rerolled. Under official sampling (temp = 0.6, N = 300), random noise falls to -0.33 pp (p = 1.000).</p>
+          </div>
+
+          <div class="prose-column">
+            <div class="prose-block">
+              <h3>The Greedy-Perturbation Illusion</h3>
+              <p>When a small reasoning model hits its token budget on more than half of problems, almost any small weight perturbation flips an early argmax token and acts as an unguided trajectory reroll. Truncated failures gain a nonzero chance to finish, while short correct traces remain stable. That asymmetry gives pure zero-information Gaussian noise a fake +6.0 pp boost at temp = 0.0 with zero loop reduction (29 to 30 loops, p = 1.000).</p>
+            </div>
+
+            <div class="prose-block">
+              <h3>The Final-Answer Echo Trap</h3>
+              <p>Standard math scripts match the last boxed string anywhere in the reply. High-dose BA-WSC (alpha = 0.70) reached 44.0% standard accuracy (p = 0.0294) at -0.022 perplexity delta, yet raw transcripts revealed the edit kept firing after closing the think tag, echoing the final answer until cutoff and more than doubling loops (29 to 59, p = 0.0001). Under Strict Clean-EOS (correct, closed think tag, natural stop), it plunged to 32.0%, worse than random noise (p = 0.0106).</p>
+            </div>
+
+            <div class="prose-block">
+              <h3>Minimum protocol for future weight-editing papers</h3>
+              <p>Every experiment in this repository enforces Frobenius-matched Gaussian noise controls, multi-seed stochastic sampling (temp = 0.6), Strict Clean-EOS grading, and anti-leakage calibration, dev, and held-out splits committed before test evaluation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tinted" id="compilers" aria-labelledby="compilers-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="compilers-title">One late-layer surge across three completely different architectures</h2>
+          <p class="section-intro">Using an exact 0.00e+00-diff GGUF-to-PyTorch tracer, we mapped every decoder layer across pure GQA attention, hybrid Gated-DeltaNet plus Full-Attention, and RL-distilled Qwen2. Every model isolates overthinking control in its final pre-readout MLP blocks.</p>
+        </div>
+
+        <div class="anatomy-workbench">
+          <div class="anatomy-toolbar">
+            <div class="segmented" role="tablist" aria-label="Select model layer profile" id="anatomy-tabs">
+              <button class="seg-btn is-active" type="button" role="tab" aria-selected="true" data-anat="qwen3">Qwen3-0.6B (28L GQA)</button>
+              <button class="seg-btn" type="button" role="tab" aria-selected="false" data-anat="qwen35">Qwen3.5-0.8B (Hybrid DeltaNet)</button>
+              <button class="seg-btn" type="button" role="tab" aria-selected="false" data-anat="deepseek">DeepSeek-R1-1.5B (28L Qwen2)</button>
+            </div>
+            <p class="anatomy-stat" id="anatomy-stat">Compiled layers [18, 20, 22] · Virtual bias std = 0.048 to 0.074 (OOS)</p>
+          </div>
+
+          <div class="anatomy-chart-wrap">
+            <svg class="anatomy-svg" id="anatomy-svg" viewBox="0 0 960 250" role="img" aria-label="Measured pre-readout MLP attribution across decoder layers"></svg>
+          </div>
+          <p class="caption-note" id="anatomy-caption">Measured pre-readout MLP projection onto the pathology direction across all 27 pre-readout layers (final readout layer excluded to preserve scale). Highlighted cobalt bars show the three compiled target layers.</p>
+        </div>
+
+        <div class="mechanisms-grid">
+          <div class="mechanism-item">
+            <h3>Virtual Constant-1 Bias Register (b*)</h3>
+            <p>Modern SwiGLU MLPs omit explicit bias vectors, preventing direct affine thresholds. Because post-RMSNorm activations keep stable anisotropic mean structure across domains, a closed-form ridge vector b* satisfies b* dot x close to 1 out-of-sample (std = 0.020 to 0.074 across all three architectures), enabling clean bias-free threshold gates with zero architectural modifications.</p>
+          </div>
+          <div class="mechanism-item">
+            <h3>Null-Space-Gated Oblique Surgery (oblique_res)</h3>
+            <p>Solves a rank-one update in W_down whose left detector lies orthogonal to the top-64 preservation subspace of normal text and copying, steering stalled activations toward clean think-tag resolution. Cuts WikiText-2 perplexity penalty nearly tenfold over unconditional ablation (+0.141 vs +1.338) and ranks first on 3 of 3 architectures at 8-bit (+6.00 pp pooled, p = 0.000130, 20% to 30% faster).</p>
+          </div>
+          <div class="mechanism-item">
+            <h3>Nonlinear Dormant SwiGLU Compilation (BA-WSC)</h3>
+            <p>Compiles an IF-THEN threshold gate directly into 32 (or 256) lowest-RMS dormant SwiGLU neurons via b* and gauge factor eta. Because SiLU suppresses negative pre-activations exponentially, normal text sees nearly zero perplexity drift (-0.018 to +0.028 across all three models) while significantly raising think-tag closure across every family.</p>
+          </div>
+        </div>
+
+        <div class="transfer-strip">
+          <div class="transfer-copy">
+            <h3>Zero-shot transfer proves metacognitive stopping, not math memorization</h3>
+            <p>Calibrated strictly on math, exact-copy, and WikiText-2 with zero science questions anywhere in calibration or development, the exact same frozen Qwen3-0.6B edits generalize to out-of-distribution GSM8K-100 (+9.0 pp vs baseline p = 0.049, +16.0 pp vs random noise p = 0.0001, 30% faster wall time) and zero-shot ARC-Challenge science (+15.0 pp for oblique surgery p = 0.0003; +11.0 pp for BA-WSC p = 0.0074), while preserving Copy-90 retrieval intact.</p>
+          </div>
+          <button class="figure-thumb-btn" type="button" data-fig="./papers/figures/p1_fig3_ood_and_cross_arch.png" data-title="Paper 1 Figure 3: Out-of-distribution GSM8K, zero-shot science ARC-100, and three-architecture Q8_0 stochastic replication">
+            <img src="./papers/figures/p1_fig3_ood_and_cross_arch.png" alt="OOD GSM8K, zero-shot ARC-Challenge, and three-architecture Q8_0 replication chart" loading="lazy">
+            <span class="thumb-hint">Inspect full-resolution figure</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="quantization" aria-labelledby="quant-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="quant-title">Why four-bit quantization shreds weight edits, and the zero-byte fix</h2>
+          <p class="section-intro">Quantizing small reasoning models to Q4_0 or Q3_K_M triggers 2.3x to 8.2x repetition-loop explosions. Worse, standard floating-point weight edits break inside GGUF block quantization because edited weights share FP16 block scales with unedited neighbors. Permuting dormant SwiGLU neurons into a dedicated hardware block fixes this structurally at zero byte and latency cost.</p>
+        </div>
+
+        <div class="block-lab">
+          <div class="lab-controls">
+            <div class="segmented segmented-dark" role="tablist" aria-label="Select quantization alignment mode" id="lab-mode-tabs">
+              <button class="seg-btn is-active" type="button" role="tab" aria-selected="true" data-mode="scattered">Scattered edit (Prior WSP)</button>
+              <button class="seg-btn" type="button" role="tab" aria-selected="false" data-mode="thm1">Theorem 1 (k = 32, Q4_0)</button>
+              <button class="seg-btn" type="button" role="tab" aria-selected="false" data-mode="cor1">Corollary 1 (k = 256, Q3_K_M)</button>
+            </div>
+            <div class="segmented segmented-dark" role="tablist" aria-label="Select model for llama-quantize audit" id="lab-model-tabs">
+              <button class="seg-btn is-active" type="button" role="tab" aria-selected="true" data-lmodel="qwen3">Qwen3-0.6B</button>
+              <button class="seg-btn" type="button" role="tab" aria-selected="false" data-lmodel="qwen35">Qwen3.5-0.8B</button>
+              <button class="seg-btn" type="button" role="tab" aria-selected="false" data-lmodel="deepseek">DeepSeek-R1-1.5B</button>
+            </div>
+          </div>
+
+          <div class="lab-stage">
+            <div class="block-viz-wrap">
+              <div class="block-viz-legend">
+                <span><i class="swatch swatch-edit"></i>Edited dormant slot</span>
+                <span><i class="swatch swatch-col"></i>Scale-corrupted neighbor</span>
+                <span><i class="swatch swatch-clean"></i>Bit-identical neighbor block</span>
+              </div>
+              <div class="superblock-grid" id="superblock-grid" aria-label="256-weight GGUF super-block hardware grid divided into eight 32-weight sub-blocks"></div>
+            </div>
+
+            <div class="lab-readout" id="lab-readout" aria-live="polite">
+              <div class="readout-row">
+                <span class="readout-label">Real llama-quantize cosine survival</span>
+                <span class="readout-value" id="ro-cos">0.379</span>
+              </div>
+              <div class="readout-row">
+                <span class="readout-label">Neighbor collateral-to-signal ratio</span>
+                <span class="readout-value" id="ro-col">2.25724</span>
+              </div>
+              <div class="readout-row">
+                <span class="readout-label">Collateral reduction vs. sparse64</span>
+                <span class="readout-value" id="ro-drop">1x baseline</span>
+              </div>
+              <div class="readout-row">
+                <span class="readout-label">Dormant FFN neuron budget</span>
+                <span class="readout-value" id="ro-budget">64 / 3,072 (2.08%)</span>
+              </div>
+              <p class="lab-explain" id="ro-explain">Scattered edits land across many 32-weight blocks and 256-weight super-blocks, shifting shared FP16 scales and corrupting hundreds of unedited weights.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="crossover-band">
+          <div class="crossover-prose">
+            <h3>Behavioral proof across two independent architectures</h3>
+            <p>Block alignment is not just a tensor-norm metric. When we deploy the exact same frozen edits from 8-bit down to 4-bit and 3-bit, diffuse oblique surgery degrades as quantization collateral builds, while block-aligned BA-WSC holds steady and takes first place.</p>
+            <p>On hybrid Qwen3.5-0.8B (Q8_0 to Q4_0), diffuse oblique drops from 10 to 7 solved while BA-WSC climbs from 3 to 15 (exact permutation crossover p = 0.00336). On DeepSeek-R1-1.5B (Q8_0 to Q4_0 to Q3_K_M), BA-WSC holds a flat +6, +6, +6 advantage over baseline across every bit-width while diffuse oblique slides from +10 to +4 to -3. Combined two-model Fisher crossover significance reaches p = 0.00210 (Clean-EOS) and p = 0.00530 (standard).</p>
+            <p>Compiling directly on the dequantized low-bit model itself (Post-Quantization Weight-Space Healing, PQ-BA-WSC) beats floating-point transfer at both bit-widths on Qwen3-0.6B, healing 83% of the 4-bit cliff with oblique surgery (p = 0.0041) and ranking first overall at 3-bit Q3_K_M (+68% relative gain, p = 0.0044, 19x less perplexity damage than unconditional WSP).</p>
+          </div>
+          <div class="crossover-visual">
+            <div class="segmented segmented-dark" role="tablist" aria-label="Select crossover model" id="cross-tabs">
+              <button class="seg-btn is-active" type="button" role="tab" aria-selected="true" data-cross="qwen35">Qwen3.5-0.8B (Q8 to Q4)</button>
+              <button class="seg-btn" type="button" role="tab" aria-selected="false" data-cross="deepseek">DeepSeek-R1-1.5B (Q8 to Q3)</button>
+            </div>
+            <svg class="crossover-svg" id="crossover-svg" viewBox="0 0 540 280" role="img" aria-label="Precision by method behavioral double crossover plot"></svg>
+            <p class="caption-note caption-dark" id="cross-caption">Exact 100,000-permutation interaction swing: +15 of 150 items (+10.00 pp), two-sided p = 0.00336. Combined Fisher meta-analysis with DeepSeek-R1-1.5B: chi-squared = 16.82, p = 0.00210.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="results" aria-labelledby="results-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="results-title">Verified numbers and full-resolution figures</h2>
+          <p class="section-intro">Every value below is programmatically audited against committed raw JSON logs across 206 runs, 18,513 responses, and 25.06 million processed tokens with zero HTTP or parsing errors.</p>
+        </div>
+
+        <div class="ledger-bar">
+          <div class="segmented" role="tablist" aria-label="Select evidence table" id="ledger-tabs">
+            <button class="seg-btn is-active" type="button" role="tab" aria-selected="true" data-ledger="p1">Paper 1: Stochastic &amp; OOD</button>
+            <button class="seg-btn" type="button" role="tab" aria-selected="false" data-ledger="p2heal">Paper 2: 4-bit &amp; 3-bit healing</button>
+            <button class="seg-btn" type="button" role="tab" aria-selected="false" data-ledger="t1">Theorem 1 &amp; Corollary 1 audit</button>
+          </div>
+        </div>
+
+        <div class="table-wrap" id="ledger-table-wrap" aria-live="polite"></div>
+
+        <div class="gallery-block">
+          <h3>All eight publication figures and plain-English overview</h3>
+          <p class="gallery-sub">Click any 300-DPI plate to inspect it at full resolution.</p>
+          <div class="gallery-grid" id="figure-gallery"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tinted" id="papers" aria-labelledby="papers-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="papers-title">Read both papers and verify every claim locally</h2>
+          <p class="section-intro">Both manuscripts are authored by Aaryan Kakad (Independent Machine Learning Researcher), released under the MIT License, and packaged with Typst sources, arXiv LaTeX bundles, BibTeX, and an automated verifier.</p>
+        </div>
+
+        <div class="papers-list">
+          <article class="paper-row">
+            <div class="paper-info">
+              <h3>The Greedy-Perturbation Illusion and Zero-Gradient Control-Flow Compilation in Weight Space</h3>
+              <p class="paper-meta">Companion Paper 1 of 2 · 11 pages, 4 figures, 9 tables, Appendices A to D · 25 of 25 PDF text checks verified</p>
+              <p>Documents the Greedy-Perturbation Illusion (Proposition 1) and Final-Answer Echo Trap, maps the universal late-MLP surge and Virtual Bias Register b* across three architectures, and proves zero-gradient stochastic gains (+6.00 pp pooled, p = 0.000130) plus zero-shot transfer to ARC-Challenge science (+15.0 pp, p = 0.0003).</p>
+              <p class="paper-links">
+                <a href="https://github.com/AKMessi/weight-space-programming/blob/main/papers/paper1_conditional_wsp_and_greedy_illusion.md" target="_blank" rel="noopener">Markdown source</a>
+                <span>·</span>
+                <a href="https://github.com/AKMessi/weight-space-programming/blob/main/papers/typst/paper1_conditional_wsp_and_greedy_illusion.typ" target="_blank" rel="noopener">Typst source</a>
+                <span>·</span>
+                <a href="https://github.com/AKMessi/weight-space-programming/blob/main/papers/latex/paper1_arxiv.tex" target="_blank" rel="noopener">arXiv LaTeX</a>
+              </p>
+            </div>
+            <div class="paper-cta">
+              <a class="btn-primary" href="./papers/Paper1_Greedy_Perturbation_Illusion_and_Zero_Gradient_WSP_Kakad2026.pdf" target="_blank" rel="noopener">Download Paper 1 PDF</a>
+            </div>
+          </article>
+
+          <article class="paper-row">
+            <div class="paper-info">
+              <h3>The Quantization Cliff of Weight-Space Programming: Hardware-Aligned Constant-Block Embedding and Post-Quantization Healing</h3>
+              <p class="paper-meta">Companion Paper 2 of 2 · 10 pages, 4 figures, 8 tables, Appendices A to D · 26 of 26 PDF text checks verified</p>
+              <p>Characterizes scale-dependent quantization loop collapse, proves Theorem 1 (k = 32) and Corollary 1 (k = 256) on real llama-quantize across three architectures (cos = 0.996 to 0.99984, 4,514x to 16,685x lower collateral), introduces Post-Quantization Healing (PQ-BA-WSC, first at 3-bit, p = 0.0044), and proves replicated behavioral double crossovers (Fisher p = 0.00210).</p>
+              <p class="paper-links">
+                <a href="https://github.com/AKMessi/weight-space-programming/blob/main/papers/paper2_quantization_cliff_and_ba_wsc.md" target="_blank" rel="noopener">Markdown source</a>
+                <span>·</span>
+                <a href="https://github.com/AKMessi/weight-space-programming/blob/main/papers/typst/paper2_quantization_cliff_and_ba_wsc.typ" target="_blank" rel="noopener">Typst source</a>
+                <span>·</span>
+                <a href="https://github.com/AKMessi/weight-space-programming/blob/main/papers/latex/paper2_arxiv.tex" target="_blank" rel="noopener">arXiv LaTeX</a>
+              </p>
+            </div>
+            <div class="paper-cta">
+              <a class="btn-primary" href="./papers/Paper2_Quantization_Cliff_and_BA_WSC_Kakad2026.pdf" target="_blank" rel="noopener">Download Paper 2 PDF</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="repro-grid">
+          <div class="repro-col">
+            <h3>Reproduce the audit in seconds</h3>
+            <p>No GPU or model weights are required to audit all 44 numerical claims, pooled McNemar and Fisher statistics, Theorem 1 ratios, 49 unit tests, figures, and PDF text.</p>
+            <div class="snippet-box">
+              <pre id="cli-snippet">git clone https://github.com/AKMessi/weight-space-programming.git
+cd weight-space-programming
+python scripts/wsp_verify_papers.py
+PYTHONPATH=src python -m unittest discover -s tests</pre>
+              <button class="copy-btn" type="button" data-copy="cli-snippet">Copy commands</button>
+            </div>
+
+            <div class="limits-block">
+              <h3>Honest limitations and retained negative results</h3>
+              <p>All experiments ran on 0.6B to 1.5B local models using one AMD Radeon RX 6400 (4 GB VRAM, Vulkan) with zero paid compute. Models 2 and 3 used single-seed N = 150 rollouts per bit-width; scaling to 7B to 32B models is straightforward future work since every solver is closed-form. At 8-bit Q8_0, oblique surgery leads raw accuracy while BA-WSC wins on zero perplexity drift and low-bit survival. Earlier failed pilot studies remain intact in the repository as honest scientific provenance.</p>
+            </div>
+          </div>
+
+          <div class="repro-col">
+            <h3>Cite this work</h3>
+            <p>Both papers and the MIT-licensed repository share pinned SHA-256 dataset and base model manifests for full auditability.</p>
+            <div class="snippet-box">
+              <pre id="bibtex-snippet">@article{kakad2026greedy,
+  author  = {Aaryan Kakad},
+  title   = {The Greedy-Perturbation Illusion and Zero-Gradient
+             Control-Flow Compilation in Weight Space},
+  year    = {2026},
+  url     = {https://github.com/AKMessi/weight-space-programming}
+}
+
+@article{kakad2026quantization,
+  author  = {Aaryan Kakad},
+  title   = {The Quantization Cliff of Weight-Space Programming:
+             Hardware-Aligned Constant-Block Embedding and
+             Post-Quantization Healing},
+  year    = {2026},
+  url     = {https://github.com/AKMessi/weight-space-programming}
+}</pre>
+              <button class="copy-btn" type="button" data-copy="bibtex-snippet">Copy BibTeX</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <p class="footer-brand">Aaryan Kakad · Independent Machine Learning Researcher</p>
+        <p class="footer-sub">206 runs · 18,513 raw responses · 25,058,989 tokens · 0 errors · AMD Radeon RX 6400 4 GB (llama.cpp build 8864)</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/AKMessi/weight-space-programming" target="_blank" rel="noopener">GitHub repository</a>
+        <a href="https://github.com/AKMessi/weight-space-programming/blob/main/docs/RESEARCHER_BRIEFING.md" target="_blank" rel="noopener">Researcher briefing</a>
+        <a href="https://github.com/AKMessi/weight-space-programming/blob/main/research/JOURNAL.md" target="_blank" rel="noopener">Lab journal</a>
+        <a href="https://github.com/AKMessi/weight-space-programming/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-labelledby="lightbox-title">
+    <div class="lightbox-backdrop" id="lightbox-backdrop"></div>
+    <div class="lightbox-panel">
+      <div class="lightbox-bar">
+        <p id="lightbox-title"></p>
+        <button class="lightbox-close" id="lightbox-close" type="button" aria-label="Close figure preview">Close</button>
+      </div>
+      <div class="lightbox-img-wrap">
+        <img id="lightbox-img" alt="">
+      </div>
+    </div>
+  </div>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 # Weight-Space Programming & Quantization Survival in Reasoning LLMs
 
 **Author:** Aaryan Kakad (Independent Machine Learning Researcher)  
-**Papers:** [Paper 1 (PDF)](papers/Paper1_Greedy_Perturbation_Illusion_and_Zero_Gradient_WSP_Kakad2026.pdf) · [Paper 2 (PDF)](papers/Paper2_Quantization_Cliff_and_BA_WSC_Kakad2026.pdf) · [Peer-Researcher Technical Briefing](docs/RESEARCHER_BRIEFING.md) · [Chronological Lab Journal](research/JOURNAL.md)
+**Links:** [Interactive Research Site](https://akmessi.github.io/weight-space-programming/) · [Paper 1 (PDF)](papers/Paper1_Greedy_Perturbation_Illusion_and_Zero_Gradient_WSP_Kakad2026.pdf) · [Paper 2 (PDF)](papers/Paper2_Quantization_Cliff_and_BA_WSC_Kakad2026.pdf) · [Peer-Researcher Technical Briefing](docs/RESEARCHER_BRIEFING.md) · [Chronological Lab Journal](research/JOURNAL.md)
 
 Zero-gradient, zero-extra-byte, zero-latency **Weight-Space Programming (WSP)** compilers and hardware-aligned low-bit quantization survival theory, evaluated end-to-end across **three architecturally distinct local reasoning LLMs** (`Qwen3-0.6B` pure GQA, `Qwen3.5-0.8B` hybrid Gated-DeltaNet + Full-Attention, and `DeepSeek-R1-Distill-Qwen-1.5B` RL-distilled Qwen2) on a single **AMD Radeon RX 6400 (4 GB VRAM, Vulkan)** workstation (`206` runs, `18,513` raw responses, `25,058,989` tokens, `0` errors).
 
@@ -82,6 +82,7 @@ papers/
   typst/                                           # Typst publication sources + NeurIPS/arXiv template
   latex/                                           # arXiv / Overleaf-ready .tex sources
   references.bib                                   # Shared BibTeX bibliography
+site/                                              # Interactive research landing page (auto-deploys to GitHub Pages)
 src/wsp/                                           # Core WSP compilers, 0.00e+00 GGUF->PyTorch tracer, PQ loader, grader
 scripts/wsp_*.py                                   # End-to-end study pipelines, audits, figure & PDF builders
 research/wsp/                                      # Immutable JSON summaries, statistical audits, manifests & infographics
