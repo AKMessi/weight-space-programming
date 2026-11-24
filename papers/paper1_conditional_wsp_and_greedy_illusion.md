@@ -1,8 +1,8 @@
 # The Greedy-Perturbation Illusion and Zero-Gradient Control-Flow Compilation in Weight Space
 
-**Author:** Independent ML Research (`AKMessi/weight-space-programming`)  
+**Author:** Aaryan Kakad (Independent Machine Learning Researcher)  
 **Date:** November 2026  
-**Code & Immutable Evidence:** `AKMessi/weight-space-programming` (all raw JSONL traces, SHA-256 artifact manifests, statistical audits, and reproduction scripts)
+**Code & Immutable Evidence:** `https://github.com/AKMessi/weight-space-programming` (all raw JSONL traces, SHA-256 artifact manifests, statistical audits, and reproduction scripts)
 
 ---
 
